@@ -1,0 +1,105 @@
+{
+  "props" : [
+    {
+      "name": "animate",
+      "type": "<a href=\"/docs/types#common-types\">ANIMATE_SPEED</a>",
+      "default": "fast"
+    },
+    {
+      "name": "animation",
+      "type": "'slide-down' | 'slide-up' | 'fade' | 'zoom-in' | 'zoom-out'",
+      "default": "fade"
+    },
+    {
+      "name": "id",
+      "type": "string",
+      "default": "<RANDOM STRING>"
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "default": "\"\""
+    },
+    {
+      "name": "modalFooterClass",
+      "type": "string",
+      "default": "\"\""
+    },
+    {
+      "name": "modalHeaderClass",
+      "type": "string",
+      "default": "\"\""
+    },
+    {
+      "name": "modalBodyClass",
+      "type": "string",
+      "default": "\"\""
+    },
+    {
+      "name": "modalOuterClass",
+      "type": "string",
+      "default": "\"\""
+    },
+    {
+      "name": "position",
+      "type": "'top' | 'center' | 'bottom'",
+      "default": "center"
+    },
+    {
+      "name": "rounded",
+      "type": "<a href=\"/docs/types#common-types\">ROUNDED</a>",
+      "default": "md"
+    },
+    {
+      "name": "size",
+      "type": "'sm' | 'md' | 'lg' | 'full'",
+      "default": "md"
+    },
+    {
+      "name": "titleClass",
+      "type": "string",
+      "default": "\"\""
+    },
+    {
+      "name": "titleActiveClass",
+      "type": "string",
+      "default": "\"\""
+    }
+  ],
+  "dynamicProps" : [
+    {
+      "name": "disableESC",
+      "description": ""
+    },
+    {
+      "name": "noBackdrop",
+      "description": ""
+    },
+    {
+      "name": "noCloseBtn",
+      "description": ""
+    },
+    {
+      "name": "staticBackdrop",
+      "description": ""
+    },
+    {
+      "name": "modalStatus",
+      "description": ""
+    }
+  ],
+  "slots" : [
+    {
+      "name": "modalBtn",
+      "description": ""
+    },
+    {
+      "name": "body",
+      "description": ""
+    },
+    {
+      "name": "footer",
+      "description": ""
+    }
+  ]
+}

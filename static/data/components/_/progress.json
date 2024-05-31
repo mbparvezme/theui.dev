@@ -1,0 +1,40 @@
+{
+  "props": [
+    {
+      "name": "id",
+      "type": "string",
+      "default": "<RANDOM STRING>"
+    },
+    {
+      "name": "label",
+      "type": "string|null",
+      "default": "null"
+    },
+    {
+      "name": "start",
+      "type": "number",
+      "default": 0
+    },
+    {
+      "name": "end",
+      "type": "number",
+      "default": ""
+    },
+    {
+      "name": "barClass",
+      "type": "string",
+      "default": "\"\""
+    },
+    {
+      "name": "thickness",
+      "type": "'px' | 'sm' | 'md' | 'lg' | 'xl'",
+      "default": "md"
+    }
+  ],
+  "dynamicProps": [
+    {
+      "name": "vertical",
+      "description": ""
+    }
+  ]
+}

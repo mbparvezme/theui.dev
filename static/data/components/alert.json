@@ -1,0 +1,40 @@
+{
+  "props" : [
+    {
+      "name": "dismissible",
+      "type": "boolean",
+      "default": "true"
+    },
+    {
+      "name": "icon",
+      "type": "boolean",
+      "default": "true"
+    },
+    {
+      "name": "rounded",
+      "type": "<a href=\"/docs/types#common-types\">ROUNDED</a>",
+      "default": "\"md\""
+    },
+    {
+      "name": "type",
+      "type": "'error' | 'info' | 'success' | 'warning'",
+      "default": "\"error\""
+    },
+    {
+      "name": "theme",
+      "type": "'default'|'light'",
+      "default": "\"default\""
+    },
+    {
+      "name": "variant",
+      "type": "'card' | 'borderTop'| 'borderBottom'| 'borderStart'",
+      "default": "\"card\""
+    }
+  ],
+  "slots" : [
+    {
+      "name": "icon",
+      "description": "Represents the icon of the Alert component."
+    }
+  ]
+}

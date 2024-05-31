@@ -1,0 +1,39 @@
+{
+  "props" : [
+    {
+      "name": "close",
+      "type": "boolean",
+      "default": "true"
+    },
+    {
+      "name": "imgSrc",
+      "type": "string | undefined",
+      "default": "undefined"
+    },
+    {
+      "name": "imgAlt",
+      "type": "string",
+      "default": "\"\""
+    },
+    {
+      "name": "imgClass",
+      "type": "string",
+      "default": "\"\""
+    },
+    {
+      "name": "rounded",
+      "type": "<a href=\"/docs/types#common-types\">ROUNDED</a>",
+      "default": "full"
+    },
+    {
+      "name": "size",
+      "type": "'sm' | 'md' | 'lg'",
+      "default": "md"
+    },
+    {
+      "name": "text",
+      "type": "string",
+      "default": "\"\""
+    }
+  ]
+}

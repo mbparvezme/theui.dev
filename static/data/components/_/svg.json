@@ -1,0 +1,20 @@
+{
+  "props": [
+    {
+      "name": "size",
+      "type": "number",
+      "default": "1"
+    },
+    {
+      "name": "focusable",
+      "type": "boolean",
+      "default": "true"
+    }
+  ],
+  "dynamicProps": [
+    {
+      "name": "stroke",
+      "description": ""
+    }
+  ]
+}

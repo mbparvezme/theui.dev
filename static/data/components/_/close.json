@@ -1,0 +1,20 @@
+{
+  "props": [
+    {
+      "name": "size",
+      "type": "number",
+      "default": "1.5"
+    },
+    {
+      "name": "ariaLabel",
+      "type": "string",
+      "default": "Close button"
+    }
+  ],
+  "slot": [
+    {
+      "name": "icon",
+      "description": ""
+    }
+  ]
+}

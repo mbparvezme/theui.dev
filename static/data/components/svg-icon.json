@@ -1,0 +1,20 @@
+{
+  "props": [
+    {
+      "name": "size",
+      "type": "number",
+      "default": "1",
+      "description" : "Size of the SVG icon in rem units (for square icons)."
+    }
+  ],
+  "dynamicProps": [
+    {
+      "name": "width",
+      "description": "Width of the SVG icon (for non-square icons)."
+    },
+    {
+      "name": "height",
+      "description": "Height of the SVG icon (for non-square icons)."
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "props" : [
+    {
+      "name": "animationSpeed",
+      "type": "<a href=\"/docs/types#common-types\">ANIMATE_SPEED</a>",
+      "default": "\"fast\"",
+      "description": "Speed of the collapse animation."
+    },
+    {
+      "name": "ariaLabel",
+      "type": "string",
+      "default": "`${(title||\"\")} Accordion`",
+      "description" : "For accessibility, describing the collapse component for screen readers."
+    },
+    {
+      "name": "id",
+      "type": "string",
+      "default": "&lt;RANDOM STRING&gt;",
+      "description" : "Unique identifier for the collapse component."
+    }
+  ],
+  "dynamicProps" : [
+    {
+      "name": "open",
+      "description": "Sets the collapse to be open by default."
+    }
+  ],
+  "slots" : [
+    {
+      "name": "title",
+      "description": "Represents the title of an Accordion item."
+    },
+    {
+      "name": "content",
+      "description": "Represents the content of an Accordion item."
+    }
+  ]
+}

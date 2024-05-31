@@ -1,0 +1,15 @@
+{
+  "props": [
+    {
+      "name": "darkMode",
+      "type": "boolean | 'system'",
+      "default": "true"
+    }
+  ],
+  "slot": [
+    {
+      "name": "icon",
+      "description": ""
+    }
+  ]
+}
