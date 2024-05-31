@@ -1,7 +1,7 @@
 ---
 title: theui-svelte - Chips
 component_title: Chips
-description: ------
+description: Implement interactive and stylish chips in your Svelte app with TheUI-Svelte's Chips component, perfect for tags and filters.
 ---
 
 <script lang="ts">

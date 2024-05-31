@@ -1,7 +1,7 @@
 ---
 title: theui-svelte - Tooltip
 component_title: Tooltip
-description: ------
+description: Add informative tooltips to your Svelte app with TheUI-Svelte's Tooltip component, providing users with contextual information.
 ---
 
 <script lang="ts">

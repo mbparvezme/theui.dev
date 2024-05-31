@@ -1,7 +1,7 @@
 ---
 title: theui-svelte - Breadcrumb
 component_title: Breadcrumb
-description: ------
+description: Improve navigation in your Svelte app with TheUI-Svelte's Breadcrumb component. Guide users effortlessly through your content hierarchy.
 ---
 
 <script lang="ts">

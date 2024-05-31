@@ -1,7 +1,7 @@
 ---
 title: theui-svelte - Alert
 component_title: Alert
-description: ------
+description: Utilize TheUI-Svelte's Alert component to display crucial messages and notifications in your Svelte applications with customizable styles.
 ---
 
 <script lang="ts">

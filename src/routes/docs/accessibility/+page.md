@@ -1,7 +1,7 @@
 ---
 title: theui-svelte Accessability guide
-dir: docs
-description: --
+component_title: Accessability guide
+description: Enhance the accessibility of your Svelte applications with TheUI-Svelte's Accessibility guide. Ensure your components are user-friendly for all.
 ---
 
 <script>

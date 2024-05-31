@@ -1,7 +1,7 @@
 ---
 title: theui-svelte - Checkbox
 component_title: Checkbox
-description: ------
+description: Integrate customizable checkboxes into your Svelte app with TheUI-Svelte's Checkbox component, enhancing form functionality.
 ---
 
 <script lang="ts">

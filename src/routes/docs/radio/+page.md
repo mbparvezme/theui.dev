@@ -1,7 +1,7 @@
 ---
 title: theui-svelte - Radio
 component_title: Radio
-description: ------
+description: Integrate customizable radio buttons into your Svelte app with TheUI-Svelte's Radio component, enhancing form interaction.
 ---
 
 <script lang="ts">

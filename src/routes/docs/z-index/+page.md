@@ -1,7 +1,7 @@
 ---
 title: theui-svelte z-index guide
 dir: docs
-description: TheUI-Svelte is a component library for SvelteKit, designed with TailwindCSS. Enhance your development process with accessible, customizable components, dark/light mode support, and more.
+description: Manage stacking contexts in your Svelte application with TheUI-Svelte's Z-index guide. Ensure proper layering and visibility of components.
 ---
 
 <script>

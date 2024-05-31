@@ -1,7 +1,7 @@
 ---
 title: theui-svelte RTL guide
 dir: docs
-description: TheUI-Svelte is a component library for SvelteKit, designed with TailwindCSS. Enhance your development process with accessible, customizable components, dark/light mode support, and more.
+description: Implement right-to-left (RTL) support in your Svelte app with TheUI-Svelte's comprehensive RTL guide. Achieve seamless bidirectional text compatibility.
 ---
 
 <script>

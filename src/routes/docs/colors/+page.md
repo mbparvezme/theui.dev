@@ -1,7 +1,7 @@
 ---
 title: theui-svelte - Colors
 component_title: Colors
-description: ------
+description: Customize your Svelte app's appearance with TheUI-Svelte's Colors and Branding guide. Learn how to apply your brand colors effortlessly.
 ---
 
 <script>

@@ -1,7 +1,7 @@
 ---
 title: theui-svelte - Table
 component_title: Table
-description: ------
+description: Present data effectively in your Svelte app with TheUI-Svelte's Table component, supporting responsive and customizable designs.
 ---
 
 <script lang="ts">

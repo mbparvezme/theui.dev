@@ -1,7 +1,7 @@
 ---
 title: theui-svelte - FAB
 component_title: FAB
-description: ------
+description: Implement floating action buttons in your Svelte app with TheUI-Svelte's Float Button (FAB) component for quick access actions.
 ---
 
 <script lang="ts">

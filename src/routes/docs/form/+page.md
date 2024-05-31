@@ -1,7 +1,7 @@
 ---
 title: theui-svelte - Form
 component_title: Form
-description: ------
+description: Build responsive and accessible forms in your Svelte app with TheUI-Svelte's Form component, streamlining user data input.
 ---
 
 <script lang="ts">

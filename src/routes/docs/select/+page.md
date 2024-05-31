@@ -1,7 +1,7 @@
 ---
 title: theui-svelte - Select input
 component_title: Select input
-description: ------
+description: Create responsive dropdown selects in your Svelte app with TheUI-Svelte's Select component, offering a smooth user experience.
 ---
 
 <script lang="ts">

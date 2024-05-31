@@ -1,7 +1,7 @@
 ---
 title: theui-svelte - Popup
 component_title: Popup
-description: ------
+description: Create engaging entrance and exit popups for your Svelte app with TheUI-Svelte's Popup component, enhancing user interaction.
 ---
 
 <script lang="ts">

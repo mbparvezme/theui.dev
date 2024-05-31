@@ -1,7 +1,7 @@
 ---
 title: theui-svelte - Container
 component_title: Container
-description: ------
+description: Structure your Svelte app with TheUI-Svelte's Container component, providing a flexible and responsive layout foundation.
 ---
 
 <script lang="ts">

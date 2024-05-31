@@ -1,7 +1,7 @@
 ---
 title: theui-svelte - Label
 component_title: Label
-description: ------
+description: Add clear and accessible labels to form elements in your Svelte app with TheUI-Svelte's Label component, ensuring better UX.
 ---
 
 <script lang="ts">

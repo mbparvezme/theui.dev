@@ -1,7 +1,7 @@
 ---
 title: theui-svelte - Close
 component_title: Close
-description: ------
+description: Add functional close symbols to modals and popups in your Svelte app with TheUI-Svelte's Close Symbol component.
 ---
 
 <script lang="ts">

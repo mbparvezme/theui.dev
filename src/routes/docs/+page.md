@@ -1,7 +1,7 @@
 ---
 title: TheUI Svelte Introduction
 dir: docs
-description: TheUI-Svelte is a component library for SvelteKit, designed with TailwindCSS. Enhance your development process with accessible, customizable components, dark/light mode support, and more.
+description: Begin your journey with TheUI-Svelte. Learn how to quickly set up and integrate TheUI-Svelte component library into your Svelte projects.
 ---
 
 <script lang="ts">

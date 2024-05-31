@@ -1,7 +1,7 @@
 ---
 title: theui-svelte - SVG icon
 component_title: SVG icon
-description: ------
+description: Add scalable vector icons to your Svelte app with TheUI-Svelte's SVG Icon component, enhancing your UI with clarity and style.
 ---
 
 <script lang="ts">

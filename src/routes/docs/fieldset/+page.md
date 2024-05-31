@@ -1,7 +1,7 @@
 ---
 title: theui-svelte - Fieldset
 component_title: Fieldset
-description: ------
+description: Group related form elements in your Svelte app with TheUI-Svelte's Fieldset component, improving form organization and readability.
 ---
 
 <script lang="ts">

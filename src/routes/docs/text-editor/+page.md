@@ -1,7 +1,7 @@
 ---
 title: theui-svelte - Text editor
 component_title: Text editor
-description: ------
+description: Implement rich text editing capabilities in your Svelte app with TheUI-Svelte's Text Editor component, ideal for user-generated content.
 ---
 
 <script lang="ts">

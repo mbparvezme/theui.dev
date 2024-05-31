@@ -1,7 +1,7 @@
 ---
 title: theui-svelte - Dark mode
 component_title: Dark mode
-description: ------
+description: Implement dark mode in your Svelte app with TheUI-Svelte's Dark Mode component, offering a better experience for users in low-light environments.
 ---
 
 <script lang="ts">

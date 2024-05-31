@@ -1,7 +1,7 @@
 ---
 title: theui-svelte - Navbar
 component_title: Navbar
-description: ------
+description: Design responsive and accessible navigation bars for your Svelte app with TheUI-Svelte's Navbar component, tailored for usability.
 ---
 
 <script lang="ts">

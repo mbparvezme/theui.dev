@@ -1,7 +1,7 @@
 ---
 title: theui-svelte - Progressbar
 component_title: Progressbar
-description: ------
+description: Visualize progress and statuses in your Svelte app with TheUI-Svelte's Progress Bar component, customizable with TailwindCSS.
 ---
 
 <script lang="ts">

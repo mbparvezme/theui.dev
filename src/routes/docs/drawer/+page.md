@@ -1,7 +1,7 @@
 ---
 title: theui-svelte - Drawer
 component_title: Drawer
-description: ------
+description: Create navigational sidebars and overlays in your Svelte app with TheUI-Svelte's Drawer component, optimized for accessibility.
 ---
 
 <script lang="ts">

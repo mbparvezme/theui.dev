@@ -1,7 +1,7 @@
 ---
 title: theui-svelte - Type definition
 component_title: Type definition
-description: ------
+description: Understand the various component types in TheUI-Svelte. Learn how to use them effectively to build a versatile and robust Svelte application.
 ---
 
 <script>

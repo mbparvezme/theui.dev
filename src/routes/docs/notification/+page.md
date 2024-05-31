@@ -1,7 +1,7 @@
 ---
 title: theui-svelte - Notification
 component_title: Notification
-description: ------
+description: Deliver user notifications effectively in your Svelte app with TheUI-Svelte's Notification component, supporting various alert styles.
 ---
 
 <script lang="ts">

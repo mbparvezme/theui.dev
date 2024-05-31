@@ -1,7 +1,7 @@
 ---
 title: theui-svelte - Badge
 component_title: Badge
-description: ------
+description: Add dynamic visual indicators to your Svelte app with TheUI-Svelte's Badge component. Perfect for notifications and status labels.
 ---
 
 <script lang="ts">

@@ -1,7 +1,7 @@
 ---
 title: theui-svelte - Input
 component_title: Input
-description: ------
+description: Create versatile input fields for your Svelte app with TheUI-Svelte's Input component, fully customizable with TailwindCSS.
 ---
 
 <script lang="ts">

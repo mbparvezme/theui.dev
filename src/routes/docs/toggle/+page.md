@@ -1,7 +1,7 @@
 ---
 title: theui-svelte - Toggle
 component_title: Toggle
-description: ------
+description: Implement intuitive toggle switches in your Svelte app with TheUI-Svelte's Toggle component, perfect for enabling and disabling settings.
 ---
 
 <script lang="ts">

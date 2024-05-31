@@ -1,7 +1,7 @@
 ---
 title: theui-svelte - Model
 component_title: Model
-description: ------
+description: Integrate customizable modals into your Svelte app with TheUI-Svelte's Modal component, perfect for dialogs and pop-ups.
 ---
 
 <script lang="ts">

@@ -1,7 +1,7 @@
 ---
 title: theui-svelte - License
 component_title: License
-description: ------
+description: Review the licensing terms for TheUI-Svelte. Understand how you can use and distribute this component library in your Svelte projects.
 ---
 
 <script>

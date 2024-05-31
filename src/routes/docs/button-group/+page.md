@@ -1,7 +1,7 @@
 ---
 title: theui-svelte - Button group
 component_title: Button group
-description: ------
+description: Group related buttons together in your Svelte application using TheUI-Svelte's Button Group component for a cleaner UI.
 ---
 
 <script lang="ts">

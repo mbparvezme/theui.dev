@@ -1,7 +1,7 @@
 ---
 title: theui-svelte - Button
 component_title: Button
-description: ------
+description: Create responsive and stylish buttons for your Svelte app with TheUI-Svelte's Button component, fully customizable with TailwindCSS.
 ---
 
 <script lang="ts">

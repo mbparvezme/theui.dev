@@ -1,7 +1,7 @@
 ---
 title: theui-svelte - Dropdown
 component_title: Dropdown
-description: ------
+description: Add feature-rich dropdown menus to your Svelte app with TheUI-Svelte's Dropdown component, providing a clean and responsive design.
 ---
 
 <script lang="ts">

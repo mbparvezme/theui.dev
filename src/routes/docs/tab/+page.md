@@ -1,7 +1,7 @@
 ---
 title: theui-svelte - Tabs and pills
 component_title: Accordion
-description: ------
+description: Organize content into navigable sections in your Svelte app with TheUI-Svelte's Tabs and Pills component, ensuring a smooth UX.
 ---
 
 <script lang="ts">

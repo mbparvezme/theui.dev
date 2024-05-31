@@ -1,7 +1,7 @@
 ---
 title: theui-svelte - Textarea
 component_title: Textarea
-description: ------
+description: Create versatile and customizable textarea fields in your Svelte app with TheUI-Svelte's Textarea component, ideal for multi-line text input.
 ---
 
 <script lang="ts">

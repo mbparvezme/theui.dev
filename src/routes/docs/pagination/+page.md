@@ -1,7 +1,7 @@
 ---
 title: theui-svelte - Pagination
 component_title: Pagination
-description: ------
+description: Enable seamless content navigation in your Svelte app with TheUI-Svelte's Pagination component, ideal for managing large data sets.
 ---
 
 <script lang="ts">

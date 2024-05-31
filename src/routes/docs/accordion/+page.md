@@ -1,7 +1,7 @@
 ---
 title: theui-svelte - Accordion
 component_title: Accordion
-description: ====
+description: Enhance your Svelte app with TheUI-Svelte's Accordion component. Easily create collapsible sections to streamline your content presentation.
 ---
 
 <script lang="ts">

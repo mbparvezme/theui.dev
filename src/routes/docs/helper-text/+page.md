@@ -1,7 +1,7 @@
 ---
 title: theui-svelte - Helper text
 component_title: Helper text
-description: ------
+description: Provide contextual help for input fields in your Svelte app with TheUI-Svelte's Input Helper Text component, enhancing form usability.
 ---
 
 <script lang="ts">

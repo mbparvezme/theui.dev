@@ -1,7 +1,7 @@
 ---
 title: theui-svelte - File input
 component_title: File input
-description: ------
+description: Enable file uploads in your Svelte app with TheUI-Svelte's File Input component, offering a user-friendly interface for file selection.
 ---
 
 <script lang="ts">

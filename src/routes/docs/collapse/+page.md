@@ -1,7 +1,7 @@
 ---
 title: theui-svelte - Collapse
 component_title: Collapse
-description: ------
+description: Toggle content visibility in your Svelte app with TheUI-Svelte's Collapse component, offering a seamless user experience.
 ---
 
 <script lang="ts">
