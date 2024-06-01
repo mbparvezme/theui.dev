@@ -3,12 +3,12 @@
     {
       "name": "animate",
       "type": "<a href=\"/docs/types#common-types\">ANIMATE_SPEED</a>",
-      "default": "fast"
+      "default": "\"fast\""
     },
     {
       "name": "id",
       "type": "string",
-      "default": "<RANDOM STRING>"
+      "default": "&lt;RANDOM STRING&gt;"
     },
     {
       "name": "label",
@@ -18,7 +18,7 @@
     {
       "name": "position",
       "type": "'top' | 'right' | 'bottom' | 'left'",
-      "default": "left"
+      "default": "\"left\""
     }
   ],
   "dynamicProps" : [

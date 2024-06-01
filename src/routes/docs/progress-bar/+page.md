@@ -12,21 +12,21 @@ description: Visualize progress and statuses in your Svelte app with TheUI-Svelt
   import Code from "$lib/ui/doc/Code.svelte";
   import DataTable from "$lib/ui/doc/DataTable.svelte";
   import Example from "$lib/ui/doc/Example.svelte";
-  import { ProgressBar } from "theui-svelte";
+  import { Progress } from "theui-svelte";
   import { processID } from "$lib";
 
   export let data: PageData;
 </script>
 
 <DocContainer>
-  <Head title="ProgressBar" text="--" />
+  <Head title="Progress Bar" text="--" />
   <Block title="Setup">
     <p class="not-prose mb-4">----</p>
 <Code title="Import">
 
 ```html
 <script>
-  import { ProgressBar } from "theui-svelte"
+  import { Progress } from "theui-svelte"
 </script>
 ```
 </Code>
@@ -49,15 +49,15 @@ description: Visualize progress and statuses in your Svelte app with TheUI-Svelt
 
   <Block title="Props">
     <DataTable data={data.component.props} hideText={true} mb=8 />
-    <!-- <DataTable data={data.component.dynamicProps} type="slots" title="Dynamic Props" hideText={true} /> -->
+    <DataTable data={data.component.dynamicProps} type="slots" title="Dynamic Props" hideText={true} />
   </Block>
-  <!-- <Block title="Slots">
+  <Block title="Slots">
     <DataTable data={data.component.slots} type="slots"/>
-  </Block> -->
+  </Block>
 
   <svelte:fragment slot="sidebar">
     <a href="#usage">Usage</a>
-    <!-- <a href={processID("Outlying Collapse")}>Outlying Collapse</a> -->
+    <a href={processID("Outlying Collapse")}>--- Outlying Collapse</a>
     <a href="#props">Props</a>
     <a href="#slots">Slots</a>
   </svelte:fragment>

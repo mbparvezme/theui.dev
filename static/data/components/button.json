@@ -1,14 +1,29 @@
 {
   "props": [
     {
-      "name": "dismissible",
-      "type": "boolean",
-      "default": "true"
+      "name": "label",
+      "type": "string",
+      "default": ""
     },
     {
-      "name": "icon",
-      "type": "boolean",
-      "default": "true"
+      "name": "animate",
+      "type": "ANIMATE_SPEED",
+      "default": "\"normal\""
+    },
+    {
+      "name": "ariaLabel",
+      "type": "string",
+      "default": "same as <code>label</code> prop"
+    },
+    {
+      "name": "href",
+      "type": "string|undefined",
+      "default": "undefined"
+    },
+    {
+      "name": "preload",
+      "type": "'hover' | 'tap' | undefined",
+      "default": "\"hover\""
     },
     {
       "name": "rounded",
@@ -16,25 +31,47 @@
       "default": "\"md\""
     },
     {
+      "name": "shadow",
+      "type": "SHADOW",
+      "default": "\"md\""
+    },
+    {
+      "name": "size",
+      "type": "BUTTON_SIZE",
+      "default": "\"md\""
+    },
+    {
       "name": "type",
-      "type": "'error' | 'info' | 'success' | 'warning'",
-      "default": "\"error\""
+      "type": "'button' | 'submit' | 'reset'",
+      "default": "\"button\""
+    }
+  ],
+  "dynamicProps": [
+    {
+      "name": "externalLink",
+      "description": ""
     },
     {
-      "name": "theme",
-      "type": "'default'|'light'",
-      "default": "\"default\""
+      "name": "active",
+      "description": ""
     },
     {
-      "name": "variant",
-      "type": "'card' | 'borderTop'| 'borderBottom'| 'borderStart'",
-      "default": "\"card\""
+      "name": "outline",
+      "description": ""
     }
   ],
   "slots": [
     {
-      "name": "icon",
-      "description": "Represents the icon of the Alert component."
+      "name": "beforeLabel",
+      "description": ""
+    },
+    {
+      "name": "label",
+      "description": ""
+    },
+    {
+      "name": "afterLabel",
+      "description": ""
     }
   ]
 }

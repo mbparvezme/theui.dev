@@ -19,9 +19,9 @@ description: Create responsive and stylish buttons for your Svelte app with TheU
 </script>
 
 <DocContainer>
-  <Head title="Button" text="--" />
+  <Head title="Button" text="This is intro" />
   <Block title="Setup">
-    <p class="not-prose mb-4">----</p>
+    <p class="not-prose mb-4">This is button</p>
 <Code title="Import">
 
 ```html
@@ -36,12 +36,147 @@ description: Create responsive and stylish buttons for your Svelte app with TheU
     <Example title="Basic Example">
       <p class="not-prose mb-2">----</p>
       <svelte:fragment slot="example">
-        
+        <Button label="Submit"/>
       </svelte:fragment>
 <div slot="code">
 
 ```html
+<Button label="Submit"/>
+```
+</div>
+    </Example>
+  </Block>
 
+  <Block title="Outline Button">
+    <Example title="Basic Example">
+      <p class="not-prose mb-2">----</p>
+      <svelte:fragment slot="example">
+        <Button label="Submit"/>
+      </svelte:fragment>
+<div slot="code">
+
+```html
+<Button label="Submit"/>
+```
+</div>
+    </Example>
+  </Block>
+
+  <Block title="Button Size">
+    <Example title="Basic Example">
+      <p class="not-prose mb-2">----</p>
+      <svelte:fragment slot="example">
+        <Button label="Submit"/>
+      </svelte:fragment>
+<div slot="code">
+
+```html
+<Button label="Submit"/>
+```
+</div>
+    </Example>
+  </Block>
+
+  <Block title="Button With Custom Component">
+    <Example title="Basic Example">
+      <p class="not-prose mb-2">----</p>
+      <svelte:fragment slot="example">
+        <Button label="Submit"/>
+      </svelte:fragment>
+<div slot="code">
+
+```html
+<Button label="Submit"/>
+```
+</div>
+    </Example>
+  </Block>
+
+  <Block title="Icon Button">
+    <Example title="Basic Example">
+      <p class="not-prose mb-2">----</p>
+      <svelte:fragment slot="example">
+        <Button label="Submit"/>
+      </svelte:fragment>
+<div slot="code">
+
+```html
+<Button label="Submit"/>
+```
+</div>
+    </Example>
+  </Block>
+
+  <Block title="Button Disabled">
+    <Example title="Basic Example">
+      <p class="not-prose mb-2">----</p>
+      <svelte:fragment slot="example">
+        <Button label="Submit"/>
+      </svelte:fragment>
+<div slot="code">
+
+```html
+<Button label="Submit"/>
+```
+</div>
+    </Example>
+  </Block>
+
+  <Block title="Button With Link">
+    <Example title="Basic Example">
+      <p class="not-prose mb-2">----</p>
+      <svelte:fragment slot="example">
+        <Button label="Submit"/>
+      </svelte:fragment>
+<div slot="code">
+
+```html
+<Button label="Submit"/>
+```
+</div>
+    </Example>
+  </Block>
+
+  <Block title="Button With Icon">
+    <Example title="Basic Example">
+      <p class="not-prose mb-2">----</p>
+      <svelte:fragment slot="example">
+        <Button label="Submit"/>
+      </svelte:fragment>
+<div slot="code">
+
+```html
+<Button label="Submit"/>
+```
+</div>
+    </Example>
+  </Block>
+
+  <Block title="Rounded Corners">
+    <Example title="Basic Example">
+      <p class="not-prose mb-2">----</p>
+      <svelte:fragment slot="example">
+        <Button label="Submit"/>
+      </svelte:fragment>
+<div slot="code">
+
+```html
+<Button label="Submit"/>
+```
+</div>
+    </Example>
+  </Block>
+
+  <Block title="Shadow">
+    <Example title="Basic Example">
+      <p class="not-prose mb-2">----</p>
+      <svelte:fragment slot="example">
+        <Button label="Submit"/>
+      </svelte:fragment>
+<div slot="code">
+
+```html
+<Button label="Submit"/>
 ```
 </div>
     </Example>
@@ -49,15 +184,15 @@ description: Create responsive and stylish buttons for your Svelte app with TheU
 
   <Block title="Props">
     <DataTable data={data.component.props} hideText={true} mb=8 />
-    <!-- <DataTable data={data.component.dynamicProps} type="slots" title="Dynamic Props" hideText={true} /> -->
+    <DataTable data={data.component.dynamicProps} type="slots" title="Dynamic Props" hideText={true} />
   </Block>
-  <!-- <Block title="Slots">
+  <Block title="Slots">
     <DataTable data={data.component.slots} type="slots"/>
-  </Block> -->
+  </Block>
 
   <svelte:fragment slot="sidebar">
     <a href="#usage">Usage</a>
-    <!-- <a href={processID("Outlying Collapse")}>Outlying Collapse</a> -->
+    <a href={processID("Outlying Collapse")}>--- Outlying Collapse</a>
     <a href="#props">Props</a>
     <a href="#slots">Slots</a>
   </svelte:fragment>

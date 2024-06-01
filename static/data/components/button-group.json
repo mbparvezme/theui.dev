@@ -1,1 +1,39 @@
-{}
+{
+  "props": [
+    {
+      "name": "ariaLabel",
+      "type": "string",
+      "default": "same as <code>label</code> prop"
+    },
+    {
+      "name": "rounded",
+      "type": "<a href=\"/docs/types#common-types\">ROUNDED</a>",
+      "default": "\"md\""
+    },
+    {
+      "name": "size",
+      "type": "BUTTON_SIZE",
+      "default": "\"md\""
+    },
+    {
+      "name": "btnClass",
+      "type": "string",
+      "default": "\"border border-black/10\""
+    },
+    {
+      "name": "variant",
+      "type": "'bordered' | 'flat'",
+      "default": "\"bordered\""
+    }
+  ],
+  "dynamicProps": [
+    {
+      "name": "outline",
+      "description": ""
+    },
+    {
+      "name": "stacked",
+      "description": ""
+    }
+  ]
+}
