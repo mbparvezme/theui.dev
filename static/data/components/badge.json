@@ -6,7 +6,7 @@
       "default": "undefined"
     },
     {
-      "name": "title",
+      "name": "srDescription",
       "type": "string  | undefined",
       "default": "same as <code>text</code> prop"
     },

@@ -11,6 +11,12 @@
       "default": "\"default\""
     }
   ],
+  "dynamicGroupProps": [
+    {
+      "name": "flush",
+      "description": "Applies a flush style to the accordion item."
+    }
+  ],
   "props" : [
     {
       "name": "title",
@@ -94,8 +100,8 @@
       "description": "Represents the title of an Accordion item."
     },
     {
-      "name": "content",
-      "description": "Represents the content of an Accordion item."
+      "name": "icon",
+      "description": "Represents the icon of the title."
     }
   ]
 }

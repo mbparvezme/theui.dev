@@ -93,12 +93,12 @@ or
     <p class="not-prose mb-4">You can customize the colors of the breadcrumb links using Tailwind CSS classes. Use the <code>activeLinkClass</code> prop for the active link color and the <code>linkClass</code> prop for the default link color.</p>
     <Example>
       <svelte:fragment slot="example">
-        <Breadcrumb data={example_bc} activeLinkClass="!text-green-500" linkClass="!text-green-500" />
+        <Breadcrumb data={example_bc} activeLinkClass="text-pink-500" linkClass="text-yellow-700" />
       </svelte:fragment>
 <div slot="code">
 
 ```html
-<Breadcrumb activeLinkClass="text-blue-500" linkClass="text-green-500" ... />
+<Breadcrumb activeLinkClass="text-pink-500" linkClass="text-yellow-700" ... />
 ```
 </div>
     </Example>

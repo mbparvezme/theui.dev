@@ -6,11 +6,6 @@
       "default": "true"
     },
     {
-      "name": "icon",
-      "type": "boolean",
-      "default": "true"
-    },
-    {
       "name": "rounded",
       "type": "<a href=\"/docs/types#common-types\">ROUNDED</a>",
       "default": "\"md\""
@@ -29,6 +24,12 @@
       "name": "variant",
       "type": "'card' | 'borderTop'| 'borderBottom'| 'borderStart'",
       "default": "\"card\""
+    }
+  ],
+  "dynamicProps": [
+    {
+      "name": "hideIcon",
+      "description": "Hides the icon from the alert."
     }
   ],
   "slots" : [

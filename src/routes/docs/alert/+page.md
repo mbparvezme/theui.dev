@@ -141,6 +141,7 @@ description: Utilize TheUI-Svelte's Alert component to display crucial messages 
 
   <Block title="Props">
     <DataTable data={data.component.props} hideText={true} />
+    <DataTable data={data.component.dynamicProps} type="slots" title="Dynamic Props" hideText={true} />
   </Block>
   <Block title="Slots">
     <DataTable data={data.component.slots} type="slots"/>
