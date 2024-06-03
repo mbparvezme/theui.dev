@@ -19,9 +19,9 @@ description: Create responsive and stylish buttons for your Svelte app with TheU
 </script>
 
 <DocContainer>
-  <Head title="Button" text="This is intro" />
+  <Head title="Button" text="The Button component provides a versatile and customizable button for various use cases. It supports different sizes, styles, and types, and can be used as a regular button or a link." />
   <Block title="Setup">
-    <p class="not-prose mb-4">This is button</p>
+    <p class="not-prose mb-4">Import the Button component into your Svelte file.</p>
 <Code title="Import">
 
 ```html
@@ -34,14 +34,16 @@ description: Create responsive and stylish buttons for your Svelte app with TheU
 
   <Block title="Usage">
     <Example title="Basic Example">
-      <p class="not-prose mb-2">----</p>
+      <p class="not-prose mb-2">Here is an example of how to use the Button component:</p>
       <svelte:fragment slot="example">
-        <Button label="Submit"/>
+        <div class="text-center">
+          <Button label="Click Me"/>
+        </div>
       </svelte:fragment>
 <div slot="code">
 
 ```html
-<Button label="Submit"/>
+<Button label="Click Me"/>
 ```
 </div>
     </Example>
@@ -49,20 +51,105 @@ description: Create responsive and stylish buttons for your Svelte app with TheU
 
   <Block title="Outline Button">
     <Example title="Basic Example">
-      <p class="not-prose mb-2">----</p>
+      <p class="not-prose mb-4">The <code>outline</code> attribute allows you to create a button with a sleek and modern outline style. This attribute gives the button a transparent background with a border, ideal for emphasizing secondary actions or achieving a minimalist design.</p>
       <svelte:fragment slot="example">
-        <Button label="Submit"/>
+        <div class="text-center">
+          <Button label="Click Me" outline/>
+        </div>
       </svelte:fragment>
 <div slot="code">
 
 ```html
-<Button label="Submit"/>
+<Button label="Click Me" outline/>
 ```
 </div>
     </Example>
   </Block>
 
   <Block title="Button Size">
+    <Example title="Basic Example">
+      <p class="not-prose mb-4">The size prop controls the padding and font size of the button. Available sizes are <code>sm</code>, <code>xs</code>, <code>md</code>, <code>lg</code>, <code>xl</code>, and <code>0</code>. Default button size id <code>md</code>. Here's an example demonstrating different button sizes:</p>
+      <svelte:fragment slot="example">
+        <div class="text-center">
+          <Button label="xl button" size="xl"/>
+          <Button label="lg button" size="lg"/>
+          <Button label="md button" size="md"/>
+          <Button label="sm button" size="sm"/>
+          <Button label="xs button" size="xs"/>
+          <Button label="0 button" size="0"/>
+        </div>
+      </svelte:fragment>
+<div slot="code">
+
+```html
+<Button label="xl button" size="xl"/>
+<Button label="lg button" size="lg"/>
+<Button label="md button" size="md"/>
+<Button label="sm button" size="sm"/>
+<Button label="xs button" size="xs"/>
+<Button label="0 button" size="0"/>
+```
+</div>
+    </Example>
+  </Block>
+
+  <Block title="Button With Link">
+      <p class="not-prose">The Button component can also function as a link by providing an <code>href</code> prop. This allows you to create buttons that navigate to different pages or URLs. Whether linking to external websites or internal pages, the Button component offers a versatile solution for creating clickable elements that enhance the user experience.</p>
+    <Example title="Basic Example">
+      <svelte:fragment slot="example">
+        <div class="text-center">
+          <Button label="Link Button 1" href="#button-with-link" />
+          <Button label="Link Button 2" outline href="/docs" />
+        </div>
+      </svelte:fragment>
+<div slot="code">
+
+```html
+<Button label="Link Button 1" href="#button-with-link" />
+<Button label="Link Button 2" href="/docs" outline />
+```
+</div>
+    </Example>
+  </Block>
+
+  <Block title="Button Disabled">
+    <p class="not-prose mb-2">The Button component supports different states to indicate its interactivity and accessibility. These states include <code>disabled</code> and <code>read-only</code>.</p>
+    <Example title="Disabled Button">
+      <p class="not-prose mb-2">You can disable a button by using the <code>disabled</code> attribute. A disabled button appears visually inactive and cannot be interacted with.</p>
+      <svelte:fragment slot="example">
+        <div class="text-center">
+          <Button label="Disabled" disabled />
+          <Button label="Disabled outline" disabled outline />
+        </div>
+      </svelte:fragment>
+<div slot="code">
+
+```html
+<Button label="Disabled" disabled />
+<Button label="Disabled outline" disabled outline />
+```
+</div>
+    </Example>
+    <Example title="Read-only Button">
+      <p class="not-prose mb-2">A read-only button is similar to a disabled button in appearance, but it retains its interactivity. However, it prevents user input and interaction, making it suitable for displaying information without allowing user actions.</p>
+      <svelte:fragment slot="example">
+        <div class="text-center">
+          <Button label="Readonly" readonly />&nbsp;
+          <Button label="Readonly outline" readonly outline />
+        </div>
+      </svelte:fragment>
+<div slot="code">
+
+```html
+<Button label="Readonly" readonly />
+<Button label="Readonly outline" readonly outline />
+```
+</div>
+    </Example>
+      <p class="not-prose">By utilizing the <code>disabled</code> and <code>readonly</code> attributes, you can control the state of your buttons to enhance user experience and ensure accessibility. These states provide visual cues to users and prevent unintended interactions, improving the usability of your application.</p>
+  </Block>
+
+  <Block title="Icon Button">
     <Example title="Basic Example">
       <p class="not-prose mb-2">----</p>
       <svelte:fragment slot="example">
@@ -92,76 +179,43 @@ description: Create responsive and stylish buttons for your Svelte app with TheU
     </Example>
   </Block>
 
-  <Block title="Icon Button">
-    <Example title="Basic Example">
-      <p class="not-prose mb-2">----</p>
-      <svelte:fragment slot="example">
-        <Button label="Submit"/>
-      </svelte:fragment>
-<div slot="code">
-
-```html
-<Button label="Submit"/>
-```
-</div>
-    </Example>
-  </Block>
-
-  <Block title="Button Disabled">
-    <Example title="Basic Example">
-      <p class="not-prose mb-2">----</p>
-      <svelte:fragment slot="example">
-        <Button label="Submit"/>
-      </svelte:fragment>
-<div slot="code">
-
-```html
-<Button label="Submit"/>
-```
-</div>
-    </Example>
-  </Block>
-
-  <Block title="Button With Link">
-    <Example title="Basic Example">
-      <p class="not-prose mb-2">----</p>
-      <svelte:fragment slot="example">
-        <Button label="Submit"/>
-      </svelte:fragment>
-<div slot="code">
-
-```html
-<Button label="Submit"/>
-```
-</div>
-    </Example>
-  </Block>
-
-  <Block title="Button With Icon">
-    <Example title="Basic Example">
-      <p class="not-prose mb-2">----</p>
-      <svelte:fragment slot="example">
-        <Button label="Submit"/>
-      </svelte:fragment>
-<div slot="code">
-
-```html
-<Button label="Submit"/>
-```
-</div>
-    </Example>
-  </Block>
-
   <Block title="Rounded Corners">
     <Example title="Basic Example">
-      <p class="not-prose mb-2">----</p>
+      <p class="not-prose mb-4">The Button component supports various border-radius options to create rounded buttons. You can customize the roundness of the button corners using the <code>rounded</code> prop.</p>
       <svelte:fragment slot="example">
-        <Button label="Submit"/>
+        <div class="flex gap-2 mb-4 justify-center">
+          <Button label="Submit" rounded="full" />
+          <Button label="Submit" rounded="xl" />
+          <Button label="Submit" rounded="lg" /><br>
+          <Button label="Submit" rounded="md" />
+          <Button label="Submit" rounded="sm" />
+          <Button label="Submit" rounded="none" />
+        </div>
+        <div class="flex gap-2 mb-4 justify-center">
+          <Button label="Submit" rounded="full" outline />
+          <Button label="Submit" rounded="xl" outline />
+          <Button label="Submit" rounded="lg" outline /><br>
+          <Button label="Submit" rounded="md" outline />
+          <Button label="Submit" rounded="sm" outline />
+          <Button label="Submit" rounded="none" outline />
+        </div>
       </svelte:fragment>
 <div slot="code">
 
 ```html
-<Button label="Submit"/>
+<Button label="Submit" rounded="full" />
+<Button label="Submit" rounded="xl" />
+<Button label="Submit" rounded="lg" />
+<Button label="Submit" rounded="md" />
+<Button label="Submit" rounded="sm" />
+<Button label="Submit" rounded="none" />
+
+<Button label="Submit" rounded="full" outline />
+<Button label="Submit" rounded="xl" outline />
+<Button label="Submit" rounded="lg" outline />
+<Button label="Submit" rounded="md" outline />
+<Button label="Submit" rounded="sm" outline />
+<Button label="Submit" rounded="none" outline />
 ```
 </div>
     </Example>

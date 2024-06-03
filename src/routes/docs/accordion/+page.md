@@ -46,11 +46,11 @@ description: Enhance your Svelte app with TheUI-Svelte's Accordion component. Ea
 </div>
     </Example>
     <Example title="Slot Example">
-      <p class="not-prose mb-2"><b>Alternatively</b>, You can create an accordion item with a <code>title</code> and <code>content</code> <b>slots</b> using the following example:</p>
+      <p class="not-prose mb-2"><b>Alternatively</b>, You can create an accordion item with the <code>title</code> slots and the contents inside it like the following example:</p>
       <svelte:fragment slot="example">
         <AccordionItem>
           <h5 slot="title">Human Psychology Fact: 1</h5>
-          <div slot="content"><b>Cognitive dissonance</b> refers to the discomfort we feel when holding conflicting beliefs or attitudes. For instance, a person who smokes but knows it's harmful might experience tension. To alleviate this discomfort, they may justify their behavior by downplaying the risks or highlighting benefits, like stress relief. This psychological mechanism illustrates how we strive for internal consistency, shaping our perceptions and decisions to align with our beliefs and actions.</div>
+          <div><b>Cognitive dissonance</b> refers to the discomfort we feel when holding conflicting beliefs or attitudes. For instance, a person who smokes but knows it's harmful might experience tension. To alleviate this discomfort, they may justify their behavior by downplaying the risks or highlighting benefits, like stress relief. This psychological mechanism illustrates how we strive for internal consistency, shaping our perceptions and decisions to align with our beliefs and actions.</div>
         </AccordionItem>
       </svelte:fragment>
 <div slot="code">
@@ -58,7 +58,7 @@ description: Enhance your Svelte app with TheUI-Svelte's Accordion component. Ea
 ```html
 <AccordionItem>
   <h5 slot="title">Human Psychology Fact: 1</h5>
-  <div slot="content"><b>Cognitive dissonance</b> refers to..</div>
+  <div><b>Cognitive dissonance</b> refers to ...</div>
 </AccordionItem>
 ```
 </div>
@@ -172,6 +172,7 @@ description: Enhance your Svelte app with TheUI-Svelte's Accordion component. Ea
 
   <Block title="Props">
     <DataTable data={data.component.groupProps} title="Accordion Props" mb=8 />
+    <DataTable data={data.component.dynamicProps} type="slots" title="Accordion Dynamic Props" hideText={true} mb=8 />
     <DataTable data={data.component.props} title="AccordionItem Props" mb=8 hideText={true} />
     <DataTable data={data.component.dynamicProps} type="slots" title="AccordionItem Dynamic Props" hideText={true} />
   </Block>
