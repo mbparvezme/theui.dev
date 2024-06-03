@@ -1,24 +1,19 @@
 {
   "props" : [
     {
-      "name": "dismissible",
-      "type": "boolean",
-      "default": "true"
-    },
-    {
       "name": "rounded",
       "type": "<a href=\"/docs/types#common-types\">ROUNDED</a>",
       "default": "\"md\""
     },
     {
-      "name": "type",
-      "type": "'error' | 'info' | 'success' | 'warning'",
-      "default": "\"error\""
-    },
-    {
       "name": "theme",
       "type": "'default'|'light'",
       "default": "\"default\""
+    },
+    {
+      "name": "type",
+      "type": "'error' | 'info' | 'success' | 'warning'",
+      "default": "\"error\""
     },
     {
       "name": "variant",
@@ -27,6 +22,10 @@
     }
   ],
   "dynamicProps": [
+    {
+      "name": "dismissible",
+      "description": "Hides the icon from the alert."
+    },
     {
       "name": "hideIcon",
       "description": "Hides the icon from the alert."
