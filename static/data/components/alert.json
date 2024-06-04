@@ -24,11 +24,11 @@
   "dynamicProps": [
     {
       "name": "dismissible",
-      "description": "Hides the icon from the alert."
+      "description": "Makes the alert dismissible by adding a close button."
     },
     {
       "name": "hideIcon",
-      "description": "Hides the icon from the alert."
+      "description": "Hides the icon part from the alert."
     }
   ],
   "slots" : [

@@ -1,77 +1,86 @@
 {
-  "props": [
-    {
-      "name": "label",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "animate",
-      "type": "ANIMATE_SPEED",
-      "default": "\"normal\""
-    },
-    {
-      "name": "ariaLabel",
-      "type": "string",
-      "default": "same as <code>label</code> prop"
-    },
-    {
-      "name": "href",
-      "type": "string|undefined",
-      "default": "undefined"
-    },
-    {
-      "name": "preload",
-      "type": "'hover' | 'tap' | undefined",
-      "default": "\"hover\""
-    },
-    {
-      "name": "rounded",
-      "type": "<a href=\"/docs/types#common-types\">ROUNDED</a>",
-      "default": "\"md\""
-    },
-    {
-      "name": "shadow",
-      "type": "SHADOW",
-      "default": "\"md\""
-    },
-    {
-      "name": "size",
-      "type": "BUTTON_SIZE",
-      "default": "\"md\""
-    },
-    {
-      "name": "type",
-      "type": "'button' | 'submit' | 'reset'",
-      "default": "\"button\""
-    }
-  ],
+"props": [
+  {
+    "name": "label",
+    "type": "string",
+    "default": "",
+    "description": "Text displayed on the button."
+  },
+  {
+    "name": "animationSpeed",
+    "type": "string",
+    "default": "\"fast\"",
+    "description": "Controls the animation speed of the button (refer to linked documentation for available options)."
+  },
+  {
+    "name": "ariaLabel",
+    "type": "string",
+    "default": "same as <code>label</code> prop",
+    "description": "Text for screen readers describing the button's purpose. Defaults to the label value."
+  },
+  {
+    "name": "href",
+    "type": "string",
+    "default": "undefined",
+    "description": "URL for the button to link to. If undefined, it acts as a regular button without navigation."
+  },
+  {
+    "name": "preload",
+    "type": "'hover' | 'tap' | undefined",
+    "default": "\"hover\"",
+    "description": "Fetches the linked page content in the background, specified by the <code>href</code> prop, to improve perceived performance during navigation."
+  },
+  {
+    "name": "rounded",
+    "type": "<a href=\"/docs/types#common-types\">ROUNDED</a>",
+    "default": "\"md\"",
+    "description": "Controls the button's corner curvature (refer to linked documentation for available options)."
+  },
+  {
+    "name": "shadow",
+    "type": "<a href=\"/docs/types#shadow\">SHADOW</a>",
+    "default": "\"md\"",
+    "description": "Defines the button's shadow style (refer to SHADOW documentation for available options)."
+  },
+  {
+    "name": "size",
+    "type": "<a href=\"/docs/types#button_size\">BUTTON_SIZE</a>",
+    "default": "\"md\"",
+    "description": "Controls the button's size (refer to BUTTON_SIZE documentation for available options)."
+  },
+  {
+    "name": "type",
+    "type": "'button' | 'submit' | 'reset'",
+    "default": "\"button\"",
+    "description": "Defines the HTML button type (button, submit for forms, reset for forms)."
+  }
+],
   "dynamicProps": [
     {
       "name": "externalLink",
-      "description": ""
+      "description": "Adds an arrow to the button to indicate it leads to another website (requires 'href' to be set)."
     },
     {
       "name": "active",
-      "description": ""
+      "description": "Enables active state of a button on page load."
     },
     {
       "name": "outline",
-      "description": ""
+      "description": "Use it to create a outline button."
     }
   ],
   "slots": [
     {
       "name": "beforeLabel",
-      "description": ""
+      "description": "Display any content before the Label."
     },
     {
       "name": "label",
-      "description": ""
+      "description": "Display the main content of the button."
     },
     {
       "name": "afterLabel",
-      "description": ""
+      "description": "Display any content after the Label."
     }
   ]
 }

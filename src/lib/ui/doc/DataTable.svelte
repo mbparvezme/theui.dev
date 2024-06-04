@@ -5,8 +5,8 @@
   export let  hideText = false
   export let  title: false|string = false
   export let  data: any = [],
-              keys = type != 'slots' ? ['name', 'type', 'default'] : ['name','description'],
-              headers = type != 'slots' ? ['Name', 'Type', 'Default'] : ['name','description']
+              keys = type != 'slots' ? ['name', 'type', 'default', 'description'] : ['name','description'],
+              headers = type != 'slots' ? ['Name', 'Type', 'Default', 'Description'] : ['name','description']
 </script>
 
 <div class="not-prose" class:mb-0={mb==0} class:mb-8={mb==8} class:mb-12={mb==12} class:mb-16={mb==16}>
