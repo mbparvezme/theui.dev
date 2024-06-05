@@ -171,7 +171,7 @@ description: Create responsive and stylish buttons for your Svelte app with TheU
     <p class="not-prose">The Button component supports various border-radius options to create rounded buttons. You can customize the roundness of the button corners using the <code>rounded</code> prop.</p>
     <Example>
       <svelte:fragment slot="example">
-        <div class="flex gap-2 mb-2 justify-center">
+        <div class="flex gap-2 mb-2 justify-center flex-wrap">
           <Button label="Submit" rounded="full" />
           <Button label="Submit" rounded="xl" />
           <Button label="Submit" rounded="lg" /><br>
@@ -179,7 +179,7 @@ description: Create responsive and stylish buttons for your Svelte app with TheU
           <Button label="Submit" rounded="sm" />
           <Button label="Submit" rounded="none" />
         </div>
-        <div class="flex gap-2 mb-2 justify-center">
+        <div class="flex gap-2 mb-2 justify-center flex-wrap">
           <Button label="Submit" rounded="full" outline />
           <Button label="Submit" rounded="xl" outline />
           <Button label="Submit" rounded="lg" outline /><br>
@@ -210,7 +210,22 @@ description: Create responsive and stylish buttons for your Svelte app with TheU
   </Block>
 
   <Block title="Custom Style">
-    <Example title="Basic Example">
+    <Example>
+      <p class="not-prose">----</p>
+      <svelte:fragment slot="example">
+        <Button label="Submit"/>
+      </svelte:fragment>
+<div slot="code">
+
+```html
+<Button label="Submit"/>
+```
+</div>
+    </Example>
+  </Block>
+
+  <Block title="Available Functions">
+    <Example>
       <p class="not-prose">----</p>
       <svelte:fragment slot="example">
         <Button label="Submit"/>
@@ -234,7 +249,13 @@ description: Create responsive and stylish buttons for your Svelte app with TheU
 
   <svelte:fragment slot="sidebar">
     <a href="#usage">Usage</a>
-    <a href={processID("Outlying Collapse")}>--- Outlying Collapse</a>
+    <a href={processID("Outline Button")}>Outline button</a>
+    <a href={processID("Button Size")}>Button size</a>
+    <a href={processID("Button With Link")}>Button with link</a>
+    <a href={processID("Button State")}>Button state</a>
+    <a href={processID("Rounded Corners")}>Rounded corners</a>
+    <a href={processID("Custom Style")}>Custom style</a>
+    <a href={processID("Available functions")}>Available functions</a>
     <a href="#props">Props</a>
     <a href="#slots">Slots</a>
   </svelte:fragment>

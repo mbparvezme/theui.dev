@@ -36,7 +36,6 @@ description: Add feature-rich dropdown menus to your Svelte app with TheUI-Svelt
     <Example title="Basic Example">
       <p class="not-prose mb-2">----</p>
       <svelte:fragment slot="example">
-        
       </svelte:fragment>
 <div slot="code">
 
@@ -49,15 +48,15 @@ description: Add feature-rich dropdown menus to your Svelte app with TheUI-Svelt
 
   <Block title="Props">
     <DataTable data={data.component.props} hideText={true} mb=8 />
-    <!-- <DataTable data={data.component.dynamicProps} type="slots" title="Dynamic Props" hideText={true} /> -->
+    <DataTable data={data.component.dynamicProps} type="slots" title="Dynamic Props" hideText={true} />
   </Block>
-  <!-- <Block title="Slots">
+  <Block title="Slots">
     <DataTable data={data.component.slots} type="slots"/>
-  </Block> -->
+  </Block>
 
   <svelte:fragment slot="sidebar">
     <a href="#usage">Usage</a>
-    <!-- <a href={processID("Outlying Collapse")}>Outlying Collapse</a> -->
+    <a href={processID("Outlying Collapse")}>--- Outlying Collapse</a>
     <a href="#props">Props</a>
     <a href="#slots">Slots</a>
   </svelte:fragment>

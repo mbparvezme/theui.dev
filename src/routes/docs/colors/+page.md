@@ -15,11 +15,11 @@ description: Customize your Svelte app's appearance with TheUI-Svelte's Colors a
 <DocContainer setupLink={false}>
   <Head title="Colors and Branding" text="One of the main features of TheUI Components library is the customizable color options that allow you to maintain brand identity and ensure consistent theming efficiently."/>
   <Block>
-    <p class="mt-0">TheUI-svelte, developed with TailwindCSS, is a powerful tool capable of generating almost any CSS style and unlimited colors for your design. But do you really need unlimited colors for your design?</p>
-    <p class="mt-0">Having many color options can lead to inconsistency and randomness in your design. To address this issue, the "TheUI-svelte" component library introduces ten custom color options that merge seamlessly with other colors provided by TailwindCSS. You can customize your theme with a single line by changing the value of CSS variables for these custom colors.</p>
+    <p class="not-prose">TheUI-svelte, developed with TailwindCSS, is a powerful tool capable of generating almost any CSS style and unlimited colors for your design. But do you really need unlimited colors for your design?</p>
+    <p class="not-prose">Having many color options can lead to inconsistency and randomness in your design. To address this issue, the "TheUI-svelte" component library introduces ten custom color options that merge seamlessly with other colors provided by TailwindCSS. You can customize your theme with a single line by changing the value of CSS variables for these custom colors.</p>
   </Block>
   <Block title="TheUI Colors & Default Values" id="colorsAndValues">
-    <p class="mt-0 not-prose">The "TheUI-svelte" component library provides the following CSS variables and values, all prefixed with <code> --ui</code> to avoid conflicts with other variables:</p>
+    <p class="not-prose">The "TheUI-svelte" component library provides the following CSS variables and values, all prefixed with <code> --ui</code> to avoid conflicts with other variables:</p>
 <Code title="CSS variables">
 
 ```css
@@ -56,11 +56,11 @@ description: Customize your Svelte app's appearance with TheUI-Svelte's Colors a
 ```
 </Code>
 
-      <Alert type="info" variant="borderStart" icon={false} round = "none" dismissible={false}>Brand colors are available everywhere. Text colors are not available for background and vice versa.</Alert>
+  <Alert class="mb-0" type="info" variant="borderStart" icon={false} round = "none" dismissible={false}>Brand colors are available everywhere. Text colors are not available for background and vice versa.</Alert>
   </Block>
   <Block title="Use of Custom Colors" id="useColors">
-    <p class="mt-0">You can use custom classes to apply these colors in your design. The Components library includes the following classes:</p>
-    <Table>
+    <p class="not-prose">You can use custom classes to apply these colors in your design. The Components library includes the following classes:</p>
+    <Table class="my-0">
       <THead>
         <TR>
           <TD>Class</TD>
@@ -113,7 +113,7 @@ description: Customize your Svelte app's appearance with TheUI-Svelte's Colors a
   </Block>
 
   <Block title="Color Customization" id="customization">
-    <p class="mt-0 not-prose">To customize the colors, change the value of the corresponding CSS variable. For example, if your brand color is <code>rgb(255, 0, 0)</code> and you want the default text color to be <code>rgb(0, 0, 0)</code>, update your <code>./src/app.css</code> or <code>./src/app.postcss</code> file (the file containing your TailwindCSS styles) as follows:.</p>
+    <p class="not-prose">To customize the colors, change the value of the corresponding CSS variable. For example, if your brand color is <code>rgb(255, 0, 0)</code> and you want the default text color to be <code>rgb(0, 0, 0)</code>, update your <code>./src/app.css</code> or <code>./src/app.postcss</code> file (the file containing your TailwindCSS styles) as follows:.</p>
 <Code title="Customize CSS variables">
 
 ```css
@@ -121,7 +121,7 @@ description: Customize your Svelte app's appearance with TheUI-Svelte's Colors a
 --ui-text-default : 0 0 0;
 ```
 </Code>
-    <p>That's it! All components using the brand color and the default text color will now reflect the new colors. To change other colors, follow the same process.</p>
+    <p class="not-prose">That's it! All components using the brand color and the default text color will now reflect the new colors. To change other colors, follow the same process.</p>
   </Block>
   <svelte:fragment slot="sidebar">
     <a href="#colorsAndValues">Colors & Default Values</a>

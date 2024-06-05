@@ -14,9 +14,9 @@ description: Manage stacking contexts in your Svelte application with TheUI-Svel
 <DocContainer setupLink={false}>
   <Head title="Z-index" text="In this library, several components utilize z-index. This document will let you know the order of the z-index in components."/>
   <Block>
-    <p class="mt-0">In this library, several components utilize z-index values. This document outlines the z-index order of components.</p>
-    <p class="mt-0">The z-index property helps manage the overlay and layout of elements relative to one another, controlling their arrangement along the z-axis. Customizing these values is not recommended, as it may disrupt the intended layout.</p>
-    <Table>
+    <p class="not-prose">In this library, several components utilize z-index values. This document outlines the z-index order of components.</p>
+    <p class="not-prose">The z-index property helps manage the overlay and layout of elements relative to one another, controlling their arrangement along the z-axis. Customizing these values is not recommended, as it may disrupt the intended layout.</p>
+    <Table class="my-0">
       <THead>
         <TR>
           <TD>Component</TD>
@@ -74,10 +74,10 @@ description: Manage stacking contexts in your Svelte application with TheUI-Svel
     </Table>
   </Block>
   <Block>
-  <h5>Important Notes</h5>
-    <ul>
-      <li>The z-index values are predefined to ensure proper stacking and functionality of the components.</li>
-      <li>Modifying these values is discouraged as it may cause layout issues, particularly with component overlays.</li>
+  <h5 class="mb-0">Important Notes</h5>
+    <ul class="mt-0">
+      <li class="my-0">The z-index values are predefined to ensure proper stacking and functionality of the components.</li>
+      <li class="my-0">Modifying these values is discouraged as it may cause layout issues, particularly with component overlays.</li>
     </ul>
   </Block>
 </DocContainer>

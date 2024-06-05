@@ -15,15 +15,17 @@ description: Follow our step-by-step guide to install TheUI-Svelte component lib
   <Head title="Installation" text="Install the SvelteKit Components library in your project or start a new project with the boilerplate template. Install it to build fast and deliver faster."/>
 
   <Block title="Installation">
-    <p>Follow one of the two methods to install the component library:</p>
-    <ol>
-      <li>Use the boilerplate from Github.</li>
-      <li>Manually install the component library from scratch.</li>
-    </ol>
+    <div>
+      <p class="not-prose">Follow one of the two methods to install the component library:</p>
+      <ol class="my-0">
+        <li class="my-0">Use the boilerplate from Github.</li>
+        <li class="my-0">Manually install the component library from scratch.</li>
+      </ol>
+    </div>
   </Block>
 
   <Block title="1. Use Boilerplate From Github" id="boilerplate">
-    <p class="m-0 not-prose">Open your terminal and run the following commands to install the boilerplate template. Replace <code>project-name</code> with your desired project name.</p>
+    <p class="not-prose">Open your terminal and run the following commands to install the boilerplate template. Replace <code>project-name</code> with your desired project name.</p>
 <Code title="Clone from Github">
 
 ```bash
@@ -41,7 +43,7 @@ npm run dev
 
   <Block title="2. Install Manually From Scratch" id="manualFromScratch">
     <p class="not-prose">To install the component library manually, follow the steps below.</p>
-    <p class="font-semibold">2.1 Install Svelte or Svelte Kit <span class="font-body mt-0 pl-2 text-sm italic">(Skip this step if you have already installed Sveltekit)</span></p>
+    <p class="not-prose font-semibold">2.1 Install Svelte or Svelte Kit <span class="font-body mt-0 pl-2 text-sm italic">(Skip this step if you have already installed Sveltekit)</span></p>
 <Code title="Install SvelteKit">
 
 ```bash
@@ -50,7 +52,7 @@ cd my-app
 ```
 </Code>
 
-<p>Add Tailwind CSS to the application:</p>
+<p class="not-prose">Add Tailwind CSS to the application:</p>
 
 <Code title="Install TailwindCSS">
 
@@ -60,21 +62,21 @@ npm install -D tailwindcss postcss autoprefixer
 npx tailwindcss init -p
 ```
 </Code>
-<p>Install node modules:</p>
+<p class="not-prose">Install node modules:</p>
 <Code title="Install NPM modules">
 
 ```bash
 npm install
 ```
 </Code>
-<p>Install TheUI Sveltekit Component:</p>
+<p class="not-prose">Install TheUI Sveltekit Component:</p>
 <Code title="Install theui-svelte">
 
 ```bash
 npm i theui-sveltekit
 ```
 </Code>
-    <p class="font-semibold">2.2 Configure</p>
+    <p class="font-semibold mb-0">2.2 Configure</p>
     <p class="not-prose">Open <b>tailwind.config.cjs</b> and replace the content with the following code block:</p>
 <Code title="Modify tailwind.config.cjs">
 
@@ -106,7 +108,7 @@ module.exports = config;
 </script>
 ```
 </Code>
-    <p>And thats all. You are all set and ready to start your awesome project now. Now run your application with the following command:</p>
+    <p class="not-prose">And thats all. You are all set and ready to start your awesome project now. Now run your application with the following command:</p>
 
 <Code title="Run project">
 

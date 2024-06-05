@@ -3,7 +3,7 @@
   import { Button, Svg, notify } from "theui-svelte";
   export let title: string|undefined = "Svelte";
   export let copyBtn: boolean = true;
-  export let space: 'both' | 'top' | 'bottom' | 'none' = 'both'
+  export let space: 'both' | 'top' | 'bottom' | 'none' = 'none'
   let id: string = randomString("code");
   $: copied = false;
 
