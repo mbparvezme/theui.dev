@@ -170,9 +170,30 @@ description: Enhance your Svelte app with TheUI-Svelte's Accordion component. Ea
     </Example>
   </Block>
 
+  <Block title="Custom Accordion Style">
+    <p class="not-prose mb-4">To have an <code>AccordionItem</code> open by default, add the <code>open</code> attribute to the <code>AccordionItem</code> you want to keep open. This is a dynamic attribute, not a prop, and will take effect when added to the component.</p>
+    <Example>
+      <svelte:fragment slot="example">
+        <Accordion>
+          <AccordionItem title="Human Psychology Fact: 1" content="<b>Cognitive dissonance</b> refers to the discomfort we feel when holding conflicting beliefs or attitudes. For instance, a person who smokes but knows it's harmful might experience tension. To alleviate this discomfort, they may justify their behavior by downplaying the risks or highlighting benefits, like stress relief. This psychological mechanism illustrates how we strive for internal consistency, shaping our perceptions and decisions to align with our beliefs and actions." />
+          <AccordionItem isOpen={true} title="Human Psychology Fact: 2" content="The <b>placebo effect</b> demonstrates how beliefs can influence physical health. Studies show that patients receiving a sugar pill, believing it's real medication, often experience actual improvements in their conditions." />
+        </Accordion>
+      </svelte:fragment>
+<div slot="code">
+
+```html
+<Accordion>
+  <AccordionItem ... />
+  <AccordionItem open ... />
+</Accordion>
+```
+</div>
+    </Example>
+  </Block>
+
   <Block title="Props">
     <DataTable data={data.component.groupProps} title="Accordion Props" mb=8 />
-    <DataTable data={data.component.dynamicProps} type="slots" title="Accordion Dynamic Props" hideText={true} mb=8 />
+    <DataTable data={data.component.dynamicGroupProps} type="slots" title="Accordion Dynamic Props" hideText={true} mb=8 />
     <DataTable data={data.component.props} title="AccordionItem Props" mb=8 hideText={true} />
     <DataTable data={data.component.dynamicProps} type="slots" title="AccordionItem Dynamic Props" hideText={true} />
   </Block>

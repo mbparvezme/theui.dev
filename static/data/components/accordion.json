@@ -3,12 +3,14 @@
     {
       "name": "gap",
       "type": "0 | 2 | 4 | 8",
-      "default": 0
+      "default": 0,
+      "description" : "Gap between accordion items."
     },
     {
       "name": "size",
       "type": "'compact' | 'default' | 'large'",
-      "default": "\"default\""
+      "default": "\"default\"",
+      "description": "Size of the accordion item."
     }
   ],
   "dynamicGroupProps": [
@@ -20,68 +22,81 @@
   "props" : [
     {
       "name": "title",
-      "type": "string|undefined",
-      "default": "undefined"
+      "type": "string|",
+      "default": "undefined",
+      "description": "Title of the accordion item."
     },
     {
       "name": "content",
       "type": "string|undefined",
-      "default": "undefined"
+      "default": "undefined",
+      "description": "Content of the accordion item."
     },
     {
       "name": "ariaLabel",
       "type": "string",
-      "default": "`${(title||\"\")} Accordion`"
+      "default": "`${(title||\"\")} Accordion`",
+      "description": "For accessibility, describing the accordion component for screen readers."
     },
     {
       "name": "id",
       "type": "string",
-      "default": "&lt;RANDOM STRING&gt;"
+      "default": "&lt;RANDOM STRING&gt;",
+      "description": "Unique identifier for the accordion item."
     },
     {
       "name": "animationSpeed",
       "type": "<a href=\"/docs/types#common-types\">ANIMATE_SPEED</a>",
-      "default": "\"fast\""
+      "default": "\"fast\"",
+      "description": "Speed of the accordion animation."
     },
     {
       "name": "containerClass",
       "type": "string",
-      "default": "\"\""
+      "default": "\"\"",
+      "description": "CSS class for the container element."
     },
     {
       "name": "containerActiveClass",
       "type": "string",
-      "default": "\"\""
+      "default": "\"\"",
+      "description": "CSS class for the active container element."
     },
     {
       "name": "contentClass",
       "type": "string",
-      "default": "\"\""
+      "default": "\"\"",
+      "description": "CSS class for the content element."
     },
     {
       "name": "contentActiveClass",
       "type": "string",
-      "default": "\"\""
+      "default": "\"\"",
+      "description": "CSS class for the active content element."
     },
     {
       "name": "rounded",
       "type": "<a href=\"/docs/types#common-types\">ROUNDED</a>",
-      "default": "\"md\""
+      "default": "\"md\"",
+      "description": "Border radius of the accordion item."
     },
     {
       "name": "size",
       "type": "'compact' | 'default' | 'large'",
-      "default": "\"default\""
+      "default": "\"default\"",
+      "description": "Size of the accordion item."
     },
     {
       "name": "titleClass",
       "type": "string",
-      "default": "\"\""
+      "default": "\"\"",
+      "description": "CSS class for the title element."
     },
     {
       "name": "titleActiveClass",
       "type": "string",
-      "default": "\"\""
+      "default": "\"\"",
+      "description": "CSS class for the active title element."
     }
   ],
   "dynamicProps" : [

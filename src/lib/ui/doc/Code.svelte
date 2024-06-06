@@ -11,7 +11,6 @@
   .then(() => {
     copied = true
     setTimeout(()=>{copied = false}, 3000)
-    // notify("Code copied to clipboard!", "success")
   })
   .catch(err => console.error("Error copying text:", err));
 </script>
