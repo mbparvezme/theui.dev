@@ -33,7 +33,7 @@ description: Improve navigation in your Svelte app with TheUI-Svelte's Breadcrum
 </script>
 
 <DocContainer>
-  <Head title="Breadcrumb" text="The Breadcrumb component displays the location of the current page within a navigational hierarchy. It helps users understand the structure of your site and navigate back to previous pages easily." />
+  <Head title="Breadcrumb" text="The Breadcrumb component displays the location of the current page within a navigational hierarchy. It helps users understand the structure of your site and navigate back to previous pages easily." edit_url={data.edit_url}/>
   <Block title="Setup">
   <p class="not-props">To use the Breadcrumb component, you need to import it into your Svelte file as shown below.</p>
 <Code title="Import">

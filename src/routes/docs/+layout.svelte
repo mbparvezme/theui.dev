@@ -1,18 +1,18 @@
 <script lang="ts">
-  import type { PageData } from './$types'
-  import { page } from "$app/stores"
-  import { Button, Container, Svg, Drawer } from "theui-svelte"
-  import SidebarIcon from "$lib/icon/SidebarIcon.svelte"
+  import type { PageData } from './$types';
+  import { page } from "$app/stores";
+  import { Button, Container, Svg, Drawer } from "theui-svelte";
+  import SidebarIcon from "$lib/icon/SidebarIcon.svelte";
 
-  let currPage
-  $: currPage = $page?.url.pathname
-  export let data: PageData
-  let componentGroupIconColor: Array<string> = ["fill-green-600", "fill-violet-500", "fill-blue-500", "fill-brand"]
+  let currPage;
+  $: currPage = $page?.url.pathname;
+  export let data: PageData;
+  let componentGroupIconColor: Array<string> = ["fill-green-600", "fill-violet-500", "fill-blue-500", "fill-brand"];
 </script>
 
 <div class="fixed right-8 bottom-8 lg:hidden">
   <Drawer id="docSidebar">
-    <Button slot="button" config={{ size: "sm", rounded: "full", class: "h-12 w-12 flex items-center justify-center bg-brand border-brand/50" }}>
+    <Button label="" size="sm" rounded="full" class="h-12 w-12 flex items-center justify-center bg-brand border-brand/50">
       <Svg slot="label" size={1.5} viewBox="0 0 16 16" class="fill-white">
         <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
       </Svg>
@@ -67,12 +67,12 @@
 
 <style lang="postcss">
   .sidebar-link{
-    @apply flex-grow flex flex-col text-sm font-medium  mb-8 border-l border-tertiary;
+    @apply flex-grow flex flex-col text-sm font-medium  mb-8 border-l border-gray-300;
   }
   .sidebar-link a{
     @apply border-l border-black pl-4 -ml-px py-1 border-opacity-10 inline text-gray-900 dark:text-gray-200 dark:hover:border-white/50 hover:border-black/50;
   }
   .sidebar-link a.active{
-    @apply border-brand text-brand;
+    @apply border-brand-500 text-brand-500;
   }
 </style>

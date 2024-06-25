@@ -19,7 +19,7 @@ description: Add dynamic visual indicators to your Svelte app with TheUI-Svelte'
 </script>
 
 <DocContainer>
-  <Head title="Badge" text="The Badge component is a versatile UI element used for displaying small counts, labeling, or providing important indications to users. Badges are commonly used to highlight new content, show notifications, or denote status updates." />
+  <Head title="Badge" text="The Badge component is a versatile UI element used for displaying small counts, labeling, or providing important indications to users. Badges are commonly used to highlight new content, show notifications, or denote status updates." edit_url={data.edit_url}/>
   <Block title="Setup">
     <p class="not-prose">To use the Badge component in your project, import the required component:</p>
 <Code title="Import">

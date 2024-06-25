@@ -19,7 +19,7 @@ description: Create engaging entrance and exit popups for your Svelte app with T
 </script>
 
 <DocContainer>
-  <Head title="Popup" text="--" />
+  <Head title="Popup" text="--" edit_url={data.edit_url}/>
   <Block title="Setup">
     <p class="not-prose mb-4">----</p>
 <Code title="Import">

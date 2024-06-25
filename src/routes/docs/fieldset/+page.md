@@ -19,7 +19,7 @@ description: Group related form elements in your Svelte app with TheUI-Svelte's 
 </script>
 
 <DocContainer>
-  <Head title="Fieldset" text="--" />
+  <Head title="Fieldset" text="--" edit_url={data.edit_url}/>
   <Block title="Setup">
     <p class="not-prose mb-4">----</p>
 <Code title="Import">

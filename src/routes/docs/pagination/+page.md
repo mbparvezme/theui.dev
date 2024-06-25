@@ -19,7 +19,7 @@ description: Enable seamless content navigation in your Svelte app with TheUI-Sv
 </script>
 
 <DocContainer>
-  <Head title="Pagination" text="--" />
+  <Head title="Pagination" text="--" edit_url={data.edit_url}/>
   <Block title="Setup">
     <p class="not-prose mb-4">----</p>
 <Code title="Import">

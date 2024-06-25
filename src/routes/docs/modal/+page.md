@@ -19,7 +19,7 @@ description: Integrate customizable modals into your Svelte app with TheUI-Svelt
 </script>
 
 <DocContainer>
-  <Head title="Modal" text="--" />
+  <Head title="Modal" text="--" edit_url={data.edit_url}/>
   <Block title="Setup">
     <p class="not-prose mb-4">----</p>
 <Code title="Import">

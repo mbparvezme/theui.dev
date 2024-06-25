@@ -19,7 +19,7 @@ description: Create versatile input fields for your Svelte app with TheUI-Svelte
 </script>
 
 <DocContainer>
-  <Head title="Input" text="--" />
+  <Head title="Input" text="--" edit_url={data.edit_url}/>
   <Block title="Setup">
     <p class="not-prose mb-4">----</p>
 <Code title="Import">

@@ -19,7 +19,7 @@ description: Enhance your Svelte app with TheUI-Svelte's Accordion component. Ea
 </script>
 
 <DocContainer>
-  <Head title="Accordion" text="The Accordion component is used to show or hide information based on the collapse and expand state of its child elements. It has two variants with configurations provided in the Configuration section." />
+  <Head title="Accordion" text="The Accordion component is used to show or hide information based on the collapse and expand state of its child elements. It has two variants with configurations provided in the Configuration section." edit_url={data.edit_url}/>
   <Block title="Setup">
     <p class="not-prose mb-4">To use the Accordion component in your project, import the required components:</p>
 <Code title="Import">

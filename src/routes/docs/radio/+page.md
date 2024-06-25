@@ -19,7 +19,7 @@ description: Integrate customizable radio buttons into your Svelte app with TheU
 </script>
 
 <DocContainer>
-  <Head title="Radio" text="--" />
+  <Head title="Radio" text="--" edit_url={data.edit_url}/>
   <Block title="Setup">
     <p class="not-prose mb-4">----</p>
 <Code title="Import">

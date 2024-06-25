@@ -19,7 +19,7 @@ description: Build responsive and accessible forms in your Svelte app with TheUI
 </script>
 
 <DocContainer>
-  <Head title="Form" text="--" />
+  <Head title="Form" text="--" edit_url={data.edit_url}/>
   <Block title="Setup">
     <p class="not-prose mb-4">----</p>
 <Code title="Import">

@@ -4,11 +4,11 @@ component_title: License
 description: Review the licensing terms for TheUI-Svelte. Understand how you can use and distribute this component library in your Svelte projects.
 ---
 
-<script>
-  import DocContainer from "$lib/ui/doc/Container.svelte"
-  import Head from "$lib/ui/doc/Head.svelte"
-  import Block from "$lib/ui/doc/Block.svelte"
-  import ComingSoon from "$lib/ui/ComingSoon.svelte"
+<script lang="ts">
+  import DocContainer from "$lib/ui/doc/Container.svelte";
+  import Head from "$lib/ui/doc/Head.svelte";
+  import Block from "$lib/ui/doc/Block.svelte";
+  import ComingSoon from "$lib/ui/ComingSoon.svelte";
 </script>
 
 <DocContainer setupLink={false}>

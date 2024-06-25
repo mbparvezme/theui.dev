@@ -19,7 +19,7 @@ description: Implement rich text editing capabilities in your Svelte app with Th
 </script>
 
 <DocContainer>
-  <Head title="Editor" text="--" />
+  <Head title="Editor" text="--" edit_url={data.edit_url}/>
   <Block title="Setup">
     <p class="not-prose mb-4">----</p>
 <Code title="Import">

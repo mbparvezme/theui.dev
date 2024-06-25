@@ -19,7 +19,7 @@ description: Add feature-rich dropdown menus to your Svelte app with TheUI-Svelt
 </script>
 
 <DocContainer>
-  <Head title="Dropdown" text="--" />
+  <Head title="Dropdown" text="--" edit_url={data.edit_url}/>
   <Block title="Setup">
     <p class="not-prose mb-4">----</p>
 <Code title="Import">

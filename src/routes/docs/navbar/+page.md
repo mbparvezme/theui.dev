@@ -19,7 +19,7 @@ description: Design responsive and accessible navigation bars for your Svelte ap
 </script>
 
 <DocContainer>
-  <Head title="Navbar" text="--" />
+  <Head title="Navbar" text="--" edit_url={data.edit_url}/>
   <Block title="Setup">
     <p class="not-prose mb-4">----</p>
 <Code title="Import">

@@ -19,7 +19,7 @@ description: Deliver user notifications effectively in your Svelte app with TheU
 </script>
 
 <DocContainer>
-  <Head title="Notification" text="--" />
+  <Head title="Notification" text="--" edit_url={data.edit_url}/>
   <Block title="Setup">
     <p class="not-prose mb-4">----</p>
 <Code title="Import">

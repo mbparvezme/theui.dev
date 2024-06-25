@@ -4,15 +4,18 @@ dir: docs
 description: Manage stacking contexts in your Svelte application with TheUI-Svelte's Z-index guide. Ensure proper layering and visibility of components.
 ---
 
-<script>
-  import DocContainer from "$lib/ui/doc/Container.svelte"
-  import Head from "$lib/ui/doc/Head.svelte"
-  import Block from "$lib/ui/doc/Block.svelte"
-  import { Alert, Table, TBody, TR, TD, THead } from "theui-svelte"
+<script lang="ts">
+  import type { PageData } from "./$types";
+  import DocContainer from "$lib/ui/doc/Container.svelte";
+  import Head from "$lib/ui/doc/Head.svelte";
+  import Block from "$lib/ui/doc/Block.svelte";
+  import { Alert, Table, TBody, TR, TD, THead } from "theui-svelte";
+
+  export let data: PageData;
 </script>
 
 <DocContainer setupLink={false}>
-  <Head title="Z-index" text="In this library, several components utilize z-index. This document will let you know the order of the z-index in components."/>
+  <Head title="Z-index" text="In this library, several components utilize z-index. This document will let you know the order of the z-index in components." edit_url={data.edit_url}/>
   <Block>
     <p class="not-prose">In this library, several components utilize z-index values. This document outlines the z-index order of components.</p>
     <p class="not-prose">The z-index property helps manage the overlay and layout of elements relative to one another, controlling their arrangement along the z-axis. Customizing these values is not recommended, as it may disrupt the intended layout.</p>

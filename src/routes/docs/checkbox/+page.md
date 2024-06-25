@@ -19,7 +19,7 @@ description: Integrate customizable checkboxes into your Svelte app with TheUI-S
 </script>
 
 <DocContainer>
-  <Head title="Checkbox" text="--" />
+  <Head title="Checkbox" text="--" edit_url={data.edit_url}/>
   <Block title="Setup">
     <p class="not-prose mb-4">----</p>
 <Code title="Import">

@@ -19,7 +19,7 @@ description: Present data effectively in your Svelte app with TheUI-Svelte's Tab
 </script>
 
 <DocContainer>
-  <Head title="Table" text="--" />
+  <Head title="Table" text="--" edit_url={data.edit_url}/>
   <Block title="Setup">
     <p class="not-prose mb-4">----</p>
 <Code title="Import">

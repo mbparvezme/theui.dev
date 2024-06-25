@@ -19,7 +19,7 @@ description: Implement dark mode in your Svelte app with TheUI-Svelte's Dark Mod
 </script>
 
 <DocContainer>
-  <Head title="Dark Mode" text="--" />
+  <Head title="Dark Mode" text="--" edit_url={data.edit_url}/>
   <Block title="Setup">
     <p class="not-prose mb-4">----</p>
 <Code title="Import">

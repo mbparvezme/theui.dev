@@ -12,14 +12,19 @@ description: Implement floating action buttons in your Svelte app with TheUI-Sve
   import Code from "$lib/ui/doc/Code.svelte";
   import DataTable from "$lib/ui/doc/DataTable.svelte";
   import Example from "$lib/ui/doc/Example.svelte";
-  // import { FloatButton } from "theui-svelte";
+  import { FABBox, FAB } from "theui-svelte";
   import { processID } from "$lib";
 
   export let data: PageData;
 </script>
 
+<FABBox>
+  <FAB />
+  <FAB />
+</FABBox>
+
 <DocContainer>
-  <Head title="FloatButton" text="--" />
+  <Head title="FloatButton" text="--" edit_url={data.edit_url}/>
   <Block title="Setup">
     <p class="not-prose mb-4">----</p>
 <Code title="Import">

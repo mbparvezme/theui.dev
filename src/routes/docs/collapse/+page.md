@@ -19,7 +19,7 @@ description: Toggle content visibility in your Svelte app with TheUI-Svelte's Co
 </script>
 
 <DocContainer>
-  <Head title="Collapse" text="The Collapse component allows you to show and hide content independently. It is unstyled by default, giving you the flexibility to use any content and design according to your needs."/>
+  <Head title="Collapse" text="The Collapse component allows you to show and hide content independently. It is unstyled by default, giving you the flexibility to use any content and design according to your needs." edit_url={data.edit_url}/>
   <Block title="Setup">
   <p class="not-prose">To use the Collapse component, import it into your Svelte file as shown below.</p>
 <Code title="Import">

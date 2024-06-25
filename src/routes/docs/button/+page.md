@@ -19,7 +19,7 @@ description: Create responsive and stylish buttons for your Svelte app with TheU
 </script>
 
 <DocContainer>
-  <Head title="Button" text="The Button component provides a versatile and customizable button for various use cases. It supports different sizes, styles, and types, and can be used as a regular button or a link." />
+  <Head title="Button" text="The Button component provides a versatile and customizable button for various use cases. It supports different sizes, styles, and types, and can be used as a regular button or a link." edit_url={data.edit_url}/>
   <Block title="Setup">
     <p class="not-prose">Import the Button component into your Svelte file.</p>
 <Code title="Import" space="none">

@@ -19,7 +19,7 @@ description: Add clear and accessible labels to form elements in your Svelte app
 </script>
 
 <DocContainer>
-  <Head title="Label" text="--" />
+  <Head title="Label" text="--" edit_url={data.edit_url}/>
   <Block title="Setup">
     <p class="not-prose mb-4">----</p>
 <Code title="Import">

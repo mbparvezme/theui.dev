@@ -4,16 +4,18 @@ component_title: Colors
 description: Customize your Svelte app's appearance with TheUI-Svelte's Colors and Branding guide. Learn how to apply your brand colors effortlessly.
 ---
 
-<script>
+<script lang="ts">
+  import type { PageData } from "./$types";
   import DocContainer from "$lib/ui/doc/Container.svelte"
   import Head from "$lib/ui/doc/Head.svelte"
   import Block from "$lib/ui/doc/Block.svelte"
   import Code from "$lib/ui/doc/Code.svelte"
   import { Alert, Table, TBody, TR, TD, THead } from "theui-svelte"
+  export let data: PageData;
 </script>
 
 <DocContainer setupLink={false}>
-  <Head title="Colors and Branding" text="One of the main features of TheUI Components library is the customizable color options that allow you to maintain brand identity and ensure consistent theming efficiently."/>
+  <Head title="Colors and Branding" text="One of the main features of TheUI Components library is the customizable color options that allow you to maintain brand identity and ensure consistent theming efficiently." edit_url={data.edit_url}/>
   <Block>
     <p class="not-prose">TheUI-svelte, developed with TailwindCSS, is a powerful tool capable of generating almost any CSS style and unlimited colors for your design. But do you really need unlimited colors for your design?</p>
     <p class="not-prose">Having many color options can lead to inconsistency and randomness in your design. To address this issue, the "TheUI-svelte" component library introduces ten custom color options that merge seamlessly with other colors provided by TailwindCSS. You can customize your theme with a single line by changing the value of CSS variables for these custom colors.</p>

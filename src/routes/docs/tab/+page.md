@@ -19,7 +19,7 @@ description: Organize content into navigable sections in your Svelte app with Th
 </script>
 
 <DocContainer>
-  <Head title="Tabs" text="--" />
+  <Head title="Tabs" text="--" edit_url={data.edit_url}/>
   <Block title="Setup">
     <p class="not-prose mb-4">----</p>
 <Code title="Import">

@@ -19,7 +19,7 @@ description: Implement interactive and stylish chips in your Svelte app with The
 </script>
 
 <DocContainer>
-  <Head title="Chips" text="The Chips component is a versatile UI element used to display small blocks of information, such as tags, categories, or interactive items. It supports images, text, and an optional close button for dismissing the chips." />
+  <Head title="Chips" text="The Chips component is a versatile UI element used to display small blocks of information, such as tags, categories, or interactive items. It supports images, text, and an optional close button for dismissing the chips." edit_url={data.edit_url}/>
   <Block title="Setup">
   <p class="not-prose">First, import the Chips component from your library.</p>
 <Code title="Import">

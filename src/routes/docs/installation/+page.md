@@ -5,14 +5,16 @@ description: Follow our step-by-step guide to install TheUI-Svelte component lib
 ---
 
 <script lang="ts">
+  import type { PageData } from "./$types";
   import DocContainer from "$lib/ui/doc/Container.svelte";
   import Head from "$lib/ui/doc/Head.svelte";
   import Block from "$lib/ui/doc/Block.svelte";
   import Code from "$lib/ui/doc/Code.svelte";
+  export let data: PageData;
 </script>
 
 <DocContainer setupLink={false}> 
-  <Head title="Installation" text="Install the SvelteKit Components library in your project or start a new project with the boilerplate template. Install it to build fast and deliver faster."/>
+  <Head title="Installation" text="Install the SvelteKit Components library in your project or start a new project with the boilerplate template. Install it to build fast and deliver faster." edit_url={data.edit_url} />
 
   <Block title="Installation">
     <div>

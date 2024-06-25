@@ -19,7 +19,7 @@ description: Add scalable vector icons to your Svelte app with TheUI-Svelte's SV
 </script>
 
 <DocContainer>
-  <Head title="Svg Icon" text="The Svg component allows you to easily add SVG icons to your project. It acts as a wrapper for SVG elements and can replace the standard svg tag. You can include any path or other SVG elements within it." />
+  <Head title="Svg Icon" text="The Svg component allows you to easily add SVG icons to your project. It acts as a wrapper for SVG elements and can replace the standard svg tag. You can include any path or other SVG elements within it." edit_url={data.edit_url}/>
   <Block title="Setup">
 <Code title="Import">
 

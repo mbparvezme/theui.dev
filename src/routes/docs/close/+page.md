@@ -19,7 +19,7 @@ description: Add functional close symbols to modals and popups in your Svelte ap
 </script>
 
 <DocContainer>
-  <Head title="Close" text="--" />
+  <Head title="Close" text="--" edit_url={data.edit_url}/>
   <Block title="Setup">
     <p class="not-prose mb-4">----</p>
 <Code title="Import">

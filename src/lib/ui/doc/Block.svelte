@@ -1,16 +1,15 @@
 <script lang="ts">
-  import { page } from "$app/stores"
-  import { randomString, processID } from "$lib"
-  import { notify, Svg } from "theui-svelte"
-  export let title  : string|undefined
-  export let id     : string = title ? processID(title, false) : randomString()
+  import { page } from "$app/stores";
+  import { randomString, processID } from "$lib";
+  import { Svg } from "theui-svelte";
+  export let title  : string|undefined;
+  export let id : string = title ? processID(title, false) : randomString();
   
   $: copied = false;
   const copy = () => navigator.clipboard.writeText($page.url.href+"#"+id)
   .then(() => {
     copied = true
     setTimeout(()=>{copied = false}, 3000)
-    // notify("Link to this section copied!", "success")
   })
   .catch(err => console.error("Error copying text:", err));
 </script>
@@ -21,11 +20,10 @@
       {@html title}
       {#if id}
         <span class="not-prose flex items-center">
-          <button class="font-medium w-[12px] h-[12px] text-gray-400" data-tooltip="Copy block URL" data-tooltip-position="left" on:click={()=>copy()}>
-            <Svg size={.75}>
-              <path class:fill-green-500={copied} class:hidden={!copied} fill-rule="evenodd" d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
-              <path class:fill-green-500={copied} d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
-              <path class:fill-green-500={copied} d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+          <button class="font-medium w-6 h-6 text-muted flex justify-center items-center" data-tooltip="Copy block URL" data-tooltip-position="left" on:click={()=>copy()}>
+            <Svg size={1.5}>
+              <path class:fill-green-500={copied} d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1 1 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4 4 0 0 1-.128-1.287z"/>
+              <path class:fill-green-500={copied} d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243z"/>
             </Svg>
           </button>
         </span>

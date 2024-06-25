@@ -19,7 +19,7 @@ description: Provide contextual help for input fields in your Svelte app with Th
 </script>
 
 <DocContainer>
-  <Head title="HelperText" text="--" />
+  <Head title="HelperText" text="--" edit_url={data.edit_url}/>
   <Block title="Setup">
     <p class="not-prose mb-4">----</p>
 <Code title="Import">

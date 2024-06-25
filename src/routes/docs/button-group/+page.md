@@ -19,7 +19,7 @@ description: Group related buttons together in your Svelte application using The
 </script>
 
 <DocContainer>
-  <Head title="ButtonGroup"/>
+  <Head title="ButtonGroup" edit_url={data.edit_url}/>
   <Block title="Setup">
     <p class="not-prose mb-4">----</p>
 <Code title="Import">

@@ -13,10 +13,11 @@ description: Structure your Svelte app with TheUI-Svelte's Container component, 
   import DataTable from "$lib/ui/doc/DataTable.svelte";
   import Example from "$lib/ui/doc/Example.svelte";
   import { Container } from "theui-svelte";
+  export let data: PageData;
 </script>
 
 <DocContainer>
-  <Head title="Container" text="The Container component is a flexible block element designed to control the spacing and structure of a web page. It provides a default padding setup but can be customized easily with your own classes." />
+  <Head title="Container" text="The Container component is a flexible block element designed to control the spacing and structure of a web page. It provides a default padding setup but can be customized easily with your own classes." edit_url={data.edit_url}/>
   <Block title="Setup">
   <p class="not-prose">First, import the Container component from your library.</p>
 <Code title="Import">

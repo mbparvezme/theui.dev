@@ -19,7 +19,7 @@ description: Create versatile and customizable textarea fields in your Svelte ap
 </script>
 
 <DocContainer>
-  <Head title="Textarea" text="--" />
+  <Head title="Textarea" text="--" edit_url={data.edit_url}/>
   <Block title="Setup">
     <p class="not-prose mb-4">----</p>
 <Code title="Import">

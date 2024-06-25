@@ -19,7 +19,7 @@ description: Add informative tooltips to your Svelte app with TheUI-Svelte's Too
 </script>
 
 <DocContainer>
-  <Head title="Tooltip" text="The Tooltip component provides a way to display informative text when users hover over or click on an element. It supports various positions, animations, and can be globally initialized or used on specific pages."/>
+  <Head title="Tooltip" text="The Tooltip component provides a way to display informative text when users hover over or click on an element. It supports various positions, animations, and can be globally initialized or used on specific pages." edit_url={data.edit_url}/>
   <Block title="Setup">
   <p class="not-prose">First, import and initialize the Tooltip component. It's best to initialize the Tooltip globally, such as in the <code>+layout.svelte</code> file, but you can also include it on specific pages if needed.</p>
 <Code title="Import">

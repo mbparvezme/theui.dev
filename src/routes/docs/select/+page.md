@@ -19,7 +19,7 @@ description: Create responsive dropdown selects in your Svelte app with TheUI-Sv
 </script>
 
 <DocContainer>
-  <Head title="Select" text="--" />
+  <Head title="Select" text="--" edit_url={data.edit_url}/>
   <Block title="Setup">
     <p class="not-prose mb-4">----</p>
 <Code title="Import">

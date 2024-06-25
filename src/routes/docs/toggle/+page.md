@@ -19,7 +19,7 @@ description: Implement intuitive toggle switches in your Svelte app with TheUI-S
 </script>
 
 <DocContainer>
-  <Head title="Toggle" text="--" />
+  <Head title="Toggle" text="--" edit_url={data.edit_url}/>
   <Block title="Setup">
     <p class="not-prose mb-4">----</p>
 <Code title="Import">

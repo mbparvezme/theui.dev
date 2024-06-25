@@ -19,7 +19,7 @@ description: Utilize TheUI-Svelte's Alert component to display crucial messages 
 </script>
 
 <DocContainer>
-  <Head title="Alert" text="The Alert component displays feedback or contextual messages to your users. Using the Alert component, you can provide various types of feedback such as success, error, warning, or general information." />
+  <Head title="Alert" text="The Alert component displays feedback or contextual messages to your users. Using the Alert component, you can provide various types of feedback such as success, error, warning, or general information." edit_url={data.edit_url}/>
   <Block title="Setup">
     <p class="not-prose">To use the Alert component in your project, import the required component:</p>
 <Code title="Import">

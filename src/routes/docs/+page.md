@@ -5,10 +5,12 @@ description: Begin your journey with TheUI-Svelte. Learn how to quickly set up a
 ---
 
 <script lang="ts">
+  import type { PageData } from "./$types";
   import DocContainer from "$lib/ui/doc/Container.svelte"
   import Head from "$lib/ui/doc/Head.svelte"
   import Block from '$lib/ui/doc/Block.svelte'
-  export let data
+
+  export let data: PageData;
 
   let links: Array<{string: string}> = []
   data.components.forEach((section, i) => {
@@ -17,7 +19,7 @@ description: Begin your journey with TheUI-Svelte. Learn how to quickly set up a
 </script>
 
 <DocContainer setupLink={false}> 
-  <Head title="Theui-Svelte: Component Library for Svelte" text="Kickstart your development with TheUI-Svelte, a comprehensive component library designed for the Svelte ecosystem. Leveraging the power of Svelte and TailwindCSS, TheUI-Svelte accelerates your development process, helping you build and deliver projects faster."/>
+  <Head title="Theui-Svelte: Component Library for Svelte" text="Kickstart your development with TheUI-Svelte, a comprehensive component library designed for the Svelte ecosystem. Leveraging the power of Svelte and TailwindCSS, TheUI-Svelte accelerates your development process, helping you build and deliver projects faster." edit_url={data.edit_url}/>
 
   <Block title="Introduction">
     <p>Welcome to TheUI-Svelte, the official component library of TheUI, built on top of TailwindCSS. Our components are designed to be highly accessible and customizable out of the box. By combining the capabilities of Svelte with the versatile features of TailwindCSS, TheUI-Svelte offers a powerful toolset to enhance your development workflow.</p>

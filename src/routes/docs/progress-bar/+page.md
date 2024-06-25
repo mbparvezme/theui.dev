@@ -19,7 +19,7 @@ description: Visualize progress and statuses in your Svelte app with TheUI-Svelt
 </script>
 
 <DocContainer>
-  <Head title="Progress Bar" text="--" />
+  <Head title="Progress Bar" text="--" edit_url={data.edit_url}/>
   <Block title="Setup">
     <p class="not-prose mb-4">----</p>
 <Code title="Import">

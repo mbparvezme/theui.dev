@@ -4,16 +4,19 @@ component_title: Type definition
 description: Understand the various component types in TheUI-Svelte. Learn how to use them effectively to build a versatile and robust Svelte application.
 ---
 
-<script>
-  import DocContainer from "$lib/ui/doc/Container.svelte"
-  import Head from "$lib/ui/doc/Head.svelte"
-  import Block from "$lib/ui/doc/Block.svelte"
-  import Code from "$lib/ui/doc/Code.svelte"
-  import ComingSoon from "$lib/ui/ComingSoon.svelte"
+<script lang="ts">
+  import type { PageData } from "./$types";
+  import DocContainer from "$lib/ui/doc/Container.svelte";
+  import Head from "$lib/ui/doc/Head.svelte";
+  import Block from "$lib/ui/doc/Block.svelte";
+  import Code from "$lib/ui/doc/Code.svelte";
+  import ComingSoon from "$lib/ui/ComingSoon.svelte";
+
+  export let data: PageData;
 </script>
 
 <DocContainer setupLink={false}>
-  <Head title="Types" text="This components library utilizing Typescript to define the types of the configurations of the components."/>
+  <Head title="Types" text="This components library utilizing Typescript to define the types of the configurations of the components." edit_url={data.edit_url}/>
   <Block title="Common Types">
 <Code title="Common type definition">
 

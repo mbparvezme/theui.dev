@@ -19,7 +19,7 @@ description: Create navigational sidebars and overlays in your Svelte app with T
 </script>
 
 <DocContainer>
-  <Head title="Drawer" text="--" />
+  <Head title="Drawer" text="--" edit_url={data.edit_url}/>
   <Block title="Setup">
     <p class="not-prose mb-4">----</p>
 <Code title="Import">
