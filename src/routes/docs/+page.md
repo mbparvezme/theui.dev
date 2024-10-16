@@ -19,31 +19,35 @@ description: Begin your journey with TheUI-Svelte. Learn how to quickly set up a
 </script>
 
 <DocContainer setupLink={false}> 
-  <Head title="Theui-Svelte: Component Library for Svelte" text="Kickstart your development with TheUI-Svelte, a comprehensive component library designed for the Svelte ecosystem. Leveraging the power of Svelte and TailwindCSS, TheUI-Svelte accelerates your development process, helping you build and deliver projects faster." edit_url={data.edit_url}/>
+  <Head title="Theui-Svelte: Component Library for Svelte" text="Kickstart your development with the <b>theui-svelte</b>, a comprehensive component library designed for the Svelte ecosystem. Leveraging the power of Svelte and TailwindCSS, the <b>theui-svelte</b> accelerates your development process, helping you build and deliver projects faster." edit_url={data.edit_url}/>
 
   <Block title="Introduction">
-    <p>Welcome to TheUI-Svelte, the official component library of TheUI, built on top of TailwindCSS. Our components are designed to be highly accessible and customizable out of the box. By combining the capabilities of Svelte with the versatile features of TailwindCSS, TheUI-Svelte offers a powerful toolset to enhance your development workflow.</p>
+    <p>Welcome to the <b>theui-svelte</b>, the component library for Svelte by TheUI, built on top of TailwindCSS. Our components are designed to be highly accessible and customizable out of the box. By combining the capabilities of Svelte with the versatile features of TailwindCSS, the <b>theui-svelte</b> offers a powerful tool-set to enhance your development workflow.</p>
   </Block>
 
   <Block title="Features">
-    <p>The main features of the component library are:</p>
-    <ul>
-      <li><strong>Accessible components:</strong> Designed with accessibility in mind to ensure inclusivity.</li>
-      <li><strong>Dark/light mode support:</strong> Easily switch between themes.</li>
-      <li><strong>Theming and branding:</strong> Customize with a single line of CSS.</li>
-      <li><strong>Highly customizable:</strong> Tailor components to fit your needs.</li>
-      <li><strong>RTL support:</strong> (Coming soon) Right-to-left language support.</li>
-      <li><strong>Fully typed:</strong> TypeScript support for a robust development experience.</li>
-    </ul>
+    <div>
+      <p class="not-prose">The main features of the component library are:</p>
+      <ul>
+        <li><strong>Accessible components:</strong> Designed with accessibility in mind to ensure inclusivity.</li>
+        <li><strong>Dark/light mode support:</strong> Easily switch between themes.</li>
+        <li><strong>Theming and branding:</strong> Customize with a single line of CSS.</li>
+        <li><strong>Highly customizable:</strong> Tailor components to fit your needs.</li>
+        <li><strong>RTL support:</strong> (Coming soon) Right-to-left language support.</li>
+        <li><strong>Fully typed:</strong> TypeScript support for a robust development experience.</li>
+      </ul>
+    </div>
   </Block>
 
   <Block title="Available Components" id="components">
-    <p>This library includes {links.length} components and still counting. The components are given below:</p>
-    <ul class="grid grid-cols-3">
-      {#each links as component}
-      <li><a href={component.link}>{component.text}</a></li>
-      {/each}
-    </ul>
+    <div>
+      <p>This library includes {links.length} components and still counting. The components are given below:</p>
+      <ul class="grid grid-cols-3">
+        {#each links as component}
+        <li><a href={component.link}>{component.text}</a></li>
+        {/each}
+      </ul>
+    </div>
   </Block>
 
   <svelte:fragment slot="sidebar">

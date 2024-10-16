@@ -15,52 +15,204 @@ description: Customize your Svelte app's appearance with TheUI-Svelte's Colors a
 </script>
 
 <DocContainer setupLink={false}>
-  <Head title="Colors and Branding" text="One of the main features of TheUI Components library is the customizable color options that allow you to maintain brand identity and ensure consistent theming efficiently." edit_url={data.edit_url}/>
+  <Head title="Colors and Branding" text="One of the main features of TheUI Components library is its customizable color options, allowing you to maintain brand identity and ensure consistent theming efficiently." edit_url={data.edit_url}/>
   <Block>
-    <p class="not-prose">TheUI-svelte, developed with TailwindCSS, is a powerful tool capable of generating almost any CSS style and unlimited colors for your design. But do you really need unlimited colors for your design?</p>
-    <p class="not-prose">Having many color options can lead to inconsistency and randomness in your design. To address this issue, the "TheUI-svelte" component library introduces ten custom color options that merge seamlessly with other colors provided by TailwindCSS. You can customize your theme with a single line by changing the value of CSS variables for these custom colors.</p>
+    <p class="not-prose">The component library, built with TailwindCSS, offers two custom color options for seamless integration and easy theme customization through CSS variables.</p>
+    <p class="not-prose">TheUI Components library provides extensive color customization to maintain brand identity and consistent theming. With the component library, you can customize colors with or without shades, giving you flexibility and control over your design.</p>
+    <p class="not-prose">There are two ways to customize/generate colors in the component library:</p>
+    <ol class="my-0 list-decimal">
+      <li class="my-0"><a href="#generate-color-with-shades" class="underline decoration-dashed underline-offset-4">Generate Color with Shades</a></li>
+      <li class="my-0"><a href="#generate-color-without-shades">Generate Color without Shades</a></li>
+    </ol>
   </Block>
-  <Block title="TheUI Colors & Default Values" id="colorsAndValues">
-    <p class="not-prose">The "TheUI-svelte" component library provides the following CSS variables and values, all prefixed with <code> --ui</code> to avoid conflicts with other variables:</p>
+
+  <Block title="Generate Color With Shades">
+    <p class="not-prose">Customizing colors with shades involves generating a cohesive color palette with varying levels of lightness and darkness, similar to the default TailwindCSS color system. You can assign a custom name to your color, generating the following shades: X-50, X-100, X-200, X-300, X-400, X-500, X-600, X-700, X-800, X-900, X-950. This allows for a flexible and comprehensive set of colors for different components and states in your design.</p>
+    <h3 class="mt-4 mb-0" id="available-color-shades">Available Color Shades</h3>
+    <p class="not-prose">By default, the <b>theui-svelte</b> includes the following eight (8) shaded colors:</p>
+    <Table class="my-0">
+      <THead>
+        <TR>
+          <TD>Name</TD>
+          <TD>Description</TD>
+          <TD>Value</TD>
+          <TD>Availability</TD>
+          <TD>Example</TD>
+        </TR>
+      </THead>
+      <TBody>
+        <TR>
+          <TD><span class="not-prose whitespace-nowrap"><code>brand</code></span></TD>
+          <TD>Main brand color</TD>
+          <TD>#536DFE</TD>
+          <TD>Everywhere</TD>
+          <TD><span class="not-prose"><code>.bg-brand-500</code></span>, <span class="not-prose"><code>.text-brand-300</code></span>, <span class="not-prose"><code>.border-brand-200</code></span> etc.</TD>
+        </TR>
+        <TR>
+          <TD><span class="not-prose whitespace-nowrap"><code>brand-secondary</code></span></TD>
+          <TD>Secondary brand color</TD>
+          <TD>#FF5722</TD>
+          <TD>Everywhere</TD>
+          <TD><span class="not-prose"><code>.bg-brand-secondary-500</code></span>, <span class="not-prose"><code>.text-brand-secondary-300</code></span>, <span class="not-prose"><code>.border-brand-secondary-200</code></span> etc.</TD>
+        </TR>
+        <TR>
+          <TD><span class="not-prose whitespace-nowrap"><code>on-brand</code></span></TD>
+          <TD>Foreground (Text) color to place on brand</TD>
+          <TD>#FAFDFF</TD>
+          <TD>Only for text</TD>
+          <TD><span class="not-prose"><code>.text-on-brand-500</code></span>, <span class="not-prose"><code>.text-on-brand-300</code></span> etc.</TD>
+        </TR>
+        <TR>
+          <TD><span class="not-prose whitespace-nowrap"><code>on-brand-secondary</code></span></TD>
+          <TD>Foreground (Text) color to place on secondary brand color</TD>
+          <TD>#FFFDF9</TD>
+          <TD>Only for text</TD>
+          <TD><span class="not-prose"><code>.text-on-brand-secondary-500</code></span>, <span class="not-prose"><code>.text-on-brand-secondary-300</code></span> etc.</TD>
+        </TR>
+        <TR>
+          <TD><span class="not-prose whitespace-nowrap"><code>error</code></span></TD>
+          <TD>Color to represent errors</TD>
+          <TD>#E53935</TD>
+          <TD>Everywhere</TD>
+          <TD><span class="not-prose"><code>.bg-error-500</code></span>, <span class="not-prose"><code>.text-error-50</code></span>, <span class="not-prose"><code>.border-error-200</code></span> etc.</TD>
+        </TR>
+        <TR>
+          <TD><span class="not-prose whitespace-nowrap"><code>info</code></span></TD>
+          <TD>Color to represent information</TD>
+          <TD>#29B6F6</TD>
+          <TD>Everywhere</TD>
+          <TD><span class="not-prose"><code>.bg-info-500</code></span>, <span class="not-prose"><code>.text-info-50</code></span>, <span class="not-prose"><code>.border-info-200</code></span> etc.</TD>
+        </TR>
+        <TR>
+          <TD><span class="not-prose whitespace-nowrap"><code>success</code></span></TD>
+          <TD>Color to represent success</TD>
+          <TD>#00C853</TD>
+          <TD>Everywhere</TD>
+          <TD><span class="not-prose"><code>.bg-success-500</code></span>, <span class="not-prose"><code>.text-success-50</code></span>, <span class="not-prose"><code>.border-success-200</code></span> etc.</TD>
+        </TR>
+        <TR>
+          <TD><span class="not-prose whitespace-nowrap"><code>warning</code></span></TD>
+          <TD>Color to represent warning</TD>
+          <TD>#FFC107</TD>
+          <TD>Everywhere</TD>
+          <TD><span class="not-prose"><code>.bg-warning-500</code></span>, <span class="not-prose"><code>.text-warning-50</code></span>, <span class="not-prose"><code>.border-warning-200</code></span> etc.</TD>
+        </TR>
+      </TBody>
+    </Table>
+    <h3 class="mt-4 mb-0" id="new-shaded-colors">Adding New Shaded Colors</h3>
+    <p class="not-prose">To add a new color with shades, use the <code>twShades</code> function in your TailwindCSS configuration file. For example, to generate new shades for the <code>brand-accent</code> color:</p>
+<Code title="tailwind.config.cjs">
+
+```js
+/** @type {import('tailwindcss').Config} */
+const twShades = require('tw-color-shades');
+
+module.exports = {
+    content: [],
+    theme: {
+        extend: {
+            colors: {
+                "brand-accent": twShades('#FF5722'), // This generates shades for the "brand-accent" color
+            }
+        }
+    },
+    plugins: []
+}
+```
+</Code>
+<Code title="HTML Example">
+
+```html
+<div class="bg-brand-accent-700 text-brand-accent-100 ...">
+  ...
+</div>
+
+```
+</Code>
+    <h3 class="mt-4 mb-0" id="change-update-a-color">Change/Update a Color</h3>
+    <p class="not-prose">To change a default shaded color, update your TailwindCSS configuration. For example, to update the <code>brand</code> color to <code>#FF0000</code>:</p>
+<Code title="tailwind.config.cjs">
+
+```js
+/** @type {import('tailwindcss').Config} */
+const twShades = require('tw-color-shades');
+
+module.exports = {
+    content: [],
+    theme: {
+        extend: {
+            colors: {
+                brand: twShades('#FF0000'), // Changing brand color
+            }
+        }
+    },
+    plugins: []
+}
+```
+</Code>
+    <h3 class="mt-4 mb-0" id="removing-a-color">Removing a Color</h3>
+    <p class="not-prose">To remove a color from your palette, set its value to <code>null</code> in your TailwindCSS configuration. For example, to remove the <code>brand-secondary</code> color:</p>
+<Code title="tailwind.config.cjs">
+
+```js
+/** @type {import('tailwindcss').Config} */
+
+module.exports = {
+    content: [],
+    theme: {
+        extend: {
+            colors: {
+                "brand-secondary": null // Removing brand-secondary color
+            }
+        }
+    },
+    plugins: []
+}
+```
+</Code>
+    <p class="not-prose">This will remove the <code>brand-secondary</code> color with all the classes from from the component library.</p>
+
+  </Block>
+
+  <Block title="Generate Color Without Shades">
+    <p class="not-prose">If you prefer not to use shaded colors, you can customize individual CSS variables directly. This method allows you to set specific colors for different UI elements.</p>
+    <p class="not-prose">The "theui-svelte" component library provides the following CSS variables, all prefixed with --ui to avoid conflicts with other variables::</p>
 <Code title="CSS variables">
 
 ```css
-@layer base{
-  :root {
-    /* Brand colors */
-    --ui-brand                    : 80 70 230;    /* #5046E6 */
-    --ui-brand-active             : 67 56 202;    /* #4338CA */
-    --ui-brand-secondary          : 253 230 138;  /* #FDE68A */
-    --ui-brand-secondary-active   : 252 211 77;   /* #FCD34D */
+:root {
+  --ui-bg-primary: 250 250 250; /* #FAFAFA */
+  --ui-bg-secondary: 238 238 238; /* #EEEEEE */
+  --ui-bg-tertiary: 224 224 224; /* #E0E0E0 */
+  --ui-bg-primary-alt: 10 10 20; /* #0A0A14 */
+  --ui-bg-secondary-alt: 30 30 40; /* #1E1E28 */
+  --ui-bg-tertiary-alt: 55 55 65; /* #373741 */
 
-    /* Text colors */
-    --ui-text-on-brand            : 255 255 255;  /* #FFFFFF */
-    --ui-text-on-brand-secondary  : 8 8 24;       /* #080818 */
-    --ui-text-default             : 8 8 24;       /* #080818 */
+  --ui-text-default: 33 33 33; /* #212121 */
+  --ui-text-alt: 189 189 189; /* #BDBDBD */
+  --ui-text-muted: 117 117 117; /* #757575 */
+}
 
-    /* Background colors */
-    --ui-bg-primary               : 255 255 255;  /* #FFFFFF */
-    --ui-bg-secondary             : 243 244 246;  /* #F3F4F6 */
-    --ui-bg-tertiary              : 229 231 235;  /* #E5E7EB */
-  }
+/* To change any color for dark mode, change the color below */
+:root.dark {
+  /* Text color on dark mode */
+  --ui-bg-primary: 10 10 20; /* #0A0A14 */
+  --ui-bg-secondary: 30 30 40; /* #1E1E28 */
+  --ui-bg-tertiary: 55 55 65; /* #373741 */
+  --ui-bg-primary-alt: 250 250 250; /* #FAFAFA */
+  --ui-bg-secondary-alt: 238 238 238; /* #EEEEEE */
+  --ui-bg-tertiary-alt: 224 224 224; /* #E0E0E0 */
 
-  /* To change any color for dark mode, change the color below */
-  :root.dark {
-    /* Text color on dark mode */
-    --ui-text-default             : 229 231 235;  /* #E5E7EB */
-
-    /* Background colors on dark mode */
-    --ui-bg-primary               : 8 8 24;       /* #080818 */
-    --ui-bg-secondary             : 22 22 38;     /* #161626 */
-    --ui-bg-tertiary              : 32 32 48;     /* #202030 */
-  }
+  --ui-text-default: 245 245 245; /* #F5F5F5 */
+  --ui-text-alt: 75 75 75; /* #4B4B4B */
+  --ui-text-muted: 175 175 175; /* #AFAFAF */
 }
 ```
 </Code>
 
-  <Alert class="mb-0" type="info" variant="borderStart" icon={false} round = "none" dismissible={false}>Brand colors are available everywhere. Text colors are not available for background and vice versa.</Alert>
+  <Alert class="mb-0" type="info" variant="borderStart" icon={false} round = "none" dismissible={false}>The colors prefixed with "--ui-text" are only available for text.<br>The colors prefixed with "--ui-bg" are only available for background.</Alert>
   </Block>
-  <Block title="Use of Custom Colors" id="useColors">
+  <Block title="Available CSS variables and Their Colors">
     <p class="not-prose">You can use custom classes to apply these colors in your design. The Components library includes the following classes:</p>
     <Table class="my-0">
       <THead>
@@ -70,34 +222,6 @@ description: Customize your Svelte app's appearance with TheUI-Svelte's Colors a
         </TR>
       </THead>
       <TBody>
-        <TR>
-          <TD><span class="not-prose whitespace-nowrap"><code>.[...]-brand</code></span></TD>
-          <TD>Brand color for the component. For example, use the <span class="not-prose"><code>.bg-brand</code></span> class to apply brand color on the background, <span class="not-prose"><code>.text-brand</code></span> for the foreground, etc.</TD>
-        </TR>
-        <TR>
-          <TD><span class="not-prose whitespace-nowrap"><code>.[...]-brand-active</code></span></TD>
-          <TD>Slightly deeper or lighter version of the brand color. Use it to express any state like active or hover of an element. For example, use the <span class="not-prose"><code>.bg-brand-active</code></span> class to apply brand color on the background, <span class="not-prose"><code>.text-brand-active</code></span> for the foreground, etc.</TD>
-        </TR>
-        <TR>
-          <TD><span class="not-prose whitespace-nowrap"><code>.[...]-brand-secondary</code></span></TD>
-          <TD>Secondary brand color for the components. For example, use <span class="not-prose"><code>.bg-brand-secondary</code></span> class to apply brand color on the background, <span class="not-prose"><code>.text-brand-secondary</code> for foreground</span>, etc.</TD>
-        </TR>
-        <TR>
-          <TD><span class="not-prose whitespace-nowrap"><code>.[...]-brand-secondary-active</code></span></TD>
-          <TD>Same as the <span class="not-prose whitespace-nowrap"><code>.[...]-brand-active</code></span>, but it is for secondary brand color.</TD>
-        </TR>
-        <TR>
-          <TD><span class="not-prose whitespace-nowrap"><code>.text-on-brand</code></span></TD>
-          <TD>Foreground color for the background color <span class="not-prose"><code>.bg-brand</code></span>.</TD>
-        </TR>
-        <TR>
-          <TD><span class="not-prose whitespace-nowrap"><code>.text-on-brand-secondary</code></span></TD>
-          <TD>Foreground color for the background color <span class="not-prose"><code>.bg-brand-secondary</code></span>.</TD>
-        </TR>
-        <TR>
-          <TD><span class="not-prose whitespace-nowrap"><code>.text-default</code></span></TD>
-          <TD>Default text/foreground color for the component library.</TD>
-        </TR>
         <TR>
           <TD><span class="not-prose whitespace-nowrap"><code>.bg-primary</code></span></TD>
           <TD>Default/primary background color.</TD>
@@ -110,24 +234,60 @@ description: Customize your Svelte app's appearance with TheUI-Svelte's Colors a
           <TD><span class="not-prose whitespace-nowrap"><code>.bg-tertiary</code></span></TD>
           <TD>Tertiary background color.</TD>
         </TR>
+        <TR>
+          <TD><span class="not-prose whitespace-nowrap"><code>.bg-primary-alt</code></span></TD>
+          <TD>Default/primary background color.</TD>
+        </TR>
+        <TR>
+          <TD><span class="not-prose whitespace-nowrap"><code>.bg-secondary-alt</code></span></TD>
+          <TD>Secondary background color.</TD>
+        </TR>
+        <TR>
+          <TD><span class="not-prose whitespace-nowrap"><code>.bg-tertiary-alt</code></span></TD>
+          <TD>Tertiary background color.</TD>
+        </TR>
+        <TR>
+          <TD><span class="not-prose whitespace-nowrap"><code>.text-default</code></span></TD>
+          <TD>Default text/foreground color for the component library.</TD>
+        </TR>
+        <TR>
+          <TD><span class="not-prose whitespace-nowrap"><code>.text-alt</code></span></TD>
+          <TD>Default text/foreground color for the component library.</TD>
+        </TR>
+        <TR>
+          <TD><span class="not-prose whitespace-nowrap"><code>.text-muted</code></span></TD>
+          <TD>Default text/foreground color for the component library.</TD>
+        </TR>
       </TBody>
     </Table>
   </Block>
 
-  <Block title="Color Customization" id="customization">
-    <p class="not-prose">To customize the colors, change the value of the corresponding CSS variable. For example, if your brand color is <code>rgb(255, 0, 0)</code> and you want the default text color to be <code>rgb(0, 0, 0)</code>, update your <code>./src/app.css</code> or <code>./src/app.postcss</code> file (the file containing your TailwindCSS styles) as follows:.</p>
-<Code title="Customize CSS variables">
+  <Block title="CSS Variables Customization">
+    <p class="not-prose">
+    To customize colors, update the corresponding CSS variable. For example, to change the bg-primary color for light and dark modes:</p>
+<Code title="./src/app.postcss">
 
 ```css
---ui-brand : 255 0 0;
---ui-text-default : 0 0 0;
+:root {
+  --ui-bg-primary : 240 252 252;
+  --ui-text-default : 15, 15, 15;
+}
+:root.dark {
+  --ui-bg-primary : 15, 8, 8;
+  --ui-text-default : 250, 240, 245;
+}
 ```
 </Code>
-    <p class="not-prose">That's it! All components using the brand color and the default text color will now reflect the new colors. To change other colors, follow the same process.</p>
+    <p class="not-prose">All components using the <code>.bg-primary</code> and <code>.text-default</code> classes will now reflect the new colors. Follow the same process to change other colors.</p>
   </Block>
   <svelte:fragment slot="sidebar">
-    <a href="#colorsAndValues">Colors & Default Values</a>
-    <a href="#useColors">Use custom colors</a>
-    <a href="#customization">Color Customization</a>
+    <a href="#generate-color-with-shades">Generate Color With Shades</a>
+    <a href="#available-color-shades" class="pl-4">Available Color Shades</a>
+    <a href="#new-shaded-colors" class="pl-4">Adding New Shaded Colors</a>
+    <a href="#change-update-a-color" class="pl-4">Change/Update a Color</a>
+    <a href="#removing-a-color" class="pl-4">Removing A Colors</a>
+    <a href="#generate-color-without-shades">Generate Color Without Shades</a>
+    <a href="#available-css-variables-and-their-colors" class="pl-4">Available CSS variables</a>
+    <a href="#css-variables-customization" class="pl-4">CSS Variables Customization</a>
   </svelte:fragment>
 </DocContainer>

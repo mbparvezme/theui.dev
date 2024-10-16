@@ -36,6 +36,6 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"theui-svelte": "^1.0.0-rc.11"
+		"theui-svelte": "^1.0.0-beta.13"
 	}
 }

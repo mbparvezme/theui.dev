@@ -1,7 +1,7 @@
 <script lang="ts">
   import "theui-svelte/style"; // Add this line inside script tag
   import "../app.postcss";
-  import {Navbar, NavBrand, NavLinkGroup, NavLink, Notification, DarkMode, Tooltip} from "theui-svelte"
+  import {Navbar, NavBrand, NavContainer, NavLink, Notification, DarkMode, Tooltip} from "theui-svelte"
   import Footer from "$lib/ui/Footer.svelte";
 </script>
 
@@ -21,9 +21,9 @@
 <!-- Top and left position value should be removed -->
 <Navbar class="bg-gray-100 dark:bg-gray-800 z-[21]">
   <NavBrand>THEUI SVELTE</NavBrand>
-  <NavLinkGroup align="right">
+  <NavContainer align="right">
     <NavLink href="/docs">Documentation</NavLink>
-  </NavLinkGroup>
+  </NavContainer>
   <DarkMode />
 </Navbar>
 

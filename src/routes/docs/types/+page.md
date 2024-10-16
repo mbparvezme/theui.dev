@@ -23,10 +23,15 @@ description: Understand the various component types in TheUI-Svelte. Learn how t
 ```ts
 // Animation speed
 export type ANIMATE_SPEED = undefined | false | "slower" | "slow" | "normal" | "fast" | "faster";
+
 // Rounded corner
 export type ROUNDED = "sm" | "md" | "lg" | "xl" | "full" | "none" | undefined;
+
 // Shadow size
 export type SHADOW = "sm" | "md" | "lg" | "xl" | "2xl" | "inner" | "none" | undefined;
+
+// Page pre-load
+export type PRELOAD = "" | "off" | "tap" | "hover";
 ```
 </Code>
   </Block>
@@ -56,6 +61,26 @@ export type SEO = {
 ```
 </Code>
   </Block> -->
+  <Block title="Breadcrumb Data Types">
+<Code title="Type definition for 'Breadcrumb Data'">
+
+```ts
+export type BREADCRUMB_DATA = Array<{text: string; url?: string;}>;
+```
+</Code>
+  </Block>
+  <Block title="Button Data Types">
+<Code title="Type definition for 'Button'">
+
+```ts
+// Button size types
+export type BUTTON_SIZE = "xs" | "sm" | "md" | "lg" | "xl" | "0";
+
+// Button variant types
+export type BUTTON_VARIANT = 'elevated' | 'outline' | 'text' | 'filled';
+```
+</Code>
+  </Block>
   <Block title="Dropdown">
 <Code title="Type definition for 'Dropdown'">
 
@@ -79,14 +104,27 @@ export type DROPDOWN_ITEM = {
 ```
 </Code>
   </Block>
-  <Block title="Breadcrumb Data Types">
-<Code title="Type definition for 'Breadcrumb'">
+  <Block title="Input Data Types">
+<Code title="Type definition for 'Breadcrumb Data'">
 
 ```ts
-export type BREADCRUMB_DATA = Array<{
-    text: string;
-    url?: string;
-}>;
+// Input config type
+export type INPUT_CONFIG = {
+  animate?: ANIMATE_SPEED;
+  grow?: boolean;
+  labelClasses?: string;
+  reset?: boolean;
+  rounded?: ROUNDED;
+  size?: "sm" | "md" | "lg" | "xl";
+  variant?: INPUT_VARIANT;
+};
+
+// Input type types
+export type INPUT_TYPE = 'color' | 'date' | 'datetime-local' | 'email' | 'file' | 'hidden' | 'image' | 'month' | 'number' | 'password' | 'reset' | 'submit' | 'tel' | 'text' | 'time' | 'url' | 'week' | 'search';
+
+// Input variant
+export type INPUT_VARIANT = "bordered" | "filled" | "flat";
+
 ```
 </Code>
   </Block>
@@ -104,6 +142,14 @@ export type NOTIFY_CONFIG = {
 
 // Types of Notification
 export type NOTIFICATION_TYPE = "error" | "info" | "success" | "warning";
+```
+</Code>
+  </Block>
+  <Block title="Select Data Types">
+<Code title="Type definition for 'Breadcrumb Data'">
+
+```ts
+export type SELECT_DATA = { disabled?: boolean; selected?: boolean; text: string; value?: any } | string;
 ```
 </Code>
   </Block>
@@ -144,11 +190,11 @@ export type TAB_CONFIG = {
 ```
 </Code>
   </Block>
-  <Block title="Form Input Data type">
-<Code>
+  <Block title="Text editor tools type">
+<Code title=".ts">
 
 ```ts
-
+export type Tools = "blockquote" | "code" | "codeblock" | "link" | "horizontalLine" | "youtube" | "highlighter" | "color" | "redoUndo";
 ```
 </Code>
   </Block>

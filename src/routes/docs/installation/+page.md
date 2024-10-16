@@ -13,13 +13,13 @@ description: Follow our step-by-step guide to install TheUI-Svelte component lib
   export let data: PageData;
 </script>
 
-<DocContainer setupLink={false}> 
-  <Head title="Installation" text="Install the SvelteKit Components library in your project or start a new project with the boilerplate template. Install it to build fast and deliver faster." edit_url={data.edit_url} />
+<DocContainer setupLink={false}>
+  <Head title="Installation" text="Install the <b>theui-svelte</b> component library in your project or start a new project with the boilerplate template. Install it to build fast and deliver faster." edit_url={data.edit_url} />
 
   <Block title="Installation">
     <div>
       <p class="not-prose">Follow one of the two methods to install the component library:</p>
-      <ol class="my-0">
+      <ol>
         <li class="my-0">Use the boilerplate from Github.</li>
         <li class="my-0">Manually install the component library from scratch.</li>
       </ol>
@@ -71,7 +71,7 @@ npx tailwindcss init -p
 npm install
 ```
 </Code>
-<p class="not-prose">Install TheUI Sveltekit Component:</p>
+<p class="not-prose">Install the component library:</p>
 <Code title="Install theui-svelte">
 
 ```bash
