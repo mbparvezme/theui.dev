@@ -79,8 +79,8 @@ description: Manage stacking contexts in your Svelte application with TheUI-Svel
   <Block>
   <h5 class="mb-0">Important Notes</h5>
     <ul class="mt-0">
-      <li class="my-0">The z-index values are predefined to ensure proper stacking and functionality of the components.</li>
-      <li class="my-0">Modifying these values is discouraged as it may cause layout issues, particularly with component overlays.</li>
+      <li class="my-0">The predefined z-index values ensure components stack and function correctly.</li>
+      <li class="my-0"><b>Modifying these values is discouraged</b> to prevent layout and overlay issues</li>
     </ul>
   </Block>
 </DocContainer>

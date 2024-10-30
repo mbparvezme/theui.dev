@@ -11,7 +11,6 @@ description: Customize your Svelte app's appearance with TheUI-Svelte's Colors a
   import Block from "$lib/ui/doc/Block.svelte"
   import Code from "$lib/ui/doc/Code.svelte"
   import { Alert, Table, TBody, TR, TD, THead } from "theui-svelte"
-  import { processID } from "$lib";
   export let data: PageData;
 </script>
 
@@ -32,7 +31,7 @@ description: Customize your Svelte app's appearance with TheUI-Svelte's Colors a
 
   <Block title="Generate Color With Shades">
     <p class="not-prose">This method creates a full palette by varying the lightness and darkness of a base color, similar to TailwindCSS's native colors. Each color can have shades like X-50, X-100, X-200, X-300... up to X-950.</p>
-    <h3 class="mt-4 mb-0" id={processID("Available Color Shades", false)}>Available Color Shades</h3>
+    <h3 class="mt-4 mb-0" id="available-color-shades">Available Color Shades</h3>
     <p class="not-prose">By default, the <b>theui-svelte</b> includes the following eight (8) shaded colors:</p>
     <Table class="my-0">
       <THead>
@@ -103,7 +102,7 @@ description: Customize your Svelte app's appearance with TheUI-Svelte's Colors a
         </TR>
       </TBody>
     </Table>
-    <h3 class="mt-4 mb-0" id={processID("Adding New Shaded Colors", false)}>Adding New Shaded Colors</h3>
+    <h3 class="mt-4 mb-0" id="new-shaded-colors">Adding New Shaded Colors</h3>
     <p class="not-prose">Use the <code>twShades()</code> function in your **TailwindCSS configuration** file to generate a new color palette. For example:</p>
 <Code title="tailwind.config.cjs">
 
@@ -133,7 +132,7 @@ module.exports = {
 
 ```
 </Code>
-    <h3 class="mt-4 mb-0" id={processID("Update Existing Colors", false)}>How to Update Existing Colors</h3>
+    <h3 class="mt-4 mb-0" id="change-update-a-color">How to Update Existing Colors</h3>
     <p class="not-prose">To change a default shaded color, simply update its value in the TailwindCSS configuration: For example, to update the <code>brand-primary</code> color to <code>#FF0000</code></p>
 <Code title="tailwind.config.cjs">
 
@@ -154,7 +153,7 @@ module.exports = {
 }
 ```
 </Code>
-    <h3 class="mt-4 mb-0" id={processID("Remove Shaded Colors", false)}>How to Remove a Shaded Color</h3>
+    <h3 class="mt-4 mb-0" id="removing-a-color">How to Remove a Shaded Color</h3>
     <p class="not-prose">Set the color value to <code>null</code> in your configuration to remove it from the palette:</p>
 <Code title="tailwind.config.cjs">
 
@@ -180,17 +179,101 @@ module.exports = {
 
   <Block title="Generate Color Without Shades">
     <p class="not-prose">If your design requires simpler colors without multiple shades, you can declare them directly in the style file and make them usable from the <code>tailwind.config.cjs</code> file. In this way, you can use a specific color without generating a full palette.</p>
+    <h3 class="mt-4 mb-0" id="available-color-shades">Available CSS variables</h3>
+    <p class="not-prose">The <b>theui-svelte</b> library leverages CSS variables to provide flexible and maintainable styling. To avoid conflicts with other libraries or frameworks, all variables are prefixed with <code>--ui</code>. Below is a list of key CSS variables available in the component library:</p>
+<Code title="CSS variables">
 
-  <h3 class="mt-4 mb-0" id={processID("Add Non-shaded Color", false)}>Add Non-shaded Color</h3>
+```css
+:root {
+  --ui-bg-primary: 250 250 250; /* #FAFAFA */
+  --ui-bg-secondary: 238 238 238; /* #EEEEEE */
+  --ui-bg-tertiary: 224 224 224; /* #E0E0E0 */
+  --ui-bg-primary-alt: 10 10 20; /* #0A0A14 */
+  --ui-bg-secondary-alt: 30 30 40; /* #1E1E28 */
+  --ui-bg-tertiary-alt: 55 55 65; /* #373741 */
+
+  --ui-text-default: 33 33 33; /* #212121 */
+  --ui-text-alt: 189 189 189; /* #BDBDBD */
+  --ui-text-muted: 117 117 117; /* #757575 */
+}
+
+/* To change any color for dark mode, change the color below */
+:root.dark {
+  /* Text color on dark mode */
+  --ui-bg-primary: 10 10 20; /* #0A0A14 */
+  --ui-bg-secondary: 30 30 40; /* #1E1E28 */
+  --ui-bg-tertiary: 55 55 65; /* #373741 */
+  --ui-bg-primary-alt: 250 250 250; /* #FAFAFA */
+  --ui-bg-secondary-alt: 238 238 238; /* #EEEEEE */
+  --ui-bg-tertiary-alt: 224 224 224; /* #E0E0E0 */
+
+  --ui-text-default: 245 245 245; /* #F5F5F5 */
+  --ui-text-alt: 75 75 75; /* #4B4B4B */
+  --ui-text-muted: 175 175 175; /* #AFAFAF */
+}
+```
+</Code>
+
+  <Alert class="mb-0" type="info" theme="light" variant="borderStart" icon={false} dismissible={false}>The colors prefixed with "--ui-text" are only available for text.<br>The colors prefixed with "--ui-bg" are only available for background.</Alert>
+  <h3 class="mt-4 mb-0" id="css-variables-usages">Usages</h3>
+  <p class="not-prose">You can use custom classes to apply these colors in your design. The Components library includes the following classes:</p>
+    <Table class="my-0">
+      <THead>
+        <TR>
+          <TD>Class</TD>
+          <TD>Description</TD>
+        </TR>
+      </THead>
+      <TBody>
+        <TR>
+          <TD><span class="not-prose whitespace-nowrap"><code>.bg-primary</code></span></TD>
+          <TD>Default/primary background color.</TD>
+        </TR>
+        <TR>
+          <TD><span class="not-prose whitespace-nowrap"><code>.bg-secondary</code></span></TD>
+          <TD>Secondary background color.</TD>
+        </TR>
+        <TR>
+          <TD><span class="not-prose whitespace-nowrap"><code>.bg-tertiary</code></span></TD>
+          <TD>Tertiary background color.</TD>
+        </TR>
+        <TR>
+          <TD><span class="not-prose whitespace-nowrap"><code>.bg-primary-alt</code></span></TD>
+          <TD>Default/primary background color.</TD>
+        </TR>
+        <TR>
+          <TD><span class="not-prose whitespace-nowrap"><code>.bg-secondary-alt</code></span></TD>
+          <TD>Secondary background color.</TD>
+        </TR>
+        <TR>
+          <TD><span class="not-prose whitespace-nowrap"><code>.bg-tertiary-alt</code></span></TD>
+          <TD>Tertiary background color.</TD>
+        </TR>
+        <TR>
+          <TD><span class="not-prose whitespace-nowrap"><code>.text-default</code></span></TD>
+          <TD>Default text/foreground color for the component library.</TD>
+        </TR>
+        <TR>
+          <TD><span class="not-prose whitespace-nowrap"><code>.text-alt</code></span></TD>
+          <TD>Default text/foreground color for the component library.</TD>
+        </TR>
+        <TR>
+          <TD><span class="not-prose whitespace-nowrap"><code>.text-muted</code></span></TD>
+          <TD>Default text/foreground color for the component library.</TD>
+        </TR>
+      </TBody>
+    </Table>
+
+  <h3 class="mt-4 mb-0" id="add-css-vars">Add New Non-shaded Color</h3>
   <p class="not-prose">Extend your styles using the :root selector and define your own CSS variables. Take a look at the color format. It is a RGB color but written in a different way. Because, in this way we can use the opacity with a color. For more, please <a href="/">read the TailwindCSS doc</a>.</p>
 <Code title="./src/app.postcss">
 
 ```css
 :root {
-  --ui-bg-primary: 250 250 250;
+  --ui-custom-bg:#EFEFEF;
 }
 :root.dark {
-  --ui-bg-primary: 10 10 20;
+  --ui-custom-bg:#212121;
 }
 ```
 </Code>
@@ -204,28 +287,67 @@ module.exports = {
   theme: {
     extend: {
       backgroundColor: {
-        "primary": twShades('--ui-bg-primary')
+        "custom": twShades('--ui-custom-bg')
       }
     }
   },
   plugins: []
 }
 
-// Usage: bg-primary or <div class="bg-primary">...</div>
+// Usage: bg-custom or <div class="bg-custom">...</div>
 ```
 </Code>
 
-<blockquote class="text-gray-500 mt-0">Are you surprised that why to write the color in this format instead of proper RGB format? It is because, this is how TailwindCSS works! For more, <a href="https://tailwindcss.com/docs/customizing-colors#using-css-variables" target="_blank" class="underline underline-offset-4 text-gray-500">read this doc</a>.</blockquote>
+  <h3 class="mt-4 mb-0" id="add-css-vars">Delete Non-shaded Color</h3>
+  <p class="not-prose">Simply remove the variable declaration from your styles and set the corresponding color to null in the <code>tailwind.config.cjs</code>! For example, the following code will remove the <b>primary</b> background color from the system.</p>
+<Code title="tailwind.config.cjs">
 
+```js
+/** @type {import('tailwindcss').Config} */
+
+module.exports = {
+  content: [],
+  theme: {
+    extend: {
+      backgroundColor: {
+        "primary": null
+      }
+    }
+  },
+  plugins: []
+}
+
+// Usage: bg-custom or <div class="bg-custom">...</div>
+```
+</Code>
+
+
+  <h3 class="mt-4 mb-0" id="css-variables-usages">CSS Variables Customization</h3>
+    <p class="not-prose">
+    To customize colors, update the corresponding CSS variable. For example, to change the bg-primary color for light and dark modes:</p>
+<Code title="./src/app.postcss">
+
+```css
+:root {
+  --ui-bg-primary : 240 252 252;
+  --ui-text-default : 15, 15, 15;
+}
+:root.dark {
+  --ui-bg-primary : 15, 8, 8;
+  --ui-text-default : 250, 240, 245;
+}
+```
+</Code>
+    <p class="not-prose">All components using the <code>.bg-primary</code> and <code>.text-default</code> classes will now reflect the new colors. Follow the same process to change other colors.</p>
   </Block>
   <svelte:fragment slot="sidebar">
-    <a href={processID("Color Customization Methods")}>Color Customization Methods</a>
-    <a href={processID("Generate Color With Shades")}>Generate Color With Shades</a>
-    <a href={processID("Available Color Shades")} class="pl-4">Available Color Shades</a>
-    <a href={processID("Adding New Shaded Colors")} class="pl-4">Adding New Shaded Colors</a>
-    <a href={processID("Update Existing Colors")} class="pl-4">Update Existing Colors</a>
-    <a href={processID("Remove Shaded Colors")} class="pl-4">Removing A Colors</a>
-    <a href={processID("Generate Color Without Shades")}>Generate Color Without Shades</a>
-    <a href={processID("Add Non-shaded Color")} class="pl-4">Add non-shaded color</a>
+    <a href="#generate-color-with-shades">Generate Color With Shades</a>
+    <a href="#available-color-shades" class="pl-4">Available Color Shades</a>
+    <a href="#new-shaded-colors" class="pl-4">Adding New Shaded Colors</a>
+    <a href="#change-update-a-color" class="pl-4">Change/Update a Color</a>
+    <a href="#removing-a-color" class="pl-4">Removing A Colors</a>
+    <a href="#generate-color-without-shades">Generate Color Without Shades</a>
+    <a href="#css-variables-usages" class="pl-4">Available CSS variables</a>
+    <a href="#css-variables-customization" class="pl-4">CSS Variables Customization</a>
   </svelte:fragment>
 </DocContainer>
