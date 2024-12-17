@@ -8,3 +8,9 @@ description: Begin your journey with TheUI-Svelte. Learn how to quickly set up a
 - list 1
 - list 2
 - list 3
+
+<br>
+
+```js
+console.log("Hello!")
+```
