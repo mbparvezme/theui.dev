@@ -1,13 +1,19 @@
+---
+title: TheUI Svelte Introduction
+dir: ".lib/pages"
+description: Begin your journey with "theui-svelte". Learn how to quickly set up and integrate "theui-svelte" component library into your Sveltekit projects.
+---
+
 <script lang="ts">
   import type { PageData } from "../$types";
 
   import DocLayout from "$lib/ui/doc/DocLayout.svelte";
   import DocHead from "$lib/ui/doc/Head.svelte";
   import DocBlock from "$lib/ui/doc/Block.svelte";
-  let { data }: {data: PageData } = $props();
+  let { components, data }: {components: any, data: PageData } = $props();
 </script>
 
-<DocLayout>
+<DocLayout setupLink={false}>
 
   <DocHead title="theui-svelte: Svelte 5 Component Library" text="Kickstart your development with the theui-svelte, a comprehensive component library designed for the Svelte ecosystem. Leveraging the power of Svelte and TailwindCSS, the theui-svelte accelerates your development process, helping you build and deliver projects faster." />
 
@@ -34,26 +40,28 @@
   <DocBlock title="Components">
     <h4 class="mb-0">UI COMPONENTS</h4>
     <div class="grid grid-cols-3">
-      {#each data.components.components.links as component}
+      {#each components.components.links as component}
         <a class="not-prose" href={component.link}>{component.text}</a>
       {/each}
     </div>
     <h4 class="mb-0">FORM ELEMENTS</h4>
     <div class="grid grid-cols-3">
-      {#each data.components.forms.links as component}
+      {#each components.forms.links as component}
         <a class="not-prose" href={component.link}>{component.text}</a>
       {/each}
     </div>
     <h4 class="mb-0">UTILITIES</h4>
     <div class="grid grid-cols-3">
-      {#each data.components.utilities.links as component}
+      {#each components.utilities.links as component}
         <a class="not-prose" href={component.link}>{component.text}</a>
       {/each}
     </div>
   </DocBlock>
 
   {#snippet sidebar()}
-    This is sidebar!
+    <a href="#introduction">Introduction</a>
+    <a href="#features">Features</a>
+    <a href="#components">Components</a>
   {/snippet}
 
 </DocLayout>
