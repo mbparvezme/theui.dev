@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Table } from 'theui-svelte-test';
+  import { Table } from 'theui-svelte';
 
   interface Props {
     type?: 'props' | 'slots',

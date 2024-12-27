@@ -5,14 +5,14 @@ import type { Config } from 'tailwindcss';
 export default {
   content: [
     './src/**/*.{html,js,svelte,ts}',
-    "./node_modules/theui-svelte-test/**/*.{html,js,svelte,ts}",
+    "./node_modules/theui-svelte/**/*.{html,js,svelte,ts}",
   ],
 
   theme: {
     extend: {}
   },
 
-  presets: [require("theui-svelte-test/preset")],
+  presets: [require("theui-svelte/preset")],
 
   plugins: [typography, forms]
 } satisfies Config;

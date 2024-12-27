@@ -1,7 +1,8 @@
 import type { LayoutServerLoad } from './$types';
-import { PUBLIC_GITHUB_BASE } from "$env/static/public";
+import { PUBLIC_GITHUB_BASE } from '$env/static/public';
 
 export const load: LayoutServerLoad = async ({ fetch, url }) => {
+
   let component: object = {};
   const components = await fetch("/data/components.json", {headers: { "Accept": "application/json" }}).then(data => data.json());
 

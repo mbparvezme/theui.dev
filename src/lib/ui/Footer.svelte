@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Container, Svg } from "theui-svelte-test"
+  import { Container, Svg } from "theui-svelte"
 </script>
 
 <footer class="bg-slate-900 dark:bg-secondary text-gray-100">

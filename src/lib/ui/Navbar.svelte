@@ -1,5 +1,5 @@
 <script lang="ts">
-  import {Navbar, NavBrand, NavLinkGroup, NavDropdown, NavLink, NavToggle, DarkMode} from "theui-svelte-test"
+  import {Navbar, NavBrand, NavLinkGroup, NavDropdown, NavLink, NavToggle, DarkMode} from "theui-svelte"
 </script>
 
 <Navbar config={{ animateSpeed: "slower", scrollBehavior: "shrinkOnScrollDown", height: "lg", class: "bg-primary" }}>

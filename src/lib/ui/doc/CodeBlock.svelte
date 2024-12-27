@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { Snippet } from "svelte";
   import {randomString} from "$lib";
-  import { Button, Svg, notify } from "theui-svelte-test";
+  import { Button, Svg, notify } from "theui-svelte";
 
   interface Props {
     children?: Snippet
