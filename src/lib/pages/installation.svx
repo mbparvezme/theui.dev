@@ -62,18 +62,51 @@ npx sv create my-app
 cd my-app
 # Install node modules
 npm install
-```
-</Code>
 
-<Code title="Install theui-svelte">
-
-```bash
 # Install theui-svelte
 npm install theui-svelte
 ```
 </Code>
+
+<br>
+
+  <div>
     <p class="not-prose font-semibold">2.2 Configuration</p>
-    <p class="not-prose">Open the TailwindCSS configuration file called <code>tailwind.config.cjs</code> and replace all of its existing content with the code provided below.</p>
+    <p class="not-prose">To integrate <code>theui-svelte</code> with your project, update your TailwindCSS configuration file by adding the following:</p>
+
+    <ul class="ps-0">
+      <li class="not-prose">Include the path to <code>theui-svelte</code> components <code>{"./node_modules/theui-svelte/**/*.{html,js,svelte,ts}"}</code> in the content array.</li>
+      <li class="not-prose">Add the preset <code>presets: [require("theui-svelte/preset")]</code> from <code>theui-svelte</code>.</li>
+    </ul>
+  </div>
+<Code title="tailwind.config.cjs">
+
+```diff
+const config = {
+    content: [
+        "./src/**/*.{html,js,svelte,ts}",
++       "./node_modules/theui-svelte/**/*.{html,js,svelte,ts}"
+    ],
++   presets: [require("theui-svelte/preset")],
+    darkMode: "class",
+    theme: {
+        extend: {}
+    },
+    plugins: []
+};
+```
+</Code>
+
+  <p>And thats all. You are all set and ready to start your awesome project now. Now run your application with the following command:</p>
+
+<Code title="Install SvelteKit">
+
+```bash
+# Run SvelteKit project
+npm run dev
+```
+</Code>
+
   </DocBlock>
 
   {#snippet sidebar()}
