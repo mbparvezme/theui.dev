@@ -20,10 +20,16 @@
   {#if sidebar}
   <aside class="shrink-0 hidden lg:block overflow-y-auto top-32 lg:sticky" style="height: calc(100vh - 160px)">
     <div class="flex flex-col gap-y-2 text-sm page-section">
-      <h4 class="mt-0">ON THIS PAGE</h4>
+      <h6 class="mt-0 flex justify-between items-center">
+        <span class="font-bold text-xs">ON THIS PAGE</span>
+        <a class="text-[9px]" href="#">Top &uparrow;</a>
+      </h6>
       {#if setupLink}
       <a href="#setup">Setup</a>
       {/if}
+      <!-- <Button size="xs" href="#" class="ms-auto no-underline bg-transparent shadow-none flex hover:bg-transparent gap-2 text-default opacity-40 hover:opacity-100 transition-opacity duration-300">
+        To top &uparrow;
+      </Button> -->
       {@render sidebar()}
     </div>
   </aside>

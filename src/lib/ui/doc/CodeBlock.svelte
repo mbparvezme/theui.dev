@@ -1,42 +1,23 @@
 <script lang="ts">
   import type { Snippet } from "svelte";
   import {randomString} from "$lib";
-  import { Button, Svg, notify } from "theui-svelte";
+  import { Svg } from "theui-svelte";
 
-  interface Props {
-    children?: Snippet
-    title?: string,
-    copyBtn?: boolean,
-    space?: 'both' | 'top' | 'bottom' | 'none',
-  }
-
-  let {
-    children,
-    title = "Svelte",
-    copyBtn = true,
-    space = 'none',
-  }: Props = $props()
-
-  // export let title: string|undefined = "Svelte";
-  // export let copyBtn: boolean = true;
-  // export let space: 'both' | 'top' | 'bottom' | 'none' = 'none'
+  interface Props {children?: Snippet, title?: string, copyBtn?: boolean, space?: 'both' | 'top' | 'bottom' | 'none'};
+  let {children, title = "Svelte", copyBtn = true, space = 'none'}: Props = $props();
 
   let id: string = randomString("code");
   let copied = $state(false);
 
-  const copy = $derived(() => navigator.clipboard.writeText((document?.getElementById(id) as HTMLElement).innerText)
-  .then(() => {
+  const copy = $derived(() => navigator.clipboard.writeText((document?.getElementById(id) as HTMLElement).innerText).then(() => {
     copied = true
     setTimeout(()=>{copied = false}, 3000)
   })
   .catch(err => console.error("Error copying text:", err)));
 </script>
 
-<div class="relative" class:my-6={space=="both"} class:mt-6={space=="top"} class:mb-6={space=="bottom"}>
-  <div {id}>
-    {@render children?.()}
-  </div>
-  <div class="bg-gray-100/20 px-4 h-8 absolute top-0 w-full flex items-center justify-between rounded-t-md">
+<div {id} class="relative" class:my-6={space=="both"} class:mt-6={space=="top"} class:mb-6={space=="bottom"}>
+  <div class="bg-slate-600 dark:bg-slate-900 px-4 h-8 w-full flex items-center justify-between rounded-t-md">
     {#if title}<span class="not-prose text-gray-100 text-xs font-semibold mr-auto">{@html title}</span>{/if}
     <div class="ml-auto">
       {#if copyBtn}
@@ -50,4 +31,5 @@
       {/if}
     </div>
   </div>
+  {@render children?.()}
 </div>

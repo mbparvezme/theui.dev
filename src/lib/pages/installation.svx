@@ -1,0 +1,84 @@
+---
+title: theui-svelte Installation guide
+dir: ".lib/pages"
+description: Follow our step-by-step guide to install TheUI-Svelte component library. Get started with easy installation instructions for seamless integration.
+---
+
+<script lang="ts">
+  import DocLayout from "$lib/ui/doc/DocLayout.svelte";
+  import DocHead from "$lib/ui/doc/Head.svelte";
+  import DocBlock from "$lib/ui/doc/Block.svelte";
+  import Code from "$lib/ui/doc/CodeBlock.svelte";
+  let { components, edit_url }: {components: any, edit_url?: string } = $props();
+</script>
+
+<DocLayout setupLink={false}>
+
+  <DocHead title="Installation" text="Install the <b>theui-svelte</b> component library in your project or start a new project with the boilerplate template. Install it to build fast and deliver faster." {edit_url} />
+
+  <DocBlock title="Installation">
+    <div>
+      <p class="not-prose">Follow one of the two methods to install the component library:</p>
+      <ol class="my-0">
+        <li class="my-0">Github boilerplate.</li>
+        <li class="my-0">Manually installation.</li>
+      </ol>
+    </div>
+  </DocBlock>
+
+  <DocBlock title="1. Use Github Boilerplate" id="boilerplate">
+    <p class="not-prose">To install the boilerplate template, open your terminal and use the following command, replacing <code class="text-nowrap">my-app</code> with your desired project name.</p>
+
+<Code title="Clone from Github">
+
+```bash
+# Clone the project
+git clone https://github.com/mbparvezme/theui-svelte-boilerplate.git my-app
+# Navigate to the project directory
+cd my-app
+# Install node modules
+npm install
+# Run the application
+npm run dev
+```
+</Code>
+  </DocBlock>
+
+  <DocBlock title="2. Manual Installation" id="manualInstallation">
+    <div>
+      <p class="not-prose">Easily add theui-svelte to your project via a GitHub boilerplate or manual installation. For manual setup:</p>
+      <ul class="my-0">
+        <li class="my-0 not-prose">Install Sveltekit with TailwindCSS and theui-svelte</li>
+        <li class="my-0 not-prose">Configure Tailwind by updating <code>tailwind.config.cjs</code> and importing <code>theui-svelte/style</code> in <code>+layout.svelte</code>.</li>
+      </ul>
+    </div>
+    <p class="not-prose font-semibold">2.1 Install</p>
+<Code title="Install SvelteKit">
+
+```bash
+# Install Sveltekit
+# Skip this step if you have already installed
+npx sv create my-app
+cd my-app
+# Install node modules
+npm install
+```
+</Code>
+
+<Code title="Install theui-svelte">
+
+```bash
+# Install theui-svelte
+npm install theui-svelte
+```
+</Code>
+    <p class="not-prose font-semibold">2.2 Configuration</p>
+    <p class="not-prose">Open the TailwindCSS configuration file called <code>tailwind.config.cjs</code> and replace all of its existing content with the code provided below.</p>
+  </DocBlock>
+
+  {#snippet sidebar()}
+    <a href="#boilerplate">Boilerplate installation</a>
+    <a href="#manualInstallation">Install manually</a>
+  {/snippet}
+
+</DocLayout>
