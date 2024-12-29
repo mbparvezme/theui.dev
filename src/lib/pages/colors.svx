@@ -1,0 +1,286 @@
+---
+title: Colors
+dir: ".lib/pages"
+description: Customize your Svelte app's appearance with TheUI-Svelte's Colors and Branding guide. Learn how to apply your brand colors effortlessly.
+---
+
+<script lang="ts">
+  import DocLayout from "$lib/ui/doc/DocLayout.svelte";
+  import DocHead from "$lib/ui/doc/Head.svelte";
+  import DocBlock from "$lib/ui/doc/Block.svelte";
+  import Code from "$lib/ui/doc/CodeBlock.svelte";
+  import { processID } from "$lib";
+  import { Alert, Table, TBody, TR, Cell, THead } from "theui-svelte";
+  let { components, edit_url }: {components: any, edit_url?: string } = $props();
+
+  const availableColorClasses = [
+    {
+      className: ".[T]-brand-primary-[S]",
+      shades: "50, 100-900, 950",
+      defaultValue: "#E93E3A",
+      description: "Use this class to apply the primary brand color, e.g., <code>.bg-brand-primary-500</code> for background or <code>.text-brand-primary-500</code> for text.",
+    },
+    {
+      className: ".text-on-brand-primary-[S]",
+      shades: "50, 100-900, 950",
+      defaultValue: "#FFFFFF",
+      description: "A foreground color designed to complement <code>.bg-brand-primary-500</code> as the background.",
+    },
+    {
+      className: ".[T]-brand-secondary-[S]",
+      shades: "50, 100-900, 950",
+      defaultValue: "#E8E838",
+      description: "Apply the secondary brand color, e.g., <code>.bg-brand-secondary-500</code> for background or <code>.text-brand-secondary-500</code> for text.",
+    },
+    {
+      className: ".text-on-brand-secondary-[S]",
+      shades: "50, 100-900, 950",
+      defaultValue: "#2E2105",
+      description: "A foreground color specifically for use with <code>.bg-brand-secondary-500</code> as the background.",
+    },
+    {
+      className: ".[T]-error-[S]",
+      shades: "50, 100-900, 950",
+      defaultValue: "#E53935",
+      description: "Represent errors in your components with these color classes.",
+    },
+    {
+      className: ".[T]-info-[S]",
+      shades: "50, 100-900, 950",
+      defaultValue: "#29B6F6",
+      description: "Use this class for informational or neutral messages.",
+    },
+    {
+      className: ".[T]-success-[S]",
+      shades: "50, 100-900, 950",
+      defaultValue: "#00C853",
+      description: "Ideal for success messages or positive states in your components.",
+    },
+    {
+      className: ".[T]-warning-[S]",
+      shades: "50, 100-900, 950",
+      defaultValue: "#FFC107",
+      description: "Perfect for warning or caution-related messages.",
+    },
+      {
+      className: ".bg-primary",
+      shades: "N/A",
+      defaultValue: "Light: 250 250 250<br>Dark: 10 10 20",
+      description: "A static background color for primary elements, defined via CSS variables.",
+    },
+    {
+      className: ".bg-secondary",
+      shades: "N/A",
+      defaultValue: "Light: 238 238 238<br>Dark: 30 30 40",
+      description: "A static background color for secondary elements, defined via CSS variables.",
+    },
+    {
+      className: ".bg-alt",
+      shades: "N/A",
+      defaultValue: "Light: 10 10 20<br>Dark: 250 250 250",
+      description: "A static background color for alternative sections, defined via CSS variables.",
+    },
+    {
+      className: ".text-default",
+      shades: "N/A",
+      defaultValue: "Light: 33 33 33<br>Dark: 245 245 245",
+      description: "The default text color in our library, defined via CSS variables.",
+    },
+    {
+      className: ".text-alt",
+      shades: "N/A",
+      defaultValue: "Light: 189 189 189<br>Dark: 245 245 245",
+      description: "A static alternative text color, ideal for secondary content.",
+    },
+    {
+      className: ".text-muted",
+      shades: "N/A",
+      defaultValue: "Light: 117 117 117<br>Dark: 175 175 175",
+      description: "A muted text color for less prominent content.",
+    },
+  ];
+</script>
+
+<DocLayout setupLink={false}>
+  <DocHead title="Colors and Branding" text="One of the main features of theui-svelte components library is its customizable color options, allowing you to maintain brand identity and ensure consistent theming efficiently." {edit_url}/>
+
+  <DocBlock>
+    <p class="not-prose">The color system in TailwindCSS is a powerful tool for developers, and we've taken it a step further in our component library! By leveraging TailwindCSS, we've introduced additional custom color classes tailored for consistent branding. These new classes work just like Tailwind's native color classes but are specifically designed for branding and come with full support for shades. Using the built-in color system you can generate both shaded and non-shaded color classes.</p>
+  </DocBlock>
+
+  <DocBlock title="Available Color Classes">
+    <p class="not-prose">Our component library provides a set of custom classes to make integrating these colors into your designs seamless and flexible. Below is the full list of available classes:</p>
+
+    <Table class="not-prose text-sm">
+      <THead>
+        <TR tableHeader={true}>
+          <Cell class="font-semibold">Class</Cell>
+          <Cell class="font-semibold">Shades</Cell>
+          <Cell class="font-semibold">Default</Cell>
+          <Cell class="font-semibold">Description</Cell>
+        </TR>
+      </THead>
+      <TBody>
+        {#each availableColorClasses as colorData}
+          <TR>
+            <Cell class="text-nowrap">{colorData.className}</Cell>
+            <Cell class="text-nowrap">{colorData.shades}</Cell>
+            <Cell class="text-nowrap">{@html colorData.defaultValue}</Cell>
+            <Cell>{@html colorData.description}</Cell>
+          </TR>
+        {/each}
+      </TBody>
+    </Table>
+
+    <Alert class="not-prose" type="warning" theme="light">
+      <p>
+        <strong>[T]</strong> = <strong>Type</strong> (e.g., <code>bg</code>, <code>text</code>, <code>border</code>, <code>fill</code>, etc.)<br>
+        <strong>[S]</strong> = <strong>Shade</strong> (e.g., 50, 100-900, 950)<br>
+        <strong>Example</strong>: <code>bg-brand-primary-500</code>, <code>text-on-brand-primary-500</code>, <code>bg-error-400</code>
+      </p>
+    </Alert>
+  </DocBlock>
+
+  <DocBlock title="Modify Existing Colors">
+    <p class="not-prose">TailwindCSS’s color system is enhanced for branding with support for shaded and non-shaded colors. Customize or add new colors via tailwind.config.ts for shades or directly edit CSS variables for non-shaded colors.</p>
+    <h4 class="mt-6 mb-0" id={processID("Modify Shaded Colors", false)}>Modify Shaded Colors</h4>
+    <p class="not-prose">If you want to modify a <strong>color with shades</strong> (i.e <code>brand-primary</code>, <code>brand-secondary</code> etc.), you can do it in <code>tailwind.config.ts</code>. For example, to change the primary brand color to <code>#001A6E</code> and secondary brand color to <code>#FFE893</code>, the code is given below:</p>
+
+<Code title="tailwind.config.js" space="bottom">
+
+```js
+// Modify colors in tailwind.config.ts
+import twShades from 'tw-color-shades';
+export default {
+  theme: {
+    extend: {
+      colors: {
+        "brand-primary": twShades('#001A6E'),
+        "brand-secondary": twShades('#FFE893')
+      }
+    }
+  }
+};
+```
+</Code>
+
+    <h4 class="my-0" id={processID("Modify Non-shaded Colors", false)}>Modify Non-shaded Colors</h4>
+    <p class="not-prose">There are some colors like background colors, text colors etc. behave differently in light and dark mode! These colors are <strong>shadeless</strong> and cannot be handled in the way shown above. For these colors we have use CSS variables! You can modify directly in the CSS file. For example, to change the primary background color in light mode to <code>rgb(253 247 244)</code> and in dark mode to <code>rgb(104 87 82)</code> and default text color in light mode to <code>rgb(42 51 53)</code> and in dark mode to <code>rgb(253 247 244)</code>, the code is given below:</p>
+
+<Code title="app.css or app.postcss">
+
+```css
+/* Modify colors in app.css or app.postcss */
+@layer base {
+  :root {
+    --ui-bg-primary: 253 247 244;
+    --ui-text-default: 42 51 53;
+  }
+  :root.dark {
+    --ui-bg-primary: 104 87 82;
+    --ui-text-default: 253 247 244;
+  }
+}
+```
+</Code>
+
+    <Alert class="not-prose font-normal" type="warning" theme="light">
+      <p class="not-prose">Writing the color values in the format provided, such as <code>253 247 244</code>, rather than the conventional RGB code like <code>rgb(253 247 244)</code> is essential because it aligns with TailwindCSS's methodology for applying opacity to colors.</p>
+    </Alert>
+  </DocBlock>
+
+  <DocBlock title="Add New Color">
+    <h4 class="my-0" id={processID("Add Shaded Colors", false)}>Add Shaded Colors</h4>
+    <p class="not-prose">If you want to add a new class for <strong>color with shades</strong>, you can do it in the <code>tailwind.config.ts</code> file. For example, let's say, you want to add a new class in the color system named <code>brand-tertiary</code> with the base value <code>#009990</code>. Just follow the below steps:</p>
+
+<Code title="tailwind.config.js">
+
+```js
+// Generate new colors in tailwind.config.ts
+import twShades from 'tw-color-shades';
+export default {
+  theme: {
+    extend: {
+      colors: {
+        "brand-tertiary": twShades('#009990')
+      }
+    }
+  }
+};
+```
+</Code>
+    <p class="not-prose mb-6">Now you can access this color with <code>bg-brand-tertiary-500</code> or other shades like <code>bg-brand-tertiary-100</code> or  <code>bg-brand-tertiary-800</code>.</p>
+
+    <h4 class="mt-4 mb-0" id={processID("Add Non-shaded Colors", false)}>Add Non-shaded Colors</h4>
+    <p class="not-prose">If you want to add a new color that behaves differently in light and dark mode and you do not need "shades" for this colors, you can do this in your CSS file and then generate colors in <code>tailwind.config.ts</code>. To add a new color <code>bg-tertiary</code> in the color system, you can follow the below process:</p>
+
+<Code title="app.css or app.postcss">
+
+```css
+/* define colors in app.css or app.postcss */
+@layer base {
+  :root {
+    --my-css-var: 233 237 234;
+  }
+  :root.dark {
+    --my-css-var: 114 97 92;
+  }
+}
+```
+</Code>
+
+<Code title="tailwind.config.js">
+
+```js
+// Generate the colors in tailwind.config.ts
+import twShades from 'tw-color-shades';
+export default {
+  theme: {
+    extend: {
+      backgroundColor: {
+        tertiary: twShades("--my-css-var")
+      }
+    }
+  }
+};
+```
+</Code>
+  </DocBlock>
+
+  <DocBlock title="Remove A Color">
+    <p class="not-prose">To remove a color follow the Tailwind CSS way, just set the color to <code>undefined</code> in the <code>tailwind.config.ts</code>.</p>
+
+<Code title="tailwind.config.js">
+
+```js
+// Remove colors in tailwind.config.ts
+export default {
+  theme: {
+    extend: {
+      colors: {
+        "brand-secondary": undefined
+      },
+      backgroundColor: {
+        secondary: undefined
+      }
+    }
+  }
+};
+```
+</Code>
+
+    <p class="not-prose">This will remove all the <code>brand-secondary</code> color classes and <code>bg-secondary</code> class from the application build!</p>
+  </DocBlock>
+
+  {#snippet sidebar()}
+    <a href={processID("Available Color Classes")}>Available Color Classes</a>
+    <a href={processID("Modify Existing Colors")}>Modify Existing Colors</a>
+    <a href={processID("Modify Shaded Colors")} class="pl-4">Modify Shaded Colors</a>
+    <a href={processID("Modify Non-shaded Colors")} class="pl-4">Modify Non-shaded Colors</a>
+    <a href={processID("Add New Color")}>Add New Color</a>
+    <a href={processID("Add Shaded Colors")} class="pl-4">Add Shaded Colors</a>
+    <a href={processID("Add Non-shaded Colors")} class="pl-4">Add Non-shaded Colors</a>
+    <a href={processID("Remove A Color")}>Remove A Color</a>
+  {/snippet}
+
+</DocLayout>

@@ -2,7 +2,7 @@
   import {Navbar, NavBrand, NavLinkGroup, NavDropdown, NavLink, NavToggle, DarkMode} from "theui-svelte"
 </script>
 
-<Navbar config={{ animateSpeed: "slower", scrollBehavior: "shrinkOnScrollDown", height: "lg", class: "bg-primary" }}>
+<Navbar scrollBehavior="shrinkOnScrollDown" height="lg" class="bg-secondary">
   <NavBrand href="/">
     <svg class="block w-8 h-8"><use xlink:href="#logo"></use></svg>
     <span class="flex items-end font-title text-xl">theui <sub class="text-gray-500 dark:text-gray-300 font-normal dark:font-light text-sm pb-[5px] pl-0.5">.dev</sub></span>

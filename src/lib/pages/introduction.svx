@@ -1,5 +1,5 @@
 ---
-title: TheUI Svelte Introduction
+title: Introduction
 dir: ".lib/pages"
 description: Begin your journey with "theui-svelte". Learn how to quickly set up and integrate "theui-svelte" component library into your Sveltekit projects.
 ---

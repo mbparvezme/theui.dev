@@ -1,0 +1,68 @@
+---
+title: Accessability guide
+dir: ".lib/pages"
+description: Enhance the accessibility of your Svelte applications with TheUI-Svelte's Accessibility guide. Ensure your components are user-friendly for all.
+---
+
+<script lang="ts">
+  import DocLayout from "$lib/ui/doc/DocLayout.svelte";
+  import DocHead from "$lib/ui/doc/Head.svelte";
+  import DocBlock from "$lib/ui/doc/Block.svelte";
+  import Code from "$lib/ui/doc/CodeBlock.svelte";
+  let { components, edit_url }: {components: any, edit_url?: string } = $props();
+  import { processID } from "$lib";
+</script>
+
+<DocLayout setupLink={false}>
+  <DocHead title="Accessibility Guide" text="Get to know the best practices and tips for making your site accessible with specific accessibility features available in <b>theui-svelte</b>." {edit_url}/>
+
+  <DocBlock>
+    <p class="not-prose"><b>theui-svelte</b> is designed with accessibility in mind, ensuring that all users, including those with disabilities, can interact with your components smoothly.</p>
+  </DocBlock>
+  <DocBlock title="Why Accessibility Matters">
+    <p class="not-prose mb-0">Accessible design allows users of all abilities to understand, navigate, and interact with web content. By incorporating accessible components, <b>theui-svelte</b> aims to support inclusive design practices and help you create products that are usable by the broadest range of people.</p>
+  </DocBlock>
+  <DocBlock title="Key Accessibility Features">
+    <p class="not-prose mb-0">Each component in <b>theui-svelte</b> is built with accessibility features. As we document each component, you’ll find specific guidelines and options for implementing accessible versions. Here’s a quick overview of some accessibility features you can expect:</p>
+    <ul class="my-0">
+      <li><b>Keyboard Navigation</b>: Components are designed to be navigable by keyboard alone, ensuring full usability without a mouse.</li>
+      <li><b>ARIA Attributes</b>: Essential ARIA (Accessible Rich Internet Applications) attributes are included to provide additional context to assistive technologies.</li>
+      <li><b>Color Contrast</b>: All components follow WCAG color contrast guidelines to ensure readability for users with visual impairments.</li>
+      <li><b>Responsive Text and Font Scaling</b>: Components respond to system font-size changes, making text readable for low-vision users.</li>
+      <li><b>Focus Management</b>: Proper focus handling allows users to know where they are on the page at all times, which is crucial for assistive technology users.</li>
+    </ul>
+  </DocBlock>
+  <DocBlock title="Implementing Accessibility for Each Component">
+    <p class="not-prose mb-0">For each component in <b>theui-svelte</b>, you will find specific accessibility configurations and options. This may include recommended ARIA attributes, keyboard interactions, focus management techniques, and screen reader optimizations. We encourage you to explore these options and include them as needed in your projects.</p>
+  </DocBlock>
+  <DocBlock title="General Best Practices for Accessibility">
+    <p class="not-prose mb-0">To make the most of <b>theui-svelte</b>’s accessibility features, consider following these general best practices:</p>
+    <ul class="my-0">
+      <li><b>Use Semantic HTML</b>: Proper HTML structure helps screen readers and other assistive tools interpret content correctly.</li>
+      <li><b>Provide Descriptive Labels</b>: Include meaningful labels for interactive elements like buttons, form fields, and links.</li>
+      <li><b>Ensure Focus Visibility</b>: When using keyboard navigation, ensure that all interactive elements are visibly focused.</li>
+      <li><b>Include ARIA Attributes Where Needed</b>: Use ARIA attributes thoughtfully to enhance accessibility, especially on complex components.</li>
+      <li><b>Test with Screen Readers</b>: Regularly test your site using popular screen readers (like NVDA, JAWS, or VoiceOver) to ensure a positive experience for screen reader users.</li>
+    </ul>
+  </DocBlock>
+  <DocBlock title="Accessibility Testing Tools">
+    <p class="not-prose mb-0">Here are some useful tools to test and improve your site’s accessibility:</p>
+    <ul class="my-0">
+      <li><b>WAVE</b>: A tool that checks for accessibility issues and provides visual feedback.</li>
+      <li><b>Axe DevTools</b>: An automated accessibility testing tool that integrates with Chrome DevTools.</li>
+      <li><b>VoiceOver, NVDA, JAWS</b>: Popular screen readers that can be used to test the usability of your components.</li>
+    </ul>
+  </DocBlock>
+  <DocBlock title="Further Support and Feedback">
+    <p class="not-prose mb-0">We are committed to improving accessibility in <b>theui-svelte</b>. If you encounter any issues or have suggestions for improvement, please don’t hesitate to reach out. We appreciate feedback and are continually working to enhance the accessibility features in our library.</p>
+  </DocBlock>
+
+  {#snippet sidebar()}
+    <a href={processID("Why Accessibility Matters")}>Why Accessibility Matters</a>
+    <a href={processID("Key Accessibility Features")}>Key Accessibility Features</a>
+    <a href={processID("Implementing Accessibility for Each Component")}>Implementing Accessibility for Each Component</a>
+    <a href={processID("General Best Practices for Accessibility")}>General Best Practices for Accessibility</a>
+    <a href={processID("Accessibility Testing Tools")}>Accessibility Testing Tools</a>
+    <a href={processID("Further Support and Feedback")}>Further Support and Feedback</a>
+  {/snippet}
+</DocLayout>

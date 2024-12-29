@@ -1,0 +1,247 @@
+---
+title: Type definition
+dir: ".lib/pages"
+description: Understand the various component types in TheUI-Svelte. Learn how to use them effectively to build a versatile and robust Svelte application.
+---
+
+<script lang="ts">
+  import DocLayout from "$lib/ui/doc/DocLayout.svelte";
+  import DocHead from "$lib/ui/doc/Head.svelte";
+  import DocBlock from "$lib/ui/doc/Block.svelte";
+  import Code from "$lib/ui/doc/CodeBlock.svelte";
+  import { processID } from "$lib";
+  let { components, edit_url }: {components: any, edit_url?: string } = $props();
+</script>
+
+<DocLayout setupLink={false}>
+
+  <DocHead title="Types" text="This components library utilizing Typescript to define the types of the configurations of the components." {edit_url} />
+
+
+  <DocBlock title="Common Types">
+<Code title="Animation Speed Types">
+
+```ts
+// Animation speed
+export type ANIMATE_SPEED =
+  | undefined
+  | false
+  | "slower"
+  | "slow"
+  | "normal"
+  | "fast"
+  | "faster";
+
+// Rounded corner
+export type ROUNDED = 
+  | "sm" 
+  | "md" 
+  | "lg" 
+  | "xl" 
+  | "full" 
+  | "none" 
+  | undefined;
+
+// Shadow size
+export type SHADOW =
+  | "sm"
+  | "md"
+  | "lg"
+  | "xl"
+  | "2xl"
+  | "inner"
+  | "none"
+  | undefined;
+```
+</Code>
+  </DocBlock>
+
+  <DocBlock title="SEO Component">
+<Code title="SEO component data type">
+
+```ts
+export type SEO_DATA = {
+    siteName: string; // Available via .env
+    pageTitle: string;
+    description: string;
+    keywords?: string;
+    logoPath?: string; // Available via .env
+    imgPath?: string;
+    siteLang?: string; // Available via .env
+    businessSchema?: string;
+    siteSchema?: string;
+    pageSchema?: string;
+    pageType?: string;
+    video?: string;
+    gtmCode?: string; // Available via .env
+};
+```
+</Code>
+  </DocBlock>
+
+  <DocBlock title="Breadcrumb Data Type">
+<Code title="Type definition for 'Breadcrumb Data'">
+
+```ts
+export type BREADCRUMB_DATA = Array<{ text: string; url?: string }>;
+```
+</Code>
+  </DocBlock>
+
+  <DocBlock title="Button Size Type">
+<Code title="Type definition">
+
+```ts
+// Button size types
+export type BUTTON_SIZE = "xs" | "sm" | "md" | "lg" | "xl" | "0";
+```
+</Code>
+  </DocBlock>
+
+  <DocBlock title="Dropdown Types">
+<Code title="Type definition">
+
+```ts
+// Dropdown configuration type
+export type DROPDOWN_ITEM_CONFIG = {
+  activeClass?: string;
+  linkClass?: string;
+  dividerClass?: string;
+  headerClass?: string;
+};
+
+// Dropdown item data type
+export type DROPDOWN_ITEM = {
+  active?: boolean;
+  url?: string;
+  text?: string;
+  type?: "link" | "divider" | "header";
+};
+```
+</Code>
+  </DocBlock>
+
+  <DocBlock title="Input Types">
+<Code title="Type definition">
+
+```ts
+// Input config type
+export type INPUT_CONFIG = {
+  animate?: ANIMATE_SPEED;
+  grow?: boolean;
+  labelClasses?: string;
+  reset?: boolean;
+  rounded?: ROUNDED;
+  size?: "sm" | "md" | "lg" | "xl";
+  variant?: INPUT_VARIANT;
+};
+
+// Input type types
+export type INPUT_TYPE = 
+  | 'color' 
+  | 'date' 
+  | 'datetime-local' 
+  | 'email' 
+  | 'file' 
+  | 'hidden' 
+  | 'image' 
+  | 'month' 
+  | 'number' 
+  | 'password' 
+  | 'reset' 
+  | 'submit' 
+  | 'tel' 
+  | 'text' 
+  | 'time' 
+  | 'url' 
+  | 'week' 
+  | 'search';
+
+// Input variant
+export type INPUT_VARIANT = "bordered" | "filled" | "flat";
+
+```
+</Code>
+  </DocBlock>
+
+  <DocBlock title="Notification Types">
+<Code title="Type definition">
+
+```ts
+// Notification configuration type
+export type NOTIFY_CONFIG = {
+  removeAfter?: number;
+  removeOnClick?: boolean;
+  rounded: ROUNDED;
+  variant: "card" | "cardLight" | "borderTop" | "borderBottom" | "borderStart";
+};
+
+// Types of Notification
+export type NOTIFICATION_TYPE = "error" | "info" | "success" | "warning";
+```
+</Code>
+  </DocBlock>
+
+  <DocBlock title="Select Data Type">
+<Code title="Type definition">
+
+```ts
+export type SELECT_DATA = Array<{ disabled?: boolean, selected?: boolean, text: string, value?: any } | string>;
+```
+</Code>
+  </DocBlock>
+
+  <DocBlock title="Type Definition for Table">
+<Code title="Type definition">
+
+```ts
+// Table configuration type
+export type TABLE_CONFIG = {
+  animate: ANIMATE_SPEED;
+  border: "x" | "y" | "both" | "none";
+  borderColor: string;
+  hover: boolean | string;
+  space: "compact" | "default" | "comfortable" | string;
+  stripe: boolean | string;
+  containerClass: string;
+  trClass: string;
+};
+
+// Table Row data type
+export type TABLE_ROW = object | (object | string | string[])[] | undefined;
+```
+</Code>
+  </DocBlock>
+
+  <DocBlock title="Tab Config Type">
+<Code title="Type definition">
+
+```ts
+// Tab configuration type
+export type TAB_CONFIG = {
+  activeTabClasses?: string;
+  animate?: ANIMATE_SPEED;
+  border: boolean,
+  inactiveTabClasses?: string;
+  tabPanelClasses?: string;
+  variant: 'tabs' | 'pills';
+};
+```
+</Code>
+  </DocBlock>
+
+  {#snippet sidebar()}
+    <a href={processID("Common Types")}>Common Types</a>
+    <a href={processID("SEO Component")}>SEO Component</a>
+    <a href={processID("Breadcrumb Data Type")}>Breadcrumb Data Type</a>
+    <a href={processID("Button Size Type")}>Button Size Type</a>
+    <a href={processID("Dropdown Types")}>Dropdown Types</a>
+    <a href={processID("Input Types")}>Input Types</a>
+    <a href={processID("Notification Types")}>Notification Types</a>
+    <a href={processID("Select Data Type")}>Select Data Type</a>
+    <a href={processID("Type Definition for Table")}>Type Definition for Table</a>
+    <a href={processID("Tab Config Type")}>Tab Config Type</a>
+    <a href={processID("Editor Tools Type")}>Editor Tools Type</a>
+  {/snippet}
+
+</DocLayout>

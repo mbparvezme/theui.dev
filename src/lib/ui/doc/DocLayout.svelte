@@ -7,7 +7,7 @@
     setupLink?: boolean,
     title?: string,
   }
-  let {children, sidebar, setupLink = true, title}: Props = $props()
+  let {children, sidebar, setupLink = true }: Props = $props()
 </script>
 
 <section class="grid gap-8" class:lg:grid-cols-5={sidebar}>
@@ -18,7 +18,7 @@
   </article>
 
   {#if sidebar}
-  <aside class="shrink-0 hidden lg:block overflow-y-auto top-32 lg:sticky" style="height: calc(100vh - 160px)">
+  <aside class="shrink-0 hidden lg:block overflow-y-auto top-28 lg:sticky" style="height: calc(100vh - 160px)">
     <div class="flex flex-col gap-y-2 text-sm page-section">
       <h6 class="mt-0 flex justify-between items-center">
         <span class="font-bold text-xs">ON THIS PAGE</span>

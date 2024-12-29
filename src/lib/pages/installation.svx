@@ -1,5 +1,5 @@
 ---
-title: theui-svelte Installation guide
+title: Installation guide
 dir: ".lib/pages"
 description: Follow our step-by-step guide to install TheUI-Svelte component library. Get started with easy installation instructions for seamless integration.
 ---
@@ -9,6 +9,7 @@ description: Follow our step-by-step guide to install TheUI-Svelte component lib
   import DocHead from "$lib/ui/doc/Head.svelte";
   import DocBlock from "$lib/ui/doc/Block.svelte";
   import Code from "$lib/ui/doc/CodeBlock.svelte";
+  import { processID } from "$lib";
   let { components, edit_url }: {components: any, edit_url?: string } = $props();
 </script>
 
@@ -26,7 +27,7 @@ description: Follow our step-by-step guide to install TheUI-Svelte component lib
     </div>
   </DocBlock>
 
-  <DocBlock title="1. Use Github Boilerplate" id="boilerplate">
+  <DocBlock title="Use Github Boilerplate" id="boilerplate">
     <p class="not-prose">To install the boilerplate template, open your terminal and use the following command, replacing <code class="text-nowrap">my-app</code> with your desired project name.</p>
 
 <Code title="Clone from Github">
@@ -44,7 +45,7 @@ npm run dev
 </Code>
   </DocBlock>
 
-  <DocBlock title="2. Manual Installation" id="manualInstallation">
+  <DocBlock title="Manual Installation" id="manualInstallation">
     <div>
       <p class="not-prose">Easily add theui-svelte to your project via a GitHub boilerplate or manual installation. For manual setup:</p>
       <ul class="my-0">
@@ -53,7 +54,7 @@ npm run dev
       </ul>
     </div>
     <p class="not-prose font-semibold">2.1 Install</p>
-<Code title="Install SvelteKit">
+<Code title="Install SvelteKit" space="bottom">
 
 ```bash
 # Install Sveltekit
@@ -67,8 +68,6 @@ npm install
 npm install theui-svelte
 ```
 </Code>
-
-<br>
 
   <div>
     <p class="not-prose font-semibold">2.2 Configuration</p>
@@ -110,7 +109,7 @@ npm run dev
   </DocBlock>
 
   {#snippet sidebar()}
-    <a href="#boilerplate">Boilerplate installation</a>
+    <a href="#boilerplate">Install from boilerplate</a>
     <a href="#manualInstallation">Install manually</a>
   {/snippet}
 
