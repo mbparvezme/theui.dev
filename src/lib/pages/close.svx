@@ -13,10 +13,25 @@ description: Add functional close symbols to modals and popups in your Svelte ap
   let { components, edit_url }: {components: any, edit_url?: string } = $props();
 </script>
 
-<DocLayout setupLink={false}>
-  <DocHead title="Close button" text="Get to know the best practices and tips for making your site accessible with specific accessibility features available in <b>theui-svelte</b>." {edit_url}/>
+<DocLayout>
+  <DocHead title="Close Button" text="Get to know the best practices and tips for making your site accessible with specific accessibility features available in <b>theui-svelte</b>." {edit_url}/>
 
   <DocBlock>
     <p class="not-prose">A functional close button to close/dismiss modals, popups or any other element in your Svelte app.</p>
   </DocBlock>
+  <DocBlock title="Setup">
+    <p class="not-prose">Import the close button from the component library:</p>
+
+<Code>
+
+```html
+<script>
+  import { Close } from "theui-svelte";
+</script>
+```
+</Code>
+  </DocBlock>
+
+  {#snippet sidebar()}
+  {/snippet}
 </DocLayout>

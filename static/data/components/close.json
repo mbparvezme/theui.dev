@@ -1,1 +1,23 @@
-{}
+{
+  "props": [
+    {
+      "name": "size",
+      "type": "number",
+      "default": "1.5",
+      "description": "Controls the size of the close icon within the button."
+    },
+    {
+      "name": "ariaLabel",
+      "type": "string",
+      "default": "Close button",
+      "description": "Provides an accessible label for the close button, improving accessibility for screen readers."
+    }
+  ],
+  "snippets": null,
+  "functions": [
+    {
+      "name": "onclick",
+      "description": "Triggers when the close button clicked."
+    }
+  ]
+}
