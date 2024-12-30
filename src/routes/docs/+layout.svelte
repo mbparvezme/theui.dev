@@ -8,7 +8,7 @@
   let { children, data }: {children: Snippet, data: PageData } = $props();
 
   let linkClasses = (active: boolean = false) => {
-    return twMerge("border-s-2 border-gray-500/10 pl-4 py-1 inline text-gray-900 dark:text-gray-200", active && "border-brand-primary-500 text-brand-primary-500")
+    return twMerge("border-s-2 border-gray-500/10 ps-4 py-1 inline text-gray-900 dark:text-gray-200", active && "border-brand-primary-500 text-brand-primary-500")
   }
 </script>
 
