@@ -9,8 +9,11 @@ description: Add functional close symbols to modals and popups in your Svelte ap
   import DocHead from "$lib/ui/doc/Head.svelte";
   import DocBlock from "$lib/ui/doc/Block.svelte";
   import Code from "$lib/ui/doc/CodeBlock.svelte";
+  import Example from "$lib/ui/doc/Example.svelte";
   import { processID } from "$lib";
   let { components, edit_url }: {components: any, edit_url?: string } = $props();
+
+  import { Close } from "theui-svelte";
 </script>
 
 <DocLayout>
@@ -32,6 +35,24 @@ description: Add functional close symbols to modals and popups in your Svelte ap
 </Code>
   </DocBlock>
 
+  <DocBlock title="Example">
+    <p class="not-prose">asasasa</p>
+    <Example title="Hello">
+      <p class="not-prose">This is text!</p>
+      {#snippet example()}
+        <Close />
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Close />
+```
+
+      {/snippet}
+    </Example>
+  </DocBlock>
+
   {#snippet sidebar()}
+    <a href="#example">Example</a>
   {/snippet}
 </DocLayout>
