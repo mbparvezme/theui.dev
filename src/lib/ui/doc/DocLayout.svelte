@@ -4,10 +4,9 @@
   interface Props {
     children?: Snippet,
     sidebar?: Snippet,
-    setupLink?: boolean,
     title?: string,
   }
-  let {children, sidebar, setupLink = true }: Props = $props()
+  let {children, sidebar}: Props = $props()
 </script>
 
 <section class="grid gap-8" class:lg:grid-cols-5={sidebar}>
@@ -24,12 +23,6 @@
         <span class="font-bold text-xs">ON THIS PAGE</span>
         <a class="text-[9px]" href="#">Top &uparrow;</a>
       </h6>
-      {#if setupLink}
-      <a href="#setup">Setup</a>
-      {/if}
-      <!-- <Button size="xs" href="#" class="ms-auto no-underline bg-transparent shadow-none flex hover:bg-transparent gap-2 text-default opacity-40 hover:opacity-100 transition-opacity duration-300">
-        To top &uparrow;
-      </Button> -->
       {@render sidebar()}
     </div>
   </aside>

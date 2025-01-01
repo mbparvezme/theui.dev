@@ -13,7 +13,7 @@ description: Follow our step-by-step guide to install TheUI-Svelte component lib
   let { components, edit_url }: {components: any, edit_url?: string } = $props();
 </script>
 
-<DocLayout setupLink={false}>
+<DocLayout>
 
   <DocHead title="Installation" text="Install the <b>theui-svelte</b> component library in your project or start a new project with the boilerplate template. Install it to build fast and deliver faster." {edit_url} />
 

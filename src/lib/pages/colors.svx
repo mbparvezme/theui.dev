@@ -101,7 +101,7 @@ description: Customize your Svelte app's appearance with TheUI-Svelte's Colors a
   ];
 </script>
 
-<DocLayout setupLink={false}>
+<DocLayout>
   <DocHead title="Colors and Branding" text="One of the main features of theui-svelte components library is its customizable color options, allowing you to maintain brand identity and ensure consistent theming efficiently." {edit_url}/>
 
   <DocBlock>

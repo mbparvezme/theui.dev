@@ -1,7 +1,7 @@
 ---
 title: Close button
 dir: ".lib/pages"
-description: Add functional close symbols to modals and popups in your Svelte app with theui-svelte's Close Symbol component.
+description: A functional close button available for the Svelte app in theui-svelte library.
 ---
 
 <script lang="ts">
@@ -10,41 +10,37 @@ description: Add functional close symbols to modals and popups in your Svelte ap
   import DocBlock from "$lib/ui/doc/Block.svelte";
   import Code from "$lib/ui/doc/CodeBlock.svelte";
   import Example from "$lib/ui/doc/Example.svelte";
+  import DataTable from "$lib/ui/doc/DataTable.svelte";
+  import ConfigComponent from "$lib/ui/doc/ConfigComponent.svelte";
   import { processID } from "$lib";
-  let { components, edit_url }: {components: any, edit_url?: string } = $props();
+  let { component, edit_url }: {component: any, edit_url?: string } = $props();
 
-  import { Close } from "theui-svelte";
+  import { Close, Svg } from "theui-svelte";
 </script>
 
 <DocLayout>
-  <DocHead title="Close Button" text="Get to know the best practices and tips for making your site accessible with specific accessibility features available in <b>theui-svelte</b>." {edit_url}/>
+  <DocHead title="Close Button" text="A close button to dismiss any component/element in your " {edit_url}/>
 
   <DocBlock>
-    <p class="not-prose">A functional close button to close/dismiss modals, popups or any other element in your Svelte app.</p>
-  </DocBlock>
-  <DocBlock title="Setup">
-    <p class="not-prose">Import the close button from the component library:</p>
-
-<Code>
-
-```html
-<script>
-  import { Close } from "theui-svelte";
-</script>
-```
-</Code>
+    <p class="not-prose">This is a functional and accessible close button for your Svelte app. It is highly customizable and easy to use. You can use it to close or dismiss modals, popups, or any other elements.</p>
   </DocBlock>
 
-  <DocBlock title="Example">
-    <p class="not-prose">asasasa</p>
-    <Example title="Hello">
-      <p class="not-prose">This is text!</p>
+  <DocBlock title="Setup & Example">
+    <p class="not-prose">Start by importing the Close button from the component library. This versatile and accessible component makes it easy to add close functionality to modals, popups, or any dismissible elements in the Svelte app.</p>
+
+    <Example codeTitle="Import & use">
       {#snippet example()}
-        <Close />
+        <Close disabled />
       {/snippet}
       {#snippet code()}
 
 ```html
+<script>
+  // Import the component
+  import { Close } from "theui-svelte";
+</script>
+
+<!-- Use it in the page -->
 <Close />
 ```
 
@@ -52,7 +48,86 @@ description: Add functional close symbols to modals and popups in your Svelte ap
     </Example>
   </DocBlock>
 
+  <DocBlock title="Close Icon">
+    <p class="not-prose">You can easily customize the close button by adding your own icon. Simply place the custom icon code inside the Close component, and it will replace the default icon with your new design. This allows for seamless integration of your preferred style or branding.</p>
+    <p class="not-prose">You can use <code>svg</code> icon or <b>theui-svelte's</b> <code>Svg</code> component.</p>
+
+    <Example codeTitle="Change icon">
+      {#snippet example()}
+        <Close>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z"/>
+          </svg>
+        </Close>
+
+        <Close>
+          <Svg>
+            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z"/>
+          </Svg>
+        </Close>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<!-- Using HTML svg icon -->
+<Close>
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" iewBox="0 0 16 16">
+    <path d="M16 8A8 ... 0-.708-.708L8 7.293z"/>
+  </svg>
+</Close>
+
+<!-- Using theui-svelte's Svg component -->
+<Close>
+  <Svg>
+    <path d="M16 8A8 ... 0-.708-.708L8 7.293z"/>
+  </Svg>
+</Close>
+```
+
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Style Customization">
+    <p class="not-prose">You can customize the button style simply writing the style classes just like as a native HTML element.</p>
+
+    <Example codeTitle="Change icon">
+      {#snippet example()}
+        <Close class="bg-green-300 text-green-700" />
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Close class="bg-green-300 text-green-700" />
+```
+
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Accessability">
+    <p class="not-prose">The <code>Close</code> button includes an <code>ariaTitle</code> prop to enhance accessibility by providing a meaningful label for assistive technologies. By default, the value of <code>ariaTitle</code> is set to <code>"Close button"</code>. You can customize this value to better suit your application's context if needed.</p>
+    <Code>
+
+```html
+<Close ariaTitle="Dismiss popup" />
+```
+    </Code>
+    <p class="not-prose">In this example, the button will be labeled as "Dismiss popup" for assistive technologies, making it clear to users what action the button performs.</p>
+  </DocBlock>
+
+  <DocBlock title="Configuration">
+    <ConfigComponent {component} />
+  </DocBlock>
+
   {#snippet sidebar()}
-    <a href="#example">Example</a>
+    <a href="#setup-&-example">Setup & use</a>
+    <a href={processID("Close Icon")}>Change icon</a>
+    <a href={processID("Configuration")}>Configuration</a>
+
+    <ul class="bg-red-300 p-2 text-red-500">
+      <li>Pass component</li>
+      <li>Change style</li>
+    </ul>
   {/snippet}
 </DocLayout>

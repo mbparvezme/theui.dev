@@ -13,7 +13,7 @@ description: Understand the various component types in TheUI-Svelte. Learn how t
   let { components, edit_url }: {components: any, edit_url?: string } = $props();
 </script>
 
-<DocLayout setupLink={false}>
+<DocLayout>
 
   <DocHead title="Types" text="This components library utilizing Typescript to define the types of the configurations of the components." {edit_url} />
 

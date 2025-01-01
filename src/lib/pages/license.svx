@@ -13,7 +13,7 @@ description: Review the licensing terms for TheUI-Svelte. Understand how you can
   let { components, edit_url }: {components: any, edit_url?: string } = $props();
 </script>
 
-<DocLayout setupLink={false}>
+<DocLayout>
   <DocHead title="License" text="MIT License" {edit_url}/>
 
   <DocBlock>

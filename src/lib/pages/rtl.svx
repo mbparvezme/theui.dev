@@ -24,7 +24,7 @@ description: Implement right-to-left (RTL) support in your Svelte app with TheUI
   }
 </script>
 
-<DocLayout setupLink={false}>
+<DocLayout>
 
   <DocHead title="RTL" text="Enable RTL support and styling globally across your site or to specific components only, ensuring flexibility and control over your layout." {edit_url} />
 

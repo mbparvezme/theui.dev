@@ -13,7 +13,7 @@ description: Manage stacking contexts in your Svelte application with TheUI-Svel
   let { components, edit_url }: {components: any, edit_url?: string } = $props();
 </script>
 
-<DocLayout setupLink={false}>
+<DocLayout>
 
   <DocHead title="Z-index" text="In this library, several components utilize z-index. This document will let you know the order of the z-index in components." {edit_url} />
 

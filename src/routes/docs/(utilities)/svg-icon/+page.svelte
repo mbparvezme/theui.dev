@@ -5,4 +5,4 @@
   let { data }: { data: PageData|any } = $props();
 </script>
 
-<Page components={data.components} edit_url={data.editURL} />
+<Page component={data.component} edit_url={data.editURL} />

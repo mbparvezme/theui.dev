@@ -13,7 +13,7 @@ description: Enhance the accessibility of your Svelte applications with TheUI-Sv
   let { components, edit_url }: {components: any, edit_url?: string } = $props();
 </script>
 
-<DocLayout setupLink={false}>
+<DocLayout>
   <DocHead title="Accessibility Guide" text="Get to know the best practices and tips for making your site accessible with specific accessibility features available in <b>theui-svelte</b>." {edit_url}/>
 
   <DocBlock>
