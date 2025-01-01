@@ -10,7 +10,6 @@ description: A functional close button available for the Svelte app in theui-sve
   import DocBlock from "$lib/ui/doc/Block.svelte";
   import Code from "$lib/ui/doc/CodeBlock.svelte";
   import Example from "$lib/ui/doc/Example.svelte";
-  import DataTable from "$lib/ui/doc/DataTable.svelte";
   import ConfigComponent from "$lib/ui/doc/ConfigComponent.svelte";
   import { processID } from "$lib";
   let { component, edit_url }: {component: any, edit_url?: string } = $props();
@@ -19,7 +18,7 @@ description: A functional close button available for the Svelte app in theui-sve
 </script>
 
 <DocLayout>
-  <DocHead title="Close Button" text="A close button to dismiss any component/element in your " {edit_url}/>
+  <DocHead title="Close Button" text="A close button to dismiss any component/element in your." {edit_url}/>
 
   <DocBlock>
     <p class="not-prose">This is a functional and accessible close button for your Svelte app. It is highly customizable and easy to use. You can use it to close or dismiss modals, popups, or any other elements.</p>
@@ -88,7 +87,7 @@ description: A functional close button available for the Svelte app in theui-sve
     </Example>
   </DocBlock>
 
-  <DocBlock title="Style Customization">
+  <DocBlock title="Customize Style">
     <p class="not-prose">You can customize the button style simply writing the style classes just like as a native HTML element.</p>
 
     <Example codeTitle="Change icon">
@@ -121,13 +120,10 @@ description: A functional close button available for the Svelte app in theui-sve
   </DocBlock>
 
   {#snippet sidebar()}
-    <a href="#setup-&-example">Setup & use</a>
+    <a href={processID("Setup & Example")}>Setup & use</a>
     <a href={processID("Close Icon")}>Change icon</a>
+    <a href={processID("Customize Style")}>Style customization</a>
+    <a href={processID("Accessability")}>Accessability</a>
     <a href={processID("Configuration")}>Configuration</a>
-
-    <ul class="bg-red-300 p-2 text-red-500">
-      <li>Pass component</li>
-      <li>Change style</li>
-    </ul>
   {/snippet}
 </DocLayout>

@@ -8,7 +8,7 @@
   let { children, data }: {children: Snippet, data: PageData } = $props();
 
   let linkClasses = (active: boolean = false) => {
-    return twMerge("border-s-2 border-gray-500/10 ps-4 py-1 inline text-gray-900 dark:text-gray-200", active && "border-brand-primary-500 text-brand-primary-500")
+    return twMerge("border-s-2 border-gray-500/10 ps-4 py-1 inline text-default", active && "border-brand-primary-500 text-brand-primary-500")
   }
 </script>
 
@@ -107,7 +107,7 @@
           </Svg>
           Components
         </h3>
-        <nav class="sidebar-link flex-grow flex flex-col text-sm mb-8 border-l border-gray-300 dark:font-light">
+        <nav class="sidebar-link flex-grow flex flex-col text-sm mb-8 dark:font-light">
           {#each data.components.components.links as component}
             <a class={linkClasses(page.url.pathname==component.link)} href={component.link}>{component.text}</a>
           {/each}
@@ -121,7 +121,7 @@
           </Svg>
           Forms
         </h3>
-        <nav class="sidebar-link flex-grow flex flex-col text-sm mb-8 border-l border-gray-300 dark:font-light">
+        <nav class="sidebar-link flex-grow flex flex-col text-sm mb-8 dark:font-light">
           {#each data.components.forms.links as component}
             <a class={linkClasses(page.url.pathname==component.link)} href={component.link}>{component.text}</a>
           {/each}
@@ -135,7 +135,7 @@
           </Svg>
           Utilities
         </h3>
-        <nav class="sidebar-link flex-grow flex flex-col text-sm mb-8 border-l border-gray-300 dark:font-light">
+        <nav class="sidebar-link flex-grow flex flex-col text-sm mb-8 dark:font-light">
           {#each data.components.utilities.links as component}
             <a class={linkClasses(page.url.pathname==component.link)} href={component.link}>{component.text}</a>
           {/each}

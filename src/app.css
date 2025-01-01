@@ -23,7 +23,7 @@
   }
   .not-prose code{
   	letter-spacing: .2px;
-    @apply bg-red-500/10 dark:bg-red-400/10 text-cyan-600 font-mono px-1 pb-0.5 text-sm rounded;
+    @apply bg-cyan-100/50 text-cyan-700 dark:bg-cyan-900/30 dark:text-cyan-500 font-mono px-1 pb-0.5 text-sm rounded;
   }
 
   /**

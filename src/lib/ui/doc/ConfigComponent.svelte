@@ -1,8 +1,6 @@
 <script lang="ts">
   import { Table, Tab, Tabs, TabPanel } from 'theui-svelte';
-
   let { component }: {component?: any} = $props();
-  
   const propsHeader = ['Name', 'Type', 'Default', 'Description'];
   const nonPropsHeader = ['Name', 'Description'];
   const propsKeys = ['name', 'type', 'default', 'description'];
@@ -16,7 +14,7 @@
   {#snippet tabList()}
     {#each component as c}
       {#if c.data && c.data.length > 0}
-        <Tab class="px-4 py-2">{c.title}</Tab>
+        <Tab class="px-4 py-2 uppercase text-sm font-semibold tracking-wider">{c.title}</Tab>
       {/if}
     {/each}
   {/snippet}

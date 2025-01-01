@@ -22,7 +22,7 @@
 
   {@render children?.()}
 
-  <div class="rounded-md bg-secondary dark:bg-black/50 mt-4">
+  <div class="rounded-md bg-secondary dark:bg-black/50 mt-4 border border-gray-300 dark:border-gray-800">
 
     {#if example}
     <div class="not-prose text-center { twMerge("p-4", classes)}">
@@ -31,7 +31,7 @@
     {/if}
 
     {#if code}
-    <Code space="none" title={codeTitle}>
+    <Code classes="border-0" space="none" title={codeTitle}>
       {@render code()}
     </Code>
     {/if}

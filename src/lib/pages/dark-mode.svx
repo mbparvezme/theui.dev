@@ -1,0 +1,108 @@
+---
+title: Dark mode
+dir: ".lib/pages"
+description: The DarkMode component is a user-friendly theme switcher designed to toggle between light and dark modes effortlessly.
+---
+
+<script lang="ts">
+  import DocLayout from "$lib/ui/doc/DocLayout.svelte";
+  import DocHead from "$lib/ui/doc/Head.svelte";
+  import DocBlock from "$lib/ui/doc/Block.svelte";
+  import Code from "$lib/ui/doc/CodeBlock.svelte";
+  import Example from "$lib/ui/doc/Example.svelte";
+  import ConfigComponent from "$lib/ui/doc/ConfigComponent.svelte";
+  import { processID } from "$lib";
+  let { component, edit_url }: {component: any, edit_url?: string } = $props();
+
+  import { DarkMode } from "theui-svelte";
+</script>
+
+<DocLayout>
+  <DocHead title="DarkMode" text="The DarkMode component is a user-friendly theme switcher designed to toggle between light and dark modes effortlessly. It ensures an optimal user experience by adapting the interface to different lighting conditions or personal preferences." {edit_url}/>
+
+  <DocBlock>
+    <p class="not-prose">This component is accessible, and easy to integrate into any project. It leverages TailwindCSS's darkMode configuration to provide seamless theme transitions, making it an essential tool for creating modern, responsive applications.</p>
+  </DocBlock>
+
+  <DocBlock title="Setup & Example">
+    <p class="not-prose">Start by importing the DarkMode component from the theui-svelte library:</p>
+    <Code>
+
+```html
+<script>
+  import { DarkMode } from "theui-svelte";
+</script>
+```
+    </Code>
+
+    <Example>
+      Here’s how to use the DarkMode component in your application:
+      {#snippet example()}
+        <DarkMode disabled />
+      {/snippet}
+      {#snippet code()}
+
+```html
+<DarkMode />
+```
+      {/snippet}
+    </Example>
+    <p class="not-prose">This will render a theme switcher that toggles between light and dark themes.</p>
+  </DocBlock>
+
+  <DocBlock title="System Default Theme">
+    <p class="not-prose">You can easily customize the close button by adding your own icon. Simply place the custom icon code inside the Close component, and it will replace the default icon with your new design. This allows for seamless integration of your preferred style or branding.</p>
+    <p class="not-prose">You can use <code>svg</code> icon or <b>theui-svelte's</b> <code>Svg</code> component.</p>
+
+    <Code>
+
+```html
+<script>
+  import { DarkMode } from "theui-svelte";
+</script>
+```
+    </Code>
+  </DocBlock>
+
+  <DocBlock title="Close Icon">
+    <p class="not-prose">You can easily customize the close button by adding your own icon. Simply place the custom icon code inside the Close component, and it will replace the default icon with your new design. This allows for seamless integration of your preferred style or branding.</p>
+    <p class="not-prose">You can use <code>svg</code> icon or <b>theui-svelte's</b> <code>Svg</code> component.</p>
+
+    <Example codeTitle="Custom icon">
+      {#snippet example()}
+        <DarkMode />
+      {/snippet}
+      {#snippet code()}
+
+```html
+<DarkMode>
+  <!-- Custom icon -->
+</DarkMode>
+```
+
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+
+
+
+
+  <DocBlock title="Customization">
+    <p class="not-prose">For customization, you can add your own classes to adjust the spacing, alignment, or other styles:</p>
+
+    <Code>
+
+```html
+<Container class="bg-gray-100 py-8 px-0">
+  <!-- Content -->
+</Container>
+```
+    </Code>
+  </DocBlock>
+
+  {#snippet sidebar()}
+    <a href="#setup-&-example">Setup & use</a>
+    <a href={processID("Customization")}>Customization</a>
+  {/snippet}
+</DocLayout>

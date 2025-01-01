@@ -2,9 +2,10 @@
   import type { Snippet } from "svelte";
   import {randomString} from "$lib";
   import { Svg } from "theui-svelte";
+    import { twMerge } from "tailwind-merge";
 
-  interface Props {children?: Snippet, title?: string, copyBtn?: boolean, space?: 'both' | 'top' | 'bottom' | 'none'};
-  let {children, title = "Svelte", copyBtn = true, space = 'none'}: Props = $props();
+  interface Props {children?: Snippet, title?: string, copyBtn?: boolean, space?: 'both' | 'top' | 'bottom' | 'none', classes?: string};
+  let {children, title = "Svelte", copyBtn = true, space = 'none', classes = ""}: Props = $props();
 
   let id: string = randomString("code");
   let copied = $state(false);
@@ -16,7 +17,7 @@
   .catch(err => console.error("Error copying text:", err)));
 </script>
 
-<div {id} class="relative" class:my-6={space=="both"} class:mt-6={space=="top"} class:mb-6={space=="bottom"}>
+<div {id} class="relative {twMerge("border border-gray-300 dark:border-gray-800 rounded-md", classes)}" class:my-6={space=="both"} class:mt-6={space=="top"} class:mb-6={space=="bottom"}>
   <div class="bg-slate-600 dark:bg-slate-900 px-4 h-10 w-full flex items-center justify-between rounded-t-md">
     {#if title}<span class="not-prose text-gray-100 text-sm mr-auto">{@html title}</span>{/if}
     <div class="ml-auto">
