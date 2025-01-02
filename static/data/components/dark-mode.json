@@ -1,12 +1,30 @@
-{
-  "props": [
-    {
-      "name": "systemDefault",
-      "type": "boolean",
-      "default": "true",
-      "description": "Determines how dark mode is handled. When enabled, the app initially adopts the system's preferred color scheme."
-    }
-  ],
-  "snippets": null,
-  "functions": null
-}
+
+[
+  {
+    "key": "props",
+    "title": "Props","text": "The component has the following props with the given default values. Please visit <a href=\"/docs/types\">types page</a> for detailed type definitions.",
+    "data": [
+      {
+        "name": "systemDefault",
+        "type": "boolean",
+        "default": "true",
+        "description": "Determines how dark mode is handled. When true, the app initially adopts the system's preferred color scheme."
+      }
+    ]
+  },
+  {
+    "key": "dynamicProps",
+    "title": "Dynamic props",
+    "data": null
+  },
+  {
+    "key": "snippets",
+    "title": "Snippets",
+    "data": null
+  },
+  {
+    "key": "functions",
+    "title": "Functions",
+    "data": null
+  }
+]

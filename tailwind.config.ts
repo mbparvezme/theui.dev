@@ -19,6 +19,12 @@ export default {
     }
   },
 
+  variants: {
+    extend: {
+      fill: ['dark'], // Enable dark mode for fill
+    },
+  },
+
   presets: [require("theui-svelte/preset")],
 
   plugins: [typography, forms]

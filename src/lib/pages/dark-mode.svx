@@ -14,7 +14,7 @@ description: The DarkMode component is a user-friendly theme switcher designed t
   import { processID } from "$lib";
   let { component, edit_url }: {component: any, edit_url?: string } = $props();
 
-  import { DarkMode } from "theui-svelte";
+  import { DarkMode, Svg } from "theui-svelte";
 </script>
 
 <DocLayout>
@@ -38,7 +38,7 @@ description: The DarkMode component is a user-friendly theme switcher designed t
     <Example>
       Here’s how to use the DarkMode component in your application:
       {#snippet example()}
-        <DarkMode disabled />
+        <DarkMode />
       {/snippet}
       {#snippet code()}
 
@@ -51,58 +51,82 @@ description: The DarkMode component is a user-friendly theme switcher designed t
   </DocBlock>
 
   <DocBlock title="System Default Theme">
-    <p class="not-prose">You can easily customize the close button by adding your own icon. Simply place the custom icon code inside the Close component, and it will replace the default icon with your new design. This allows for seamless integration of your preferred style or branding.</p>
-    <p class="not-prose">You can use <code>svg</code> icon or <b>theui-svelte's</b> <code>Svg</code> component.</p>
+    <p class="not-prose">You can seamlessly adopt system color schemes to manage the theme using the <code>systemDefault</code> feature. By default, <code>systemDefault</code> is set to <code>true</code>, which means the app will initially load with the user's device color scheme (light or dark). The theme can then be switched between dark and light as needed.</p>
+    <p class="not-prose">If <code>systemDefault</code> is set to <code>false</code>, the app will load with the light theme by default. Users can still switch to their preferred theme manually after the initial load.</p>
+    <p class="not-prose">This flexibility allows you to provide a user-friendly and adaptive experience tailored to individual preferences.</p>
 
     <Code>
 
 ```html
 <script>
-  import { DarkMode } from "theui-svelte";
+  <DarkMode systemDefault={false} />
 </script>
 ```
     </Code>
   </DocBlock>
 
-  <DocBlock title="Close Icon">
-    <p class="not-prose">You can easily customize the close button by adding your own icon. Simply place the custom icon code inside the Close component, and it will replace the default icon with your new design. This allows for seamless integration of your preferred style or branding.</p>
-    <p class="not-prose">You can use <code>svg</code> icon or <b>theui-svelte's</b> <code>Svg</code> component.</p>
-
-    <Example codeTitle="Custom icon">
+  <DocBlock title="Theme Switch Icon">
+    <p class="not-prose">The <code>DarkMode</code> component comes with a default icon for the dark mode toggle button. However, you can easily replace this icon with your custom design. Simply add your custom SVG or other icon code inside the <code>DarkMode</code> component and the default icon will be replaced. You can use <code>svg</code> icon or <b>theui-svelte's</b> <code>Svg</code> component for this.</p>
+    <Example>
       {#snippet example()}
-        <DarkMode />
+        <DarkMode>
+          <svg class="fill-current dark:fill-yellow-200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="1rem" height="1rem">
+            <path d="M6 .278a.77.77 0 0 1 .08.858 7.2 7.2 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277q.792-.001 1.533-.16a.79.79 0 0 1 .81.316.73.73 0 0 1-.031.893A8.35 8.35 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.75.75 0 0 1 6 .278M4.858 1.311A7.27 7.27 0 0 0 1.025 7.71c0 4.02 3.279 7.276 7.319 7.276a7.32 7.32 0 0 0 5.205-2.162q-.506.063-1.029.063c-4.61 0-8.343-3.714-8.343-8.29 0-1.167.242-2.278.681-3.286"/>
+          </svg>
+        </DarkMode>
+        &nbsp;&nbsp;&nbsp;
+        <DarkMode>
+          <Svg class="dark:fill-yellow-200">
+            <path d="M6 .278a.77.77 0 0 1 .08.858 7.2 7.2 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277q.792-.001 1.533-.16a.79.79 0 0 1 .81.316.73.73 0 0 1-.031.893A8.35 8.35 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.75.75 0 0 1 6 .278M4.858 1.311A7.27 7.27 0 0 0 1.025 7.71c0 4.02 3.279 7.276 7.319 7.276a7.32 7.32 0 0 0 5.205-2.162q-.506.063-1.029.063c-4.61 0-8.343-3.714-8.343-8.29 0-1.167.242-2.278.681-3.286"/>
+          </Svg>
+        </DarkMode>
       {/snippet}
       {#snippet code()}
 
 ```html
 <DarkMode>
-  <!-- Custom icon -->
+   <svg class="dark:fill-yellow-200" ... >
+      <path d="M6 .278a.77.77 0 0 ... 0-1.167.242-2.278.681-3.286"/>
+   </svg>
+</DarkMode>
+<!-- or use the Svg component -->
+<DarkMode>
+   <Svg class="dark:fill-yellow-200">
+      <path d="M6 .278a.77.77 0 0 ... 0-1.167.242-2.278.681-3.286"/>
+   </Svg>
 </DarkMode>
 ```
-
       {/snippet}
     </Example>
   </DocBlock>
 
-
-
-
-
-  <DocBlock title="Customization">
+  <DocBlock title="Style Customization">
     <p class="not-prose">For customization, you can add your own classes to adjust the spacing, alignment, or other styles:</p>
 
-    <Code>
+
+    <Example>
+      Here’s how to use the DarkMode component in your application:
+      {#snippet example()}
+        <DarkMode class="bg-brand-primary-500/20 text-brand-primary-500 rounded-md p-2" />
+      {/snippet}
+      {#snippet code()}
 
 ```html
-<Container class="bg-gray-100 py-8 px-0">
-  <!-- Content -->
-</Container>
+<DarkMode class="bg-brand-primary-500/20 text-brand-primary-500 rounded-md p-2" />
 ```
-    </Code>
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Configuration">
+    <ConfigComponent {component} />
   </DocBlock>
 
   {#snippet sidebar()}
-    <a href="#setup-&-example">Setup & use</a>
-    <a href={processID("Customization")}>Customization</a>
+    <a href={processID("Setup & Example")}>Setup & use</a>
+    <a href={processID("System Default Theme")}>System default</a>
+    <a href={processID("Theme Switch Icon")}>Button icon</a>
+    <a href={processID("Style Customization")}>Custom style</a>
+    <a href={processID("Configuration")}>Configuration</a>
   {/snippet}
 </DocLayout>

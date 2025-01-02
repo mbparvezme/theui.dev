@@ -1,5 +1,22 @@
-{
-  "props": null,
-  "snippets": null,
-  "functions": null
-}
+[
+  {
+    "key": "props",
+    "title": "Props",
+    "data": null
+  },
+  {
+    "key": "dynamicProps",
+    "title": "Dynamic props",
+    "data": null
+  },
+  {
+    "key": "snippets",
+    "title": "Snippets",
+    "data": null
+  },
+  {
+    "key": "functions",
+    "title": "Functions",
+    "data": null
+  }
+]

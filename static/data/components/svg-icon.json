@@ -1,26 +1,42 @@
-{
-  "props": [
-    {
-      "size": "size",
-      "type": "number",
-      "default": "1",
-      "description": "It is a multiplier to the current font size to determine the icon's dimensions. A value of 1 renders the icon at the same size as the surrounding text."
-    },
-    {
-      "viewBox": "viewBox",
-      "type": "string",
-      "default": "0 0 16 16",
-      "description": "Sets the viewBox size of the icon."
-    },
-    {
-      "viewBox": "focusable",
-      "type": "boolean",
-      "default": "true",
-      "description": "Indicating whether the icon should be focusable via keyboard navigation. "
-    }
-  ],
-  "snippets": null,
-  "functions": null
-}
-
-
+[
+  {
+    "key": "props",
+    "title": "Props",
+    "text": "The component has the following props with the given default values. Please visit <a href=\"/docs/types\">types page</a> for detailed type definitions.",
+    "data": [
+      {
+        "size": "size",
+        "type": "number",
+        "default": "1",
+        "description": "It is a multiplier to the current font size to determine the icon's dimensions. A value of 1 renders the icon at the same size as the surrounding text."
+      },
+      {
+        "viewBox": "viewBox",
+        "type": "string",
+        "default": "0 0 16 16",
+        "description": "Sets the viewBox size of the icon."
+      },
+      {
+        "viewBox": "focusable",
+        "type": "boolean",
+        "default": "true",
+        "description": "Indicating whether the icon should be focusable via keyboard navigation. "
+      }
+    ]
+  },
+  {
+    "key": "dynamicProps",
+    "title": "Dynamic props",
+    "data": null
+  },
+  {
+    "key": "snippets",
+    "title": "Snippets",
+    "data": null
+  },
+  {
+    "key": "functions",
+    "title": "Functions",
+    "data": null
+  }
+]

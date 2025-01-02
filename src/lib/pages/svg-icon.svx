@@ -1,0 +1,59 @@
+---
+title: Svg Icon
+dir: ".lib/pages"
+description: Add scalable vector icons to your Svelte app with TheUI-Svelte's SVG Icon component, enhancing your UI with clarity and style.
+---
+
+<script lang="ts">
+  import DocLayout from "$lib/ui/doc/DocLayout.svelte";
+  import DocHead from "$lib/ui/doc/Head.svelte";
+  import DocBlock from "$lib/ui/doc/Block.svelte";
+  import Code from "$lib/ui/doc/CodeBlock.svelte";
+  import { processID } from "$lib";
+  let { component, edit_url }: {component: any, edit_url?: string } = $props();
+
+  import { Svg } from "theui-svelte";
+</script>
+
+<DocLayout>
+  <DocHead title="Container" text="The Svg component allows you to easily add SVG icons to your project. It acts as a wrapper for SVG elements and can replace the standard svg tag. You can include any path or other SVG elements within it." {edit_url}/>
+
+  <DocBlock title="Setup & Example">
+    <p class="not-prose">Start by importing the Container component from the theui-svelte library:</p>
+<Code>
+
+```html
+<script>
+  import { Svg } from "theui-svelte";
+</script>
+```
+    </Code>
+    <p class="not-prose">To use the Container component with its default settings, simply include it in your Svelte template:</p>
+    <Code>
+
+```html
+<Container>
+  <!-- Content -->
+</Container>
+```
+    </Code>
+  </DocBlock>
+
+  <DocBlock title="Customization">
+    <p class="not-prose">For customization, you can add your own classes to adjust the spacing, alignment, or other styles:</p>
+
+    <Code>
+
+```html
+<Container class="bg-gray-100 py-8 px-0">
+  <!-- Content -->
+</Container>
+```
+    </Code>
+  </DocBlock>
+
+  {#snippet sidebar()}
+    <a href="#setup-&-example">Setup & use</a>
+    <a href={processID("Customization")}>Customization</a>
+  {/snippet}
+</DocLayout>
