@@ -9,6 +9,8 @@ description: Add scalable vector icons to your Svelte app with TheUI-Svelte's SV
   import DocHead from "$lib/ui/doc/Head.svelte";
   import DocBlock from "$lib/ui/doc/Block.svelte";
   import Code from "$lib/ui/doc/CodeBlock.svelte";
+  import Example from "$lib/ui/doc/Example.svelte";
+  import ConfigComponent from "$lib/ui/doc/ConfigComponent.svelte";
   import { processID } from "$lib";
   let { component, edit_url }: {component: any, edit_url?: string } = $props();
 
@@ -16,10 +18,14 @@ description: Add scalable vector icons to your Svelte app with TheUI-Svelte's SV
 </script>
 
 <DocLayout>
-  <DocHead title="Container" text="The Svg component allows you to easily add SVG icons to your project. It acts as a wrapper for SVG elements and can replace the standard svg tag. You can include any path or other SVG elements within it." {edit_url}/>
+  <DocHead title="SVG Icon" text="The Svg component allows you to easily add SVG icons to your project. It acts as a wrapper for SVG elements and can replace the standard svg tag. You can include any path or other SVG elements within it." {edit_url}/>
+
+  <DocBlock>
+    <p class="not-prose">The <code>Svg</code> component is a versatile wrapper for incorporating SVG icons into your project. It simplifies the process of adding custom SVG elements, offering a convenient alternative to the standard <code>&lt;svg&gt;</code> tag.</p>
+  </DocBlock>
 
   <DocBlock title="Setup & Example">
-    <p class="not-prose">Start by importing the Container component from the theui-svelte library:</p>
+    <p class="not-prose">Start by importing the <code>Svg</code> component from the theui-svelte library:</p>
 <Code>
 
 ```html
@@ -28,32 +34,130 @@ description: Add scalable vector icons to your Svelte app with TheUI-Svelte's SV
 </script>
 ```
     </Code>
-    <p class="not-prose">To use the Container component with its default settings, simply include it in your Svelte template:</p>
-    <Code>
+    <p class="not-prose">You can embed any SVG elements, such as paths, circles, or groups, within the <code>Svg</code> component. Here's a simple example:</p>
+    <Example codeTitle="Import & use">
+      {#snippet example()}
+        <Svg>
+          <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+        </Svg>
+      {/snippet}
+      {#snippet code()}
 
 ```html
-<Container>
-  <!-- Content -->
-</Container>
+<Svg>
+  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+</Svg>
 ```
-    </Code>
+      {/snippet}
+    </Example>
+    <p class="not-prose">This will render a red circle with a black border and a blue diagonal line within the same SVG canvas.</p>
+  </DocBlock>
+
+  <DocBlock title="Icon Size">
+    <p class="not-prose">The <code>size</code> prop acts as a multiplier for the current font size, determining the icon's dimensions. For example, a value of 1 renders the icon at the same size as the surrounding text (1em). You can adjust this value to scale the icon larger or smaller relative to the text.</p>
+    <p class="not-prose text-sm"><b>Default</b>: <code>1</code> <small>(1em)</small></p>
+
+    <Example codeTitle="Import & use">
+      {#snippet example()}
+        <Svg>
+          <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+        </Svg>
+        <Svg size={1.5}>
+          <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+        </Svg>
+        <Svg size={2}>
+          <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+        </Svg>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Svg>
+  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+</Svg>
+<Svg size={1.5}>
+  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+</Svg>
+<Svg size={2}>
+  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+</Svg>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Modify viewBox">
+    <p class="not-prose">The <code>viewBox</code> prop defines the coordinate system and dimensions of the SVG canvas. You can modify this value to adjust the visible area of the SVG content.</p>
+    <p class="not-prose text-sm"><b>Default</b>: <code>"0 0 16 16"</code></p>
+
+    <Example codeTitle="Import & use">
+      {#snippet example()}
+        <Svg viewBox="0 -960 960 960">
+          <path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Z"/>
+        </Svg>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Svg viewBox="0 -960 960 960">
+  <path d="M200-120q-33 ... 56.5T760-120H200Zm0-80h560v-560H200v560Z"/>
+</Svg>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Stroke Icon">
+    <p class="not-prose">When the <code>stroke</code> attribute is passed to the <code>Svg</code> component, it changes the icon's styling from filled to stroked. This allows you to easily render stroke-based icons.</p>
+
+    <Example codeTitle="Import & use">
+      {#snippet example()}
+        <Svg stroke>
+          <circle cx="8" cy="8" r="4" />
+        </Svg>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Svg stroke>
+  <circle cx="8" cy="8" r="4" />
+</Svg>
+```
+      {/snippet}
+    </Example>
   </DocBlock>
 
   <DocBlock title="Customization">
-    <p class="not-prose">For customization, you can add your own classes to adjust the spacing, alignment, or other styles:</p>
+    <p class="not-prose">For customization, you can add your own classes to customize the styles:</p>
 
-    <Code>
+    <Example codeTitle="Import & use">
+      {#snippet example()}
+        <Svg class="fill-brand-primary-500">
+          <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+        </Svg>
+      {/snippet}
+      {#snippet code()}
 
 ```html
-<Container class="bg-gray-100 py-8 px-0">
-  <!-- Content -->
-</Container>
+<Svg class="fill-brand-primary-500">
+  <path d="M8 15A7 7 ... 0 0 16"/>
+</Svg>
 ```
-    </Code>
+
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Configuration">
+    <ConfigComponent {component} />
   </DocBlock>
 
   {#snippet sidebar()}
     <a href="#setup-&-example">Setup & use</a>
+    <a href={processID("Icon Size")}>Icon Size</a>
+    <a href={processID("Modify viewBox")}>Modify viewBox</a>
+    <a href={processID("Stroke Icon")}>Stroke Icon</a>
     <a href={processID("Customization")}>Customization</a>
+    <a href={processID("Configuration")}>Configuration</a>
   {/snippet}
 </DocLayout>

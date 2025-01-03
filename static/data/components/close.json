@@ -24,12 +24,6 @@
     "text": "The component has the following dynamicProps:",
     "data": [
       {
-        "name": "class",
-        "type": "string",
-        "default": "\"\"",
-        "description": "TailwindCSS classes to customize the close button."
-      },
-      {
         "name": "disabled",
         "type": "boolean",
         "default": "false",
