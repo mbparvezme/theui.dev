@@ -35,7 +35,7 @@ description: Add scalable vector icons to your Svelte app with TheUI-Svelte's SV
 ```
     </Code>
     <p class="not-prose">You can embed any SVG elements, such as paths, circles, or groups, within the <code>Svg</code> component. Here's a simple example:</p>
-    <Example codeTitle="Import & use">
+    <Example>
       {#snippet example()}
         <Svg>
           <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
@@ -57,7 +57,7 @@ description: Add scalable vector icons to your Svelte app with TheUI-Svelte's SV
     <p class="not-prose">The <code>size</code> prop acts as a multiplier for the current font size, determining the icon's dimensions. For example, a value of 1 renders the icon at the same size as the surrounding text (1em). You can adjust this value to scale the icon larger or smaller relative to the text.</p>
     <p class="not-prose text-sm"><b>Default</b>: <code>1</code> <small>(1em)</small></p>
 
-    <Example codeTitle="Import & use">
+    <Example>
       {#snippet example()}
         <Svg>
           <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
@@ -90,7 +90,7 @@ description: Add scalable vector icons to your Svelte app with TheUI-Svelte's SV
     <p class="not-prose">The <code>viewBox</code> prop defines the coordinate system and dimensions of the SVG canvas. You can modify this value to adjust the visible area of the SVG content.</p>
     <p class="not-prose text-sm"><b>Default</b>: <code>"0 0 16 16"</code></p>
 
-    <Example codeTitle="Import & use">
+    <Example>
       {#snippet example()}
         <Svg viewBox="0 -960 960 960">
           <path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Z"/>
@@ -110,7 +110,7 @@ description: Add scalable vector icons to your Svelte app with TheUI-Svelte's SV
   <DocBlock title="Stroke Icon">
     <p class="not-prose">When the <code>stroke</code> attribute is passed to the <code>Svg</code> component, it changes the icon's styling from filled to stroked. This allows you to easily render stroke-based icons.</p>
 
-    <Example codeTitle="Import & use">
+    <Example>
       {#snippet example()}
         <Svg stroke>
           <circle cx="8" cy="8" r="4" />
@@ -130,7 +130,7 @@ description: Add scalable vector icons to your Svelte app with TheUI-Svelte's SV
   <DocBlock title="Customization">
     <p class="not-prose">For customization, you can add your own classes to customize the styles:</p>
 
-    <Example codeTitle="Import & use">
+    <Example>
       {#snippet example()}
         <Svg class="fill-brand-primary-500">
           <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>

@@ -22,10 +22,10 @@
 
   {@render children?.()}
 
-  <div class="rounded-md bg-secondary dark:bg-black/50 mt-4 border border-gray-300 dark:border-gray-800">
+  <div class="rounded-md dark:bg-black/50 mt-4 border border-gray-200 dark:border-gray-800">
 
     {#if example}
-    <div class="not-prose text-center { twMerge("p-4 flex justify-center items-center gap-4", classes)}">
+    <div class="not-prose {twMerge("p-5 flex justify-center items-center gap-4", classes)}">
       {@render example()}
     </div>
     {/if}

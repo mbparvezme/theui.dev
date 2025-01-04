@@ -18,28 +18,32 @@ description: A functional close button available for the Svelte app in theui-sve
 </script>
 
 <DocLayout>
-  <DocHead title="Close Button" text="A close button to dismiss any component/element in your." {edit_url}/>
+  <DocHead title="Close Button" text="A close button to dismiss any component/element in your application." {edit_url}/>
 
   <DocBlock>
     <p class="not-prose">This is a functional and accessible close button for your Svelte app. It is highly customizable and easy to use. You can use it to close or dismiss modals, popups, or any other elements.</p>
   </DocBlock>
 
   <DocBlock title="Setup & Example">
-    <p class="not-prose">Start by importing the Close button from the component library. This versatile and accessible component makes it easy to add close functionality to modals, popups, or any dismissible elements in the Svelte app.</p>
+    <p class="not-prose">Start by importing the Close button from the component library.</p>
 
-    <Example codeTitle="Import & use">
+    <Code>
+
+```html
+<script>
+  import { Close } from "theui-svelte";
+</script>
+```
+    </Code>
+
+    <Example>
+      <p class="not-prose">This versatile and accessible component makes it easy to add close functionality to modals, popups, or any dismissible elements in the Svelte app.</p>
       {#snippet example()}
-        <Close disabled />
+        <Close />
       {/snippet}
       {#snippet code()}
 
 ```html
-<script>
-  // Import the component
-  import { Close } from "theui-svelte";
-</script>
-
-<!-- Use it in the page -->
 <Close />
 ```
 
@@ -51,7 +55,7 @@ description: A functional close button available for the Svelte app in theui-sve
     <p class="not-prose">You can easily customize the close button by adding your own icon. Simply place the custom icon code inside the Close component, and it will replace the default icon with your new design. This allows for seamless integration of your preferred style or branding.</p>
     <p class="not-prose">You can use <code>svg</code> icon or <b>theui-svelte's</b> <code>Svg</code> component.</p>
 
-    <Example codeTitle="Change icon">
+    <Example>
       {#snippet example()}
         <Close>
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
@@ -90,7 +94,7 @@ description: A functional close button available for the Svelte app in theui-sve
   <DocBlock title="Customize Style">
     <p class="not-prose">You can customize the button style simply writing the style classes just like as a native HTML element.</p>
 
-    <Example codeTitle="Change icon">
+    <Example>
       {#snippet example()}
         <Close class="bg-green-300 text-green-700" />
       {/snippet}

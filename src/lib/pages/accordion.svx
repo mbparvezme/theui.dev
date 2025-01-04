@@ -1,0 +1,254 @@
+---
+title: Accordion
+dir: ".lib/pages"
+description: Enhance your Svelte app with theui-svelte's Accordion component. Easily create collapsible sections to streamline your content presentation.
+---
+
+<script lang="ts">
+  import DocLayout from "$lib/ui/doc/DocLayout.svelte";
+  import DocHead from "$lib/ui/doc/Head.svelte";
+  import DocBlock from "$lib/ui/doc/Block.svelte";
+  import Code from "$lib/ui/doc/CodeBlock.svelte";
+  import Example from "$lib/ui/doc/Example.svelte";
+  import ConfigComponent from "$lib/ui/doc/ConfigComponent.svelte";
+  import { processID } from "$lib";
+  let { component, edit_url }: {component: any, edit_url?: string } = $props();
+
+  import { Accordion, AccordionItem } from "theui-svelte";
+
+  const accordionContent = "<b>Cognitive dissonance</b> refers to the discomfort we feel when holding conflicting beliefs or attitudes. For instance, a person who smokes but knows it's harmful might experience tension. To alleviate this discomfort, they may justify their behavior by downplaying the risks or highlighting benefits, like stress relief. This psychological mechanism illustrates how we strive for internal consistency, shaping our perceptions and decisions to align with our beliefs and actions."
+  const accordionTitle = "Human Psychology Fact";
+</script>
+
+<DocLayout>
+  <DocHead title="Accordion" text="The Accordion component is used to show or hide information based on the collapse and expand state of its child elements. It has two variants with configurations provided in the Configuration section." {edit_url}/>
+
+  <DocBlock title="Setup">
+    <p class="not-prose">To use the Accordion component in your project, import the required components:</p>
+    <Code>
+
+```html
+<script>
+  import { Accordion, AccordionItem } from "theui-svelte";
+</script>
+```
+    </Code>
+  </DocBlock>
+
+  <DocBlock title="Example">
+    <p class="not-prose">You can create an accordion in two ways, using props and using Svelte 5 snippet. The example are showing below:</p>
+    <Example title="Accordion By Props">
+      <p class="not-prose">You can create an accordion item with a title and content props using the following example. </p>
+      {#snippet example()}
+      <div>
+        <AccordionItem title={accordionTitle} content={accordionContent} />
+      </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<AccordionItem title="Human Psychology Fact" content="<b>Cognitive dissonance</b> refers to.." />
+```
+      {/snippet}
+    </Example>
+
+    <Example title="Accordion Using Snippet">
+      <p class="not-prose">If you have custom content/elements in the title or content, you ca use <b>Svelte 5</b>'s <code>snippet</code> showing the following example:</p>
+      {#snippet example()}
+      <div>
+        <AccordionItem>
+          {#snippet title()}
+            {accordionTitle}
+          {/snippet}
+          {@html accordionContent}
+        </AccordionItem>
+      </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<AccordionItem>
+  {#snippet title()}
+    Human Psychology Fact
+  {/snippet}
+  <b>Cognitive dissonance</b> refers to the ...
+</AccordionItem>
+```
+
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Group Accordion">
+    <Example>
+      <p class="not-prose">To create a group of accordion items, wrap multiple <code>AccordionItem</code> components within an <code>Accordion</code> component:</p>
+      {#snippet example()}
+      <div>
+        <Accordion>
+          <AccordionItem title={accordionTitle + ": 1"} content={accordionContent} />
+          <AccordionItem title={accordionTitle + ": 2"} content={accordionContent} />
+        </Accordion>
+      </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Accordion>
+  <AccordionItem title="Human Psychology Fact: 1" content="<b>Cognitive dissonance</b> refers to.." />
+  <AccordionItem title="Human Psychology Fact: 1" content="<b>Cognitive dissonance</b> refers to.." />
+</Accordion>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Flash Accordion">
+    <Example>
+      <p class="not-prose">For a flush-style accordion, add the <code>flush</code> attribute to the <code>AccordionItem</code> components:</p>
+      {#snippet example()}
+      <div>
+        <Accordion>
+          <AccordionItem flush title={accordionTitle + ": 1"} content={accordionContent} />
+          <AccordionItem flush title={accordionTitle + ": 2"} content={accordionContent} />
+        </Accordion>
+      </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Accordion>
+  <AccordionItem flush ... />
+  <AccordionItem flush ... />
+</Accordion>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Accordion Size">
+    <Example>
+      <p class="not-prose mb-4">The <code>Accordion</code> and <code>AccordionItem</code> component provides a <code>size</code> prop to control the size of the accordion items. The <code>size</code> prop can take one of the following values: <code>'compact'</code>, <code>'default'</code>, or <code>'large'</code>.</p>
+      <p class="not-prose">When the <code>size</code> prop is set on the <code>Accordion</code> component, all <code>AccordionItem</code> components within it will inherit this size. This ensures a consistent appearance for all items in the accordion.</p>
+    
+      {#snippet example()}
+      <div>
+        <Accordion size="compact">
+          <AccordionItem title={accordionTitle + ": 1"} content={accordionContent} />
+          <AccordionItem title={accordionTitle + ": 2"} content={accordionContent} />
+        </Accordion>
+      </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Accordion size="compact">
+  <AccordionItem ... />
+  <AccordionItem ... />
+</Accordion>
+```
+      {/snippet}
+    </Example>
+
+    <p class="not-prose">In the example above, both <code>AccordionItem</code> components will have the <code>compact</code> size.</p>
+    <p class="not-prose">You can also set the <code>size</code> prop individually on each <code>AccordionItem</code> component. The <code>size</code> prop on an individual <code>AccordionItem</code> will override the size specified on the parent <code>Accordion</code>.</p>
+    <Example>
+      <p class="not-prose mb-4">The <code>Accordion</code> and <code>AccordionItem</code> component provides a <code>size</code> prop to control the size of the accordion items. The <code>size</code> prop can take one of the following values: <code>'compact'</code>, <code>'default'</code>, or <code>'large'</code>.</p>
+      <p class="not-prose">When the <code>size</code> prop is set on the <code>Accordion</code> component, all <code>AccordionItem</code> components within it will inherit this size. This ensures a consistent appearance for all items in the accordion.</p>
+    
+      {#snippet example()}
+      <div>
+        <Accordion size="compact">
+          <AccordionItem title={accordionTitle + ": 1"} content={accordionContent} />
+          <AccordionItem size="large" title={accordionTitle + ": 2"} content={accordionContent} />
+        </Accordion>
+      </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Accordion size="compact">
+  <AccordionItem ... />
+  <AccordionItem size="large" ... />
+</Accordion>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Accordion Open State">
+    <Example>
+      <p class="not-prose">To have an <code>AccordionItem</code> open by default, add the <code>open</code> attribute to the <code>AccordionItem</code> you want to keep open. This is a dynamic attribute, not a prop, and will take effect when added to the component.</p>
+      {#snippet example()}
+      <div>
+        <Accordion>
+          <AccordionItem title={accordionTitle + ": 1"} content={accordionContent} />
+          <AccordionItem open title={accordionTitle + ": 2"} content={accordionContent} />
+        </Accordion>
+      </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Accordion>
+  <AccordionItem ... />
+  <AccordionItem open ... />
+</Accordion>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Custom Style">
+    <p class="not-prose">The accordion component in <b>theui-svelte</b> offers a wide range of style customization options through several props. These props let you apply custom classes to different parts of the accordion, ensuring it matches your design perfectly.</p>
+    <Example title="Available Props for Customization">
+      <ul>
+        <li><b>containerClasses</b>: Apply custom classes to the accordion's main container.</li>
+        <li><b>openContainerClasses</b>: Set custom classes for the container when the accordion is active (expanded).</li>
+        <li><b>contentClasses</b>: Define custom classes for the content section.</li>
+        <li><b>openContentClasses</b>: Specify classes for the content when it is active (visible).</li>
+        <li><b>titleClasses</b>: Customize the classes for the title of each accordion item.</li>
+        <li><b>openTitleClasses</b>: Apply specific classes to the title when the accordion is active (expanded).</li>
+      </ul>
+      {#snippet example()}
+      <div>
+        <AccordionItem
+          containerClasses="border-4"
+          containerActiveClasses="border-4 border-brand-primary-600"
+          titleClasses="text-brand-primary-500"
+          titleActiveClasses="text-brand-primary-700 bg-brand-primary-200"
+          title={accordionTitle + ": 1"}
+          content={accordionContent}
+        />
+      </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<AccordionItem
+  containerClasses="border-4"
+  containerActiveClasses="border-4 border-brand-primary-600"
+  titleClasses="text-brand-primary-500"
+  titleActiveClasses="text-brand-primary-700 bg-brand-primary-200"
+  ...
+/>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Configuration">
+    <ConfigComponent {component} />
+  </DocBlock>
+
+  {#snippet sidebar()}
+    <a href={processID("Setup")}>Setup</a>
+    <a href={processID("Example")}>Example</a>
+    <a href={processID("Group Accordion")}>Group Accordion</a>
+    <a href={processID("Flash Accordion")}>Flash Accordion</a>
+    <a href={processID("Accordion Size")}>Accordion Size</a>
+    <a href={processID("Accordion Open State")}>Accordion Open State</a>
+    <a href={processID("Custom Style")}>Custom Style</a>
+    <a href={processID("Configuration")}>Configuration</a>
+  {/snippet}
+
+</DocLayout>
