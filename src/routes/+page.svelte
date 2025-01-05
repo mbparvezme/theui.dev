@@ -3,3 +3,7 @@ text-brand-primary-700 bg-brand-primary-200
 ">
   <p>Hello</p>
 </div>
+
+<div class="bg-gradient-to-r from-red-400 to-yellow-500">
+
+</div>

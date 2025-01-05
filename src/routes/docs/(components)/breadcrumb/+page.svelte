@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { PageData } from "./$types";
-  import Page from "$lib/pages/alert.svx";
+  import Page from "$lib/pages/accordion.svx";
 
   let { data }: { data: PageData|any } = $props();
 </script>

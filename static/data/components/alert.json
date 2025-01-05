@@ -1,0 +1,66 @@
+[
+  {
+    "key": "props",
+    "title": "Props",
+    "data": [
+      {
+        "name": "rounded",
+        "type": "<a href=\"/docs/types#common-types\">ROUNDED</a>",
+        "default": "\"md\"",
+        "description": "Defines the border-radius of the alert, providing control over its rounded corners."
+      },
+      {
+        "name": "type",
+        "type": "'error' | 'info' | 'success' | 'warning'",
+        "default": "\"error\"",
+        "description": "Specifies the type of alert, which affects its color and icon."
+      },
+      {
+        "name": "theme",
+        "type": "\"default\" | \"light\"",
+        "default": "\"default\"",
+        "description": "Determines the overall appearance theme of the alert."
+      },
+      {
+        "name": "variant",
+        "type": "\"card\" | \"borderTop\" | \"borderBottom\" | \"borderStart\"",
+        "default": "\"card\"",
+        "description": "Specifies the structural style of the alert."
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "default": "&lt;RANDOM STRING&gt;",
+        "description": "Unique identifier for the alert, typically auto-generated."
+      }
+    ]
+  },
+  {
+    "key": "dynamicProps",
+    "title": "Dynamic props",
+    "data": [
+      {
+        "name": "dismissible",
+        "type": "N/A",
+        "default": "N/A",
+        "description": "Makes the alert dismissible by adding a close button."
+      },
+      {
+        "name": "hideIcon",
+        "type": "N/A",
+        "default": "N/A",
+        "description": "Hides the icon part from the alert."
+      }
+    ]
+  },
+  {
+    "key": "snippets",
+    "title": "Snippets",
+    "data": null
+  },
+  {
+    "key": "functions",
+    "title": "Functions",
+    "data": null
+  }
+]

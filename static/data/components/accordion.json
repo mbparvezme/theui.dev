@@ -23,13 +23,13 @@
       },
       {
         "name": "animationSpeed",
-        "type": "ANIMATE_SPEED",
+        "type": "<a href=\"/docs/types#common-types\">ANIMATE_SPEED</a>",
         "default": "fast",
         "description": "Specifies the speed of the opening and closing animation."
       },
       {
         "name": "rounded",
-        "type": "ROUNDED",
+        "type": "<a href=\"/docs/types#common-types\">ROUNDED</a>",
         "default": "md",
         "description": "Determines the border radius of the accordion item."
       },
