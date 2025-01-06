@@ -1,0 +1,143 @@
+---
+title: Badge
+dir: ".lib/pages"
+description: Add dynamic visual indicators to your Svelte app with TheUI-Svelte's Badge component. Perfect for notifications and status labels.
+---
+
+<script lang="ts">
+  import DocLayout from "$lib/ui/doc/DocLayout.svelte";
+  import DocHead from "$lib/ui/doc/Head.svelte";
+  import DocBlock from "$lib/ui/doc/Block.svelte";
+  import Code from "$lib/ui/doc/CodeBlock.svelte";
+  import Example from "$lib/ui/doc/Example.svelte";
+  import ConfigComponent from "$lib/ui/doc/ConfigComponent.svelte";
+  import { processID } from "$lib";
+  let { component, edit_url }: {component: any, edit_url?: string } = $props();
+
+  import { Badge, Alert } from "theui-svelte";
+</script>
+
+<DocLayout>
+  <DocHead title="Badge" text="The Badge component is a versatile UI element used for displaying small counts, labeling, or providing important indications to users. Badges are commonly used to highlight new content, show notifications, or denote status updates." {edit_url}/>
+
+  <DocBlock title="Setup">
+    <p class="not-prose">To use the Badge component in your project, import the required component:</p>
+    <Code>
+
+```html
+<script>
+  import { Badge } from "theui-svelte";
+</script>
+```
+    </Code>
+  </DocBlock>
+
+  <DocBlock title="Example">
+    <Example>
+      <p class="not-prose">You can create <b>dot-badges</b> just using the <code>Badge</code> component. Using the <code>text</code> props will create a text badge. Here are some examples:</p>
+      {#snippet example()}
+        <Badge ariaTitle="Demo badge"/>
+        <Badge ariaTitle="Demo badge" text="New"/>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Badge ariaTitle="Demo badge"/>
+<Badge ariaTitle="Demo badge" text="New"/>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Grow Badge">
+    <p class="not-prose">By default, the font size of the Badge component is fixed, 0.8em, making it slightly smaller than regular text. However, you can make the font size inherit from te parent element by adding the <code>grow</code> attribute to the <code>Badge</code> component.</p>
+    <Example>
+      {#snippet example()}
+          <div class="w-full">
+            <p class="text-2xl">NOT GROWING <Badge ariaTitle="Demo badge"/></p>
+            <p class="text-2xl">GROWING <Badge ariaTitle="Demo badge" grow/></p>
+          </div>
+          <div class="w-full">
+            <p class="text-2xl">NOT GROWING <Badge ariaTitle="Demo badge" text="New"/></p>
+            <p class="text-2xl">GROWING <Badge ariaTitle="Demo badge" text="New" grow/></p>
+          </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<!-- Indicator badge -->
+<Badge ... />
+<!-- Text badge -->
+<Badge ... grow/>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Fixed Top Badge">
+    <p class="not-prose">You can position badges at fixed locations relative to their parent elements using the <code>fixed</code> attribute.</p>
+    <Example>
+      {#snippet example()}
+        <div class="flex items-center gap-8">
+          <p class="relative p-2 bg-secondary">
+            Notifications <Badge class="border-0" title="Demo badge" topFixed={true}/>
+          </p>
+          <p class="relative p-2 bg-secondary">
+            Notifications <Badge class="border-0" text="New" topFixed={true}/>
+          </p>
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<p class="relative p-2 bg-secondary">
+  Notifications <Badge title="Demo badge" fixed/>
+</p>
+<p class="relative p-2 bg-secondary">
+  Notifications <Badge  text="New" fixed/>
+</p>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Customization">
+    <Example>
+      <p class="not-prose">The <code>Badge</code> component allows you to customize its colors to match your application's theme or convey specific meanings. By default, it uses standard styles, but you can easily override them with custom CSS classes.</p>
+      <p class="not-prose">To change the background color, simply add your own CSS classes to the Badge component. Here’s an example:</p>
+      {#snippet example()}
+        <Badge title="Demo badge" class="bg-green-500"/>
+        <Badge text="New" class="bg-yellow-400 text-black"/>
+        <p class="relative font-semibold text-white p-2 bg-gradient-to-r from-red-400 to-yellow-500">
+          Notifications <Badge class="border-white dark:border-black" text="New" topFixed={true}/>
+        </p>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Badge title="Demo badge" class="bg-green-500"/>
+
+<Badge text="New" class="bg-yellow-400 text-black"/>
+
+<p class="relative font-semibold text-white p-2 bg-gradient-to-r from-red-400 to-yellow-500">
+  Notifications <Badge class="border-white" text="New" topFixed={true}/>
+</p>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Configuration">
+    <ConfigComponent {component} />
+  </DocBlock>
+
+  {#snippet sidebar()}
+    <a href={processID("Setup")}>Setup</a>
+    <a href={processID("Example")}>Example</a>
+    <a href={processID("Grow Badge")}>Alert Grow Badge</a>
+    <a href={processID("Fixed Top Badge")}>Fixed Top Badge</a>
+    <a href={processID("Customization")}>Customization</a>
+    <a href={processID("Configuration")}>Configuration</a>
+  {/snippet}
+
+</DocLayout>

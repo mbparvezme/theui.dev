@@ -160,7 +160,7 @@ description: Utilize theui-svelte's Alert component to display crucial messages 
       {#snippet code()}
 
 ```html
-
+<Alert class="bg-gradient-to-r from-red-400 to-yellow-500">...</Alert>
 ```
       {/snippet}
     </Example>
