@@ -17,7 +17,7 @@
 
 <div>
   {#if title}
-    <h4 class="font-semibold font-body text-muted mt-0 mb-1">{@html title}</h4>
+    <h4 class="font-semibold font-body text-slate-500 mt-0 mb-1">{@html title}</h4>
   {/if}
 
   {@render children?.()}

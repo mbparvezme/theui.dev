@@ -1,0 +1,112 @@
+---
+title: Breadcrumb
+dir: ".lib/pages"
+description: Improve navigation in your Svelte app with TheUI-Svelte's Breadcrumb component. Guide users effortlessly through your content hierarchy.
+---
+
+<script lang="ts">
+  import DocLayout from "$lib/ui/doc/DocLayout.svelte";
+  import DocHead from "$lib/ui/doc/Head.svelte";
+  import DocBlock from "$lib/ui/doc/Block.svelte";
+  import Code from "$lib/ui/doc/CodeBlock.svelte";
+  import Example from "$lib/ui/doc/Example.svelte";
+  import ConfigComponent from "$lib/ui/doc/ConfigComponent.svelte";
+  import { processID } from "$lib";
+  let { component, edit_url }: {component: any, edit_url?: string } = $props();
+
+  import { Breadcrumb } from "theui-svelte";
+
+  let breadcrumbData = [
+    { text: "Home", url: "/" },
+    { text: "About", url: "/about" },
+    { text: "Company" }
+  ];
+</script>
+
+<DocLayout>
+  <DocHead title="Breadcrumb" text="The Breadcrumb component displays the location of the current page within a navigational hierarchy. It helps users understand the structure of your site and navigate back to previous pages easily." {edit_url}/>
+
+  <DocBlock title="Setup">
+    <p class="not-prose">To use the Breadcrumb component, you need to import it into your Svelte file as shown below.</p>
+    <Code>
+
+```html
+<script>
+  import { Breadcrumb } from "theui-svelte";
+</script>
+```
+    </Code>
+  </DocBlock>
+
+  <DocBlock title="Example">
+    <Example>
+      <p class="not-prose">To use the <code>Breadcrumb</code> component, you can pass an array of breadcrumb items with their respective text and URLs. Here's a simple example:</p>
+      {#snippet example()}
+      <div class="w-full">
+        <Breadcrumb data={breadcrumbData} />
+      </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<script>
+  let breadcrumbData: BREADCRUMB_DATA = [
+    { text: "Home", url: "/" },
+    { text: "About", url: "/about" },
+    { text: "Company" }
+  ]
+</script>
+
+<Breadcrumb data={breadcrumbData} />
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Change Link Separator">
+    <p class="not-prose">You can customize the separator between breadcrumb links using the <code>separator</code> prop. The default separator is <code>/</code> and it can be overridden as shown below:</p>
+    <Example>
+      {#snippet example()}
+          <div class="w-full">
+            <Breadcrumb data={breadcrumbData} separator=">" />
+          </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Breadcrumb data={breadcrumbData} separator=">" />
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Modify Link Color">
+    <p class="not-prose">Customize the color of active and inactive links using the <code>linkClasses</code> and <code>activeLinkClasses</code> props. Here's an example of setting custom colors:</p>
+    <Example>
+      {#snippet example()}
+        <div class="w-full">
+          <Breadcrumb data={breadcrumbData} activeLinkClasses="text-pink-500" linkClasses="text-green-500" />
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Breadcrumb data={breadcrumbData} activeLinkClasses="text-pink-500" linkClasses="text-green-500" />
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Configuration">
+    <ConfigComponent {component} />
+  </DocBlock>
+
+  {#snippet sidebar()}
+    <a href={processID("Setup")}>Setup</a>
+    <a href={processID("Example")}>Example</a>
+    <a href={processID("Change Link Separator")}>Change Link Separator</a>
+    <a href={processID("Modify Link Color")}>Modify Link Color</a>
+    <a href={processID("Configuration")}>Configuration</a>
+  {/snippet}
+
+</DocLayout>

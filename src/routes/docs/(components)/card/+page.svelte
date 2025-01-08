@@ -1,6 +1,6 @@
 <script lang="ts">
-  import type { PageData } from "./$types";
-  import Page from "$lib/pages/breadcrumb.svx";
+  import type { PageData } from "../$types";
+  import Page from "$lib/pages/card.svx";
 
   let { data }: { data: PageData|any } = $props();
 </script>

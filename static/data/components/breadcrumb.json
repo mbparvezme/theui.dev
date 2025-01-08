@@ -2,7 +2,38 @@
   {
     "key": "props",
     "title": "Props",
-    "data": null
+    "data": [
+      {
+        "name": "data",
+        "type": "Array&lt;<a href=\"/docs/types#common-types\">BREADCRUMB_DATA</a>&gt;",
+        "default": "[]",
+        "description": "An array of breadcrumb items to display."
+      },
+      {
+        "name": "activeLinkClasses",
+        "type": "string",
+        "default": "\"text-gray-400\"",
+        "description": "CSS classes applied to the active breadcrumb link."
+      },
+      {
+        "name": "linkClasses",
+        "type": "string",
+        "default": "\"text-brand-primary-500\"",
+        "description": "CSS classes applied to the non-active breadcrumb links."
+      },
+      {
+        "name": "rounded",
+        "type": "<a href=\"/docs/types#common-types\">ROUNDED</a>",
+        "default": "\"md\"",
+        "description": "Defines the border radius of the breadcrumb items."
+      },
+      {
+        "name": "separator",
+        "type": "string",
+        "default": "\"/\"",
+        "description": "The character or element used to separate breadcrumb items."
+      }
+    ]
   },
   {
     "key": "dynamicProps",
