@@ -149,7 +149,7 @@ description: Utilize theui-svelte's Alert component to display crucial messages 
     </Example>
   </DocBlock>
 
-  <DocBlock title="Custom Style">
+  <DocBlock title="Customization">
     <Example>
       <p class="not-prose">The Alert component in theui-svelte allows full customization through the class attribute, giving you control over the styling to match your application's design needs. This flexibility ensures that the alert can seamlessly blend with various UI themes and aesthetics.</p>
       {#snippet example()}
@@ -177,7 +177,7 @@ description: Utilize theui-svelte's Alert component to display crucial messages 
     <a href={processID("Theme")}>Alert theme</a>
     <a href={processID("Variant")}>Alert Variant</a>
     <a href={processID("Dismissible Alert")}>Dismissible alert</a>
-    <a href={processID("Custom Style")}>Custom Style</a>
+    <a href={processID("Customization")}>Customization</a>
     <a href={processID("Configuration")}>Configuration</a>
   {/snippet}
 

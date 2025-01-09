@@ -1,0 +1,71 @@
+[
+  {
+    "key": "props",
+    "title": "Props",
+    "data": [
+      {
+        "name": "content",
+        "type": "string",
+        "description": "The text content displayed inside the chip.",
+        "default": "undefined"
+      },
+      {
+        "name": "close",
+        "type": "boolean",
+        "description": "Determines whether a close button is displayed on the chip. Set to false to hide the close button.",
+        "default": true
+      },
+      {
+        "name": "fill",
+        "type": "boolean",
+        "description": "Specifies if the chip should have a filled background style.",
+        "default": true
+      },
+      {
+        "name": "imgUrl",
+        "type": "string | undefined",
+        "description": "The URL of the image to display within the chip. Leave undefined if no image is used.",
+        "default": "undefined"
+      },
+      {
+        "name": "imgClasses",
+        "type": "string",
+        "description": "Custom CSS classes to apply to the chip's image for additional styling.",
+        "default": "\"\""
+      },
+      {
+        "name": "imgAlt",
+        "type": "string",
+        "description": "The alternative text for the chip's image, enhancing accessibility.",
+        "default": "\"\""
+      },
+      {
+        "name": "rounded",
+        "type": "<a href=\"/docs/types#common-types\">ROUNDED</a>",
+        "description": "Determines the border-radius style of the chip for rounded corners.",
+        "default": "full"
+      },
+      {
+        "name": "size",
+        "type": "'sm' | 'md' | 'lg'",
+        "description": "Sets the size of the chip, affecting padding and image dimensions. 'md' is the default size.",
+        "default": "md"
+      }
+    ]
+  },
+  {
+    "key": "dynamicProps",
+    "title": "Dynamic props",
+    "data": null
+  },
+  {
+    "key": "snippets",
+    "title": "Snippets",
+    "data": null
+  },
+  {
+    "key": "functions",
+    "title": "Functions",
+    "data": null
+  }
+]

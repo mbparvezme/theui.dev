@@ -198,7 +198,7 @@ description: Enhance your Svelte app with theui-svelte's Accordion component. Ea
     </Example>
   </DocBlock>
 
-  <DocBlock title="Custom Style">
+  <DocBlock title="Customization">
     <p class="not-prose">The accordion component in <b>theui-svelte</b> offers a wide range of style customization options through several props. These props let you apply custom classes to different parts of the accordion, ensuring it matches your design perfectly.</p>
     <Example title="Available Props for Customization">
       <ul>
@@ -247,7 +247,7 @@ description: Enhance your Svelte app with theui-svelte's Accordion component. Ea
     <a href={processID("Flash Accordion")}>Flash Accordion</a>
     <a href={processID("Accordion Size")}>Accordion Size</a>
     <a href={processID("Accordion Open State")}>Accordion Open State</a>
-    <a href={processID("Custom Style")}>Custom Style</a>
+    <a href={processID("Customization")}>Customization</a>
     <a href={processID("Configuration")}>Configuration</a>
   {/snippet}
 

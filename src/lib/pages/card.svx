@@ -12,9 +12,10 @@ description: A dynamic and versatile way to showcase content, with a variety of 
   import Example from "$lib/ui/doc/Example.svelte";
   import ConfigComponent from "$lib/ui/doc/ConfigComponent.svelte";
   import { processID } from "$lib";
+  let { component, edit_url }: {component: any, edit_url?: string } = $props();
+
   import { Card, Button } from "theui-svelte";
 
-  let { component, edit_url }: {component: any, edit_url?: string } = $props();
   const imgData = {src: "https://placehold.co/800x400/6A00F5/white", alt: "A demo image"}
   const imgDataY = {src: "https://placehold.co/300x600/6A00F5/white", alt: "A demo image"}
 </script>
@@ -235,7 +236,40 @@ description: A dynamic and versatile way to showcase content, with a variety of 
   </DocBlock>
 
   <DocBlock title="Customization">
-    <p class="not-prose">...</p>
+    <p class="not-prose">The Card component is easy to customize, letting you style it to match your needs. You can change how any part of the card looks. Whether it's the content, title, shadow, or shape, you have full control.</p>
+    <p class="not-prose">You can either use snippets for custom components or utilize these props directly for more straightforward customization. Here are the key props available for customization:</p>
+    <ul class="my-0 list-inside">
+      <li><b>class</b>: Apply custom styles to the card's container.</li>
+      <li><b>contentClasses</b>: Apply custom styles to the card's content.</li>
+      <li><b>titleClasses</b>: Style the title with your preferred classes.</li>
+      <li><b>shadow</b>: Adjust the card's shadow for a more or less prominent effect.</li>
+      <li><b>rounded</b>: Control the card's border-radius to achieve the desired shape.</li>
+    </ul>
+
+    <Example>
+      {#snippet example()}
+      <div>
+        <Card class="w-96 border-2 border-green-500 bg-green-100" title="Card Title" titleClasses="bg-green-500 p-2 rounded-md text-green-50" contentClasses="text-green-500" shadow="none" rounded="xl">
+          <p>This is card content..</p>
+        </Card>
+      </div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Card
+  class="border-2 border-green-500 bg-green-100"
+  titleClasses="bg-green-500 p-2 rounded-md text-green-50"
+  contentClasses="text-green-500"
+  shadow="none"
+  rounded="xl"
+  title="Card Title"
+>
+  <p>This is card content..</p>
+</Card>
+```
+      {/snippet}
+    </Example>
   </DocBlock>
 
   <DocBlock title="Configuration">
@@ -243,7 +277,11 @@ description: A dynamic and versatile way to showcase content, with a variety of 
   </DocBlock>
 
   {#snippet sidebar()}
-    <a href="#setup-&-example">Setup & use</a>
+    <a href={processID("Setup")}>Setup</a>
+    <a href={processID("Example")}>Example</a>
+    <a href={processID("Card Elements")}>Card Elements</a>
+    <a href={processID("Horizontal Card")}>Horizontal Card</a>
     <a href={processID("Customization")}>Customization</a>
+    <a href={processID("Configuration")}>Configuration</a>
   {/snippet}
 </DocLayout>
