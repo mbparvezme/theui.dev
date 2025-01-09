@@ -2,7 +2,44 @@
   {
     "key": "props",
     "title": "Props",
-    "data": null
+    "data": [
+      {
+        "name": "title",
+        "type": "Snippet",
+        "description": "The header or trigger content for the collapse.",
+        "default": "undefined"
+      },
+      {
+        "name": "content",
+        "type": "string",
+        "description": "The text or HTML content inside the collapsible section.",
+        "default": "undefined"
+      },
+      {
+        "name": "animation",
+        "type": "<a href=\"/docs/types#common-types\">ANIMATE_SPEED</a>",
+        "description": "Speed of the collapse animation.",
+        "default": "fast"
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "description": "Unique identifier to link the collapse trigger and content.",
+        "default": "generateToken()"
+      },
+      {
+        "name": "ariaLabel",
+        "type": "string",
+        "description": "Accessible label for the collapse component.",
+        "default": ""
+      },
+      {
+        "name": "isOpen",
+        "type": "boolean",
+        "description": "Defines if the collapse is open by default.",
+        "default": false
+      }
+    ]
   },
   {
     "key": "dynamicProps",
@@ -12,7 +49,12 @@
   {
     "key": "snippets",
     "title": "Snippets",
-    "data": null
+    "data": [
+      {
+        "name": "title",
+        "description": "The header or trigger content for the collapse."
+      }
+    ]
   },
   {
     "key": "functions",

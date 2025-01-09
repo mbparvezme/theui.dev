@@ -20,6 +20,84 @@ description: Toggle content visibility in your Svelte app with TheUI-Svelte's Co
 <DocLayout>
   <DocHead title="Collapse" text="The Collapse component allows you to show and hide content independently. It is unstyled by default, giving you the flexibility to use any content and design according to your needs." {edit_url}/>
 
+  <DocBlock title="Setup">
+    <p class="not-prose">Ensure you have the Collapse component available. Import it as shown below.</p>
+    <Code>
+
+```html
+<script>
+  import { Collapse } from "theui-svelte";
+</script>
+```
+    </Code>
+  </DocBlock>
+
+  <DocBlock title="Example">
+    <p class="not-prose">Below is a simple example demonstrating how to use the Chips component. This example shows how to create a chip with a basic text label:</p>
+    <Example>
+      {#snippet example()}
+      <div>
+        <Collapse ariaLabel="COLLAPSE">
+          {#snippet title()}
+            <Button>Flush collapse title</Button>
+          {/snippet}
+          <p>Nam pretium turpis et arcu. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nam adipiscing. Quisque libero metus, condimentum nec, tempor a, commodo mollis, magna. Curabitur suscipit suscipit tellus.</p>
+        </Collapse>
+      </div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Collapse ariaLabel="COLLAPSE">
+  {#snippet title()}
+    <Button>Flush collapse title</Button>
+  {/snippet}
+  <p> ..... </p>
+</Collapse>
+```
+      {/snippet}
+    </Example>
+    <p class="not-prose">The title snippet <code>{"{" + "#snippet title()" + "}"}</code> defines the trigger for the collapse. In this case, a button labeled "Flush Collapse Title" acts as the clickable element to toggle the collapse.</p>
+    <p class="not-prose">Any component outside the title snippet will be considered as the content of the collapse and will be revealed or hidden based on the collapse state.</p>
+  </DocBlock>
+
+  <DocBlock title="Outlying Collapse">
+    <Example>
+      <p class="not-prose">The Collapse component lets you separate the collapse header (title) from the body (content). This is helpful when you want the toggle element, like a button, to be in a different place from the collapsible content.</p>
+      <p class="not-prose">To do this, use the <code>id</code> prop to link the header and body. Both elements should have the same id value to connect them.</p>
+      <p class="not-prose">TIn the example below, a button and a content section are linked with the same <code>id</code> (myCollapse1). This allows the button to control the visibility of the content.</p>
+      {#snippet example()}
+      <div>
+        <!-- First, define the button that will act as the toggle -->
+        <Collapse ariaLabel="COLLAPSE" id="myCollapse1">
+          {#snippet title()}<Button slot="title" label="Separate Collapse Heading"/>{/snippet}
+        </Collapse>
+
+        <!-- Next, define the content that will be shown or hidden -->
+        <Collapse ariaLabel="COLLAPSE" id="myCollapse1">
+          Separate collapse body content...
+        </Collapse>
+      </div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<!-- First, define the button that will act as the toggle -->
+<Collapse label="COLLAPSE" id="">
+  {#snippet title()}<Button slot="title" label="Separate Collapse Heading"/>{/snippet}
+</Collapse>
+
+<!-- Next, define the content that will be shown or hidden -->
+<Collapse label="COLLAPSE" id="">
+  Separate collapse body content...
+</Collapse>
+```
+      {/snippet}
+    </Example>
+    <p class="not-prose">The title snippet <code>{"{" + "#snippet title()" + "}"}</code> defines the trigger for the collapse. In this case, a button labeled "Flush Collapse Title" acts as the clickable element to toggle the collapse.</p>
+    <p class="not-prose">Any component outside the title snippet will be considered as the content of the collapse and will be revealed or hidden based on the collapse state.</p>
+  </DocBlock>
+
 
   <DocBlock title="Configuration">
     <ConfigComponent {component} />
