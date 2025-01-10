@@ -1,0 +1,76 @@
+[
+  {
+    "key": "props",
+    "title": "Props",
+    "data": [
+      {
+        "name": "trigger",
+        "type": "Snippet",
+        "description": "The element that triggers the opening of the component.",
+        "default": "undefined"
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "description": "Unique identifier for the component.",
+        "default": "&lt;RANDOM STRING&gt;"
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "description": "Accessible label for the component.",
+        "default": ""
+      },
+      {
+        "name": "animate",
+        "type": "<a href=\"/docs/types#common-types\">ANIMATE_SPEED</a>",
+        "description": "Speed of the animation when the component is shown or hidden.",
+        "default": "fast"
+      },
+      {
+        "name": "backdrop",
+        "type": "boolean|string",
+        "description": "Defines the backdrop behavior. It can be a boolean or a string.",
+        "default": true
+      },
+      {
+        "name": "closeOnEsc",
+        "type": "boolean",
+        "description": "Determines if the component should close when the Escape key is pressed.",
+        "default": true
+      },
+      {
+        "name": "position",
+        "type": "string",
+        "description": "Position of the component relative to the screen (top, end, bottom, start).",
+        "default": "start"
+      },
+      {
+        "name": "staticBackdrop",
+        "type": "boolean",
+        "description": "Determines if the backdrop should be static, preventing closing the component by clicking outside.",
+        "default": false
+      }
+    ]
+  },
+  {
+    "key": "dynamicProps",
+    "title": "Dynamic props",
+    "data": null
+  },
+  {
+    "key": "snippets",
+    "title": "Snippets",
+    "data": [
+      {
+        "name": "trigger",
+        "description": "The element that triggers the opening of the component."
+      }
+    ]
+  },
+  {
+    "key": "functions",
+    "title": "Functions",
+    "data": null
+  }
+]
