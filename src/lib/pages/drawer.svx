@@ -1,5 +1,5 @@
 ---
-title: Collapse
+title: Drawer
 dir: ".lib/pages"
 description: The Drawer component is a versatile UI element that slides in from the edge of the screen, providing a convenient way to display additional content or navigation without disrupting the main view.
 ---
@@ -36,10 +36,7 @@ description: The Drawer component is a versatile UI element that slides in from 
     <p class="not-prose">Here’s a basic example demonstrating how to use the Drawer component:</p>
     <Example>
       {#snippet example()}
-        <Drawer>
-          {#snippet trigger()}
-            <Button label="Open Drawer" />
-          {/snippet}
+        <Drawer label="Open Drawer">
           <div class="p-8">
             Drawer content
           </div>
@@ -48,10 +45,7 @@ description: The Drawer component is a versatile UI element that slides in from 
 
       {#snippet code()}
 ```html
-<Drawer>
-  {#snippet trigger()}
-    <Button label="Open Drawer" />
-  {/snippet}
+<Drawer label="Open Drawer">
   <div class="p-8">
     Drawer content
   </div>
@@ -62,6 +56,97 @@ description: The Drawer component is a versatile UI element that slides in from 
     <p class="not-prose">In this example, the Drawer slides in from the left side of the screen which is the default behavior. The trigger snippet contains a button that toggles the visibility of the Drawer. You can replace the content inside the Drawer with any elements you need.</p>
   </DocBlock>
 
+  <DocBlock title="Drawer Position">
+    <Example>
+    <p class="not-prose">The <code>position</code> prop allows you to control where the Drawer appears on the screen. You can choose from four positions: <code>top</code>, <code>end</code>, <code>bottom</code>, or <code>start</code>. This flexibility lets you tailor the Drawer’s placement to fit the layout and design of your application.</p>
+    <p class="not-prose">Simply set the <code>position</code> prop to your desired value to change where the Drawer opens from, creating a more intuitive user experience based on your app's needs.</p>
+      {#snippet example()}
+        <Drawer label="Start">
+          <div class="p-8">
+            Start Drawer
+          </div>
+        </Drawer>
+        <Drawer label="Top" position="top">
+          <div class="p-8">
+            Top Drawer
+          </div>
+        </Drawer>
+        <Drawer label="End" position="end">
+          <div class="p-8">
+            End Drawer
+          </div>
+        </Drawer>
+        <Drawer label="Bottom" position="bottom">
+          <div class="p-8">
+            Bottom Drawer
+          </div>
+        </Drawer>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Drawer ... position="start">...</Drawer> <!-- Default position -->
+<Drawer ... position="top">...</Drawer>
+<Drawer ... position="end">...</Drawer>
+<Drawer ... position="bottom">...</Drawer>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Controlling the Backdrop">
+    <Example title="Custom Backdrop Style">
+    <p class="not-prose">The Drawer includes a backdrop which is enabled by default. It can be toggled or styled using the backdrop prop. Set it to <code>false</code> to disable it, <code>true</code> for a default backdrop or provide a custom classes for styling.</p>
+      {#snippet example()}
+        <Drawer label="Custom Backdrop" backdrop="bg-red-500">
+          <div class="p-8">
+            Drawer content
+          </div>
+        </Drawer>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Drawer ... backdrop="bg-red-500">...</Drawer>
+```
+      {/snippet}
+    </Example>
+    <Example title="Preventing Backdrop Click">
+    <p class="not-prose">By default, the Drawer closes when the user clicks on the backdrop. This behavior helps users easily dismiss the Drawer by clicking outside of it, enhancing usability in most scenarios.</p>
+    <p class="not-prose">However, for critical tasks, you can prevent this by setting the <code>staticBackdrop</code> prop to <code>true</code>, ensuring the Drawer stays open until manually closed.</p>
+      {#snippet example()}
+        <Drawer label="Backdrop Click Disabled" staticBackdrop={true}>
+          <div class="p-8">
+            Drawer content
+          </div>
+        </Drawer>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Drawer ... staticBackdrop={true}>...</Drawer>
+```
+      {/snippet}
+    </Example>
+
+    <Example title="Disable Backdrop">
+    <p class="not-prose">If you prefer not to use a backdrop, you can easily disable it by setting the <code>backdrop</code> prop to <code>false</code>. This will remove the backdrop entirely from the Drawer component</p>
+      {#snippet example()}
+        <Drawer label="Backdrop Disabled" backdrop={false}>
+          <div class="p-8">
+            Drawer content
+          </div>
+        </Drawer>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Drawer ... backdrop={false}>...</Drawer>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
   <DocBlock title="Configuration">
     <ConfigComponent {component} />
   </DocBlock>
@@ -69,6 +154,8 @@ description: The Drawer component is a versatile UI element that slides in from 
   {#snippet sidebar()}
     <a href={processID("Setup")}>Setup</a>
     <a href={processID("Example")}>Example</a>
+    <a href={processID("Drawer Position")}>Position</a>
+    <a href={processID("Controlling the Backdrop")}>Controlling Backdrop</a>
     <a href={processID("Configuration")}>Configuration</a>
   {/snippet}
 </DocLayout>

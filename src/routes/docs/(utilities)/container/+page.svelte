@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { PageData } from "../container/$types";
+  import type { PageData } from "./$types";
   import Page from "$lib/pages/container.svx";
 
   let { data }: { data: PageData|any } = $props();

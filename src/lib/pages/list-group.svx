@@ -1,0 +1,121 @@
+---
+title: List Group
+dir: ".lib/pages"
+description: Toggle content visibility in your Svelte app with TheUI-Svelte's Collapse component, offering a seamless user experience.
+---
+
+<script lang="ts">
+  import DocLayout from "$lib/ui/doc/DocLayout.svelte";
+  import DocHead from "$lib/ui/doc/Head.svelte";
+  import DocBlock from "$lib/ui/doc/Block.svelte";
+  import Code from "$lib/ui/doc/CodeBlock.svelte";
+  import Example from "$lib/ui/doc/Example.svelte";
+  import ConfigComponent from "$lib/ui/doc/ConfigComponent.svelte";
+  import { processID } from "$lib";
+  let { component, edit_url }: {component: any, edit_url?: string } = $props();
+
+  import { ListGroup, ListItem } from "theui-svelte";
+</script>
+
+<DocLayout>
+  <DocHead title="List Group" text="The List Group component offers a flexible, customizable way to display items like links or text in a list format. It supports various styles and types, making it ideal for structured content." {edit_url}/>
+
+  <DocBlock title="Setup">
+    <p class="not-prose">To use the List Group component, import it from the <code>theui-svelte</code> library:</p>
+    <Code>
+
+```html
+<script>
+  import { ListGroup, ListItem } from "theui-svelte";
+</script>
+```
+    </Code>
+  </DocBlock>
+
+  <DocBlock title="Example">
+    <p class="not-prose">Below is a simple example demonstrating how to use the List Group:</p>
+    <Example>
+      {#snippet example()}
+      <div>
+        <ListGroup class="w-96">
+          <ListItem content="First Item" />
+          <ListItem content="Second Item" />
+          <ListItem content="Third Item" />
+        </ListGroup>
+      </div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<ListGroup>
+  <ListItem content="First Item" />
+  <ListItem content="Second Item" />
+  <ListItem content="Third Item" />
+</ListGroup>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="List Style Variant">
+    <p class="not-prose">The <code>variant</code> prop in the List Group component allows you to control the overall style of the list. It provides two options:</p>
+    <ul class="my-0">
+      <li><b>bordered</b>: This style adds borders around each list item, giving a defined and structured look to the list. It is useful when you want to visually separate items clearly.</li>
+      <li><b>flat</b>: This style removes borders, resulting in a clean, minimalist design. It's ideal for cases where a simple and unobtrusive list presentation is preferred.</li>
+    </ul>
+    <p class="not-prose">By default, the <code>variant</code> is set to <code>"bordered"</code>. You can easily switch between these styles to match the design needs of your application.</p>
+    <Example>
+      {#snippet example()}
+      <div>
+        <ListGroup class="w-96" variant="flat">
+          <ListItem content="First Item" />
+          <ListItem content="Second Item" />
+          <ListItem content="Third Item" />
+        </ListGroup>
+      </div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<ListGroup variant="flat">
+  <ListItem content="First Item" />
+  <ListItem content="Second Item" />
+  <ListItem content="Third Item" />
+</ListGroup>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="List Element Type">
+    <p class="not-prose"></p>
+    <p class="not-prose"></p>
+    <Example>
+      {#snippet example()}
+      <div>
+      
+      </div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<ListGroup variant="flat">
+  <ListItem content="First Item" />
+  <ListItem content="Second Item" />
+  <ListItem content="Third Item" />
+</ListGroup>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Configuration">
+    <ConfigComponent {component} />
+  </DocBlock>
+
+  {#snippet sidebar()}
+    <a href={processID("Setup")}>Setup</a>
+    <a href={processID("Example")}>Example</a>
+    <a href={processID("Configuration")}>Configuration</a>
+  {/snippet}
+</DocLayout>

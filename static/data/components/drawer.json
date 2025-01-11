@@ -6,19 +6,19 @@
       {
         "name": "trigger",
         "type": "Snippet",
-        "description": "The element that triggers the opening of the component.",
+        "description": "The element that triggers the opening of the Drawer.",
         "default": "undefined"
       },
       {
         "name": "id",
         "type": "string",
-        "description": "Unique identifier for the component.",
+        "description": "Unique identifier for the Drawer component.",
         "default": "&lt;RANDOM STRING&gt;"
       },
       {
         "name": "label",
         "type": "string",
-        "description": "Accessible label for the component.",
+        "description": "Text of the Button component, used as the default Drawer trigger.",
         "default": ""
       },
       {
@@ -30,25 +30,19 @@
       {
         "name": "backdrop",
         "type": "boolean|string",
-        "description": "Defines the backdrop behavior. It can be a boolean or a string.",
-        "default": true
-      },
-      {
-        "name": "closeOnEsc",
-        "type": "boolean",
-        "description": "Determines if the component should close when the Escape key is pressed.",
+        "description": "Toggle or style the Drawer backdrop.",
         "default": true
       },
       {
         "name": "position",
-        "type": "string",
-        "description": "Position of the component relative to the screen (top, end, bottom, start).",
+        "type": "'top' | 'end' | 'bottom' | 'start'",
+        "description": "Drawer position relative to screen.",
         "default": "start"
       },
       {
         "name": "staticBackdrop",
         "type": "boolean",
-        "description": "Determines if the backdrop should be static, preventing closing the component by clicking outside.",
+        "description": "Prevent Drawer from closing on backdrop click.",
         "default": false
       }
     ]
