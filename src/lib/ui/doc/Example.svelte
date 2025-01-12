@@ -2,6 +2,7 @@
   import type { Snippet } from "svelte";
   import Code from "./CodeBlock.svelte";
     import { twMerge } from "tailwind-merge";
+    import { processID } from "$lib";
 
   interface Props {
     children?: Snippet,
@@ -17,7 +18,7 @@
 
 <div>
   {#if title}
-    <h4 class="font-semibold font-body text-slate-500 mt-0 mb-1">{@html title}</h4>
+    <h4 id={processID(title, false)} class="font-semibold font-body text-slate-500 mt-0 mb-1">{@html title}</h4>
   {/if}
 
   {@render children?.()}
