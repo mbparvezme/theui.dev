@@ -5,7 +5,7 @@
 <p class="bg-green-500 text-on-brand-primary-100 border-white dark:border-black"></p>
 <p class="bg-yellow-400 text-black"></p>
 <p class="text-pink-500"></p>
-<p class="text-green-500 w-96 border-2 border-green-500"></p>
+<p class="text-green-500 w-96 border-2 border-green-500 flex-wrap gap-y-4"></p>
 <p class="text-green-50 bg-green-100 content-center border-brand-primary-500"></p>
 
 <div class="bg-gradient-to-r from-red-400 to-yellow-500">

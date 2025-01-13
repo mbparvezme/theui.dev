@@ -14,51 +14,277 @@ description:
   import { processID } from "$lib";
   let { component, edit_url }: {component: any, edit_url?: string } = $props();
 
-  import { Collapse, Button } from "theui-svelte";
+  import { Dropdown, DropdownItem } from "theui-svelte";
 </script>
 
+{#snippet dropdownBasic()}
+<DropdownItem url="/" text="Link 1" />
+<DropdownItem url="/" text="Link 2" />
+<DropdownItem url="/" text="Link 3" />
+{/snippet}
+
 <DocLayout>
-  <DocHead title="Collapse" text="" {edit_url}/>
+  <DocHead title="Dropdown" text="" {edit_url}/>
 
   <DocBlock title="Setup">
-    <p class="not-prose"></p>
     <Code>
 
 ```html
 <script>
-  import { Collapse } from "theui-svelte";
+  import { Dropdown, DropdownItem } from "theui-svelte";
 </script>
 ```
     </Code>
   </DocBlock>
 
   <DocBlock title="Example">
-    <p class="not-prose">Below is a simple example demonstrating how to use the Chips component. This example shows how to create a chip with a basic text label:</p>
     <Example>
       {#snippet example()}
       <div>
-        <Collapse ariaLabel="COLLAPSE">
-          {#snippet title()}
-            <Button>Flush collapse title</Button>
-          {/snippet}
-          <p>Nam pretium turpis et arcu. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nam adipiscing. Quisque libero metus, condimentum nec, tempor a, commodo mollis, magna. Curabitur suscipit suscipit tellus.</p>
-        </Collapse>
+        <Dropdown label="Dropdown">
+          {@render dropdownBasic()}
+        </Dropdown>
       </div>
       {/snippet}
 
       {#snippet code()}
 ```html
-<Collapse ariaLabel="COLLAPSE">
-  {#snippet title()}
-    <Button>Flush collapse title</Button>
-  {/snippet}
-  <p> ..... </p>
-</Collapse>
+<Dropdown label="Dropdown">
+  <DropdownItem url="/" text="Link 1" />
+  <DropdownItem url="/" text="Link 2" />
+  <DropdownItem url="/" text="Link 3" />
+</Dropdown>
 ```
       {/snippet}
     </Example>
-    <p class="not-prose">The title snippet <code>{"{" + "#snippet title()" + "}"}</code> defines the trigger for the collapse. In this case, a button labeled "Flush Collapse Title" acts as the clickable element to toggle the collapse.</p>
-    <p class="not-prose">Any component outside the title snippet will be considered as the content of the collapse and will be revealed or hidden based on the collapse state.</p>
+  </DocBlock>
+
+  <DocBlock title="Dropdown Sizes">
+    <Example>
+      {#snippet example()}
+      <div class="flex justify-between w-full flex-wrap gap-y-4">
+        <Dropdown label="Auto" size="auto">
+          {@render dropdownBasic()}
+        </Dropdown>
+        <Dropdown label="Small" size="sm">
+          {@render dropdownBasic()}
+        </Dropdown>
+        <Dropdown label="Medium" size="md">
+          {@render dropdownBasic()}
+        </Dropdown>
+        <Dropdown label="Large" size="lg">
+          {@render dropdownBasic()}
+        </Dropdown>
+        <Dropdown label="Full width" size="full">
+          {@render dropdownBasic()}
+        </Dropdown>
+        <Dropdown label="Custom" size="custom">
+          {@render dropdownBasic()}
+        </Dropdown>
+      </div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Dropdown animate="slower"> ... </Dropdown>
+<Dropdown animate="slow"> ... </Dropdown>
+<Dropdown animate="medium"> ... </Dropdown>
+<Dropdown animation="fast"> ... </Dropdown>
+<Dropdown animation="faster"> ... </Dropdown>
+<Dropdown animation={false}> ... </Dropdown>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Alignment">
+    <Example>
+      {#snippet example()}
+      <div class="flex justify-between w-full">
+        <Dropdown label="Align to Start" align="start">
+          {@render dropdownBasic()}
+        </Dropdown>
+        <Dropdown label="Align to End (Default)">
+          {@render dropdownBasic()}
+        </Dropdown>
+      </div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Dropdown align="start"> ... </Dropdown>
+<Dropdown align="end"> ... </Dropdown> <!-- Default -->
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Animation">
+    <Example>
+      {#snippet example()}
+      <div class="flex justify-between w-full flex-wrap gap-y-4">
+        <Dropdown label="Slide left" animation="slide-left">
+          {@render dropdownBasic()}
+        </Dropdown>
+        <Dropdown label="Slide up" animation="slide-up">
+          {@render dropdownBasic()}
+        </Dropdown>
+        <Dropdown label="Slide right" animation="slide-right">
+          {@render dropdownBasic()}
+        </Dropdown>
+        <Dropdown label="Slide down" animation="slide-down">
+          {@render dropdownBasic()}
+        </Dropdown>
+        <Dropdown label="Fade" animation="fade">
+          {@render dropdownBasic()}
+        </Dropdown>
+        <Dropdown label="Zoom in" animation="zoom-in">
+          {@render dropdownBasic()}
+        </Dropdown>
+        <Dropdown label="Zoom out" animation="zoom-out">
+          {@render dropdownBasic()}
+        </Dropdown>
+      </div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Dropdown animation="slide-left"> ... </Dropdown>
+<Dropdown animation="slide-up"> ... </Dropdown>  <!-- Default -->
+<Dropdown animation="slide-right"> ... </Dropdown>
+<Dropdown animation="slide-down"> ... </Dropdown>
+<Dropdown animation="fade"> ... </Dropdown>
+<Dropdown animation="zoom-in"> ... </Dropdown>
+<Dropdown animation="zoom-out"> ... </Dropdown>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Animation Speed">
+    <Example>
+      {#snippet example()}
+      <div class="flex justify-between w-full flex-wrap gap-y-4">
+        <Dropdown label="Slower" animate="slower">
+          {@render dropdownBasic()}
+        </Dropdown>
+        <Dropdown label="Slow" animate="slow">
+          {@render dropdownBasic()}
+        </Dropdown>
+        <Dropdown label="Medium" animate="medium">
+          {@render dropdownBasic()}
+        </Dropdown>
+        <Dropdown label="Fast" animation="fast">
+          {@render dropdownBasic()}
+        </Dropdown>
+        <Dropdown label="Faster" animation="faster">
+          {@render dropdownBasic()}
+        </Dropdown>
+        <Dropdown label="No Animate" animation={false}>
+          {@render dropdownBasic()}
+        </Dropdown>
+      </div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Dropdown animate="slower"> ... </Dropdown>
+<Dropdown animate="slow"> ... </Dropdown>
+<Dropdown animate="medium"> ... </Dropdown>
+<Dropdown animation="fast"> ... </Dropdown>
+<Dropdown animation="faster"> ... </Dropdown>
+<Dropdown animation={false}> ... </Dropdown>
+```
+      {/snippet}
+    </Example>
+
+  </DocBlock>
+
+  <DocBlock title="Dropdown Backdrop">
+    <Example>
+      {#snippet example()}
+      <div>
+        <Dropdown label="Dropdown" backdrop={true}>
+          {@render dropdownBasic()}
+        </Dropdown>
+      </div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Dropdown backdrop={true}> ... </Dropdown>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Close Dropdown On Blur">
+    <Example>
+      {#snippet example()}
+      <div>
+        <Dropdown label="Control on Blur" closeOnBlur={false}>
+          {@render dropdownBasic()}
+        </Dropdown>
+      </div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Dropdown closeOnBlur={false}> ... </Dropdown>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Dropdown Trigger Event">
+    <Example>
+      {#snippet example()}
+      <div>
+        <Dropdown label="Dropdown on hover" dropdownEvent="hover">
+          {@render dropdownBasic()}
+        </Dropdown>
+      </div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Dropdown dropdownEvent="hover"> ... </Dropdown>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Dropdown Trigger">
+    <Example>
+      {#snippet example()}
+      <div>
+        <Dropdown label="Dropdown text label">
+          {@render dropdownBasic()}
+        </Dropdown>
+
+        <Dropdown>
+          {#snippet label()}
+          <span class="border border-brand-primary-500 text-brand-primary-500 py-2 px-4 rounded-full">Dropdown snippet label</span>
+          {/snippet}
+          {@render dropdownBasic()}
+        </Dropdown>
+      </div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<!-- Dropdown label by prop -->
+<Dropdown label="Dropdown text label"> ... </Dropdown>
+
+<!-- Custom dropdown label by Snippet -->
+<Dropdown>
+  {#snippet label()}
+    <span class="...">Dropdown snippet label</span>
+  {/snippet}
+</Dropdown>
+```
+      {/snippet}
+    </Example>
   </DocBlock>
 
   <DocBlock title="Configuration">
