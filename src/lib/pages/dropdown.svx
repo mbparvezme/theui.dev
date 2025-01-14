@@ -24,9 +24,14 @@ description:
 {/snippet}
 
 <DocLayout>
-  <DocHead title="Dropdown" text="" {edit_url}/>
+  <DocHead title="Dropdown" text="The Dropdown component offers a flexible and customizable way to display a list of links or actions in a compact, toggle-able menu. It's perfect for navigation menus, settings, or any context where you want to provide users with multiple options in a clean, organized format." {edit_url}/>
+
+  <DocBlock>
+    <p class="not-prose">The Dropdown component allows you to create a menu that can be expanded or collapsed by clicking or hovering over a trigger element. It supports various customization options such as alignment, animation styles, animation speeds, and trigger events. Each item within the Dropdown can be linked to different actions or URLs, making it a versatile tool for enhancing user interaction in your application.</p>
+  </DocBlock>
 
   <DocBlock title="Setup">
+    <p class="not-prose">To use the Dropdown component in your project, you first need to import it along with the DropdownItem component. Here's how you can set up the Dropdown in your Svelte component.</p>
     <Code>
 
 ```html
@@ -39,6 +44,7 @@ description:
 
   <DocBlock title="Example">
     <Example>
+      <p class="not-prose">Here’s a simple example of how to implement the Dropdown component. It includes a label and multiple DropdownItem components, which represent the individual links or actions within the dropdown.</p>
       {#snippet example()}
       <div>
         <Dropdown label="Dropdown">
@@ -57,10 +63,20 @@ description:
 ```
       {/snippet}
     </Example>
+    <p class="not-prose">In this example, the Dropdown is triggered by a label ("Dropdown"), and it contains three items, each with a URL and text.</p>
   </DocBlock>
 
-  <DocBlock title="Dropdown Sizes">
+  <DocBlock title="Dropdown Sizing">
     <Example>
+      <p class="not-prose">The size of the Dropdown component can be customized using the <code>size</code> prop. You can choose from predefined sizes or set a custom size to suit your design needs. Here's a breakdown of the available size options:</p>
+      <ul class="my-0">
+        <li><b>auto</b>: The Dropdown will automatically adjust its size based on its content.</li>
+        <li><b>sm</b>: A small size for compact dropdowns.</li>
+        <li><b>md</b>: The default medium size for a standard dropdown.</li>
+        <li><b>lg</b>: A large size for more prominent dropdowns.</li>
+        <li><b>full</b>: The dropdown will take up the full width of its container.</li>
+        <li><b>custom</b>: Use this option when you want to set a custom size for the dropdown through additional styling.</li>
+      </ul>
       {#snippet example()}
       <div class="flex justify-between w-full flex-wrap gap-y-4">
         <Dropdown label="Auto" size="auto">
@@ -86,19 +102,37 @@ description:
 
       {#snippet code()}
 ```html
-<Dropdown animate="slower"> ... </Dropdown>
-<Dropdown animate="slow"> ... </Dropdown>
-<Dropdown animate="medium"> ... </Dropdown>
-<Dropdown animation="fast"> ... </Dropdown>
-<Dropdown animation="faster"> ... </Dropdown>
-<Dropdown animation={false}> ... </Dropdown>
+<!-- Automatically adjusts the size based on content -->
+<Dropdown size="auto"> ... </Dropdown>
+
+<!-- Small dropdown -->
+<Dropdown size="sm"> ... </Dropdown>
+
+<!-- Default medium size dropdown -->
+<Dropdown size="md"> ... </Dropdown>
+
+<!-- Large dropdown -->
+<Dropdown size="lg"> ... </Dropdown>
+
+<!-- Full-width dropdown -->
+<Dropdown size="full"> ... </Dropdown>
+
+<!-- Custom size dropdown (you can set custom styles) -->
+<Dropdown size="custom"> ... </Dropdown>
+
 ```
       {/snippet}
     </Example>
+    <p class="not-prose">In these examples, the <code>size</code> prop allows you to quickly adjust the appearance of the dropdown to fit different design needs.</p>
   </DocBlock>
 
   <DocBlock title="Alignment">
     <Example>
+      <p class="not-prose">The <code>align</code> prop in the Dropdown component controls the alignment of the dropdown menu relative to its trigger. You can choose between two options:</p>
+      <ul class="my-0">
+        <li><b>start</b>: Aligns the dropdown to the start (left) of the trigger element.</li>
+        <li><b>end</b>: Aligns the dropdown to the end (right) of the trigger element. This is the default alignment.</li>
+      </ul>
       {#snippet example()}
       <div class="flex justify-between w-full">
         <Dropdown label="Align to Start" align="start">
@@ -112,15 +146,244 @@ description:
 
       {#snippet code()}
 ```html
+<!-- Align dropdown to the start (left) of the trigger -->
 <Dropdown align="start"> ... </Dropdown>
-<Dropdown align="end"> ... </Dropdown> <!-- Default -->
+
+<!-- Default alignment (align to the right of the trigger) -->
+<Dropdown align="end"> ... </Dropdown>
 ```
       {/snippet}
     </Example>
   </DocBlock>
 
+  <DocBlock title="Dropdown Trigger Event">
+    <p class="not-prose">The <code>dropdownEvent</code> prop defines how the dropdown is triggered. By default, the dropdown opens when clicked, but you can change this behavior to trigger on hover by setting it to <code>"hover"</code>.</p>
+    <Example>
+      {#snippet example()}
+      <div>
+        <Dropdown label="Dropdown on hover" dropdownEvent="hover">
+          {@render dropdownBasic()}
+        </Dropdown>
+      </div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Dropdown dropdownEvent="hover"> ... </Dropdown>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Custom Dropdown Trigger">
+    <Example>
+      <p class="not-prose">The <code>label</code> prop allows you to set a custom label for the dropdown trigger. You can either use a text or HTML string or define a custom trigger element using the <code>snippet</code> block.</p>
+      <ul class="my-0">
+        <li><b>label as props</b>: Directly set the trigger label as a prop.</li>
+        <li><b>label as snippet</b>: Define a custom trigger with any HTML or component structure.</li>
+      </ul>
+      {#snippet example()}
+      <div>
+        <Dropdown label="Dropdown text label">
+          {@render dropdownBasic()}
+        </Dropdown>
+
+        <Dropdown>
+          {#snippet label()}
+          <span class="block border border-brand-primary-500 text-brand-primary-500 py-2 px-4 rounded-full">Dropdown snippet label</span>
+          {/snippet}
+          {@render dropdownBasic()}
+        </Dropdown>
+      </div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<!-- Dropdown label by prop -->
+<Dropdown label="Dropdown text label"> ... </Dropdown>
+
+<!-- Custom dropdown label by Snippet -->
+<Dropdown>
+  {#snippet label()}
+    <span class="...">Dropdown snippet label</span>
+  {/snippet}
+</Dropdown>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Item Types">
+    <Example title="Link">
+      <p class="not-prose"> ... </p>
+      {#snippet example()}
+      <div>
+        <Dropdown label="Dropdown">
+          {@render dropdownBasic()}
+        </Dropdown>
+      </div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Dropdown label="Dropdown">
+  <DropdownItem url="/" text="Link 1" />
+  <DropdownItem url="/" text="Link 2" />
+  <DropdownItem url="/" text="Link 3" />
+</Dropdown>
+```
+      {/snippet}
+    </Example>
+
+    <Example title="Button">
+      <p class="not-prose"> ... </p>
+      {#snippet example()}
+      <div>
+        <Dropdown label="Dropdown">
+          {@render dropdownBasic()}
+        </Dropdown>
+      </div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Dropdown label="Dropdown">
+  <DropdownItem url="/" text="Link 1" />
+  <DropdownItem url="/" text="Link 2" />
+  <DropdownItem url="/" text="Link 3" />
+</Dropdown>
+```
+      {/snippet}
+    </Example>
+
+    <Example title="Header">
+      <p class="not-prose"> ... </p>
+      {#snippet example()}
+      <div>
+        <Dropdown label="Dropdown">
+          {@render dropdownBasic()}
+        </Dropdown>
+      </div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Dropdown label="Dropdown">
+  <DropdownItem url="/" text="Link 1" />
+  <DropdownItem url="/" text="Link 2" />
+  <DropdownItem url="/" text="Link 3" />
+</Dropdown>
+```
+      {/snippet}
+    </Example>
+
+    <Example title="Divider">
+      <p class="not-prose"> ... </p>
+      {#snippet example()}
+      <div>
+        <Dropdown label="Dropdown">
+          {@render dropdownBasic()}
+        </Dropdown>
+      </div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Dropdown label="Dropdown">
+  <DropdownItem url="/" text="Link 1" />
+  <DropdownItem url="/" text="Link 2" />
+  <DropdownItem url="/" text="Link 3" />
+</Dropdown>
+```
+      {/snippet}
+    </Example>
+    <p class="not-prose"> ... </p>
+  </DocBlock>
+
+  <DocBlock title="Active State">
+    <Example>
+      <p class="not-prose"> ... </p>
+      {#snippet example()}
+      <div>
+        <Dropdown label="Dropdown">
+          {@render dropdownBasic()}
+        </Dropdown>
+      </div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Dropdown label="Dropdown">
+  <DropdownItem url="/" text="Link 1" />
+  <DropdownItem url="/" text="Link 2" />
+  <DropdownItem url="/" text="Link 3" />
+</Dropdown>
+```
+      {/snippet}
+    </Example>
+    <p class="not-prose"> ... </p>
+  </DocBlock>
+
+  <DocBlock title="Dropdown Item's Icon">
+    <Example>
+      <p class="not-prose"> ... </p>
+      {#snippet example()}
+      <div>
+        <Dropdown label="Dropdown">
+          {@render dropdownBasic()}
+        </Dropdown>
+      </div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Dropdown label="Dropdown">
+  <DropdownItem url="/" text="Link 1" />
+  <DropdownItem url="/" text="Link 2" />
+  <DropdownItem url="/" text="Link 3" />
+</Dropdown>
+```
+      {/snippet}
+    </Example>
+    <p class="not-prose"> ... </p>
+  </DocBlock>
+
+  <DocBlock title="Custom Item">
+    <Example>
+      <p class="not-prose"> ... </p>
+      {#snippet example()}
+      <div>
+        <Dropdown label="Dropdown">
+          {@render dropdownBasic()}
+        </Dropdown>
+      </div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Dropdown label="Dropdown">
+  <DropdownItem url="/" text="Link 1" />
+  <DropdownItem url="/" text="Link 2" />
+  <DropdownItem url="/" text="Link 3" />
+</Dropdown>
+```
+      {/snippet}
+    </Example>
+    <p class="not-prose"> ... </p>
+  </DocBlock>
+
   <DocBlock title="Animation">
     <Example>
+      <p class="not-prose">The <code>animate</code> prop lets you control the speed of the dropdown's animation. You can choose from various options like <code>slower</code> for a very slow animation, <code>slow</code> for a slightly slower effect, <code>medium</code> for the default speed, <code>fast</code> for quicker animations, and <code>faster</code> for the fastest effect. If you prefer to disable the animation altogether, you can set the prop to false.</p>
+      <ul class="my-0">
+        <li><b>slide-left</b>: The dropdown slides in from the left.</li>
+        <li><b>slide-up</b>: The default animation, sliding in from the bottom.</li>
+        <li><b>slide-right</b>: Slides in from the right.</li>
+        <li><b>slide-down</b>: Slides in from the top.</li>
+        <li><b>fade</b>: A smooth fade-in animation.</li>
+        <li><b>zoom-in</b>: The dropdown zooms in from a smaller size.</li>
+        <li><b>zoom-out</b>: The dropdown zooms out from a larger size.</li>
+      </ul>
       {#snippet example()}
       <div class="flex justify-between w-full flex-wrap gap-y-4">
         <Dropdown label="Slide left" animation="slide-left">
@@ -159,6 +422,7 @@ description:
 ```
       {/snippet}
     </Example>
+    <p class="not-prose">These animation options help create a more engaging and visually appealing dropdown experience.</p>
   </DocBlock>
 
   <DocBlock title="Animation Speed">
@@ -197,10 +461,11 @@ description:
 ```
       {/snippet}
     </Example>
-
+    <p class="not-prose">This allows you to tailor the dropdown's animation speed to fit your design needs and improve user interaction.</p>
   </DocBlock>
 
   <DocBlock title="Dropdown Backdrop">
+    <p class="not-prose">The <code>backdrop</code> prop determines whether a backdrop is shown behind the dropdown. When set to <code>true</code>, a backdrop is displayed; by default, it is set to <code>false</code>, meaning no backdrop is shown.</p>
     <Example>
       {#snippet example()}
       <div>
@@ -212,17 +477,22 @@ description:
 
       {#snippet code()}
 ```html
+<!-- With backdrop -->
 <Dropdown backdrop={true}> ... </Dropdown>
+
+<!-- Without backdrop -->
+<Dropdown backdrop={false}> ... </Dropdown>
 ```
       {/snippet}
     </Example>
   </DocBlock>
 
-  <DocBlock title="Close Dropdown On Blur">
+  <DocBlock title="Close on Outside Click">
+    <p class="not-prose">The <code>closeOnBlur</code> prop controls whether the dropdown closes when it loses focus. By default, it is set to <code>true</code>, meaning the dropdown will close when you click outside of it. Setting it to <code>false</code> will keep the dropdown open even when it loses focus.</p>
     <Example>
       {#snippet example()}
       <div>
-        <Dropdown label="Control on Blur" closeOnBlur={false}>
+        <Dropdown label="Control Outside Click" closeOnBlur={false}>
           {@render dropdownBasic()}
         </Dropdown>
       </div>
@@ -230,17 +500,23 @@ description:
 
       {#snippet code()}
 ```html
+<!-- Keep the dropdown open on blur -->
 <Dropdown closeOnBlur={false}> ... </Dropdown>
+
+<!-- Default behavior: Close dropdown on blur -->
+<Dropdown closeOnBlur={true}> ... </Dropdown>
+
 ```
       {/snippet}
     </Example>
   </DocBlock>
 
-  <DocBlock title="Dropdown Trigger Event">
+  <DocBlock title="Customization">
     <Example>
+      <p class="not-prose"> ... </p>
       {#snippet example()}
       <div>
-        <Dropdown label="Dropdown on hover" dropdownEvent="hover">
+        <Dropdown label="Dropdown">
           {@render dropdownBasic()}
         </Dropdown>
       </div>
@@ -248,43 +524,15 @@ description:
 
       {#snippet code()}
 ```html
-<Dropdown dropdownEvent="hover"> ... </Dropdown>
-```
-      {/snippet}
-    </Example>
-  </DocBlock>
-
-  <DocBlock title="Dropdown Trigger">
-    <Example>
-      {#snippet example()}
-      <div>
-        <Dropdown label="Dropdown text label">
-          {@render dropdownBasic()}
-        </Dropdown>
-
-        <Dropdown>
-          {#snippet label()}
-          <span class="border border-brand-primary-500 text-brand-primary-500 py-2 px-4 rounded-full">Dropdown snippet label</span>
-          {/snippet}
-          {@render dropdownBasic()}
-        </Dropdown>
-      </div>
-      {/snippet}
-
-      {#snippet code()}
-```html
-<!-- Dropdown label by prop -->
-<Dropdown label="Dropdown text label"> ... </Dropdown>
-
-<!-- Custom dropdown label by Snippet -->
-<Dropdown>
-  {#snippet label()}
-    <span class="...">Dropdown snippet label</span>
-  {/snippet}
+<Dropdown label="Dropdown">
+  <DropdownItem url="/" text="Link 1" />
+  <DropdownItem url="/" text="Link 2" />
+  <DropdownItem url="/" text="Link 3" />
 </Dropdown>
 ```
       {/snippet}
     </Example>
+    <p class="not-prose"> ... </p>
   </DocBlock>
 
   <DocBlock title="Configuration">
@@ -294,6 +542,19 @@ description:
   {#snippet sidebar()}
     <a href={processID("Setup")}>Setup</a>
     <a href={processID("Example")}>Example</a>
+    <a href={processID("Dropdown Sizing")}>Sizing</a>
+    <a href={processID("Alignment")}>Alignment</a>
+    <a href={processID("Dropdown Trigger Event")}>Trigger Event</a>
+    <a href={processID("Custom Dropdown Trigger")}>Custom Trigger</a>
+    <a href={processID("Item Types")}>-- Item Types</a>
+    <a href={processID("Active State")}>-- Active State</a>
+    <a href={processID("Dropdown Item's Icon")}>-- Dropdown Item's Icon</a>
+    <a href={processID("Custom Item")}>-- Custom Item</a>
+    <a href={processID("Animation")}>Animation</a>
+    <a href={processID("Animation Speed")}>Animation Speed</a>
+    <a href={processID("Dropdown Backdrop")}>Dropdown Backdrop</a>
+    <a href={processID("Close on Outside Click")}>Close on Outside Click</a>
+    <a href={processID("Customization")}>-- Customization</a>
     <a href={processID("Configuration")}>Configuration</a>
   {/snippet}
 </DocLayout>
