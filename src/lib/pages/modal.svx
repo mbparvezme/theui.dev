@@ -54,22 +54,44 @@ description: Integrate customizable modals into your Svelte app with TheUI-Svelt
 
   <DocBlock title="Positioning">
     <Example>
-      <p class="not-prose"> ... </p>
+      <p class="not-prose">The <code>position</code> prop in the Modal component determines where the modal is displayed vertically on the screen. It can be set to <code>'top'</code>, <code>'center'</code>, or <code>'bottom'</code>, with the default being <code>'center'</code>. This allows you to align the modal according to your design needs, whether you want it at the top for quick alerts, in the center for standard dialogs, or at the bottom for additional content.</p>
       {#snippet example()}
       <div>
-        <Modal>
+        <Modal position="top">
           {#snippet trigger()}
-            <Button label="Modal Button" />
+            <Button label="Top Modal" />
           {/snippet}
-          Hello Modal!
+          Top-aligned Modal
+        </Modal>
+
+        <Modal position="center">
+          {#snippet trigger()}
+            <Button label="Center Modal" />
+          {/snippet}
+          Centered Modal (default)
+        </Modal>
+
+        <Modal position="bottom">
+          {#snippet trigger()}
+            <Button label="Modal Modal" />
+          {/snippet}
+          Bottom-aligned Modal
         </Modal>
       </div>
       {/snippet}
 
       {#snippet code()}
 ```html
-<Modal label="Modal">
-  Hello Modal!
+<Modal label="Top Modal" position="top">
+  Top-aligned Modal
+</Modal>
+
+<Modal label="Center Modal" position="center"> <!-- Default -->
+  Centered Modal
+</Modal>
+
+<Modal label="Modal Modal" position="bottom">
+  Bottom-aligned Modal
 </Modal>
 ```
       {/snippet}
@@ -78,22 +100,59 @@ description: Integrate customizable modals into your Svelte app with TheUI-Svelt
 
   <DocBlock title="Sizing">
     <Example>
-      <p class="not-prose"> ... </p>
+      <p class="not-prose">The <code>size</code> prop controls the width of the Modal. Options include <code>'sm'</code> for small, <code>'md'</code> for medium (default), <code>'lg'</code> for large, and <code>'full'</code> for full-screen. This allows you to adjust the modal size based on your content needs.</p>
       {#snippet example()}
       <div>
-        <Modal>
+        <Modal size="sm">
           {#snippet trigger()}
-            <Button label="Modal Button" />
+            <Button label="Small Modal" />
           {/snippet}
-          Hello Modal!
+          Small size modal
+        </Modal>
+
+        <Modal size="md">
+          {#snippet trigger()}
+            <Button label="Medium Modal" />
+          {/snippet}
+          Medium size modal
+        </Modal>
+
+        <Modal size="lg">
+          {#snippet trigger()}
+            <Button label="Large Modal" />
+          {/snippet}
+          Large size modal
+        </Modal>
+
+        <Modal size="full">
+          {#snippet trigger()}
+            <Button label="Full Modal" />
+          {/snippet}
+          Full screen modal
         </Modal>
       </div>
       {/snippet}
 
       {#snippet code()}
 ```html
-<Modal label="Modal">
-  Hello Modal!
+<!-- Small Modal -->
+<Modal size="sm">
+  <!-- Modal content -->
+</Modal>
+
+<!-- Medium-sized Modal (default) -->
+<Modal size="md">
+  <!-- Modal content -->
+</Modal>
+
+<!-- Large Modal -->
+<Modal size="lg">
+  <!-- Modal content -->
+</Modal>
+
+<!-- Full-width Modal -->
+<Modal size="full">
+  <!-- Modal content -->
 </Modal>
 ```
       {/snippet}
@@ -194,22 +253,22 @@ description: Integrate customizable modals into your Svelte app with TheUI-Svelt
 
   <DocBlock title="Disable Close Button">
     <Example>
-      <p class="not-prose"> ... </p>
+      <p class="not-prose">The <code>closeButton</code> prop allows you to control the visibility of the close button in the Modal. By default, the close button is hidden (<code>false</code>). Set this prop to <code>true</code> to display the close button, giving users an easy way to close the modal.</p>
       {#snippet example()}
       <div>
-        <Modal>
+        <Modal closeBtn={false}>
           {#snippet trigger()}
             <Button label="Modal Button" />
           {/snippet}
-          Hello Modal!
+          Modal without close button!
         </Modal>
       </div>
       {/snippet}
 
       {#snippet code()}
 ```html
-<Modal label="Modal">
-  Hello Modal!
+<Modal closeButton={false}>
+  ...
 </Modal>
 ```
       {/snippet}
