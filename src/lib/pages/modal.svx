@@ -52,6 +52,194 @@ description: Integrate customizable modals into your Svelte app with TheUI-Svelt
     </Example>
   </DocBlock>
 
+  <DocBlock title="Positioning">
+    <Example>
+      <p class="not-prose"> ... </p>
+      {#snippet example()}
+      <div>
+        <Modal>
+          {#snippet trigger()}
+            <Button label="Modal Button" />
+          {/snippet}
+          Hello Modal!
+        </Modal>
+      </div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Modal label="Modal">
+  Hello Modal!
+</Modal>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Sizing">
+    <Example>
+      <p class="not-prose"> ... </p>
+      {#snippet example()}
+      <div>
+        <Modal>
+          {#snippet trigger()}
+            <Button label="Modal Button" />
+          {/snippet}
+          Hello Modal!
+        </Modal>
+      </div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Modal label="Modal">
+  Hello Modal!
+</Modal>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Animation">
+    <Example title="Animation Type">
+      <p class="not-prose"> ... </p>
+      {#snippet example()}
+      <div>
+        <Modal>
+          {#snippet trigger()}
+            <Button label="Modal Button" />
+          {/snippet}
+          Hello Modal!
+        </Modal>
+      </div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Modal label="Modal">
+  Hello Modal!
+</Modal>
+```
+      {/snippet}
+    </Example>
+
+    <Example title="Animation Speed">
+      <p class="not-prose"> ... </p>
+      {#snippet example()}
+      <div>
+        <Modal>
+          {#snippet trigger()}
+            <Button label="Modal Button" />
+          {/snippet}
+          Hello Modal!
+        </Modal>
+      </div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Modal label="Modal">
+  Hello Modal!
+</Modal>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Modal Backdrop">
+    <Example title="Static Backdrop">
+      <p class="not-prose"> ... </p>
+      {#snippet example()}
+      <div>
+        <Modal>
+          {#snippet trigger()}
+            <Button label="Modal Button" />
+          {/snippet}
+          Hello Modal!
+        </Modal>
+      </div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Modal label="Modal">
+  Hello Modal!
+</Modal>
+```
+      {/snippet}
+    </Example>
+
+    <Example title="Backdrop Customization">
+      <p class="not-prose"> ... </p>
+      {#snippet example()}
+      <div>
+        <Modal>
+          {#snippet trigger()}
+            <Button label="Modal Button" />
+          {/snippet}
+          Hello Modal!
+        </Modal>
+      </div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Modal label="Modal">
+  Hello Modal!
+</Modal>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Disable Close Button">
+    <Example>
+      <p class="not-prose"> ... </p>
+      {#snippet example()}
+      <div>
+        <Modal>
+          {#snippet trigger()}
+            <Button label="Modal Button" />
+          {/snippet}
+          Hello Modal!
+        </Modal>
+      </div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Modal label="Modal">
+  Hello Modal!
+</Modal>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Modal Open State">
+    <Example>
+      <p class="not-prose"> ... </p>
+      {#snippet example()}
+      <div>
+        <Modal>
+          {#snippet trigger()}
+            <Button label="Modal Button" />
+          {/snippet}
+          Hello Modal!
+        </Modal>
+      </div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Modal label="Modal">
+  Hello Modal!
+</Modal>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
   <DocBlock title="Configuration">
     <ConfigComponent title="Dropdown" component={component} />
   </DocBlock>
