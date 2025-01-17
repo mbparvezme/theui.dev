@@ -52,6 +52,30 @@ description: Integrate customizable modals into your Svelte app with TheUI-Svelt
     </Example>
   </DocBlock>
 
+  <DocBlock title="Modal Content">
+    <Example title="Header">
+      <p class="not-prose"> ... </p>
+      {#snippet example()}
+        <Modal>
+          {#snippet trigger()}
+            <Button label="Slide Down" />
+          {/snippet}
+
+          {#snippet header()}
+            <h4 class="font-bold text-lg">THIS IS HEADER!</h4>
+          {/snippet}
+
+          Modal content!
+
+          {#snippet footer()}
+            <p>This is footer</p>
+          {/snippet}
+
+        </Modal>
+      {/snippet}
+    </Example>
+  </DocBlock>
+
   <DocBlock title="Positioning">
     <Example>
       <p class="not-prose">The <code>position</code> prop in the Modal component determines where the modal is displayed vertically on the screen. It can be set to <code>'top'</code>, <code>'center'</code>, or <code>'bottom'</code>, with the default being <code>'center'</code>. This allows you to align the modal according to your design needs, whether you want it at the top for quick alerts, in the center for standard dialogs, or at the bottom for additional content.</p>
@@ -82,17 +106,14 @@ description: Integrate customizable modals into your Svelte app with TheUI-Svelt
 
       {#snippet code()}
 ```html
-<Modal label="Top Modal" position="top">
-  Top-aligned Modal
-</Modal>
+<!-- Top-aligned Modal -->
+<Modal position="top"> ... </Modal>
 
-<Modal label="Center Modal" position="center"> <!-- Default -->
-  Centered Modal
-</Modal>
+<!-- Centered Modal (Default) -->
+<Modal position="center"> ... </Modal>
 
-<Modal label="Modal Modal" position="bottom">
-  Bottom-aligned Modal
-</Modal>
+<!-- Bottom-aligned Modal -->
+<Modal position="bottom"> ... </Modal>
 ```
       {/snippet}
     </Example>
@@ -136,24 +157,16 @@ description: Integrate customizable modals into your Svelte app with TheUI-Svelt
       {#snippet code()}
 ```html
 <!-- Small Modal -->
-<Modal size="sm">
-  <!-- Modal content -->
-</Modal>
+<Modal size="sm"> ... </Modal>
 
 <!-- Medium-sized Modal (default) -->
-<Modal size="md">
-  <!-- Modal content -->
-</Modal>
+<Modal size="md"> ... </Modal>
 
 <!-- Large Modal -->
-<Modal size="lg">
-  <!-- Modal content -->
-</Modal>
+<Modal size="lg"> ... </Modal>
 
 <!-- Full-width Modal -->
-<Modal size="full">
-  <!-- Modal content -->
-</Modal>
+<Modal size="full"> ... </Modal>
 ```
       {/snippet}
     </Example>
@@ -161,45 +174,124 @@ description: Integrate customizable modals into your Svelte app with TheUI-Svelt
 
   <DocBlock title="Animation">
     <Example title="Animation Type">
-      <p class="not-prose"> ... </p>
+      <p class="not-prose">The <code>animation</code> prop defines the type of animation used when the Modal opens or closes. Available options include <code>'slide-down'</code>, <code>'slide-up'</code>, <code>'fade'</code>, <code>'zoom-in'</code>, and <code>'zoom-out'</code>. Each option provides a different visual effect for how the Modal appears or disappears.</p>
       {#snippet example()}
       <div>
+        <Modal animation="slide-down">
+          {#snippet trigger()}
+            <Button label="Slide Down" />
+          {/snippet}
+          Modal with slide-down animation
+        </Modal>
+        <Modal animation="slide-up">
+          {#snippet trigger()}
+            <Button label="Slide Up" />
+          {/snippet}
+          Modal with slide-up animation
+        </Modal>
         <Modal>
           {#snippet trigger()}
-            <Button label="Modal Button" />
+            <Button label="Fade (default)" />
           {/snippet}
-          Hello Modal!
+          Modal with fade animation
+        </Modal>
+        <Modal>
+          {#snippet trigger()}
+            <Button label="Zoom-in" />
+          {/snippet}
+          Modal with zoom-in animation
+        </Modal>
+        <Modal>
+          {#snippet trigger()}
+            <Button label="Zoom-out" />
+          {/snippet}
+          Modal with zoom-out animation
         </Modal>
       </div>
       {/snippet}
 
       {#snippet code()}
 ```html
-<Modal label="Modal">
-  Hello Modal!
-</Modal>
+<!-- Modal with slide-down animation -->
+<Modal animation="slide-down"> ... </Modal>
+
+<!-- Modal with slide-up animation -->
+<Modal animation="slide-up"> ... </Modal>
+
+<!-- Modal with fade (default) animation -->
+<Modal animation="fade"> ... </Modal>
+
+<!-- Modal with zoom-in animation -->
+<Modal animation="zoom-in"> ... </Modal>
+
+<!-- Modal with zoom-out animation -->
+<Modal animation="zoom-out"> ... </Modal>
 ```
       {/snippet}
     </Example>
 
     <Example title="Animation Speed">
-      <p class="not-prose"> ... </p>
+      <p class="not-prose">The <code>animate</code> prop controls the speed of the Modal's animation. It accepts the following values: <code>false</code>, <code>'slower'</code>, <code>'slow'</code>, <code>'normal'</code>, <code>'fast'</code>, and <code>'faster'</code>. Setting this prop to false will disable the animation, while the other values adjust the animation speed accordingly.</p>
       {#snippet example()}
       <div>
-        <Modal>
+        <Modal animation="slide-down" animate="slower">
           {#snippet trigger()}
-            <Button label="Modal Button" />
+            <Button label="Slower" />
           {/snippet}
-          Hello Modal!
+          Modal with slide-down animation
+        </Modal>
+        <Modal animation="slide-down" animate="slow">
+          {#snippet trigger()}
+            <Button label="Slow" />
+          {/snippet}
+          Modal with slide-down animation
+        </Modal>
+        <Modal animation="slide-down" animate="normal">
+          {#snippet trigger()}
+            <Button label="Normal (Default)" />
+          {/snippet}
+          Modal with slide-down animation
+        </Modal>
+        <Modal animation="slide-down" animate="fast">
+          {#snippet trigger()}
+            <Button label="Fast" />
+          {/snippet}
+          Modal with slide-down animation
+        </Modal>
+        <Modal animation="slide-down" animate="faster">
+          {#snippet trigger()}
+            <Button label="Faster" />
+          {/snippet}
+          Modal with slide-down animation
+        </Modal>
+        <Modal animation="slide-down" animate={false}>
+          {#snippet trigger()}
+            <Button label="No animation" />
+          {/snippet}
+          Modal with slide-down animation
         </Modal>
       </div>
       {/snippet}
 
       {#snippet code()}
 ```html
-<Modal label="Modal">
-  Hello Modal!
-</Modal>
+<!-- Modal with slower animation -->
+<Modal animate="slower"> ... </Modal>
+
+<!-- Modal with slow animation -->
+<Modal animate="slow"> ... </Modal>
+
+<!-- Modal with normal speed (default) animation -->
+<Modal animate="normal"> ... </Modal>
+
+<!-- Modal with fast animation -->
+<Modal animate="fast"> ... </Modal>
+
+<!-- Modal with faster animation -->
+<Modal animate="faster"> ... </Modal>
+
+<!-- Modal with no animation -->
+<Modal animate={false}> ... </Modal>
 ```
       {/snippet}
     </Example>
@@ -207,45 +299,52 @@ description: Integrate customizable modals into your Svelte app with TheUI-Svelt
 
   <DocBlock title="Modal Backdrop">
     <Example title="Static Backdrop">
-      <p class="not-prose"> ... </p>
+      <p class="not-prose">The <code>staticBackdrop</code> prop controls whether the Modal closes when clicking on the backdrop. By default, the backdrop is clickable, and clicking it will close the Modal. Setting <code>staticBackdrop</code> to <code>true</code> makes the backdrop static, meaning the Modal will remain open even when the backdrop is clicked.</p>
       {#snippet example()}
       <div>
-        <Modal>
+        <Modal staticBackdrop={true}>
           {#snippet trigger()}
-            <Button label="Modal Button" />
+            <Button label="Static Backdrop Modal" />
           {/snippet}
-          Hello Modal!
+          Modal with static backdrop!
         </Modal>
       </div>
       {/snippet}
 
       {#snippet code()}
 ```html
-<Modal label="Modal">
-  Hello Modal!
-</Modal>
+<!-- Modal with static backdrop -->
+<Modal staticBackdrop={true}> ... </Modal>
 ```
       {/snippet}
     </Example>
 
     <Example title="Backdrop Customization">
-      <p class="not-prose"> ... </p>
+      <p class="not-prose">The <code>backdrop</code> prop manages the visibility and style of the Modal's backdrop. When set to <code>true</code> (default), the backdrop is visible. If set to <code>false</code>, the backdrop will be hidden. You can also customize the backdrop by passing custom CSS classes, which will apply directly to the backdrop.</p>
       {#snippet example()}
       <div>
-        <Modal>
+        <Modal backdrop={false}>
           {#snippet trigger()}
-            <Button label="Modal Button" />
+            <Button label="Modal Without Backdrop" />
           {/snippet}
-          Hello Modal!
+           Modal with no backdrop
+        </Modal>
+        <Modal backdrop="bg-brand-primary-500/30">
+          {#snippet trigger()}
+            <Button label="Modal Without Backdrop" />
+          {/snippet}
+           Modal with no backdrop
         </Modal>
       </div>
       {/snippet}
 
       {#snippet code()}
 ```html
-<Modal label="Modal">
-  Hello Modal!
-</Modal>
+<!-- Modal with no backdrop -->
+<Modal  backdrop={false}> ... </Modal>
+
+<!-- Modal with custom styled backdrop -->
+<Modal backdrop="bg-brand-primary-500/30"> ... </Modal>
 ```
       {/snippet}
     </Example>
@@ -267,9 +366,7 @@ description: Integrate customizable modals into your Svelte app with TheUI-Svelt
 
       {#snippet code()}
 ```html
-<Modal closeButton={false}>
-  ...
-</Modal>
+<Modal closeButton={false}> ... </Modal>
 ```
       {/snippet}
     </Example>
@@ -277,23 +374,15 @@ description: Integrate customizable modals into your Svelte app with TheUI-Svelt
 
   <DocBlock title="Modal Open State">
     <Example>
-      <p class="not-prose"> ... </p>
+      <p class="not-prose">The <code>modalOpen</code> prop controls whether the Modal is visible when the page loads. By default, <code>modalOpen</code> is set to <code>false</code>, meaning the Modal is hidden initially. If you set <code>modalOpen</code> to <code>true</code>, the Modal will be open and visible as soon as the page loads.</p>
       {#snippet example()}
-      <div>
-        <Modal>
-          {#snippet trigger()}
-            <Button label="Modal Button" />
-          {/snippet}
-          Hello Modal!
-        </Modal>
-      </div>
+        <Button label="View example" href="/example/modal-open-state" target="_blank" />
       {/snippet}
 
       {#snippet code()}
 ```html
-<Modal label="Modal">
-  Hello Modal!
-</Modal>
+<!-- Modal open by default -->
+<Modal modalOpen={true}> ... </Modal>
 ```
       {/snippet}
     </Example>
@@ -304,7 +393,22 @@ description: Integrate customizable modals into your Svelte app with TheUI-Svelt
   </DocBlock>
 
   {#snippet sidebar()}
+    <a href={processID("About")}>About</a>
     <a href={processID("Example")}>Example</a>
+    <a href={processID("Modal Content")}>Modal Content</a>
+    <a href={processID("Header")} class="ps-4">Header</a>
+    <a href={processID("Main Content")} class="ps-4">Main Content</a>
+    <a href={processID("Footer")} class="ps-4">Footer</a>
+    <a href={processID("Positioning")}>Positioning</a>
+    <a href={processID("Sizing")}>Sizing</a>
+    <a href={processID("Animation")}>Animation</a>
+    <a href={processID("Animation Type")} class="ps-4">Animation type</a>
+    <a href={processID("Animation Speed")} class="ps-4">Animation speed</a>
+    <a href={processID("Modal Backdrop")}>Modal Backdrop</a>
+    <a href={processID("Static Backdrop")} class="ps-4">Static Backdrop</a>
+    <a href={processID("Backdrop Customization")} class="ps-4">Backdrop Customization</a>
+    <a href={processID("Disable Close Button")}>Disable Close Button</a>
+    <a href={processID("Modal Open State")}>Modal Open State</a>
     <a href={processID("Customization")}>Customization</a>
     <a href={processID("Configuration")}>Configuration</a>
   {/snippet}
