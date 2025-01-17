@@ -52,13 +52,42 @@ description: Integrate customizable modals into your Svelte app with TheUI-Svelt
     </Example>
   </DocBlock>
 
+  <DocBlock title="Modal Trigger">
+    <p class="not-prose">The Modal trigger is the element that opens the Modal when clicked. You can create this trigger using either the <code>label</code> prop or the <code>label</code> snippet. The label prop generates a default button with the provided text, making it simple to open the Modal. Alternatively, the label snippet lets you customize the trigger with any element or component, giving you more flexibility.</p>
+    <Example title="Trigger with the label prop" codeTitle="label as prop">
+      {#snippet code()}
+
+```html
+<Modal label="Modal Trigger"> ... </Modal>
+```
+      {/snippet}
+    </Example>
+    <Example title="Trigger with the label snippet" codeTitle="label as snippet">
+      {#snippet code()}
+
+```html
+<Modal>
+  {#snippet trigger()}
+    <Button label="Modal Trigger" />
+  {/snippet}
+  ...
+</Modal>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
   <DocBlock title="Modal Content">
-    <Example title="Header">
-      <p class="not-prose"> ... </p>
+    <Example>
+      <p class="not-prose">The content placed directly inside the <code>&lt;Modal&gt;</code> tag will be displayed as the main body of the Modal. Additionally, the Modal component supports two snippet blocks for custom header and footer content: <code>header</code> and <code>footer</code>.</p>
+      <ul class="my-0">
+        <li>The <span class="not-prose"><code>header</code></span> snippet is used to define the header section of the Modal.</li>
+        <li>The <span class="not-prose"><code>footer</code></span> snippet is used to define the footer section of the Modal.</li>
+      </ul>
       {#snippet example()}
         <Modal>
           {#snippet trigger()}
-            <Button label="Slide Down" />
+            <Button label="Modal Content" />
           {/snippet}
 
           {#snippet header()}
@@ -68,10 +97,25 @@ description: Integrate customizable modals into your Svelte app with TheUI-Svelt
           Modal content!
 
           {#snippet footer()}
-            <p>This is footer</p>
+            <p class="text-muted">This is footer</p>
           {/snippet}
-
         </Modal>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Modal label="Modal Content">
+  {#snippet header()}
+    <h4 class="font-bold text-lg">THIS IS HEADER!</h4>
+  {/snippet}
+
+  Modal content!
+
+  {#snippet footer()}
+    <p class="text-muted">This is footer</p>
+  {/snippet}
+</Modal>
+```
       {/snippet}
     </Example>
   </DocBlock>
@@ -313,7 +357,6 @@ description: Integrate customizable modals into your Svelte app with TheUI-Svelt
 
       {#snippet code()}
 ```html
-<!-- Modal with static backdrop -->
 <Modal staticBackdrop={true}> ... </Modal>
 ```
       {/snippet}
@@ -381,7 +424,6 @@ description: Integrate customizable modals into your Svelte app with TheUI-Svelt
 
       {#snippet code()}
 ```html
-<!-- Modal open by default -->
 <Modal modalOpen={true}> ... </Modal>
 ```
       {/snippet}
@@ -395,10 +437,8 @@ description: Integrate customizable modals into your Svelte app with TheUI-Svelt
   {#snippet sidebar()}
     <a href={processID("About")}>About</a>
     <a href={processID("Example")}>Example</a>
+    <a href={processID("Modal Trigger")}>Modal Trigger</a>
     <a href={processID("Modal Content")}>Modal Content</a>
-    <a href={processID("Header")} class="ps-4">Header</a>
-    <a href={processID("Main Content")} class="ps-4">Main Content</a>
-    <a href={processID("Footer")} class="ps-4">Footer</a>
     <a href={processID("Positioning")}>Positioning</a>
     <a href={processID("Sizing")}>Sizing</a>
     <a href={processID("Animation")}>Animation</a>
@@ -406,7 +446,7 @@ description: Integrate customizable modals into your Svelte app with TheUI-Svelt
     <a href={processID("Animation Speed")} class="ps-4">Animation speed</a>
     <a href={processID("Modal Backdrop")}>Modal Backdrop</a>
     <a href={processID("Static Backdrop")} class="ps-4">Static Backdrop</a>
-    <a href={processID("Backdrop Customization")} class="ps-4">Backdrop Customization</a>
+    <a href={processID("Backdrop Customization")} class="ps-4">Customizing Backdrop</a>
     <a href={processID("Disable Close Button")}>Disable Close Button</a>
     <a href={processID("Modal Open State")}>Modal Open State</a>
     <a href={processID("Customization")}>Customization</a>
