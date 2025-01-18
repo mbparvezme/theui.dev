@@ -430,8 +430,69 @@ description: Integrate customizable modals into your Svelte app with TheUI-Svelt
     </Example>
   </DocBlock>
 
+  <DocBlock title="Customization">
+    <p class="not-prose">To create a custom-styled modal, you can use the following props to apply custom classes to the modal's header, body, footer, and outer container:</p>
+    <ul class="my-0">
+      <li><span class="not-prose"><code>modalOuterClasses</code></span>: Customize the outer container of the modal.</li>
+      <li><span class="not-prose"><code>modalHeaderClasses</code></span>: Customize the header section of the modal.</li>
+      <li><span class="not-prose"><code>modalBodyClasses</code></span>: Customize the body section of the modal.</li>
+      <li><span class="not-prose"><code>modalFooterClasses</code></span>: Customize the footer section of the modal.</li>
+    </ul>
+    <p class="not-prose">These props allow you to apply your own styles or use TailwindCSS classes to control the layout and appearance of different parts of the modal.</p>
+
+    <Example>
+      {#snippet example()}
+    <Modal 
+      modalFooterClasses="bg-gray-800 text-white p-4"
+      modalHeaderClasses="bg-blue-500 text-white p-4"
+      modalBodyClasses="p-6 bg-white"
+      modalOuterClasses="rounded-lg shadow-lg"
+    >
+      {#snippet trigger()}
+        <Button label="Modal Button" />
+      {/snippet}
+
+      {#snippet header()}
+        <h4 class="text-lg font-bold">Custom Modal Header</h4>
+      {/snippet}
+
+      <p>This is the body of the custom modal.</p>
+
+      {#snippet footer()}
+        <button class="btn btn-primary">Close</button>
+      {/snippet}
+    </Modal>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Modal 
+  modalFooterClasses="bg-gray-800 text-white p-4"
+  modalHeaderClasses="bg-blue-500 text-white p-4"
+  modalBodyClasses="p-6 bg-white"
+  modalOuterClasses="rounded-lg shadow-lg"
+>
+  {#snippet trigger()}
+    <Button label="Modal Button" />
+  {/snippet}
+
+  {#snippet header()}
+    <h4 class="text-lg font-bold">Custom Modal Header</h4>
+  {/snippet}
+
+  <p>This is the body of the custom modal.</p>
+
+  {#snippet footer()}
+    <button class="btn btn-primary">Close</button>
+  {/snippet}
+</Modal>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
   <DocBlock title="Configuration">
-    <ConfigComponent title="Dropdown" component={component} />
+    <ConfigComponent component={component} />
   </DocBlock>
 
   {#snippet sidebar()}

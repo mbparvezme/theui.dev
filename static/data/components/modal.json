@@ -2,7 +2,116 @@
   {
     "key": "props",
     "title": "Props",
-    "data": null
+    "data": [
+      {
+        "name": "label",
+        "type": "string|Snippet",
+        "description": "Content or element that triggers the modal.",
+        "default": "undefined"
+      },
+      {
+        "name": "header",
+        "type": "Snippet",
+        "description": "Content for the modal header.",
+        "default": "undefined"
+      },
+      {
+        "name": "footer",
+        "type": "Snippet",
+        "description": "Content for the modal footer.",
+        "default": "undefined"
+      },
+      {
+        "name": "position",
+        "type": "'top' | 'center' | 'bottom'",
+        "description": "Position of the modal on the screen.",
+        "default": "\"center\""
+      },
+      {
+        "name": "size",
+        "type": "'sm' | 'md' | 'lg' | 'full'",
+        "description": "Size of the modal.",
+        "default": "\"md\""
+      },
+      {
+        "name": "animation",
+        "type": "'slide-down' | 'slide-up' | 'fade' | 'zoom-in' | 'zoom-out'",
+        "description": "Type of animation for the modal.",
+        "default": "\"fade\""
+      },
+      {
+        "name": "animate",
+        "type": "<a href=\"/docs/types#common-types\">ANIMATE_SPEED</a>",
+        "description": "Speed of the animation.",
+        "default": "\"fast\""
+      },
+      {
+        "name": "staticBackdrop",
+        "type": "boolean",
+        "description": "Disables closing the modal by clicking on the backdrop.",
+        "default": "false"
+      },
+      {
+        "name": "backdrop",
+        "type": "boolean|string",
+        "description": "Controls the modal backdrop. Can be boolean or a string for custom backdrop.",
+        "default": "true"
+      },
+      {
+        "name": "closeBtn",
+        "type": "boolean",
+        "description": "Shows or hides the close button.",
+        "default": "true"
+      },
+      {
+        "name": "modalStatus",
+        "type": "boolean",
+        "description": "Tracks the visibility status of the modal.",
+        "default": "false"
+      },
+      {
+        "name": "closeOnEsc",
+        "type": "boolean",
+        "description": "Allows closing the modal with the Escape key.",
+        "default": "true"
+      },
+      {
+        "name": "rounded",
+        "type": "<a href=\"/docs/types#common-types\">ROUNDED</a>",
+        "description": "Border-radius of the modal.",
+        "default": "\"md\""
+      },
+      {
+        "name": "modalOuterClasses",
+        "type": "string",
+        "description": "CSS classes for the outer modal container.",
+        "default": "\"\""
+      },
+      {
+        "name": "modalHeaderClasses",
+        "type": "string",
+        "description": "CSS classes for the modal header.",
+        "default": "\"\""
+      },
+      {
+        "name": "modalBodyClasses",
+        "type": "string",
+        "description": "CSS classes for the modal body.",
+        "default": "\"\""
+      },
+      {
+        "name": "modalFooterClasses",
+        "type": "string",
+        "description": "CSS classes for the modal footer.",
+        "default": "\"\""
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "description": "Unique identifier for the modal.",
+        "default": "&lt;RANDOM STRING&gt; + \"Modal\""
+      }
+    ]
   },
   {
     "key": "dynamicProps",
@@ -12,7 +121,20 @@
   {
     "key": "snippets",
     "title": "Snippets",
-    "data": null
+    "data": [
+      {
+        "name": "trigger",
+        "description": "Content or element that triggers the modal."
+      },
+      {
+        "name": "header",
+        "description": "Content for the modal header."
+      },
+      {
+        "name": "footer",
+        "description": "Content for the modal footer."
+      }
+    ]
   },
   {
     "key": "functions",
