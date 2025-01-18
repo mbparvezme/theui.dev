@@ -13,6 +13,11 @@
   dividerClasses="border-b-2 border-green-200"
   headerClasses="text-green-600 text-xs"
   dropdownClasses="shadow-lg bg-green-50"
+  dd="border-red-500 bg-yellow-200"
+
+modalOuterClasses="rounded-lg shadow-lg border-blue-500/50 hover:bg-warning-600"
+modalHeaderClasses="bg-blue-400/50 rounded-md p-4 text-blue-600 dark:text-blue-100 border-0 shadow-lg shadow-blue-500/50"
+modalBodyClasses="bg-blue-100 dark:bg-blue-950 py-8 text-blue-800 dark:text-blue-300"
 ></p>
 <p class="text-green-50 bg-green-100 content-center border-brand-primary-500"></p>
 

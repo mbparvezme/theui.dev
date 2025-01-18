@@ -5,7 +5,7 @@
     "data": [
       {
         "name": "label",
-        "type": "string|Snippet",
+        "type": "string | Snippet",
         "description": "Content or element that triggers the modal.",
         "default": "undefined"
       },
@@ -80,12 +80,6 @@
         "type": "<a href=\"/docs/types#common-types\">ROUNDED</a>",
         "description": "Border-radius of the modal.",
         "default": "\"md\""
-      },
-      {
-        "name": "modalOuterClasses",
-        "type": "string",
-        "description": "CSS classes for the outer modal container.",
-        "default": "\"\""
       },
       {
         "name": "modalHeaderClasses",

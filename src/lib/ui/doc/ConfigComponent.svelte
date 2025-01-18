@@ -30,7 +30,7 @@
           {#if c?.text}
             <p class="not-prose">{@html c.text}</p>
           {/if}
-          <Table class="text-sm" data={c.data} keys={getKeys(c.key)} headers={getHeaders(c.key)} />
+          <Table class="text-sm my-0" data={c.data} keys={getKeys(c.key)} headers={getHeaders(c.key)} />
         </TabPanel>
       {/if}
     {/each}

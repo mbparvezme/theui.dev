@@ -433,7 +433,6 @@ description: Integrate customizable modals into your Svelte app with TheUI-Svelt
   <DocBlock title="Customization">
     <p class="not-prose">To create a custom-styled modal, you can use the following props to apply custom classes to the modal's header, body, footer, and outer container:</p>
     <ul class="my-0">
-      <li><span class="not-prose"><code>modalOuterClasses</code></span>: Customize the outer container of the modal.</li>
       <li><span class="not-prose"><code>modalHeaderClasses</code></span>: Customize the header section of the modal.</li>
       <li><span class="not-prose"><code>modalBodyClasses</code></span>: Customize the body section of the modal.</li>
       <li><span class="not-prose"><code>modalFooterClasses</code></span>: Customize the footer section of the modal.</li>
@@ -442,48 +441,53 @@ description: Integrate customizable modals into your Svelte app with TheUI-Svelt
 
     <Example>
       {#snippet example()}
-    <Modal 
-      modalFooterClasses="bg-gray-800 text-white p-4"
-      modalHeaderClasses="bg-blue-500 text-white p-4"
-      modalBodyClasses="p-6 bg-white"
-      modalOuterClasses="rounded-lg shadow-lg"
-    >
-      {#snippet trigger()}
-        <Button label="Modal Button" />
-      {/snippet}
+        <Modal
+          modalBodyClasses="bg-blue-100 dark:bg-blue-950 text-blue-800 dark:text-blue-300 border-blue-500/50 border-4 py-8"
+          modalHeaderClasses="bg-blue-400/50 text-blue-600 dark:text-blue-100 shadow-blue-500/50 rounded-md p-4 border-0 shadow-md text-lg font-bold"
+          modalFooterClasses="border-blue-300/50 border rounded-xl p-2"
+        >
+          {#snippet trigger()}
+            <Button label="Modal Button" />
+          {/snippet}
 
-      {#snippet header()}
-        <h4 class="text-lg font-bold">Custom Modal Header</h4>
-      {/snippet}
+          {#snippet header()}
+            <h4>Custom Modal Header</h4>
+          {/snippet}
+          <div>
+            <p><strong>USER-FRIENDLY NAVIGATION INCREASES ENGAGEMENT!</strong><br>
+            Intuitive navigation helps users find what they need quickly, improving their overall experience and keeping them on your site longer.</p>
 
-      <p>This is the body of the custom modal.</p>
+            <p><strong>ACCESSIBILITY IS KEY!</strong><br>
+            Designing with accessibility in mind ensures that your site can be used by everyone, including people with disabilities, improving usability for all users.</p>
 
-      {#snippet footer()}
-        <button class="btn btn-primary">Close</button>
-      {/snippet}
-    </Modal>
+            <p><strong>CONSISTENCY BUILDS TRUST!</strong><br>
+            Maintaining a consistent look and feel across your UI builds user trust and creates a cohesive experience throughout your application.</p>
+          </div>
+          {#snippet footer()}
+            <Button class="bg-warning-500 hover:bg-warning-600 text-warning-900" size="sm">Close</Button>
+          {/snippet}
+        </Modal>
       {/snippet}
 
       {#snippet code()}
 ```html
-<Modal 
-  modalFooterClasses="bg-gray-800 text-white p-4"
-  modalHeaderClasses="bg-blue-500 text-white p-4"
-  modalBodyClasses="p-6 bg-white"
-  modalOuterClasses="rounded-lg shadow-lg"
+<Modal
+  modalBodyClasses="bg-blue-100 dark:bg-blue-950 text-blue-800 dark:text-blue-300 border-blue-500/50 border-4 py-8"
+  modalHeaderClasses="bg-blue-400/50 text-blue-600 dark:text-blue-100 shadow-blue-500/50 rounded-md p-4 border-0 shadow-md text-lg font-bold"
+  modalFooterClasses="border-blue-300/50 border rounded-xl p-2"
 >
   {#snippet trigger()}
     <Button label="Modal Button" />
   {/snippet}
 
   {#snippet header()}
-    <h4 class="text-lg font-bold">Custom Modal Header</h4>
+    <h4>Custom Modal Header</h4>
   {/snippet}
 
-  <p>This is the body of the custom modal.</p>
+  .....
 
   {#snippet footer()}
-    <button class="btn btn-primary">Close</button>
+    <Button class="bg-warning-500 hover:bg-warning-600 text-warning-900" size="sm">Close</Button>
   {/snippet}
 </Modal>
 ```
