@@ -4,21 +4,9 @@
     "title": "Props",
     "data": [
       {
-        "name": "trigger",
-        "type": "Snippet",
-        "description": "The element that triggers the opening of the Drawer.",
-        "default": "undefined"
-      },
-      {
-        "name": "id",
-        "type": "string",
-        "description": "Unique identifier for the Drawer component.",
-        "default": "&lt;RANDOM STRING&gt;"
-      },
-      {
         "name": "label",
         "type": "string",
-        "description": "Text of the Button component, used as the default Drawer trigger.",
+        "description": "The label or trigger content for the Drawer component.",
         "default": ""
       },
       {
@@ -44,6 +32,12 @@
         "type": "boolean",
         "description": "Prevent Drawer from closing on backdrop click.",
         "default": false
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "description": "Unique identifier for the Drawer component.",
+        "default": "&lt;RANDOM STRING&gt;"
       }
     ]
   },

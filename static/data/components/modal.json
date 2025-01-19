@@ -58,13 +58,13 @@
         "default": "true"
       },
       {
-        "name": "closeBtn",
+        "name": "closeButton",
         "type": "boolean",
         "description": "Shows or hides the close button.",
         "default": "true"
       },
       {
-        "name": "modalStatus",
+        "name": "open",
         "type": "boolean",
         "description": "Tracks the visibility status of the modal.",
         "default": "false"
