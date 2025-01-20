@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { PageData } from './$types';
+  import type { PageData } from '../$types';
   import type { Snippet } from 'svelte';
   import { page } from "$app/state";
   import { Button, Container, Svg, Drawer } from "theui-svelte";

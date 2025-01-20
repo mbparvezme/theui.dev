@@ -17,6 +17,13 @@ description: Create responsive and stylish buttons for your Svelte app with TheU
   import { Button, Svg, Alert } from "theui-svelte";
 </script>
 
+{#snippet profileIcon(size)}
+  <Svg {size}>
+    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+    <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
+  </Svg>
+{/snippet}
+
 <DocLayout>
   <DocHead title="Button" text="The Button component provides a versatile and customizable button for various use cases. It supports different sizes, styles, and types, and can be used as a regular button or a link." {edit_url}/>
 
@@ -43,7 +50,7 @@ description: Create responsive and stylish buttons for your Svelte app with TheU
     </Example>
   </DocBlock>
 
-  <DocBlock title="Link">
+  <DocBlock title="Button as Link">
     <Example>
       <p class="not-prose">You can turn the Button into a link by adding the href prop. This makes the button behave like a regular link. This will navigate to the home page when clicked.</p>
       {#snippet example()}
@@ -56,24 +63,13 @@ description: Create responsive and stylish buttons for your Svelte app with TheU
 ```
       {/snippet}
     </Example>
-    <Example>
-      <p class="not-prose">To show an external link icon, use the <code>externalLinkIcon</code> prop. This works only if the <code>target</code> attribute is set, meaning the link opens in a new tab or window.</p>
-      {#snippet example()}
-        <Button href="/" externalLinkIcon={true} target="_blank">External Link button</Button>
-      {/snippet}
-      {#snippet code()}
-
-```html
-<Button href="/" externalLinkIcon={true} target="_blank">External Link button</Button>
-```
-      {/snippet}
-    </Example>
-    <p class="not-prose">This button opens a new page and shows an icon to indicate it’s an external link.</p>
   </DocBlock>
 
   <DocBlock title="Button Content">
-    <Example>
-      <p class="not-prose">...</p>
+    <p class="not-prose">The <code>Button</code> component provides <code>beforeLabel</code> and <code>afterLabel</code> snippet blocks, allowing you to add custom content before and after the button's label. This structure is especially useful for adding icons, badges, or any other elements, giving you more control over the button's appearance and behavior.</p>
+    <p class="not-prose">While you can manually add custom elements directly inside the <code>Button</code> element using standard HTML and CSS, the snippet approach ensures a cleaner and more maintainable structure. It also simplifies the integration of custom elements, reducing the need for additional styling and layout adjustments.</p>
+    <p class="not-prose">For cleaner structure, flexibility and consistency the <code>beforeLabel</code> and <code>afterLabel</code> snippet blocks are perfect for you.</p>
+    <Example title="Example Using Snippets">
       {#snippet example()}
         <Button class="gap-4">
           {#snippet beforeLabel()}
@@ -81,7 +77,7 @@ description: Create responsive and stylish buttons for your Svelte app with TheU
               <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z"/>
             </Svg>
           {/snippet}
-          Brand
+          Button Text
           {#snippet afterLabel()}
             <Svg size={1.5}>
               <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
@@ -106,6 +102,35 @@ description: Create responsive and stylish buttons for your Svelte app with TheU
       <path fill-rule="evenodd" d="M1 8a.5.5 0 0 ... />
     </Svg>
   {/snippet}
+</Button>
+```
+      {/snippet}
+    </Example>
+    <Example title="Example Without Snippets">
+      {#snippet example()}
+        <Button class="gap-4">
+          {@render profileIcon(1.5)}
+          Button Text
+          <Svg size={1.5}>
+            <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
+          </Svg>
+        </Button>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Button>
+  <div class="CUSTOM CLASSES">
+    <Svg size={1.5}>
+      <path d="M8 8a3 3 0 ... />
+    </Svg>
+
+    Button Text
+
+    <Svg size={1.5}>
+      <path fill-rule="evenodd" d="M1 8a.5.5 0 0 ... />
+    </Svg>
+  </div>
 </Button>
 ```
       {/snippet}
@@ -238,7 +263,7 @@ description: Create responsive and stylish buttons for your Svelte app with TheU
     <Example>
       <p class="not-prose">The <code>square</code> prop allows you to create perfectly square buttons, ideal for icons or small content. By setting <code>square</code> to <code>true</code>, the button's height and width are equal, ensuring a neat, compact appearance. This prop is particularly useful for minimalist designs or icon buttons.</p>
       {#snippet example()}
-        <Button square={true}>m</Button>
+        <Button square={true}>{@render profileIcon(2)}</Button>
       {/snippet}
       {#snippet code()}
 
@@ -251,20 +276,20 @@ description: Create responsive and stylish buttons for your Svelte app with TheU
     <Example>
       <p class="not-prose">You can combine the <code>square</code> prop with the <code>size</code> prop to create square buttons of varying dimensions. This flexibility lets you choose the appropriate size for different UI elements while maintaining the square shape.</p>
       {#snippet example()}
-        <Button square={true} size="xs">m</Button>
-        <Button square={true} size="sm">m</Button>
-        <Button square={true} size="md">m</Button>
-        <Button square={true} size="lg">m</Button>
-        <Button square={true} size="xl">m</Button>
+        <Button square={true} size="xs">{@render profileIcon()}</Button>
+        <Button square={true} size="sm">{@render profileIcon(1.5)}</Button>
+        <Button square={true} size="md">{@render profileIcon(2)}</Button>
+        <Button square={true} size="lg">{@render profileIcon(3)}</Button>
+        <Button square={true} size="xl">{@render profileIcon(4.5)}</Button>
       {/snippet}
       {#snippet code()}
 
 ```html
-<Button square={true} size="xs">m</Button>
-<Button square={true} size="sm">m</Button>
-<Button square={true} size="md">m</Button>
-<Button square={true} size="lg">m</Button>
-<Button square={true} size="xl">m</Button>
+<Button square={true} size="xs"> ... </Button>
+<Button square={true} size="sm"> ... </Button>
+<Button square={true} size="md"> ... </Button>
+<Button square={true} size="lg"> ... </Button>
+<Button square={true} size="xl"> ... </Button>
 ```
       {/snippet}
     </Example>
@@ -314,9 +339,22 @@ description: Create responsive and stylish buttons for your Svelte app with TheU
     </Example>
   </DocBlock>
 
+  <DocBlock title="Configuration">
+    <ConfigComponent {component} />
+  </DocBlock>
+
   {#snippet sidebar()}
+    <a href={processID("About")}>About</a>
     <a href={processID("Example")}>Example</a>
-    <a href={processID("Customization")}>Customization</a>
+    <a href={processID("Button as Link")}>Button as Link</a>
+    <a href={processID("Button Content")}>Button Content</a>
+    <a href={processID("Button Color")}>Button Color</a>
+    <a href={processID("Theme")}>Theme</a>
+    <a href={processID("Outline")}>Outline</a>
+    <a href={processID("Size")}>Size</a>
+    <a href={processID("Square Button")}>Square Button</a>
+    <a href={processID("Rounded Corner Button")}>Rounded Corner Button</a>
+    <a href={processID("Accessibility")}>Accessibility</a>
     <a href={processID("Configuration")}>Configuration</a>
   {/snippet}
 

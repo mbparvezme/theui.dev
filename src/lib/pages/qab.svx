@@ -1,0 +1,65 @@
+---
+title: Quick Action Button - QAB
+dir: ".lib/pages"
+description: Create responsive and stylish buttons for your Svelte app with TheUI-Svelte's Button component, fully customizable with TailwindCSS.
+---
+
+<script lang="ts">
+  import DocLayout from "$lib/ui/doc/DocLayout.svelte";
+  import DocHead from "$lib/ui/doc/Head.svelte";
+  import DocBlock from "$lib/ui/doc/Block.svelte";
+  import Code from "$lib/ui/doc/CodeBlock.svelte";
+  import Example from "$lib/ui/doc/Example.svelte";
+  import ConfigComponent from "$lib/ui/doc/ConfigComponent.svelte";
+  import { processID } from "$lib";
+  let { component, edit_url }: {component: any, edit_url?: string } = $props();
+
+  import { Qab, QabButton, Svg, Alert } from "theui-svelte";
+</script>
+
+<DocLayout>
+  <DocHead title="Button Group" text="The Button component provides a versatile and customizable button for various use cases. It supports different sizes, styles, and types, and can be used as a regular button or a link." {edit_url}/>
+
+  <DocBlock title="About">
+    <p class="not-prose">The Button component is a flexible and customizable element designed to meet various needs. It supports multiple sizes, styles, and types, making it suitable for diverse use cases. You can use it as a standard button or as a link, depending on your requirements. The component allows for additional customization through props, enabling you to style and animate it to match your application's theme.</p>
+  </DocBlock>
+
+  <DocBlock title="Example">
+    <Example>
+      <p class="not-prose">Import the Button component into your Svelte file. The following example shows how to use the button component!</p>
+      {#snippet example()}
+        
+      {/snippet}
+      {#snippet code()}
+
+```html
+<script>
+  import { Button } from "theui-svelte";
+</script>
+
+<Button>Brand</Button>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Configuration">
+    <ConfigComponent {component} />
+  </DocBlock>
+
+  {#snippet sidebar()}
+    <a href={processID("About")}>About</a>
+    <a href={processID("Example")}>Example</a>
+    <a href={processID("Button as Link")}>Button as Link</a>
+    <a href={processID("Button Content")}>Button Content</a>
+    <a href={processID("Button Color")}>Button Color</a>
+    <a href={processID("Theme")}>Theme</a>
+    <a href={processID("Outline")}>Outline</a>
+    <a href={processID("Size")}>Size</a>
+    <a href={processID("Square Button")}>Square Button</a>
+    <a href={processID("Rounded Corner Button")}>Rounded Corner Button</a>
+    <a href={processID("Accessibility")}>Accessibility</a>
+    <a href={processID("Configuration")}>Configuration</a>
+  {/snippet}
+
+</DocLayout>

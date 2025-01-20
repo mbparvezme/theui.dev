@@ -21,7 +21,7 @@
     <div class="flex flex-col gap-y-2 text-sm page-section">
       <h6 class="mt-0 flex justify-between items-center">
         <span class="font-bold text-xs">ON THIS PAGE</span>
-        <a class="text-[9px]" href="#">Top &uparrow;</a>
+        <a class="text-xs" href="#">Top &uparrow;</a>
       </h6>
       {@render sidebar()}
     </div>

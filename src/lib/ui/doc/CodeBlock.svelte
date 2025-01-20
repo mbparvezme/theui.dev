@@ -2,7 +2,7 @@
   import type { Snippet } from "svelte";
   import {randomString} from "$lib";
   import { Svg } from "theui-svelte";
-    import { twMerge } from "tailwind-merge";
+  import { twMerge } from "tailwind-merge";
 
   interface Props {children?: Snippet, title?: string, copyBtn?: boolean, space?: 'both' | 'top' | 'bottom' | 'none', classes?: string};
   let {children, title = "Svelte", copyBtn = true, space = 'none', classes = ""}: Props = $props();
@@ -10,7 +10,7 @@
   let id: string = randomString("code");
   let copied = $state(false);
 
-  const copy = $derived(() => navigator.clipboard.writeText((document?.getElementById(id) as HTMLElement).innerText).then(() => {
+  const copy = $derived(() => navigator.clipboard.writeText((document?.getElementById(id+"-code") as HTMLElement).innerText).then(() => {
     copied = true
     setTimeout(()=>{copied = false}, 3000)
   })
@@ -32,5 +32,7 @@
       {/if}
     </div>
   </div>
+  <div id="{id}-code">
   {@render children?.()}
+  </div>
 </div>
