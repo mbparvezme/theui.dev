@@ -20,29 +20,23 @@ description: The DarkMode component is a user-friendly theme switcher designed t
 <DocLayout>
   <DocHead title="DarkMode" text="The DarkMode component is a user-friendly theme switcher designed to toggle between light and dark modes effortlessly. It ensures an optimal user experience by adapting the interface to different lighting conditions or personal preferences." {edit_url}/>
 
-  <DocBlock>
+  <DocBlock title="About">
     <p class="not-prose">This component is accessible, and easy to integrate into any project. It leverages TailwindCSS's darkMode configuration to provide seamless theme transitions, making it an essential tool for creating modern, responsive applications.</p>
   </DocBlock>
 
-  <DocBlock title="Setup & Example">
-    <p class="not-prose">Start by importing the DarkMode component from the theui-svelte library:</p>
-    <Code>
-
-```html
-<script>
-  import { DarkMode } from "theui-svelte";
-</script>
-```
-    </Code>
-
+  <DocBlock title="Example">
     <Example>
-      Here’s how to use the DarkMode component in your application:
+      <p class="not-prose">Start by importing the DarkMode component from the theui-svelte library. Here’s how to use the DarkMode component in your application:</p>
       {#snippet example()}
         <DarkMode />
       {/snippet}
       {#snippet code()}
 
 ```html
+<script>
+  import { DarkMode } from "theui-svelte";
+</script>
+
 <DarkMode />
 ```
       {/snippet}
@@ -123,7 +117,8 @@ description: The DarkMode component is a user-friendly theme switcher designed t
   </DocBlock>
 
   {#snippet sidebar()}
-    <a href={processID("Setup & Example")}>Setup & use</a>
+    <a href={processID("About")}>About</a>
+    <a href={processID("Example")}>Example</a>
     <a href={processID("System Default Theme")}>System default</a>
     <a href={processID("Theme Switch Icon")}>Button icon</a>
     <a href={processID("Style Customization")}>Custom style</a>

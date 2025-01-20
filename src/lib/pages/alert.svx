@@ -20,19 +20,8 @@ description: Utilize theui-svelte's Alert component to display crucial messages 
 <DocLayout>
   <DocHead title="Alert" text="The Alert component displays feedback or contextual messages to your users. Using the Alert component, you can provide various types of feedback such as success, error, warning, or general information." {edit_url}/>
 
-  <DocBlock title="Setup">
-    <p class="not-prose">To use the Alert component in your project, import the required component:</p>
-    <Code>
-
-```html
-<script>
-  import { Alert } from "theui-svelte";
-</script>
-```
-    </Code>
-  </DocBlock>
-
   <DocBlock title="Example">
+    <p class="not-prose">To use the Alert component in your project, import the required component.</p>
     <p class="not-prose">There are 4 types of <code>Alert</code> you can create using the <code>type</code> prop. The default type is <code>error</code>. Other types are <code>'info'</code>, <code>'success'</code> and <code>'warning'</code>. Here are some examples:</p>
     <Example title="Accordion By Props">
       <p class="not-prose">You can create an accordion item with a title and content props using the following example. </p>
@@ -47,6 +36,10 @@ description: Utilize theui-svelte's Alert component to display crucial messages 
       {#snippet code()}
 
 ```html
+<script>
+  import { Alert } from "theui-svelte";
+</script>
+
 <Alert>I'm error (default) alert!</Alert>
 <Alert type="info">I'm info alert!</Alert>
 <Alert type="success">I'm success alert!</Alert>

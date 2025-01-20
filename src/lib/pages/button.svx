@@ -1,0 +1,323 @@
+---
+title: Button
+dir: ".lib/pages"
+description: Create responsive and stylish buttons for your Svelte app with TheUI-Svelte's Button component, fully customizable with TailwindCSS.
+---
+
+<script lang="ts">
+  import DocLayout from "$lib/ui/doc/DocLayout.svelte";
+  import DocHead from "$lib/ui/doc/Head.svelte";
+  import DocBlock from "$lib/ui/doc/Block.svelte";
+  import Code from "$lib/ui/doc/CodeBlock.svelte";
+  import Example from "$lib/ui/doc/Example.svelte";
+  import ConfigComponent from "$lib/ui/doc/ConfigComponent.svelte";
+  import { processID } from "$lib";
+  let { component, edit_url }: {component: any, edit_url?: string } = $props();
+
+  import { Button, Svg, Alert } from "theui-svelte";
+</script>
+
+<DocLayout>
+  <DocHead title="Button" text="The Button component provides a versatile and customizable button for various use cases. It supports different sizes, styles, and types, and can be used as a regular button or a link." {edit_url}/>
+
+  <DocBlock title="About">
+    <p class="not-prose">The Button component is a flexible and customizable element designed to meet various needs. It supports multiple sizes, styles, and types, making it suitable for diverse use cases. You can use it as a standard button or as a link, depending on your requirements. The component allows for additional customization through props, enabling you to style and animate it to match your application's theme.</p>
+  </DocBlock>
+
+  <DocBlock title="Example">
+    <Example>
+      <p class="not-prose">Import the Button component into your Svelte file. The following example shows how to use the button component!</p>
+      {#snippet example()}
+        <Button>Brand</Button>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<script>
+  import { Button } from "theui-svelte";
+</script>
+
+<Button>Brand</Button>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Link">
+    <Example>
+      <p class="not-prose">You can turn the Button into a link by adding the href prop. This makes the button behave like a regular link. This will navigate to the home page when clicked.</p>
+      {#snippet example()}
+        <Button href="/">Link button</Button>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Button href="/">Link button</Button>
+```
+      {/snippet}
+    </Example>
+    <Example>
+      <p class="not-prose">To show an external link icon, use the <code>externalLinkIcon</code> prop. This works only if the <code>target</code> attribute is set, meaning the link opens in a new tab or window.</p>
+      {#snippet example()}
+        <Button href="/" externalLinkIcon={true} target="_blank">External Link button</Button>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Button href="/" externalLinkIcon={true} target="_blank">External Link button</Button>
+```
+      {/snippet}
+    </Example>
+    <p class="not-prose">This button opens a new page and shows an icon to indicate it’s an external link.</p>
+  </DocBlock>
+
+  <DocBlock title="Button Content">
+    <Example>
+      <p class="not-prose">...</p>
+      {#snippet example()}
+        <Button class="gap-4">
+          {#snippet beforeLabel()}
+            <Svg size={1.5}>
+              <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z"/>
+            </Svg>
+          {/snippet}
+          Brand
+          {#snippet afterLabel()}
+            <Svg size={1.5}>
+              <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
+            </Svg>
+          {/snippet}
+        </Button>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Button>
+  {#snippet beforeLabel()}
+    <Svg size={1.5}>
+      <path d="M8 8a3 3 0 ... />
+    </Svg>
+  {/snippet}
+
+  Button Text
+
+  {#snippet afterLabel()}
+    <Svg size={1.5}>
+      <path fill-rule="evenodd" d="M1 8a.5.5 0 0 ... />
+    </Svg>
+  {/snippet}
+</Button>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Button Color">
+    <Example>
+      <p class="not-prose">The <code>color</code> prop customizes the button's appearance by applying predefined color themes. These themes align with different statuses or actions, making it easier to maintain visual consistency across your application. Whether indicating success, providing information, or highlighting warnings, the <code>color</code> prop ensures the button conveys the right message.</p>
+      {#snippet example()}
+        <Button color="brand">Brand</Button>
+        <Button color="error">Error</Button>
+        <Button color="info">Info</Button>
+        <Button color="success">Success</Button>
+        <Button color="warning">Warning</Button>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Button color="brand">Brand</Button>
+<Button color="error">Error</Button>
+<Button color="info">Info</Button>
+<Button color="success">Success</Button>
+<Button color="warning">Warning</Button>
+```
+      {/snippet}
+    </Example>
+      <p class="not-prose">Each color option corresponds to a specific purpose, allowing for intuitive design choices that enhance user experience. Although you can customize the button's color further using the <code>class</code> attribute, the <code>color</code> prop provides a quick and consistent approach.</p>
+  </DocBlock>
+
+  <DocBlock title="Theme">
+    <p class="not-prose">The <code>theme</code> prop determines the overall style and background of the button. It accepts three values: <code>'default'</code>, <code>'light'</code>, and <code>'gradient'</code>. The default theme applies the standard button styles, while the light theme uses lighter versions of the default colors for a softer look. The gradient theme gives a more vibrant feel by applying gradient backgrounds to the button.</p>
+    <Example>
+      <p class="not-prose">The light theme is a softer variation of the default button colors, making it suitable for more subtle designs.</p>
+      {#snippet example()}
+        <div class="w-full flex justify-center gap-4">
+          <Button theme="light" color="brand">Brand</Button>
+          <Button theme="light" color="error">Error</Button>
+          <Button theme="light" color="info">Info</Button>
+          <Button theme="light" color="success">Success</Button>
+          <Button theme="light" color="warning">Warning</Button>
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Button theme="light" color="brand">Brand</Button>
+<Button theme="light" color="error">Error</Button>
+<Button theme="light" color="info">Info</Button>
+<Button theme="light" color="success">Success</Button>
+<Button theme="light" color="warning">Warning</Button>
+```
+      {/snippet}
+    </Example>
+    <Example>
+      <p class="not-prose">The gradient theme applies vibrant gradient colors to the button background, providing a more modern and eye-catching look.</p>
+      {#snippet example()}
+        <div class="w-full flex justify-center gap-4">
+          <Button theme="gradient" color="brand">Brand</Button>
+          <Button theme="gradient" color="error">Error</Button>
+          <Button theme="gradient" color="info">Info</Button>
+          <Button theme="gradient" color="success">Success</Button>
+          <Button theme="gradient" color="warning">Warning</Button>
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Button theme="gradient" color="brand">Brand</Button>
+<Button theme="gradient" color="error">Error</Button>
+<Button theme="gradient" color="info">Info</Button>
+<Button theme="gradient" color="success">Success</Button>
+<Button theme="gradient" color="warning">Warning</Button>
+```
+      {/snippet}
+    </Example>
+    <Alert type="warning" theme="light" variant="borderStart">The color prop can still be used with each theme to specify the button's color, allowing flexibility while maintaining consistency across different button themes.</Alert>
+  </DocBlock>
+
+  <DocBlock title="Outline">
+    <Example>
+      <p class="not-prose">The <code>outline</code> attribute allows you to create a button with a sleek and modern outline style. This attribute gives the button a transparent background with a border, ideal for emphasizing secondary actions or achieving a minimalist design.</p>
+      {#snippet example()}
+        <Button color="brand" outline={true}>Brand</Button>
+        <Button color="error" outline={true}>Error</Button>
+        <Button color="info" outline={true}>Info</Button>
+        <Button color="success" outline={true}>Success</Button>
+        <Button color="warning" outline={true}>Warning</Button>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Button color="brand" outline={true}>Brand</Button>
+<Button color="error" outline={true}>Error</Button>
+<Button color="info" outline={true}>Info</Button>
+<Button color="success" outline={true}>Success</Button>
+<Button color="warning" outline={true}>Warning</Button>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Size">
+    <Example>
+      <p class="not-prose">The <code>size</code> prop allows you to adjust the button's size to fit various design needs. This prop supports a range of predefined sizes, ensuring consistency and flexibility across your UI components. Whether you need a small button for minimal space or a larger one for emphasis, the <code>size</code> prop has you covered.</p>
+      {#snippet example()}
+        <Button size="xs">Brand</Button>
+        <Button size="sm">Error</Button>
+        <Button size="md">Info</Button>
+        <Button size="lg">Success</Button>
+        <Button size="xl">Warning</Button>
+        <Button size="auto">Warning</Button>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Button size="xs">Brand</Button>
+<Button size="sm">Error</Button>
+<Button size="md">Info</Button>
+<Button size="lg">Success</Button>
+<Button size="xl">Warning</Button>
+<Button size="auto">Warning</Button>
+```
+      {/snippet}
+    </Example>
+    <p class="not-prose">Each size option adjusts the button's padding and font size, providing a cohesive look across different screen sizes and use cases. The <code>auto</code> size adapts to the content, has no padding, making it flexible for various layouts.</p>
+  </DocBlock>
+
+  <DocBlock title="Square Button">
+    <Example>
+      <p class="not-prose">The <code>square</code> prop allows you to create perfectly square buttons, ideal for icons or small content. By setting <code>square</code> to <code>true</code>, the button's height and width are equal, ensuring a neat, compact appearance. This prop is particularly useful for minimalist designs or icon buttons.</p>
+      {#snippet example()}
+        <Button square={true}>m</Button>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Button square={true}>m</Button>
+```
+      {/snippet}
+    </Example>
+
+    <Example>
+      <p class="not-prose">You can combine the <code>square</code> prop with the <code>size</code> prop to create square buttons of varying dimensions. This flexibility lets you choose the appropriate size for different UI elements while maintaining the square shape.</p>
+      {#snippet example()}
+        <Button square={true} size="xs">m</Button>
+        <Button square={true} size="sm">m</Button>
+        <Button square={true} size="md">m</Button>
+        <Button square={true} size="lg">m</Button>
+        <Button square={true} size="xl">m</Button>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Button square={true} size="xs">m</Button>
+<Button square={true} size="sm">m</Button>
+<Button square={true} size="md">m</Button>
+<Button square={true} size="lg">m</Button>
+<Button square={true} size="xl">m</Button>
+```
+      {/snippet}
+    </Example>
+      <p class="not-prose">This feature ensures that your square buttons can fit seamlessly into different parts of your design, from small icons to larger clickable elements.</p>
+  </DocBlock>
+
+  <DocBlock title="Rounded Corner Button">
+    <Example>
+      <p class="not-prose">The <code>rounded</code>The <code>rounded</code> prop in the Button component allows you to easily control the border radius, ensuring consistent design throughout your application. This prop supports several predefined values, providing flexibility while maintaining a uniform look. Users can also apply custom classes for more specific styling needs if required.</p>
+      {#snippet example()}
+        <Button rounded="sm">Small</Button>
+        <Button rounded="md">Medium</Button>
+        <Button rounded="lg">Large</Button>
+        <Button rounded="xl">Extra large</Button>
+        <Button rounded="full">Full</Button>
+        <Button rounded="none">None</Button>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Button rounded="sm">Small</Button>
+<Button rounded="md">Medium</Button>
+<Button rounded="lg">Large</Button>
+<Button rounded="xl">Extra large</Button>
+<Button rounded="full">Full</Button>
+<Button rounded="none">None</Button>
+```
+      {/snippet}
+    </Example>
+    <p class="not-prose">Using the <code>rounded</code> prop ensures your buttons adhere to a consistent design pattern, enhancing the visual coherence of your UI.</p>
+  </DocBlock>
+
+  <DocBlock title="Accessibility">
+    <p class="not-prose">The Button component is designed with accessibility in mind, ensuring it can be used by everyone, including users relying on assistive technologies. By default, it includes the necessary ARIA attributes and supports keyboard navigation.</p>
+    <Example title="ARIA Labels">
+      <p class="not-prose">The <code>ariaLabel</code> prop allows you to provide an accessible name for the button, ensuring screen readers can describe its function clearly.</p>
+      {#snippet code()}
+
+```html
+<Button ariaLabel="Submit the form">Submit</Button>
+```
+      {/snippet}
+    </Example>
+    <Example title="Keyboard Navigation">
+      <p class="not-prose">The Button component supports standard keyboard interactions, allowing users to navigate and activate it using the <code>Tab</code> key to focus and the <code>Enter</code> or <code>Space</code> keys to trigger the action.</p>
+      <p class="not-prose">By following these guidelines and using the provided props, you can ensure that the Button component enhances accessibility, providing a seamless experience for all users.</p>
+    </Example>
+  </DocBlock>
+
+  {#snippet sidebar()}
+    <a href={processID("Example")}>Example</a>
+    <a href={processID("Customization")}>Customization</a>
+    <a href={processID("Configuration")}>Configuration</a>
+  {/snippet}
+
+</DocLayout>

@@ -20,20 +20,12 @@ description: Add scalable vector icons to your Svelte app with TheUI-Svelte's SV
 <DocLayout>
   <DocHead title="SVG Icon" text="The Svg component allows you to easily add SVG icons to your project. It acts as a wrapper for SVG elements and can replace the standard svg tag. You can include any path or other SVG elements within it." {edit_url}/>
 
-  <DocBlock>
+  <DocBlock title="About">
     <p class="not-prose">The <code>Svg</code> component is a versatile wrapper for incorporating SVG icons into your project. It simplifies the process of adding custom SVG elements, offering a convenient alternative to the standard <code>&lt;svg&gt;</code> tag.</p>
   </DocBlock>
 
-  <DocBlock title="Setup & Example">
-    <p class="not-prose">Start by importing the <code>Svg</code> component from the theui-svelte library:</p>
-<Code>
-
-```html
-<script>
-  import { Svg } from "theui-svelte";
-</script>
-```
-    </Code>
+  <DocBlock title="Example">
+    <p class="not-prose">Start by importing the <code>Svg</code> component from the theui-svelte library.</p>
     <p class="not-prose">You can embed any SVG elements, such as paths, circles, or groups, within the <code>Svg</code> component. Here's a simple example:</p>
     <Example>
       {#snippet example()}
@@ -44,6 +36,10 @@ description: Add scalable vector icons to your Svelte app with TheUI-Svelte's SV
       {#snippet code()}
 
 ```html
+<script>
+  import { Svg } from "theui-svelte";
+</script>
+
 <Svg>
   <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
 </Svg>
@@ -153,7 +149,7 @@ description: Add scalable vector icons to your Svelte app with TheUI-Svelte's SV
   </DocBlock>
 
   {#snippet sidebar()}
-    <a href="#setup-&-example">Setup & use</a>
+    <a href={processID("Example")}>Example</a>
     <a href={processID("Icon Size")}>Icon Size</a>
     <a href={processID("Modify viewBox")}>Modify viewBox</a>
     <a href={processID("Stroke Icon")}>Stroke Icon</a>

@@ -26,21 +26,10 @@ description: Improve navigation in your Svelte app with TheUI-Svelte's Breadcrum
 <DocLayout>
   <DocHead title="Breadcrumb" text="The Breadcrumb component displays the location of the current page within a navigational hierarchy. It helps users understand the structure of your site and navigate back to previous pages easily." {edit_url}/>
 
-  <DocBlock title="Setup">
-    <p class="not-prose">To use the Breadcrumb component, you need to import it into your Svelte file as shown below.</p>
-    <Code>
-
-```html
-<script>
-  import { Breadcrumb } from "theui-svelte";
-</script>
-```
-    </Code>
-  </DocBlock>
-
   <DocBlock title="Example">
+    <p class="not-prose">To use the Breadcrumb component, you need to import it into your Svelte file as shown below.</p>
     <Example>
-      <p class="not-prose">To use the <code>Breadcrumb</code> component, you can pass an array of breadcrumb items with their respective text and URLs. Here's a simple example:</p>
+      <p class="not-prose">To use the <code>Breadcrumb</code> component, you can pass an array of breadcrumb items (<a href="/docs/types#breadcrumb-data-type"><code>BREADCRUMB_DATA</code></a>) with their respective text and URLs. Here's a simple example:</p>
       {#snippet example()}
       <div class="w-full">
         <Breadcrumb data={breadcrumbData} />
@@ -50,7 +39,9 @@ description: Improve navigation in your Svelte app with TheUI-Svelte's Breadcrum
 
 ```html
 <script>
-  let breadcrumbData: BREADCRUMB_DATA = [
+  import { Breadcrumb } from "theui-svelte";
+
+  let breadcrumbData: Array<BREADCRUMB_DATA> = [
     { text: "Home", url: "/" },
     { text: "About", url: "/about" },
     { text: "Company" }
@@ -102,7 +93,6 @@ description: Improve navigation in your Svelte app with TheUI-Svelte's Breadcrum
   </DocBlock>
 
   {#snippet sidebar()}
-    <a href={processID("Setup")}>Setup</a>
     <a href={processID("Example")}>Example</a>
     <a href={processID("Change Link Separator")}>Change Link Separator</a>
     <a href={processID("Modify Link Color")}>Modify Link Color</a>

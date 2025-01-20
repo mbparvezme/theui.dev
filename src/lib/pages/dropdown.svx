@@ -27,23 +27,12 @@ description:
 <DocLayout>
   <DocHead title="Dropdown" text="The Dropdown component offers a flexible and customizable way to display a list of links or actions in a compact, toggle-able menu. It's perfect for navigation menus, settings, or any context where you want to provide users with multiple options in a clean, organized format." {edit_url}/>
 
-  <DocBlock>
+  <DocBlock title="About">
     <p class="not-prose">The Dropdown component allows you to create a menu that can be expanded or collapsed by clicking or hovering over a trigger element. It supports various customization options such as alignment, animation styles, animation speeds, and trigger events. Each item within the Dropdown can be linked to different actions or URLs, making it a versatile tool for enhancing user interaction in your application.</p>
   </DocBlock>
 
-  <DocBlock title="Setup">
-    <p class="not-prose">To use the Dropdown component in your project, you first need to import it along with the DropdownItem component. Here's how you can set up the Dropdown in your Svelte component.</p>
-    <Code>
-
-```html
-<script>
-  import { Dropdown, DropdownItem } from "theui-svelte";
-</script>
-```
-    </Code>
-  </DocBlock>
-
   <DocBlock title="Example">
+    <p class="not-prose">To use the Dropdown component in your project, you first need to import it along with the DropdownItem component. Here's how you can set up the Dropdown in your Svelte component.</p>
     <Example>
       <p class="not-prose">Here’s a simple example of how to implement the Dropdown component. It includes a label and multiple DropdownItem components, which represent the individual links or actions within the dropdown.</p>
       {#snippet example()}
@@ -56,6 +45,10 @@ description:
 
       {#snippet code()}
 ```html
+<script>
+  import { Dropdown, DropdownItem } from "theui-svelte";
+</script>
+
 <Dropdown label="Dropdown">
   <DropdownItem url="/" text="Link 1" />
   <DropdownItem url="/" text="Link 2" />
@@ -571,7 +564,7 @@ description:
   </DocBlock>
 
   {#snippet sidebar()}
-    <a href={processID("Setup")}>Setup</a>
+    <a href={processID("About")}>About</a>
     <a href={processID("Example")}>Example</a>
     <a href={processID("Dropdown Sizing")}>Sizing</a>
     <a href={processID("Alignment")}>Alignment</a>

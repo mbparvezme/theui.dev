@@ -23,11 +23,11 @@ description: A dynamic and versatile way to showcase content, with a variety of 
 <DocLayout>
   <DocHead title="Card" text="The Card component offers a dynamic and versatile way to showcase content, with a variety of customization options to fit any style or purpose." {edit_url}/>
 
-  <DocBlock>
+  <DocBlock title="About">
     <p class="not-prose">The Card component is a versatile UI element used to present content in a structured and visually appealing way. It supports various customizations, allowing you to adjust its layout, images, and styling to fit different use cases. Whether you need to display text, images, or a combination of both, the Card component provides a flexible solution.</p>
   </DocBlock>
 
-  <DocBlock title="Setup">
+  <DocBlock title="Example">
     <p class="not-prose">Start by importing the Card component from the theui-svelte library:</p>
     <Code>
 
@@ -37,11 +37,7 @@ description: A dynamic and versatile way to showcase content, with a variety of 
 </script>
 ```
     </Code>
-  </DocBlock>
-
-  <DocBlock title="Example">
     <p class="not-prose">Here's a simple demonstration of how to use the <code>Card</code> component. This example highlights how you can easily combine a title, images, and custom content to create a visually appealing card. You can further personalize it by tweaking the layout and styles using the available props.</p>
-    <p class="not-prose">The Alert component in theui-svelte allows full customization through the class attribute, giving you control over the styling to match your application's design needs. This flexibility ensures that the alert can seamlessly blend with various UI themes and aesthetics.</p>
     <Example>
       {#snippet example()}
       <div>
@@ -277,11 +273,16 @@ description: A dynamic and versatile way to showcase content, with a variety of 
   </DocBlock>
 
   {#snippet sidebar()}
-    <a href={processID("Setup")}>Setup</a>
+    <a href={processID("About")}>About</a>
     <a href={processID("Example")}>Example</a>
     <a href={processID("Card Elements")}>Card Elements</a>
+    <a href={processID("Card Title")} class="ps-4">Card Title</a>
+    <a href={processID("Card's Top Image")} class="ps-4">Top Image</a>
+    <a href={processID("Card's Bottom Image")} class="ps-4">Bottom Image</a>
+    <a href={processID("Card Content")} class="ps-4">Card Content</a>
     <a href={processID("Horizontal Card")}>Horizontal Card</a>
     <a href={processID("Customization")}>Customization</a>
     <a href={processID("Configuration")}>Configuration</a>
   {/snippet}
+
 </DocLayout>

@@ -23,8 +23,8 @@ description: Enhance your Svelte app with theui-svelte's Accordion component. Ea
 <DocLayout>
   <DocHead title="Accordion" text="The Accordion component is used to show or hide information based on the collapse and expand state of its child elements. It has two variants with configurations provided in the Configuration section." {edit_url}/>
 
-  <DocBlock title="Setup">
-    <p class="not-prose">To use the Accordion component in your project, import the required components:</p>
+  <DocBlock title="Example">
+    <p class="not-prose">Import the required components <code>Accordion</code> and <code>AccordionItem</code> to use it in your project.</p>
     <Code>
 
 ```html
@@ -33,9 +33,6 @@ description: Enhance your Svelte app with theui-svelte's Accordion component. Ea
 </script>
 ```
     </Code>
-  </DocBlock>
-
-  <DocBlock title="Example">
     <p class="not-prose">You can create an accordion in two ways, using props and using Svelte 5 snippet. The example are showing below:</p>
     <Example title="Accordion By Props">
       <p class="not-prose">You can create an accordion item with a title and content props using the following example. </p>
@@ -149,12 +146,9 @@ description: Enhance your Svelte app with theui-svelte's Accordion component. Ea
       {/snippet}
     </Example>
 
-    <p class="not-prose">In the example above, both <code>AccordionItem</code> components will have the <code>compact</code> size.</p>
-    <p class="not-prose">You can also set the <code>size</code> prop individually on each <code>AccordionItem</code> component. The <code>size</code> prop on an individual <code>AccordionItem</code> will override the size specified on the parent <code>Accordion</code>.</p>
+    <p class="not-prose">In the example above, all the <code>AccordionItem</code>s components will have the <code>compact</code> size. Setting it on <code>Accordion</code> ensures all items match for a consistent look.</p>
     <Example>
-      <p class="not-prose mb-4">The <code>Accordion</code> and <code>AccordionItem</code> component provides a <code>size</code> prop to control the size of the accordion items. The <code>size</code> prop can take one of the following values: <code>'compact'</code>, <code>'default'</code>, or <code>'large'</code>.</p>
-      <p class="not-prose">When the <code>size</code> prop is set on the <code>Accordion</code> component, all <code>AccordionItem</code> components within it will inherit this size. This ensures a consistent appearance for all items in the accordion.</p>
-    
+      <p class="not-prose">You can also set the <code>size</code> prop individually on each <code>AccordionItem</code> component which will override the size specified on the <code>Accordion</code>.</p>
       {#snippet example()}
       <div>
         <Accordion size="compact">
@@ -241,7 +235,6 @@ description: Enhance your Svelte app with theui-svelte's Accordion component. Ea
   </DocBlock>
 
   {#snippet sidebar()}
-    <a href={processID("Setup")}>Setup</a>
     <a href={processID("Example")}>Example</a>
     <a href={processID("Group Accordion")}>Group Accordion</a>
     <a href={processID("Flash Accordion")}>Flash Accordion</a>

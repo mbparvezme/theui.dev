@@ -24,26 +24,19 @@ description: A functional close button available for the Svelte app in theui-sve
     <p class="not-prose">This is a functional and accessible close button for your Svelte app. It is highly customizable and easy to use. You can use it to close or dismiss modals, popups, or any other elements.</p>
   </DocBlock>
 
-  <DocBlock title="Setup & Example">
-    <p class="not-prose">Start by importing the Close button from the component library.</p>
-
-    <Code>
-
-```html
-<script>
-  import { Close } from "theui-svelte";
-</script>
-```
-    </Code>
-
+  <DocBlock title="Example">
     <Example>
-      <p class="not-prose">This versatile and accessible component makes it easy to add close functionality to modals, popups, or any dismissible elements in the Svelte app.</p>
+      <p class="not-prose">Start by importing the Close button from the component library. This versatile and accessible component makes it easy to add close functionality to modals, popups, or any dismissible elements in the Svelte app.</p>
       {#snippet example()}
         <Close />
       {/snippet}
       {#snippet code()}
 
 ```html
+<script>
+  import { Close } from "theui-svelte";
+</script>
+
 <Close />
 ```
 

@@ -20,20 +20,8 @@ description: Implement interactive and stylish chips in your Svelte app with The
 <DocLayout>
   <DocHead title="Container" text="The Chips component is a versatile UI element used to display small blocks of information, such as tags, categories, or interactive items. It supports images, text, and an optional close button for dismissing the chips." {edit_url}/>
 
-  <DocBlock title="Setup">
-    <p class="not-prose">First, import the Chips component from the library:</p>
-    <Code>
-
-```html
-<script>
-  import { Chips } from "theui-svelte";
-</script>
-```
-    </Code>
-  </DocBlock>
-
   <DocBlock title="Example">
-    <p class="not-prose">Below is a simple example demonstrating how to use the Chips component. This example shows how to create a chip with a basic text label:</p>
+    <p class="not-prose">First, import the Chips component from the library. Below is a simple example demonstrating how to use the Chips component. This example shows how to create a chip with a basic text label:</p>
     <Example>
       {#snippet example()}
       <div>
@@ -43,6 +31,10 @@ description: Implement interactive and stylish chips in your Svelte app with The
 
       {#snippet code()}
 ```html
+<script>
+  import { Chips } from "theui-svelte";
+</script>
+
 <Chips content="Example Chips" />
 ```
       {/snippet}
@@ -144,7 +136,11 @@ description: Implement interactive and stylish chips in your Svelte app with The
   </DocBlock>
 
   {#snippet sidebar()}
-    <a href="#setup-&-example">Setup & use</a>
+    <a href={processID("Example")}>Example</a>
+    <a href={processID("Chips With Image")}>Chips With Image</a>
+    <a href={processID("Disable Close Button")}>Disable Close Button</a>
+    <a href={processID("Chips Size")}>Chips Size</a>
     <a href={processID("Customization")}>Customization</a>
+    <a href={processID("Configuration")}>Configuration</a>
   {/snippet}
 </DocLayout>

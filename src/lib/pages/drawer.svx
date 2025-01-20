@@ -20,20 +20,8 @@ description: The Drawer component is a versatile UI element that slides in from 
 <DocLayout>
   <DocHead title="Drawer" text="The Drawer component is a versatile UI element that slides in from the edge of the screen, providing a convenient way to display additional content or navigation without disrupting the main view." {edit_url}/>
 
-  <DocBlock title="Setup">
-    <p class="not-prose">Import the Drawer component first to use it in your application.</p>
-    <Code>
-
-```html
-<script>
-  import { Drawer } from "theui-svelte";
-</script>
-```
-    </Code>
-  </DocBlock>
-
   <DocBlock title="Example">
-    <p class="not-prose">Here’s a basic example demonstrating how to use the Drawer component:</p>
+    <p class="not-prose">Import the Drawer component first to use it in your application. Here’s a basic example demonstrating how to use the Drawer component:</p>
     <Example>
       {#snippet example()}
         <Drawer label="Open Drawer">
@@ -45,6 +33,10 @@ description: The Drawer component is a versatile UI element that slides in from 
 
       {#snippet code()}
 ```html
+<script>
+  import { Drawer } from "theui-svelte";
+</script>
+
 <Drawer label="Open Drawer">
   <div class="p-8">
     Drawer content

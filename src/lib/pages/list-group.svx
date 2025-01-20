@@ -21,20 +21,8 @@ description: Toggle content visibility in your Svelte app with TheUI-Svelte's Co
 <DocLayout>
   <DocHead title="List Group" text="The List Group component offers a flexible, customizable way to display items like links or text in a list format. It supports various styles and types, making it ideal for structured content." {edit_url}/>
 
-  <DocBlock title="Setup">
-    <p class="not-prose">To use the List Group component, import it from the <code>theui-svelte</code> library:</p>
-    <Code>
-
-```html
-<script>
-  import { ListGroup, ListItem } from "theui-svelte";
-</script>
-```
-    </Code>
-  </DocBlock>
-
   <DocBlock title="Example">
-    <p class="not-prose">Below is a simple example demonstrating how to use the List Group:</p>
+    <p class="not-prose">To use the List Group component, import it from the <code>theui-svelte</code> library. Below is a simple example demonstrating how to use the List Group:</p>
     <Example>
       {#snippet example()}
       <div>
@@ -48,6 +36,10 @@ description: Toggle content visibility in your Svelte app with TheUI-Svelte's Co
 
       {#snippet code()}
 ```html
+<script>
+  import { ListGroup, ListItem } from "theui-svelte";
+</script>
+
 <ListGroup>
   <ListItem>First Item</ListItem>
   <ListItem>Second Item</ListItem>
@@ -121,7 +113,6 @@ description: Toggle content visibility in your Svelte app with TheUI-Svelte's Co
   </DocBlock>
 
   {#snippet sidebar()}
-    <a href={processID("Setup")}>Setup</a>
     <a href={processID("Example")}>Example</a>
     <a href={processID("List Style Variant")}>List Style Variant</a>
     <a href={processID("List Element Type")}>List Element Type</a>

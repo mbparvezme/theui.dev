@@ -20,20 +20,8 @@ description: Toggle content visibility in your Svelte app with TheUI-Svelte's Co
 <DocLayout>
   <DocHead title="Collapse" text="The Collapse component allows you to show and hide content independently. It is unstyled by default, giving you the flexibility to use any content and design according to your needs." {edit_url}/>
 
-  <DocBlock title="Setup">
-    <p class="not-prose">Ensure you have the Collapse component available. Import it as shown below.</p>
-    <Code>
-
-```html
-<script>
-  import { Collapse } from "theui-svelte";
-</script>
-```
-    </Code>
-  </DocBlock>
-
   <DocBlock title="Example">
-    <p class="not-prose">Below is a simple example demonstrating how to use the Chips component. This example shows how to create a chip with a basic text label:</p>
+    <p class="not-prose">Ensure you have the Collapse component available. Below is a simple example demonstrating how to use the Chips component. This example shows how to create a chip with a basic text label:</p>
     <Example>
       {#snippet example()}
       <div>
@@ -48,6 +36,10 @@ description: Toggle content visibility in your Svelte app with TheUI-Svelte's Co
 
       {#snippet code()}
 ```html
+<script>
+  import { Collapse } from "theui-svelte";
+</script>
+
 <Collapse ariaLabel="COLLAPSE">
   {#snippet title()}
     <Button>Flush collapse title</Button>

@@ -20,19 +20,8 @@ description: Add dynamic visual indicators to your Svelte app with TheUI-Svelte'
 <DocLayout>
   <DocHead title="Badge" text="The Badge component is a versatile UI element used for displaying small counts, labeling, or providing important indications to users. Badges are commonly used to highlight new content, show notifications, or denote status updates." {edit_url}/>
 
-  <DocBlock title="Setup">
-    <p class="not-prose">To use the Badge component in your project, import the required component:</p>
-    <Code>
-
-```html
-<script>
-  import { Badge } from "theui-svelte";
-</script>
-```
-    </Code>
-  </DocBlock>
-
   <DocBlock title="Example">
+    <p class="not-prose">To use the Badge component in your project, import the required component first.</p>
     <Example>
       <p class="not-prose">You can create <b>dot-badges</b> just using the <code>Badge</code> component. Using the <code>text</code> props will create a text badge. Here are some examples:</p>
       {#snippet example()}
@@ -42,6 +31,10 @@ description: Add dynamic visual indicators to your Svelte app with TheUI-Svelte'
       {#snippet code()}
 
 ```html
+<script>
+  import { Badge } from "theui-svelte";
+</script>
+
 <Badge ariaTitle="Demo badge"/>
 <Badge ariaTitle="Demo badge" text="New"/>
 ```

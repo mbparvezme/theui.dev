@@ -19,19 +19,14 @@ description: Structure your Svelte app with the Container component, providing a
   <DocHead title="Container" text="The Container component is a flexible block element designed to control the spacing and structure of a web page. It provides a default padding setup but can be customized easily with your own classes." {edit_url}/>
 
   <DocBlock title="Setup & Example">
-    <p class="not-prose">Start by importing the Container component from the theui-svelte library:</p>
-<Code>
+    <p class="not-prose">Start by importing the Container component from the theui-svelte library. To use the Container component with its default settings, simply include it in your Svelte template:</p>
+    <Code>
 
 ```html
 <script>
   import { Container } from "theui-svelte";
 </script>
-```
-    </Code>
-    <p class="not-prose">To use the Container component with its default settings, simply include it in your Svelte template:</p>
-    <Code>
 
-```html
 <Container>
   <!-- Content -->
 </Container>
