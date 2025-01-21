@@ -2,7 +2,68 @@
   {
     "key": "props",
     "title": "Props",
-    "data": null
+    "data": [
+      {
+        "name": "stacked",
+        "type": "boolean",
+        "description": "Determines if the buttons are stacked vertically.",
+        "default": "false"
+      },
+      {
+        "name": "outline",
+        "type": "boolean",
+        "description": "Applies an outlined style to the button group.",
+        "default": "false"
+      },
+      {
+        "name": "size",
+        "type": "BUTTON_SIZE",
+        "description": "Specifies the size of the buttons in the group.",
+        "default": "\"md\""
+      },
+      {
+        "name": "square",
+        "type": "boolean",
+        "description": "Determines if the buttons in the group are square.",
+        "default": "false"
+      },
+      {
+        "name": "rounded",
+        "type": "ROUNDED",
+        "description": "Controls the rounded corners of the buttons in the group.",
+        "default": "\"md\""
+      },
+      {
+        "name": "variant",
+        "type": "'bordered' | 'flat'",
+        "description": "Defines the visual style of the button group, either with borders between buttons or flat with no borders.",
+        "default": "\"flat\""
+      },
+      {
+        "name": "color",
+        "type": "'brand' | 'error' | 'info' | 'success' | 'warning'",
+        "description": "Defines the color scheme of the button group.",
+        "default": "\"brand\""
+      },
+      {
+        "name": "theme",
+        "type": "'default' | 'light' | 'gradient'",
+        "description": "Sets the overall theme of the button group, affecting colors and styles.",
+        "default": "\"default\""
+      },
+      {
+        "name": "animate",
+        "type": "ANIMATE_SPEED",
+        "description": "Controls the animation speed for the button group.",
+        "default": "\"normal\""
+      },
+      {
+        "name": "ariaLabel",
+        "type": "string",
+        "description": "Custom ARIA label for accessibility, describing the button group.",
+        "default": "\"Button group\""
+      }
+    ]
   },
   {
     "key": "dynamicProps",

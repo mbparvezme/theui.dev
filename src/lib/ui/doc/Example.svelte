@@ -23,19 +23,21 @@
 
   {@render children?.()}
 
-  <div class="rounded-md dark:bg-black/50 mt-4 border border-gray-200 dark:border-gray-800">
+  {#if example || code}
+    <div class="rounded-md dark:bg-black/50 mt-4 border border-gray-200 dark:border-gray-800">
 
-    {#if example}
-    <div class="not-prose {twMerge("p-5 flex justify-center items-center gap-4", classes)}">
-      {@render example()}
+      {#if example}
+      <div class="not-prose {twMerge("p-5 flex justify-center items-center gap-4", classes)}">
+        {@render example()}
+      </div>
+      {/if}
+
+      {#if code}
+      <Code classes="border-0" space="none" title={codeTitle}>
+        {@render code()}
+      </Code>
+      {/if}
+
     </div>
-    {/if}
-
-    {#if code}
-    <Code classes="border-0" space="none" title={codeTitle}>
-      {@render code()}
-    </Code>
-    {/if}
-
-  </div>
+  {/if}
 </div>

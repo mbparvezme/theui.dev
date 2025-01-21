@@ -18,28 +18,320 @@ description: Create responsive and stylish buttons for your Svelte app with TheU
 </script>
 
 <DocLayout>
-  <DocHead title="Button Group" text="The Button component provides a versatile and customizable button for various use cases. It supports different sizes, styles, and types, and can be used as a regular button or a link." {edit_url}/>
+  <DocHead title="Button Group" text="Helps you group multiple buttons together for a cohesive and organized layout. Ideal for presenting related actions or options side by side or vertically" {edit_url}/>
 
   <DocBlock title="About">
-    <p class="not-prose">The Button component is a flexible and customizable element designed to meet various needs. It supports multiple sizes, styles, and types, making it suitable for diverse use cases. You can use it as a standard button or as a link, depending on your requirements. The component allows for additional customization through props, enabling you to style and animate it to match your application's theme.</p>
+    <p class="not-prose">The <code>ButtonGroup</code> component allows you to combine multiple Button components into a unified group. It supports various styles, sizes, and configurations, making it easy to create visually appealing and functional button groups. Whether you're creating a toolbar, a set of navigation links, or action buttons, the ButtonGroup ensures that the buttons are well-aligned and maintain a consistent spacing and styling. This component enhances the user interface by providing a structured way to present related buttons in a single, cohesive block.</p>
   </DocBlock>
 
   <DocBlock title="Example">
     <Example>
       <p class="not-prose">Import the Button component into your Svelte file. The following example shows how to use the button component!</p>
       {#snippet example()}
-        <Button>Brand</Button>
+        <ButtonGroup>
+          <Button>Save</Button>
+          <Button>Edit</Button>
+          <Button>Delete</Button>
+        </ButtonGroup>
       {/snippet}
       {#snippet code()}
 
 ```html
 <script>
-  import { Button } from "theui-svelte";
+  import { ButtonGroup, Button } from 'theui-svelte';
 </script>
 
-<Button>Brand</Button>
+<ButtonGroup>
+  <Button>Save</Button>
+  <Button>Edit</Button>
+  <Button>Delete</Button>
+</ButtonGroup>
 ```
       {/snippet}
+    </Example>
+    <p class="not-prose">In this example, the <code>ButtonGroup</code> wraps multiple <code>Button</code> components, aligning them neatly in a single row. This structure is useful for presenting related actions in a visually consistent manner.</p>
+  </DocBlock>
+
+  <DocBlock title="Stacked Button">
+    <p class="not-prose">The <code>ButtonGroup</code> component supports a stacked layout, which vertically arranges the buttons instead of aligning them horizontally. This is useful when you want to display multiple actions in a column format, ideal for mobile or narrow screen designs.</p>
+    <Example>
+      <p class="not-prose">To enable <code>stacked</code> buttons, use the stacked prop and set it to <code>true</code>.</p>
+      {#snippet example()}
+        <ButtonGroup stacked={true}>
+          <Button>Save</Button>
+          <Button>Edit</Button>
+          <Button>Delete</Button>
+        </ButtonGroup>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<ButtonGroup stacked={true}> ... </ButtonGroup>
+```
+      {/snippet}
+    </Example>
+    <p class="not-prose">In this example, the buttons are displayed one below the other, creating a clean and space-efficient vertical layout.</p>
+  </DocBlock>
+
+  <DocBlock title="Outlined Button">
+    <p class="not-prose">The <code>outline</code> prop in the <code>ButtonGroup</code> component applies an outlined style to all buttons in the group, giving them a bordered appearance with a transparent background. This prop is useful for creating a distinct, less prominent button style while maintaining visual consistency.</p>
+    <Example>
+      {#snippet example()}
+        <ButtonGroup outline={true}>
+          <Button>Save</Button>
+          <Button>Edit</Button>
+          <Button>Delete</Button>
+        </ButtonGroup>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<ButtonGroup outline={true}> ... </ButtonGroup>
+```
+      {/snippet}
+    </Example>
+    <p class="not-prose">In this example, all buttons within the <code>ButtonGroup</code> have an outlined style, making them stand out with borders while keeping the background clear.</p>
+  </DocBlock>
+
+  <DocBlock title="Group Button Sizing">
+    <p class="not-prose">The <code>size</code> prop in the <code>ButtonGroup</code> component controls the size of all buttons within the group. This prop ensures consistency in the button sizes, making it easier to maintain a cohesive design.</p>
+    <Example>
+      <p class="not-prose">You can set the <code>size</code> prop to any predefined BUTTON_SIZE value, such as <code>'xs'</code>, <code>'sm'</code>, <code>'md'</code>, <code>'lg'</code>, or <code>'xl'</code>, to adjust the buttons' dimensions accordingly.</p>
+      {#snippet example()}
+        <div class="flex flex-col items-center gap-4 w-full">
+          <ButtonGroup size="auto">
+            <Button>Save</Button>
+            <Button>Edit</Button>
+            <Button>Delete</Button>
+          </ButtonGroup>
+          <ButtonGroup size="xs">
+            <Button>Save</Button>
+            <Button>Edit</Button>
+            <Button>Delete</Button>
+          </ButtonGroup>
+          <ButtonGroup size="sm">
+            <Button>Save</Button>
+            <Button>Edit</Button>
+            <Button>Delete</Button>
+          </ButtonGroup>
+          <ButtonGroup size="md">
+            <Button>Save</Button>
+            <Button>Edit</Button>
+            <Button>Delete</Button>
+          </ButtonGroup>
+          <ButtonGroup size="lg">
+            <Button>Save</Button>
+            <Button>Edit</Button>
+            <Button>Delete</Button>
+          </ButtonGroup>
+          <ButtonGroup size="xl">
+            <Button>Save</Button>
+            <Button>Edit</Button>
+            <Button>Delete</Button>
+          </ButtonGroup>
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<ButtonGroup size="auto"> ... </ButtonGroup>
+<ButtonGroup size="xs"> ... </ButtonGroup>
+<ButtonGroup size="sm"> ... </ButtonGroup>
+<ButtonGroup size="md"> ... </ButtonGroup>
+<ButtonGroup size="lg"> ... </ButtonGroup>
+<ButtonGroup size="xl"> ... </ButtonGroup>
+```
+      {/snippet}
+    </Example>
+    <p class="not-prose">In this example, the buttons are rendered with an outline, providing a lighter, more elegant visual style.</p>
+  </DocBlock>
+
+  <DocBlock title="Square Group Button">
+    <p class="not-prose">The <code>ButtonGroup</code> component supports a stacked layout, which vertically arranges the buttons instead of aligning them horizontally. This is useful when you want to display multiple actions in a column format, ideal for mobile or narrow screen designs.</p>
+    <Example>
+      <p class="not-prose">To enable <code>stacked</code> buttons, use the stacked prop and set it to <code>true</code>.</p>
+      {#snippet example()}
+        <ButtonGroup square={true}>
+          <Button>
+            <Svg size={1.25}>
+              <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+              <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
+            </Svg>
+          </Button>
+          <Button>
+            <Svg size={1.25}>
+              <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001m-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708z"/>
+            </Svg>
+          </Button>
+          <Button>
+            <Svg size={1.25}>
+              <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5"/>
+            </Svg>
+          </Button>
+        </ButtonGroup>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<ButtonGroup square={true}> ... </ButtonGroup>
+```
+      {/snippet}
+    </Example>
+    <p class="not-prose">In this example, the buttons are displayed one below the other, creating a clean and space-efficient vertical layout.</p>
+  </DocBlock>
+
+  <DocBlock title="Rounded Button Control">
+    <Example>
+      <p class="not-prose">The <code>rounded</code> prop controls the border-radius of the buttons within the <code>ButtonGroup</code>, allowing you to adjust the roundness of the button corners. You can choose from several options, such as <code>"sm"</code> for small rounded corners, <code>"md"</code> (default) for medium, <code>"lg"</code> for large, <code>"xl"</code> for extra-large, <code>"full"</code> for fully rounded corners, or <code>"none"</code> for no rounding at all.</p>
+      {#snippet example()}
+        <div class="flex flex-col items-center gap-4 w-full">
+          <ButtonGroup rounded="none">
+            <Button>Button 1</Button>
+            <Button>Button 2</Button>
+            <Button>Button 3</Button>
+          </ButtonGroup>
+          <ButtonGroup rounded="sm">
+            <Button>Button 1</Button>
+            <Button>Button 2</Button>
+            <Button>Button 3</Button>
+          </ButtonGroup>
+          <ButtonGroup rounded="md">
+            <Button>Button 1</Button>
+            <Button>Button 2</Button>
+            <Button>Button 3</Button>
+          </ButtonGroup>
+          <ButtonGroup rounded="lg">
+            <Button>Button 1</Button>
+            <Button>Button 2</Button>
+            <Button>Button 3</Button>
+          </ButtonGroup>
+          <ButtonGroup rounded="xl">
+            <Button>Button 1</Button>
+            <Button>Button 2</Button>
+            <Button>Button 3</Button>
+          </ButtonGroup>
+          <ButtonGroup rounded="full">
+            <Button>Button 1</Button>
+            <Button>Button 2</Button>
+            <Button>Button 3</Button>
+          </ButtonGroup>
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<ButtonGroup rounded="none"> ... </ButtonGroup>
+<ButtonGroup rounded="sm"> ... </ButtonGroup>
+<ButtonGroup rounded="md"> ... </ButtonGroup>
+<ButtonGroup rounded="lg"> ... </ButtonGroup>
+<ButtonGroup rounded="xl"> ... </ButtonGroup>
+<ButtonGroup rounded="full"> ... </ButtonGroup>
+```
+      {/snippet}
+    </Example>
+    <p class="not-prose">In this example, the buttons in the <code>ButtonGroup</code> have large rounded corners. The default value for the <code>rounded</code> prop is <code>"md"</code>, but you can customize it as per your design needs.</p>
+  </DocBlock>
+
+  <DocBlock title="Button Group Variants">
+    <Example>
+      <p class="not-prose">The <code>variant</code> prop in the <code>ButtonGroup</code> component allows you to choose between two button styles: <code>bordered</code> and <code>flat</code>. This prop customizes the visual separation between buttons in the group.</p>
+      <ul class="my-0">
+        <li><span class="not-prose"><code>flat</code></span> (default): Creating a seamless, flat appearance with no visual separation between buttons.</li>
+        <li><span class="not-prose"><code>bordered</code></span>: Adds borders between the buttons, giving each button a distinct outline.</li>
+      </ul>
+      {#snippet example()}
+        <ButtonGroup variant="flat">
+          <Button>Button 1</Button>
+          <Button>Button 2</Button>
+          <Button>Button 3</Button>
+        </ButtonGroup>
+
+        <ButtonGroup variant="bordered">
+          <Button>Button 1</Button>
+          <Button>Button 2</Button>
+          <Button>Button 3</Button>
+        </ButtonGroup>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<ButtonGroup variant="flat"> ... </ButtonGroup>
+<ButtonGroup variant="bordered"> ... </ButtonGroup>
+```
+      {/snippet}
+    </Example>
+    <p class="not-prose">In the first example, the <code>bordered</code> variant adds visible borders between the buttons, while the second example uses the default <code>flat</code> variant for a smooth, border-less look.</p>
+  </DocBlock>
+
+  <DocBlock title="Button Group Color">
+    <Example>
+      <p class="not-prose">The <code>color</code> prop for the <code>ButtonGroup</code> component sets a unified color theme for all buttons within the group. This ensures a consistent and cohesive design. However, individual buttons can override this by using their own <code>color</code> prop, allowing for greater customization within the button group.</p>
+      {#snippet example()}
+        <ButtonGroup color="warning">
+          <Button>Button 1</Button>
+          <Button>Button 2</Button>
+          <Button color="error">Button 3</Button>
+          <Button>Button 4</Button>
+          <Button>Button 5</Button>
+        </ButtonGroup>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<ButtonGroup color="warning">
+  <Button>Button 1</Button>
+  <Button>Button 2</Button>
+  <Button color="error">Button 3</Button>
+  <Button>Button 4</Button>
+  <Button>Button 5</Button>
+</ButtonGroup>
+```
+      {/snippet}
+    </Example>
+    <p class="not-prose">In this example, the <code>size="lg"</code> prop applies a large size to all buttons in the group, ensuring they appear uniformly larger for better emphasis or usability.</p>
+  </DocBlock>
+
+  <DocBlock title="Button Group Theme">
+    <p class="not-prose">The <code>theme</code> prop controls the overall theme of the buttons within the <code>ButtonGroup</code>. It allows you to select from three theme options: <code>"default"</code>, <code>"light"</code>, or <code>"gradient"</code>. Each theme gives the buttons a different visual appearance, helping to align with your design needs.</p>
+    <Example>
+      {#snippet example()}
+        <div class="flex flex-col items-center gap-4 w-full">
+          <ButtonGroup theme="light">
+            <Button>Light Button 1</Button>
+            <Button>Light Button 1</Button>
+            <Button>Light Button 1</Button>
+          </ButtonGroup>
+          <ButtonGroup theme="gradient">
+            <Button>Gradient Button 1</Button>
+            <Button>Gradient Button 2</Button>
+            <Button>Gradient Button 3</Button>
+          </ButtonGroup>
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<ButtonGroup theme="light"> ... </ButtonGroup>
+<ButtonGroup theme="gradient"> ... </ButtonGroup>
+```
+      {/snippet}
+    </Example>
+    <p class="not-prose">In this example, the first <code>ButtonGroup</code> uses the light theme, giving the buttons a softer appearance. The second <code>ButtonGroup</code> applies a gradient background to the buttons. To further customize, use the <code>color</code> prop alongside the <code>gradient</code> theme to control the gradient's color scheme.</p>
+  </DocBlock>
+
+  <DocBlock title="Accessibility">
+    <p class="not-prose">The <code>ButtonGroup</code> component is designed with accessibility in mind, ensuring it can be easily used by all users, including those relying on assistive technologies.</p>
+    <Example title="ARIA Label">
+      <p class="not-prose">The <code>ariaLabel</code> prop allows you to provide a custom label for the button group, enhancing its accessibility. The default value is "Button group". You can specify a more descriptive label depending on the context or functionality of the button group.</p>
+      {#snippet code()}
+
+```html
+<ButtonGroup ariaLabel="ARIA label"> ... </ButtonGroup>
+```
+      {/snippet}
+    </Example>
+    <Example title={'role="group" Attribute'}>
+      <p class="not-prose">The <code>role="group"</code> attribute is automatically included in the ButtonGroup component. This role helps assistive technologies understand that the buttons are part of a grouped set, improving the navigation and comprehension for users.</p>
     </Example>
   </DocBlock>
 
@@ -50,14 +342,14 @@ description: Create responsive and stylish buttons for your Svelte app with TheU
   {#snippet sidebar()}
     <a href={processID("About")}>About</a>
     <a href={processID("Example")}>Example</a>
-    <a href={processID("Button as Link")}>Button as Link</a>
-    <a href={processID("Button Content")}>Button Content</a>
-    <a href={processID("Button Color")}>Button Color</a>
-    <a href={processID("Theme")}>Theme</a>
-    <a href={processID("Outline")}>Outline</a>
-    <a href={processID("Size")}>Size</a>
-    <a href={processID("Square Button")}>Square Button</a>
-    <a href={processID("Rounded Corner Button")}>Rounded Corner Button</a>
+    <a href={processID("Stacked Button")}>Stacked Button</a>
+    <a href={processID("Outlined Button")}>Outlined Button</a>
+    <a href={processID("Group Button Sizing")}>Group Button Sizing</a>
+    <a href={processID("Square Group Button")}>Square Group Button</a>
+    <a href={processID("Rounded Button Control")}>Rounded Button Control</a>
+    <a href={processID("Button Group Variants")}>Button Variants</a>
+    <a href={processID("Button Group Color")}>Button Group Color</a>
+    <a href={processID("Button Group Theme")}>Button Group Theme</a>
     <a href={processID("Accessibility")}>Accessibility</a>
     <a href={processID("Configuration")}>Configuration</a>
   {/snippet}

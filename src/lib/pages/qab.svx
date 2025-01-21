@@ -1,7 +1,7 @@
 ---
 title: Quick Action Button - QAB
 dir: ".lib/pages"
-description: Create responsive and stylish buttons for your Svelte app with TheUI-Svelte's Button component, fully customizable with TailwindCSS.
+description: 
 ---
 
 <script lang="ts">
@@ -18,23 +18,27 @@ description: Create responsive and stylish buttons for your Svelte app with TheU
 </script>
 
 <DocLayout>
-  <DocHead title="Button Group" text="The Button component provides a versatile and customizable button for various use cases. It supports different sizes, styles, and types, and can be used as a regular button or a link." {edit_url}/>
+  <DocHead title="Quick Action Button" text="The Quick Action Button (QAB) is a compact, high-priority button for immediate access to key actions." {edit_url}/>
 
   <DocBlock title="About">
-    <p class="not-prose">The Button component is a flexible and customizable element designed to meet various needs. It supports multiple sizes, styles, and types, making it suitable for diverse use cases. You can use it as a standard button or as a link, depending on your requirements. The component allows for additional customization through props, enabling you to style and animate it to match your application's theme.</p>
+    <p class="not-prose">The Quick Action Button (QAB) is designed to offer users quick and easy access to important actions or features. Positioned prominently, it enhances user engagement and streamlines workflows. The QAB supports various styles and configurations, making it a versatile and essential component for improving efficiency and user experience.</p>
   </DocBlock>
 
   <DocBlock title="Example">
     <Example>
-      <p class="not-prose">Import the Button component into your Svelte file. The following example shows how to use the button component!</p>
+      <p class="not-prose">...</p>
       {#snippet example()}
-        
+        <Qab>
+          <QabButton>Link 1</QabButton>
+          <QabButton>Link 2</QabButton>
+          <QabButton>Link 3</QabButton>
+        </Qab>
       {/snippet}
       {#snippet code()}
 
 ```html
 <script>
-  import { Button } from "theui-svelte";
+  import { Qab, QabButton } from "theui-svelte";
 </script>
 
 <Button>Brand</Button>
