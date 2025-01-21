@@ -18,21 +18,17 @@ description:
 </script>
 
 <DocLayout>
-  <DocHead title="Quick Action Button" text="The Quick Action Button (QAB) is a compact, high-priority button for immediate access to key actions." {edit_url}/>
+  <DocHead title="Quick Action Button" text="The Quick Action Button (QAB) is a small but important button designed to provide fast and easy access to key actions. It helps users quickly perform important tasks without navigating through multiple menus." {edit_url}/>
 
   <DocBlock title="About">
     <p class="not-prose">The Quick Action Button (QAB) is designed to offer users quick and easy access to important actions or features. Positioned prominently, it enhances user engagement and streamlines workflows. The QAB supports various styles and configurations, making it a versatile and essential component for improving efficiency and user experience.</p>
   </DocBlock>
 
   <DocBlock title="Example">
+      <p class="not-prose">To use the Quick Action Button (QAB) in your Svelte application, you need to import both the <code>Qab</code> container and the <code>QabButton</code> component from the theui-svelte package:</p>
     <Example>
-      <p class="not-prose">...</p>
       {#snippet example()}
-        <Qab>
-          <QabButton>Link 1</QabButton>
-          <QabButton>Link 2</QabButton>
-          <QabButton>Link 3</QabButton>
-        </Qab>
+        <iframe src="/example/qab-example" style="width: 100%; height: 260px;" scrolling="no"></iframe>
       {/snippet}
       {#snippet code()}
 
@@ -41,10 +37,84 @@ description:
   import { Qab, QabButton } from "theui-svelte";
 </script>
 
-<Button>Brand</Button>
+<Qab>
+  <QabButton>Link 1</QabButton>
+  <QabButton>Link 2</QabButton>
+  <QabButton>Link 3</QabButton>
+</Qab>
 ```
       {/snippet}
     </Example>
+  </DocBlock>
+
+  <DocBlock title="Position">
+      <p class="not-prose">The <code>position</code> prop controls the horizontal alignment of the Quick Action Button (QAB) container. You can set it to either <code>'start'</code> or <code>'end'</code>, with the default value being <code>'end'</code>.</p>
+      <p class="not-prose"> By setting the <code>position</code> prop, you can easily control the horizontal position of the buttons within the container.</p>
+    <Example>
+      {#snippet example()}
+        <iframe src="/example/qab-position" style="width: 100%; height: 260px;" scrolling="no"></iframe>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Qab align="end"> ... </Qab>
+<Qab align="start"> ... </Qab>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Sizes">
+    <Example>
+      <p class="not-prose">The <code>size</code> prop lets you control how big the Quick Action Button (QAB) is. You can set it to <code>'sm'</code> for small, <code>'md'</code> for medium (which is the default), <code>'lg'</code> for large, or <code>'xl'</code> for extra large.</p>
+      {#snippet example()}
+        <iframe src="/example/qab-size" style="width: 100%; height: 260px;" scrolling="no"></iframe>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Qab size="sm"> ... </Qab>
+<Qab size="md"> ... </Qab> <!-- Default -->
+<Qab size="lg"> ... </Qab>
+<Qab size="xl"> ... </Qab>
+```
+      {/snippet}
+    </Example>
+    <p class="not-prose">By changing the <code>size</code> prop, you can easily adjust the button's size to match your needs.</p>
+  </DocBlock>
+
+  <DocBlock title="QAB Trigger Event">
+    <Example>
+      <p class="not-prose">The <code>triggerEvent</code> prop controls how the Quick Action Button (QAB) is activated. You can choose <code>"click"</code> to make the button activate when the user clicks on it, or <code>"hover"</code> to activate it when the user moves their mouse over it. By default, it is set to <code>"click"</code>.</p>
+      {#snippet example()}
+        <iframe src="/example/qab-trigger" style="width: 100%; height: 260px;" scrolling="no"></iframe>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Qab triggerEvent="hover"> ... </Qab>
+<Qab triggerEvent="click"> ... </Qab> <!-- Default -->
+```
+      {/snippet}
+    </Example>
+    <p class="not-prose">This prop helps you decide how users interact with the QAB, making it more flexible to fit different user experiences.</p>
+  </DocBlock>
+
+  <DocBlock title="Direction">
+    <Example>
+      <p class="not-prose">The <code>direction</code> prop determines how the Quick Action Buttons (QAB) are arranged. You can set it to <code>'horizontal'</code> to place the buttons side by side, or <code>'vertical'</code> to stack them on top of each other. The default value is <code>'vertical'</code>.</p>
+      {#snippet example()}
+        <iframe src="/example/qab-direction" style="width: 100%; height: 260px;" scrolling="no"></iframe>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Qab direction="horizontal"> ... </Qab>
+<Qab direction="vertical"> ... </Qab> <!-- Default -->
+```
+      {/snippet}
+    </Example>
+    <p class="not-prose">By changing the <code>direction</code> prop, you can control whether the buttons are displayed in a row or a column, depending on your design needs.</p>
   </DocBlock>
 
   <DocBlock title="Configuration">
