@@ -1,0 +1,92 @@
+---
+title: Tooltip
+dir: ".lib/pages"
+description: Add informative tooltips to your Svelte app with TheUI-Svelte's Tooltip component, providing users with contextual information.
+---
+
+<script lang="ts">
+  import DocLayout from "$lib/ui/doc/DocLayout.svelte";
+  import DocHead from "$lib/ui/doc/Head.svelte";
+  import DocBlock from "$lib/ui/doc/Block.svelte";
+  import Code from "$lib/ui/doc/CodeBlock.svelte";
+  import Example from "$lib/ui/doc/Example.svelte";
+  import ConfigComponent from "$lib/ui/doc/ConfigComponent.svelte";
+  import { processID } from "$lib";
+  let { component, edit_url }: {component: any, edit_url?: string } = $props();
+
+  import { Tooltip, Button } from "theui-svelte";
+</script>
+
+<DocLayout>
+  <DocHead title="Tooltip" text="The Tooltip component provides a way to display informative text when users hover over or click on an element. It supports various positions, animations, and can be globally initialized or used on specific pages." {edit_url}/>
+
+  <DocBlock title="About">
+    <p class="not-prose">The Tooltip component is a lightweight and customizable element that displays additional information when users interact with a target element. It enhances user experience by providing context or details without cluttering the interface.</p>
+    <p class="not-prose">This component is highly flexible and supports various animations, colors, and positions. You can easily configure its behavior to appear on hover or click, making it suitable for a wide range of use cases. The Tooltip is designed to be accessible and visually appealing, with customizable animations and styles.</p>
+  </DocBlock>
+
+  <DocBlock title="Example">
+    <Example title="Import & Initialize Tooltip" codeTitle="+layout.svelte">
+      <p class="not-prose">First, import and initialize the <code>Tooltip</code> component. It's best to initialize the Tooltip globally, such as in the <code>+layout.svelte</code> file to make it available in your entire app. You can also include it on specific pages if needed.</p>
+      {#snippet code()}
+
+```html
+<script>
+  import { Tooltip } from "theui-svelte";
+</script>
+
+<Tooltip />
+```
+      {/snippet}
+    </Example>
+
+    <Example title="Use with an Element">
+      <p class="not-prose"></p>
+      {#snippet example()}
+        <Button label="Button" data-tooltip="Hello" data-tooltip-position="right" />
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Button label="Button" data-tooltip="Hello" />
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Position">
+    <Example title="Import & Initialize Tooltip" codeTitle="+layout.svelte">
+      <p class="not-prose">First, import and initialize the <code>Tooltip</code> component. It's best to initialize the Tooltip globally, such as in the <code>+layout.svelte</code> file to make it available in your entire app. You can also include it on specific pages if needed.</p>
+      {#snippet code()}
+
+```html
+<script>
+  import { Tooltip } from "theui-svelte";
+</script>
+
+<Tooltip />
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Tooltip Trigger Event">
+    <Example>
+      <p class="not-prose">the <code>tooltipEvent</code> prop determines the user interaction that triggers the tooltip.</p>
+      <ul>
+        <li class="not-prose"><code>hover</code>: The tooltip appears when the user hovers their cursor over the target element, making it ideal for quick, non-intrusive information display.</li>
+        <li class="not-prose"><code>click</code>: The tooltip is displayed when the user clicks on the target element, which is better suited for mobile devices or cases where you want the tooltip to stay visible until clicked again.</li>
+      </ul>
+      {#snippet example()}
+        <Button label="Button" data-tooltip="Hello" data-tooltip-position="right" />
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Button tooltipEvent="click">Click to see tooltip />
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+</DocLayout>

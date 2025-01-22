@@ -3,7 +3,7 @@
 </script>
 
 <Container>
-  <Modal modalStatus={true}>
+  <Modal open={true}>
     Hello Modal!
   </Modal>
 </Container>

@@ -29,10 +29,7 @@ description: Integrate customizable modals into your Svelte app with TheUI-Svelt
       <p class="not-prose">To use the Modal component, you need to import it into your Svelte file. This setup allows you to easily integrate the Modal component into your project.</p>
       {#snippet example()}
       <div>
-        <Modal>
-          {#snippet trigger()}
-            <Button label="Modal Button" />
-          {/snippet}
+        <Modal label="Modal Button">
           Hello Modal!
         </Modal>
       </div>
@@ -44,7 +41,7 @@ description: Integrate customizable modals into your Svelte app with TheUI-Svelt
   import { Modal } from "theui-svelte";
 </script>
 
-<Modal label="Modal">
+<Modal label="Modal Button">
   Hello Modal!
 </Modal>
 ```
@@ -67,8 +64,8 @@ description: Integrate customizable modals into your Svelte app with TheUI-Svelt
 
 ```html
 <Modal>
-  {#snippet trigger()}
-    <Button label="Modal Trigger" />
+  {#snippet label()}
+    <Button>Modal Trigger</Button>
   {/snippet}
   ...
 </Modal>
@@ -86,7 +83,7 @@ description: Integrate customizable modals into your Svelte app with TheUI-Svelt
       </ul>
       {#snippet example()}
         <Modal>
-          {#snippet trigger()}
+          {#snippet label()}
             <Button label="Modal Content" />
           {/snippet}
 
@@ -126,21 +123,21 @@ description: Integrate customizable modals into your Svelte app with TheUI-Svelt
       {#snippet example()}
       <div>
         <Modal position="top">
-          {#snippet trigger()}
+          {#snippet label()}
             <Button label="Top Modal" />
           {/snippet}
           Top-aligned Modal
         </Modal>
 
         <Modal position="center">
-          {#snippet trigger()}
+          {#snippet label()}
             <Button label="Center Modal" />
           {/snippet}
           Centered Modal (default)
         </Modal>
 
         <Modal position="bottom">
-          {#snippet trigger()}
+          {#snippet label()}
             <Button label="Modal Modal" />
           {/snippet}
           Bottom-aligned Modal
@@ -169,28 +166,28 @@ description: Integrate customizable modals into your Svelte app with TheUI-Svelt
       {#snippet example()}
       <div>
         <Modal size="sm">
-          {#snippet trigger()}
+          {#snippet label()}
             <Button label="Small Modal" />
           {/snippet}
           Small size modal
         </Modal>
 
         <Modal size="md">
-          {#snippet trigger()}
+          {#snippet label()}
             <Button label="Medium Modal" />
           {/snippet}
           Medium size modal
         </Modal>
 
         <Modal size="lg">
-          {#snippet trigger()}
+          {#snippet label()}
             <Button label="Large Modal" />
           {/snippet}
           Large size modal
         </Modal>
 
         <Modal size="full">
-          {#snippet trigger()}
+          {#snippet label()}
             <Button label="Full Modal" />
           {/snippet}
           Full screen modal
@@ -222,31 +219,31 @@ description: Integrate customizable modals into your Svelte app with TheUI-Svelt
       {#snippet example()}
       <div>
         <Modal animation="slide-down">
-          {#snippet trigger()}
+          {#snippet label()}
             <Button label="Slide Down" />
           {/snippet}
           Modal with slide-down animation
         </Modal>
         <Modal animation="slide-up">
-          {#snippet trigger()}
+          {#snippet label()}
             <Button label="Slide Up" />
           {/snippet}
           Modal with slide-up animation
         </Modal>
         <Modal>
-          {#snippet trigger()}
+          {#snippet label()}
             <Button label="Fade (default)" />
           {/snippet}
           Modal with fade animation
         </Modal>
-        <Modal>
-          {#snippet trigger()}
+        <Modal animation="zoom-in">
+          {#snippet label()}
             <Button label="Zoom-in" />
           {/snippet}
           Modal with zoom-in animation
         </Modal>
-        <Modal>
-          {#snippet trigger()}
+        <Modal animation="zoom-out">
+          {#snippet label()}
             <Button label="Zoom-out" />
           {/snippet}
           Modal with zoom-out animation
@@ -279,37 +276,37 @@ description: Integrate customizable modals into your Svelte app with TheUI-Svelt
       {#snippet example()}
       <div>
         <Modal animation="slide-down" animate="slower">
-          {#snippet trigger()}
+          {#snippet label()}
             <Button label="Slower" />
           {/snippet}
           Modal with slide-down animation
         </Modal>
         <Modal animation="slide-down" animate="slow">
-          {#snippet trigger()}
+          {#snippet label()}
             <Button label="Slow" />
           {/snippet}
           Modal with slide-down animation
         </Modal>
         <Modal animation="slide-down" animate="normal">
-          {#snippet trigger()}
+          {#snippet label()}
             <Button label="Normal (Default)" />
           {/snippet}
           Modal with slide-down animation
         </Modal>
         <Modal animation="slide-down" animate="fast">
-          {#snippet trigger()}
+          {#snippet label()}
             <Button label="Fast" />
           {/snippet}
           Modal with slide-down animation
         </Modal>
         <Modal animation="slide-down" animate="faster">
-          {#snippet trigger()}
+          {#snippet label()}
             <Button label="Faster" />
           {/snippet}
           Modal with slide-down animation
         </Modal>
         <Modal animation="slide-down" animate={false}>
-          {#snippet trigger()}
+          {#snippet label()}
             <Button label="No animation" />
           {/snippet}
           Modal with slide-down animation
@@ -347,7 +344,7 @@ description: Integrate customizable modals into your Svelte app with TheUI-Svelt
       {#snippet example()}
       <div>
         <Modal staticBackdrop={true}>
-          {#snippet trigger()}
+          {#snippet label()}
             <Button label="Static Backdrop Modal" />
           {/snippet}
           Modal with static backdrop!
@@ -367,13 +364,13 @@ description: Integrate customizable modals into your Svelte app with TheUI-Svelt
       {#snippet example()}
       <div>
         <Modal backdrop={false}>
-          {#snippet trigger()}
+          {#snippet label()}
             <Button label="Modal Without Backdrop" />
           {/snippet}
            Modal with no backdrop
         </Modal>
         <Modal backdrop="bg-brand-primary-500/30">
-          {#snippet trigger()}
+          {#snippet label()}
             <Button label="Modal Without Backdrop" />
           {/snippet}
            Modal with no backdrop
@@ -398,8 +395,8 @@ description: Integrate customizable modals into your Svelte app with TheUI-Svelt
       <p class="not-prose">The <code>closeButton</code> prop allows you to control the visibility of the close button in the Modal. By default, the close button is hidden (<code>false</code>). Set this prop to <code>true</code> to display the close button, giving users an easy way to close the modal.</p>
       {#snippet example()}
       <div>
-        <Modal closeBtn={false}>
-          {#snippet trigger()}
+        <Modal closeButton={false}>
+          {#snippet label()}
             <Button label="Modal Button" />
           {/snippet}
           Modal without close button!
@@ -446,7 +443,7 @@ description: Integrate customizable modals into your Svelte app with TheUI-Svelt
           modalHeaderClasses="bg-blue-400/50 text-blue-600 dark:text-blue-100 shadow-blue-500/50 rounded-md p-4 border-0 shadow-md text-lg font-bold"
           modalFooterClasses="border-blue-300/50 border rounded-xl p-2"
         >
-          {#snippet trigger()}
+          {#snippet label()}
             <Button label="Modal Button" />
           {/snippet}
 
@@ -476,7 +473,7 @@ description: Integrate customizable modals into your Svelte app with TheUI-Svelt
   modalHeaderClasses="bg-blue-400/50 text-blue-600 dark:text-blue-100 shadow-blue-500/50 rounded-md p-4 border-0 shadow-md text-lg font-bold"
   modalFooterClasses="border-blue-300/50 border rounded-xl p-2"
 >
-  {#snippet trigger()}
+  {#snippet label()}
     <Button label="Modal Button" />
   {/snippet}
 
