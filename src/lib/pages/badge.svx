@@ -120,6 +120,10 @@ description: Add dynamic visual indicators to your Svelte app with TheUI-Svelte'
     </Example>
   </DocBlock>
 
+  <DocBlock title="Accessibility">
+    <p class="not-prose">The Badge component is designed with accessibility in mind, automatically handling ARIA attributes like <code>aria-label</code> through a visually hidden <code>&lt;span&gt;</code> element. This ensures assistive technologies can describe the badge's purpose. You only need to focus on providing meaningful text and maintaining proper color contrast for readability.</p>
+  </DocBlock>
+
   <DocBlock title="Configuration">
     <ConfigComponent {component} />
   </DocBlock>
@@ -130,6 +134,7 @@ description: Add dynamic visual indicators to your Svelte app with TheUI-Svelte'
     <a href={processID("Grow Badge")}>Alert Grow Badge</a>
     <a href={processID("Fixed Top Badge")}>Fixed Top Badge</a>
     <a href={processID("Customization")}>Customization</a>
+    <a href={processID("Accessibility")}>Accessibility</a>
     <a href={processID("Configuration")}>Configuration</a>
   {/snippet}
 

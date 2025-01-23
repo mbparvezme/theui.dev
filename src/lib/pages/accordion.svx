@@ -38,13 +38,17 @@ description: Enhance your Svelte app with theui-svelte's Accordion component. Ea
       <p class="not-prose">You can create an accordion item with a title and content props using the following example. </p>
       {#snippet example()}
       <div>
-        <AccordionItem title={accordionTitle} content={accordionContent} />
+        <AccordionItem title={accordionTitle}>
+          {@html accordionContent}
+        </AccordionItem>
       </div>
       {/snippet}
       {#snippet code()}
 
 ```html
-<AccordionItem title="Human Psychology Fact" content="<b>Cognitive dissonance</b> refers to.." />
+<AccordionItem title="Human Psychology Fact">
+  <b>Cognitive dissonance</b> refers to the ...
+</AccordionItem>
 ```
       {/snippet}
     </Example>
@@ -82,8 +86,12 @@ description: Enhance your Svelte app with theui-svelte's Accordion component. Ea
       {#snippet example()}
       <div>
         <Accordion>
-          <AccordionItem title={accordionTitle + ": 1"} content={accordionContent} />
-          <AccordionItem title={accordionTitle + ": 2"} content={accordionContent} />
+          <AccordionItem title={accordionTitle + ": 1"}>
+            {@html accordionContent}
+          </AccordionItem>
+          <AccordionItem title={accordionTitle + ": 2"}>
+            {@html accordionContent}
+          </AccordionItem>
         </Accordion>
       </div>
       {/snippet}
@@ -91,8 +99,12 @@ description: Enhance your Svelte app with theui-svelte's Accordion component. Ea
 
 ```html
 <Accordion>
-  <AccordionItem title="Human Psychology Fact: 1" content="<b>Cognitive dissonance</b> refers to.." />
-  <AccordionItem title="Human Psychology Fact: 1" content="<b>Cognitive dissonance</b> refers to.." />
+  <AccordionItem title="Human Psychology Fact: 1">
+    ...
+  </AccordionItem>
+  <AccordionItem title="Human Psychology Fact: 2">
+    ...
+  </AccordionItem>
 </Accordion>
 ```
       {/snippet}
@@ -105,18 +117,19 @@ description: Enhance your Svelte app with theui-svelte's Accordion component. Ea
       {#snippet example()}
       <div>
         <Accordion>
-          <AccordionItem flush title={accordionTitle + ": 1"} content={accordionContent} />
-          <AccordionItem flush title={accordionTitle + ": 2"} content={accordionContent} />
+          <AccordionItem flush title={accordionTitle + ": 1"}>
+            {@html accordionContent}
+          </AccordionItem>
+          <AccordionItem flush title={accordionTitle + ": 2"}>
+            {@html accordionContent}
+          </AccordionItem>
         </Accordion>
       </div>
       {/snippet}
       {#snippet code()}
 
 ```html
-<Accordion>
-  <AccordionItem flush ... />
-  <AccordionItem flush ... />
-</Accordion>
+<Accordion flush> ... </Accordion>
 ```
       {/snippet}
     </Example>
@@ -130,18 +143,19 @@ description: Enhance your Svelte app with theui-svelte's Accordion component. Ea
       {#snippet example()}
       <div>
         <Accordion size="compact">
-          <AccordionItem title={accordionTitle + ": 1"} content={accordionContent} />
-          <AccordionItem title={accordionTitle + ": 2"} content={accordionContent} />
+          <AccordionItem title={accordionTitle + ": 1"}>
+            {@html accordionContent}
+          </AccordionItem>
+          <AccordionItem title={accordionTitle + ": 2"}>
+            {@html accordionContent}
+          </AccordionItem>
         </Accordion>
       </div>
       {/snippet}
       {#snippet code()}
 
 ```html
-<Accordion size="compact">
-  <AccordionItem ... />
-  <AccordionItem ... />
-</Accordion>
+<Accordion size="compact"> ... </Accordion>
 ```
       {/snippet}
     </Example>
@@ -152,8 +166,12 @@ description: Enhance your Svelte app with theui-svelte's Accordion component. Ea
       {#snippet example()}
       <div>
         <Accordion size="compact">
-          <AccordionItem title={accordionTitle + ": 1"} content={accordionContent} />
-          <AccordionItem size="large" title={accordionTitle + ": 2"} content={accordionContent} />
+          <AccordionItem title={accordionTitle + ": 1"}>
+            {@html accordionContent}
+          </AccordionItem>
+          <AccordionItem size="large" title={accordionTitle + ": 2"}>
+            {@html accordionContent}
+          </AccordionItem>
         </Accordion>
       </div>
       {/snippet}
@@ -161,8 +179,12 @@ description: Enhance your Svelte app with theui-svelte's Accordion component. Ea
 
 ```html
 <Accordion size="compact">
-  <AccordionItem ... />
-  <AccordionItem size="large" ... />
+  <AccordionItem>
+    ...
+  </AccordionItem>
+  <AccordionItem size="large">
+    ...
+  </AccordionItem>
 </Accordion>
 ```
       {/snippet}
@@ -175,8 +197,12 @@ description: Enhance your Svelte app with theui-svelte's Accordion component. Ea
       {#snippet example()}
       <div>
         <Accordion>
-          <AccordionItem title={accordionTitle + ": 1"} content={accordionContent} />
-          <AccordionItem open title={accordionTitle + ": 2"} content={accordionContent} />
+          <AccordionItem title={accordionTitle + ": 1"}>
+            {@html accordionContent}
+          </AccordionItem>
+          <AccordionItem open title={accordionTitle + ": 2"}>
+            {@html accordionContent}
+          </AccordionItem>
         </Accordion>
       </div>
       {/snippet}
@@ -184,8 +210,48 @@ description: Enhance your Svelte app with theui-svelte's Accordion component. Ea
 
 ```html
 <Accordion>
-  <AccordionItem ... />
-  <AccordionItem open ... />
+  <AccordionItem>
+    ...
+  </AccordionItem>
+  <AccordionItem open>
+    ...
+  </AccordionItem>
+</Accordion>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Accordion: Standalone Mode">
+    <Example>
+      <p class="not-prose">The <code>Accordion</code> component comes with a <code>standalone</code> prop that controls how accordion items behave when they are opened or closed. This prop determines whether multiple items can remain open simultaneously or if only one item can stay open at a time.</p>
+      <ul class="my-0">
+        <li><b>Default Behavior (standalone: true)</b>: Only one accordion can remain open at a time within the group. Opening a new item will automatically close the currently open one.</li>
+        <li><b>Multiple Open (standalone: false)</b>: Allows multiple accordion items in the group to remain open simultaneously.</li>
+      </ul>
+      {#snippet example()}
+      <div>
+        <Accordion standalone={false}>
+          <AccordionItem title={accordionTitle + ": 1"}>
+            {@html accordionContent}
+          </AccordionItem>
+          <AccordionItem title={accordionTitle + ": 2"}>
+            {@html accordionContent}
+          </AccordionItem>
+          <AccordionItem title={accordionTitle + ": 3"}>
+            {@html accordionContent}
+          </AccordionItem>
+        </Accordion>
+      </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Accordion standalone={false}>
+  <AccordionItem>
+    ...
+  </AccordionItem>
+  ...
 </Accordion>
 ```
       {/snippet}
@@ -207,12 +273,12 @@ description: Enhance your Svelte app with theui-svelte's Accordion component. Ea
       <div>
         <AccordionItem
           containerClasses="border-4"
-          containerActiveClasses="border-4 border-brand-primary-600"
+          openContainerClasses="border-4 border-brand-primary-600"
           titleClasses="text-brand-primary-500"
-          titleActiveClasses="text-brand-primary-700 bg-brand-primary-200"
-          title={accordionTitle + ": 1"}
-          content={accordionContent}
-        />
+          openTitleClasses="text-brand-primary-700 bg-brand-primary-200"
+          title={accordionTitle + ": 1"}>
+          {@html accordionContent}
+        </AccordionItem>
       </div>
       {/snippet}
       {#snippet code()}
@@ -220,14 +286,52 @@ description: Enhance your Svelte app with theui-svelte's Accordion component. Ea
 ```html
 <AccordionItem
   containerClasses="border-4"
-  containerActiveClasses="border-4 border-brand-primary-600"
+  openContainerClasses="border-4 border-brand-primary-600"
   titleClasses="text-brand-primary-500"
-  titleActiveClasses="text-brand-primary-700 bg-brand-primary-200"
-  ...
-/>
+  openTitleClasses="text-brand-primary-700 bg-brand-primary-200"
+>
+</AccordionItem>
 ```
       {/snippet}
     </Example>
+  </DocBlock>
+
+  <DocBlock title="Accessibility">
+    <div>
+      <p class="not-prose">Our Accordion component is built with accessibility in mind, ensuring a seamless experience for all users, including those relying on assistive technologies. Below are the accessibility features implemented:</p>
+      <ol class="my-0">
+        <li>
+          <b>Keyboard Navigation</b>
+          <ul>
+            <li>Use <kbd>tab</kbd> to navigate between headers.</li>
+            <li>Use <kbd>Space</kbd> or <kbd>Enter</kbd> to toggle the expanded/collapsed state of an accordion item.</li>
+          </ul>
+        </li>
+        <li>
+          <b>ARIA Attributes</b>
+          <ul>
+            <li>The <span class="not-prose"><code>aria-expanded</code></span> attribute will be managed by the component itself for a properly accessible accordion.</li>
+            <li>The <span class="not-prose"><code>aria-controls</code></span> links the header to its associated content.</li>
+            <li>Each header and content has a unique <span class="not-prose"><code>id</code></span> for ARIA attributes.</li>
+            <li>Hidden content uses <span class="not-prose"><code>aria-hidden="true"</code></span> when collapsed and <span class="not-prose"><code>aria-hidden="false"</code></span> when expanded.</li>
+          </ul>
+        </li>
+        <li>
+          <b>Focus Management</b>
+          <ul>
+            <li>The focus is retained on the header when toggling the accordion.</li>
+            <li><span class="not-prose"><code>tabindex="0"</code></span> ensures all headers are keyboard-navigable.</li>
+          </ul>
+        </li>
+        <li>
+          <b>Screen Reader Compatibility</b>
+          <ul>
+            <li>Descriptive labels or headings can be added for better understanding.</li>
+            <li>Semantic roles and ARIA attributes provide full support for assistive technologies.</li>
+          </ul>
+        </li>
+      </ol>
+    </div>
   </DocBlock>
 
   <DocBlock title="Configuration">
@@ -240,7 +344,9 @@ description: Enhance your Svelte app with theui-svelte's Accordion component. Ea
     <a href={processID("Flash Accordion")}>Flash Accordion</a>
     <a href={processID("Accordion Size")}>Accordion Size</a>
     <a href={processID("Accordion Open State")}>Accordion Open State</a>
+    <a href={processID("Accordion: Standalone Mode")}>Standalone Mode</a>
     <a href={processID("Customization")}>Customization</a>
+    <a href={processID("Accessibility")}>Accessibility</a>
     <a href={processID("Configuration")}>Configuration</a>
   {/snippet}
 

@@ -159,6 +159,11 @@ description: Utilize theui-svelte's Alert component to display crucial messages 
     </Example>
   </DocBlock>
 
+  <DocBlock title="Accessibility">
+    <p class="not-prose">The Alert component is built with accessibility in mind, handling all necessary ARIA attributes, including <code>role="alert"</code> and <code>aria-label="Close alert"</code>, to ensure compatibility with assistive technologies. These attributes are automatically applied, so you don't need to configure them manually.</p>
+    <p class="not-prose font-bold">The only consideration required is maintaining proper color contrast for the alert's text and background to ensure readability and compliance with accessibility standards.</p>
+  </DocBlock>
+
   <DocBlock title="Configuration">
     <ConfigComponent {component} />
   </DocBlock>
@@ -171,6 +176,7 @@ description: Utilize theui-svelte's Alert component to display crucial messages 
     <a href={processID("Variant")}>Alert Variant</a>
     <a href={processID("Dismissible Alert")}>Dismissible alert</a>
     <a href={processID("Customization")}>Customization</a>
+    <a href={processID("Accessibility")}>Accessibility</a>
     <a href={processID("Configuration")}>Configuration</a>
   {/snippet}
 

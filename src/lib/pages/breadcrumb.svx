@@ -88,6 +88,10 @@ description: Improve navigation in your Svelte app with TheUI-Svelte's Breadcrum
     </Example>
   </DocBlock>
 
+  <DocBlock title="Accessibility">
+    <p class="not-prose">The Breadcrumb component is fully accessible, with <code>aria-label="breadcrumb"</code> applied to the navigation container to identify it as a breadcrumb trail for assistive technologies. Each link is keyboard-navigable, and the current page is marked with <code>aria-current="page"</code>. You only need to provide meaningful link labels and ensure proper color contrast for readability.
+  </DocBlock>
+
   <DocBlock title="Configuration">
     <ConfigComponent {component} />
   </DocBlock>
@@ -96,6 +100,7 @@ description: Improve navigation in your Svelte app with TheUI-Svelte's Breadcrum
     <a href={processID("Example")}>Example</a>
     <a href={processID("Change Link Separator")}>Change Link Separator</a>
     <a href={processID("Modify Link Color")}>Modify Link Color</a>
+    <a href={processID("Accessibility")}>Accessibility</a>
     <a href={processID("Configuration")}>Configuration</a>
   {/snippet}
 

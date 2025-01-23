@@ -17,7 +17,7 @@
 
 modalOuterClasses="rounded-lg shadow-lg border-blue-500/50 hover:bg-warning-600"
 modalHeaderClasses="bg-blue-400/50 rounded-md p-4 text-blue-600 dark:text-blue-100 border-0 shadow-lg shadow-blue-500/50"
-modalBodyClasses="bg-blue-100 dark:bg-blue-950 py-8 text-blue-800 dark:text-blue-300"
+modalBodyClasses="bg-blue-100 dark:bg-blue-950 py-8 text-blue-800 dark:text-blue-300 border-brand-primary-600"
 ></p>
 <p class="text-green-50 bg-green-100 content-center border-brand-primary-500"></p>
 

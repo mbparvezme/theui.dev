@@ -323,20 +323,28 @@ description: Create responsive and stylish buttons for your Svelte app with TheU
   </DocBlock>
 
   <DocBlock title="Accessibility">
-    <p class="not-prose">The Button component is designed with accessibility in mind, ensuring it can be used by everyone, including users relying on assistive technologies. By default, it includes the necessary ARIA attributes and supports keyboard navigation.</p>
-    <Example title="ARIA Labels">
-      <p class="not-prose">The <code>ariaLabel</code> prop allows you to provide an accessible name for the button, ensuring screen readers can describe its function clearly.</p>
-      {#snippet code()}
+    <div>
+      <p class="not-prose">The Button component is designed with accessibility in mind, ensuring it can be used by everyone, including users relying on assistive technologies. By default, it includes the necessary ARIA attributes and supports keyboard navigation.</p>
+      <ol class="my-0">
+        <li>
+          <b>Keyboard Navigation</b>: Use <kbd>tab</kbd> to navigate between headers.</li>
+        <li>
+          <b>ARIA Attributes</b>: The <span class="not-prose"><code>aria-label</code></span> attribute used to provide a descriptive label when the button’s text or icon alone may not be clear (e.g., icon-only buttons). You can use the <span class="not-prose"><code>ariaLabel</code></span> prop allows you to provide an accessible name for the button, ensuring screen readers can describe its function clearly.
+              <Code>
 
 ```html
 <Button ariaLabel="Submit the form">Submit</Button>
-```
-      {/snippet}
-    </Example>
-    <Example title="Keyboard Navigation">
-      <p class="not-prose">The Button component supports standard keyboard interactions, allowing users to navigate and activate it using the <code>Tab</code> key to focus and the <code>Enter</code> or <code>Space</code> keys to trigger the action.</p>
-      <p class="not-prose">By following these guidelines and using the provided props, you can ensure that the Button component enhances accessibility, providing a seamless experience for all users.</p>
-    </Example>
+```           
+</Code>
+        </li>
+        <li>
+          <b>Focus Management</b>: Focus styles are provided using focus-visible or focus-within to ensure a clear visual indicator when the button is focused.
+        </li>
+        <li>
+          <b>State Indications</b>: Visual cues (hover, focus, active, and disabled states) are provided to communicate the button's interactive state clearly.
+        </li>
+      </ol>
+    </div>
   </DocBlock>
 
   <DocBlock title="Configuration">
