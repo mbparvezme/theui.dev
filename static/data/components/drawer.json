@@ -5,7 +5,7 @@
     "data": [
       {
         "name": "label",
-        "type": "string",
+        "type": "string | Snippet",
         "description": "The label or trigger content for the Drawer component.",
         "default": ""
       },
@@ -17,7 +17,7 @@
       },
       {
         "name": "backdrop",
-        "type": "boolean|string",
+        "type": "boolean | string",
         "description": "Toggle or style the Drawer backdrop.",
         "default": true
       },

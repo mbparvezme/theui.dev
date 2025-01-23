@@ -4,12 +4,6 @@
     "title": "Props",
     "data": [
       {
-        "name": "content",
-        "type": "string",
-        "description": "The text content displayed inside the chip.",
-        "default": "undefined"
-      },
-      {
         "name": "close",
         "type": "boolean",
         "description": "Determines whether a close button is displayed on the chip. Set to false to hide the close button.",
@@ -22,19 +16,19 @@
         "default": true
       },
       {
-        "name": "imgUrl",
+        "name": "imageUrl",
         "type": "string | undefined",
         "description": "The URL of the image to display within the chip. Leave undefined if no image is used.",
         "default": "undefined"
       },
       {
-        "name": "imgClasses",
+        "name": "imageClasses",
         "type": "string",
         "description": "Custom CSS classes to apply to the chip's image for additional styling.",
         "default": "\"\""
       },
       {
-        "name": "imgAlt",
+        "name": "altText",
         "type": "string",
         "description": "The alternative text for the chip's image, enhancing accessibility.",
         "default": "\"\""

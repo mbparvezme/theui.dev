@@ -135,12 +135,6 @@
           "default": "\"link\""
         },
         {
-          "name": "text",
-          "type": "string",
-          "description": "Text content of the dropdown item.",
-          "default": "undefined"
-        },
-        {
           "name": "url",
           "type": "string | undefined",
           "description": "URL for the dropdown item, applicable if the type is 'link'.",

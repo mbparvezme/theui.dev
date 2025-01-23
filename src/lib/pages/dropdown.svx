@@ -19,9 +19,9 @@ description:
 </script>
 
 {#snippet dropdownBasic()}
-<DropdownItem url="/" text="Link 1" />
-<DropdownItem url="/" text="Link 2" />
-<DropdownItem url="/" text="Link 3" />
+  <DropdownItem url="/">Link 1</DropdownItem>
+  <DropdownItem url="/">Link 2</DropdownItem>
+  <DropdownItem url="/">Link 3</DropdownItem>
 {/snippet}
 
 <DocLayout>
@@ -50,9 +50,9 @@ description:
 </script>
 
 <Dropdown label="Dropdown">
-  <DropdownItem url="/" text="Link 1" />
-  <DropdownItem url="/" text="Link 2" />
-  <DropdownItem url="/" text="Link 3" />
+  <DropdownItem url="/">Link 1</DropdownItem>
+  <DropdownItem url="/">Link 2</DropdownItem>
+  <DropdownItem url="/">Link 3</DropdownItem>
 </Dropdown>
 ```
       {/snippet}
@@ -221,14 +221,14 @@ description:
       <div>
         <Dropdown label="Dropdown">
           <!-- Header item -->
-          <DropdownItem type="header" text="Section Header" />
+          <DropdownItem type="header">Section Header</DropdownItem>
           <!-- Link item (default) -->
-          <DropdownItem url="/" text="Link 1" />
-          <DropdownItem url="/" text="Link 2" />
+          <DropdownItem url="/">Link 1</DropdownItem>
+          <DropdownItem url="/">Link 2</DropdownItem>
           <!-- Divider item -->
-          <DropdownItem type="divider" />
+          <DropdownItem type="divider"></DropdownItem>
           <!-- Button item -->
-          <DropdownItem type="button" text="Button 1" />
+          <DropdownItem type="button">Button 1</DropdownItem>
         </Dropdown>
       </div>
       {/snippet}
@@ -237,14 +237,14 @@ description:
 ```html
 <Dropdown label="Dropdown">
   <!-- Header item -->
-  <DropdownItem type="header" text="Section Header" />
+  <DropdownItem type="header">Section Header</DropdownItem>
   <!-- Link item (default) -->
-  <DropdownItem url="/" text="Link 1" />
-  <DropdownItem url="/" text="Link 2" />
+  <DropdownItem url="/">Link 1</DropdownItem>
+  <DropdownItem url="/">Link 2</DropdownItem>
   <!-- Divider item -->
   <DropdownItem type="divider" />
   <!-- Button item -->
-  <DropdownItem type="button" text="Button 1" />
+  <DropdownItem type="button">Button 1</DropdownItem>
 </Dropdown>
 ```
       {/snippet}
@@ -258,9 +258,9 @@ description:
       {#snippet example()}
       <div>
         <Dropdown label="Dropdown">
-          <DropdownItem url="/" text="Link" />
-          <DropdownItem url="/" text="Active Link" active={true} />
-          <DropdownItem url="/" text="Link" />
+          <DropdownItem url="/"></DropdownItem> Link>
+          <DropdownItem url="/" active={true}>Active Link</DropdownItem>
+          <DropdownItem url="/">Link</DropdownItem>
         </Dropdown>
       </div>
       {/snippet}
@@ -268,9 +268,9 @@ description:
       {#snippet code()}
 ```html
 <Dropdown label="Dropdown">
-  <DropdownItem url="/" text="Link" />
-  <DropdownItem url="/" text="Active Link" active={true} />
-  <DropdownItem url="/" text="Link" />
+  <DropdownItem url="/"></DropdownItem> Link>
+  <DropdownItem url="/" active={true}>Active Link</DropdownItem>
+  <DropdownItem url="/">Link</DropdownItem>
 </Dropdown>
 ```
       {/snippet}
@@ -288,24 +288,27 @@ description:
       {#snippet example()}
       <div>
         <Dropdown label="Dropdown" size="md">
-          <DropdownItem url="/" text="Notification">
+          <DropdownItem url="/">
             {#snippet startItem()}
               <Svg>
                 <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2M8 1.918l-.797.161A4 4 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4 4 0 0 0-3.203-3.92zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5 5 0 0 1 13 6c0 .88.32 4.2 1.22 6"/>
               </Svg>
             {/snippet}
+            Notification
           </DropdownItem>
-          <DropdownItem url="/" text="Notification">
+          <DropdownItem url="/">
+            Notification
             {#snippet endItem()}
               <Badge>New</Badge>
             {/snippet}
           </DropdownItem>
-          <DropdownItem url="/" text="Notification">
+          <DropdownItem url="/">
             {#snippet startItem()}
               <Svg>
                 <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2M8 1.918l-.797.161A4 4 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4 4 0 0 0-3.203-3.92zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5 5 0 0 1 13 6c0 .88.32 4.2 1.22 6"/>
               </Svg>
             {/snippet}
+            Notification
             {#snippet endItem()}
               <Badge>New</Badge>
             {/snippet}
@@ -316,16 +319,30 @@ description:
 
       {#snippet code()}
 ```html
-<Dropdown label="Dropdown">
-  <DropdownItem url="/" text="Notification">
+<Dropdown label="Dropdown" size="md">
+  <DropdownItem url="/">
     {#snippet startItem()}
       <Svg>
-        <path d="M8 16a2 ... 4.2 1.22 6" />
+        <path d="M8 16a2 2 0 0 ... 13 6c0 .88.32 4.2 1.22 6"/>
       </Svg>
     {/snippet}
-
+    Notification
+  </DropdownItem>
+  <DropdownItem url="/">
+    Notification
     {#snippet endItem()}
-      <Badge />
+      <Badge>New</Badge>
+    {/snippet}
+  </DropdownItem>
+  <DropdownItem url="/">
+    {#snippet startItem()}
+      <Svg>
+        <path d="M8 16a2 2 0 0 ... 13 6c0 .88.32 4.2 1.22 6"/>
+      </Svg>
+    {/snippet}
+    Notification
+    {#snippet endItem()}
+      <Badge>New</Badge>
     {/snippet}
   </DropdownItem>
 </Dropdown>
@@ -528,10 +545,10 @@ description:
           dividerClasses="border-b-2 border-green-200"
           headerClasses="text-green-600 text-xs"
         >
-          <DropdownItem url="/" text="Link 1" />
-          <DropdownItem type="header" text="Section Header" />
+          <DropdownItem url="/">Link 1</DropdownItem>
+          <DropdownItem type="header">Section Header</DropdownItem>
           <DropdownItem type="divider" />
-          <DropdownItem url="/" text="Link 2" active={true} />
+          <DropdownItem url="/" active={true}>Link 2</DropdownItem>
         </Dropdown>
       </div>
       {/snippet}
@@ -547,10 +564,10 @@ description:
   dividerClasses="border-b-2 border-green-200"
   headerClasses="text-green-600 text-xs"
 >
-  <DropdownItem url="/" text="Link 1" />
-  <DropdownItem type="header" text="Section Header" />
+  <DropdownItem url="/">Link 1</DropdownItem>
+  <DropdownItem type="header">Section Header</DropdownItem>
   <DropdownItem type="divider" />
-  <DropdownItem url="/" text="Link 2" active={true} />
+  <DropdownItem url="/" active={true}>Link 2</DropdownItem>
 </Dropdown>
 ```
       {/snippet}

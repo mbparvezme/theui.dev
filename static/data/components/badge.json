@@ -4,12 +4,6 @@
     "title": "Props",
     "data": [
       {
-        "name": "text",
-        "type": "string | undefined",
-        "default": "undefined",
-        "description": "The text content displayed in the component."
-      },
-      {
         "name": "ariaTitle",
         "type": "string | undefined",
         "default": "undefined",

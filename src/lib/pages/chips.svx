@@ -25,7 +25,7 @@ description: Implement interactive and stylish chips in your Svelte app with The
     <Example>
       {#snippet example()}
       <div>
-        <Chips content="Example Chips" />
+        <Chips>Example Chips</Chips>
       </div>
       {/snippet}
 
@@ -35,7 +35,7 @@ description: Implement interactive and stylish chips in your Svelte app with The
   import { Chips } from "theui-svelte";
 </script>
 
-<Chips content="Example Chips" />
+<Chips>Example Chips</Chips>
 ```
       {/snippet}
     </Example>
@@ -47,17 +47,17 @@ description: Implement interactive and stylish chips in your Svelte app with The
     <Example>
       {#snippet example()}
       <div>
-        <Chips content="Jasmine Kira" imgUrl="https://randomuser.me/api/portraits/women/66.jpg" />
+        <Chips imageUrl="https://randomuser.me/api/portraits/women/66.jpg">Jasmine Kira</Chips>
       </div>
       {/snippet}
 
       {#snippet code()}
 ```html
-<Chips imgUrl="/path/to/image.png" ... />
+<Chips imageUrl="/path/to/image.png">...</Chips>
 ```
       {/snippet}
     </Example>
-    <p class="not-prose">The <code>imgUrl</code> prop specifies the path to the image ("/path/to/image.png"), adding an image to the chip.</p>
+    <p class="not-prose">The <code>imageUrl</code> prop specifies the path to the image ("/path/to/image.png"), adding an image to the chip.</p>
   </DocBlock>
 
   <DocBlock title="Disable Close Button">
@@ -65,17 +65,17 @@ description: Implement interactive and stylish chips in your Svelte app with The
     <Example>
       {#snippet example()}
       <div>
-        <Chips content="Example Chips" imgUrl="/assets/img/theui-logo.png" close={false} />
+        <Chips imageUrl="/assets/img/theui-logo.png" close={false}>Example Chips</Chips>
       </div>
       {/snippet}
 
       {#snippet code()}
 ```html
-<Chips close={false} ... />
+<Chips close={false}>...</Chips>
 ```
       {/snippet}
     </Example>
-    <p class="not-prose">The <code>imgUrl</code> prop specifies the path to the image ("/path/to/image.png"), adding an image to the chip.</p>
+    <p class="not-prose">The <code>imageUrl</code> prop specifies the path to the image ("/path/to/image.png"), adding an image to the chip.</p>
   </DocBlock>
 
   <DocBlock title="Chips Size">
@@ -84,48 +84,50 @@ description: Implement interactive and stylish chips in your Svelte app with The
     <Example>
       {#snippet example()}
         <div class="flex flex-col items-center gap-4">
-        <Chips content="Jasmine Kira" imgUrl="https://randomuser.me/api/portraits/women/66.jpg" size="sm" />
-        <Chips content="Jasmine Kira" imgUrl="https://randomuser.me/api/portraits/women/66.jpg" size="md" />
-        <Chips content="Jasmine Kira" imgUrl="https://randomuser.me/api/portraits/women/66.jpg" size="lg" />
+        <Chips imageUrl="https://randomuser.me/api/portraits/women/66.jpg" size="sm">Jasmine Kira</Chips>
+        <Chips imageUrl="https://randomuser.me/api/portraits/women/66.jpg" size="md">Jasmine Kira</Chips>
+        <Chips imageUrl="https://randomuser.me/api/portraits/women/66.jpg" size="lg">Jasmine Kira</Chips>
         </div>
       {/snippet}
 
       {#snippet code()}
 ```html
-<Chips close={false} ... />
+<Chips size="sm">...</Chips>
+<Chips size="md">...</Chips>
+<Chips size="lg">...</Chips>
 ```
       {/snippet}
     </Example>
-    <p class="not-prose">The <code>imgUrl</code> prop specifies the path to the image ("/path/to/image.png"), adding an image to the chip.</p>
+    <p class="not-prose">The <code>imageUrl</code> prop specifies the path to the image ("/path/to/image.png"), adding an image to the chip.</p>
   </DocBlock>
 
   <DocBlock title="Customization">
-    <p class="not-prose">The <b>Chips</b> component offers extensive customization options using Tailwind CSS classes. You can easily style both the chip and the accompanying image by applying custom classes through the <code>class</code> and <code>imgClasses</code> props.</p>
+    <p class="not-prose">The <b>Chips</b> component offers extensive customization options using Tailwind CSS classes. You can easily style both the chip and the accompanying image by applying custom classes through the <code>class</code> and <code>imageClasses</code> props.</p>
     <Example title="Chip Customization">
       <p class="not-prose">To customize the chip's appearance, use the <code>class</code> prop to add your own Tailwind CSS classes. This allows you to control the border, background, padding, and more.</p>
       {#snippet example()}
       <div>
-        <Chips content="Custom Chip" class="border border-red-500 bg-yellow-200" />
+        <Chips class="border border-red-500 bg-yellow-200">Custom Chip</Chips>
       </div>
       {/snippet}
 
       {#snippet code()}
 ```html
-<Chips content="Custom Chip" class="border border-red-500 bg-yellow-200" />
+<Chips class="border border-red-500 bg-yellow-200">Custom Chip</Chips>
 ```
       {/snippet}
     </Example>
     <Example title="Image Customization">
-      <p class="not-prose">Similarly, you can style the image within the chip using the <code>imgClasses</code> prop. This lets you apply specific styles like borders, padding, and background to the image.</p>
+      <p class="not-prose">Similarly, you can style the image within the chip using the <code>imageClasses</code> prop. This lets you apply specific styles like borders, padding, and background to the image.</p>
       {#snippet example()}
       <div>
-        <Chips content="Jasmine Kira" imgUrl="https://randomuser.me/api/portraits/women/66.jpg" imgClasses="border-2 border-brand-primary-500" />
+        <Chips imageUrl="https://randomuser.me/api/portraits/women/66.jpg" imageClasses="border-2 border-brand-primary-500">Jasmine Kira</Chips>
       </div>
       {/snippet}
 
       {#snippet code()}
 ```html
-<Chips ... imgClasses="border border-brand-primary-500" />
+<Chips imageClasses="border border-brand-primary-500">...</Chips>
 ```
       {/snippet}
     </Example>
