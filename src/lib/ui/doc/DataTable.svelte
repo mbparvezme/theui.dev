@@ -17,8 +17,8 @@
     hideText,
     title = "Props",
     data = [],
-    keys = (type == 'props' || type == 'dynamicProps') ? ['name', 'type', 'default', 'description'] : ['name','description'],
-    headers = (type == 'props' || type == 'dynamicProps') ? ['Name', 'Type', 'Default', 'Description'] : ['name','description']
+    keys = (type == 'props') ? ['name', 'type', 'default', 'description'] : ['name','description'],
+    headers = (type == 'props') ? ['Name', 'Type', 'Default', 'Description'] : ['name','description']
   }: Props = $props()
 </script>
 

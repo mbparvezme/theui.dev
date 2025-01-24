@@ -4,12 +4,6 @@
     "title": "Props",
     "data": [
       {
-        "name": "rounded",
-        "type": "<a href=\"/docs/types#common-types\">ROUNDED</a>",
-        "default": "\"md\"",
-        "description": "Defines the border-radius of the alert, providing control over its rounded corners."
-      },
-      {
         "name": "type",
         "type": "'error' | 'info' | 'success' | 'warning'",
         "default": "\"error\"",
@@ -26,6 +20,12 @@
         "type": "\"card\" | \"borderTop\" | \"borderBottom\" | \"borderStart\"",
         "default": "\"card\"",
         "description": "Specifies the structural style of the alert."
+      },
+      {
+        "name": "rounded",
+        "type": "<a href=\"/docs/types#common-types\">ROUNDED</a>",
+        "default": "\"md\"",
+        "description": "Defines the border-radius of the alert, providing control over its rounded corners."
       },
       {
         "name": "id",

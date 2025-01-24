@@ -5,7 +5,7 @@ import typography from '@tailwindcss/typography';
 
 export default {
   content: [
-    './src/**/*.{html,js,svelte,ts}',
+    './src/**/*.{html,js,svelte,svx,ts}',
     "./node_modules/theui-svelte/**/*.{html,js,svelte,ts}",
   ],
 
@@ -14,7 +14,7 @@ export default {
       fontFamily: {
         'sans': ['"IBM Plex Sans"', ...defaultTheme.fontFamily.sans],
         'display': ['"Poiret One"'],
-        // 'mono': ['"IBM Plex Mono"', ...defaultTheme.fontFamily.mono],
+        'mono': ['"IBM Plex Mono"', ...defaultTheme.fontFamily.mono],
       },
     }
   },

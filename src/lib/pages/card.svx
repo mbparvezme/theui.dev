@@ -44,7 +44,7 @@ description: A dynamic and versatile way to showcase content, with a variety of 
         <Card class="w-96" title="Card Title" topImage={imgData}>
           <p>Explore our tools and resources designed to help you grow. Stay connected and enjoy the journey!</p>
           <div>
-            <Button label="Submit" />
+            <Button>Submit</Button>
           </div>
         </Card>
       </div>
@@ -59,7 +59,7 @@ description: A dynamic and versatile way to showcase content, with a variety of 
 <Card title="Card Title" topImage={imgData}>
   <p>Explore our tools and resources designed to help you grow. Stay connected and enjoy the journey!</p>
   <div>
-    <Button label="Submit" />
+    <Button>Submit</Button>
   </div>
 </Card>
 ```
@@ -214,7 +214,7 @@ description: A dynamic and versatile way to showcase content, with a variety of 
     <Example>
       {#snippet example()}
       <div>
-        <Card class="w-96" bottomImage={imgDataY} title="Card Title" horizontal={true}>
+        <Card class="w-96" bottomImage={imgDataY} title="Card Title" horizontal>
           <p>This is card content..</p>
         </Card>
       </div>
@@ -222,7 +222,7 @@ description: A dynamic and versatile way to showcase content, with a variety of 
 
       {#snippet code()}
 ```html
-<Card>
+<Card horizontal>
   <p>This is card content..</p>
 </Card>
 ```

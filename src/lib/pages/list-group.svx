@@ -107,6 +107,24 @@ description: Toggle content visibility in your Svelte app with TheUI-Svelte's Co
     </Example>
   </DocBlock>
 
+  <DocBlock title="Accessibility">
+    <div>
+      <p class="not-prose">The List Group component ensures accessibility by using semantic HTML and ARIA roles:</p>
+      <ol class="my-0">
+        <li>The parent container <span class="not-prose"><code>&lt;ul&gt;</code></span> includes <span class="not-prose"><code>role="list"</code></span></li>
+        <li>Each <span class="not-prose"><code>&lt;li&gt;</code></span> element has <span class="not-prose"><code>role="listitem"</code></span> to provide proper structure for assistive technologies.</li>
+      </ol>
+    </div>
+    <div>
+      <p class="not-prose">To maintain accessibility:</p>
+      <ol class="my-0">
+        <li>Ensure sufficient color contrast for readability.</li>
+        <li>Interactive list items should be focusable and navigable using a keyboard.</li>
+        <li>Add labels like `aria-label` if additional context is required for interactive elements.</li>
+      </ol>
+    </div>
+  </DocBlock>
+
   <DocBlock title="Configuration">
     <ListGroupConfig title="List Group" component={component.listGroup} />
     <ListItemConfig title="List Item" component={component.listItem} />
@@ -116,8 +134,8 @@ description: Toggle content visibility in your Svelte app with TheUI-Svelte's Co
     <a href={processID("Example")}>Example</a>
     <a href={processID("List Style Variant")}>List Style Variant</a>
     <a href={processID("List Element Type")}>List Element Type</a>
+    <a href={processID("Accessibility")}>Accessibility</a>
     <a href={processID("Configuration")}>Configuration</a>
-    <a class="ps-4" href={processID("Configuration")}>Configuration</a>
     <a class="ps-4" href={processID("List Group")}>List Group</a>
     <a class="ps-4" href={processID("List Item")}>List Item</a>
   {/snippet}

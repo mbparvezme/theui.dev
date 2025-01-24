@@ -70,12 +70,6 @@
         "default": "false"
       },
       {
-        "name": "closeOnEsc",
-        "type": "boolean",
-        "description": "Allows closing the modal with the Escape key.",
-        "default": "true"
-      },
-      {
         "name": "rounded",
         "type": "<a href=\"/docs/types#common-types\">ROUNDED</a>",
         "description": "Border-radius of the modal.",
@@ -103,7 +97,7 @@
         "name": "id",
         "type": "string",
         "description": "Unique identifier for the modal.",
-        "default": "&lt;RANDOM STRING&gt; + \"Modal\""
+        "default": "&lt;RANDOM STRING&gt;"
       }
     ]
   },
@@ -117,7 +111,7 @@
     "title": "Snippets",
     "data": [
       {
-        "name": "trigger",
+        "name": "label",
         "description": "Content or element that triggers the modal."
       },
       {

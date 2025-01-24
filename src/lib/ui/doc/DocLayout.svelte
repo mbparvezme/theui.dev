@@ -18,20 +18,21 @@
 
   {#if sidebar}
   <aside class="shrink-0 hidden lg:block overflow-y-auto top-28 lg:sticky" style="height: calc(100vh - 160px)">
-    <div class="flex flex-col gap-y-2 text-sm page-section">
-      <h6 class="mt-0 flex justify-between items-center">
+    <div class="page-section text-sm">
+      <h6 class="mt-0 flex justify-between items-center mb-4">
         <span class="font-bold text-xs">ON THIS PAGE</span>
-        <a class="text-xs" href="#">Top &uparrow;</a>
+        <a class="text-xs no-underline" href="#">Top &uparrow;</a>
       </h6>
-      {@render sidebar()}
+      <div class="not-prose flex flex-col gap-y-2">
+        {@render sidebar()}
+      </div>
     </div>
   </aside>
   {/if}
-
 </section>
 
 <style lang="postcss">
-  :global(.page-section a){
-    @apply text-gray-500 no-underline;
+  :global(.page-section.not-prose a){
+    @apply text-gray-500 dark:text-gray-200 no-underline;
   }
 </style>

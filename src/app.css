@@ -3,6 +3,13 @@
 @import 'tailwindcss/utilities';
 
 @layer base {
+
+  :root {
+    --ui-bg-primary: 252 252 253;
+    --ui-bg-secondary: 238 238 238;
+    --ui-bg-alt: 10 10 20;
+  }
+
   html {
     @apply font-sans scroll-pt-24 scroll-smooth;
   }
@@ -10,9 +17,11 @@
   ::-webkit-scrollbar {
     @apply w-1;
   }
+
   ::-webkit-scrollbar-track {
     @apply bg-primary;
   }
+
   ::-webkit-scrollbar-thumb {
     @apply rounded-xl;
     background: linear-gradient(-45deg, rgba(231,191,0,.5) 20%, rgba(237,104,60,.5) 50%, rgba(216,67,45,.5) 80%, rgba(225,64,48,.5) 100%);

@@ -26,7 +26,7 @@ description: Add dynamic visual indicators to your Svelte app with TheUI-Svelte'
       <p class="not-prose">You can create <b>dot-badges</b> just using the <code>Badge</code> component. Using the <code>text</code> props will create a text badge. Here are some examples:</p>
       {#snippet example()}
         <Badge ariaTitle="Demo badge"/>
-        <Badge ariaTitle="Demo badge" text="New"/>
+        <Badge ariaTitle="Demo badge">New</Badge>
       {/snippet}
       {#snippet code()}
 
@@ -36,7 +36,7 @@ description: Add dynamic visual indicators to your Svelte app with TheUI-Svelte'
 </script>
 
 <Badge ariaTitle="Demo badge"/>
-<Badge ariaTitle="Demo badge" text="New"/>
+<Badge ariaTitle="Demo badge">New</Badge>
 ```
       {/snippet}
     </Example>
@@ -51,17 +51,17 @@ description: Add dynamic visual indicators to your Svelte app with TheUI-Svelte'
             <p class="text-2xl">GROWING <Badge ariaTitle="Demo badge" grow/></p>
           </div>
           <div class="w-full">
-            <p class="text-2xl">NOT GROWING <Badge ariaTitle="Demo badge" text="New"/></p>
-            <p class="text-2xl">GROWING <Badge ariaTitle="Demo badge" text="New" grow/></p>
+            <p class="text-2xl">NOT GROWING <Badge ariaTitle="Demo badge">New</Badge></p>
+            <p class="text-2xl">GROWING <Badge ariaTitle="Demo badge" grow>New</Badge></p>
           </div>
       {/snippet}
       {#snippet code()}
 
 ```html
 <!-- Indicator badge -->
-<Badge ... />
+<Badge />
 <!-- Text badge -->
-<Badge ... grow/>
+<Badge grow>...</Badge>
 ```
       {/snippet}
     </Example>
@@ -76,7 +76,7 @@ description: Add dynamic visual indicators to your Svelte app with TheUI-Svelte'
             Notifications <Badge class="border-0" title="Demo badge" topFixed={true}/>
           </p>
           <p class="relative p-2 bg-secondary">
-            Notifications <Badge class="border-0" text="New" topFixed={true}/>
+            Notifications <Badge class="border-0" topFixed={true}>New</Badge>
           </p>
         </div>
       {/snippet}

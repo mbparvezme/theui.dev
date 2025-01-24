@@ -7,8 +7,8 @@
   const propsKeys = ['name', 'type', 'default', 'description'];
   const nonPropsKeys = ['name','description'];
 
-  let getKeys = (type: string) => type == 'props' || type == 'dynamicProps' ? propsKeys : nonPropsKeys;
-  let getHeaders = (type: string) => type == 'props' || type == 'dynamicProps' ? propsHeader : nonPropsHeader;
+  let getKeys = (type: string) => type == 'props' ? propsKeys : nonPropsKeys;
+  let getHeaders = (type: string) => type == 'props' ? propsHeader : nonPropsHeader;
 </script>
 
 {#if title}
