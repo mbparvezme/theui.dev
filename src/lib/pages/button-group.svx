@@ -292,8 +292,9 @@ description: Create responsive and stylish buttons for your Svelte app with TheU
   </DocBlock>
 
   <DocBlock title="Button Group Theme">
-    <p class="not-prose">The <code>theme</code> prop controls the overall theme of the buttons within the <code>ButtonGroup</code>. It allows you to select from three theme options: <code>"default"</code>, <code>"light"</code>, or <code>"gradient"</code>. Each theme gives the buttons a different visual appearance, helping to align with your design needs.</p>
-    <Example>
+    <p class="not-prose">The <code>theme</code> prop controls the overall theme of the buttons within the <code>ButtonGroup</code>. It allows you to choose from three options: <code>"default"</code>, <code>"light"</code>, or <code>"gradient"</code>. Each theme applies a different visual style to the buttons to match your design preferences.</p>
+    <Example title="Light Theme">
+      <p class="not-prose">The <b>light theme</b> gives the buttons a softer and lighter appearance, making them more subtle and minimal. You can also use the color prop with the light theme to further customize the button colors.</p>
       {#snippet example()}
         <div class="flex flex-col items-center gap-4 w-full">
           <ButtonGroup theme="light">
@@ -301,7 +302,31 @@ description: Create responsive and stylish buttons for your Svelte app with TheU
             <Button>Light Button 1</Button>
             <Button>Light Button 1</Button>
           </ButtonGroup>
+          <ButtonGroup theme="light" color="info">
+            <Button>Light Button 1</Button>
+            <Button>Light Button 1</Button>
+            <Button>Light Button 1</Button>
+          </ButtonGroup>
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<ButtonGroup theme="light"> ... </ButtonGroup>
+<ButtonGroup theme="light" color="info"> ... </ButtonGroup>
+```
+      {/snippet}
+    </Example>
+    <Example title="Gradient Theme">
+      <p class="not-prose">The <b>gradient theme</b> applies a gradient background to the buttons, giving them a vibrant and dynamic look. To customize the gradient’s color scheme, use the color prop in combination with the gradient theme.</p>
+      {#snippet example()}
+        <div class="flex flex-col items-center gap-4 w-full">
           <ButtonGroup theme="gradient">
+            <Button>Gradient Button 1</Button>
+            <Button>Gradient Button 2</Button>
+            <Button>Gradient Button 3</Button>
+          </ButtonGroup>
+          <ButtonGroup theme="gradient" gradientColors="success">
             <Button>Gradient Button 1</Button>
             <Button>Gradient Button 2</Button>
             <Button>Gradient Button 3</Button>
@@ -311,12 +336,11 @@ description: Create responsive and stylish buttons for your Svelte app with TheU
       {#snippet code()}
 
 ```html
-<ButtonGroup theme="light"> ... </ButtonGroup>
 <ButtonGroup theme="gradient"> ... </ButtonGroup>
+<ButtonGroup theme="gradient" gradientColors="success"> ... </ButtonGroup>
 ```
       {/snippet}
     </Example>
-    <p class="not-prose">In this example, the first <code>ButtonGroup</code> uses the light theme, giving the buttons a softer appearance. The second <code>ButtonGroup</code> applies a gradient background to the buttons. To further customize, use the <code>color</code> prop alongside the <code>gradient</code> theme to control the gradient's color scheme.</p>
   </DocBlock>
 
   <DocBlock title="Accessibility">
@@ -345,11 +369,13 @@ description: Create responsive and stylish buttons for your Svelte app with TheU
     <a href={processID("Stacked Button")}>Stacked Button</a>
     <a href={processID("Outlined Button")}>Outlined Button</a>
     <a href={processID("Group Button Sizing")}>Group Button Sizing</a>
-    <a href={processID("Square Group Button")}>Square Group Button</a>
+    <a href={processID("Square Group Button")}>PGroup Button</a>
     <a href={processID("Rounded Button Control")}>Rounded Button Control</a>
     <a href={processID("Button Group Variants")}>Button Variants</a>
-    <a href={processID("Button Group Color")}>Button Group Color</a>
-    <a href={processID("Button Group Theme")}>Button Group Theme</a>
+    <a href={processID("Button Group Color")}>Group Color</a>
+    <a href={processID("Button Group Theme")}>Group Theme</a>
+    <a href={processID("Light theme")} class="ps-4">Light theme</a>
+    <a href={processID("Gradient theme")} class="ps-4">Gradient theme</a>
     <a href={processID("Accessibility")}>Accessibility</a>
     <a href={processID("Configuration")}>Configuration</a>
   {/snippet}

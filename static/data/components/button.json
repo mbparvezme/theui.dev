@@ -28,7 +28,7 @@
         "default": "\"Button\""
       },
       {
-        "name": "externalLinkIcon",
+        "name": "newTabIcon",
         "type": "boolean",
         "description": "Display an arrow that indicates the link will open a new tab. It will only be visible if the button has an href with a \"target\" attribute.",
         "default": "false"

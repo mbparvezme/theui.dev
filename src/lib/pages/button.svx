@@ -50,7 +50,7 @@ description: Create responsive and stylish buttons for your Svelte app with TheU
     </Example>
   </DocBlock>
 
-  <DocBlock title="Button as Link">
+  <DocBlock title="Link Button">
     <Example>
       <p class="not-prose">You can turn the Button into a link by adding the href prop. This makes the button behave like a regular link. This will navigate to the home page when clicked.</p>
       {#snippet example()}
@@ -60,6 +60,19 @@ description: Create responsive and stylish buttons for your Svelte app with TheU
 
 ```html
 <Button href="/">Link button</Button>
+```
+      {/snippet}
+    </Example>
+    <Example title="New Tab Icon">
+      <p class="not-prose">In some cases, a new tab arrow icon may be needed to indicate that a link opens in a new window or tab. The <code>newTabIcon</code> Boolean prop enables this functionality. By default, it is <code>false</code>, so the icon is hidden. When set to <code>true</code>, the icon appears if the link includes a <code>target</code> attribute.</p>
+      <p class="not-prose">The <code>target</code> attribute is required for the <code>newTabIcon</code> to appear. Without it, the icon will not be displayed, even if <code>newTabIcon</code> is set to true.</p>
+      {#snippet example()}
+        <Button href="/" target="_blank" newTabIcon={true}>New Tab Link</Button>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Button href="/" target="_blank" newTabIcon={true}>...</Button>
 ```
       {/snippet}
     </Example>
@@ -322,6 +335,32 @@ description: Create responsive and stylish buttons for your Svelte app with TheU
     <p class="not-prose">Using the <code>rounded</code> prop ensures your buttons adhere to a consistent design pattern, enhancing the visual coherence of your UI.</p>
   </DocBlock>
 
+  <DocBlock title="Button Animation Speed">
+    <Example>
+      <p class="not-prose">The <code>animate</code> determines the speed of the button's animation, with options including <code>"none"</code>, <code>"slower"</code>, <code>"slow"</code>, <code>"normal"</code>, <code>"fast"</code>, and <code>"faster"</code>.</p>
+      {#snippet example()}
+        <Button animate="slower">Slower</Button>
+        <Button animate="slow">Slow</Button>
+        <Button animate="normal">Normal</Button>
+        <Button animate="fast">Fast</Button>
+        <Button animate="faster">Faster</Button>
+        <Button animate="none">No Animation</Button>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Button rounded="sm">Small</Button>
+<Button rounded="md">Medium</Button>
+<Button rounded="lg">Large</Button>
+<Button rounded="xl">Extra large</Button>
+<Button rounded="full">Full</Button>
+<Button rounded="none">None</Button>
+```
+      {/snippet}
+    </Example>
+    <p class="not-prose">Each value adjusts the animation timing to fit your design needs, ensuring a seamless user experience.</p>
+  </DocBlock>
+
   <DocBlock title="Accessibility">
     <div>
       <p class="not-prose">The Button component is designed with accessibility in mind, ensuring it can be used by everyone, including users relying on assistive technologies. By default, it includes the necessary ARIA attributes and supports keyboard navigation.</p>
@@ -354,7 +393,8 @@ description: Create responsive and stylish buttons for your Svelte app with TheU
   {#snippet sidebar()}
     <a href={processID("About")}>About</a>
     <a href={processID("Example")}>Example</a>
-    <a href={processID("Button as Link")}>Button as Link</a>
+    <a href={processID("Link Button")}>Link Button</a>
+    <a href={processID("New Tab Icon")} class="ps-4">New Tab Icon</a>
     <a href={processID("Button Content")}>Button Content</a>
     <a href={processID("Button Color")}>Button Color</a>
     <a href={processID("Theme")}>Theme</a>

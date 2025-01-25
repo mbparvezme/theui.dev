@@ -18,7 +18,7 @@
   .catch(err => console.error("Error copying text:", err)));
 </script>
 
-<section class="docs-block flex flex-col gap-4 mb-12 scroll-mt-2" id={id}>
+<section class="docs-block flex flex-col gap-4 mb-16 scroll-mt-2" id={id}>
   {#if title}
     <div class="flex items-center gap-2">
       <h2 class="my-0 font-bold text-xl font-body">{@html title}</h2>
