@@ -84,7 +84,7 @@ description: Integrate customizable modals into your Svelte app with TheUI-Svelt
       {#snippet example()}
         <Modal>
           {#snippet label()}
-            <Button label="Modal Content" />
+            <Button>Modal Content</Button>
           {/snippet}
 
           {#snippet header()}
@@ -124,21 +124,21 @@ description: Integrate customizable modals into your Svelte app with TheUI-Svelt
       <div>
         <Modal position="top">
           {#snippet label()}
-            <Button label="Top Modal" />
+            <Button>Top Modal</Button>
           {/snippet}
           Top-aligned Modal
         </Modal>
 
         <Modal position="center">
           {#snippet label()}
-            <Button label="Center Modal" />
+            <Button>Center Modal</Button>
           {/snippet}
           Centered Modal (default)
         </Modal>
 
         <Modal position="bottom">
           {#snippet label()}
-            <Button label="Modal Modal" />
+            <Button>Modal Modal</Button>
           {/snippet}
           Bottom-aligned Modal
         </Modal>
@@ -167,28 +167,28 @@ description: Integrate customizable modals into your Svelte app with TheUI-Svelt
       <div>
         <Modal size="sm">
           {#snippet label()}
-            <Button label="Small Modal" />
+            <Button>Small Modal</Button>
           {/snippet}
           Small size modal
         </Modal>
 
         <Modal size="md">
           {#snippet label()}
-            <Button label="Medium Modal" />
+            <Button>Medium Modal</Button>
           {/snippet}
           Medium size modal
         </Modal>
 
         <Modal size="lg">
           {#snippet label()}
-            <Button label="Large Modal" />
+            <Button>Large Modal</Button>
           {/snippet}
           Large size modal
         </Modal>
 
         <Modal size="full">
           {#snippet label()}
-            <Button label="Full Modal" />
+            <Button>Full Modal</Button>
           {/snippet}
           Full screen modal
         </Modal>
@@ -220,31 +220,31 @@ description: Integrate customizable modals into your Svelte app with TheUI-Svelt
       <div>
         <Modal animation="slide-down">
           {#snippet label()}
-            <Button label="Slide Down" />
+            <Button>Slide Down</Button>
           {/snippet}
           Modal with slide-down animation
         </Modal>
         <Modal animation="slide-up">
           {#snippet label()}
-            <Button label="Slide Up" />
+            <Button>Slide Up</Button>
           {/snippet}
           Modal with slide-up animation
         </Modal>
         <Modal>
           {#snippet label()}
-            <Button label="Fade (default)" />
+            <Button>Fade (default)</Button>
           {/snippet}
           Modal with fade animation
         </Modal>
         <Modal animation="zoom-in">
           {#snippet label()}
-            <Button label="Zoom-in" />
+            <Button>Zoom-in</Button>
           {/snippet}
           Modal with zoom-in animation
         </Modal>
         <Modal animation="zoom-out">
           {#snippet label()}
-            <Button label="Zoom-out" />
+            <Button>Zoom-out</Button>
           {/snippet}
           Modal with zoom-out animation
         </Modal>
@@ -277,37 +277,37 @@ description: Integrate customizable modals into your Svelte app with TheUI-Svelt
       <div>
         <Modal animation="slide-down" animate="slower">
           {#snippet label()}
-            <Button label="Slower" />
+            <Button>Slower</Button>
           {/snippet}
           Modal with slide-down animation
         </Modal>
         <Modal animation="slide-down" animate="slow">
           {#snippet label()}
-            <Button label="Slow" />
+            <Button>Slow</Button>
           {/snippet}
           Modal with slide-down animation
         </Modal>
         <Modal animation="slide-down" animate="normal">
           {#snippet label()}
-            <Button label="Normal (Default)" />
+            <Button>Normal (Default)</Button>
           {/snippet}
           Modal with slide-down animation
         </Modal>
         <Modal animation="slide-down" animate="fast">
           {#snippet label()}
-            <Button label="Fast" />
+            <Button>Fast</Button>
           {/snippet}
           Modal with slide-down animation
         </Modal>
         <Modal animation="slide-down" animate="faster">
           {#snippet label()}
-            <Button label="Faster" />
+            <Button>Faster</Button>
           {/snippet}
           Modal with slide-down animation
         </Modal>
         <Modal animation="slide-down" animate={false}>
           {#snippet label()}
-            <Button label="No animation" />
+            <Button>No animation</Button>
           {/snippet}
           Modal with slide-down animation
         </Modal>
@@ -345,7 +345,7 @@ description: Integrate customizable modals into your Svelte app with TheUI-Svelt
       <div>
         <Modal staticBackdrop={true}>
           {#snippet label()}
-            <Button label="Static Backdrop Modal" />
+            <Button>Static Backdrop Modal</Button>
           {/snippet}
           Modal with static backdrop!
         </Modal>
@@ -365,13 +365,13 @@ description: Integrate customizable modals into your Svelte app with TheUI-Svelt
       <div>
         <Modal backdrop={false}>
           {#snippet label()}
-            <Button label="Modal Without Backdrop" />
+            <Button>Modal Without Backdrop</Button>
           {/snippet}
            Modal with no backdrop
         </Modal>
         <Modal backdrop="bg-brand-primary-500/30">
           {#snippet label()}
-            <Button label="Modal Without Backdrop" />
+            <Button>Modal Without Backdrop</Button>
           {/snippet}
            Modal with no backdrop
         </Modal>
@@ -397,7 +397,7 @@ description: Integrate customizable modals into your Svelte app with TheUI-Svelt
       <div>
         <Modal closeButton={false}>
           {#snippet label()}
-            <Button label="Modal Button" />
+            <Button>Modal Button</Button>
           {/snippet}
           Modal without close button!
         </Modal>
@@ -416,7 +416,7 @@ description: Integrate customizable modals into your Svelte app with TheUI-Svelt
     <Example>
       <p class="not-prose">The <code>modalOpen</code> prop controls whether the Modal is visible when the page loads. By default, <code>modalOpen</code> is set to <code>false</code>, meaning the Modal is hidden initially. If you set <code>modalOpen</code> to <code>true</code>, the Modal will be open and visible as soon as the page loads.</p>
       {#snippet example()}
-        <Button label="View example" href="/example/modal-open-state" target="_blank" />
+        <Button href="/example/modal-open-state" target="_blank">View example</Button>
       {/snippet}
 
       {#snippet code()}
@@ -444,7 +444,7 @@ description: Integrate customizable modals into your Svelte app with TheUI-Svelt
           modalFooterClasses="border-blue-300/50 border rounded-xl p-2"
         >
           {#snippet label()}
-            <Button label="Modal Button" />
+            <Button>Modal Button</Button>
           {/snippet}
 
           {#snippet header()}
@@ -509,7 +509,7 @@ description: Integrate customizable modals into your Svelte app with TheUI-Svelt
         </li>
         <li><b>Focus Management</b>: Focus is trapped within the Modal while it is open, ensuring users cannot interact with elements outside of it. When the Modal is closed, focus returns to the triggering element.</li>
         <li><b>Screen Reader Announcements</b>: The Modal is announced as a dialog to screen readers, helping users understand its purpose.</li>
-        <li><b>Color Contrast</b>: Ensure that text and background colors inside the Modal meet <Button href="https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html" target="_blank" externalLinkIcon={true} class="p-0 inline bg-transparent text-brand-primary-500 shadow-none">WCAG contrast ratio standards</Button>.</li>
+        <li><b>Color Contrast</b>: Ensure that text and background colors inside the Modal meet <Button href="https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html" target="_blank" externalLinkIcon={true} class="p-0 flex-inline bg-transparent text-brand-primary-500 shadow-none hover:bg-transparent">WCAG contrast ratio standards</Button>.</li>
       </ol>
     </div>
   </DocBlock>

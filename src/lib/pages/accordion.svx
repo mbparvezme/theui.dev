@@ -113,7 +113,7 @@ description: Enhance your Svelte app with theui-svelte's Accordion component. Ea
 
   <DocBlock title="Flash Accordion">
     <Example>
-      <p class="not-prose">For a flush-style accordion, add the <code>flush</code> attribute to the <code>AccordionItem</code> components:</p>
+      <p class="not-prose">The Flush Accordion is a sleek and minimalist variant of the Accordion component, designed for users who prefer a simple, streamlined appearance. By setting the <code>flush</code> attribute on the <code>Accordion</code>, all the contained <code>AccordionItem</code> components will adopt this flush style, providing a consistent and clean look across the entire accordion.</p>
       {#snippet example()}
       <div>
         <Accordion>

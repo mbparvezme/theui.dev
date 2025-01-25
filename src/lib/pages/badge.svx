@@ -73,10 +73,10 @@ description: Add dynamic visual indicators to your Svelte app with TheUI-Svelte'
       {#snippet example()}
         <div class="flex items-center gap-8">
           <p class="relative p-2 bg-secondary">
-            Notifications <Badge class="border-0" title="Demo badge" topFixed={true}/>
+            Notifications <Badge fixed />
           </p>
           <p class="relative p-2 bg-secondary">
-            Notifications <Badge class="border-0" topFixed={true}>New</Badge>
+            Notifications <Badge fixed>New</Badge>
           </p>
         </div>
       {/snippet}
@@ -84,10 +84,10 @@ description: Add dynamic visual indicators to your Svelte app with TheUI-Svelte'
 
 ```html
 <p class="relative p-2 bg-secondary">
-  Notifications <Badge title="Demo badge" fixed/>
+  Notifications <Badge fixed />
 </p>
 <p class="relative p-2 bg-secondary">
-  Notifications <Badge  text="New" fixed/>
+  Notifications <Badge fixed>New</Badge>
 </p>
 ```
       {/snippet}
@@ -99,21 +99,21 @@ description: Add dynamic visual indicators to your Svelte app with TheUI-Svelte'
       <p class="not-prose">The <code>Badge</code> component allows you to customize its colors to match your application's theme or convey specific meanings. By default, it uses standard styles, but you can easily override them with custom CSS classes.</p>
       <p class="not-prose">To change the background color, simply add your own CSS classes to the Badge component. Here’s an example:</p>
       {#snippet example()}
-        <Badge title="Demo badge" class="bg-green-500"/>
-        <Badge text="New" class="bg-yellow-400 text-black"/>
+        <Badge ariaTitle="Demo badge" class="bg-green-500"/>
+        <Badge ariaTitle="New badge" class="bg-yellow-400 text-black">New</Badge>
         <p class="relative font-semibold text-white p-2 bg-gradient-to-r from-red-400 to-yellow-500">
-          Notifications <Badge class="border-white dark:border-black" text="New" topFixed={true}/>
+          Notifications <Badge class="border-white dark:border-black" text="New" fixed />
         </p>
       {/snippet}
       {#snippet code()}
 
 ```html
-<Badge title="Demo badge" class="bg-green-500"/>
+<Badge ariaTitle="Demo badge" class="bg-green-500"/>
 
-<Badge text="New" class="bg-yellow-400 text-black"/>
+<Badge ariaTitle="New badge" class="bg-yellow-400 text-black">New</Badge>
 
 <p class="relative font-semibold text-white p-2 bg-gradient-to-r from-red-400 to-yellow-500">
-  Notifications <Badge class="border-white" text="New" topFixed={true}/>
+  Notifications <Badge class="border-white dark:border-black" text="New" fixed />
 </p>
 ```
       {/snippet}

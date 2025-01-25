@@ -23,8 +23,7 @@ description: Utilize theui-svelte's Alert component to display crucial messages 
   <DocBlock title="Example">
     <p class="not-prose">To use the Alert component in your project, import the required component.</p>
     <p class="not-prose">There are 4 types of <code>Alert</code> you can create using the <code>type</code> prop. The default type is <code>error</code>. Other types are <code>'info'</code>, <code>'success'</code> and <code>'warning'</code>. Here are some examples:</p>
-    <Example title="Accordion By Props">
-      <p class="not-prose">You can create an accordion item with a title and content props using the following example. </p>
+    <Example>
       {#snippet example()}
         <div class="w-full">
           <Alert>I'm error (default) alert!</Alert>
@@ -142,11 +141,38 @@ description: Utilize theui-svelte's Alert component to display crucial messages 
     </Example>
   </DocBlock>
 
+  <DocBlock title="Rounded Corners">
+    <Example>
+      <p class="not-prose">The <code>rounded</code> prop controls the corner radius of the Alert component, allowing you to adjust its appearance for a more customized look. By setting this prop, you can define how rounded the corners of the Alert should be. The default value is <code>"md"</code>, and it accepts the following predefined values: <code>"sm"</code>, <code>"md"</code>, <code>"lg"</code>, <code>"xl"</code>, <code>"full"</code>, or <code>"none"</code> to suit your design preferences.</p>
+      {#snippet example()}
+      <div class="w-full">
+        <Alert rounded="none">This Alert has no rounded corners (sharp edges).</Alert>
+        <Alert rounded="sm">This Alert has small rounded corners.</Alert>
+        <Alert rounded="md">This Alert has medium rounded corners (default).</Alert>
+        <Alert rounded="lg">This Alert has large rounded corners.</Alert>
+        <Alert rounded="xl">This Alert has extra-large rounded corners.</Alert>
+        <Alert rounded="full">This Alert has fully rounded corners.</Alert>
+      </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Alert rounded="none"> ... </Alert>
+<Alert rounded="sm"> ... </Alert>
+<Alert rounded="md"> ... </Alert>
+<Alert rounded="lg"> ... </Alert>
+<Alert rounded="xl"> ... </Alert>
+<Alert rounded="full"> ... </Alert>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
   <DocBlock title="Customization">
     <Example>
       <p class="not-prose">The Alert component in theui-svelte allows full customization through the class attribute, giving you control over the styling to match your application's design needs. This flexibility ensures that the alert can seamlessly blend with various UI themes and aesthetics.</p>
       {#snippet example()}
-      <div>
+      <div class="w-full">
         <Alert class="bg-gradient-to-r from-red-400 to-yellow-500">I'm custom styled alert message!</Alert>
       </div>
       {/snippet}
@@ -169,12 +195,12 @@ description: Utilize theui-svelte's Alert component to display crucial messages 
   </DocBlock>
 
   {#snippet sidebar()}
-    <a href={processID("Setup")}>Setup</a>
     <a href={processID("Example")}>Example</a>
     <a href={processID("Icon")}>Alert icon</a>
     <a href={processID("Theme")}>Alert theme</a>
     <a href={processID("Variant")}>Alert Variant</a>
     <a href={processID("Dismissible Alert")}>Dismissible alert</a>
+    <a href={processID("Rounded Corners")}>Rounded Corners</a>
     <a href={processID("Customization")}>Customization</a>
     <a href={processID("Accessibility")}>Accessibility</a>
     <a href={processID("Configuration")}>Configuration</a>

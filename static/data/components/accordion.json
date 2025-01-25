@@ -71,10 +71,10 @@
     "data": [
       {
         "name": "flush",
-        "description": "Custom classes for the title when the accordion item is active (expanded)."
+        "description": "A minimalist variant of the Accordion component, designed for a sleek and simple appearance"
       },
       {
-        "name": "close",
+        "name": "open",
         "description": "Custom classes for the title when the accordion item is active (expanded)."
       }
     ]

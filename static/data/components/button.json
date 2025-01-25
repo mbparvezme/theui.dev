@@ -28,6 +28,12 @@
         "default": "\"Button\""
       },
       {
+        "name": "externalLinkIcon",
+        "type": "boolean",
+        "description": "Display an arrow that indicates the link will open a new tab. It will only be visible if the button has an href with a \"target\" attribute.",
+        "default": "false"
+      },
+      {
         "name": "href",
         "type": "string | undefined",
         "description": "URL to navigate to when the button is clicked, converting the button into a link.",
@@ -68,6 +74,12 @@
         "type": "'default' | 'light' | 'gradient'",
         "description": "Theme of the button, determining its overall style.",
         "default": "\"default\""
+      },
+      {
+        "name": "gradientColors ",
+        "type": "'brand' | 'error' | 'info' | 'success' | 'warning'",
+        "description": "Defies the base color of the gradient theme.",
+        "default": "\"brand\""
       },
       {
         "name": "color",

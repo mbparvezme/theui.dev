@@ -71,18 +71,32 @@ description: Improve navigation in your Svelte app with TheUI-Svelte's Breadcrum
     </Example>
   </DocBlock>
 
-  <DocBlock title="Modify Link Color">
-    <p class="not-prose">Customize the color of active and inactive links using the <code>linkClasses</code> and <code>activeLinkClasses</code> props. Here's an example of setting custom colors:</p>
+  <DocBlock title="Customization">
+    <p class="not-prose">The Breadcrumb component offers flexibility for styling, allowing you to easily adapt it to match your design requirements.</p>
     <Example>
+      <p class="not-prose">To customize the breadcrumb container itself, you can use the standard <code>class</code> attribute to apply custom styles. For further customization, there are two props designed to style the breadcrumb links:</p>
+      <ul class="my-0">
+        <li><span class="not-prose"><code>linkClasses</code></span>: This prop updates the appearance of the links within the breadcrumb.</li>
+        <li><span class="not-prose"><code>activeLinkClasses</code></span>: This prop specifically targets the active link, enabling you to style it differently from the rest of the links.</li>
+      </ul>
       {#snippet example()}
         <div class="w-full">
-          <Breadcrumb data={breadcrumbData} activeLinkClasses="text-pink-500" linkClasses="text-green-500" />
+          <Breadcrumb 
+            data={breadcrumbData} 
+            activeLinkClasses="text-pink-500" 
+            linkClasses="text-green-500" 
+          />
         </div>
       {/snippet}
       {#snippet code()}
 
 ```html
-<Breadcrumb data={breadcrumbData} activeLinkClasses="text-pink-500" linkClasses="text-green-500" />
+<Breadcrumb 
+  data={breadcrumbData} 
+  activeLinkClasses="text-pink-500" 
+  linkClasses="text-green-500" 
+/>
+
 ```
       {/snippet}
     </Example>
@@ -99,7 +113,7 @@ description: Improve navigation in your Svelte app with TheUI-Svelte's Breadcrum
   {#snippet sidebar()}
     <a href={processID("Example")}>Example</a>
     <a href={processID("Change Link Separator")}>Change Link Separator</a>
-    <a href={processID("Modify Link Color")}>Modify Link Color</a>
+    <a href={processID("Customization")}>Customization</a>
     <a href={processID("Accessibility")}>Accessibility</a>
     <a href={processID("Configuration")}>Configuration</a>
   {/snippet}
