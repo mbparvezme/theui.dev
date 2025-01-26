@@ -1,97 +1,133 @@
-[
-  {
-    "key": "props",
-    "title": "Props",
-    "data": [
-      {
-        "name": "title",
-        "type": "string | Snippet",
-        "default": "undefined",
-        "description": "Sets the title of the accordion item."
-      },
-      {
-        "name": "size",
-        "type": "\"compact\" | \"default\" | \"large\"",
-        "default": "\"default\"",
-        "description": "Sets the size of the accordion item."
-      },
-      {
-        "name": "animationSpeed",
-        "type": "<a href=\"/docs/types#common-types\">ANIMATE_SPEED</a>",
-        "default": "\"fast\"",
-        "description": "Specifies the speed of the opening and closing animation."
-      },
-      {
-        "name": "rounded",
-        "type": "<a href=\"/docs/types#common-types\">ROUNDED</a>",
-        "default": "\"md\"",
-        "description": "Determines the border radius of the accordion item."
-      },
-      {
-        "name": "containerClasses",
-        "type": "string",
-        "default": "\"\"",
-        "description": "Custom classes for the accordion's main container."
-      },
-      {
-        "name": "openContainerClasses",
-        "type": "string",
-        "default": "\"\"",
-        "description": "Custom classes for the active (expanded) state of the accordion's container."
-      },
-      {
-        "name": "titleClasses",
-        "type": "string",
-        "default": "\"\"",
-        "description": "Custom classes for the title of the accordion item."
-      },
-      {
-        "name": "openTitleClasses",
-        "type": "string",
-        "default": "\"\"",
-        "description": "Custom classes for the title when the accordion item is active (expanded)."
-      },
-      {
-        "name": "contentClasses",
-        "type": "string",
-        "default": "\"\"",
-        "description": "Custom classes for the content section of the accordion."
-      },
-      {
-        "name": "id",
-        "type": "string",
-        "default": "&lt;RANDOM STRING&gt;",
-        "description": "Unique identifier for the accordion item."
-      }
-    ]
-  },
-  {
-    "key": "dynamicProps",
-    "title": "Dynamic props",
-    "data": [
-      {
-        "name": "flush",
-        "description": "A minimalist variant of the Accordion component, designed for a sleek and simple appearance"
-      },
-      {
-        "name": "open",
-        "description": "Custom classes for the title when the accordion item is active (expanded)."
-      }
-    ]
-  },
-  {
-    "key": "snippets",
-    "title": "Snippets",
-    "data": [
-      {
-        "name": "title",
-        "description": "Custom classes for the title when the accordion item is active (expanded)."
-      }
-    ]
-  },
-  {
-    "key": "functions",
-    "title": "Functions",
-    "data": null
-  }
-]
+{
+  "accordion" : [
+    {
+      "key": "props",
+      "title": "Props",
+      "data": [
+        {
+          "name": "size",
+          "type": "\"compact\" | \"default\" | \"large\"",
+          "default": "\"default\"",
+          "description": "Sets the size of the accordion item."
+        }
+      ]
+    },
+    {
+      "key": "dynamicProps",
+      "title": "Dynamic props",
+      "data": [
+        {
+          "name": "flush",
+          "description": "Applies the flush style to all Accordion items, giving the accordion a minimalist, sleek appearance by removing the borders for a seamless look."
+        }
+      ]
+    },
+    {
+      "key": "snippets",
+      "title": "Snippets",
+      "data": null
+    },
+    {
+      "key": "functions",
+      "title": "Functions",
+      "data": null
+    }
+  ],
+  "item": [
+    {
+      "key": "props",
+      "title": "Props",
+      "data": [
+        {
+          "name": "title",
+          "type": "string | Snippet",
+          "default": "undefined",
+          "description": "Sets the title of the accordion item."
+        },
+        {
+          "name": "size",
+          "type": "\"compact\" | \"default\" | \"large\"",
+          "default": "\"default\"",
+          "description": "Sets the size of the accordion item."
+        },
+        {
+          "name": "animationSpeed",
+          "type": "<a href=\"/docs/types#common-types\">ANIMATE_SPEED</a>",
+          "default": "\"fast\"",
+          "description": "Specifies the speed of the opening and closing animation."
+        },
+        {
+          "name": "rounded",
+          "type": "<a href=\"/docs/types#common-types\">ROUNDED</a>",
+          "default": "\"md\"",
+          "description": "Determines the border radius of the accordion item."
+        },
+        {
+          "name": "containerClasses",
+          "type": "string",
+          "default": "\"\"",
+          "description": "Custom classes for the accordion's main container."
+        },
+        {
+          "name": "openContainerClasses",
+          "type": "string",
+          "default": "\"\"",
+          "description": "Custom classes for the active (expanded) state of the accordion's container."
+        },
+        {
+          "name": "titleClasses",
+          "type": "string",
+          "default": "\"\"",
+          "description": "Custom classes for the title of the accordion item."
+        },
+        {
+          "name": "openTitleClasses",
+          "type": "string",
+          "default": "\"\"",
+          "description": "Custom classes for the title when the accordion item is active (expanded)."
+        },
+        {
+          "name": "contentClasses",
+          "type": "string",
+          "default": "\"\"",
+          "description": "Custom classes for the content section of the accordion."
+        },
+        {
+          "name": "id",
+          "type": "string",
+          "default": "&lt;RANDOM STRING&gt;",
+          "description": "Unique identifier for the accordion item."
+        }
+      ]
+    },
+    {
+      "key": "dynamicProps",
+      "title": "Dynamic props",
+      "data": [
+        {
+          "name": "flush",
+          "description": "A minimalist variant of the Accordion component, designed for a sleek and simple appearance"
+        },
+        {
+          "name": "open",
+          "description": "Custom classes for the title when the accordion item is active (expanded)."
+        }
+      ]
+    },
+    {
+      "key": "snippets",
+      "title": "Snippets",
+      "data": [
+        {
+          "name": "title",
+          "description": "Custom classes for the title when the accordion item is active (expanded)."
+        }
+      ]
+    },
+    {
+      "key": "functions",
+      "title": "Functions",
+      "data": null
+    }
+  ]
+}

@@ -16,9 +16,9 @@
   let {children, example, code, classes, title, codeTitle}: Props = $props();
 </script>
 
-<div>
+<div class="example-section">
   {#if title}
-    <h4 id={processID(title, false)} class="not-prose font-semibold font-body text-gray-500 dark:text-gray-400 mt-0 mb-1">{@html title}</h4>
+    <h4 id={processID(title, false)} class="not-prose text-xl font-semibold font-body text-gray-700 dark:text-gray-400 mt-0 mb-1">{@html title}</h4>
   {/if}
 
   {@render children?.()}
@@ -41,3 +41,9 @@
     </div>
   {/if}
 </div>
+
+<style lang="postcss">
+:global(.example-section + .example-section){
+  @apply mt-12;
+}
+</style>

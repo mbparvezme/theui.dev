@@ -35,7 +35,7 @@ description: Create responsive and stylish buttons for your Svelte app with TheU
     <Example>
       <p class="not-prose">Import the Button component into your Svelte file. The following example shows how to use the button component!</p>
       {#snippet example()}
-        <Button>Brand</Button>
+        <Button>Button</Button>
       {/snippet}
       {#snippet code()}
 
@@ -44,7 +44,7 @@ description: Create responsive and stylish buttons for your Svelte app with TheU
   import { Button } from "theui-svelte";
 </script>
 
-<Button>Brand</Button>
+<Button>Button</Button>
 ```
       {/snippet}
     </Example>
@@ -152,7 +152,7 @@ description: Create responsive and stylish buttons for your Svelte app with TheU
 
   <DocBlock title="Button Color">
     <Example>
-      <p class="not-prose">The <code>color</code> prop customizes the button's appearance by applying predefined color themes. These themes align with different statuses or actions, making it easier to maintain visual consistency across your application. Whether indicating success, providing information, or highlighting warnings, the <code>color</code> prop ensures the button conveys the right message.</p>
+      <p class="not-prose">The <code>color</code> prop customizes the button's appearance by applying predefined color themes. These themes correspond to various statuses or actions, ensuring consistent visual design throughout your application. The available color options are <code>"brand"</code>, <code>"error"</code>, <code>"info"</code>, <code>"success"</code>, and <code>"warning"</code>. The default value is <code>"brand"</code>.</p>
       {#snippet example()}
         <Button color="brand">Brand</Button>
         <Button color="error">Error</Button>
@@ -171,12 +171,13 @@ description: Create responsive and stylish buttons for your Svelte app with TheU
 ```
       {/snippet}
     </Example>
-      <p class="not-prose">Each color option corresponds to a specific purpose, allowing for intuitive design choices that enhance user experience. Although you can customize the button's color further using the <code>class</code> attribute, the <code>color</code> prop provides a quick and consistent approach.</p>
+      <p class="not-prose">Each color serves a purpose, making design intuitive and user-friendly. While you can customize colors with the class attribute, the <code>color</code> prop offers a quick and consistent solution.</p>
   </DocBlock>
 
   <DocBlock title="Theme">
     <p class="not-prose">The <code>theme</code> prop determines the overall style and background of the button. It accepts three values: <code>'default'</code>, <code>'light'</code>, and <code>'gradient'</code>. The default theme applies the standard button styles, while the light theme uses lighter versions of the default colors for a softer look. The gradient theme gives a more vibrant feel by applying gradient backgrounds to the button.</p>
-    <Example>
+    <div>
+    <Example title="Light Theme">
       <p class="not-prose">The light theme is a softer variation of the default button colors, making it suitable for more subtle designs.</p>
       {#snippet example()}
         <div class="w-full flex justify-center gap-4">
@@ -198,34 +199,36 @@ description: Create responsive and stylish buttons for your Svelte app with TheU
 ```
       {/snippet}
     </Example>
-    <Example>
+    <Example title="Gradient Theme">
       <p class="not-prose">The gradient theme applies vibrant gradient colors to the button background, providing a more modern and eye-catching look.</p>
       {#snippet example()}
         <div class="w-full flex justify-center gap-4">
-          <Button theme="gradient" color="brand">Brand</Button>
-          <Button theme="gradient" color="error">Error</Button>
-          <Button theme="gradient" color="info">Info</Button>
-          <Button theme="gradient" color="success">Success</Button>
-          <Button theme="gradient" color="warning">Warning</Button>
+          <Button theme="gradient" gradientColors="brand">Brand</Button>
+          <Button theme="gradient" gradientColors="error">Error</Button>
+          <Button theme="gradient" gradientColors="info">Info</Button>
+          <Button theme="gradient" gradientColors="success">Success</Button>
+          <Button theme="gradient" gradientColors="warning">Warning</Button>
         </div>
       {/snippet}
       {#snippet code()}
 
 ```html
-<Button theme="gradient" color="brand">Brand</Button>
-<Button theme="gradient" color="error">Error</Button>
-<Button theme="gradient" color="info">Info</Button>
-<Button theme="gradient" color="success">Success</Button>
-<Button theme="gradient" color="warning">Warning</Button>
+<Button theme="gradient" gradientColor="brand">Brand</Button>
+<Button theme="gradient" gradientColor="error">Error</Button>
+<Button theme="gradient" gradientColor="info">Info</Button>
+<Button theme="gradient" gradientColor="success">Success</Button>
+<Button theme="gradient" gradientColor="warning">Warning</Button>
 ```
       {/snippet}
     </Example>
+    </div>
     <Alert type="warning" theme="light" variant="borderStart">The color prop can still be used with each theme to specify the button's color, allowing flexibility while maintaining consistency across different button themes.</Alert>
   </DocBlock>
 
   <DocBlock title="Outline">
+    <p class="not-prose">The <code>outline</code> prop lets you create a button with a modern outline style. It gives the button a transparent background and a border, making it great for secondary actions or a minimalist look.</p>
     <Example>
-      <p class="not-prose">The <code>outline</code> attribute allows you to create a button with a sleek and modern outline style. This attribute gives the button a transparent background with a border, ideal for emphasizing secondary actions or achieving a minimalist design.</p>
+      <p class="not-prose">To use an outline button, set the <code>outline</code> prop to <code>true</code> like this: <code>outline={"{true}"}</code></p>
       {#snippet example()}
         <Button color="brand" outline={true}>Brand</Button>
         <Button color="error" outline={true}>Error</Button>
@@ -247,25 +250,26 @@ description: Create responsive and stylish buttons for your Svelte app with TheU
   </DocBlock>
 
   <DocBlock title="Size">
+    <p class="not-prose">The <code>size</code> prop allows you to adjust the button's size to fit various design needs. This prop supports a range of predefined sizes, ensuring consistency and flexibility across your UI components.</p>
     <Example>
-      <p class="not-prose">The <code>size</code> prop allows you to adjust the button's size to fit various design needs. This prop supports a range of predefined sizes, ensuring consistency and flexibility across your UI components. Whether you need a small button for minimal space or a larger one for emphasis, the <code>size</code> prop has you covered.</p>
+      <p class="not-prose">Available values are <code>"xs"</code>, <code>"sm"</code>, <code>"md"</code> (default), <code>"lg"</code>, <code>"xl"</code>, and <code>"auto"</code>, allowing flexibility while maintaining consistency.</p>
       {#snippet example()}
-        <Button size="xs">Brand</Button>
-        <Button size="sm">Error</Button>
-        <Button size="md">Info</Button>
-        <Button size="lg">Success</Button>
-        <Button size="xl">Warning</Button>
-        <Button size="auto">Warning</Button>
+        <Button size="xs">Extra small</Button>
+        <Button size="sm">Small</Button>
+        <Button size="md">Medium</Button>
+        <Button size="lg">Large</Button>
+        <Button size="xl">Extra large</Button>
+        <Button size="auto">Auto</Button>
       {/snippet}
       {#snippet code()}
 
 ```html
-<Button size="xs">Brand</Button>
-<Button size="sm">Error</Button>
-<Button size="md">Info</Button>
-<Button size="lg">Success</Button>
-<Button size="xl">Warning</Button>
-<Button size="auto">Warning</Button>
+<Button size="xs">Extra small</Button>
+<Button size="sm">Small</Button>
+<Button size="md">Medium</Button>
+<Button size="lg">Large</Button>
+<Button size="xl">Extra large</Button>
+<Button size="auto">Auto</Button>
 ```
       {/snippet}
     </Example>
@@ -398,6 +402,8 @@ description: Create responsive and stylish buttons for your Svelte app with TheU
     <a href={processID("Button Content")}>Button Content</a>
     <a href={processID("Button Color")}>Button Color</a>
     <a href={processID("Theme")}>Theme</a>
+    <a href={processID("Light Theme")} class="ps-4">Light Theme</a>
+    <a href={processID("Gradient Theme")} class="ps-4">Gradient Theme</a>
     <a href={processID("Outline")}>Outline</a>
     <a href={processID("Size")}>Size</a>
     <a href={processID("Square Button")}>Square Button</a>

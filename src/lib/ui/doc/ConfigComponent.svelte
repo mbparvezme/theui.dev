@@ -12,10 +12,10 @@
 </script>
 
 {#if title}
-  <h4 id={processID(title, false)} class="font-semibold font-body text-slate-500 mt-0 mb-0">{@html title}</h4>
+  <h4 id={processID(title, false)} class="config-title text-xl font-semibold font-body text-gray-700 dark:text-gray-400 my-0 font-body">{@html title}</h4>
 {/if}
 
-<Tabs variant="tabs">
+<Tabs variant="tabs" class="config-tabs">
   {#snippet tabList()}
     {#each component as c}
       {#if c.data && c.data.length > 0}
@@ -36,3 +36,9 @@
     {/each}
   {/snippet}
 </Tabs>
+
+<style lang="postcss">
+:global(.config-tabs + .config-title){
+  @apply mt-4;
+}
+</style>
