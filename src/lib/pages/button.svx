@@ -171,7 +171,7 @@ description: Create responsive and stylish buttons for your Svelte app with TheU
 ```
       {/snippet}
     </Example>
-      <p class="not-prose">Each color serves a purpose, making design intuitive and user-friendly. While you can customize colors with the class attribute, the <code>color</code> prop offers a quick and consistent solution.</p>
+    <p class="not-prose">Each color serves a purpose, making design intuitive and user-friendly. While you can customize colors with the class attribute, the <code>color</code> prop offers a quick and consistent solution.</p>
   </DocBlock>
 
   <DocBlock title="Theme">

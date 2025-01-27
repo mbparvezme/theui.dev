@@ -28,7 +28,7 @@ description:
       <p class="not-prose">To use the Quick Action Button (QAB) in your Svelte application, you need to import both the <code>Qab</code> container and the <code>QabButton</code> component from the theui-svelte package:</p>
     <Example>
       {#snippet example()}
-        <iframe src="/example/qab-example" style="width: 100%; height: 200px;" scrolling="no"></iframe>
+        <iframe src="/example/qab-example" style="width: 100%; height: 210px;" scrolling="no"></iframe>
       {/snippet}
       {#snippet code()}
 
@@ -51,7 +51,7 @@ description:
     <p class="not-prose">The <code>href</code> prop allows the main Quick Action Button (QAB) to function as a link. When this prop is set, the button will navigate to the specified URL when clicked.</p>
     <Example>
       {#snippet example()}
-        <iframe src="/example/qab-link" style="width: 100%; height: 200px;" scrolling="no"></iframe>
+        <iframe src="/example/qab-link" style="width: 100%; height: 210px;" scrolling="no"></iframe>
       {/snippet}
       {#snippet code()}
 
@@ -63,12 +63,12 @@ description:
     <p class="not-prose">In this example, clicking the main button will take the user to the <code>/about</code> page. This prop makes it easy to turn the QAB into a navigational link while still maintaining its quick action functionality.</p>
   </DocBlock>
 
-  <DocBlock title="Position">
-      <p class="not-prose">The <code>position</code> prop controls the horizontal alignment of the Quick Action Button (QAB) container. You can set it to either <code>'start'</code> or <code>'end'</code>, with the default value being <code>'end'</code>.</p>
-      <p class="not-prose"> By setting the <code>position</code> prop, you can easily control the horizontal position of the buttons within the container.</p>
+  <DocBlock title="Alignment">
+      <p class="not-prose">The <code>align</code> prop controls the horizontal alignment of the Quick Action Button (QAB) container. You can set it to either <code>'start'</code> or <code>'end'</code>, with the default value being <code>'end'</code>.</p>
+      <p class="not-prose"> By setting the <code>align</code> prop, you can easily control the horizontal position of the buttons within the container.</p>
     <Example>
       {#snippet example()}
-        <iframe src="/example/qab-position" style="width: 100%; height: 200px;" scrolling="no"></iframe>
+        <iframe src="/example/qab-align" style="width: 100%; height: 210px;" scrolling="no"></iframe>
       {/snippet}
       {#snippet code()}
 
@@ -103,7 +103,7 @@ description:
     <Example>
       <p class="not-prose">The <code>direction</code> prop determines how the Quick Action Buttons (QAB) are arranged. You can set it to <code>'horizontal'</code> to place the buttons side by side, or <code>'vertical'</code> to stack them on top of each other. The default value is <code>'vertical'</code>.</p>
       {#snippet example()}
-        <iframe src="/example/qab-direction" style="width: 100%; height: 200px;" scrolling="no"></iframe>
+        <iframe src="/example/qab-direction" style="width: 100%; height: 210px;" scrolling="no"></iframe>
       {/snippet}
       {#snippet code()}
 
@@ -116,11 +116,59 @@ description:
     <p class="not-prose">By changing the <code>direction</code> prop, you can control whether the buttons are displayed in a row or a column, depending on your design needs.</p>
   </DocBlock>
 
+  <DocBlock title="QAB Color">
+    <Example>
+      <p class="not-prose">The <code>color</code> prop customizes the QAB button's appearance by applying predefined color themes. These themes correspond to various statuses or actions, ensuring consistent visual design throughout your application. The available color options are <code>"brand"</code>, <code>"error"</code>, <code>"info"</code>, <code>"success"</code>, and <code>"warning"</code>. The default value is <code>"brand"</code>.</p>
+      {#snippet example()}
+        <iframe src="/example/qab-color" style="width: 100%; height: 210px;" scrolling="no"></iframe>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Qab color="success" align="start"> ... </Qab>
+<Qab color="info"> ... </Qab>
+```
+      {/snippet}
+    </Example>
+    <p class="not-prose">Each color serves a purpose, making design intuitive and user-friendly. While you can customize colors with the class attribute, the <code>color</code> prop offers a quick and consistent solution.</p>
+  </DocBlock>
+
+  <DocBlock title="Theme">
+    <p class="not-prose">The <code>theme</code> prop determines the overall style and background of the button. It accepts three values: <code>'default'</code>, <code>'light'</code>, and <code>'gradient'</code>. The default theme applies the standard button styles, while the light theme uses lighter versions of the default colors for a softer look. The gradient theme gives a more vibrant feel by applying gradient backgrounds to the button.</p>
+    <div>
+    <Example title="Light Theme">
+      <p class="not-prose">The light theme is a softer variation of the default button colors, making it suitable for more subtle designs.</p>
+      {#snippet example()}
+        <iframe src="/example/qab-light" style="width: 100%; height: 210px;" scrolling="no"></iframe>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Qab theme="light" color="info"> ... </Qab>
+```
+      {/snippet}
+    </Example>
+    <Example title="Gradient Theme">
+      <p class="not-prose">The gradient theme applies vibrant gradient colors to the button background, providing a more modern and eye-catching look.</p>
+      {#snippet example()}
+        <iframe src="/example/qab-gradient" style="width: 100%; height: 210px;" scrolling="no"></iframe>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Qab theme="gradient" gradientColor="success"> ... </Qab>
+```
+      {/snippet}
+    </Example>
+    </div>
+    <Alert type="warning" theme="light" variant="borderStart">The color prop can still be used with each theme to specify the button's color, allowing flexibility while maintaining consistency across different button themes.</Alert>
+  </DocBlock>
+
   <DocBlock title="QAB Trigger Event">
     <Example>
       <p class="not-prose">The <code>triggerEvent</code> prop controls how the Quick Action Button (QAB) is activated. You can choose <code>"click"</code> to make the button activate when the user clicks on it, or <code>"hover"</code> to activate it when the user moves their mouse over it. By default, it is set to <code>"click"</code>.</p>
       {#snippet example()}
-        <iframe src="/example/qab-trigger" style="width: 100%; height: 200px;" scrolling="no"></iframe>
+        <iframe src="/example/qab-trigger" style="width: 100%; height: 210px;" scrolling="no"></iframe>
       {/snippet}
       {#snippet code()}
 
@@ -137,7 +185,7 @@ description:
     <Example>
       <p class="not-prose">The <code>rounded</code> prop adjusts how rounded the corners of the Quick Action Buttons (QAB) are. You can choose from different levels such as <code>"sm"</code> for slightly rounded corners, <code>"md"</code> for medium rounding (default), <code>"lg"</code> or <code>"xl"</code> for more rounded edges, <code>"full"</code> for fully circular buttons, or <code>"none"</code> to keep the corners sharp.</p>
       {#snippet example()}
-        <iframe src="/example/qab-rounded" style="width: 100%; height: 200px;" scrolling="no"></iframe>
+        <iframe src="/example/qab-rounded" style="width: 100%; height: 210px;" scrolling="no"></iframe>
       {/snippet}
       {#snippet code()}
 
@@ -153,7 +201,7 @@ description:
     <Example>
       <p class="not-prose">The <code>animate</code> prop controls how fast the Quick Action Button (QAB) animations run. You can set it to values like <code>"none"</code> for no animation, <code>"slower"</code> or <code>"slow"</code> for a more gradual effect, <code>"normal"</code> for the default speed, or <code>"fast"</code> and <code>"faster"</code> for quicker animations. The default setting is <code>"normal"</code>.</p>
       {#snippet example()}
-        <iframe src="/example/qab-animate" style="width: 100%; height: 200px;" scrolling="no"></iframe>
+        <iframe src="/example/qab-animate" style="width: 100%; height: 210px;" scrolling="no"></iframe>
       {/snippet}
       {#snippet code()}
 
@@ -170,7 +218,7 @@ description:
     <Example>
       <p class="not-prose">...</p>
       {#snippet example()}
-        <iframe src="/example/qab-customization" style="width: 100%; height: 200px;" scrolling="no"></iframe>
+        <iframe src="/example/qab-customization" style="width: 100%; height: 210px;" scrolling="no"></iframe>
       {/snippet}
       {#snippet code()}
 
@@ -215,9 +263,13 @@ description:
     <a href={processID("About")}>About</a>
     <a href={processID("Example")}>Example</a>
     <a href={processID("Link")}>QAB Link</a>
-    <a href={processID("Position")}>Position</a>
+    <a href={processID("Alignment")}>Alignment</a>
     <a href={processID("Sizes")}>Sizes</a>
     <a href={processID("Direction")}>Direction</a>
+    <a href={processID("QAB Color")}>QAB Color</a>
+    <a href={processID("Theme")}>Theme</a>
+    <a href={processID("Light Theme")} class="ps-4">Light Theme</a>
+    <a href={processID("Gradient Theme")} class="ps-4">Gradient Theme</a>
     <a href={processID("QAB Trigger Event")}>Trigger Event</a>
     <a href={processID("Rounded Corner Button")}>Rounded Button</a>
     <a href={processID("Animation Speed")}>Animation Speed</a>
