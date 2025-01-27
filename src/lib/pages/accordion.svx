@@ -340,8 +340,6 @@ description: Enhance your Svelte app with theui-svelte's Accordion component. Ea
     <ItemConfig title="Accordion Item" component={component.item} />
   </DocBlock>
 
-
-
   {#snippet sidebar()}
     <a href={processID("Example")}>Example</a>
     <a href={processID("Group Accordion")}>Group Accordion</a>

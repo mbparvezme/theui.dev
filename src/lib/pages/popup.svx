@@ -1,0 +1,59 @@
+---
+title: Popup
+dir: ".lib/pages"
+description: Create engaging entrance and exit popups for your Svelte app with TheUI-Svelte's Popup component, enhancing user interaction.
+---
+
+<script lang="ts">
+  import DocLayout from "$lib/ui/doc/DocLayout.svelte";
+  import DocHead from "$lib/ui/doc/Head.svelte";
+  import DocBlock from "$lib/ui/doc/Block.svelte";
+  import Code from "$lib/ui/doc/CodeBlock.svelte";
+  import Example from "$lib/ui/doc/Example.svelte";
+  import ConfigComponent from "$lib/ui/doc/ConfigComponent.svelte";
+  import { processID } from "$lib";
+  let { component, edit_url }: {component: any, edit_url?: string } = $props();
+
+  import { Popup } from "theui-svelte";
+</script>
+
+<DocLayout>
+  <DocHead title="Popup" text="...." {edit_url}/>
+
+  <DocBlock title="Example">
+    <p class="not-prose">..</p>
+    <Example>
+      {#snippet example()}
+        Popup will display here
+      {/snippet}
+
+      {#snippet code()}
+```html
+<script>
+  import { Popup } from "theui-svelte";
+</script>
+
+// Popup
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Accessibility">
+    <p class="not-prose">The Alert component is built with accessibility in mind, handling all necessary ARIA attributes, including <code>role="alert"</code> and <code>aria-label="Close alert"</code>, to ensure compatibility with assistive technologies. These attributes are automatically applied, so you don't need to configure them manually.</p>
+    <p class="not-prose font-bold">The only consideration required is maintaining proper color contrast for the alert's text and background to ensure readability and compliance with accessibility standards.</p>
+  </DocBlock>
+
+  <DocBlock title="Configuration">
+    <ConfigComponent {component} />
+  </DocBlock>
+
+  {#snippet sidebar()}
+    <a href={processID("Example")}>Example</a>
+    ...
+    <a href={processID("Customization")}>Customization</a>
+    <a href={processID("Accessibility")}>Accessibility</a>
+    <a href={processID("Configuration")}>Configuration</a>
+  {/snippet}
+
+</DocLayout>

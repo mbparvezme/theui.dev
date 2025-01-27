@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { PageData } from "./$types";
-  import Page from "$lib/pages/popover.svx";
+  import Page from "$lib/pages/popup.svx";
 
   let { data }: { data: PageData|any } = $props();
 </script>
