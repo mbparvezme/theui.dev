@@ -62,7 +62,7 @@ description:
 
   <DocBlock title="Dropdown Sizing">
     <Example>
-      <p class="not-prose">The size of the Dropdown component can be customized using the <code>size</code> prop. You can choose from predefined sizes or set a custom size to suit your design needs. Here's a breakdown of the available size options:</p>
+      <p class="not-prose">The width of the Dropdown component can be customized using the <code>width</code> prop. You can choose from predefined sizes or set a custom width to suit your design needs. Here's a breakdown of the available options:</p>
       <ul class="my-0">
         <li><b>auto</b>: The Dropdown will automatically adjust its size based on its content.</li>
         <li><b>sm</b>: A small size for compact dropdowns.</li>
@@ -73,22 +73,22 @@ description:
       </ul>
       {#snippet example()}
       <div class="flex justify-between w-full flex-wrap gap-y-4">
-        <Dropdown label="Auto" size="auto">
+        <Dropdown label="Auto" width="auto">
           {@render dropdownBasic()}
         </Dropdown>
-        <Dropdown label="Small" size="sm">
+        <Dropdown label="Small" width="sm">
           {@render dropdownBasic()}
         </Dropdown>
-        <Dropdown label="Medium" size="md">
+        <Dropdown label="Medium" width="md">
           {@render dropdownBasic()}
         </Dropdown>
-        <Dropdown label="Large" size="lg">
+        <Dropdown label="Large" width="lg">
           {@render dropdownBasic()}
         </Dropdown>
-        <Dropdown label="Full width" size="full">
+        <Dropdown label="Full width" width="full">
           {@render dropdownBasic()}
         </Dropdown>
-        <Dropdown label="Custom" size="custom">
+        <Dropdown label="Custom" width="custom">
           {@render dropdownBasic()}
         </Dropdown>
       </div>

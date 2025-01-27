@@ -203,11 +203,11 @@ description: Create responsive and stylish buttons for your Svelte app with TheU
       <p class="not-prose">The gradient theme applies vibrant gradient colors to the button background, providing a more modern and eye-catching look.</p>
       {#snippet example()}
         <div class="w-full flex justify-center gap-4">
-          <Button theme="gradient" gradientColors="brand">Brand</Button>
-          <Button theme="gradient" gradientColors="error">Error</Button>
-          <Button theme="gradient" gradientColors="info">Info</Button>
-          <Button theme="gradient" gradientColors="success">Success</Button>
-          <Button theme="gradient" gradientColors="warning">Warning</Button>
+          <Button theme="gradient" gradientColor="brand">Brand</Button>
+          <Button theme="gradient" gradientColor="error">Error</Button>
+          <Button theme="gradient" gradientColor="info">Info</Button>
+          <Button theme="gradient" gradientColor="success">Success</Button>
+          <Button theme="gradient" gradientColor="warning">Warning</Button>
         </div>
       {/snippet}
       {#snippet code()}

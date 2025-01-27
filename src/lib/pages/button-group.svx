@@ -326,7 +326,7 @@ description: Create responsive and stylish buttons for your Svelte app with TheU
             <Button>Gradient Button 2</Button>
             <Button>Gradient Button 3</Button>
           </ButtonGroup>
-          <ButtonGroup theme="gradient" gradientColors="success">
+          <ButtonGroup theme="gradient" gradientColor="success">
             <Button>Gradient Button 1</Button>
             <Button>Gradient Button 2</Button>
             <Button>Gradient Button 3</Button>
@@ -337,7 +337,7 @@ description: Create responsive and stylish buttons for your Svelte app with TheU
 
 ```html
 <ButtonGroup theme="gradient"> ... </ButtonGroup>
-<ButtonGroup theme="gradient" gradientColors="success"> ... </ButtonGroup>
+<ButtonGroup theme="gradient" gradientColor="success"> ... </ButtonGroup>
 ```
       {/snippet}
     </Example>
