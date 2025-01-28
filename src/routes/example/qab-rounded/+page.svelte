@@ -1,7 +1,7 @@
 <script lang="ts">
-  import { Qab, QabButton } from "theui-svelte";
+  import { Qab, QabItem } from "theui-svelte";
 </script>
 <Qab rounded="none">
-  <QabButton>1</QabButton>
-  <QabButton>2</QabButton>
+  <QabItem>1</QabItem>
+  <QabItem>2</QabItem>
 </Qab>

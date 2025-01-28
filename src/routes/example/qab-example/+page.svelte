@@ -1,8 +1,8 @@
 <script>
-  import { Qab, QabButton } from "theui-svelte";
+  import { Qab, QabItem } from "theui-svelte";
 </script>
 
-  <Qab>
-    <QabButton>1</QabButton>
-    <QabButton>2</QabButton>
-  </Qab>
+<Qab>
+  <QabItem>1</QabItem>
+  <QabItem>2</QabItem>
+</Qab>

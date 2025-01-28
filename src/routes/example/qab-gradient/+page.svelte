@@ -1,8 +1,8 @@
 <script lang="ts">
-  import { Qab, QabButton } from "theui-svelte";
+  import { Qab, QabItem } from "theui-svelte";
 </script>
 
 <Qab theme="gradient" gradientColor="success">
-  <QabButton>1</QabButton>
-  <QabButton>2</QabButton>
+  <QabItem>1</QabItem>
+  <QabItem>2</QabItem>
 </Qab>

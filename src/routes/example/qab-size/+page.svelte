@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Qab, QabButton, ButtonGroup, Button } from "theui-svelte";
+  import { Qab, QabItem, ButtonGroup, Button } from "theui-svelte";
   type SIZE = "sm" | "md" | "lg" | "xl"
   let SZ: SIZE = $state("lg")
 
@@ -18,6 +18,6 @@
 </div> -->
 
 <Qab size="lg">
-  <QabButton>1</QabButton>
-  <QabButton>2</QabButton>
+  <QabItem>1</QabItem>
+  <QabItem>2</QabItem>
 </Qab>

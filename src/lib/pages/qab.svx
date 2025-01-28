@@ -14,7 +14,7 @@ description:
   import { processID } from "$lib";
   let { component, edit_url }: {component: any, edit_url?: string } = $props();
 
-  import { Qab, QabButton, Svg, Alert } from "theui-svelte";
+  import { Qab, QabItem, Svg, Alert, Tabs, Tab, TabPanel } from "theui-svelte";
 </script>
 
 <DocLayout>
@@ -25,7 +25,7 @@ description:
   </DocBlock>
 
   <DocBlock title="Example">
-      <p class="not-prose">To use the Quick Action Button (QAB) in your Svelte application, you need to import both the <code>Qab</code> container and the <code>QabButton</code> component from the theui-svelte package:</p>
+      <p class="not-prose">To use the Quick Action Button (QAB) in your Svelte application, you need to import both the <code>Qab</code> container and the <code>QabItem</code> component from the theui-svelte package:</p>
     <Example>
       {#snippet example()}
         <iframe src="/example/qab-example" style="width: 100%; height: 210px;" scrolling="no"></iframe>
@@ -34,13 +34,13 @@ description:
 
 ```html
 <script>
-  import { Qab, QabButton } from "theui-svelte";
+  import { Qab, QabItem } from "theui-svelte";
 </script>
 
 <Qab>
-  <QabButton>Link 1</QabButton>
-  <QabButton>Link 2</QabButton>
-  <QabButton>Link 3</QabButton>
+  <QabItem>Link 1</QabItem>
+  <QabItem>Link 2</QabItem>
+  <QabItem>Link 3</QabItem>
 </Qab>
 ```
       {/snippet}
@@ -117,50 +117,134 @@ description:
   </DocBlock>
 
   <DocBlock title="QAB Color">
-    <Example>
-      <p class="not-prose">The <code>color</code> prop customizes the QAB button's appearance by applying predefined color themes. These themes correspond to various statuses or actions, ensuring consistent visual design throughout your application. The available color options are <code>"brand"</code>, <code>"error"</code>, <code>"info"</code>, <code>"success"</code>, and <code>"warning"</code>. The default value is <code>"brand"</code>.</p>
-      {#snippet example()}
-        <iframe src="/example/qab-color" style="width: 100%; height: 210px;" scrolling="no"></iframe>
+    <p class="not-prose">The <code>color</code> prop customizes the QAB button's appearance by applying predefined color themes. These themes correspond to various statuses or actions, ensuring consistent visual design throughout your application. The available color options are <code>"brand"</code>, <code>"error"</code>, <code>"info"</code>, <code>"success"</code>, and <code>"warning"</code>. The default value is <code>"brand"</code>.</p>
+    <Tabs variant="tabs">
+      {#snippet tabList()}
+        <Tab>QAB Main Button</Tab>
+        <Tab>QAB Item Color</Tab>
       {/snippet}
-      {#snippet code()}
+      {#snippet tabPanel()}
+        <TabPanel>
+          <Example>
+            {#snippet example()}
+              <iframe src="/example/qab-color" style="width: 100%; height: 210px;" scrolling="no"></iframe>
+            {/snippet}
+            {#snippet code()}
 
-```html
-<Qab color="success" align="start"> ... </Qab>
-<Qab color="info"> ... </Qab>
-```
+  ```html
+  <Qab color="info"> ... </Qab>
+  ```
+            {/snippet}
+          </Example>
+        </TabPanel>
+        <TabPanel>
+          <Example>
+            {#snippet example()}
+              <iframe src="/example/qab-color-item" style="width: 100%; height: 260px;" scrolling="no"></iframe>
+            {/snippet}
+            {#snippet code()}
+
+  ```html
+<Qab>
+  <QabItem color="success">1</QabItem>
+  <QabItem color="error">2</QabItem>
+  <QabItem color="warning">3</QabItem>
+</Qab>
+  ```
+            {/snippet}
+          </Example>
+        </TabPanel>
       {/snippet}
-    </Example>
+    </Tabs>
     <p class="not-prose">Each color serves a purpose, making design intuitive and user-friendly. While you can customize colors with the class attribute, the <code>color</code> prop offers a quick and consistent solution.</p>
   </DocBlock>
 
   <DocBlock title="Theme">
     <p class="not-prose">The <code>theme</code> prop determines the overall style and background of the button. It accepts three values: <code>'default'</code>, <code>'light'</code>, and <code>'gradient'</code>. The default theme applies the standard button styles, while the light theme uses lighter versions of the default colors for a softer look. The gradient theme gives a more vibrant feel by applying gradient backgrounds to the button.</p>
-    <div>
+
     <Example title="Light Theme">
       <p class="not-prose">The light theme is a softer variation of the default button colors, making it suitable for more subtle designs.</p>
-      {#snippet example()}
-        <iframe src="/example/qab-light" style="width: 100%; height: 210px;" scrolling="no"></iframe>
-      {/snippet}
-      {#snippet code()}
+      <Tabs variant="tabs">
+        {#snippet tabList()}
+          <Tab>QAB Main Button</Tab>
+          <Tab>QAB Item Color</Tab>
+        {/snippet}
+        {#snippet tabPanel()}
+          <TabPanel>
+            <Example>
+              {#snippet example()}
+                <iframe src="/example/qab-light" style="width: 100%; height: 210px;" scrolling="no"></iframe>
+              {/snippet}
+              {#snippet code()}
 
 ```html
 <Qab theme="light" color="info"> ... </Qab>
 ```
-      {/snippet}
+              {/snippet}
+            </Example>
+          </TabPanel>
+          <TabPanel>
+            <Example>
+              {#snippet example()}
+                <iframe src="/example/qab-light-item" style="width: 100%; height: 260px;" scrolling="no"></iframe>
+              {/snippet}
+              {#snippet code()}
+
+```html
+<Qab>
+  <QabItem theme="light" color="success">1</QabItem>
+  <QabItem theme="light" color="info">2</QabItem>
+  <QabItem theme="light" color="error">3</QabItem>
+</Qab>
+```
+              {/snippet}
+            </Example>
+          </TabPanel>
+        {/snippet}
+      </Tabs>
     </Example>
+
     <Example title="Gradient Theme">
       <p class="not-prose">The gradient theme applies vibrant gradient colors to the button background, providing a more modern and eye-catching look.</p>
-      {#snippet example()}
-        <iframe src="/example/qab-gradient" style="width: 100%; height: 210px;" scrolling="no"></iframe>
-      {/snippet}
-      {#snippet code()}
+      <Tabs variant="tabs">
+        {#snippet tabList()}
+          <Tab>QAB Main Button</Tab>
+          <Tab>QAB Item Color</Tab>
+        {/snippet}
+        {#snippet tabPanel()}
+          <TabPanel>
+            <Example>
+              {#snippet example()}
+                <iframe src="/example/qab-gradient" style="width: 100%; height: 210px;" scrolling="no"></iframe>
+              {/snippet}
+              {#snippet code()}
 
 ```html
 <Qab theme="gradient" gradientColor="success"> ... </Qab>
 ```
-      {/snippet}
+              {/snippet}
+            </Example>
+          </TabPanel>
+          <TabPanel>
+            <Example>
+              {#snippet example()}
+                <iframe src="/example/qab-gradient-item" style="width: 100%; height: 260px;" scrolling="no"></iframe>
+              {/snippet}
+              {#snippet code()}
+
+```html
+<Qab>
+  <QabItem theme="light" color="success">1</QabItem>
+  <QabItem theme="light" color="info">2</QabItem>
+  <QabItem theme="light" color="error">3</QabItem>
+</Qab>
+```
+              {/snippet}
+            </Example>
+          </TabPanel>
+        {/snippet}
+      </Tabs>
     </Example>
-    </div>
     <Alert type="warning" theme="light" variant="borderStart">The color prop can still be used with each theme to specify the button's color, allowing flexibility while maintaining consistency across different button themes.</Alert>
   </DocBlock>
 

@@ -1,9 +1,9 @@
 <script lang="ts">
-  import { Qab, QabButton } from "theui-svelte";
+  import { Qab, QabItem } from "theui-svelte";
 </script>
 
 <Qab direction="horizontal">
-  <QabButton>1</QabButton>
-  <QabButton>2</QabButton>
-  <QabButton>3</QabButton>
+  <QabItem>1</QabItem>
+  <QabItem>2</QabItem>
+  <QabItem>3</QabItem>
 </Qab>
