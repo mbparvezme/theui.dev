@@ -45,7 +45,7 @@ description: Deliver user notifications effectively in your Svelte app with theu
     <p class="not-prose">Once added, you can trigger notifications anywhere in your app using the <code>notify</code> function.</p>
     <Example codeTitle="routes/any/path/+page.svelte">
       {#snippet example()}
-        <iframe src="/example/notification-example" style="width: 100%; height: 210px;" scrolling="no"></iframe>
+        <iframe src="/example/notification-example" style="width: 100%; height: 210px; overflow:scroll" scrolling="no"></iframe>
       {/snippet}
 
       {#snippet code()}
@@ -63,19 +63,108 @@ description: Deliver user notifications effectively in your Svelte app with theu
   </DocBlock>
 
   <DocBlock title="Notification Position">
-    <p class="not-prose">By default the notification will appears at the top-end corner of the display. But you can change it using the <code>position</code> prop in the <code>Notification</code> component. The available value of the position prop are <code>"top-end"</code>, <code>"top-center"</code>, <code>"top-start"</code>, <code>"bottom-end"</code>, <code>"bottom-center"</code>, and <code>"bottom-start"</code>. Default value is <code>"top-end"</code>.
+    <p class="not-prose">By default the notification will appears at the top-end corner of the display. But you can change it using the <code>position</code> prop in the <code>Notification</code> component. The available value of the position prop are <code>"top-end"</code>, <code>"top-center"</code>, <code>"top-start"</code>, <code>"bottom-end"</code>, <code>"bottom-center"</code>, and <code>"bottom-start"</code>. Default value is <code>"top-end"</code>.</p>
     <Example>
       {#snippet example()}
         <iframe src="/example/notification-position" style="width: 100%; height: 210px;" scrolling="no"></iframe>
       {/snippet}
-
       {#snippet code()}
+
 ```html
 <Notification position="bottom-end" />
 ```
       {/snippet}
     </Example>
-</p>
+  </DocBlock>
+
+  <DocBlock title="Notification Type">
+    <p class="not-prose">The <code>notify</code> function accept some parameters along with the message. You have to pass the message as the first parameter. The second parameter defines the type of the notification. Basically it changes the color based on the type. The available types are <code>"error"</code>, <code>"info"</code>, <code>"success"</code>, and <code>"warning"</code>. The default value is <code>"error"</code>.</p>
+    <Example>
+      {#snippet example()}
+        <iframe src="/example/notification-type" style="width: 100%; height: 260px;" scrolling="no"></iframe>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Button onclick={()=> notify("Hello world!") }>Error (Default)</Button>
+<Button onclick={()=> notify("Hello world!", "info") }>Info</Button>
+<Button onclick={()=> notify("Hello world!", "success") }>Success</Button>
+<Button onclick={()=> notify("Hello world!", "warning") }>Warning</Button>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Notification Theme">
+    <p class="not-prose">...</p>
+    <Example>
+      {#snippet example()}
+        <iframe src="/example/notification-theme" style="width: 100%; height: 260px;" scrolling="no"></iframe>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Button onclick={()=> notify("Hello world!") }>Error (Default)</Button>
+<Button onclick={()=> notify("Hello world!", "info") }>Info</Button>
+<Button onclick={()=> notify("Hello world!", "success") }>Success</Button>
+<Button onclick={()=> notify("Hello world!", "warning") }>Warning</Button>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Notification Variant">
+    <p class="not-prose">...</p>
+    <Example>
+      {#snippet example()}
+        <iframe src="/example/notification-variant" style="width: 100%; height: 260px;" scrolling="no"></iframe>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Button onclick={()=> notify("Hello world!") }>Error (Default)</Button>
+<Button onclick={()=> notify("Hello world!", "info") }>Info</Button>
+<Button onclick={()=> notify("Hello world!", "success") }>Success</Button>
+<Button onclick={()=> notify("Hello world!", "warning") }>Warning</Button>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Notification Duration">
+    <p class="not-prose">...</p>
+    <Example>
+      {#snippet example()}
+        <iframe src="/example/notification-type" style="width: 100%; height: 260px;" scrolling="no"></iframe>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Button onclick={()=> notify("Hello world!") }>Error (Default)</Button>
+<Button onclick={()=> notify("Hello world!", "info") }>Info</Button>
+<Button onclick={()=> notify("Hello world!", "success") }>Success</Button>
+<Button onclick={()=> notify("Hello world!", "warning") }>Warning</Button>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Close On Click">
+    <p class="not-prose">...</p>
+    <Example>
+      {#snippet example()}
+        <iframe src="/example/notification-type" style="width: 100%; height: 260px;" scrolling="no"></iframe>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Button onclick={()=> notify("Hello world!") }>Error (Default)</Button>
+<Button onclick={()=> notify("Hello world!", "info") }>Info</Button>
+<Button onclick={()=> notify("Hello world!", "success") }>Success</Button>
+<Button onclick={()=> notify("Hello world!", "warning") }>Warning</Button>
+```
+      {/snippet}
+    </Example>
   </DocBlock>
 
   <DocBlock title="Accessibility">

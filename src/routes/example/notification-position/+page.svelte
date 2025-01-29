@@ -4,5 +4,5 @@
 
 <Notification position="bottom-end" />
 <Container>
-  <Button class="mt-auto" onclick={()=>notify("Hello world!")}>Notify</Button>
+  <Button onclick={()=>notify("Hello world!")}>Notify</Button>
 </Container>
