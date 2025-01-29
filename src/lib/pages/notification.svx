@@ -1,0 +1,98 @@
+---
+title: Notification
+dir: ".lib/pages"
+description: Deliver user notifications effectively in your Svelte app with theui-svelte's Notification component, supporting various alert styles.
+---
+
+<script lang="ts">
+  import DocLayout from "$lib/ui/doc/DocLayout.svelte";
+  import DocHead from "$lib/ui/doc/Head.svelte";
+  import DocBlock from "$lib/ui/doc/Block.svelte";
+  import Code from "$lib/ui/doc/CodeBlock.svelte";
+  import Example from "$lib/ui/doc/Example.svelte";
+  import ConfigComponent from "$lib/ui/doc/ConfigComponent.svelte";
+  import { processID } from "$lib";
+  let { component, edit_url }: {component: any, edit_url?: string } = $props();
+
+  import { Notification, notify, Button } from "theui-svelte"
+</script>
+
+<Notification />
+
+<DocLayout>
+  <DocHead title="Notification" text="A lightweight way to display temporary messages without interrupting the user experience. It appears briefly, disappears automatically, and is fully customizable." {edit_url}/>
+
+  <DocBlock title="About">
+    <p class="not-prose">This component is ideal for showing temporary messages such as success alerts, error messages, or status updates. It supports customization options, including different colors, positions, icons, and auto-dismiss settings. Whether you need to notify users about form submissions, system errors, or background processes, the Notification (Toast) component offers a flexible and efficient solution.</p>
+  </DocBlock>
+
+  <DocBlock title="Example">
+    <p class="not-prose">To use the <code>Notification</code> component, you need to add it once in your application. The recommended place is <code>+layout.svelte</code> to ensure it is available throughout your app, but you can place it anywhere suitable.</p>
+    <Example codeTitle="+layout.svelte">
+      {#snippet code()}
+
+```html
+
+<script>
+  import { Notification } from "theui-svelte";
+</script>
+
+<!-- Add Notification component once, ideally in +layout.svelte -->
+<Notification />
+```
+      {/snippet}
+    </Example>
+    <p class="not-prose">Once added, you can trigger notifications anywhere in your app using the <code>notify</code> function.</p>
+    <Example codeTitle="routes/any/path/+page.svelte">
+      {#snippet example()}
+        <iframe src="/example/notification-example" style="width: 100%; height: 210px;" scrolling="no"></iframe>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<script>
+  import { notify } from "theui-svelte";
+</script>
+
+<!-- Trigger the notifications -->
+<Button onclick={()=>notify("Hello world!")}>Notify</Button>
+```
+      {/snippet}
+    </Example>
+    <p class="not-prose">This will display a simple notification with the message <b>"Hello world!"</b>.</p>
+  </DocBlock>
+
+  <DocBlock title="Notification Position">
+    <p class="not-prose">By default the notification will appears at the top-end corner of the display. But you can change it using the <code>position</code> prop in the <code>Notification</code> component. The available value of the position prop are <code>"top-end"</code>, <code>"top-center"</code>, <code>"top-start"</code>, <code>"bottom-end"</code>, <code>"bottom-center"</code>, and <code>"bottom-start"</code>. Default value is <code>"top-end"</code>.
+    <Example>
+      {#snippet example()}
+        <iframe src="/example/notification-position" style="width: 100%; height: 210px;" scrolling="no"></iframe>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Notification position="bottom-end" />
+```
+      {/snippet}
+    </Example>
+</p>
+  </DocBlock>
+
+  <DocBlock title="Accessibility">
+    <p class="not-prose">The Alert component is built with accessibility in mind, handling all necessary ARIA attributes, including <code>role="alert"</code> and <code>aria-label="Close alert"</code>, to ensure compatibility with assistive technologies. These attributes are automatically applied, so you don't need to configure them manually.</p>
+    <p class="not-prose font-bold">The only consideration required is maintaining proper color contrast for the alert's text and background to ensure readability and compliance with accessibility standards.</p>
+  </DocBlock>
+
+  <DocBlock title="Configuration">
+    <ConfigComponent {component} />
+  </DocBlock>
+
+  {#snippet sidebar()}
+    <a href={processID("Example")}>Example</a>
+    ...
+    <a href={processID("Customization")}>Customization</a>
+    <a href={processID("Accessibility")}>Accessibility</a>
+    <a href={processID("Configuration")}>Configuration</a>
+  {/snippet}
+
+</DocLayout>

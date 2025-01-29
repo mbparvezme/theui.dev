@@ -18,16 +18,16 @@ description: Design responsive and accessible navigation bars for your Svelte ap
 </script>
 
 <DocLayout>
-  <DocHead title="Navbar" text="...." {edit_url}/>
+  <DocHead title="Navbar" text="A responsive navigation bar with support for dropdown menus, keyboard navigation, and customizable styling. It’s ideal for building primary site navigation or complex menu systems." {edit_url}/>
 
   <DocBlock title="Example">
     <p class="not-prose">..</p>
     <Example>
       {#snippet example()}
-        Navbar will display here
+        <iframe src="/example/navbar-example" style="width: 100%; height: 210px;" scrolling="no"></iframe>
       {/snippet}
-
       {#snippet code()}
+
 ```html
 <script>
   import {Navbar, NavBrand, NavLinkGroup, NavDropdown, NavLink, NavToggle} from "theui-svelte";

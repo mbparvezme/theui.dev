@@ -299,20 +299,53 @@ description:
   </DocBlock>
 
   <DocBlock title="Customization">
-    <Example>
-      <p class="not-prose">...</p>
+    <p class="not-prose">There are various way to customize the QAB button and QAB items. You can use <code>theme</code>, <code>color</code>, and <code>gradientColor</code> prop to customize the color showing above.</p>
+    <Example title="Main Button Customization">
+      <p class="not-prose">You can apply custom classes to customize the main QAB button with the <code>class</code> attribute. Also, to change the icon of the main QAB button, just use <code>icon</code> snippet.</p>
       {#snippet example()}
-        <iframe src="/example/qab-customization" style="width: 100%; height: 210px;" scrolling="no"></iframe>
+        <iframe src="/example/qab-customize-main" style="width: 100%; height: 210px;" scrolling="no"></iframe>
       {/snippet}
       {#snippet code()}
 
 ```html
-<Qab animate="slower"> ... </Qab>
-<Qab animate="fast"> ... </Qab> <!-- Default -->
+<Qab class="border-4 border-brand-primary-200">
+  {#snippet icon()}
+  <Svg class="w-6 h-6">
+    <path d="M2 1a1 1 0 0 ... 2 0 0 1 2-2z"/>
+  </Svg>
+  {/snippet}
+</Qab>
 ```
       {/snippet}
     </Example>
-    <p class="not-prose">...</p>
+    <Example title="Item Customization">
+      <p class="not-prose">Use <code>class</code> attribute to apply custom classes to the QAB items. To change the icon write it inside the  <code>QabItem</code> component.</p>
+      <p class="not-prose">Again, if you want to apply some common classes to all the QAB item's icon, you can use <code>iconClasses</code> on the <code>Qab</code> component.</p>
+      {#snippet example()}
+        <iframe src="/example/qab-customize-item" style="width: 100%; height: 210px;" scrolling="no"></iframe>
+      {/snippet}
+      {#snippet code()}
+
+```html
+
+<Qab iconClasses="text-yellow-300">
+    <Svg>
+      <path d="M8 1a5 5 0 0 ... 0 0 1 1-1h1V6a5 5 0 0 0-5-5"/>
+    </Svg>
+  <QabItem class="border-4 border-brand-primary-200">
+    <Svg>
+      <path d="M13.601 2.326A7 0 ... 943-.049-.084-.182-.133-.38-.232"/>
+    </Svg>
+  </QabItem>
+  <QabItem class="border-4 border-brand-primary-200">
+    <Svg>
+      <path d="M3.654 1.328a 0 0 ... .362-1.03-.037-2.137.703-2.877z"/>
+    </Svg>
+  </QabItem>
+</Qab>
+```
+      {/snippet}
+    </Example>
   </DocBlock>
 
   <DocBlock title="Accessibility">
@@ -326,7 +359,7 @@ description:
 ```
       {/snippet}
     </Example>
-    <Example title="Keyboard Navigation">
+    <Example title="Keyboard Navigation" mt={false}>
       <p class="not-prose">The Button component supports standard keyboard interactions, allowing users to navigate and activate it using the <code>Tab</code> key to focus and the <code>Enter</code> or <code>Space</code> keys to trigger the action.</p>
       <p class="not-prose">By following these guidelines and using the provided props, you can ensure that the Button component enhances accessibility, providing a seamless experience for all users.</p>
     </Example>
@@ -357,8 +390,8 @@ description:
     <a href={processID("QAB Trigger Event")}>Trigger Event</a>
     <a href={processID("Rounded Corner Button")}>Rounded Button</a>
     <a href={processID("Animation Speed")}>Animation Speed</a>
-    <a href={processID("Accessibility")}>Accessibility</a>
     <a href={processID("Customization")}>Customization</a>
+    <a href={processID("Accessibility")}>Accessibility</a>
     <a href={processID("Configuration")}>Configuration</a>
   {/snippet}
 

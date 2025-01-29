@@ -1,5 +1,5 @@
 <script>
-  import { Button, Container, Modal } from "theui-svelte";
+  import { Container, Modal } from "theui-svelte";
 </script>
 
 <Container>

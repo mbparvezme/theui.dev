@@ -11,14 +11,15 @@
     classes?: string,
     title?: string,
     codeTitle?: string,
+    mb?: boolean
   };
 
-  let {children, example, code, classes, title, codeTitle}: Props = $props();
+  let {children, example, code, classes, title, codeTitle, mb = true}: Props = $props();
 </script>
 
-<div class="example-section">
+<div class="example-section" class:!mt-0={!mb}>
   {#if title}
-    <h4 id={processID(title, false)} class="not-prose text-xl font-semibold font-body text-gray-700 dark:text-gray-400 mt-0 mb-1">{@html title}</h4>
+    <h4 id={processID(title, false)} class="not-prose text-xl font-semibold font-body text-gray-700 dark:text-gray-400 mt-0 mb-2">{@html title}</h4>
   {/if}
 
   {@render children?.()}
