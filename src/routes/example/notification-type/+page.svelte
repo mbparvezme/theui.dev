@@ -3,8 +3,9 @@
 </script>
 
 <Notification position="bottom-end" />
-<Container>
-  <ButtonGroup size="sm">
+
+<Container class="h-[260px] px-4 py-4 flex">
+  <ButtonGroup class="mt-auto" size="sm">
     <Button onclick={()=>notify("Hello world!")}>Error (Default)</Button>
     <Button onclick={()=>notify("Hello world!", "info")}>Info</Button>
     <Button onclick={()=>notify("Hello world!", "success")}>Success</Button>

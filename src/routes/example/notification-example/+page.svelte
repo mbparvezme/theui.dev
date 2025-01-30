@@ -3,6 +3,11 @@
 </script>
 
 <Notification />
-<Container>
-  <Button class="mt-auto" onclick={()=>notify("Hello world!")}>Notify</Button>
+
+<Container class="h-[210px] px-4 py-4 flex">
+  <Button class="mt-auto" size="sm"
+    onclick={
+      () => notify("Hello world!")
+    }
+  >Notify</Button>
 </Container>

@@ -55,7 +55,11 @@ description: Deliver user notifications effectively in your Svelte app with theu
 </script>
 
 <!-- Trigger the notifications -->
-<Button onclick={()=>notify("Hello world!")}>Notify</Button>
+<Button
+  onclick={
+    () => notify("Hello world!")
+  }
+>Notify</Button>
 ```
       {/snippet}
     </Example>
@@ -85,32 +89,42 @@ description: Deliver user notifications effectively in your Svelte app with theu
       {/snippet}
       {#snippet code()}
 
-```html
-<Button onclick={()=> notify("Hello world!") }>Error (Default)</Button>
-<Button onclick={()=> notify("Hello world!", "info") }>Info</Button>
-<Button onclick={()=> notify("Hello world!", "success") }>Success</Button>
-<Button onclick={()=> notify("Hello world!", "warning") }>Warning</Button>
+```js
+notify("Hello world!", "success") // You can replace "success" with any message type!
 ```
       {/snippet}
     </Example>
   </DocBlock>
 
   <DocBlock title="Notification Theme">
-    <p class="not-prose">...</p>
-    <Example>
-      {#snippet example()}
-        <iframe src="/example/notification-theme" style="width: 100%; height: 260px;" scrolling="no"></iframe>
-      {/snippet}
-      {#snippet code()}
+    <p class="not-prose">You can control the background color of the notifications with the <code>theme</code> prop. It supports three options: <code>'default'</code>, <code>'light'</code>, and <code>'gradient'</code>. The <code>'default'</code> theme follows the standard notification styling, the <code>'light'</code> theme provides a softer color palette for a more subtle look, and the <code>'gradient'</code> theme introduces a bold, eye-catching background with smooth color transitions.</p>
 
-```html
-<Button onclick={()=> notify("Hello world!") }>Error (Default)</Button>
-<Button onclick={()=> notify("Hello world!", "info") }>Info</Button>
-<Button onclick={()=> notify("Hello world!", "success") }>Success</Button>
-<Button onclick={()=> notify("Hello world!", "warning") }>Warning</Button>
+    <div>
+      <Example title="Light Theme">
+        <p class="not-prose">With the <code>'light'</code> theme, notifications adopt a gentle color scheme, making them blend seamlessly into minimalistic interfaces.</p>
+        {#snippet example()}
+          <iframe src="/example/notification-theme-light" style="width: 100%; height: 260px;" scrolling="no"></iframe>
+        {/snippet}
+        {#snippet code()}
+
+```js
+notify( "Hello world!", "success", {theme: "light"} )
 ```
-      {/snippet}
-    </Example>
+        {/snippet}
+      </Example>
+      <Example title="Gradient Theme">
+        <p class="not-prose">The <code>'gradient'</code> theme applies a lively blend of colors, giving notifications a more modern and attention-grabbing style.</p>
+        {#snippet example()}
+          <iframe src="/example/notification-theme-gradient" style="width: 100%; height: 260px;" scrolling="no"></iframe>
+        {/snippet}
+        {#snippet code()}
+
+```js
+notify( "Hello world!", "success", {theme: "gradient"} )
+```
+        {/snippet}
+      </Example>
+    </div>
   </DocBlock>
 
   <DocBlock title="Notification Variant">
@@ -132,39 +146,41 @@ description: Deliver user notifications effectively in your Svelte app with theu
   </DocBlock>
 
   <DocBlock title="Notification Duration">
-    <p class="not-prose">...</p>
     <Example>
+      <p class="not-prose">The <code>removeAfter</code> property controls how long a notification remains visible before closing automatically. It accepts an integer value in milliseconds, starting from 0.</p>
+      <ul class="my-0">
+        <li>The <b>default duration is 5000ms</b> (5 seconds), meaning notifications disappear after this time.</li>
+        <li>Setting it to <b>0</b> keeps the notification open indefinitely until manually closed.</li>
+      </ul>
       {#snippet example()}
-        <iframe src="/example/notification-type" style="width: 100%; height: 260px;" scrolling="no"></iframe>
+        <iframe src="/example/notification-duration" style="width: 100%; height: 260px;" scrolling="no"></iframe>
       {/snippet}
       {#snippet code()}
 
-```html
-<Button onclick={()=> notify("Hello world!") }>Error (Default)</Button>
-<Button onclick={()=> notify("Hello world!", "info") }>Info</Button>
-<Button onclick={()=> notify("Hello world!", "success") }>Success</Button>
-<Button onclick={()=> notify("Hello world!", "warning") }>Warning</Button>
+```js
+notify("Hello world!", "error", {removeAfter: 3000})
 ```
       {/snippet}
     </Example>
   </DocBlock>
 
-  <DocBlock title="Close On Click">
-    <p class="not-prose">...</p>
+  <DocBlock title="Remove On Click">
+    <p class="not-prose">By default, notifications close when clicked. You can change this behavior using the <code>removeOnClick</code> property in the options object. When set to <code>true</code> (default), clicking the notification will dismiss it. If set to <code>false</code>, the notification will remain visible even when clicked.</p>
     <Example>
       {#snippet example()}
-        <iframe src="/example/notification-type" style="width: 100%; height: 260px;" scrolling="no"></iframe>
+        <iframe src="/example/notification-click" style="width: 100%; height: 260px;" scrolling="no"></iframe>
       {/snippet}
       {#snippet code()}
 
-```html
-<Button onclick={()=> notify("Hello world!") }>Error (Default)</Button>
-<Button onclick={()=> notify("Hello world!", "info") }>Info</Button>
-<Button onclick={()=> notify("Hello world!", "success") }>Success</Button>
-<Button onclick={()=> notify("Hello world!", "warning") }>Warning</Button>
+```js
+notify("Hello world!", "error", {removeOnClick: false})
 ```
       {/snippet}
     </Example>
+  </DocBlock>
+
+  <DocBlock title="Customization">
+    <p class="not-prose">...</p>
   </DocBlock>
 
   <DocBlock title="Accessibility">
@@ -177,8 +193,17 @@ description: Deliver user notifications effectively in your Svelte app with theu
   </DocBlock>
 
   {#snippet sidebar()}
+    <a href={processID("About")}>About</a>
     <a href={processID("Example")}>Example</a>
-    ...
+    <a href={processID("Notification Position")}>Position</a>
+    <a href={processID("Notification Type")}>Notification Type</a>
+    <a href={processID("Notification Theme")}>Theme</a>
+    <a href={processID("Light Theme")} class="ps-4">Light Theme</a>
+    <a href={processID("Gradient Theme")} class="ps-4">Gradient Theme</a>
+
+    <a href={processID("Notification Variant")}>Variant</a>
+    <a href={processID("Notification Duration")}>Duration</a>
+    <a href={processID("Remove On Click")}>Remove On Click</a>
     <a href={processID("Customization")}>Customization</a>
     <a href={processID("Accessibility")}>Accessibility</a>
     <a href={processID("Configuration")}>Configuration</a>
