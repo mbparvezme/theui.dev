@@ -15,25 +15,107 @@ description: Enable seamless content navigation in your Svelte app with theui-sv
   let { component, edit_url }: {component: any, edit_url?: string } = $props();
 
   import { Pagination } from "theui-svelte";
+  let paginationData = [
+    { url: "/page/1" },
+    { url: "/page/2", active: true },  // Current page
+    { url: "/page/3" },
+    { url: "/page/4" }
+  ];
 </script>
 
 <DocLayout>
-  <DocHead title="Pagination" text="...." {edit_url}/>
+  <DocHead title="Pagination" text="Provides an easy way to navigate through multiple pages of content. It helps users move between paginated data efficiently while maintaining a clean and structured UI." {edit_url}/>
+
+  <DocBlock title="About">
+    <p class="not-prose">This component generates a navigation bar with page numbers, previous and next buttons, and optional first and last page controls. It is designed to be flexible, allowing customization of appearance, behavior, and accessibility features to fit different use cases. Whether handling large datasets, blog posts, or product listings, the Pagination Nav ensures smooth and intuitive navigation.</p>
+  </DocBlock>
 
   <DocBlock title="Example">
-    <p class="not-prose">..</p>
+    <p class="not-prose">The <code>Pagination</code> component accepts a <code>data</code> prop, which is an array of objects. Each object represents a page link with a <code>url</code> and an optional <code>active</code> property to indicate the current page.</p>
     <Example>
+      <p class="not-prose">Below is a simple example of how to use the <code>Pagination</code> component with static data:</p>
       {#snippet example()}
-        Pagination will display here
+        <Pagination data={paginationData} />
       {/snippet}
 
       {#snippet code()}
 ```html
 <script>
-  import { Pagination } from "theui-svelte";
+  let data = [
+    { url: "/page/1" },
+    { url: "/page/2", active: true },  // Current page
+    { url: "/page/3" },
+    { url: "/page/4" }
+  ];
 </script>
 
-// Pagination
+<Pagination {data} />
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Alignment">
+    <p class="not-prose">The <code>align</code> prop controls the horizontal position of the pagination. The accepted values are: <code>'start'</code>, <code>'center'</code>, and <code>'end'</code>. The default value is <code>center</code>.</p>
+    <Example>
+      {#snippet example()}
+        <div class="flex flex-col gap-2 w-full">
+          <Pagination data={paginationData} align="start" />
+          <Pagination data={paginationData} />
+          <Pagination data={paginationData} align="end" />
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Pagination data={paginationData} align="start" />
+<Pagination data={paginationData} align="center" />
+<Pagination data={paginationData} align="end" />
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Sizing">
+    <p class="not-prose">You can control the button size of the pagination with the <code>size</code> prop. Available values are:
+    <code>'xs'</code>, <code>'sm'</code>, <code>'md'</code>, <code>'lg'</code>, <code>'xl'</code>, <code>'auto'</code>. Default value <code>md</code>.</p>
+    <Example>
+      {#snippet example()}
+        <div class="flex flex-col gap-2 w-full">
+          <Pagination data={paginationData} size="xs" />
+          <Pagination data={paginationData} size="sm" />
+          <Pagination data={paginationData} size="md" />
+          <Pagination data={paginationData} size="lg" />
+          <Pagination data={paginationData} size="xl" />
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Pagination data={paginationData} size="xs" />
+<Pagination data={paginationData} size="sm" />
+<Pagination data={paginationData} size="md" />
+<Pagination data={paginationData} size="lg" />
+<Pagination data={paginationData} size="xl" />
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Flat Pagination">
+    <p class="not-prose">Add <code>flat</code> attribute to the <code>Pagination</code> component to make the pagination flat/borderless.</p>
+    <Example>
+      {#snippet example()}
+        <div class="flex flex-col gap-2 w-full">
+          <Pagination data={paginationData} />
+          <Pagination data={paginationData} flat />
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Pagination data={paginationData} />
+<Pagination data={paginationData} flat />
 ```
       {/snippet}
     </Example>

@@ -178,13 +178,28 @@ notify("Hello world!", "error", {removeOnClick: false})
     </Example>
   </DocBlock>
 
-  <DocBlock title="Customization">
-    <p class="not-prose">...</p>
-  </DocBlock>
-
   <DocBlock title="Accessibility">
     <p class="not-prose">The Alert component is built with accessibility in mind, handling all necessary ARIA attributes, including <code>role="alert"</code> and <code>aria-label="Close alert"</code>, to ensure compatibility with assistive technologies. These attributes are automatically applied, so you don't need to configure them manually.</p>
     <p class="not-prose font-bold">The only consideration required is maintaining proper color contrast for the alert's text and background to ensure readability and compliance with accessibility standards.</p>
+  </DocBlock>
+
+  <DocBlock title="notify() Function">
+    <p class="not-prose">The <code>notify</code> function displays notifications with customizable options. It accepts three parameters:</p>
+    <ul class="my-0">
+      <li><strong>msg</strong> (type string) – The message displayed in the notification.</li>
+      <li><span class="not-prose"><strong>type</strong> (type <a href="/docs/types#notification-types"><u class="decoration-wavy decoration-1 underline-offset-1">NOTIFICATION_TYPE</u></a>) – Defines the notification style. Options: <code>'error'</code>, <code>'info'</code>, <code>'success'</code>, and <code>'warning'</code>.<br>- Default is <code>'error'</code>.</span></li>
+      <li><span class="not-prose"><strong>config</strong> (type <a href="/docs/types#notification-configuration"><u class="decoration-wavy decoration-1 underline-offset-1">NOTIFY_CONFIG</u></a>) – An optional object to configure the notification’s behavior and appearance.</span></li>
+    </ul>
+    <div>
+      <h4 class="my-0">Configuration Options</h4>
+      <ul class="my-0">
+        <li><span class="not-prose"><strong>removeAfter</strong> (type number) – Duration in milliseconds before the notification disappears. Set to <code>0</code> for persistent notifications.<br>- Default is <code>5000</code>.</span></li>
+        <li><span class="not-prose"><strong>removeOnClick</strong> (type boolean) – Determines if the notification should close when clicked.<br>- Default is <code>true</code>.</span></li>
+        <li><span class="not-prose"><strong>rounded</strong> (type <a href="/docs/types#common-types"><u class="decoration-wavy decoration-1 underline-offset-1">ROUNDED</u></a>) – Controls the border radius.<br>- Default is <code>'md'</code>.</span></li>
+        <li><span class="not-prose"><strong>theme</strong> (type string) – Sets the notification theme. Options: <code>'default'</code>, <code>'light'</code>, <code>'gradient'</code>.<br>- Default is <code>'default'</code>.</span></li>
+        <li><span class="not-prose"><strong>variant</strong> (type string) – Defines the notification style. Options: <code>'card'</code>, <code>'barTop'</code>, <code>'barBottom'</code>, <code>'barStart'</code>.<br>- Default is <code>'card'</code>.</span></li>
+      </ul>
+    </div>
   </DocBlock>
 
   <DocBlock title="Configuration">
@@ -199,12 +214,12 @@ notify("Hello world!", "error", {removeOnClick: false})
     <a href={processID("Notification Theme")}>Theme</a>
     <a href={processID("Light Theme")} class="ps-4">Light Theme</a>
     <a href={processID("Gradient Theme")} class="ps-4">Gradient Theme</a>
-
     <a href={processID("Notification Variant")}>Variant</a>
     <a href={processID("Notification Duration")}>Duration</a>
     <a href={processID("Remove On Click")}>Remove On Click</a>
     <a href={processID("Customization")}>Customization</a>
     <a href={processID("Accessibility")}>Accessibility</a>
+    <a href={processID("notify() Function")}>notify() Function</a>
     <a href={processID("Configuration")}>Configuration</a>
   {/snippet}
 

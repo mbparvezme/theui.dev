@@ -2,7 +2,20 @@
   {
     "key": "props",
     "title": "Props",
-    "data": null
+    "data": [
+      {
+        "name": "position",
+        "type": "'top-end' | 'top-center' | 'top-start' | 'bottom-end' | 'bottom-center' | 'bottom-start'",
+        "description": "Position of the modal on the screen.",
+        "default": "\"center\""
+      },
+      {
+        "name": "animate",
+        "type": "<a href=\"/docs/types#common-types\">ANIMATE_SPEED</a>",
+        "description": "Speed of the animation.",
+        "default": "\"fast\""
+      }
+    ]
   },
   {
     "key": "dynamicProps",
