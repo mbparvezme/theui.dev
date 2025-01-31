@@ -128,18 +128,17 @@ notify( "Hello world!", "success", {theme: "gradient"} )
   </DocBlock>
 
   <DocBlock title="Notification Variant">
-    <p class="not-prose">...</p>
+    <p class="not-prose">The <code>'variant'</code> property allows you to change the visual style of the notification while keeping it minimal. There are four available variants: <code>'card'</code>, <code>'barTop'</code>, <code>'barBottom'</code>, and <code>'barStart'</code>.</p>
+    <p class="not-prose">The default variant, <code>'card'</code>, follows a standard notification style without extra elements. The other three variants — <code>'barTop'</code>, <code>'barBottom'</code>, and <code>'barStart'</code> — add a thin line to the respective side of the notification. This subtle design change helps visually distinguish notifications without making them too complex.</p>
+    <p class="not-prose">For example, using <code>barTop</code> will place a small line at the top of the notification, while <code>barBottom</code> and <code>barStart</code> will do the same for the bottom and start (left in LTR layouts, right in RTL layouts).</p>
     <Example>
       {#snippet example()}
         <iframe src="/example/notification-variant" style="width: 100%; height: 260px;" scrolling="no"></iframe>
       {/snippet}
       {#snippet code()}
 
-```html
-<Button onclick={()=> notify("Hello world!") }>Error (Default)</Button>
-<Button onclick={()=> notify("Hello world!", "info") }>Info</Button>
-<Button onclick={()=> notify("Hello world!", "success") }>Success</Button>
-<Button onclick={()=> notify("Hello world!", "warning") }>Warning</Button>
+```js
+notify("Hello world!", "success", {theme: "light", variant: "borderTop"})
 ```
       {/snippet}
     </Example>
