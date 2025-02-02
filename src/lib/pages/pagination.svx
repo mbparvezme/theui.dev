@@ -68,9 +68,9 @@ description: Enable seamless content navigation in your Svelte app with theui-sv
       {#snippet code()}
 
 ```html
-<Pagination data={paginationData} align="start" />
-<Pagination data={paginationData} align="center" />
-<Pagination data={paginationData} align="end" />
+<Pagination {data} align="start" />
+<Pagination {data} align="center" />
+<Pagination {data} align="end" />
 ```
       {/snippet}
     </Example>
@@ -92,38 +92,153 @@ description: Enable seamless content navigation in your Svelte app with theui-sv
       {#snippet code()}
 
 ```html
-<Pagination data={paginationData} size="xs" />
-<Pagination data={paginationData} size="sm" />
-<Pagination data={paginationData} size="md" />
-<Pagination data={paginationData} size="lg" />
-<Pagination data={paginationData} size="xl" />
+<Pagination {data} size="xs" />
+<Pagination {data} size="sm" />
+<Pagination {data} size="md" />
+<Pagination {data} size="lg" />
+<Pagination {data} size="xl" />
 ```
       {/snippet}
     </Example>
   </DocBlock>
 
   <DocBlock title="Flat Pagination">
-    <p class="not-prose">Add <code>flat</code> attribute to the <code>Pagination</code> component to make the pagination flat/borderless.</p>
+    <p class="not-prose">Add <code>flat</code> attribute to the <code>Pagination</code> component to make the pagination flat/border-less.</p>
     <Example>
       {#snippet example()}
         <div class="flex flex-col gap-2 w-full">
-          <Pagination data={paginationData} />
           <Pagination data={paginationData} flat />
         </div>
       {/snippet}
       {#snippet code()}
 
 ```html
-<Pagination data={paginationData} />
-<Pagination data={paginationData} flat />
+<Pagination {data} flat />
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Prev/Next Button">
+    <p class="not-prose">You can use the <code>hidePrevious</code>, <code>hideNext</code>, and <code>hidePreviousNext</code> attributes to control the visibility of navigation buttons in the Pagination component. The <code>hidePrevious</code> hides the previous button, <code>hideNext</code> hides the next button, and <code>hidePreviousNext</code> hides both.</p>
+    <Example title="Hide Prev/Next Button">
+      <p class="not-prose">The example below demonstrates how to hide the previous button, next button, or both using attributes. The first example hides the previous button, the second hides the next button, and the third hides both.</p>
+      {#snippet example()}
+        <div class="flex flex-col gap-2 w-full">
+          <Pagination data={paginationData} hidePrevious />
+          <Pagination data={paginationData} hideNext />
+          <Pagination data={paginationData} hidePreviousNext />
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Pagination {data} hidePrevious />
+<Pagination {data} hideNext />
+<Pagination {data} hidePreviousNext />
+```
+      {/snippet}
+    </Example>
+
+    <Example title="Custom Previous/Next Button Content">
+      <p class="not-prose">The <code>previousButton</code> and <code>nextButton</code> props allow you to customize the content of the previous and next buttons in the Pagination component. These props accept both plain text and HTML, giving you flexibility in styling and design.</p>
+      <p class="not-prose">By default, <code>previousButton</code> is set to <code>"&larr; Prev"</code>, and <code>nextButton</code> is set to <code>"Next &rarr;"</code>. You can modify these values to fit your needs, such as changing the text or adding icons.</p>
+      {#snippet example()}
+        <Pagination previousButton="&lsaquo;" nextButton="&rsaquo;" data={paginationData} />
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Pagination {data} previousButton="&lsaquo;" nextButton="&rsaquo;" />
+```
+      {/snippet}
+    </Example>
+
+
+
+
+  </DocBlock>
+
+  <DocBlock title="Hide Page Number Buttons">
+    <Example>
+      <p class="not-prose">In some cases, you may only need the previous and next buttons without page numbers. The Pagination component supports this by default - simply leave the <code>data</code> prop empty, and it will display only the previous and next buttons.</p>
+      {#snippet example()}
+        <Pagination />
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Pagination />
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Rounded Corner">
+    <Example>
+      <p class="not-prose">The <code>rounded</code> prop in the Pagination component allows you to easily control the border radius, ensuring consistent design throughout the application. This prop supports several predefined values, providing flexibility while maintaining a uniform look. Available values are: <code>none</code>, <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code>, and <code>full</code>. Default value <code>md</code>.</p>
+      {#snippet example()}
+        <div class="flex flex-col gap-2 w-full">
+          <Pagination rounded="none" data={paginationData} />
+          <Pagination rounded="sm" data={paginationData} />
+          <Pagination rounded="md" data={paginationData} />
+          <Pagination rounded="lg" data={paginationData} />
+          <Pagination rounded="xl" data={paginationData} />
+          <Pagination rounded="full" data={paginationData} />
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Pagination {data} rounded="none" />
+<Pagination {data} rounded="sm" />
+<Pagination {data} rounded="md" />
+<Pagination {data} rounded="lg" />
+<Pagination {data} rounded="xl" />
+<Pagination {data} rounded="full" />
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Animation Speed">
+    <p class="not-prose">The <code>animate</code> prop controls the animation (hover animation in this case) speed of <code>Pagination</code>. Options include <code>'none'</code> for no animation, <code>'slower'</code> or <code>slow</code> for a gradual effect, <code>normal</code> (default) for standard speed, and <code>fast</code> or <code>faster</code> for quicker animations.</p>
+    <Example>
+      {#snippet example()}
+        <div class="flex flex-col gap-2 w-full">
+          <Pagination data={paginationData} animate="slower" />
+          <Pagination data={paginationData} animate="slow" />
+          <Pagination data={paginationData} animate="normal" />
+          <Pagination data={paginationData} animate="fast" />
+          <Pagination data={paginationData} animate="faster" />
+          <Pagination data={paginationData} animate="none" />
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Pagination {data} animate="slower" />
+<Pagination {data} animate="slow" />
+<Pagination {data} animate="normal" />
+<Pagination {data} animate="fast" />
+<Pagination {data} animate="faster" />
+<Pagination {data} animate="none" />
 ```
       {/snippet}
     </Example>
   </DocBlock>
 
   <DocBlock title="Accessibility">
-    <p class="not-prose">The Alert component is built with accessibility in mind, handling all necessary ARIA attributes, including <code>role="alert"</code> and <code>aria-label="Close alert"</code>, to ensure compatibility with assistive technologies. These attributes are automatically applied, so you don't need to configure them manually.</p>
-    <p class="not-prose font-bold">The only consideration required is maintaining proper color contrast for the alert's text and background to ensure readability and compliance with accessibility standards.</p>
+    <div>
+      <p class="not-prose">The Pagination component is designed with accessibility in mind, ensuring easy navigation for all users, including those using screen readers or keyboard navigation.</p>
+      <ul class="my-0">
+        <li><b>Keyboard Navigation</b>: Users can navigate through pagination using the <kbd>tab</kbd> key to move focus and <kbd>Enter</kbd> or <kbd>Space</kbd> to activate a button.</li>
+        <li><b>ARIA Labels</b>: The component includes appropriate <span class="not-prose"><code>aria-label</code></span> attributes for previous, next, and page buttons, improving screen reader support.</li>
+        <li><b>Focus Indicators</b>: Clear focus styles ensure visibility when navigating with a keyboard.</li>
+        <li><b>Semantic HTML</b>: Uses proper HTML elements <span class="not-prose">(<code>button</code>, <code>a</code>, <code>nav</code>, and <code>ul/li</code>)</span> to enhance usability and compatibility with assistive technologies.</li>
+      </ul>
+      <p class="not-prose">These features help make the Pagination component more accessible and user-friendly.</p>
+    </div>
   </DocBlock>
 
   <DocBlock title="Configuration">
@@ -131,9 +246,17 @@ description: Enable seamless content navigation in your Svelte app with theui-sv
   </DocBlock>
 
   {#snippet sidebar()}
+    <a href={processID("About")}>About</a>
     <a href={processID("Example")}>Example</a>
-    ...
-    <a href={processID("Customization")}>Customization</a>
+    <a href={processID("Alignment")}>Alignment</a>
+    <a href={processID("Sizing")}>Sizing</a>
+    <a href={processID("Flat Pagination")}>Flat Pagination</a>
+    <a href={processID("Prev/Next Button")}>Prev/Next Button</a>
+    <a href={processID("Hide Prev/Next Button")} class="ps-4">Hide Prev/Next Button</a>
+    <a href={processID("Custom Previous/Next Button Content")} class="ps-4">Custom Button Content</a>
+    <a href={processID("Hide Page Number Buttons")}>Hide Page Number Buttons</a>
+    <a href={processID("Rounded Corner")}>Rounded Corner</a>
+    <a href={processID("Animation Speed")}>Animation Speed</a>
     <a href={processID("Accessibility")}>Accessibility</a>
     <a href={processID("Configuration")}>Configuration</a>
   {/snippet}

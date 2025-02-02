@@ -315,24 +315,24 @@ description: Create responsive and stylish buttons for your Svelte app with TheU
 
   <DocBlock title="Rounded Corner Button">
     <Example>
-      <p class="not-prose">The <code>rounded</code>The <code>rounded</code> prop in the Button component allows you to easily control the border radius, ensuring consistent design throughout your application. This prop supports several predefined values, providing flexibility while maintaining a uniform look. Users can also apply custom classes for more specific styling needs if required.</p>
+      <p class="not-prose">The <code>rounded</code> prop in the Button component allows you to easily control the border radius, ensuring consistent design throughout your application. This prop supports several predefined values, providing flexibility while maintaining a uniform look. Available values are: <code>none</code>, <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code>, and <code>full</code>. Default value <code>md</code>.</p>
       {#snippet example()}
+        <Button rounded="none">None</Button>
         <Button rounded="sm">Small</Button>
         <Button rounded="md">Medium</Button>
         <Button rounded="lg">Large</Button>
         <Button rounded="xl">Extra large</Button>
         <Button rounded="full">Full</Button>
-        <Button rounded="none">None</Button>
       {/snippet}
       {#snippet code()}
 
 ```html
+<Button rounded="none">None</Button>
 <Button rounded="sm">Small</Button>
 <Button rounded="md">Medium</Button>
 <Button rounded="lg">Large</Button>
 <Button rounded="xl">Extra large</Button>
 <Button rounded="full">Full</Button>
-<Button rounded="none">None</Button>
 ```
       {/snippet}
     </Example>

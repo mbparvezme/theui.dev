@@ -53,8 +53,6 @@
     "data": [
       {
         "name": "horizontal",
-        "type": "N/A",
-        "default": "N/A",
         "description": "If true, displays the component in a horizontal layout."
       }
     ]

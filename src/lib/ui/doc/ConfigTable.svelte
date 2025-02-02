@@ -32,5 +32,5 @@
   {#if title}
     <h4 class="text-xl font-semibold font-body text-gray-700 dark:text-gray-400 mt-0 font-body mb-4">{title}</h4>
   {/if}
-  <Table class="text-sm" {data} {keys} {headers} />
+  <Table {data} {keys} {headers} />
 </div>

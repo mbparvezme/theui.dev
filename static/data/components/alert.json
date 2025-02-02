@@ -47,8 +47,6 @@
       },
       {
         "name": "hideIcon",
-        "type": "N/A",
-        "default": "N/A",
         "description": "Hides the icon part from the alert."
       }
     ]

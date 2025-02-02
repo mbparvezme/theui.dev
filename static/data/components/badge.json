@@ -23,14 +23,10 @@
     "data": [
       {
         "name": "grow",
-        "type": "N/A",
-        "default": "N/A",
         "description": "Determines if the component should grow to match the parent element's font size."
       },
       {
         "name": "topFixed",
-        "type": "N/A",
-        "default": "N/A",
         "description": "Fixes the component to the top of its container."
       }
     ]
