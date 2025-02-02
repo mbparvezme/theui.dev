@@ -21,6 +21,14 @@ description: Enable seamless content navigation in your Svelte app with theui-sv
     { url: "/page/3" },
     { url: "/page/4" }
   ];
+
+  let prevFunction = () => {
+    alert("Hello from previous function!")
+  }
+
+  let nextFunction = () => {
+    alert("Hello from next function!")
+  }
 </script>
 
 <DocLayout>
@@ -154,9 +162,28 @@ description: Enable seamless content navigation in your Svelte app with theui-sv
       {/snippet}
     </Example>
 
+    <Example title="Onclick Function">
+      <p class="not-prose">In some cases, you may need custom functionality when clicking the previous or next button. You can achieve this using the <code>onPreviousClick</code> and <code>onNextClick</code> props by passing your custom functions to them.</p>
+      {#snippet example()}
+        <Pagination data={paginationData} onPreviousClick={prevFunction} onNextClick={nextFunction} />
+      {/snippet}
+      {#snippet code()}
 
+```html
+<script>
+  let prevFunction = () => {
+    alert("Hello from previous function!")
+  }
 
+  let nextFunction = () => {
+    alert("Hello from next function!")
+  }
+</script>
 
+<Pagination {data} onPreviousClick={prevFunction} onNextClick={nextFunction} />
+```
+      {/snippet}
+    </Example>
   </DocBlock>
 
   <DocBlock title="Hide Page Number Buttons">
@@ -253,7 +280,8 @@ description: Enable seamless content navigation in your Svelte app with theui-sv
     <a href={processID("Flat Pagination")}>Flat Pagination</a>
     <a href={processID("Prev/Next Button")}>Prev/Next Button</a>
     <a href={processID("Hide Prev/Next Button")} class="ps-4">Hide Prev/Next Button</a>
-    <a href={processID("Custom Previous/Next Button Content")} class="ps-4">Custom Button Content</a>
+    <a href={processID("Custom Previous/Next Button Content")} class="ps-4">Prev/Next Button Content</a>
+    <a href={processID("Onclick function")} class="ps-4">Onclick function</a>
     <a href={processID("Hide Page Number Buttons")}>Hide Page Number Buttons</a>
     <a href={processID("Rounded Corner")}>Rounded Corner</a>
     <a href={processID("Animation Speed")}>Animation Speed</a>
