@@ -6,7 +6,7 @@
       {
         "name": "trigger",
         "type": "'onEntry' | 'onExit' | 'onEntryExit'",
-        "default": "onEntry",
+        "default": "\"onEntry\"",
         "description": "Defines when the popup should appear: on page load, before exit, or both."
       },
       {
@@ -30,7 +30,7 @@
       {
         "name": "rounded",
         "type": "<a href=\"/docs/types#common-types\">ROUNDED</a>",
-        "default": "xl",
+        "default": "\"xl\"",
         "description": "Defines the border-radius of the popup for consistent design."
       }
     ]

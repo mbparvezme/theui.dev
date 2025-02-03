@@ -14,7 +14,7 @@ description: Create engaging entrance and exit popups for your Svelte app with t
   import { processID } from "$lib";
   let { component, edit_url }: {component: any, edit_url?: string } = $props();
 
-  import { Popup } from "theui-svelte";
+  import { Popup, Button } from "theui-svelte";
 </script>
 
 <DocLayout>
@@ -28,7 +28,7 @@ description: Create engaging entrance and exit popups for your Svelte app with t
     <p class="not-prose">The following examples show how to use the Popup component with different triggers and content configurations. You can display a popup when the page loads (onEntry), when the user tries to leave (onExit), or for both events (onEntryExit).</p>
     <Example>
       {#snippet example()}
-        Popup will display here
+        <Button newTabIcon target="_blank" href="/example/popup-example">Open example</Button>
       {/snippet}
 
       {#snippet code()}
@@ -38,7 +38,7 @@ description: Create engaging entrance and exit popups for your Svelte app with t
 </script>
 
 <Popup>
-  This is entry popup!
+  Hello! I'm popup!
 </Popup>
 ```
       {/snippet}
@@ -50,16 +50,12 @@ description: Create engaging entrance and exit popups for your Svelte app with t
     <Example title="Entry Popup">
       <p class="not-prose">When <code>trigger</code> is set to <code>'onEntry'</code>, the popup will automatically appear as soon as the page loads. No user interaction is needed to trigger it.</p>
       {#snippet example()}
-        Popup will display here
+        <Button newTabIcon target="_blank" href="/example/popup-entry">Open example</Button>
       {/snippet}
 
       {#snippet code()}
 ```html
-<script>
-  import { Popup } from "theui-svelte";
-</script>
-
-<Popup>
+<Popup trigger="onEntry"> <!-- Or just <Popup> as onEntry is default -->
   This is entry popup!
 </Popup>
 ```
@@ -68,17 +64,13 @@ description: Create engaging entrance and exit popups for your Svelte app with t
     <Example title="Exit Popup">
       <p class="not-prose">With <code>trigger</code> set to <code>'onExit'</code>, the popup will appear when the user moves their cursor toward the browser’s close button or attempts to leave the page.</p>
       {#snippet example()}
-        Popup will display here
+        <Button newTabIcon target="_blank" href="/example/popup-exit">Open example</Button>
       {/snippet}
 
       {#snippet code()}
 ```html
-<script>
-  import { Popup } from "theui-svelte";
-</script>
-
-<Popup>
-  This is entry popup!
+<Popup trigger="onExit">
+  This is exit popup!
 </Popup>
 ```
       {/snippet}
@@ -86,17 +78,33 @@ description: Create engaging entrance and exit popups for your Svelte app with t
     <Example title="Both Entry-Exit Popup">
       <p class="not-prose">Setting <code>trigger</code> to <code>'onEntryExit'</code> will make the popup appear both when the page loads and when the user tries to exit. It combines the behaviors of <code>'onEntry'</code> and <code>'onExit'</code>.</p>
       {#snippet example()}
-        Popup will display here
+        <Button newTabIcon target="_blank" href="/example/popup-entry-exit">Open example</Button>
       {/snippet}
 
       {#snippet code()}
 ```html
-<script>
-  import { Popup } from "theui-svelte";
-</script>
+<Popup trigger="onEntryExit">
+  The popup appears in both entry and exit time!
+</Popup>
+```
+      {/snippet}
+    </Example>
+    <p class="not-prose">Above example will display same content on entry and exit popup! But if you want, you can provide separate content for both entry and exit popup using the <code>entryContent</code> and <code>exitContent</code> snippet. </p>
+    <Example>
+      {#snippet example()}
+        <Button newTabIcon target="_blank" href="/example/popup-entry-exit-snippet">Open example</Button>
+      {/snippet}
 
-<Popup>
-  This is entry popup!
+      {#snippet code()}
+```html
+<Popup trigger="onEntryExit">
+  {#snippet entryContent()}
+    <p class="text-success-500 font-bold">I'm content from entry popup!</p>
+  {/snippet}
+
+  {#snippet exitContent()}
+    <p class="text-error-500 font-bold">I'm content from exit popup!</p>
+  {/snippet}
 </Popup>
 ```
       {/snippet}
@@ -104,38 +112,28 @@ description: Create engaging entrance and exit popups for your Svelte app with t
   </DocBlock>
 
   <DocBlock title="Popup Repetition">
-    <Example>
+    <div>
       <p class="not-prose">The <code>repeat</code> prop controls how often the Popup appears. It accepts three values: <code>true</code>, <code>false</code>, and <code>'page'</code>. The default value is <code>true</code>.</p>
       <ul class="my-0">
-        <li><span class="not-prose"><code>true</code></span> - The popup will appear every time the page loads, even if the user reloads the same page.</li>
+        <li><span class="not-prose"><code>true</code></span> - The popup will appear every time the page loads, even if the user reloads the same page. This is the default behavior.</li>
         <li><span class="not-prose"><code>false</code></span> - The popup will appear only once, and it won’t show again, even if the user navigates to a different page.</li>
         <li><span class="not-prose"><code>'page'</code></span> - The popup will appear once per page. If the user moves to another page, it will show again, but it won’t repeat on the same page.</li>
       </ul>
-      {#snippet example()}
-        Popup will display here
-      {/snippet}
-
-      {#snippet code()}
-```html
-<Popup>
-  This is entry popup!
-</Popup>
-```
-      {/snippet}
-    </Example>
+    </div>
+    <p class="not-prose">This feature allows precise control over popup behavior across pages. For example, to display the popup only once per visitor, set <code>repeat={"{"+false+"}"}</code>. To show the popup once per page the visitor visits, set <code>repeat="page"</code>.</p>
   </DocBlock>
 
   <DocBlock title="Popup Backdrop">
     <Example title="Static Backdrop">
       <p class="not-prose">The <code>staticBackdrop</code> prop controls whether the Popup closes when clicking on the backdrop. By default, the backdrop is clickable, and clicking it will close the Popup. Setting <code>staticBackdrop</code> to <code>true</code> makes the backdrop static, meaning the Modal will remain open even when the backdrop is clicked.</p>
       {#snippet example()}
-        Popup here
+        <Button newTabIcon target="_blank" href="/example/popup-static-backdrop">Open example</Button>
       {/snippet}
 
       {#snippet code()}
 ```html
-<Popup>
-  This is entry popup!
+<Popup staticBackdrop={true}>
+  This popup has a static backdrop!
 </Popup>
 ```
       {/snippet}
@@ -144,12 +142,20 @@ description: Create engaging entrance and exit popups for your Svelte app with t
     <Example title="Backdrop Customization">
       <p class="not-prose">The <code>backdrop</code> prop manages the visibility and style of the backdrop. When set to <code>true</code> (default), the backdrop is visible. If set to <code>false</code>, the backdrop will be hidden. You can also customize the backdrop by passing custom CSS classes, which will apply directly to the backdrop.</p>
       {#snippet example()}
-
+        <Button newTabIcon target="_blank" href="/example/popup-backdrop-no">No-backdrop example</Button>
+        <Button newTabIcon target="_blank" href="/example/popup-backdrop-custom">Custom-backdrop example</Button>
       {/snippet}
       {#snippet code()}
+
 ```html
-<Popup>
-  This is entry popup!
+<!-- No backdrop -->
+<Popup backdrop={false}>
+  This popup has no backdrop!
+</Popup>
+
+<!-- Custom backdrop -->
+<Popup backdrop="bg-brand-primary-500/80">
+  This popup has a custom backdrop!
 </Popup>
 ```
       {/snippet}
@@ -160,17 +166,13 @@ description: Create engaging entrance and exit popups for your Svelte app with t
     <p class="not-prose">TThe <code>rounded</code> prop controls the corner radius of the Popup, ensuring design consistency. While custom CSS classes can be used for styling, this prop provides a standardized way to apply consistent rounding across the component. Available values are: <code>none</code>, <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code>, and <code>full</code>. Default value <code>md</code>.</p>
     <Example>
       {#snippet example()}
-        Popup will display here
+        <Button newTabIcon target="_blank" href="/example/popup-rounded-no">Open example</Button>
       {/snippet}
 
       {#snippet code()}
 ```html
-<script>
-  import { Popup } from "theui-svelte";
-</script>
-
-<Popup>
-  This is entry popup!
+<Popup rounded="none">
+  This popup has no rounded corners!
 </Popup>
 ```
       {/snippet}
@@ -178,12 +180,34 @@ description: Create engaging entrance and exit popups for your Svelte app with t
   </DocBlock>
 
   <DocBlock title="Customization">
-    <p class="not-prose">..</p>
+    <p class="not-prose">You can pass your custom classes to the <code>Popup</code> component using the <code>class</code> attribute. These classes directly applies to the popup component.</p>
+    <Example>
+      {#snippet example()}
+        <Button newTabIcon target="_blank" href="/example/popup-customization">Open example</Button>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Popup class="border-4 border-brand-primary-200 bg-brand-primary-500 text-on-brand-primary-500">
+  This is a custom popup with some extra classes!
+</Popup>
+```
+      {/snippet}
+    </Example>
   </DocBlock>
 
   <DocBlock title="Accessibility">
-    <p class="not-prose">The Alert component is built with accessibility in mind, handling all necessary ARIA attributes, including <code>role="alert"</code> and <code>aria-label="Close alert"</code>, to ensure compatibility with assistive technologies. These attributes are automatically applied, so you don't need to configure them manually.</p>
-    <p class="not-prose font-bold">The only consideration required is maintaining proper color contrast for the alert's text and background to ensure readability and compliance with accessibility standards.</p>
+    <div>
+      <p class="not-prose">The Alert <code>Popup</code> component is designed to be accessible for all users, including those with disabilities. Here's how it works:</p>
+      <ul class="my-0">
+        <li><b>Focus Management</b>: When the popup opens, focus will automatically go to the first clickable element inside it, such as the close button, allowing keyboard users to interact with it right away.</li>
+        <li><b>Keyboard Navigation</b>: You can use the <kbd>Tab</kbd> key to move through the popup and the <kbd>Esc</kbd> key to close it, making it easy to navigate with a keyboard.</li>
+        <li><b>Aria Roles</b>: The popup has <b>aria-labelledby</b> for screen readers to announce the title and <span class="not-prose"><code>role="dialog"</code></span> to let users know it's a modal window.</li>
+        <li><b>Backdrop Handling</b>: When the popup is open, the backdrop is hidden from screen readers, so users can focus on the popup content.</li>
+        <li><b>Custom Content</b>: The <span class="not-prose"><code>entryContent</code></span> and <span class="not-prose"><code>exitContent</code></span> props allow you to add any content you need, ensuring it's clear for screen readers.</li>
+      </ul>
+    </div>
+    <p class="not-prose">The <b>Popup</b> is built to work well with screen readers and keyboard navigation, making sure everyone can use it comfortably.</p>
   </DocBlock>
 
   <DocBlock title="Configuration">
