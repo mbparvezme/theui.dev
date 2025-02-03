@@ -1,7 +1,7 @@
 ---
 title: Popup
 dir: ".lib/pages"
-description: Create engaging entrance and exit popups for your Svelte app with TheUI-Svelte's Popup component, enhancing user interaction.
+description: Create engaging entrance and exit popups for your Svelte app with theui-svelte's Popup component, enhancing user interaction.
 ---
 
 <script lang="ts">
@@ -18,10 +18,14 @@ description: Create engaging entrance and exit popups for your Svelte app with T
 </script>
 
 <DocLayout>
-  <DocHead title="Popup" text="...." {edit_url}/>
+  <DocHead title="Popup" text="A special type of modal that can be triggered when the page loads (Enter Popup) or when the user tries to leave the page (Exit Popup). This makes it ideal for welcome messages, promotions, or exit-intent offers." {edit_url}/>
+
+  <DocBlock title="About">
+    <p class="not-prose">The <b>Popup</b> component provides flexible control over when and how it appears. You can trigger it on page <b>entry</b>, <b>exit</b>, or <b>both</b> using the <code>trigger</code> prop. The content of the popup can be customized separately for entry (<code>entryContent</code>) and exit (<code>exitContent</code>). You can also control whether it repeats on every visit, how the backdrop behaves, and apply custom styles.</p>
+  </DocBlock>
 
   <DocBlock title="Example">
-    <p class="not-prose">..</p>
+    <p class="not-prose">The following examples show how to use the Popup component with different triggers and content configurations. You can display a popup when the page loads (onEntry), when the user tries to leave (onExit), or for both events (onEntryExit).</p>
     <Example>
       {#snippet example()}
         Popup will display here
@@ -33,10 +37,148 @@ description: Create engaging entrance and exit popups for your Svelte app with T
   import { Popup } from "theui-svelte";
 </script>
 
-// Popup
+<Popup>
+  This is entry popup!
+</Popup>
 ```
       {/snippet}
     </Example>
+  </DocBlock>
+
+  <DocBlock title="Trigger Event">
+    <p class="not-prose">The <code>trigger</code> prop defines when the Popup appears. It supports three values: <code>'onEntry'</code>, <code>'onExit'</code>, and <code>'onEntryExit'</code>. The default value is <code>'onEntry'</code>.</p>
+    <Example title="Entry Popup">
+      <p class="not-prose">When <code>trigger</code> is set to <code>'onEntry'</code>, the popup will automatically appear as soon as the page loads. No user interaction is needed to trigger it.</p>
+      {#snippet example()}
+        Popup will display here
+      {/snippet}
+
+      {#snippet code()}
+```html
+<script>
+  import { Popup } from "theui-svelte";
+</script>
+
+<Popup>
+  This is entry popup!
+</Popup>
+```
+      {/snippet}
+    </Example>
+    <Example title="Exit Popup">
+      <p class="not-prose">With <code>trigger</code> set to <code>'onExit'</code>, the popup will appear when the user moves their cursor toward the browser’s close button or attempts to leave the page.</p>
+      {#snippet example()}
+        Popup will display here
+      {/snippet}
+
+      {#snippet code()}
+```html
+<script>
+  import { Popup } from "theui-svelte";
+</script>
+
+<Popup>
+  This is entry popup!
+</Popup>
+```
+      {/snippet}
+    </Example>
+    <Example title="Both Entry-Exit Popup">
+      <p class="not-prose">Setting <code>trigger</code> to <code>'onEntryExit'</code> will make the popup appear both when the page loads and when the user tries to exit. It combines the behaviors of <code>'onEntry'</code> and <code>'onExit'</code>.</p>
+      {#snippet example()}
+        Popup will display here
+      {/snippet}
+
+      {#snippet code()}
+```html
+<script>
+  import { Popup } from "theui-svelte";
+</script>
+
+<Popup>
+  This is entry popup!
+</Popup>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Popup Repetition">
+    <Example>
+      <p class="not-prose">The <code>repeat</code> prop controls how often the Popup appears. It accepts three values: <code>true</code>, <code>false</code>, and <code>'page'</code>. The default value is <code>true</code>.</p>
+      <ul class="my-0">
+        <li><span class="not-prose"><code>true</code></span> - The popup will appear every time the page loads, even if the user reloads the same page.</li>
+        <li><span class="not-prose"><code>false</code></span> - The popup will appear only once, and it won’t show again, even if the user navigates to a different page.</li>
+        <li><span class="not-prose"><code>'page'</code></span> - The popup will appear once per page. If the user moves to another page, it will show again, but it won’t repeat on the same page.</li>
+      </ul>
+      {#snippet example()}
+        Popup will display here
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Popup>
+  This is entry popup!
+</Popup>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Popup Backdrop">
+    <Example title="Static Backdrop">
+      <p class="not-prose">The <code>staticBackdrop</code> prop controls whether the Popup closes when clicking on the backdrop. By default, the backdrop is clickable, and clicking it will close the Popup. Setting <code>staticBackdrop</code> to <code>true</code> makes the backdrop static, meaning the Modal will remain open even when the backdrop is clicked.</p>
+      {#snippet example()}
+        Popup here
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Popup>
+  This is entry popup!
+</Popup>
+```
+      {/snippet}
+    </Example>
+
+    <Example title="Backdrop Customization">
+      <p class="not-prose">The <code>backdrop</code> prop manages the visibility and style of the backdrop. When set to <code>true</code> (default), the backdrop is visible. If set to <code>false</code>, the backdrop will be hidden. You can also customize the backdrop by passing custom CSS classes, which will apply directly to the backdrop.</p>
+      {#snippet example()}
+
+      {/snippet}
+      {#snippet code()}
+```html
+<Popup>
+  This is entry popup!
+</Popup>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Rounded Corners">
+    <p class="not-prose">TThe <code>rounded</code> prop controls the corner radius of the Popup, ensuring design consistency. While custom CSS classes can be used for styling, this prop provides a standardized way to apply consistent rounding across the component. Available values are: <code>none</code>, <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code>, and <code>full</code>. Default value <code>md</code>.</p>
+    <Example>
+      {#snippet example()}
+        Popup will display here
+      {/snippet}
+
+      {#snippet code()}
+```html
+<script>
+  import { Popup } from "theui-svelte";
+</script>
+
+<Popup>
+  This is entry popup!
+</Popup>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Customization">
+    <p class="not-prose">..</p>
   </DocBlock>
 
   <DocBlock title="Accessibility">
@@ -49,8 +191,17 @@ description: Create engaging entrance and exit popups for your Svelte app with T
   </DocBlock>
 
   {#snippet sidebar()}
+    <a href={processID("About")}>About</a>
     <a href={processID("Example")}>Example</a>
-    ...
+    <a href={processID("Trigger Event")}>Trigger Event</a>
+    <a href={processID("Entry Popup")} class="ps-4">Entry Popup</a>
+    <a href={processID("Exit Popup")} class="ps-4">Exit Popup</a>
+    <a href={processID("Both Entry-Exit Popup")} class="ps-4">Both Entry-Exit Popup</a>
+    <a href={processID("Popup Repetition")}>Popup Repetition</a>
+    <a href={processID("Popup Backdrop")}>Popup Backdrop</a>
+    <a href={processID("Static Backdrop")} class="ps-4">Static Backdrop</a>
+    <a href={processID("Backdrop Customization")} class="ps-4">Backdrop Customization</a>
+    <a href={processID("Rounded Corners")}>Rounded Corners</a>
     <a href={processID("Customization")}>Customization</a>
     <a href={processID("Accessibility")}>Accessibility</a>
     <a href={processID("Configuration")}>Configuration</a>
