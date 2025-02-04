@@ -1,7 +1,7 @@
 ---
 title: Progress Bar
 dir: ".lib/pages"
-description: ===========
+description: The Progress component is used to display progress visually. It helps indicate completion status in a clear and customizable way.
 ---
 
 <script lang="ts">
@@ -14,17 +14,24 @@ description: ===========
   import { processID } from "$lib";
   let { component, edit_url }: {component: any, edit_url?: string } = $props();
 
-  import { Progress } from "theui-svelte";
+  import { Progress, Alert } from "theui-svelte";
+
+  let startValue = $state(0)
+  let endValue = $state(40)
 </script>
 
 <DocLayout>
-  <DocHead title="Progress bar" text="...." {edit_url}/>
+  <DocHead title="Progress bar" text="The component is used to display progress visually. It helps indicate completion status in a clear and customizable way." {edit_url}/>
+
+  <DocBlock title="About">
+    <p class="not-prose">The <b>Progress</b> provides flexible options for styling, orientation, and labeling. It supports both horizontal and vertical layouts, with customizable thickness, rounded corners, and additional styling classes. The progress value is determined by the <code>start</code> and <code>end</code> props, and labels can be displayed in different styles.</p>
+  </DocBlock>
 
   <DocBlock title="Example">
-    <p class="not-prose">..</p>
+    <p class="not-prose">The following example shows a simple progress bar with a set start and end value, along with a label:</p>
     <Example>
       {#snippet example()}
-        Progress will display here
+        <Progress end={55} />
       {/snippet}
 
       {#snippet code()}
@@ -33,15 +40,189 @@ description: ===========
   import { Progress } from "theui-svelte";
 </script>
 
-// Progress
+<Progress end={55} />
+```
+      {/snippet}
+    </Example>
+    <p class="not-prose">The <code>end</code> prop define the end limit of the progress. The <code>start</code> is <b>0</b> default.</p>
+  </DocBlock>
+
+  <DocBlock title="Progress Range">
+    <p class="not-prose">The <code>start</code> and <code>end</code> props define the progress range. The <code>start</code> prop sets the initial value, while the <code>end</code> prop sets the final value of the progress bar. By default, both values are <code>0</code>, which is the minimum value. The maximum value is <code>100</code>.</p>
+    <ul class="my-0">
+      <li><span class="not-prose">If <code>start</code> and <code>end</code> are equal, the progress bar will appear empty. Only the label will be display (if available).</span></li>
+      <li><span class="not-prose">If <code>start</code> is greater than <code>end</code>, they will swap their values to work properly.</span></li>
+      <li><span class="not-prose">If <code>end</code> is greater than <code>start</code> (which is expected), the progress bar will fill accordingly.</span></li>
+      <li><span class="not-prose">If <code>end</code> exceeds the maximum range (100), it will be considered as 100.</span></li>
+    </ul>
+
+    <Example>
+      {#snippet example()}
+        <div class="flex flex-col gap-9 w-full pt-4">
+          <Progress start={55} end={55} label="55" />
+          <Progress start={75} end={45} label="55" />
+          <Progress start={25} end={55} label="55" />
+          <Progress start={25} end={155} label="55" />
+        </div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Progress start={55} end={55} label="55" />
+<Progress start={75} end={55} label="55" />
+<Progress start={25} end={55} label="55" />
+<Progress start={25} end={155} label="55" />
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Thickness">
+    <p class="not-prose">The <code>thickness</code> prop controls the thickness of the progress bar. It accepts five values: <code>'px'</code>, <code>'sm'</code>, <code>'md'</code>, <code>'lg'</code>, and <code>'xl'</code>. The default value is <code>'md'</code>.</p>
+    
+    <Alert type="warning" theme="light" variant="borderStart"><span class="not-prose">
+    If the <code>thickness</code> is set to <code>'px'</code>, <code>'sm'</code> or <code>'md'</code>, the label will always be displayed as a bubble, regardless of the <code>labelVariant</code> setting.
+    </span></Alert>
+
+    <Example>
+      {#snippet example()}
+        <div class="flex flex-col gap-10 w-full pt-4">
+          <Progress end={55} label="55" thickness="px" />
+          <Progress end={55} label="55" thickness="sm" />
+          <Progress end={55} label="55" thickness="md" />
+          <Progress end={55} label="55" thickness="lg" />
+          <Progress end={55} label="55" thickness="xl" />
+        </div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Progress end={55} label="55" thickness="px" />
+<Progress end={55} label="55" thickness="sm" />
+<Progress end={55} label="55" thickness="md" />
+<Progress end={55} label="55" thickness="lg" />
+<Progress end={55} label="55" thickness="xl" />
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Label">
+    <p class="not-prose">The <code>label</code> prop defines the text displayed on the Progress bar, which can represent progress values or any custom text. By default, no label is shown unless explicitly set.</p>
+    <p class="not-prose">The <code>labelVariant</code> prop controls the appearance of the label. When set to <code>"inline"</code>, the label appears as inline text. When set to <code>"bubble"</code>, the label is enclosed within a bubble for better visibility. The default value for this prop is <code>"bubble"</code>.</p>
+    <Example>
+      {#snippet example()}
+        <div class="flex flex-col gap-4 w-full pt-4">
+          <Progress end={55} label="55" />
+          <Progress end={55} label="55" labelVariant="inline" thickness="lg" />
+        </div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Progress end={55} label="55" />
+<Progress end={55} label="55" labelVariant="inline" thickness="lg" />
+```
+      {/snippet}
+    </Example>
+    <Alert type="warning" theme="light" variant="borderStart"><span class="not-prose">Regardless of the <code>labelVariant</code> setting, if the <code>thickness</code> is not <code>'lg'</code> or <code>'xl'</code>, the label will automatically use the <code>"bubble"</code> variant. Otherwise, it will follow the specified <code>labelVariant</code> value. More in the thickness section.</span></Alert>
+  </DocBlock>
+
+  <DocBlock title="Vertical Progress">
+    <p class="not-prose">You can add a vertical progress bar by jus adding the <code>vertical</code> attribute to the <code>Progress</code>.</p>
+
+    <Example>
+      {#snippet example()}
+        <div class="flex justify-center gap-10 w-full h-64">
+          <Progress end={55} label="55" vertical />
+        </div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Progress end={55} label="55" vertical />
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Dynamic Progress">
+    <p class="not-prose">You can update the progress bar with dynamically by making it reactive. The example given below.</p>
+
+    <Example>
+      {#snippet example()}
+        <div class="flex flex-col justify-center gap-4 w-full">
+          <Progress start={startValue} end={endValue} label={endValue}/>
+          <div class="flex justify-center gap-8 w-full">
+            <p>
+              <label>Start</label><br>
+              <input type="range" bind:value={startValue} />
+            </p>
+            <p>
+              <label>End</label><br>
+              <input type="range" bind:value={endValue} />
+            </p>
+          </div>
+        </div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<script lang="ts">
+  import {Progress} from "$lib";
+  let startValue = $state(0)
+  let endValue = $state(40)
+</script>
+
+<Progress start={startValue} end={endValue} label={endValue}/>
+
+<input type="range" bind:value={startValue} />
+<input type="range" bind:value={endValue} />
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Customization">
+    <p class="not-prose">The progress bar is fully customizable. Use the <code>barClasses</code> prop to apply custom styles to the progress bar, and the <code>bubbleClasses</code> prop to customize the bubble label. The <code>rounded</code> prop controls the border radius of the progress bar. To further customize the progress bar track, apply classes directly to the <code>Progress</code> component using the <code>class</code> attribute.</p>
+    <Example>
+      {#snippet example()}
+        <div class="w-full pt-4">
+          <Progress
+            end={50}
+            label="50"
+            barClasses="bg-green-400"
+            bubbleClasses="bg-green-200 text-green-900"
+            class="bg-green-100"
+            thickness="lg"
+            rounded="none"
+          />
+        </div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Progress
+  end={50}
+  label="50"
+  barClasses="bg-green-400"
+  bubbleClasses="bg-green-600 text-white"
+  class="bg-green-100"
+  thickness="lg"
+  rounded="none"
+/>
 ```
       {/snippet}
     </Example>
   </DocBlock>
 
   <DocBlock title="Accessibility">
-    <p class="not-prose">The Alert component is built with accessibility in mind, handling all necessary ARIA attributes, including <code>role="alert"</code> and <code>aria-label="Close alert"</code>, to ensure compatibility with assistive technologies. These attributes are automatically applied, so you don't need to configure them manually.</p>
-    <p class="not-prose font-bold">The only consideration required is maintaining proper color contrast for the alert's text and background to ensure readability and compliance with accessibility standards.</p>
+    <p class="not-prose">TThe Progress component is designed to be accessible, providing clear indicators of progress for all users. To ensure the component is fully accessible:</p>
+    <ul class="my-0">
+      <li><b>ARIA attributes</b>: <span class="not-prose">The component automatically uses <code>aria-valuenow</code>, <code>aria-valuemin</code>, and <code>aria-valuemax</code> to communicate the current progress and its range to screen readers.</span></li>
+      <li><b>Color contrast</b>: <span class="not-prose">Ensure sufficient color contrast to make the progress bar readable for users with visual impairments.</span></li>
+      <li><b>Label visibility</b>: <span class="not-prose">When using the <code>"bubble"</code> label variant, ensure the label is positioned properly and does not obstruct key content, ensuring a smooth user experience.</span></li>
+    </ul>
   </DocBlock>
 
   <DocBlock title="Configuration">
@@ -49,8 +230,13 @@ description: ===========
   </DocBlock>
 
   {#snippet sidebar()}
+    <a href={processID("About")}>About</a>
     <a href={processID("Example")}>Example</a>
-    ...
+    <a href={processID("Progress Range")}>Progress Range</a>
+    <a href={processID("Thickness")}>Thickness</a>
+    <a href={processID("Label")}>Label</a>
+    <a href={processID("Vertical Progress")}>Vertical Progress</a>
+    <a href={processID("Dynamic Progress")}>Dynamic Progress</a>
     <a href={processID("Customization")}>Customization</a>
     <a href={processID("Accessibility")}>Accessibility</a>
     <a href={processID("Configuration")}>Configuration</a>
