@@ -1,0 +1,210 @@
+---
+title: Table
+dir: ".lib/pages"
+description: Present data effectively in your Svelte app with theui-svelte's Table component, supporting responsive and customizable designs.
+---
+
+<script lang="ts">
+  import DocLayout from "$lib/ui/doc/DocLayout.svelte";
+  import DocHead from "$lib/ui/doc/Head.svelte";
+  import DocBlock from "$lib/ui/doc/Block.svelte";
+  import Code from "$lib/ui/doc/CodeBlock.svelte";
+  import Example from "$lib/ui/doc/Example.svelte";
+  import ConfigComponent from "$lib/ui/doc/ConfigComponent.svelte";
+  import { processID } from "$lib";
+  let { component, edit_url }: {component: any, edit_url?: string } = $props();
+
+  import { Table, THead, TBody, TR, Cell, Button } from "theui-svelte";
+</script>
+
+<DocLayout>
+  <DocHead title="Table" text="A flexible and customizable way to display data in a structured format. It supports various styling options and interactive features to enhance usability." {edit_url}/>
+
+  <DocBlock title="About">
+    <p class="not-prose">The <code>Table</code> component is highly customizable and automatically generates tables from object/JSON data if needed. It supports custom styling, column alignment, and interactive features, making it easy to display structured data efficiently. Whether for simple data presentation or complex tables with sorting and filtering, this component ensures a clean and responsive layout.</p>
+  </DocBlock>
+
+  <DocBlock title="Example">
+    <div>
+      <p class="not-prose">The <code>Table</code> is a powerful, versatile component. You can create a table in many ways. For example:</p>
+      <ul class="my-0">
+        <li>Using data</li>
+        <li>Using snippet</li>
+        <li>Manually using the components</li>
+      </ul>
+    </div>
+    <Example title="Table Using Data">
+      {#snippet example()}
+
+      {/snippet}
+
+      {#snippet code()}
+```html
+<script>
+  import { Table, THead, TBody, TR, Cell } from "theui-svelte";
+</script>
+
+<Table>
+
+</Table>
+```
+      {/snippet}
+    </Example>
+    <Example title="Table Using Snippet">
+      {#snippet example()}
+
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Table>
+
+</Table>
+```
+      {/snippet}
+    </Example>
+    <Example title="Table Using Components">
+      {#snippet example()}
+
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Table>
+
+</Table>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Table Border">
+    <Example>
+      <p class="not-prose">The <code>Table</code> is a powerful, versatile component. You can create a table in many ways. For example:</p>
+      {#snippet example()}
+
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Table>
+
+</Table>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Table Spacing">
+    <Example>
+      <p class="not-prose">The <code>Table</code> is a powerful, versatile component. You can create a table in many ways. For example:</p>
+      {#snippet example()}
+
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Table>
+
+</Table>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Stripe Rows">
+    <Example>
+      <p class="not-prose">The <code>Table</code> is a powerful, versatile component. You can create a table in many ways. For example:</p>
+      {#snippet example()}
+
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Table>
+
+</Table>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Hoverable Rows">
+    <Example>
+      <p class="not-prose">The <code>Table</code> is a powerful, versatile component. You can create a table in many ways. For example:</p>
+      {#snippet example()}
+
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Table>
+
+</Table>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Anatomy of Table">
+    <Example>
+      <p class="not-prose">The <code>Table</code> is a powerful, versatile component. You can create a table in many ways. For example:</p>
+      {#snippet example()}
+
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Table>
+
+</Table>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Customization">
+  </DocBlock>
+
+  <DocBlock title="Accessibility">
+    <div>
+      <p class="not-prose">The modal component is designed with accessibility in mind, ensuring it can be used by everyone, including users relying on assistive technologies. By default, it includes the necessary ARIA attributes and supports keyboard navigation.</p>
+      <ol class="my-0">
+        <li>
+          <b>ARIA Attributes</b>: The Modal uses <span class="not-prose"><code>role="dialog"</code></span> by default to indicate its purpose to assistive technologies. You can add <span class="not-prose"><code>aria-labelledby</code></span> and <span class="not-prose"><code>aria-describedby</code></span> attributes to associate the title and content with the Modal.
+        </li>
+        <li>
+          <b>Keyboard Navigation</b>
+          <ul>
+            <li>Focus is automatically moved to the Modal when it opens.</li>
+            <li>Users can navigate through focusable elements using the <kbd>tab</kbd> key.</li>
+            <li>Pressing the <kbd>Esc</kbd> key closes the Modal.</li>
+          </ul>
+        </li>
+        <li><b>Focus Management</b>: Focus is trapped within the Modal while it is open, ensuring users cannot interact with elements outside of it. When the Modal is closed, focus returns to the triggering element.</li>
+        <li><b>Screen Reader Announcements</b>: The Modal is announced as a dialog to screen readers, helping users understand its purpose.</li>
+        <li><b>Color Contrast</b>: Ensure that text and background colors inside the Modal meet <Button href="https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html" target="_blank" externalLinkIcon={true} class="p-0 bg-transparent text-brand-primary-500 shadow-none hover:bg-transparent flex-wrap">WCAG contrast ratio standards</Button>.</li>
+      </ol>
+    </div>
+  </DocBlock>
+
+  <DocBlock title="Configuration">
+    <ConfigComponent component={component} />
+  </DocBlock>
+
+  {#snippet sidebar()}
+    <a href={processID("About")}>About</a>
+    <a href={processID("Example")}>Example</a>
+    <a href={processID("Table Using Data")} class="ps-4">Table Using Data</a>
+    <a href={processID("Table Using Snippet")} class="ps-4">Table Using Snippet</a>
+    <a href={processID("Table Using Components")} class="ps-4">Table Using Components</a>
+    <a href={processID("Table Border")}>Table Border</a>
+    <a href={processID("Table Spacing")}>Table Spacing</a>
+    <a href={processID("Stripe Rows")}>Stripe Rows</a>
+    <a href={processID("Hoverable Rows")}>Hoverable Rows</a>
+    <a href={processID("Anatomy of Table")}>Anatomy of Table</a>
+    <a href={processID("Customization")}>Customization</a>
+    <a href={processID("Accessibility")}>Accessibility</a>
+    <a href={processID("Configuration")}>Configuration</a>
+  {/snippet}
+</DocLayout>

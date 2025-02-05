@@ -1,7 +1,7 @@
 ---
 title: Tooltip
 dir: ".lib/pages"
-description: Add informative tooltips to your Svelte app with TheUI-Svelte's Tooltip component, providing users with contextual information.
+description: Add informative tooltips to your Svelte app with theui-svelte's Tooltip component, providing users with contextual information.
 ---
 
 <script lang="ts">
@@ -17,8 +17,10 @@ description: Add informative tooltips to your Svelte app with TheUI-Svelte's Too
   import { Tooltip, Button } from "theui-svelte";
 </script>
 
+<Tooltip />
+
 <DocLayout>
-  <DocHead title="Tooltip" text="The Tooltip component provides a way to display informative text when users hover over or click on an element. It supports various positions, animations, and can be globally initialized or used on specific pages." {edit_url}/>
+  <DocHead title="Tooltip" text="The Tooltip component provides a way to display informative text when users hover over or click on an element." {edit_url}/>
 
   <DocBlock title="About">
     <p class="not-prose">The Tooltip component is a lightweight and customizable element that displays additional information when users interact with a target element. It enhances user experience by providing context or details without cluttering the interface.</p>
@@ -43,7 +45,7 @@ description: Add informative tooltips to your Svelte app with TheUI-Svelte's Too
     <Example title="Use with an Element">
       <p class="not-prose"></p>
       {#snippet example()}
-        <Button label="Button" data-tooltip="Hello" data-tooltip-position="right" />
+        <Button data-tooltip="Hello" data-tooltip-position="right">Open tooltip</Button>
       {/snippet}
       {#snippet code()}
 
@@ -89,4 +91,22 @@ description: Add informative tooltips to your Svelte app with TheUI-Svelte's Too
     </Example>
   </DocBlock>
 
+  <DocBlock title="Customization">
+  </DocBlock>
+
+  <DocBlock title="Accessibility">
+  </DocBlock>
+
+  <DocBlock title="Configuration">
+    <ConfigComponent component={component} />
+  </DocBlock>
+
+  {#snippet sidebar()}
+    <a href={processID("About")}>About</a>
+    <a href={processID("Example")}>Example</a>
+    <a href={processID("Variant")}>Variant</a>
+    <a href={processID("Customization")}>Customization</a>
+    <a href={processID("Accessibility")}>Accessibility</a>
+    <a href={processID("Configuration")}>Configuration</a>
+  {/snippet}
 </DocLayout>
