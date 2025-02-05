@@ -14,7 +14,7 @@ description: Organize content into navigable sections in your Svelte app with th
   import { processID } from "$lib";
   let { component, edit_url }: {component: any, edit_url?: string } = $props();
 
-  import { Tabs, Tab, TabPanel } from "theui-svelte";
+  import {Slider, Slide} from "theui-svelte";
 </script>
 
 <DocLayout>
@@ -28,16 +28,21 @@ description: Organize content into navigable sections in your Svelte app with th
     <Example>
       {#snippet example()}
       <div class="w-full">
-        ...
+        <Slider>
+          <Slide src="https://placehold.co/1600x700/6A00F5/white" alt="" />
+          <Slide src="https://placehold.co/1600x700/6A00F5/white" alt="" />
+          <Slide src="https://placehold.co/1600x700/6A00F5/white" alt="" />
+        </Slider>
       </div>
       {/snippet}
 
       {#snippet code()}
 ```html
-<script>
-  import { Tabs, Tab, TabPanel } from "theui-svelte";
-</script>
-
+<Slider>
+  <Slide src="..." alt="..." />
+  <Slide src="..." alt="..." />
+  <Slide src="..." alt="..." />
+</Slider>
 ```
       {/snippet}
     </Example>
@@ -47,18 +52,7 @@ description: Organize content into navigable sections in your Svelte app with th
     <Example>
       {#snippet example()}
       <div class="w-full">
-        <Tabs variant="tabs">
-          {#snippet tabList()}
-            <Tab>Tab 1</Tab>
-            <Tab>Tab 2</Tab>
-            <Tab>Tab 3</Tab>
-          {/snippet}
-          {#snippet tabPanel()}
-            <TabPanel>TabPanel 1</TabPanel>
-            <TabPanel>TabPanel 2</TabPanel>
-            <TabPanel>TabPanel 3</TabPanel>
-          {/snippet}
-        </Tabs>
+
       </div>
       {/snippet}
 
