@@ -14,7 +14,7 @@ description: Organize content into navigable sections in your Svelte app with th
   import { processID } from "$lib";
   let { component, edit_url }: {component: any, edit_url?: string } = $props();
 
-  import {Slider, Slide} from "theui-svelte";
+  import {Slider, Slide, Svg} from "theui-svelte";
 </script>
 
 <DocLayout>
@@ -26,7 +26,7 @@ description: Organize content into navigable sections in your Svelte app with th
 
   <DocBlock title="Example">
     <p class="not-prose">The slider component is highly flexible and supports both images and custom content. You can configure its behavior using various props.</p>
-    <Example title="Image Slide">
+    <Example title="Image Slider">
       <p class="not-prose">The slider can be used to display a series of images. Each <code>Slide</code> component represents an individual image.</p>
       {#snippet example()}
       <div class="w-full">
@@ -48,14 +48,35 @@ description: Organize content into navigable sections in your Svelte app with th
 ```
       {/snippet}
     </Example>
-    <Example title="Custom Content">
+    <Example title="Custom Content Slider">
       <p class="not-prose">The slider is not limited to images; you can add any custom content inside the <code>Slide</code> component.</p>
       {#snippet example()}
       <div class="w-full">
         <Slider>
-          <Slide>Custom content</Slide>
-          <Slide>Custom content</Slide>
-          <Slide>Custom content</Slide>
+          <Slide>
+            <div class="w-1/2 h-96 bg-yellow-200 flex items-center text-right pe-8">
+              <h3 class="text-5xl leading-[1.25] tracking-tighter"><b>THEUI</b><br><small>COMPONENT LIBRARY</small></h3>
+            </div>
+            <div class="w-1/2 h-96 bg-green-200 flex items-center p-8">
+              <p><b>Build Faster with theui-svelte</b><br>The theui-svelte component library is designed to help developers create modern, responsive, and highly customizable UI components with ease. From buttons and forms to advanced components like sliders and tooltips, our library ensures a smooth development experience with a focus on performance and accessibility.</p>
+            </div>
+          </Slide>
+          <Slide>
+            <div class="w-1/2 h-96 bg-rose-200 flex items-center text-right p-8">
+              <p><b>Fully Customizable & Flexible</b><br>Every component in theui-svelte is built with customization in mind. Whether you need to tweak styles, change behavior, or extend functionality, our library provides flexible props and utility classes that integrate seamlessly with Tailwind CSS. No unnecessary dependencies, just clean and efficient code.</p>
+            </div>
+            <div class="w-1/2 h-96 bg-blue-200 flex items-center ps-8">
+              <h3 class="text-5xl leading-[1.25] tracking-tighter"><b>THEUI</b><br><small>COMPONENT LIBRARY</small></h3>
+            </div>
+          </Slide>
+          <Slide>
+            <div class="w-1/2 h-96 bg-teal-200 flex items-center text-right pe-8">
+              <h3 class="text-5xl leading-[1.25] tracking-tighter"><b>THEUI</b><br><small>COMPONENT LIBRARY</small></h3>
+            </div>
+            <div class="w-1/2 h-96 bg-orange-200 flex items-center p-8">
+              <p><b>Accessibility at Its Core</b><br>Web accessibility isn’t an afterthought—it’s built into the foundation of theui-svelte. Each component follows best practices for ARIA roles, keyboard navigation, and screen reader support, ensuring an inclusive experience for all users.</p>
+            </div>
+          </Slide>
         </Slider>
       </div>
       {/snippet}
@@ -63,9 +84,9 @@ description: Organize content into navigable sections in your Svelte app with th
       {#snippet code()}
 ```html
 <Slider>
-  <Slide>Custom content</Slide>
-  <Slide>Custom content</Slide>
-  <Slide>Custom content</Slide>
+  <Slide> <!-- Custom content --> </Slide>
+  <Slide> <!-- Custom content --> </Slide>
+  <Slide> <!-- Custom content --> </Slide>
 </Slider>
 ```
       {/snippet}
@@ -203,6 +224,55 @@ description: Organize content into navigable sections in your Svelte app with th
     <p class="not-prose">This image slide will set slide 2 as the initial slide.</p>
   </DocBlock>
 
+  <DocBlock title="Custom Controls Icon">
+    <p class="not-prose">Use change the icon in the previous slide and next slide control button using the <code>prevButton</code> and <code>nextButton</code> snippet like below.</p>
+    <Example>
+      {#snippet example()}
+      <div class="w-full">
+        <Slider>
+          {#snippet prevButton()}
+            <Svg size={2} class="opacity-50">
+              <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5z"/>
+            </Svg>
+          {/snippet}
+          {#snippet nextButton()}
+            <Svg size={2} class="opacity-50">
+              <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z"/>
+            </Svg>
+          {/snippet}
+          <Slide src="https://placehold.co/1600x700/A19AD3/white?text=Slide 1" alt="Image slide demo image" />
+          <Slide src="https://placehold.co/1600x700/608BC1/white?text=Slide 2" alt="Image slide demo image" />
+          <Slide src="https://placehold.co/1600x700/889E73/white?text=Slide 3" alt="Image slide demo image" />
+        </Slider>
+      </div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Slider>
+  <!-- Previous button -->
+  {#snippet prevButton()}
+    <Svg size={2} class="opacity-50">
+      <path fill-rule="evenodd" d="M1 8a7 7 0 1 ... 1 .708.708L5.707 7.5z"/>
+    </Svg>
+  {/snippet}
+  <!-- Previous button -->
+  {#snippet nextButton()}
+    <Svg size={2} class="opacity-50">
+      <path fill-rule="evenodd" d="M6.776 1.553a.5.5 0 ... 0 1 .223-.671"/>
+    </Svg>
+  {/snippet}
+
+  <Slide src="..." alt="..." />
+  <Slide src="..." alt="..." />
+  <Slide src="..." alt="..." />
+</Slider>
+```
+      {/snippet}
+    </Example>
+    <p class="not-prose">This image slide will set slide 2 as the initial slide.</p>
+  </DocBlock>
+
   <DocBlock title="Customization">
     <div>
       <p class="not-prose">The Image Slider provides several props for customizing its appearance. These props allow you to apply custom styles to different parts of the slider.</p>
@@ -219,6 +289,34 @@ description: Organize content into navigable sections in your Svelte app with th
   </DocBlock>
 
   <DocBlock title="Accessibility">
+    <p class="not-prose">The Slider component is designed to be accessible, ensuring smooth navigation and usability for all users, including those using assistive technologies.</p>
+    <div>
+      <h4 class="my-0">Keyboard Navigation</h4>
+      <p class="not-prose">The slider supports full keyboard interaction:</p>
+      <ul class="my-0">
+        <li>Left Arrow (⬅) moves to the previous slide.</li>
+        <li>Right Arrow (➡) moves to the next slide.</li>
+        <li>Tab ( <kbd>↹</kbd> ) navigates through focusable elements such as controls and indicators.</li>
+        <li>Enter ( <kbd>⏎</kbd> ) or Space ( <kbd>⎵</kbd> ) activates the selected indicator when applicable.</li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="my-0">Screen Reader Support</h4>
+      <p class="not-prose">To ensure compatibility with screen readers, the following attributes are applied:</p>
+      <ul class="my-0">
+        <li>The slider container includes <span class="not-prose"><code>aria-live="polite"</code></span> so screen readers announce slide changes dynamically.</li>
+        <li>Each slide has <span class="not-prose"><code>aria-hidden="true"</code></span> when inactive and <span class="not-prose"><code>aria-hidden="false"</code></span> when active.</li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="my-0">Accessible Controls</h4>
+      <p class="not-prose">Navigation buttons and indicators are labeled to enhance usability:</p>
+      <ul class="my-0">
+        <li>The Previous and Next buttons should have <span class="not-prose"><code>aria-label="Previous Slide"</code></span> and <span class="not-prose"><code>aria-label="Next Slide"</code></span>, respectively.</li>
+        <li>Indicators should include <span class="not-prose"><code>aria-label="Go to slide X"</code></span> to indicate their function.</li>
+      </ul>
+    </div>
+    <p class="not-prose">These accessibility features ensure a seamless experience for all users, making the Slider component more inclusive and user-friendly.</p>
   </DocBlock>
 
   <DocBlock title="Configuration">
@@ -228,6 +326,8 @@ description: Organize content into navigable sections in your Svelte app with th
   {#snippet sidebar()}
     <a href={processID("About")}>About</a>
     <a href={processID("Example")}>Example</a>
+    <a href={processID("Image Slider")} class="ps-4">Image slide</a>
+    <a href={processID("Custom Content Slider")} class="ps-4">Content slide</a>
     <a href={processID("Controls & Indicator")}>Controls & Indicator</a>
     <a href={processID("Auto Play & Stop on Hover")}>Auto Play & Stop on Hover</a>
     <a href={processID("Timer")}>Timer</a>
