@@ -25,13 +25,15 @@ description: Organize content into navigable sections in your Svelte app with th
   </DocBlock>
 
   <DocBlock title="Example">
-    <Example>
+    <p class="not-prose">The slider component is highly flexible and supports both images and custom content. You can configure its behavior using various props.</p>
+    <Example title="Image Slide">
+      <p class="not-prose">The slider can be used to display a series of images. Each <code>Slide</code> component represents an individual image.</p>
       {#snippet example()}
       <div class="w-full">
         <Slider>
-          <Slide src="https://placehold.co/1600x700/6A00F5/white" alt="" />
-          <Slide src="https://placehold.co/1600x700/6A00F5/white" alt="" />
-          <Slide src="https://placehold.co/1600x700/6A00F5/white" alt="" />
+          <Slide src="https://placehold.co/1600x700/73C7C7/white?text=Slide 1" alt="Image slide demo image" />
+          <Slide src="https://placehold.co/1600x700/B5828C/white?text=Slide 2" alt="Image slide demo image" />
+          <Slide src="https://placehold.co/1600x700/889E73/white?text=Slide 3" alt="Image slide demo image" />
         </Slider>
       </div>
       {/snippet}
@@ -46,27 +48,174 @@ description: Organize content into navigable sections in your Svelte app with th
 ```
       {/snippet}
     </Example>
-  </DocBlock>
-
-  <DocBlock title="Variant">
-    <Example>
+    <Example title="Custom Content">
+      <p class="not-prose">The slider is not limited to images; you can add any custom content inside the <code>Slide</code> component.</p>
       {#snippet example()}
       <div class="w-full">
-
+        <Slider>
+          <Slide>Custom content</Slide>
+          <Slide>Custom content</Slide>
+          <Slide>Custom content</Slide>
+        </Slider>
       </div>
       {/snippet}
 
       {#snippet code()}
 ```html
-<Tabs variant="tabs">
-  ...
-</Tabs>
+<Slider>
+  <Slide>Custom content</Slide>
+  <Slide>Custom content</Slide>
+  <Slide>Custom content</Slide>
+</Slider>
 ```
       {/snippet}
     </Example>
   </DocBlock>
 
+  <DocBlock title="Controls & Indicator">
+    <p class="not-prose">The <code>controls</code> prop enables or disables navigation buttons for manually switching between slides. When set to <code>true</code>, users can navigate using previous and next buttons. The value <code>false</code> will hide the controls. Default is <code>true</code>.</p>
+    <Example>
+      <p class="not-prose">The <code>indicator</code> prop allows displaying small indicators (dots) representing each slide. When <code>true</code>, users can click on an indicator to jump to a specific slide. The value <code>false</code> will hide the indicator. Default is <code>true</code>.</p>
+      {#snippet example()}
+      <div class="w-full">
+        <Slider indicator={false} controls={false}>
+          <Slide src="https://placehold.co/1600x700/577BC1/white?text=Slide 1" alt="Image slide demo image" />
+          <Slide src="https://placehold.co/1600x700/578E7E/white?text=Slide 2" alt="Image slide demo image" />
+          <Slide src="https://placehold.co/1600x700/4DA1A9/white?text=Slide 3" alt="Image slide demo image" />
+        </Slider>
+      </div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Slider indicator={false} controls={false}> ... </Slider>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Auto Play & Stop on Hover">
+    <p class="not-prose">The <code>autoPlay</code> prop determines whether the slider should automatically transition between slides. When set to <code>true</code>, the slides will change automatically at a defined interval. Default is <code>true</code>.</p>
+    <Example>
+      <p class="not-prose">The <code>stopOnHover</code> prop controls whether the autoplay should pause when the user hovers over the slider. If enabled <code>true</code>, the slider will stop moving while hove73C7C7 and resume when the mouse leaves. Default is <code>true</code>.</p>
+      {#snippet example()}
+      <div class="w-full">
+        <Slider stopOnHover={false}>
+          <Slide src="https://placehold.co/1600x700/8174A0/white?text=Slide 1" alt="Image slide demo image" />
+          <Slide src="https://placehold.co/1600x700/8EA3A6/white?text=Slide 2" alt="Image slide demo image" />
+          <Slide src="https://placehold.co/1600x700/B59F78/white?text=Slide 3" alt="Image slide demo image" />
+        </Slider>
+      </div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Slider stopOnHover={false}> ... </Slider>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Timer">
+    <p class="not-prose">The <code>timer</code> prop enables a progress timer that visually represents the time left before transitioning to the next slide. If <code>false</code>, it wil hides the progress bar. Default is <code>true</code>.</p>
+    <Example>
+      {#snippet example()}
+      <div class="w-full">
+        <Slider timer={false}>
+          <Slide src="https://placehold.co/1600x700/7ED4AD/white?text=Slide 1" alt="Image slide demo image" />
+          <Slide src="https://placehold.co/1600x700/608BC1/white?text=Slide 2" alt="Image slide demo image" />
+          <Slide src="https://placehold.co/1600x700/7AB2D3/white?text=Slide 3" alt="Image slide demo image" />
+        </Slider>
+      </div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Slider timer={false}> ... </Slider>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Slide Duration">
+    <p class="not-prose">The <code>slideDuration</code> prop defines the time (in milliseconds) each slide remains visible before transitioning to the next one. A higher value means slides stay longer. Default is <code>5000</code> (5 seconds).</p>
+    <Example>
+      {#snippet example()}
+      <div class="w-full">
+        <Slider slideDuration={2000}>
+          <Slide src="https://placehold.co/1600x700/A19AD3/white?text=Slide 1" alt="Image slide demo image" />
+          <Slide src="https://placehold.co/1600x700/5DB996/white?text=Slide 2" alt="Image slide demo image" />
+          <Slide src="https://placehold.co/1600x700/81BFDA/white?text=Slide 3" alt="Image slide demo image" />
+        </Slider>
+      </div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Slider slideDuration={2000}> ... </Slider>
+```
+      {/snippet}
+    </Example>
+    <p class="not-prose">In the example each slide will stay on the display for 2 second.</p>
+  </DocBlock>
+
+  <DocBlock title="Transition Duration">
+    <p class="not-prose">The <code>transitionDuration</code> prop specifies the time (in milliseconds) taken for the transition effect between slides. It controls the smoothness of the animation. Default is <code>750</code> milliseconds.</p>
+    <Example>
+      {#snippet example()}
+      <div class="w-full">
+        <Slider transitionDuration={2000}>
+          <Slide src="https://placehold.co/1600x700/8174A0/white?text=Slide 1" alt="Image slide demo image" />
+          <Slide src="https://placehold.co/1600x700/8EA3A6/white?text=Slide 2" alt="Image slide demo image" />
+          <Slide src="https://placehold.co/1600x700/B59F78/white?text=Slide 3" alt="Image slide demo image" />
+        </Slider>
+      </div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Slider transitionDuration={2000}> ... </Slider>
+```
+      {/snippet}
+    </Example>
+    <p class="not-prose">In the example each transition will take 2 second to complete.</p>
+  </DocBlock>
+
+  <DocBlock title="Active Slide">
+    <p class="not-prose">The <code>activeSlide</code> prop sets the initial slide that appears when the slider loads. The value corresponds to the slide number. Default is <code>1</code>.</p>
+    <Example>
+      {#snippet example()}
+      <div class="w-full">
+        <Slider activeSlide={2}>
+          <Slide src="https://placehold.co/1600x700/8174A0/white?text=Slide 1" alt="Image slide demo image" />
+          <Slide src="https://placehold.co/1600x700/8EA3A6/white?text=Slide 2" alt="Image slide demo image" />
+          <Slide src="https://placehold.co/1600x700/B59F78/white?text=Slide 3" alt="Image slide demo image" />
+        </Slider>
+      </div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Slider activeSlide={2}> ... </Slider>
+```
+      {/snippet}
+    </Example>
+    <p class="not-prose">This image slide will set slide 2 as the initial slide.</p>
+  </DocBlock>
+
   <DocBlock title="Customization">
+    <div>
+      <p class="not-prose">The Image Slider provides several props for customizing its appearance. These props allow you to apply custom styles to different parts of the slider.</p>
+      <ul class="my-0">
+        <li><span class="not-prose"><code>slideClasses</code></span>: Applies custom classes to each slide. This allows you to adjust styling such as padding, margins, background, or borders.</li>
+        <li><span class="not-prose"><code>controlButtonClasses</code></span>: Defines custom styles for the navigation buttons (previous and next). You can modify their size, color, or position to match your design.</li>
+        <li><span class="not-prose"><code>indicatorContainerClasses</code></span>: Applies styles to the container that holds the slide indicators. This is useful for adjusting positioning, spacing, or background styles.</li>
+        <li><span class="not-prose"><code>indicatorClasses</code></span>: Customizes the appearance of each slide indicator (dot or other elements). You can modify the shape, size, and color.</li>
+        <li><span class="not-prose"><code>indicatorActiveClasses</code></span>: Defines styles for the active indicator. This allows you to highlight the currently active slide differently from the others.</li>
+        <li><span class="not-prose"><code>indicatorActiveClasses</code></span>: Applies styles to the timer, which indicates slide progress. You can change its size, color, or animation effects.</li>
+      </ul>
+    </div>
+    <p class="not-prose">By using these props, you can fully customize the slider to fit your design needs.</p>
   </DocBlock>
 
   <DocBlock title="Accessibility">
@@ -79,7 +228,11 @@ description: Organize content into navigable sections in your Svelte app with th
   {#snippet sidebar()}
     <a href={processID("About")}>About</a>
     <a href={processID("Example")}>Example</a>
-    <a href={processID("Variant")}>Variant</a>
+    <a href={processID("Controls & Indicator")}>Controls & Indicator</a>
+    <a href={processID("Auto Play & Stop on Hover")}>Auto Play & Stop on Hover</a>
+    <a href={processID("Timer")}>Timer</a>
+    <a href={processID("Slide Duration")}>Slide Duration</a>
+    <a href={processID("Transition Duration")}>Transition Duration</a>
     <a href={processID("Customization")}>Customization</a>
     <a href={processID("Accessibility")}>Accessibility</a>
     <a href={processID("Configuration")}>Configuration</a>
