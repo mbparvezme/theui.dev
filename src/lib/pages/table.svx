@@ -14,7 +14,15 @@ description: Present data effectively in your Svelte app with theui-svelte's Tab
   import { processID } from "$lib";
   let { component, edit_url }: {component: any, edit_url?: string } = $props();
 
-  import { Table, THead, TBody, TR, Cell, Button } from "theui-svelte";
+  import { Table, THead, TBody, TR, TH, TD, Button, Svg } from "theui-svelte";
+
+  let headers = ["Heading 1", "Heading 2", "Heading 3", "Heading 4"];
+  let data = [
+    {item1: "Data 11", item2: "Data 12", item3: "Data 13", item4: "Data 14"},
+    {item1: "Data 21", item2: "Data 22", item3: "Data 23", item4: "Data 24"},
+    {item1: "Data 31", item2: "Data 23", item3: "Data 33", item4: "Data 43"},
+  ];
+  let keys = ["item1", "item2", "item3", "item4"];
 </script>
 
 <DocLayout>
@@ -33,45 +41,143 @@ description: Present data effectively in your Svelte app with theui-svelte's Tab
         <li>Manually using the components</li>
       </ul>
     </div>
-    <Example title="Table Using Data">
-      {#snippet example()}
+    <Example title="Setup">
+      <p class="not-prose">At first import the relevant components of the table.</p>
+      {#snippet code()}
 
+```html
+<script>
+  import { Table, THead, TBody, TR, TH, TD } from "theui-svelte";
+</script>
+```
+      {/snippet}
+    </Example>
+    <Example title="Example: Using Props">
+      <p class="not-prose">The <code>Table</code> component allows you to generate tables dynamically using data. This approach is useful when you have structured data and want to render it efficiently without manually defining each row and column. This method ensures your table remains dynamic and adaptable to different datasets.</p>
+      <p class="not-prose">Pass the <code>headers</code>, <code>data</code>, and <code>keys</code> as props to the <code>Table</code> component.</p>
+      <ul class="my-0">
+        <li>headers ( <span class="not-prose"><code>string[]</code></span> ) - An array of column headers.</li>
+        <li>data ( <span class="not-prose"><code>object[]</code></span> ) - An array of objects representing table rows.</li>
+        <li>keys ( <span class="not-prose"><code>string[]</code></span> ) - An array of keys that map data fields to columns.</li>
+      </ul>
+      {#snippet example()}
+        <Table {headers} {data} {keys} />
       {/snippet}
 
       {#snippet code()}
 ```html
 <script>
-  import { Table, THead, TBody, TR, Cell } from "theui-svelte";
+  let headers = ["Heading 1", "Heading 2", "Heading 3", "Heading 4"];
+  let data = [
+    {item1: "Data 11", item2: "Data 12", item3: "Data 13", item4: "Data 14"},
+    {item1: "Data 21", item2: "Data 22", item3: "Data 23", item4: "Data 24"},
+    {item1: "Data 31", item2: "Data 23", item3: "Data 33", item4: "Data 43"},
+  ];
+  let keys = ["item1", "item2", "item3", "item4"];
 </script>
 
-<Table>
+<!-- Option 1 -->
+<Table {headers} {data} {keys} />
 
+<!-- Option 2 -->
+<Table>
+  <THead {headers} />
+  <TBody {data} {keys} />
+</Table>
+
+<!-- Option 3 -->
+<Table {headers}>
+  <TBody>
+    {#each data as d}
+      <TR data={d} {keys} />
+    {/each}
+  </TBody>
 </Table>
 ```
       {/snippet}
     </Example>
-    <Example title="Table Using Snippet">
-      {#snippet example()}
 
+    <Example title="Example: Using Components">
+      <p class="not-prose">Instead of props or dynamically looping through the data, the table content is written manually using the <code>TBody</code>, <code>TR</code>, and <code>Cell</code> components.</p>
+      <ul class="my-0">
+        <li><span class="not-prose"><code>&lt;TBody&gt;</code></span> - Contains the table rows.</li>
+        <li><span class="not-prose"><code>&lt;TR&gt;</code></span> - Represents a table row.</li>
+        <li><span class="not-prose"><code>&lt;TD&gt;</code></span> - Represents a table data containing the actual data.</li>
+      </ul>
+      {#snippet example()}
+        <Table {headers} {data} {keys} />
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Table {headers}>
+  <THead>
+    <TR>
+      <TH>Heading 1</TH>
+      <TH>Heading 2</TH>
+      <TH>Heading 3</TH>
+      <TH>Heading 4</TH>
+    </TR>
+  </THead>
+  <TBody>
+    <TR>
+      <TD>Data 11</TD>
+      <TD>Data 12</TD>
+      <TD>Data 13</TD>
+      <TD>Data 14</TD>
+    </TR>
+    ...
+    ...
+  </TBody>
+</Table>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Custom Header">
+    <Example>
+      <p class="not-prose">If you need custom headers or anything other than text in the header just put your custom items in the <code>TH</code> component. For example:</p>
+      {#snippet example()}
+        <Table>
+          <THead>
+            <TR>
+              <TH class="items-center gap-2">
+                Sort
+                <Svg class="inline">
+                  <path d="M3.5 12.5a.5.5 0 0 1-1 0V3.707L1.354 4.854a.5.5 0 1 1-.708-.708l2-1.999.007-.007a.5.5 0 0 1 .7.006l2 2a.5.5 0 1 1-.707.708L3.5 3.707zm3.5-9a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5M7.5 6a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1zm0 3a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1zm0 3a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1z"/>
+                </Svg>
+              </TH>
+              <TH class="items-center gap-2">
+                Sort
+                <Svg class="inline">
+                  <path d="M3.5 2.5a.5.5 0 0 0-1 0v8.793l-1.146-1.147a.5.5 0 0 0-.708.708l2 1.999.007.007a.497.497 0 0 0 .7-.006l2-2a.5.5 0 0 0-.707-.708L3.5 11.293zm3.5 1a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5M7.5 6a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1zm0 3a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1zm0 3a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1z"/>
+                </Svg>
+              </TH>
+            </TR>
+          </THead>
+        </Table>
       {/snippet}
 
       {#snippet code()}
 ```html
 <Table>
-
-</Table>
-```
-      {/snippet}
-    </Example>
-    <Example title="Table Using Components">
-      {#snippet example()}
-
-      {/snippet}
-
-      {#snippet code()}
-```html
-<Table>
-
+  <THead>
+    <TR>
+      <TH class="items-center gap-2">
+        Sort
+        <Svg class="inline">
+          <path d="M3.5 12.5a.5.5 0 0 ... 0 1h1a.5.5 0 0 0 0-1z"/>
+        </Svg>
+      </TH>
+      <TH class="items-center gap-2">
+        Sort
+        <Svg class="inline">
+          <path d="M3.5 2.5a.5.5 0 0 0-1 ... 1h1a.5.5 0 0 0 0-1z"/>
+        </Svg>
+      </TH>
+    </TR>
+  </THead>
 </Table>
 ```
       {/snippet}
@@ -80,16 +186,29 @@ description: Present data effectively in your Svelte app with theui-svelte's Tab
 
   <DocBlock title="Table Border">
     <Example>
-      <p class="not-prose">The <code>Table</code> is a powerful, versatile component. You can create a table in many ways. For example:</p>
+      <p class="not-prose">The <code>border</code> prop controls where borders appear in the table. By default, it is set to <code>"both"</code>. Setting it to <code>"x"</code> adds borders only between columns, while <code>"y"</code> applies borders only between rows. The default option, <code>"both"</code>, adds borders between both rows and columns, and <code>"none"</code> removes all borders. This prop allows you to customize the table’s appearance based on your design preferences.</p>
       {#snippet example()}
-
+        <div class="flex flex-col gap-4 w-full">
+          <div>
+            <code>border="x"</code>
+            <Table {headers} {data} {keys} border="x" />
+          </div>
+          <div>
+            <code>border="y"</code>
+            <Table {headers} {data} {keys} border="y" />
+          </div>
+          <div>
+            <code>border="none"</code>
+            <Table {headers} {data} {keys} border="none" />
+          </div>
+        </div>
       {/snippet}
 
       {#snippet code()}
 ```html
-<Table>
-
-</Table>
+<Table {headers} {data} {keys} border="x" />
+<Table {headers} {data} {keys} border="y" />
+<Table {headers} {data} {keys} border="none" />
 ```
       {/snippet}
     </Example>
