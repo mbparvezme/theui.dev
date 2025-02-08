@@ -2,7 +2,56 @@
   {
     "key": "props",
     "title": "Props",
-    "data": null
+    "data": [
+      {
+        "name": "variant",
+        "type": "'tabs' | 'pills'",
+        "default": "'pills'",
+        "description": "Defines the visual style of the tabs. By default, the variant is set to 'pills'."
+      },
+      {
+        "name": "animate",
+        "type": "<a href=\"/docs/types#common-types\">ANIMATE_SPEED</a>",
+        "default": "'normal'",
+        "description": "Defines the speed of tab transitions. The default value is 'normal'."
+      },
+      {
+        "name": "borderClasses",
+        "type": "boolean | string",
+        "default": "true",
+        "description": "Controls whether the border styling is applied to the tabs. Can be a boolean or a custom string for classes."
+      },
+      {
+        "name": "tabListClasses",
+        "type": "string",
+        "default": "\"\"",
+        "description": "Custom classes for the tab list container."
+      },
+      {
+        "name": "tabClasses",
+        "type": "string",
+        "default": "\"\"",
+        "description": "Custom classes for each tab element."
+      },
+      {
+        "name": "activeTabClasses",
+        "type": "string",
+        "default": "\"\"",
+        "description": "Custom classes applied to the active tab."
+      },
+      {
+        "name": "tabPanelClasses",
+        "type": "string",
+        "default": "\"\"",
+        "description": "Custom classes for each tab panel."
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "default": "&lt;RANDOM STRING&gt;",
+        "description": "An optional unique identifier for the Tabs component."
+      }
+    ]
   },
   {
     "key": "dynamicProps",
@@ -12,7 +61,16 @@
   {
     "key": "snippets",
     "title": "Snippets",
-    "data": null
+    "data": [
+      {
+        "name": "tabs",
+        "description": "The list of tab elements to be displayed inside the Tabs component."
+      },
+      {
+        "name": "panels",
+        "description": "The list of tab panels corresponding to each tab."
+      }
+    ]
   },
   {
     "key": "functions",

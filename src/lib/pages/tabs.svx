@@ -26,6 +26,7 @@ description: Organize content into navigable sections in your Svelte app with th
 
   <DocBlock title="Example">
     <Example>
+      <p class="not-prose">Below is an example of how to implement the Tabs component in your Svelte project. Each tab is linked to a specific content panel, and when you click a tab, the respective content is displayed.</p>
       {#snippet example()}
       <div class="w-full">
         <Tabs>
@@ -64,10 +65,20 @@ description: Organize content into navigable sections in your Svelte app with th
 ```
       {/snippet}
     </Example>
+    <ul class="my-0">
+      <li>The <span class="not-prose"><code>Tabs</code></span> component wraps both the <span class="not-prose"><code>Tab</code></span> and <span class="not-prose"><code>TabPanel</code></span> components.</li>
+      <li>Each <span class="not-prose"><code>Tab</code></span> corresponds to a specific <span class="not-prose"><code>TabPanel</code></span>, and clicking on a tab will show the associated content.</li>
+    </ul>
   </DocBlock>
 
   <DocBlock title="Variant">
     <Example>
+      <p class="not-prose">The <code>variant</code> prop allows you to customize the style of the tabs. It accepts two values: <code>"tabs"</code> and <code>"pills"<code>.</p>
+      <ul class="my-0">
+        <li><span class="not-prose"><code>"tabs"</code></span>: Displays the tabs in a traditional horizontal layout with square or rectangular edges.</li>
+        <li><span class="not-prose"><code>"pills"</code></span>: Displays the tabs with rounded edges, giving them a pill-like appearance.</li>
+      </ul>
+      <p class="not-prose">By default, the <code>variant</code> is set to <code>"pills"</code>, giving the tabs a rounded pill-like design. You can change this to <code>"tabs"</code> if you prefer a more classic tab design with square edges.</p>
       {#snippet example()}
       <div class="w-full">
         <Tabs variant="tabs">
@@ -87,15 +98,71 @@ description: Organize content into navigable sections in your Svelte app with th
 
       {#snippet code()}
 ```html
-<Tabs variant="tabs">
-  ...
-</Tabs>
+<Tabs variant="tabs"> ... </Tabs>
 ```
       {/snippet}
     </Example>
   </DocBlock>
 
   <DocBlock title="Customization">
+    <p class="not-prose">The <code>Tabs</code> component is highly customizable, allowing you to tailor its appearance and behavior to fit your design needs. You can adjust various parts of the component using the following props:</p>
+    <ul class="my-0">
+      <li><span class="not-prose"><code>"borderClasses"</code></span>: This prop controls the border of the tabs. By default, it is set to <code>true</code>, which applies the default border style. You can pass a custom class or a <code>boolean</code> value to either enable or disable the border.
+        <ul>
+          <li><span class="not-prose"><code>true</code> (default)</span>: Applies the default border.</li>
+          <li><span class="not-prose"><code>false</code></span>: Disables the border.</li>
+          <li><span class="not-prose"><code>string</code></span>: You can pass a custom class for border styling.</li>
+        </ul>
+        <Example>
+
+      {#snippet code()}
+```html
+<Tabs borderClasses="border-gray-300"> ... </Tabs>
+```
+      {/snippet}
+        </Example>
+      </li>
+      <li><span class="not-prose"><code>"tabListClasses"</code></span>: This prop allows you to customize the tab list container. You can pass any valid Tailwind or custom class to modify the appearance of the tab list.
+        <Example>
+
+      {#snippet code()}
+```html
+<Tabs tabListClasses="flex space-x-4"> ... </Tabs>
+```
+      {/snippet}
+        </Example>
+      </li>
+      <li><span class="not-prose"><code>"tabClasses"</code></span>: Customize the individual tabs with this prop. Pass any custom classes to adjust the style of each tab element.
+        <Example>
+
+      {#snippet code()}
+```html
+<Tabs tabClasses="text-gray-700 hover:text-blue-500"> ... </Tabs>
+```
+      {/snippet}
+        </Example>
+      </li>
+      <li><span class="not-prose"><code>"activeTabClasses"</code></span>: This prop lets you define the appearance of the active tab. By default, it applies the active tab style, but you can use this prop to apply custom classes for the active tab.
+        <Example>
+
+      {#snippet code()}
+```html
+<Tabs activeTabClasses="bg-blue-500 text-white"> ... </Tabs>
+```
+      {/snippet}
+        </Example>
+      </li>
+      <li><span class="not-prose"><code>"tabPanelClasses"</code></span>: Use this prop to customize the style of the tab panels. You can pass custom classes for margin, padding, background color, or any other styling.
+        <Example>
+
+      {#snippet code()}
+```html
+<Tabs tabPanelClasses="p-4 bg-gray-100"> ... </Tabs>
+```
+      {/snippet}
+        </Example>
+      </li>
+    </ul>
   </DocBlock>
 
   <DocBlock title="Accessibility">
