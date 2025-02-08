@@ -35,13 +35,9 @@ description: Implement right-to-left (RTL) support in your Svelte app with TheUI
 
   <DocBlock title="RTL For The Entire Website">
     <p class="not-prose">To enable RTL across your entire site, simply set <code>dir="rtl"</code> attribute in the <code>&lt;html&gt;</code> tag in your root HTML file. By default, <b>theui-svelte</b> components display in LTR (Left-to-Right) mode, but adding this attribute will switch all components and elements to RTL mode.</p>
-
-
     <div class="flex justify-center">
-      <Button label="Toggle Direction" onclick={toggleWebsiteDirection} rounded="full"/>
+      <Button onclick={toggleWebsiteDirection} rounded="full">Toggle Direction</Button>
     </div>
-
-
 <Code>
 
 ```html
@@ -76,7 +72,7 @@ description: Implement right-to-left (RTL) support in your Svelte app with TheUI
     <p class="not-prose">Instead of entire website, you can change direction of any component you want. Just add <code>dir="rtl"</code> attribute to the parent element</p>
 
     <div class="flex justify-center">
-      <Button label="Toggle Direction" onclick={toggleComponentDirection} rounded="full"/>
+      <Button onclick={toggleComponentDirection} rounded="full">Toggle Direction</Button>
     </div>
     <div id="rtl-demo-accordion" dir="ltr">
       <AccordionItem title="Accordion title" content="Accordion"/>
