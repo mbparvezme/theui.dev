@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { processID } from '$lib';
+  import { processID } from '$lib';
   import { Table, Tab, Tabs, TabPanel } from 'theui-svelte';
   let { component, title }: {component?: any, title?: string} = $props();
   const propsHeader = ['Name', 'Type', 'Default', 'Description'];

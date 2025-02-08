@@ -10,7 +10,7 @@ description: Customize your Svelte app's appearance with TheUI-Svelte's Colors a
   import DocBlock from "$lib/ui/doc/Block.svelte";
   import Code from "$lib/ui/doc/CodeBlock.svelte";
   import { processID } from "$lib";
-  import { Alert, Table, TBody, TR, Cell, THead } from "theui-svelte";
+  import { Alert, Table, TBody, TR, TH, TD, THead } from "theui-svelte";
   let { components, edit_url }: {components: any, edit_url?: string } = $props();
 
   const availableColorClasses = [
@@ -114,19 +114,19 @@ description: Customize your Svelte app's appearance with TheUI-Svelte's Colors a
     <Table class="not-prose text-sm">
       <THead>
         <TR tableHeader={true}>
-          <Cell class="font-semibold">Class</Cell>
-          <Cell class="font-semibold">Shades</Cell>
-          <Cell class="font-semibold">Default</Cell>
-          <Cell class="font-semibold">Description</Cell>
+          <TH class="font-semibold">Class</TH>
+          <TH class="font-semibold">Shades</TH>
+          <TH class="font-semibold">Default</TH>
+          <TH class="font-semibold">Description</TH>
         </TR>
       </THead>
       <TBody>
         {#each availableColorClasses as colorData}
           <TR>
-            <Cell class="text-nowrap">{colorData.className}</Cell>
-            <Cell class="text-nowrap">{colorData.shades}</Cell>
-            <Cell class="text-nowrap">{@html colorData.defaultValue}</Cell>
-            <Cell>{@html colorData.description}</Cell>
+            <TD class="text-nowrap">{colorData.className}</TD>
+            <TD class="text-nowrap">{colorData.shades}</TD>
+            <TD class="text-nowrap">{@html colorData.defaultValue}</TD>
+            <TD>{@html colorData.description}</TD>
           </TR>
         {/each}
       </TBody>
