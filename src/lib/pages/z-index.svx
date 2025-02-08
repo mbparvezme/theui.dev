@@ -9,7 +9,7 @@ description: Manage stacking contexts in your Svelte application with TheUI-Svel
   import DocHead from "$lib/ui/doc/Head.svelte";
   import DocBlock from "$lib/ui/doc/Block.svelte";
   import Code from "$lib/ui/doc/CodeBlock.svelte";
-  import { Alert, Table, TBody, TR, Cell, THead } from "theui-svelte";
+  import { Alert, Table, TBody, TR, TH, TD, THead } from "theui-svelte";
   let { components, edit_url }: {components: any, edit_url?: string } = $props();
 </script>
 
@@ -23,66 +23,65 @@ description: Manage stacking contexts in your Svelte application with TheUI-Svel
 
     <Table class="my-0">
       <THead>
-        <TR tableHeader={true}>
-          <Cell>Component</Cell>
-          <Cell>Class</Cell>
-          <Cell>Value (z-index)</Cell>
+        <TR>
+          <TH>Component</TH>
+          <TH>Class</TH>
+          <TH>Value (z-index)</TH>
         </TR>
       </THead>
       <TBody>
         <TR>
-          <Cell>Dropdown</Cell>
-          <Cell><span class="not-prose whitespace-nowrap"><code>.dropdown .backdrop</code></span></Cell>
-          <Cell>10</Cell>
+          <TD>Dropdown</TD>
+          <TD><span class="not-prose whitespace-nowrap"><code>.dropdown .backdrop</code></span></TD>
+          <TD>10</TD>
         </TR>
         <TR>
-          <Cell>Dropdown</Cell>
-          <Cell><span class="not-prose whitespace-nowrap"><code>.dropdown-content</code></span></Cell>
-          <Cell>11</Cell>
+          <TD>Dropdown</TD>
+          <TD><span class="not-prose whitespace-nowrap"><code>.dropdown-content</code></span></TD>
+          <TD>11</TD>
         </TR>
         <TR>
-          <Cell>Sticky positioned</Cell>
-          <Cell><span class="not-prose whitespace-nowrap"><code>.sticky, [class$=:sticky]</code></span></Cell>
-          <Cell>20</Cell>
+          <TD>Sticky positioned</TD>
+          <TD><span class="not-prose whitespace-nowrap"><code>.sticky, [class$=:sticky]</code></span></TD>
+          <TD>20</TD>
         </TR>
         <TR>
-          <Cell>Navbar</Cell>
-          <Cell><span class="not-prose whitespace-nowrap"><code>.theui-navbar</code></span></Cell>
-          <Cell>21</Cell>
+          <TD>Navbar</TD>
+          <TD><span class="not-prose whitespace-nowrap"><code>.theui-navbar</code></span></TD>
+          <TD>21</TD>
         </TR>
         <TR>
-          <Cell>Fixed positioned</Cell>
-          <Cell><span class="not-prose whitespace-nowrap"><code>.fixed, [class$=:fixed]</code></span></Cell>
-          <Cell>30</Cell>
+          <TD>Fixed positioned</TD>
+          <TD><span class="not-prose whitespace-nowrap"><code>.fixed, [class$=:fixed]</code></span></TD>
+          <TD>30</TD>
         </TR>
         <TR>
-          <Cell>Offcanvas</Cell>
-          <Cell><span class="not-prose whitespace-nowrap"><code>.offcanvas</code></span></Cell>
-          <Cell>40</Cell>
+          <TD>Offcanvas</TD>
+          <TD><span class="not-prose whitespace-nowrap"><code>.offcanvas</code></span></TD>
+          <TD>40</TD>
         </TR>
         <TR>
-          <Cell>Modal</Cell>
-          <Cell><span class="not-prose whitespace-nowrap"><code>.modal</code></span></Cell>
-          <Cell>50</Cell>
+          <TD>Modal</TD>
+          <TD><span class="not-prose whitespace-nowrap"><code>.modal</code></span></TD>
+          <TD>50</TD>
         </TR>
         <TR>
-          <Cell>Popup</Cell>
-          <Cell><span class="not-prose whitespace-nowrap"><code>.popup</code></span></Cell>
-          <Cell>60</Cell>
+          <TD>Popup</TD>
+          <TD><span class="not-prose whitespace-nowrap"><code>.popup</code></span></TD>
+          <TD>60</TD>
         </TR>
         <TR>
-          <Cell>Tooltip</Cell>
-          <Cell><span class="not-prose whitespace-nowrap"><code>.tooltip</code></span></Cell>
-          <Cell>70</Cell>
+          <TD>Tooltip</TD>
+          <TD><span class="not-prose whitespace-nowrap"><code>.tooltip</code></span></TD>
+          <TD>70</TD>
         </TR>
         <TR>
-          <Cell>Notifications</Cell>
-          <Cell><span class="not-prose whitespace-nowrap"><code>.notifications</code></span></Cell>
-          <Cell>80</Cell>
+          <TD>Notifications</TD>
+          <TD><span class="not-prose whitespace-nowrap"><code>.notifications</code></span></TD>
+          <TD>80</TD>
         </TR>
       </TBody>
     </Table>
-
 
     <div>
       <h4>Important Notes</h4>
