@@ -216,26 +216,54 @@ description: Present data effectively in your Svelte app with theui-svelte's Tab
 
   <DocBlock title="Table Spacing">
     <Example>
-      <p class="not-prose">The <code>Table</code> is a powerful, versatile component. You can create a table in many ways. For example:</p>
+      <p class="not-prose">The <code>space</code> prop adjusts the cell padding to control the overall table spacing, affecting how compact or spacious the table appears.</p>
+      <ul class="my-0">
+        <li><span class="not-prose"><code>"compact"</code></span> - Reduces padding for a denser layout, making the table more space-efficient.</li>
+        <li><span class="not-prose"><code>"default"</code> (Default value)</span> - Uses the standard padding, providing a balanced look.</li>
+        <li><span class="not-prose"><code>"comfortable"</code></span> - Increases padding for a more spacious and readable layout.</li>
+      </ul>
       {#snippet example()}
-
+        <div class="flex flex-col gap-4 w-full">
+          <div>
+            <code>space="compact"</code>
+            <Table {headers} {data} {keys} space="compact" />
+          </div>
+          <div>
+            <code>space="comfortable"</code>
+            <Table {headers} {data} {keys} space="comfortable" />
+          </div>
+        </div>
       {/snippet}
 
       {#snippet code()}
 ```html
-<Table>
-
-</Table>
+<Table {headers} {data} {keys} space="compact" />
+<Table {headers} {data} {keys} space="comfortable" />
 ```
       {/snippet}
     </Example>
+    <p class="not-prose">This prop allows you to fine-tune the table’s appearance based on your design needs.</p>
   </DocBlock>
 
   <DocBlock title="Stripe Rows">
     <Example>
-      <p class="not-prose">The <code>Table</code> is a powerful, versatile component. You can create a table in many ways. For example:</p>
+      <p class="not-prose">The <code>stripe</code> prop enables alternating row colors for better readability. By default, it is set to <code>false<code></p>
+      <ul class="my-0">
+        <li><span class="not-prose"><code>true</code></span> - Applies striping to table rows, making it easier to distinguish between rows.</li>
+        <li><span class="not-prose"><code>false</code> (Default value)</span> - No striping is applied.</li>
+        <li><b>String value</b> - Allows specifying a custom class for styling the striped rows.</li>
+      </ul>
       {#snippet example()}
-
+        <div class="flex flex-col gap-4 w-full">
+          <div>
+            <code>false</code>
+            <Table {headers} {data} {keys} stripe={true} />
+          </div>
+          <div>
+            <code>stripe="custom classes"</code>
+            <Table {headers} {data} {keys} stripe="comfortable" />
+          </div>
+        </div>
       {/snippet}
 
       {#snippet code()}
