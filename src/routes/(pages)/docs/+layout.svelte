@@ -80,7 +80,7 @@
   </div>
 </Drawer>
 
-<Container class="relative grid lg:grid-cols-5 min-h-screen pb-24 pt-28">
+<Container class="relative grid lg:grid-cols-5 min-h-screen pb-48 pt-28">
   <aside class="doc-sidebar top-28 fixed lg:sticky lg:w-auto bg-primary lg:bg-transparent -translate-x-[288px] lg:translate-x-0" style="height: calc(100vh - 76px)">
     <div class="flex flex-col h-full overflow-y-auto pb-16">
 

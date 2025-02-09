@@ -16,25 +16,23 @@
 {/if}
 
 <Tabs variant="tabs" class="config-tabs">
-  {#snippet tabList()}
+  {#snippet tabs()}
     {#each component as c}
       {#if c.data && c.data.length > 0}
         <Tab class="px-4 py-2 uppercase text-sm font-semibold tracking-wider">{c.title}</Tab>
       {/if}
     {/each}
   {/snippet}
-  {#snippet tabPanel()}
-    {#each component as c}
-      {#if c.data && c.data.length > 0}
-        <TabPanel>
-          {#if c?.text}
-            <p class="not-prose">{@html c.text}</p>
-          {/if}
-          <Table class="my-0" data={c.data} keys={getKeys(c.key)} headers={getHeaders(c.key)} />
-        </TabPanel>
-      {/if}
-    {/each}
-  {/snippet}
+  {#each component as c}
+    {#if c.data && c.data.length > 0}
+      <TabPanel>
+        {#if c?.text}
+          <p class="not-prose">{@html c.text}</p>
+        {/if}
+        <Table class="my-0" data={c.data} keys={getKeys(c.key)} headers={getHeaders(c.key)} />
+      </TabPanel>
+    {/if}
+  {/each}
 </Tabs>
 
 <style lang="postcss">

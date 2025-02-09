@@ -16,13 +16,13 @@
         "description": "Defines the speed of tab transitions. The default value is 'normal'."
       },
       {
-        "name": "borderClasses",
+        "name": "border",
         "type": "boolean | string",
         "default": "true",
         "description": "Controls whether the border styling is applied to the tabs. Can be a boolean or a custom string for classes."
       },
       {
-        "name": "tabListClasses",
+        "name": "tabContainerClasses",
         "type": "string",
         "default": "\"\"",
         "description": "Custom classes for the tab list container."
@@ -34,7 +34,7 @@
         "description": "Custom classes for each tab element."
       },
       {
-        "name": "activeTabClasses",
+        "name": "tabActiveClasses",
         "type": "string",
         "default": "\"\"",
         "description": "Custom classes applied to the active tab."

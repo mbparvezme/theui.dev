@@ -354,6 +354,7 @@ description: Create responsive and stylish buttons for your Svelte app with TheU
 ```
       {/snippet}
     </Example>
+    <span></span>
     <Example title={'role="group" Attribute'}>
       <p class="not-prose">The <code>role="group"</code> attribute is automatically included in the ButtonGroup component. This role helps assistive technologies understand that the buttons are part of a grouped set, improving the navigation and comprehension for users.</p>
     </Example>

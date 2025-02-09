@@ -363,7 +363,7 @@ description:
       <p class="not-prose">The Button component supports standard keyboard interactions, allowing users to navigate and activate it using the <code>Tab</code> key to focus and the <code>Enter</code> or <code>Space</code> keys to trigger the action.</p>
       <p class="not-prose">By following these guidelines and using the provided props, you can ensure that the Button component enhances accessibility, providing a seamless experience for all users.</p>
     </Example>
-    <Example title="Automatic ARIA Management">
+    <Example title="Automatic ARIA Management" mt={false}>
       <p class="not-prose">The QAB component automatically handles important ARIA attributes:</p>
       <ul class="my-0">
         <li>The <span class="not-prose"><code>role</code></span> attribute is set to ensure the component is recognized as a button.</li>

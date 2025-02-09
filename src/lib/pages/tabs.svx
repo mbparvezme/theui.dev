@@ -17,6 +17,18 @@ description: Organize content into navigable sections in your Svelte app with th
   import { Tabs, Tab, TabPanel } from "theui-svelte";
 </script>
 
+{#snippet T()}
+  <Tab>Tab 1</Tab>
+  <Tab>Tab 2</Tab>
+  <Tab>Tab 3</Tab>
+{/snippet}
+
+{#snippet P()}
+  <TabPanel>TabPanel 1</TabPanel>
+  <TabPanel>TabPanel 2</TabPanel>
+  <TabPanel>TabPanel 3</TabPanel>
+{/snippet}
+
 <DocLayout>
   <DocHead title="Tabs" text="A simple and flexible way to organize content into multiple panels. It helps in structuring related information efficiently within a compact space." {edit_url}/>
 
@@ -30,16 +42,10 @@ description: Organize content into navigable sections in your Svelte app with th
       {#snippet example()}
       <div class="w-full">
         <Tabs>
-          {#snippet tabList()}
-            <Tab>Tab 1</Tab>
-            <Tab>Tab 2</Tab>
-            <Tab>Tab 3</Tab>
+          {#snippet tabs()}
+            {@render T()}
           {/snippet}
-          {#snippet tabPanel()}
-            <TabPanel>TabPanel 1</TabPanel>
-            <TabPanel>TabPanel 2</TabPanel>
-            <TabPanel>TabPanel 3</TabPanel>
-          {/snippet}
+          {@render P()}
         </Tabs>
       </div>
       {/snippet}
@@ -51,16 +57,14 @@ description: Organize content into navigable sections in your Svelte app with th
 </script>
 
 <Tabs>
-  {#snippet tabList()}
+  {#snippet tabs()}
     <Tab>Tab 1</Tab>
     <Tab>Tab 2</Tab>
     <Tab>Tab 3</Tab>
   {/snippet}
-  {#snippet tabPanel()}
-    <TabPanel>TabPanel 1</TabPanel>
-    <TabPanel>TabPanel 2</TabPanel>
-    <TabPanel>TabPanel 3</TabPanel>
-  {/snippet}
+  <TabPanel>TabPanel 1</TabPanel>
+  <TabPanel>TabPanel 2</TabPanel>
+  <TabPanel>TabPanel 3</TabPanel>
 </Tabs>
 ```
       {/snippet}
@@ -82,16 +86,10 @@ description: Organize content into navigable sections in your Svelte app with th
       {#snippet example()}
       <div class="w-full">
         <Tabs variant="tabs">
-          {#snippet tabList()}
-            <Tab>Tab 1</Tab>
-            <Tab>Tab 2</Tab>
-            <Tab>Tab 3</Tab>
+          {#snippet tabs()}
+            {@render T()}
           {/snippet}
-          {#snippet tabPanel()}
-            <TabPanel>TabPanel 1</TabPanel>
-            <TabPanel>TabPanel 2</TabPanel>
-            <TabPanel>TabPanel 3</TabPanel>
-          {/snippet}
+          {@render P()}
         </Tabs>
       </div>
       {/snippet}
@@ -106,70 +104,152 @@ description: Organize content into navigable sections in your Svelte app with th
 
   <DocBlock title="Customization">
     <p class="not-prose">The <code>Tabs</code> component is highly customizable, allowing you to tailor its appearance and behavior to fit your design needs. You can adjust various parts of the component using the following props:</p>
-    <ul class="my-0">
-      <li><span class="not-prose"><code>"borderClasses"</code></span>: This prop controls the border of the tabs. By default, it is set to <code>true</code>, which applies the default border style. You can pass a custom class or a <code>boolean</code> value to either enable or disable the border.
-        <ul>
+    <div>
+      <Example title="Border Customization">
+        <p class="not-prose">The <code>"border"</code> prop controls the border of the tabs. By default, it is set to <code>true</code>, which applies the default border style. You can pass a custom class or a <code>boolean</code> value to either enable or disable the border.</p>
+        <ul class="mt-0">
           <li><span class="not-prose"><code>true</code> (default)</span>: Applies the default border.</li>
           <li><span class="not-prose"><code>false</code></span>: Disables the border.</li>
           <li><span class="not-prose"><code>string</code></span>: You can pass a custom class for border styling.</li>
         </ul>
-        <Example>
+        {#snippet example()}
+          <div class="w-full">
+            <Tabs border="border-b-4 border-brand-primary-300">
+              {#snippet tabs()}
+                {@render T()}
+              {/snippet}
+              {@render P()}
+            </Tabs>
+          </div>
+        {/snippet}
 
-      {#snippet code()}
+        {#snippet code()}
 ```html
-<Tabs borderClasses="border-gray-300"> ... </Tabs>
+<!-- Custom border classes -->
+<Tabs border="border-b-4 border-brand-primary-300"> ... </Tabs>
 ```
-      {/snippet}
-        </Example>
-      </li>
-      <li><span class="not-prose"><code>"tabListClasses"</code></span>: This prop allows you to customize the tab list container. You can pass any valid Tailwind or custom class to modify the appearance of the tab list.
-        <Example>
+        {/snippet}
+      </Example>
+      <Example title="Customize the Tab Container">
+        <p class="not-prose">The <code>"tabContainerClasses"</code> prop allows you to customize the tab list container. You can pass any valid Tailwind or custom class to modify the appearance of the tab list.</p>
+        {#snippet example()}
+          <div class="w-full">
+            <Tabs tabContainerClasses="flex justify-center">
+              {#snippet tabs()}
+                {@render T()}
+              {/snippet}
+              {@render P()}
+            </Tabs>
+          </div>
+        {/snippet}
 
-      {#snippet code()}
+        {#snippet code()}
 ```html
-<Tabs tabListClasses="flex space-x-4"> ... </Tabs>
+<Tabs tabContainerClasses="flex justify-center"> ... </Tabs>
 ```
-      {/snippet}
-        </Example>
-      </li>
-      <li><span class="not-prose"><code>"tabClasses"</code></span>: Customize the individual tabs with this prop. Pass any custom classes to adjust the style of each tab element.
-        <Example>
+        {/snippet}
+      </Example>
 
-      {#snippet code()}
+      <Example title="Tab Customization">
+        <p class="not-prose">To customize the tabs, use <code>"tabClasses"</code> ans <code>"tabActiveClasses"</code> props. The <code>"tabClasses"</code> prop applies to all tabs, while the <code>"tabActiveClasses"</code> prop is applied only to the active tab, overriding the styles from <code>"tabClasses"</code>.</p>
+        {#snippet example()}
+          <div class="w-full">
+            <Tabs tabClasses="text-gray-500 hover:text-blue-500" tabActiveClasses="bg-blue-800 text-blue-50 hover:text-blue-200">
+              {#snippet tabs()}
+                {@render T()}
+              {/snippet}
+              {@render P()}
+            </Tabs>
+          </div>
+        {/snippet}
+
+        {#snippet code()}
 ```html
-<Tabs tabClasses="text-gray-700 hover:text-blue-500"> ... </Tabs>
+<Tabs
+  tabClasses="text-gray-500 hover:text-blue-500"
+  tabActiveClasses="bg-blue-800 text-blue-50 hover:text-blue-200"
+>
+  ...
+</Tabs>
 ```
-      {/snippet}
-        </Example>
-      </li>
-      <li><span class="not-prose"><code>"activeTabClasses"</code></span>: This prop lets you define the appearance of the active tab. By default, it applies the active tab style, but you can use this prop to apply custom classes for the active tab.
-        <Example>
+        {/snippet}
+      </Example>
 
-      {#snippet code()}
-```html
-<Tabs activeTabClasses="bg-blue-500 text-white"> ... </Tabs>
-```
-      {/snippet}
-        </Example>
-      </li>
-      <li><span class="not-prose"><code>"tabPanelClasses"</code></span>: Use this prop to customize the style of the tab panels. You can pass custom classes for margin, padding, background color, or any other styling.
-        <Example>
+      <Example title="Panel Customization">
+        <p class="not-prose">You can use the <code>"tabPanelClasses"</code> prop to customize the style of the tab panels. You can pass custom classes for margin, padding, background color, or any other styling.</p>
+        {#snippet example()}
+          <div class="w-full">
+            <Tabs tabPanelClasses="p-4 bg-brand-primary-100">
+              {#snippet tabs()}
+                {@render T()}
+              {/snippet}
+              {@render P()}
+            </Tabs>
+          </div>
+        {/snippet}
 
-      {#snippet code()}
+        {#snippet code()}
 ```html
 <Tabs tabPanelClasses="p-4 bg-gray-100"> ... </Tabs>
 ```
-      {/snippet}
-        </Example>
-      </li>
-    </ul>
+        {/snippet}
+      </Example>
+
+      <Example title="Customize Individual Component">
+        <p class="not-prose">If you want to customize a specific <code>Tab</code> or <code>TabPanel</code> or event the <code>Tabs</code> component, you can use the native <code>class</code> attribute with that component. </p>
+        {#snippet example()}
+          <div class="w-full">
+            <Tabs class="border-2 border-yellow-500 py-2 px-4 rounded-lg">
+              {#snippet tabs()}
+                <Tab>Tab 1</Tab>
+                <Tab class="font-bold text-2xl">Tab 2</Tab>
+                <Tab>Tab 3</Tab>
+              {/snippet}
+              <TabPanel>TabPanel 1</TabPanel>
+              <TabPanel class="bg-yellow-100 p-4">TabPanel 2</TabPanel>
+              <TabPanel>TabPanel 3</TabPanel>
+            </Tabs>
+          </div>
+        {/snippet}
+
+        {#snippet code()}
+```html
+<Tabs class="border-2 border-yellow-500 py-2 px-4 rounded-lg">
+  {#snippet tabs()}
+    <Tab>Tab 1</Tab>
+    <Tab class="font-bold text-2xl">Tab 2</Tab>
+    <Tab>Tab 3</Tab>
+  {/snippet}
+  <TabPanel>TabPanel 1</TabPanel>
+  <TabPanel class="bg-yellow-100 p-4">TabPanel 2</TabPanel>
+  <TabPanel>TabPanel 3</TabPanel>
+</Tabs>
+```
+        {/snippet}
+      </Example>
+    </div>
+    <p class="not-prose">In the example above, the native <code>class</code> attribute is applied to the <code>Tabs</code> component, the second <code>Tab</code>, and the second <code>Tabpanel</code>.</p>
   </DocBlock>
 
   <DocBlock title="Accessibility">
+    <p class="not-prose">The <code>Tabs</code> component follows the <a href="https://www.w3.org/WAI/ARIA/apg/patterns/tabs/" target="blank">WAI-ARIA Tabs Pattern</a> to ensure a seamless experience for all users, including those using assistive technologies.</p>
+    <ol class="my-0">
+      <li><b class="font-semi-bold">Built-in Accessibility Features</b>: The component includes essential ARIA attributes and roles:
+        <ul>
+          <li><span class="not-prose"><code>role="tablist"</code></span> for the container that holds all tabs.</li>
+          <li><span class="not-prose"><code>role="tab"</code></span> for each tab with <span class="not-prose"><code>aria-selected="true"</code></span> on the active one.</li>
+          <li><span class="not-prose"><code>role="tabpanel"</code></span> for each content section with <span class="not-prose"><code>aria-labelledby</code></span> linking it to its respective tab.</li>
+        </ul>
+        These attributes allow screen readers to interpret and navigate the component correctly.
+      </li>
+      <li><b class="font-semi-bold">Keyboard Navigation</b>: Users can navigate between tabs using <kbd>Tab</kbd> key, and activate a tab with <kbd>Enter</kbd> or <kbd>Space</kbd>. The active tab remains focusable, ensuring smooth interaction without extra actions.</li>
+      <li><b class="font-semi-bold">Customization Considerations</b>: When applying custom styles, ensure <b>focus indicators</b> remain visible, <b>contrast is sufficient</b>, and <b>animations do not disrupt usability</b>, particularly for users with motion sensitivity.</li>
+    </ol>
+    <p class="not-prose">By following these best practices, the Tabs component provides an inclusive and accessible experience.</p>
   </DocBlock>
 
   <DocBlock title="Configuration">
-    <ConfigComponent component={component} />
+    <ConfigComponent {component} />
   </DocBlock>
 
   {#snippet sidebar()}
@@ -177,6 +257,11 @@ description: Organize content into navigable sections in your Svelte app with th
     <a href={processID("Example")}>Example</a>
     <a href={processID("Variant")}>Variant</a>
     <a href={processID("Customization")}>Customization</a>
+    <a href={processID("Border Customization")} class="ps-4">Border Customization</a>
+    <a href={processID("Customize the Tab Container")} class="ps-4">Tab Container</a>
+    <a href={processID("Tab Customization")} class="ps-4">Tab Customization</a>
+    <a href={processID("Panel Customization")} class="ps-4">Panel Customization</a>
+    <a href={processID("Customize Individual Component")} class="ps-4">Individual Component</a>
     <a href={processID("Accessibility")}>Accessibility</a>
     <a href={processID("Configuration")}>Configuration</a>
   {/snippet}
