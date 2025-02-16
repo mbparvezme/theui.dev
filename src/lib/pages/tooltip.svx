@@ -17,8 +17,6 @@ description: Add informative tooltips to your Svelte app with theui-svelte's Too
   import { Tooltip, Button } from "theui-svelte";
 </script>
 
-<Tooltip />
-
 <DocLayout>
   <DocHead title="Tooltip" text="The Tooltip component provides a way to display informative text when users hover over or click on an element." {edit_url}/>
 
@@ -27,9 +25,11 @@ description: Add informative tooltips to your Svelte app with theui-svelte's Too
     <p class="not-prose">This component is highly flexible and supports various animations, colors, and positions. You can easily configure its behavior to appear on hover or click, making it suitable for a wide range of use cases. The Tooltip is designed to be accessible and visually appealing, with customizable animations and styles.</p>
   </DocBlock>
 
+<Button class="relative" data-tooltip="Hello">Tooltip</Button>
+
   <DocBlock title="Example">
     <Example title="Import & Initialize Tooltip" codeTitle="+layout.svelte">
-      <p class="not-prose">First, import and initialize the <code>Tooltip</code> component. It's best to initialize the Tooltip globally, such as in the <code>+layout.svelte</code> file to make it available in your entire app. You can also include it on specific pages if needed.</p>
+      <p class="not-prose">To use the <code>Tooltip</code> component, first import it from theui-svelte. It’s recommended to initialize <code>Tooltip</code> globally, such as in <code>+layout.svelte</code>, to make tooltips available throughout your app. Alternatively, you can include it on specific pages where needed.</p>
       {#snippet code()}
 
 ```html
@@ -43,14 +43,16 @@ description: Add informative tooltips to your Svelte app with theui-svelte's Too
     </Example>
 
     <Example title="Use with an Element">
-      <p class="not-prose"></p>
+      <p class="not-prose">Once initialized, the Tooltip component enables tooltips in your application. It works in the background, automatically handling hover interactions for elements with tooltip attributes.</p>
       {#snippet example()}
-        <Button data-tooltip="Hello" data-tooltip-position="right">Open tooltip</Button>
+        <div>
+          <Button class="relative" data-tooltip="Hello">Tooltip</Button>
+        </div>
       {/snippet}
       {#snippet code()}
 
 ```html
-<Button label="Button" data-tooltip="Hello" />
+<Button data-tooltip="Hello">Open tooltip</Button>
 ```
       {/snippet}
     </Example>
