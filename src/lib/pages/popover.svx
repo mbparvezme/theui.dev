@@ -1,7 +1,7 @@
 ---
 title: Popover
 dir: ".lib/pages"
-description: ==================
+description: a flexible and customizable UI element that displays additional content when triggered by user interaction. It is useful for providing contextual information, tooltips, or action menus without cluttering the interface.
 ---
 
 <script lang="ts">
@@ -14,17 +14,25 @@ description: ==================
   import { processID } from "$lib";
   let { component, edit_url }: {component: any, edit_url?: string } = $props();
 
-  import { Popover } from "theui-svelte";
+  import { Popover, Button } from "theui-svelte";
 </script>
 
 <DocLayout>
-  <DocHead title="Popover" text="...." {edit_url}/>
+  <DocHead title="Popover" text="A flexible and customizable UI element that displays additional content when triggered by user interaction. It is useful for providing contextual information, tooltips, or action menus without cluttering the interface." {edit_url}/>
+
+  <DocBlock>
+    <p class="not-prose">The <b>Popover</b> component allows developers to display a small floating panel next to a specified trigger element. It supports various customization options, including positioning, animation speed, rounded corners, shadow effects, and trigger events (click or hover). The popover can contain a title and body content, both of which can be styled individually using provided class props.</p>
+    <p class="not-prose">By default, the popover appears above (<code>top</code>) the trigger element with a configurable gap. It can be dismissed automatically when clicking outside or manually by interacting with the trigger. The component is designed to be lightweight, accessible, and easy to integrate with different UI designs.</p>
+  </DocBlock>
 
   <DocBlock title="Example">
-    <p class="not-prose">..</p>
+    <p class="not-prose">The <b>Popover</b> component can be easily added to your project by wrapping the content you want to display inside it. The <code>trigger</code> prop connects the Popover component to a specific element by matching its <code>id</code>. When the user interacts with this element, the popover appears next to it. This ensures precise control over where and when the popover is displayed.</p>
     <Example>
       {#snippet example()}
-        Popover will display here
+        <Popover trigger="my-popover1"> 
+          Popover - am amazing component for the displaying additional content.
+        </Popover>
+        <Button id="my-popover1">Test popover</Button>
       {/snippet}
 
       {#snippet code()}
@@ -33,7 +41,179 @@ description: ==================
   import { Popover } from "theui-svelte";
 </script>
 
-// Popover
+<Popover trigger="my-popover"> 
+  Popover - am amazing component for the displaying additional content.
+</Popover>
+
+<Button id="my-popover">Test popover</Button>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Popover Title">
+    <p class="not-prose">The <b>Popover</b> component allows adding a title to provide a heading or short description before the main content. You can add a title in two ways:</p>
+    <Example title="Using the title Prop">
+      <p class="not-prose">You can use the <code>title</code> prop to define the title of the <b>Popover</b>. Just pass the text of the title in the prop.</p>
+      {#snippet example()}
+        <Popover trigger="my-popover2">
+          Popover - am amazing component for the displaying additional content.
+        </Popover>
+        <Button id="my-popover2">Test popover</Button>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Popover trigger="my-popover" title="Popover Title">
+  Popover - am amazing component for the displaying additional content.
+</Popover>
+```
+      {/snippet}
+    </Example>
+    <Example title="Using Snippet">
+      <p class="not-prose">Alternatively, for custom title you can use the <code>title</code> snippet.</p>
+      {#snippet example()}
+        <Popover trigger="my-popover3">
+          {#snippet title()}
+            <div>Popover <span class="text-brand-primary-500">Title</span></div>
+          {/snippet}
+          Popover - am amazing component for the displaying additional content.
+        </Popover>
+        <Button id="my-popover3">Test popover</Button>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Popover trigger="my-popover">
+  {#snippet title()}
+    Popover <span class="text-brand-primary-500">Title</span>
+  {/snippet}
+  ...
+</Popover>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Position">
+    <p class="not-prose">The <b>Popover</b> component allows you to control where it appears relative to the trigger element using the position prop. By default, the popover appears at the top of the trigger, but you can set it to different positions like <code>top</code>, <code>bottom</code>, <code>left</code>, or <code>right</code>. Additionally, you can use more specific placements such as <code>top-start</code>, <code>top-end</code>, <code>bottom-start</code>, <code>bottom-end</code>, <code>left-start</code>, <code>left-end</code>, <code>right-start</code>, and <code>right-end</code> to fine-tune alignment.</p>
+    <Example>
+      {#snippet example()}
+        <Popover trigger="my-popover4" position="right">
+          Popover - am amazing component for the<br>displaying additional content.
+        </Popover>
+        <Button id="my-popover4">Test popover</Button>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Popover trigger="my-popover" position="right">
+  Popover - am amazing component for the<br>displaying additional content.
+</Popover>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Trigger Event">
+    <p class="not-prose">The <b>Popover</b> component supports different interaction types through the <code>triggerEvent</code> prop, allowing you to control how the popover is activated. By default, the popover opens when the trigger element is <b>clicked</b>, but you can also set it to open on <b>hover</b>.</p>
+    <Example title="Available Options">
+      <ul>
+        <li><span class="not-prose"><code>click</code></span> (Default) – The popover appears when the user clicks the trigger element and closes when clicking outside.</li>
+        <li><span class="not-prose"><code>hover</code></span> – The popover appears when the user hovers over the trigger element and disappears when moving away.</li>
+      </ul>
+      {#snippet example()}
+        <Popover trigger="my-popover5" triggerEvent="hover">
+          Popover - am amazing component for the<br>displaying additional content.
+        </Popover>
+        <Button id="my-popover5">Show popover by hover</Button>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Popover trigger="my-popover5" triggerEvent="hover">
+  Popover - am amazing component for the<br>displaying additional content.
+</Popover>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Popover Gap">
+    <p class="not-prose">The <code>gap</code> prop controls the spacing between the Popover and its trigger element. It accepts a number value, representing the offset in pixels. By default, the gap is set to <code>8</code>, ensuring a small but noticeable space between the popover and the trigger.</p>
+    <Example>
+      {#snippet example()}
+        <Popover trigger="my-popover6" gap={16}>
+          This popover has a larger gap from the trigger.
+        </Popover>
+        <Button id="my-popover6">Show popover</Button>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Popover trigger="my-popover" gap={16}>
+  This popover has a larger gap from the trigger.
+</Popover>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Animation Speed">
+    <p class="not-prose">The <code>animate</code> prop controls the speed of the animation when the Popover appears or disappears. It accepts the following values <code>none</code>, <code>slower</code>, <code>slow</code>, <code>normal</code>, <code>fast</code> and <code>faster</code> - which can be used to define how quickly the popover fades in and out.</p>
+    <Example>
+      {#snippet example()}
+        <Popover trigger="my-popover7" animate="slower">
+          This popover has a larger gap from the trigger.
+        </Popover>
+        <Button id="my-popover7">Show popover</Button>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Popover trigger="my-popover" animate="slower">
+  This popover has a larger gap from the trigger.
+</Popover>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Rounded Corners">
+    <p class="not-prose">The <code>rounded</code> prop controls the corner rounding of the <b>Popover</b>. You can adjust it using predefined values to give the popover a smooth, rounded appearance. Available values are <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code>, <code>full</code> and <code>none</code>.</p>
+    <Example>
+      {#snippet example()}
+        <Popover trigger="my-popover8" rounded="none">
+          This popover has a larger gap from the trigger.
+        </Popover>
+        <Button id="my-popover8">Show popover</Button>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Popover trigger="my-popover" rounded="none">
+  This popover has a larger gap from the trigger.
+</Popover>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Shadow">
+    <p class="not-prose">The <code>shadow</code> prop adds a shadow effect to the Popover, helping it stand out against the background. Available values are <code>xs</code>, <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code>, <code>2xl</code>, <code>inner</code>, <code>none</code>.</p>
+    <Example>
+      {#snippet example()}
+        <Popover trigger="my-popover9" shadow="xl">
+          This popover has a larger gap from the trigger.
+        </Popover>
+        <Button id="my-popover9">Show popover</Button>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Popover trigger="my-popover" shadow="xl">
+  This popover has a larger gap from the trigger.
+</Popover>
 ```
       {/snippet}
     </Example>
