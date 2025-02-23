@@ -159,14 +159,34 @@ description: a flexible and customizable UI element that displays additional con
     </Example>
   </DocBlock>
 
+  <DocBlock title="Close on Clicking Popover">
+    <p class="not-prose">The <code>closeOnClick</code> prop determines whether the Popover should close when clicking inside it. By default, this is set to <code>true</code>, meaning the popover will close when the user interacts with its content.</p>
+    <Example>
+      {#snippet example()}
+        <Popover trigger="my-popover7" closeOnClick={true}>
+          Clicking inside this popover won't close it.
+        </Popover>
+        <Button id="my-popover7">Show popover</Button>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Popover trigger="my-popover7" closeOnClick={true}>
+  Clicking inside this popover won't close it.
+</Popover>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
   <DocBlock title="Animation Speed">
     <p class="not-prose">The <code>animate</code> prop controls the speed of the animation when the Popover appears or disappears. It accepts the following values <code>none</code>, <code>slower</code>, <code>slow</code>, <code>normal</code>, <code>fast</code> and <code>faster</code> - which can be used to define how quickly the popover fades in and out.</p>
     <Example>
       {#snippet example()}
-        <Popover trigger="my-popover7" animate="slower">
+        <Popover trigger="my-popover8" animate="slower">
           This popover has a larger gap from the trigger.
         </Popover>
-        <Button id="my-popover7">Show popover</Button>
+        <Button id="my-popover8">Show popover</Button>
       {/snippet}
 
       {#snippet code()}
@@ -183,10 +203,10 @@ description: a flexible and customizable UI element that displays additional con
     <p class="not-prose">The <code>rounded</code> prop controls the corner rounding of the <b>Popover</b>. You can adjust it using predefined values to give the popover a smooth, rounded appearance. Available values are <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code>, <code>full</code> and <code>none</code>.</p>
     <Example>
       {#snippet example()}
-        <Popover trigger="my-popover8" rounded="none">
+        <Popover trigger="my-popover9" rounded="none">
           This popover has a larger gap from the trigger.
         </Popover>
-        <Button id="my-popover8">Show popover</Button>
+        <Button id="my-popover9">Show popover</Button>
       {/snippet}
 
       {#snippet code()}
@@ -203,10 +223,38 @@ description: a flexible and customizable UI element that displays additional con
     <p class="not-prose">The <code>shadow</code> prop adds a shadow effect to the Popover, helping it stand out against the background. Available values are <code>xs</code>, <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code>, <code>2xl</code>, <code>inner</code>, <code>none</code>.</p>
     <Example>
       {#snippet example()}
-        <Popover trigger="my-popover9" shadow="xl">
+        <Popover trigger="my-popover10" shadow="xl">
           This popover has a larger gap from the trigger.
         </Popover>
-        <Button id="my-popover9">Show popover</Button>
+        <Button id="my-popover10">Show popover</Button>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Popover trigger="my-popover" shadow="xl">
+  This popover has a larger gap from the trigger.
+</Popover>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Customization">
+    <p class="not-prose">The <b>Popover</b> component offers multiple ways to customize its appearance using the <code>titleClasses</code>, <code>bodyClasses</code>, and <code>class</code> attributes. These allow you to apply custom styles to the title, body and the container of the popover.</p>
+    <Example>
+      <ul>
+        <li><span class="not-prose"><code>titleClasses</code></span> – lets you add custom styles to the <b>Popover title</b>, such as font size, color, or spacing.</li>
+        <li><span class="not-prose"><code>bodyClasses</code></span> – allows you to style the <b>Popover body</b>, including padding, background, border, and typography.</li>
+      </ul>
+      {#snippet example()}
+        <Popover
+          trigger="my-popover11"
+          titleClasses="text-xl font-bold text-blue-500"
+          bodyClasses="p-4 bg-gray-100 border border-gray-300"
+        >
+          This popover has a styled title and body.
+        </Popover>
+        <Button id="my-popover11">Show popover</Button>
       {/snippet}
 
       {#snippet code()}

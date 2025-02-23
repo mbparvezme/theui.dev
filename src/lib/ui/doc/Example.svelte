@@ -45,6 +45,6 @@
 
 <style lang="postcss">
 :global(.example-section + .example-section){
-  @apply mt-12;
+  @apply mt-8;
 }
 </style>
