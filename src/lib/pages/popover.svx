@@ -20,7 +20,7 @@ description: a flexible and customizable UI element that displays additional con
 <DocLayout>
   <DocHead title="Popover" text="A flexible and customizable UI element that displays additional content when triggered by user interaction. It is useful for providing contextual information, tooltips, or action menus without cluttering the interface." {edit_url}/>
 
-  <DocBlock>
+  <DocBlock title="About">
     <p class="not-prose">The <b>Popover</b> component allows developers to display a small floating panel next to a specified trigger element. It supports various customization options, including positioning, animation speed, rounded corners, shadow effects, and trigger events (click or hover). The popover can contain a title and body content, both of which can be styled individually using provided class props.</p>
     <p class="not-prose">By default, the popover appears above (<code>top</code>) the trigger element with a configurable gap. It can be dismissed automatically when clicking outside or manually by interacting with the trigger. The component is designed to be lightweight, accessible, and easy to integrate with different UI designs.</p>
   </DocBlock>
@@ -240,27 +240,42 @@ description: a flexible and customizable UI element that displays additional con
   </DocBlock>
 
   <DocBlock title="Customization">
-    <p class="not-prose">The <b>Popover</b> component offers multiple ways to customize its appearance using the <code>titleClasses</code>, <code>bodyClasses</code>, and <code>class</code> attributes. These allow you to apply custom styles to the title, body and the container of the popover.</p>
     <Example>
-      <ul>
-        <li><span class="not-prose"><code>titleClasses</code></span> – lets you add custom styles to the <b>Popover title</b>, such as font size, color, or spacing.</li>
-        <li><span class="not-prose"><code>bodyClasses</code></span> – allows you to style the <b>Popover body</b>, including padding, background, border, and typography.</li>
+      <p class="not-prose">The <b>Popover</b> component offers multiple ways to customize its appearance using the <code>titleClasses</code>, <code>bodyClasses</code>, and <code>class</code> attributes. These allow you to apply custom styles to the title, body and the container of the popover.</p>
+      <ul class="my-0">
+        <li><span class="not-prose"><code>titleClasses</code></span> prop lets you add custom styles to the <b>Popover title</b>, such as font size, color, or spacing.</li>
+        <li><span class="not-prose"><code>bodyClasses</code></span> prop allows you to style the <b>Popover body</b>, including padding, background, border, and typography.</li>
+        <li><span class="not-prose"><code>class</code></span> attribute allows you to styles the <b>Popover container</b>, modifying its overall look, size, or layout.</li>
       </ul>
       {#snippet example()}
         <Popover
           trigger="my-popover11"
-          titleClasses="text-xl font-bold text-blue-500"
-          bodyClasses="p-4 bg-gray-100 border border-gray-300"
+          title="POPOVER TITLE"
+          class="bg-blue-100 text-center"
+          titleClasses="font-bold text-blue-500"
+          bodyClasses="flex flex-col gap-4"
         >
           This popover has a styled title and body.
+          <p>
+            <Button class="bg-blue-500 hover:bg-blue-600" size="sm">Button</Button>
+          </p>
         </Popover>
         <Button id="my-popover11">Show popover</Button>
       {/snippet}
 
       {#snippet code()}
 ```html
-<Popover trigger="my-popover" shadow="xl">
-  This popover has a larger gap from the trigger.
+<Popover
+  trigger="my-popover"
+  title="POPOVER TITLE"
+  class="bg-blue-100 text-center"
+  titleClasses="font-bold text-blue-500"
+  bodyClasses="flex flex-col gap-4"
+>
+  This popover has a styled title and body.
+  <p>
+    <Button class="bg-blue-500 hover:bg-blue-600" size="sm">Button</Button>
+  </p>
 </Popover>
 ```
       {/snippet}
@@ -268,8 +283,34 @@ description: a flexible and customizable UI element that displays additional con
   </DocBlock>
 
   <DocBlock title="Accessibility">
-    <p class="not-prose">The Alert component is built with accessibility in mind, handling all necessary ARIA attributes, including <code>role="alert"</code> and <code>aria-label="Close alert"</code>, to ensure compatibility with assistive technologies. These attributes are automatically applied, so you don't need to configure them manually.</p>
-    <p class="not-prose font-bold">The only consideration required is maintaining proper color contrast for the alert's text and background to ensure readability and compliance with accessibility standards.</p>
+    <div>
+      <p class="not-prose">The Popover component is designed with accessibility in mind, ensuring it is usable for keyboard and screen reader users. It follows best practices for focus management, keyboard navigation, and ARIA attributes.</p>
+      <ol class="my-0">
+        <li>
+          <b>Keyboard Navigation</b>
+          <ul>
+            <li>Users can open and close the popover using the <kbd>Space</kbd> or <kbd>Enter</kbd> keys keys when <span class="not-prose"><code>triggerEvent="click"</code></span>.</li>
+            <li>Pressing <kbd>Escape</kbd> closes the popover when it is open when <span class="not-prose"><code>triggerEvent="click"</code></span>.</li>
+          </ul>
+        </li>
+        <li>
+          <b>ARIA Attributes</b>
+          <p class="not-prose">To enhance screen reader compatibility, the popover automatically includes essential ARIA attributes:</p>
+          <ul>
+            <li>The <span class="not-prose"><code>aria-controls</code></span> links the trigger element to the popover container.</li>
+            <li>The <span class="not-prose"><code>aria-haspopup</code></span> on the trigger element to indicate a popover is available.</li>
+            <li>The <span class="not-prose"><code>aria-expanded</code></span> attribute will be managed by the component itself for proper accessibility.</li>
+          </ul>
+        </li>
+        <li>
+          <b>Focus Management</b>
+          <ul>
+            <li>When opened, focus remains on the trigger or shifts inside the popover for better navigation.</li>
+            <li>When closed, focus returns to the trigger element to maintain a logical navigation flow.</li>
+          </ul>
+        </li>
+      </ol>
+    </div>
   </DocBlock>
 
   <DocBlock title="Configuration">
@@ -277,8 +318,18 @@ description: a flexible and customizable UI element that displays additional con
   </DocBlock>
 
   {#snippet sidebar()}
+    <a href={processID("About")}>About</a>
     <a href={processID("Example")}>Example</a>
-    ...
+    <a href={processID("Popover Title")}>Popover title</a>
+    <a href={processID("Using the title Prop")} class="ps-4">Title using prop</a>
+    <a href={processID("Using Snippet")} class="ps-4">Title using snippet</a>
+    <a href={processID("Position")}>Position</a>
+    <a href={processID("Trigger Event")}>Trigger event</a>
+    <a href={processID("Popover Gap")}>Popover gap</a>
+    <a href={processID("Close on Clicking Popover")}>Close on clicking</a>
+    <a href={processID("Animation Speed")}>Animation Speed</a>
+    <a href={processID("Rounded Corners")}>Rounded Corners</a>
+    <a href={processID("Shadow")}>Shadow</a>
     <a href={processID("Customization")}>Customization</a>
     <a href={processID("Accessibility")}>Accessibility</a>
     <a href={processID("Configuration")}>Configuration</a>
