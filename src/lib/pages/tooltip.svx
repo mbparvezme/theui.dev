@@ -69,6 +69,10 @@ description: Add informative tooltips to your Svelte app with theui-svelte's Too
       {#snippet code()}
 
 ```html
+<!-- Applied to all the Tooltip -->
+<Tooltip position="top-end" />
+
+<!-- Applied only to the Tooltip of the trigger -->
 <Button data-tooltip-position="top-end" data-tooltip="...">...</Button>
 ```
       {/snippet}
@@ -79,13 +83,14 @@ description: Add informative tooltips to your Svelte app with theui-svelte's Too
     <Example>
       <p class="not-prose">The <code>triggerEvent</code> prop controls how the tooltip appears. By default, it opens on <code>hover</code>, but you can set it to <code>click</code> to show it when clicked.</p>
       {#snippet example()}
-        <Button data-tooltip="Hello">Hover me</Button>
-        <Button data-tooltip="Hello" triggerEvent="click">Click me</Button>
+        <Button data-tooltip="Hello" data-tooltip-event="hover">Hover me</Button>
+        <Button data-tooltip="Hello" data-tooltip-event="click">Click me</Button>
       {/snippet}
       {#snippet code()}
 
 ```html
-<Button tooltipEvent="click">Click to see tooltip />
+<Button data-tooltip="Hello" data-tooltip-event="hover">Click me</Button>
+<Button data-tooltip="Hello" data-tooltip-event="click">Click me</Button>
 ```
       {/snippet}
     </Example>
@@ -95,7 +100,7 @@ description: Add informative tooltips to your Svelte app with theui-svelte's Too
     <Example>
       <p class="not-prose">The <code>animate</code> prop controls the tooltip's animation speed. You can set it to different values to adjust how quickly the tooltip appears and disappears. Available values are <code>none</code>, <code>slower</code>, <code>slow</code>, <code>normal</code>, <code>fast</code> and <code>faster</code>.</p>
       {#snippet example()}
-        <Button data-tooltip="Hello">Button</Button>
+        <Button data-tooltip="Hello" data-tooltip-animate="slower">Button</Button>
       {/snippet}
       {#snippet code()}
 
@@ -110,7 +115,7 @@ description: Add informative tooltips to your Svelte app with theui-svelte's Too
     <Example>
       <p class="not-prose">The <code>rounded</code> prop defines the tooltip’s border-radius, allowing you to control its corner style. Use it to match your design preferences, from sharp edges to fully rounded corners. Available values are <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code>, <code>full</code> and <code>none</code>.</p>
       {#snippet example()}
-        <Button data-tooltip="Hello">Button</Button>
+        <Button data-tooltip="Hello" data-tooltip-rounded="none">Button</Button>
       {/snippet}
       {#snippet code()}
 
