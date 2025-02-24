@@ -19,7 +19,7 @@
 		"@sveltejs/adapter-node": "^5.2.10",
 		"@sveltejs/kit": "^2.9.0",
 		"@sveltejs/vite-plugin-svelte": "^5.0.0",
-		"@types/node": "^22.10.2",
+		"@types/node": "^22.13.5",
 		"autoprefixer": "^10.4.20",
 		"mdsvex": "^0.11.2",
 		"svelte": "^5.0.0",
@@ -33,6 +33,6 @@
 		"@tailwindcss/forms": "^0.5.9",
 		"@tailwindcss/typography": "^0.5.15",
 		"tailwind-merge": "^2.5.5",
-		"theui-svelte": "^2.0.0-rc40"
+		"theui-svelte": "^2.0.0-rc44"
 	}
 }

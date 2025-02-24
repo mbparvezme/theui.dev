@@ -1,22 +1,24 @@
 <script lang="ts">
-  import {Navbar, NavBrand, NavLinkGroup, NavDropdown, NavLink, NavToggle, DarkMode} from "theui-svelte"
+  import {Navbar, NavBrand, NavCollapse, NavLinkGroup, NavDropdown, NavLink, NavToggle, DarkMode} from "theui-svelte"
 </script>
 
-<Navbar mobileNavOn={false}>
+<Navbar mobileNavOn="md">
   <NavBrand href="/">
     <svg class="block w-8 h-8"><use xlink:href="#logo"></use></svg>
     <span class="flex items-end font-title text-xl">theui <sub class="text-gray-500 dark:text-gray-300 font-normal dark:font-light text-sm pb-[5px] pl-0.5">.dev</sub></span>
   </NavBrand>
-  <NavLinkGroup align="end">
-    <NavDropdown label="Components" align="end" animation="fade">
-      <NavLink href="/" text="About" />
-      <NavLink href="/" text="About" />
-      <NavLink href="/" text="About" />
-      <NavLink href="/" text="About" />
-    </NavDropdown>
-    <NavLink href="/ui-blocks">UI Blocks</NavLink>
-    <NavLink href="/theme">Themes</NavLink>
-  </NavLinkGroup>
+  <NavCollapse>
+    <NavLinkGroup align="end">
+      <NavDropdown label="Components" align="end" animation="fade">
+        <NavLink href="/" text="About" />
+        <NavLink href="/" text="About" />
+        <NavLink href="/" text="About" />
+        <NavLink href="/" text="About" />
+      </NavDropdown>
+      <NavLink href="/ui-blocks">UI Blocks</NavLink>
+      <NavLink href="/theme">Themes</NavLink>
+    </NavLinkGroup>
+  </NavCollapse>
   <div class="flex items-center gap-x-6 lg:gap-x-8">
     <span class="border-l border-brand/10 dark:border-gray-700 w-px h-[1em] flex-grow-0 mr-6 hidden lg:inline-block"></span>
     <DarkMode>

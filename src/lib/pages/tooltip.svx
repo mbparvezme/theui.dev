@@ -45,13 +45,13 @@ description: Add informative tooltips to your Svelte app with theui-svelte's Too
       <p class="not-prose">Once initialized, the Tooltip component enables tooltips in your application. It works in the background, automatically handling hover interactions for elements with tooltip attributes.</p>
       {#snippet example()}
         <div>
-          <Button data-tooltip="Hello">Tooltip</Button>
+          <Button data-tooltip="I'm tooltip!">Tooltip</Button>
         </div>
       {/snippet}
       {#snippet code()}
 
 ```html
-<Button data-tooltip="Hello">Open tooltip</Button>
+<Button data-tooltip="I'm tooltip!">Open tooltip</Button>
 ```
       {/snippet}
     </Example>
@@ -81,16 +81,20 @@ description: Add informative tooltips to your Svelte app with theui-svelte's Too
 
   <DocBlock title="Trigger Event">
     <Example>
-      <p class="not-prose">The <code>triggerEvent</code> prop controls how the tooltip appears. By default, it opens on <code>hover</code>, but you can set it to <code>click</code> to show it when clicked.</p>
+      <p class="not-prose">You can control how the tooltip appears using the <code>triggerEvent</code> prop or the <code>data-tooltip-event</code> attribute on the trigger element.</p>
+      <ul class="my-0">
+        <li>The <span class="not-prose"><code>triggerEvent</code></span> prop applies the same event to all tooltips. By default, it is set to <span class="not-prose"><code>hover</code></span>, but you can change it to <span class="not-prose"><code>click</code></span> to trigger the tooltip on click instead.</li>
+        <li>The <span class="not-prose"><code>data-tooltip-event</code></span> attribute allows setting the event for a specific tooltip without affecting others.</li>
+      </ul>
       {#snippet example()}
-        <Button data-tooltip="Hello" data-tooltip-event="hover">Hover me</Button>
-        <Button data-tooltip="Hello" data-tooltip-event="click">Click me</Button>
+        <Button data-tooltip="I'm tooltip!" data-tooltip-event="hover">Hover me</Button>
+        <Button data-tooltip="I'm tooltip!" data-tooltip-event="click">Click me</Button>
       {/snippet}
       {#snippet code()}
 
 ```html
-<Button data-tooltip="Hello" data-tooltip-event="hover">Click me</Button>
-<Button data-tooltip="Hello" data-tooltip-event="click">Click me</Button>
+<Button data-tooltip="I'm tooltip!" data-tooltip-event="hover">Click me</Button>
+<Button data-tooltip="I'm tooltip!" data-tooltip-event="click">Click me</Button>
 ```
       {/snippet}
     </Example>
@@ -98,14 +102,18 @@ description: Add informative tooltips to your Svelte app with theui-svelte's Too
 
   <DocBlock title="Animation Speed">
     <Example>
-      <p class="not-prose">The <code>animate</code> prop controls the tooltip's animation speed. You can set it to different values to adjust how quickly the tooltip appears and disappears. Available values are <code>none</code>, <code>slower</code>, <code>slow</code>, <code>normal</code>, <code>fast</code> and <code>faster</code>.</p>
+      <p class="not-prose">You can control the tooltip's animation speed using the <code>animate</code> prop or the <code>data-tooltip-animate</code> attribute on the trigger element. Available values are <code>none</code>, <code>slower</code>, <code>slow</code>, <code>normal</code>, <code>fast</code> and <code>faster</code>.</p>
+      <ul class="my-0">
+        <li>The <span class="not-prose"><code>animate</code></span> prop applies the same animation speed to all tooltips.</li>
+        <li>The <span class="not-prose"><code>data-tooltip-animate</code></span> attribute allows setting the animation speed for a specific tooltip without affecting others.</li>
+      </ul>
       {#snippet example()}
-        <Button data-tooltip="Hello" data-tooltip-animate="slower">Button</Button>
+        <Button data-tooltip="I'm tooltip!" data-tooltip-animate="none">Button</Button>
       {/snippet}
       {#snippet code()}
 
 ```html
-<Button data-tooltip="Hello">Button</Button>
+<Button data-tooltip="I'm tooltip!" data-tooltip-animate="none">Button</Button>
 ```
       {/snippet}
     </Example>
@@ -113,14 +121,18 @@ description: Add informative tooltips to your Svelte app with theui-svelte's Too
 
   <DocBlock title="Rounded Corner">
     <Example>
-      <p class="not-prose">The <code>rounded</code> prop defines the tooltip’s border-radius, allowing you to control its corner style. Use it to match your design preferences, from sharp edges to fully rounded corners. Available values are <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code>, <code>full</code> and <code>none</code>.</p>
+      <p class="not-prose">You can customize the tooltip’s border-radius using the <code>rounded</code> prop or the <code>data-tooltip-rounded</code> attribute on the trigger element. Available values are <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code>, <code>full</code> and <code>none</code>.</p>
+      <ul class="my-0">
+        <li>The <span class="not-prose"><code>rounded</code></span> prop applies the same corner style to all tooltips.</li>
+        <li>The <span class="not-prose"><code>data-tooltip-rounded</code></span> attribute allows setting a different border-radius for specific tooltips without affecting others.</li>
+      </ul>
       {#snippet example()}
-        <Button data-tooltip="Hello" data-tooltip-rounded="none">Button</Button>
+        <Button data-tooltip="I'm tooltip!" data-tooltip-rounded="none">Button</Button>
       {/snippet}
       {#snippet code()}
 
 ```html
-<Button data-tooltip="Hello">Button</Button>
+<Button data-tooltip="I'm tooltip!" data-tooltip-rounded="none">Button</Button>
 ```
       {/snippet}
     </Example>
@@ -128,14 +140,18 @@ description: Add informative tooltips to your Svelte app with theui-svelte's Too
 
   <DocBlock title="Tooltip Gap">
     <Example>
-      <p class="not-prose">The <code>gap</code> prop sets the spacing between the tooltip and its trigger element. Increasing or decreasing this value adjusts how far the tooltip appears from the trigger. Default is <code>12</code>.</p>
+      <p class="not-prose">You can adjust the spacing between the tooltip and its trigger using the <code>gap</code> prop or the <code>data-tooltip-gap</code> attribute on the trigger element. Default gap is <code>12</code>(px).</p>
+      <ul class="my-0">
+        <li>The <span class="not-prose"><code>gap</code></span> prop sets the spacing for all tooltips globally.</li>
+        <li>The <span class="not-prose"><code>data-tooltip-gap</code></span> attribute allows setting the spacing for a specific tooltip without affecting others.</li>
+      </ul>
       {#snippet example()}
-        <Button data-tooltip="Hello">Button</Button>
+        <Button data-tooltip="I'm tooltip!" data-tooltip-gap="20">Button</Button>
       {/snippet}
       {#snippet code()}
 
 ```html
-<Button data-tooltip="Hello">Button</Button>
+<Button data-tooltip="I'm tooltip!" data-tooltip-gap="20">Button</Button>
 ```
       {/snippet}
     </Example>
@@ -149,18 +165,46 @@ description: Add informative tooltips to your Svelte app with theui-svelte's Too
         <li>The <span class="not-prose"><code>data-tooltip-style</code></span> attribute, when added to a trigger, will style only the tooltip associated with that specific trigger.</li>
       </ul>
       {#snippet example()}
-        <Button data-tooltip="Hello" data-tooltip-style="bg-emerald-600 text-emerald-100">Button</Button>
+        <Button data-tooltip="I'm tooltip!" data-tooltip-style="bg-emerald-600 text-emerald-100">Button</Button>
       {/snippet}
       {#snippet code()}
 
 ```html
-<Button data-tooltip="Hello" data-tooltip-style="bg-emerald-600 text-emerald-100">Button</Button>
+<Button data-tooltip="I'm tooltip!" data-tooltip-style="bg-emerald-600 text-emerald-100">Button</Button>
 ```
       {/snippet}
     </Example>
   </DocBlock>
 
   <DocBlock title="Accessibility">
+    <div>
+      <p class="not-prose">Ensuring tooltips are accessible improves usability for all users, including those using keyboards and screen readers. Below are key accessibility considerations for the Tooltip component:</p>
+      <ol class="my-0">
+        <li>
+          <b>Keyboard Navigation</b>
+          <ul class="my-0">
+            <li>Users can open and close the tooltip using the <kbd>Space</kbd> or <kbd>Enter</kbd> keys when <span class="not-prose"><code>triggerEvent="click"</code></span>.</li>
+            <li>Pressing <kbd>Escape</kbd> closes the tooltip when it is open when <span class="not-prose"><code>triggerEvent="click"</code></span>.</li>
+            <li>The tooltips triggered by hover are also accessible via focus for keyboard users.</li>
+          </ul>
+        </li>
+        <li>
+          <b>ARIA Attributes</b>
+          <p class="not-prose">To enhance screen reader compatibility, the tooltip automatically includes essential ARIA attributes:</p>
+          <ul class="my-0">
+            <li>The <span class="not-prose"><code>aria-controls</code></span> links the trigger element to the tooltip container.</li>
+            <li>The <span class="not-prose"><code>aria-haspopup</code></span> on the trigger element to indicate a tooltip is available.</li>
+          </ul>
+        </li>
+        <li>
+          <b>Focus Management</b>
+          <ul class="my-0">
+            <li>When opened, focus remains on the trigger or shifts inside the tooltip for better navigation.</li>
+            <li>When closed, focus returns to the trigger element to maintain a logical navigation flow.</li>
+          </ul>
+        </li>
+      </ol>
+    </div>
   </DocBlock>
 
   <DocBlock title="Configuration">
@@ -170,8 +214,12 @@ description: Add informative tooltips to your Svelte app with theui-svelte's Too
   {#snippet sidebar()}
     <a href={processID("About")}>About</a>
     <a href={processID("Example")}>Example</a>
-    <a href={processID("Variant")}>Variant</a>
+    <a href={processID("Position")}>Position</a>
+    <a href={processID("Trigger Event")}>Trigger Event</a>
+    <a href={processID("Animation Speed")}>Animation Speed</a>
+    <a href={processID("Rounded Corner")}>Rounded Corner</a>
     <a href={processID("Customization")}>Customization</a>
+    <a href={processID("Tooltip Gap")}>Tooltip Gap</a>
     <a href={processID("Accessibility")}>Accessibility</a>
     <a href={processID("Configuration")}>Configuration</a>
   {/snippet}

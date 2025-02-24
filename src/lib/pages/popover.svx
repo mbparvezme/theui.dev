@@ -288,15 +288,16 @@ description: a flexible and customizable UI element that displays additional con
       <ol class="my-0">
         <li>
           <b>Keyboard Navigation</b>
-          <ul>
-            <li>Users can open and close the popover using the <kbd>Space</kbd> or <kbd>Enter</kbd> keys keys when <span class="not-prose"><code>triggerEvent="click"</code></span>.</li>
+          <ul class="my-0">
+            <li>Users can open and close the popover using the <kbd>Space</kbd> or <kbd>Enter</kbd> keys when <span class="not-prose"><code>triggerEvent="click"</code></span>.</li>
             <li>Pressing <kbd>Escape</kbd> closes the popover when it is open when <span class="not-prose"><code>triggerEvent="click"</code></span>.</li>
+            <li>The popovers triggered by hover are also accessible via focus for keyboard users.</li>
           </ul>
         </li>
         <li>
           <b>ARIA Attributes</b>
           <p class="not-prose">To enhance screen reader compatibility, the popover automatically includes essential ARIA attributes:</p>
-          <ul>
+          <ul class="my-0">
             <li>The <span class="not-prose"><code>aria-controls</code></span> links the trigger element to the popover container.</li>
             <li>The <span class="not-prose"><code>aria-haspopup</code></span> on the trigger element to indicate a popover is available.</li>
             <li>The <span class="not-prose"><code>aria-expanded</code></span> attribute will be managed by the component itself for proper accessibility.</li>
@@ -304,9 +305,10 @@ description: a flexible and customizable UI element that displays additional con
         </li>
         <li>
           <b>Focus Management</b>
-          <ul>
+          <ul class="my-0">
             <li>When opened, focus remains on the trigger or shifts inside the popover for better navigation.</li>
             <li>When closed, focus returns to the trigger element to maintain a logical navigation flow.</li>
+            <li>While using <span class="not-prose"><code>triggerEvent="hover"</code></span>, keyboard users to focus on the trigger and navigate inside the popover.</li>
           </ul>
         </li>
       </ol>
