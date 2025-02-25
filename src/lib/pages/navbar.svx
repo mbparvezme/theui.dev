@@ -17,24 +17,40 @@ description: Design responsive and accessible navigation bars for your Svelte ap
   import {Navbar, NavBrand, NavCollapse, NavLinkGroup, NavDropdown, NavLink, Button, Svg} from "theui-svelte";
 </script>
 
-{#snippet navLinks(align = "start")}
+{#snippet navLinks()}
+  <NavLink href="#" text="Link 1" />
+  <NavLink href="#" text="Link 2" />
+  <NavLink href="#" text="Link 3" />
+{/snippet}
+
+{#snippet navLinksGroup(align = "start")}
   <NavLinkGroup {align}>
-    <NavLink href="/" text="Link 1" />
-    <NavLink href="/" text="Link 2" />
-    <NavLink href="/" text="Link 3" />
+     {@render navLinks()}
   </NavLinkGroup>
 {/snippet}
 
-{#snippet navLinksDropdown()}
-  <NavLinkGroup>
-    <NavLink href="/" text="Link 1" />
-    <NavLink href="/" text="Link 2" />
-    <NavLink href="/" text="Link 3" />
-    <NavDropdown label="Dropdown" class="z-[999]">
-      <NavLink href="/" text="Dropdown Link 1" />
-      <NavLink href="/" text="Dropdown Link 2" />
-      <NavLink href="/" text="Dropdown Link 3" />
-    </NavDropdown>
+{#snippet navDropdownLinks(count = 0)}
+  <NavLink href="#" text={"Dropdown Link " + (1 + count)} />
+  <NavLink href="#" text={"Dropdown Link " + (2 + count)} />
+  <NavLink href="#" text={"Dropdown Link " + (3 + count)} />
+{/snippet}
+
+{#snippet navDropdown(align="start", count = 1)}
+  <NavDropdown label="Dropdown" {align}>
+    {@render navDropdownLinks(count)}
+  </NavDropdown>
+{/snippet}
+
+{#snippet navDropdownGroup(align="start", alignDD="start", count = 0)}
+  <NavLinkGroup {align}>
+    {@render navDropdown(alignDD, count)}
+  </NavLinkGroup>
+{/snippet}
+
+{#snippet navLinksDropdownGroup(align="start", alignDD="start", count = 0)}
+  <NavLinkGroup {align}>
+    {@render navLinks()}
+    {@render navDropdown(alignDD, count)}
   </NavLinkGroup>
 {/snippet}
 
@@ -46,8 +62,8 @@ description: Design responsive and accessible navigation bars for your Svelte ap
     <Example classes="p-4">
       {#snippet example()}
         <Navbar scrollBehavior="default" class="bg-slate-50">
-          <NavBrand href="/">BRAND</NavBrand>
-          {@render navLinksDropdown()}
+          <NavBrand href="#">BRAND</NavBrand>
+          {@render navLinksDropdownGroup()}
         </Navbar>
       {/snippet}
       {#snippet code()}
@@ -58,15 +74,15 @@ description: Design responsive and accessible navigation bars for your Svelte ap
 </script>
 
 <Navbar>
-  <NavBrand href="/">BRAND</NavBrand>
+  <NavBrand href="#">BRAND</NavBrand>
   <NavLinkGroup>
-    <NavLink href="/" text="Link 1" />
-    <NavLink href="/" text="Link 2" />
-    <NavLink href="/" text="Link 3" />
+    <NavLink href="#" text="Link 1" />
+    <NavLink href="#" text="Link 2" />
+    <NavLink href="#" text="Link 3" />
     <NavDropdown label="Dropdown">
-      <NavLink href="/" text="Dropdown Link 1" />
-      <NavLink href="/" text="Dropdown Link 2" />
-      <NavLink href="/" text="Dropdown Link 3" />
+      <NavLink href="#" text="Dropdown Link 1" />
+      <NavLink href="#" text="Dropdown Link 2" />
+      <NavLink href="#" text="Dropdown Link 3" />
     </NavDropdown>
   </NavLinkGroup>
 </Navbar>
@@ -101,21 +117,21 @@ description: Design responsive and accessible navigation bars for your Svelte ap
     <p class="not-prose">..</p>
     <Example classes="p-4 w-full flex flex-col">
       {#snippet example()}
-        <Navbar scrollBehavior="default" class="bg-slate-50 dark:bg-slate-800" height="sm">
-          <NavBrand href="/">BRAND</NavBrand>
-          {@render navLinks()}
+        <Navbar height="sm">
+          <NavBrand href="#">BRAND</NavBrand>
+          {@render navLinksGroup()}
         </Navbar>
-        <Navbar scrollBehavior="default" class="bg-slate-50 dark:bg-slate-800" height="md">
-          <NavBrand href="/">BRAND</NavBrand>
-          {@render navLinks()}
+        <Navbar height="md">
+          <NavBrand href="#">BRAND</NavBrand>
+          {@render navLinksGroup()}
         </Navbar>
-        <Navbar scrollBehavior="default" class="bg-slate-50 dark:bg-slate-800" height="lg">
-          <NavBrand href="/">BRAND</NavBrand>
-          {@render navLinks()}
+        <Navbar height="lg">
+          <NavBrand href="#">BRAND</NavBrand>
+          {@render navLinksGroup()}
         </Navbar>
-        <Navbar scrollBehavior="default" class="bg-slate-50 dark:bg-slate-800" height="xl">
-          <NavBrand href="/">BRAND</NavBrand>
-          {@render navLinks()}
+        <Navbar height="xl">
+          <NavBrand href="#">BRAND</NavBrand>
+          {@render navLinksGroup()}
         </Navbar>
       {/snippet}
       {#snippet code()}
@@ -134,10 +150,10 @@ description: Design responsive and accessible navigation bars for your Svelte ap
     <p class="not-prose">..</p>
     <Example classes="p-4 w-full flex flex-col">
       {#snippet example()}
-        <Navbar scrollBehavior="default" class="bg-slate-50 dark:bg-slate-800">
-          <NavBrand href="/">BRAND</NavBrand>
+        <Navbar>
+          <NavBrand href="#">BRAND</NavBrand>
           <NavCollapse>
-            {@render navLinks()}
+            {@render navLinksDropdownGroup()}
           </NavCollapse>
         </Navbar>
       {/snippet}
@@ -145,7 +161,7 @@ description: Design responsive and accessible navigation bars for your Svelte ap
 
 ```html
 <Navbar>
-  <NavBrand href="/">BRAND</NavBrand>
+  <NavBrand href="#">BRAND</NavBrand>
   <NavCollapse>
     <NavLinkGroup>
       ...
@@ -161,13 +177,13 @@ description: Design responsive and accessible navigation bars for your Svelte ap
     <p class="not-prose">..</p>
     <Example classes="p-4 w-full flex flex-col">
       {#snippet example()}
-        <Navbar scrollBehavior="default" class="bg-slate-50 dark:bg-slate-800">
-          <NavBrand href="/">BRAND</NavBrand>
+        <Navbar>
+          <NavBrand href="#">BRAND</NavBrand>
           <NavCollapse>
-            {@render navLinks()}
+            {@render navLinksGroup()}
             <NavLinkGroup align="end">
-              <NavLink href="/" text="Link 4" />
-              <NavLink href="/" text="Link 5" />
+              <NavLink href="#" text="Link 4" />
+              <NavLink href="#" text="Link 5" />
             </NavLinkGroup>
           </NavCollapse>
         </Navbar>
@@ -176,7 +192,7 @@ description: Design responsive and accessible navigation bars for your Svelte ap
 
 ```html
 <Navbar>
-  <NavBrand href="/">BRAND</NavBrand>
+  <NavBrand href="#">BRAND</NavBrand>
   <NavCollapse>
     <NavLinkGroup align="start"> <!-- Default -->
       ...
@@ -195,10 +211,10 @@ description: Design responsive and accessible navigation bars for your Svelte ap
     <p class="not-prose">..</p>
     <Example classes="p-4 w-full flex flex-col">
       {#snippet example()}
-        <Navbar scrollBehavior="default" class="bg-slate-50 dark:bg-slate-800">
-          <NavBrand href="/">BRAND</NavBrand>
+        <Navbar>
+          <NavBrand href="#">BRAND</NavBrand>
           <NavCollapse>
-            {@render navLinksDropdown()}
+            {@render navDropdownGroup()}
           </NavCollapse>
         </Navbar>
       {/snippet}
@@ -206,16 +222,171 @@ description: Design responsive and accessible navigation bars for your Svelte ap
 
 ```html
 <Navbar>
-  <NavBrand href="/">BRAND</NavBrand>
+  <NavBrand href="#">BRAND</NavBrand>
   <NavCollapse>
-    <NavLinkGroup align="start"> <!-- Default -->
+    <NavLinkGroup align="start">
       ...
-    </NavLinkGroup>
-    <NavLinkGroup align="end">
-      ...
+      <NavDropdown label="Dropdown">
+        <NavLink href="#" text="Dropdown Link 1" />
+        <NavLink href="#" text="Dropdown Link 2" />
+        <NavLink href="#" text="Dropdown Link 3" />
+      </NavDropdown>
     </NavLinkGroup>
   </NavCollapse>
 </Navbar>
+```
+      {/snippet}
+    </Example>
+    <Example title="Dropdown Alignment" classes="p-4 w-full flex flex-col">
+      {#snippet example()}
+        <Navbar>
+          <NavBrand href="#">BRAND</NavBrand>
+          {@render navDropdownGroup("start", "start")}
+          {@render navDropdownGroup("end", "end", 3)}
+        </Navbar>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<NavDropdown label="Dropdown" align="start"> ... </NavDropdown> <!-- Default -->
+<NavDropdown label="Dropdown" align="end"> ... </NavDropdown>
+```
+      {/snippet}
+    </Example>
+    <Example title="Dropdown Width" classes="p-4 w-full flex flex-col">
+      {#snippet example()}
+        <Navbar>
+          <NavBrand href="#">BRAND</NavBrand>
+          <NavLinkGroup align="start">
+            <NavDropdown label="Dropdown" width="lg">
+              {@render navDropdownLinks()}
+            </NavDropdown>
+          </NavLinkGroup>
+        </Navbar>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<NavDropdown label="Dropdown" width="lg"> ... </NavDropdown>
+```
+      {/snippet}
+    </Example>
+    <Example title="Mega Menu" classes="p-4 w-full flex flex-col">
+      {#snippet example()}
+        <Navbar>
+          <NavBrand href="#">BRAND</NavBrand>
+          <NavLinkGroup align="start">
+            <NavDropdown label="Mega menu" width="full">
+              <div class="grid grid-cols-2 gap-4 p-2">
+                <div>
+                  <a class="px-4 py-2 hover:bg-blue-100 dark:bg-blue-800 rounded-md transition block" href="#"><b>About</b><br>This is a custom link in the mega menu</a>
+                  <a class="px-4 py-2 hover:bg-blue-100 dark:bg-blue-800 rounded-md transition block" href="#"><b>Company</b><br>This is a custom link in the mega menu</a>
+                </div>
+                <div class="px-4 py-2 bg-pink-50 rounded-md">
+                  <h4>Hello!</h4>
+                  This is some demo content in the mega menu section.
+                </div>
+              </div>
+            </NavDropdown>
+          </NavLinkGroup>
+        </Navbar>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<NavDropdown label="Mega menu" width="full">
+  <div class="...">
+    ...
+  </div>
+</NavDropdown>
+```
+      {/snippet}
+    </Example>
+    <Example title="Dropdown Event" classes="p-4 w-full flex flex-col">
+      {#snippet example()}
+        <Navbar>
+          <NavBrand href="#">BRAND</NavBrand>
+          <NavLinkGroup align="start">
+            <NavDropdown label="Click me" dropdownEvent="click">
+              {@render navDropdownLinks()}
+            </NavDropdown>
+          </NavLinkGroup>
+          <NavLinkGroup align="end">
+            <NavDropdown label="Hover me" dropdownEvent="hover">
+              {@render navDropdownLinks(3)}
+            </NavDropdown>
+          </NavLinkGroup>
+        </Navbar>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Navbar>
+  <NavBrand href="#">BRAND</NavBrand>
+  <NavLinkGroup align="start">
+    <NavDropdown label="Click me" dropdownEvent="click"> <!-- Default -->
+      ...
+    </NavDropdown>
+  </NavLinkGroup>
+  <NavLinkGroup align="end">
+    <NavDropdown label="Hover me" dropdownEvent="hover">
+      ...
+    </NavDropdown>
+  </NavLinkGroup>
+</Navbar>
+```
+      {/snippet}
+    </Example>
+    <Example title="Dropdown Animation" classes="p-4 w-full flex flex-col">
+      {#snippet example()}
+        <Navbar>
+          <NavBrand href="#">BRAND</NavBrand>
+          <NavLinkGroup>
+            <NavDropdown label="Fade animation" animation="fade">
+              {@render navDropdownLinks()}
+            </NavDropdown>
+            <NavDropdown label="Slide animation" animation="slide">
+              {@render navDropdownLinks(3)}
+            </NavDropdown>
+            <NavDropdown label="Zoom animation" animation="zoom">
+              {@render navDropdownLinks(6)}
+            </NavDropdown>
+          </NavLinkGroup>
+        </Navbar>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<NavDropdown label="Dropdown" width="lg"> ... </NavDropdown>
+```
+      {/snippet}
+    </Example>
+    <Example title="Dropdown Arrow" classes="p-4 w-full flex flex-col">
+      {#snippet example()}
+        <Navbar>
+          <NavBrand href="#">BRAND</NavBrand>
+          <NavLinkGroup>
+            <NavDropdown label="Default arrow">
+              {@render navDropdownLinks()}
+            </NavDropdown>
+            <NavDropdown label="No arrow" arrowIcon={false}>
+              {@render navDropdownLinks(3)}
+            </NavDropdown>
+            <NavDropdown label="Custom arrow">
+              {#snippet arrowIcon()}
+                <Svg size={.75}>
+                  <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+                </Svg>
+              {/snippet}
+              {@render navDropdownLinks(6)}
+            </NavDropdown>
+          </NavLinkGroup>
+        </Navbar>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<NavDropdown label="Dropdown" width="lg"> ... </NavDropdown>
 ```
       {/snippet}
     </Example>

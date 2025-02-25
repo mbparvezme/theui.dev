@@ -2,7 +2,7 @@
   import {Navbar, NavBrand, NavCollapse, NavLinkGroup, NavDropdown, NavLink, DarkMode} from "theui-svelte"
 </script>
 
-<Navbar scrollBehavior="shrinkOnScrollDown" height="lg" class="bg-secondary">
+<Navbar scrollBehavior="shrinkOnScrollDown" height="lg" class="bg-secondary z-[22]">
   <NavBrand href="/">
     <svg class="block w-8 h-8"><use xlink:href="#logo"></use></svg>
     <span class="flex items-end font-title text-xl">theui <sub class="text-gray-500 dark:text-gray-300 font-normal dark:font-light text-sm pb-[5px] pl-0.5">.dev</sub></span>
