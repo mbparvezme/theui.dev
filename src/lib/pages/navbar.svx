@@ -14,26 +14,208 @@ description: Design responsive and accessible navigation bars for your Svelte ap
   import { processID } from "$lib";
   let { component, edit_url }: {component: any, edit_url?: string } = $props();
 
-  import {Navbar, NavBrand, NavLinkGroup, NavDropdown, NavLink, NavToggle} from "theui-svelte";
+  import {Navbar, NavBrand, NavCollapse, NavLinkGroup, NavDropdown, NavLink, Button, Svg} from "theui-svelte";
 </script>
+
+{#snippet navLinks(align = "start")}
+  <NavLinkGroup {align}>
+    <NavLink href="/" text="Link 1" />
+    <NavLink href="/" text="Link 2" />
+    <NavLink href="/" text="Link 3" />
+  </NavLinkGroup>
+{/snippet}
+
+{#snippet navLinksDropdown()}
+  <NavLinkGroup>
+    <NavLink href="/" text="Link 1" />
+    <NavLink href="/" text="Link 2" />
+    <NavLink href="/" text="Link 3" />
+    <NavDropdown label="Dropdown" class="z-[999]">
+      <NavLink href="/" text="Dropdown Link 1" />
+      <NavLink href="/" text="Dropdown Link 2" />
+      <NavLink href="/" text="Dropdown Link 3" />
+    </NavDropdown>
+  </NavLinkGroup>
+{/snippet}
 
 <DocLayout>
   <DocHead title="Navbar" text="A responsive navigation bar with support for dropdown menus, keyboard navigation, and customizable styling. It’s ideal for building primary site navigation or complex menu systems." {edit_url}/>
 
   <DocBlock title="Example">
     <p class="not-prose">..</p>
-    <Example>
+    <Example classes="p-4">
       {#snippet example()}
-        <iframe src="/example/navbar-example" style="width: 100%; height: 210px;" scrolling="no"></iframe>
+        <Navbar scrollBehavior="default" class="bg-slate-50">
+          <NavBrand href="/">BRAND</NavBrand>
+          {@render navLinksDropdown()}
+        </Navbar>
       {/snippet}
       {#snippet code()}
 
 ```html
 <script>
-  import {Navbar, NavBrand, NavLinkGroup, NavDropdown, NavLink, NavToggle} from "theui-svelte";
+  import {Navbar, NavBrand, NavLinkGroup, NavDropdown, NavLink} from "theui-svelte";
 </script>
 
-// Navbar
+<Navbar>
+  <NavBrand href="/">BRAND</NavBrand>
+  <NavLinkGroup>
+    <NavLink href="/" text="Link 1" />
+    <NavLink href="/" text="Link 2" />
+    <NavLink href="/" text="Link 3" />
+    <NavDropdown label="Dropdown">
+      <NavLink href="/" text="Dropdown Link 1" />
+      <NavLink href="/" text="Dropdown Link 2" />
+      <NavLink href="/" text="Dropdown Link 3" />
+    </NavDropdown>
+  </NavLinkGroup>
+</Navbar>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Scroll Behavior">
+    <p class="not-prose">..</p>
+    <Example classes="p-4 w-full flex flex-col gap-2">
+      {#snippet example()}
+        <Button class="w-full max-w-60 justify-between" href="/example/navbar/" target="_blank" size="sm">Default Navbar</Button>
+        <Button class="w-full max-w-60 justify-between" href="/example/navbar/" target="_blank" size="sm">Fixed Navbar</Button>
+        <Button class="w-full max-w-60 justify-between" href="/example/navbar/" target="_blank" size="sm">Shrink on Scroll Down</Button>
+        <Button class="w-full max-w-60 justify-between" href="/example/navbar/" target="_blank" size="sm">Hide on Scroll Down</Button>
+        <Button class="w-full max-w-60 justify-between" href="/example/navbar/" target="_blank" size="sm">Shrink and Hide on Scroll Down</Button>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Navbar height="sm"> ... </Navbar>
+<Navbar height="md"> ... </Navbar> <!-- Default -->
+<Navbar height="lg"> ... </Navbar>
+<Navbar height="xl"> ... </Navbar>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Navbar Height">
+    <p class="not-prose">..</p>
+    <Example classes="p-4 w-full flex flex-col">
+      {#snippet example()}
+        <Navbar scrollBehavior="default" class="bg-slate-50 dark:bg-slate-800" height="sm">
+          <NavBrand href="/">BRAND</NavBrand>
+          {@render navLinks()}
+        </Navbar>
+        <Navbar scrollBehavior="default" class="bg-slate-50 dark:bg-slate-800" height="md">
+          <NavBrand href="/">BRAND</NavBrand>
+          {@render navLinks()}
+        </Navbar>
+        <Navbar scrollBehavior="default" class="bg-slate-50 dark:bg-slate-800" height="lg">
+          <NavBrand href="/">BRAND</NavBrand>
+          {@render navLinks()}
+        </Navbar>
+        <Navbar scrollBehavior="default" class="bg-slate-50 dark:bg-slate-800" height="xl">
+          <NavBrand href="/">BRAND</NavBrand>
+          {@render navLinks()}
+        </Navbar>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Navbar height="sm"> ... </Navbar>
+<Navbar height="md"> ... </Navbar> <!-- Default -->
+<Navbar height="lg"> ... </Navbar>
+<Navbar height="xl"> ... </Navbar>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Responsive Navbar">
+    <p class="not-prose">..</p>
+    <Example classes="p-4 w-full flex flex-col">
+      {#snippet example()}
+        <Navbar scrollBehavior="default" class="bg-slate-50 dark:bg-slate-800">
+          <NavBrand href="/">BRAND</NavBrand>
+          <NavCollapse>
+            {@render navLinks()}
+          </NavCollapse>
+        </Navbar>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Navbar>
+  <NavBrand href="/">BRAND</NavBrand>
+  <NavCollapse>
+    <NavLinkGroup>
+      ...
+    </NavLinkGroup>
+  </NavCollapse>
+</Navbar>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Link Alignment">
+    <p class="not-prose">..</p>
+    <Example classes="p-4 w-full flex flex-col">
+      {#snippet example()}
+        <Navbar scrollBehavior="default" class="bg-slate-50 dark:bg-slate-800">
+          <NavBrand href="/">BRAND</NavBrand>
+          <NavCollapse>
+            {@render navLinks()}
+            <NavLinkGroup align="end">
+              <NavLink href="/" text="Link 4" />
+              <NavLink href="/" text="Link 5" />
+            </NavLinkGroup>
+          </NavCollapse>
+        </Navbar>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Navbar>
+  <NavBrand href="/">BRAND</NavBrand>
+  <NavCollapse>
+    <NavLinkGroup align="start"> <!-- Default -->
+      ...
+    </NavLinkGroup>
+    <NavLinkGroup align="end">
+      ...
+    </NavLinkGroup>
+  </NavCollapse>
+</Navbar>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Navbar Dropdown">
+    <p class="not-prose">..</p>
+    <Example classes="p-4 w-full flex flex-col">
+      {#snippet example()}
+        <Navbar scrollBehavior="default" class="bg-slate-50 dark:bg-slate-800">
+          <NavBrand href="/">BRAND</NavBrand>
+          <NavCollapse>
+            {@render navLinksDropdown()}
+          </NavCollapse>
+        </Navbar>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Navbar>
+  <NavBrand href="/">BRAND</NavBrand>
+  <NavCollapse>
+    <NavLinkGroup align="start"> <!-- Default -->
+      ...
+    </NavLinkGroup>
+    <NavLinkGroup align="end">
+      ...
+    </NavLinkGroup>
+  </NavCollapse>
+</Navbar>
 ```
       {/snippet}
     </Example>
