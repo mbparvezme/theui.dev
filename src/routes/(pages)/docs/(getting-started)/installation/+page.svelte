@@ -3,6 +3,9 @@
   import Page from "$lib/pages/installation.svx";
 
   let { data }: { data: PageData|any } = $props();
+  import SEO from "$lib/SEO.svelte"
 </script>
+
+<SEO title="installation" />
 
 <Page edit_url={data.editURL} />

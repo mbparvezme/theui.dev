@@ -126,3 +126,9 @@
     color: #cbd5e1;
   }
 }
+
+/* Custom classes */
+.gradient{
+  background: rgb(231,191,0);
+  background: linear-gradient(45deg, rgba(231,191,0,1) 0%, rgba(238,184,4,1) 10%, rgba(249,173,10,1) 20%, rgba(253,169,12,1) 30%, rgba(243,144,63,1) 40%, rgba(237,104,60,1) 50%, rgba(233,62,58,1) 60%, rgb(233, 62, 58) 70%, rgba(216,67,45,1) 80%, rgba(225,64,48,1) 90%, rgba(255,0,142,1) 100%);
+}

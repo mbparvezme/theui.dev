@@ -3,7 +3,10 @@
 	import '../../app.css';
 
 	let { children }: {children: Snippet} = $props();
+  import SEO from "$lib/SEO.svelte"
 </script>
+
+<SEO title="TheUI Component Example" />
 
 {@render children()}
 

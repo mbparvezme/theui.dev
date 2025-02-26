@@ -3,6 +3,9 @@
   import Page from "$lib/pages/container.svx";
 
   let { data }: { data: PageData|any } = $props();
+  import SEO from "$lib/SEO.svelte"
 </script>
+
+<SEO title="Container Component" />
 
 <Page component={data.component} edit_url={data.editURL} />

@@ -13,7 +13,7 @@
 
   <article class="lg:col-span-4 line-numbers">
     {@render children?.()}
-    <p class="bg-red-500">END MESSAGE</p>
+    <!-- <p class="bg-red-500">END MESSAGE</p> -->
   </article>
 
   {#if sidebar}

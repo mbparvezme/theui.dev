@@ -9,7 +9,6 @@ export default {
     './src/**/*.{html,js,svelte,svx,ts}',
     "./node_modules/theui-svelte/**/*.{html,js,svelte,ts}",
   ],
-
   theme: {
     extend: {
       backgroundColor: {
@@ -17,7 +16,7 @@ export default {
       },
       fontFamily: {
         'sans': ['"IBM Plex Sans"', ...defaultTheme.fontFamily.sans],
-        'display': ['"Poiret One"'],
+        'display': ['"Noticia Text"'],
         'mono': ['"IBM Plex Mono"', ...defaultTheme.fontFamily.mono],
       },
     }

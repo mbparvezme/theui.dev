@@ -7,7 +7,7 @@
     <div class="flex flex-col items-center gap-8">
       <p class="flex items-center gap-4 text-3xl">
         <svg class="block w-12 h-12"><use xlink:href="#logo"></use></svg>
-        <span class="flex items-end font-title text-4xl font-semibold">theui<sub class="text-gray-500 dark:text-gray-300 font-normal dark:font-light text-sm pb-[5px] pl-0.5">.dev</sub></span>
+        <span class="flex items-end font-title text-4xl font-semibold">theui<sub class="text-gray-300 font-normal dark:font-light text-sm pb-[5px] pl-0.5">.dev &nbsp;&nbsp;by <a target="_blank" href="https://www.mbparvez.me?src=theui">M B Parvez</a></sub></span>
       </p>
       <div>
         <h3 class="text-center mb-4 text-gray-500">Sponsored by</h3>

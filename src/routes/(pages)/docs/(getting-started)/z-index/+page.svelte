@@ -3,6 +3,9 @@
   import Page from "$lib/pages/z-index.svx";
 
   let { data }: { data: PageData|any } = $props();
+  import SEO from "$lib/SEO.svelte"
 </script>
+
+<SEO title="Z-index guide" />
 
 <Page edit_url={data.editURL} />

@@ -3,6 +3,9 @@
   import Page from "$lib/pages/popover.svx";
 
   let { data }: { data: PageData|any } = $props();
+  import SEO from "$lib/SEO.svelte"
 </script>
+
+<SEO title="Popover" />
 
 <Page component={data.component} edit_url={data.editURL} />

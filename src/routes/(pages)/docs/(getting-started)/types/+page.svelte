@@ -3,6 +3,9 @@
   import Page from "$lib/pages/types.svx";
 
   let { data }: { data: PageData|any } = $props();
+  import SEO from "$lib/SEO.svelte"
 </script>
+
+<SEO title="Type definitions" />
 
 <Page edit_url={data.editURL} />

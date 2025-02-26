@@ -3,6 +3,9 @@
   import Page from "$lib/pages/badge.svx";
 
   let { data }: { data: PageData|any } = $props();
+  import SEO from "$lib/SEO.svelte"
 </script>
+
+<SEO title="Badge" />
 
 <Page component={data.component} edit_url={data.editURL} />
