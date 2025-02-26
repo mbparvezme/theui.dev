@@ -14,7 +14,7 @@
   }: DataType = $props()
 
 
-  const pageTitle: string = (title ? (title + " | ") : "") + "TheUI: Component Library,Theme & UI Blocks"
+  const pageTitle: string = (title ? (title + " | ") : "") + "TheUI - Component Library, UI Blocks & Theme"
   const url: string = page.url.origin + page.url.pathname
   const pageDescription = description || "..........."
   const pageImage = img || "/assets/img/theui-logo.png?v=1"

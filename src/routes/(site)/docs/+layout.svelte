@@ -5,18 +5,20 @@
   import { Button, Container, Svg, Drawer } from "theui-svelte";
   import { twMerge } from 'tailwind-merge';
 
-  let { children, data }: {children: Snippet, data: PageData } = $props();
+  let { children, data }: {children: Snippet, data: any } = $props();
 
   let linkClasses = (active: boolean = false) => twMerge("border-s-2 border-gray-500/10 ps-4 py-1 inline text-default", active && "border-brand-primary-500 text-brand-primary-500");
 </script>
 
 <div class="fixed right-8 bottom-8 lg:hidden">
   <Drawer id="docSidebar">
-    <Button label="" size="sm" rounded="full" class="h-12 w-12 flex items-center justify-center bg-brand-primary border-brand-primary-500">
-      <Svg size={1.5} viewBox="0 0 16 16" class="fill-white">
-        <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
-      </Svg>
-    </Button>
+    <!-- <Button size="sm" rounded="full" class="h-12 w-12 flex items-center justify-center bg-brand-primary border-brand-primary-500"> -->
+     {#snippet label()}
+     <Svg size={1.5} viewBox="0 0 16 16" class="fill-white">
+       <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+     </Svg>
+     {/snippet}
+    <!-- </Button> -->
   </Drawer>
 </div>
 
@@ -31,7 +33,7 @@
       </h3>
       <nav class="sidebar-link flex-grow flex flex-col text-sm mb-8 border-l border-gray-300 dark:font-light">
         {#each data.components.intro.links as component}
-          <a class={linkClasses(page.url.pathname==component.link)} href={component.link}>{component.text}</a>
+          <a class={linkClasses(page.url.pathname==component.link)} href={component.link}>{@html component.text}</a>
         {/each}
       </nav>
     </section>
@@ -45,7 +47,7 @@
       </h3>
       <nav class="sidebar-link flex-grow flex flex-col text-sm mb-8 border-l border-gray-300 dark:font-light">
         {#each data.components.components.links as component}
-          <a class={linkClasses(page.url.pathname==component.link)} href={component.link}>{component.text}</a>
+          <a class={linkClasses(page.url.pathname==component.link)} href={component.link}>{@html component.text}</a>
         {/each}
       </nav>
     </section>
@@ -59,7 +61,7 @@
       </h3>
       <nav class="sidebar-link flex-grow flex flex-col text-sm mb-8 border-l border-gray-300 dark:font-light">
         {#each data.components.forms.links as component}
-          <a class={linkClasses(page.url.pathname==component.link)} href={component.link}>{component.text}</a>
+          <a class={linkClasses(page.url.pathname==component.link)} href={component.link}>{@html component.text}</a>
         {/each}
       </nav>
     </section>
@@ -73,7 +75,7 @@
       </h3>
       <nav class="sidebar-link flex-grow flex flex-col text-sm mb-8 border-l border-gray-300 dark:font-light">
         {#each data.components.utilities.links as component}
-          <a class={linkClasses(page.url.pathname==component.link)} href={component.link}>{component.text}</a>
+          <a class={linkClasses(page.url.pathname==component.link)} href={component.link}>{@html component.text}</a>
         {/each}
       </nav>
     </section>
@@ -93,7 +95,7 @@
         </h3>
         <nav class="sidebar-link flex-grow flex flex-col text-sm mb-8 dark:font-light">
           {#each data.components.intro.links as component}
-            <a class={linkClasses(page.url.pathname==component.link)} href={component.link}>{component.text}</a>
+            <a class={linkClasses(page.url.pathname==component.link)} href={component.link}>{@html component.text}</a>
           {/each}
         </nav>
       </section>
@@ -107,7 +109,7 @@
         </h3>
         <nav class="sidebar-link flex-grow flex flex-col text-sm mb-8 dark:font-light">
           {#each data.components.components.links as component}
-            <a class={linkClasses(page.url.pathname==component.link)} href={component.link}>{component.text}</a>
+            <a class={linkClasses(page.url.pathname==component.link)} href={component.link}>{@html component.text}</a>
           {/each}
         </nav>
       </section>
@@ -121,7 +123,7 @@
         </h3>
         <nav class="sidebar-link flex-grow flex flex-col text-sm mb-8 dark:font-light">
           {#each data.components.forms.links as component}
-            <a class={linkClasses(page.url.pathname==component.link)} href={component.link}>{component.text}</a>
+            <a class={linkClasses(page.url.pathname==component.link)} href={component.link}>{@html component.text}</a>
           {/each}
         </nav>
       </section>
@@ -135,7 +137,7 @@
         </h3>
         <nav class="sidebar-link flex-grow flex flex-col text-sm mb-8 dark:font-light">
           {#each data.components.utilities.links as component}
-            <a class={linkClasses(page.url.pathname==component.link)} href={component.link}>{component.text}</a>
+            <a class={linkClasses(page.url.pathname==component.link)} href={component.link}>{@html component.text}</a>
           {/each}
         </nav>
       </section>

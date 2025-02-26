@@ -61,7 +61,7 @@ description: Design responsive and accessible navigation bars for your Svelte ap
     <p class="not-prose">..</p>
     <Example classes="p-4">
       {#snippet example()}
-        <Navbar scrollBehavior="default" class="bg-slate-50">
+        <Navbar>
           <NavBrand href="#">BRAND</NavBrand>
           {@render navLinksDropdownGroup()}
         </Navbar>
@@ -279,10 +279,10 @@ description: Design responsive and accessible navigation bars for your Svelte ap
             <NavDropdown label="Mega menu" width="full">
               <div class="grid grid-cols-2 gap-4 p-2">
                 <div>
-                  <a class="px-4 py-2 hover:bg-blue-100 dark:bg-blue-800 rounded-md transition block" href="#"><b>About</b><br>This is a custom link in the mega menu</a>
-                  <a class="px-4 py-2 hover:bg-blue-100 dark:bg-blue-800 rounded-md transition block" href="#"><b>Company</b><br>This is a custom link in the mega menu</a>
+                  <a class="px-4 py-2 hover:bg-blue-100 dark:hover:bg-blue-800 rounded-md transition block" href="#"><b>About</b><br>This is a custom link in the mega menu</a>
+                  <a class="px-4 py-2 hover:bg-blue-100 dark:hover:bg-blue-800 rounded-md transition block" href="#"><b>Company</b><br>This is a custom link in the mega menu</a>
                 </div>
-                <div class="px-4 py-2 bg-pink-50 rounded-md">
+                <div class="px-4 py-2 bg-pink-50 dark:bg-pink-950 rounded-md">
                   <h4>Hello!</h4>
                   This is some demo content in the mega menu section.
                 </div>
@@ -357,7 +357,9 @@ description: Design responsive and accessible navigation bars for your Svelte ap
       {#snippet code()}
 
 ```html
-<NavDropdown label="Dropdown" width="lg"> ... </NavDropdown>
+<NavDropdown label="Fade animation" animation="fade"> ... </NavDropdown> <!-- Default -->
+<NavDropdown label="Fade animation" animation="slide"> ... </NavDropdown>
+<NavDropdown label="Fade animation" animation="zoom"> ... </NavDropdown>
 ```
       {/snippet}
     </Example>
@@ -386,7 +388,18 @@ description: Design responsive and accessible navigation bars for your Svelte ap
       {#snippet code()}
 
 ```html
-<NavDropdown label="Dropdown" width="lg"> ... </NavDropdown>
+<!-- No arrow icon -->
+<NavDropdown label="No arrow" arrowIcon={false}> ... </NavDropdown>
+
+<!-- Custom arrow icon -->
+<NavDropdown label="Custom arrow">
+  {#snippet arrowIcon()}
+    <Svg>
+      <path d="...."/>
+    </Svg>
+  {/snippet}
+  ...
+</NavDropdown>
 ```
       {/snippet}
     </Example>
