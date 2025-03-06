@@ -18,6 +18,8 @@ description: Add informative tooltips to your Svelte app with theui-svelte's Too
   import { Tooltip, Button } from "theui-svelte";
 </script>
 
+<Tooltip />
+
 <DocLayout>
   <DocHead title="Tooltip" text="The Tooltip component provides a way to display informative text when users hover over or click on an element." {edit_url}/>
 

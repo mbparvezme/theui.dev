@@ -148,39 +148,39 @@
         "link": "/docs/form"
       },
       {
-        "text": "Checkbox",
+        "text": "Checkbox <small>Coming soon</small>",
         "link": "/docs/checkbox"
       },
       {
-        "text": "Radio button",
+        "text": "Radio button <small>Coming soon</small>",
         "link": "/docs/radio-button"
       },
       {
-        "text": "Label",
+        "text": "Label <small>Coming soon</small>",
         "link": "/docs/label"
       },
       {
-        "text": "File input",
+        "text": "File input <small>Coming soon</small>",
         "link": "/docs/file-input"
       },
       {
-        "text": "Text input",
+        "text": "Text input <small>Coming soon</small>",
         "link": "/docs/input"
       },
       {
-        "text": "Toggle",
+        "text": "Toggle <small>Coming soon</small>",
         "link": "/docs/toggle"
       },
       {
-        "text": "Select",
+        "text": "Select <small>Coming soon</small>",
         "link": "/docs/select"
       },
       {
-        "text": "Helper text",
+        "text": "Helper text <small>Coming soon</small>",
         "link": "/docs/helper-text"
       },
       {
-        "text": "Fieldset",
+        "text": "Fieldset <small>Coming soon</small>",
         "link": "/docs/fieldset"
       }
     ]
