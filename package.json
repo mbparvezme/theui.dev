@@ -16,7 +16,7 @@
 	"devDependencies": {
 		"@playwright/test": "^1.45.3",
 		"@sveltejs/adapter-cloudflare": "^5.0.1",
-		"@sveltejs/adapter-node": "^5.2.10",
+		"@sveltejs/adapter-node": "^0.0.18",
 		"@sveltejs/kit": "^2.9.0",
 		"@sveltejs/vite-plugin-svelte": "^5.0.0",
 		"@types/node": "^22.13.5",
@@ -27,7 +27,7 @@
 		"tailwindcss": "^3.4.9",
 		"typescript": "^5.7.2",
 		"vite": "^6.0.0",
-		"vitest": "^2.0.4"
+		"vitest": "^3.0.8"
 	},
 	"dependencies": {
 		"@tailwindcss/forms": "^0.5.9",

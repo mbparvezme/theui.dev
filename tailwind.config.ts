@@ -7,7 +7,7 @@ import twShades from 'tw-color-shades';
 export default {
   content: [
     './src/**/*.{html,js,svelte,svx,ts}',
-    "./node_modules/theui-svelte/**/*.{html,js,svelte,ts}",
+    "./node_modules/theui-svelte/dist/**/*.{html,js,svelte,ts}",
   ],
   theme: {
     extend: {
