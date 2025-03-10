@@ -2,7 +2,14 @@
   {
     "key": "props",
     "title": "Props",
-    "data": null
+    "data": [
+      {
+        "name": "content",
+        "type": "string | Snippet",
+        "default": "\"\"",
+        "description": "Content of the helper text."
+      }
+    ]
   },
   {
     "key": "dynamicProps",

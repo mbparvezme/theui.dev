@@ -13,12 +13,10 @@ description: A reusable wrapper for the HTML <form> element, simplifying form cr
   import ConfigComponent from "$lib/ui/doc/ConfigComponent.svelte";
   import { processID } from "$lib";
   let { component, edit_url }: {component: any, edit_url?: string } = $props();
-
-  import { Form } from "theui-svelte";
 </script>
 
 <DocLayout>
-  <DocHead title="DarkMode" text="A reusable wrapper for the HTML form element, simplifying form creation, submission handling, event management and controlling all the inputs from a single place." {edit_url}/>
+  <DocHead title="Form" text="A reusable wrapper for the HTML form element, simplifying form creation, submission handling, event management and controlling all the inputs from a single place." {edit_url}/>
 
   <DocBlock title="About">
     <p class="not-prose">The <code>Form</code> component is a reusable wrapper for the native HTML <code>&lt;form&gt;</code> element, designed to simplify form creation and management. While it’s not mandatory to use this component for every form, its primary benefit lies in centralizing control over input styles and common behaviors. By using the Form component, you can ensure consistent styling and functionality across all forms in your application, making it easier to maintain and update them from a single place.</p>
@@ -42,6 +40,33 @@ description: A reusable wrapper for the HTML <form> element, simplifying form cr
     </Example>
     <p class="not-prose">The component ensures consistent styling and behavior for all child inputs, making it easier to manage forms across your application.</p>
   </DocBlock>
+
+  <DocBlock title="Form Method">
+    <Example>
+      <p class="not-prose">The <code>method</code> prop specifies the HTTP method to be used when the form is submitted. It corresponds to the native HTML <code>method</code> attribute of the <b>&lt;form&gt;</b> element. Available values are <code>GET</code> and <code>POST</code>. Default <code>POST</code>.</p>
+      {#snippet code()}
+
+```html
+<Form method="GET">
+  <!-- Form inputs go here -->
+</Form>
+```
+      {/snippet}
+    </Example>
+      <p class="not-prose">In this example, the form will use the <code>GET</code> method when submitted, appending the form data to the URL. If no <code>method</code> is specified, it defaults to <code>POST</code>.</p>
+  </DocBlock>
+
+  <DocBlock title="Configuration">
+    <p class="not-prose">The <code>Form</code> component includes a set of props that are not directly applied to the form itself but are passed down to all its child inputs. These props ensure a consistent appearance and behavior across all form inputs, making it easier to maintain uniformity without manually configuring each input.</p>
+    <ConfigComponent {component} />
+  </DocBlock>
+
+  {#snippet sidebar()}
+    <a href={processID("About")}>About</a>
+    <a href={processID("Example")}>Example</a>
+    <a href={processID("Form Method")}>Form Method</a>
+    <a href={processID("Configuration")}>Configuration</a>
+  {/snippet}
 
 
 </DocLayout>

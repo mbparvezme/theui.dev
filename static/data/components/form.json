@@ -2,7 +2,50 @@
   {
     "key": "props",
     "title": "Props",
-    "data": null
+    "data": [
+      {
+        "name": "animate",
+        "type": "<a href=\"/docs/types#common-types\">ANIMATE_SPEED</a>",
+        "default": "\"normal\"",
+        "description": "Controls the animation speed for inputs."
+      },
+      {
+        "name": "variant",
+        "type": "<a href=\"/docs/types##input-variant\">INPUT_VARIANT</a>",
+        "default": "\"bordered\"",
+        "description": "Defines the visual style of the inputs."
+      },
+      {
+        "name": "floatingLabel",
+        "type": "boolean",
+        "default": "true (if variant == \"flat\")",
+        "description": "Enables or disables floating labels for inputs. If variant is set to \"flat\", this defaults to true and false otherwise."
+      },
+      {
+        "name": "labelClasses",
+        "type": "string",
+        "default": "\"\"",
+        "description": "Allows custom CSS classes to be applied to input labels for additional styling."
+      },
+      {
+        "name": "rounded",
+        "type": "<a href=\"/docs/types#common-types\">ROUNDED</a>",
+        "default": "\"md\"",
+        "description": "Controls the border radius of inputs."
+      },
+      {
+        "name": "size",
+        "type": "<a href=\"/docs/types##input-size\">INPUT_SIZE</a>",
+        "default": "\"md\"",
+        "description": "Defines the size of the inputs. Options typically include \"sm\", \"md\", and \"lg\"."
+      },
+      {
+        "name": "reset",
+        "type": "boolean",
+        "default": "false",
+        "description": "Resets all the defaults styles and apply only the custom styles."
+      }
+    ]
   },
   {
     "key": "dynamicProps",
