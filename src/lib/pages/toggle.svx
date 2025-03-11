@@ -1,0 +1,140 @@
+---
+title: Toggle
+dir: ".lib/pages"
+description: Fully customizable switch that can replace traditional checkboxes and radio buttons.
+---
+
+<script lang="ts">
+  import DocLayout from "$lib/ui/doc/DocLayout.svelte";
+  import DocHead from "$lib/ui/doc/Head.svelte";
+  import DocBlock from "$lib/ui/doc/Block.svelte";
+  import Code from "$lib/ui/doc/CodeBlock.svelte";
+  import Example from "$lib/ui/doc/Example.svelte";
+  import ConfigComponent from "$lib/ui/doc/ConfigComponent.svelte";
+  import { processID } from "$lib";
+  let { component, edit_url }: {component: any, edit_url?: string } = $props();
+
+  import { Toggle } from "theui-svelte";
+</script>
+
+<DocLayout>
+  <DocHead title="Toggle" text="Fully customizable switch that can replace traditional checkboxes and radio buttons." {edit_url}/>
+
+  <DocBlock title="About">
+    <p class="not-prose">The <code>Toggle</code> component provides a modern and user-friendly way to handle Boolean inputs in forms. It supports labels, customizable styling, and works seamlessly with checkboxes and radio button types. The component is fully accessible and integrates well with different UI requirements.</p>
+  </DocBlock>
+
+  <DocBlock title="Example">
+    <Example>
+      <p class="not-prose">The Toggle component can be used in various ways depending on your needs. Below is a basic example:</p>
+      {#snippet example()}
+        <Toggle name="toggle" label="Enable Feature" />
+      {/snippet}
+      {#snippet code()}
+
+```html
+<script>
+  import { Toggle } from "theui-svelte";
+</script>
+
+<Toggle name="my_input" label="Enable Feature" />
+```
+      {/snippet}
+    </Example>
+    <p class="not-prose">You can use it in forms, settings panels, or anywhere a simple on/off switch is required. The component adapts well to different themes and sizes, making it versatile for various UI designs.</p>
+  </DocBlock>
+
+  <DocBlock title="Toggle Type">
+    <Example>
+      <p class="not-prose">The <code>type</code> prop defines whether the toggle functions as a checkbox or a radio button.</p>
+      {#snippet example()}
+        <div class="flex flex-col w-1/2 text-left">
+          <h4 class="font-bold">Checkboxes</h4>
+          <Toggle name="toggle1" label="Checkbox 1" />
+          <Toggle name="toggle2" label="Checkbox 2" />
+        </div>
+        <div class="flex flex-col w-1/2">
+          <h4 class="font-bold">Radio buttons</h4>
+          <Toggle name="toggle3" label="Radio button 1" type="radio" />
+          <Toggle name="toggle3" label="Radio button 2" type="radio" />
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<!-- Checkbox (default) -->
+<Toggle name="toggle1" label="Checkbox 1" type="checkbox" />
+<Toggle name="toggle2" label="Checkbox 2" type="checkbox" />
+
+<!-- Radio buttons -->
+<Toggle name="toggleRadio" label="Radio button 1" type="radio" />
+<Toggle name="toggleRadio" label="Radio button 2" type="radio" />
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Label">
+    <Example>
+      <p class="not-prose">The <code>label</code> prop allows adding a label next to the <code>toggle</code>. The <code>id</code> is crucial for associating the <code>label</code> with the toggle input, ensuring better usability and screen reader support. If no <code>id</code> is provided, a unique one is automatically generated.</p>
+      {#snippet example()}
+        <Toggle name="toggle" label="Toggle 1" id="myToggle" />
+      {/snippet}
+      {#snippet code()}
+
+```html
+<!-- Toggle with custom ID -->
+<Toggle name="toggle" label="Toggle 1" id="myToggle" />
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Name and Value">
+    <Example>
+      <p class="not-prose">The <code>name</code> and <code>value</code> props are crucial for form handling, especially when using the Toggle component as a <b>checkbox</b> or <b>radio button</b>.</p>
+      <ul>
+        <li>The <span class="not-prose"><code>name</code> prop is required for radio buttons to group multiple toggles under the same name, allowing only one to be selected at a time.</li>
+        <li>The <span class="not-prose"><code>value</code></span> prop controls the toggle's state and can be <span class="not-prose"><code>true</code></span>, <span class="not-prose"><code>false</code></span>, or <span class="not-prose"><code>null</code></span>. When used as a radio button, the value represents the selected option.</li>
+      </ul>
+      {#snippet example()}
+        <Toggle name="preferences" type="checkbox" value="ok" label="Enable Notifications" />
+        <Toggle name="theme" type="radio" value="dark" label="Dark Mode" />
+      {/snippet}
+      {#snippet code()}
+
+```html
+<!-- Toggle with custom ID -->
+<Toggle name="preferences" type="checkbox" value={true} label="Enable Notifications" />
+<Toggle name="theme" type="radio" value="dark" label="Dark Mode" />
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Customization">
+    <Example>
+      <p class="not-prose">The <code>Label</code> component can be easily customized using the native <code>class</code> attribute. By adding your own CSS classes or the <b>TailwindCSS</b>, you can override or extend the default styles of the label to match your design requirements.</p>
+      {#snippet code()}
+
+```html
+<Label label="Username" id="username" class="text-brand-primary-500 font-bold text-lg" />
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Configuration">
+    <ConfigComponent {component} />
+  </DocBlock>
+
+  {#snippet sidebar()}
+    <a href={processID("About")}>About</a>
+    <a href={processID("Example")}>Example</a>
+    <a href={processID("Label Content")}>Label Content</a>
+    <a href={processID("Customization")}>Customization</a>
+    <a href={processID("Configuration")}>Configuration</a>
+  {/snippet}
+
+
+</DocLayout>
