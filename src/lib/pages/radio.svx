@@ -1,0 +1,196 @@
+---
+title: Radio Button
+dir: ".lib/pages"
+description: The Radio Button component allows users to select a single option from a group. It provides a modern and customizable alternative to the default radio input, supporting various sizes, animations, and styling options.
+---
+
+<script lang="ts">
+  import DocLayout from "$lib/ui/doc/DocLayout.svelte";
+  import DocHead from "$lib/ui/doc/Head.svelte";
+  import DocBlock from "$lib/ui/doc/Block.svelte";
+  import Code from "$lib/ui/doc/CodeBlock.svelte";
+  import Example from "$lib/ui/doc/Example.svelte";
+  import ConfigComponent from "$lib/ui/doc/ConfigComponent.svelte";
+  import { processID } from "$lib";
+  let { component, edit_url }: {component: any, edit_url?: string } = $props();
+
+  import { Radio, HelperText } from "theui-svelte";
+</script>
+
+<DocLayout>
+  <DocHead title="Radio Button" text="Provides a modern and customizable alternative to the default radio input, supporting various sizes, animations, and styling options." {edit_url}/>
+
+  <DocBlock title="About">
+    <p class="not-prose">This <code>Radio</code> Button component enhances standard radio inputs with additional styling and customization features. It ensures proper form handling by allowing only one selection per group while providing a smooth user experience. The component supports different sizes, animations, and customization options, making it adaptable to various UI needs.</p>
+  </DocBlock>
+
+  <DocBlock title="Example">
+    <Example>
+      <p class="not-prose">Here is a basic example of using the Radio Button component:</p>
+      {#snippet example()}
+<Radio name="gender">Male</Radio>
+<Radio name="gender">Female</Radio>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<script>
+  import { Radio } from "theui-svelte";
+</script>
+
+<Radio name="gender">Male</Radio>
+<Radio name="gender">Female</Radio>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Name and Value">
+    <p class="not-prose">The <code>name</code> and <code>value</code> props are essential for grouping radio buttons. The <code>name</code> ensures that only one radio button from the group can be selected at a time, while the <code>value</code> represents the selected option.</p>
+    <Example>
+    {#snippet example()}
+<Radio name="payment" value="credit-card">Credit Card</Radio>
+<Radio name="payment" value="paypal">Paypal</Radio>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Radio name="myRadio" value="credit-card">Credit Card</Radio>
+<Radio name="myRadio" value="paypal">Paypal</Radio>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Radio Button Sizes">
+    <p class="not-prose">The <code>size</code> prop controls the size of the radio button, allowing flexibility for different UI layouts. Available sizes include <code>"sm"</code>, <code>"md"</code> (default), <code>"lg"</code> and <code>"xl"</code>.</p>
+    <Example>
+    {#snippet example()}
+<div class="flex flex-col gap-2">
+  <Radio name="myRadio" size="sm">Small (sm) radio button</Radio>
+  <Radio name="myRadio" size="md">Medium (md) radio button</Radio>
+  <Radio name="myRadio" size="lg">Large (lg) radio button</Radio>
+  <Radio name="myRadio" size="xl">Extra Large (xl) radio button</Radio>
+</div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Radio name="myRadio" size="sm">Small (sm) radio button</Radio>
+<Radio name="myRadio" size="md">Medium (md) radio button</Radio>
+<Radio name="myRadio" size="lg">Large (lg) radio button</Radio>
+<Radio name="myRadio" size="xl">Extra Large (xl) radio button</Radio>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Animation">
+    <p class="not-prose">The <code>animate</code> prop defines the speed of the radio button's selection transition. This improves user interaction by adding smooth effects when selecting options. The available values are <code>"none"</code>, <code>"slower"</code>, <code>"slow"</code> <code>"normal"</code> (default), <code>"fast"</code> and <code>"faster"</code>.</p>
+    <p class="not-prose">Setting it to <code>"none"</code>disables animations, while other values changes the transition speed.</p>
+    <Example>
+    {#snippet example()}
+<div class="flex flex-col gap-2">
+  <Radio name="myRadio" animate="slower">Slower animation</Radio>
+  <Radio name="myRadio" animate="slow">Slow animation</Radio>
+  <Radio name="myRadio" animate="normal">Normal animation</Radio>
+  <Radio name="myRadio" animate="fast">Fast animation</Radio>
+  <Radio name="myRadio" animate="faster">Faster animation</Radio>
+  <Radio name="myRadio" animate="none">No animation</Radio>
+</div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Radio name="myRadio" animate="slower">Slower animation</Radio>
+<Radio name="myRadio" animate="slow">Slow animation</Radio>
+<Radio name="myRadio" animate="normal">Normal animation</Radio>
+<Radio name="myRadio" animate="fast">Fast animation</Radio>
+<Radio name="myRadio" animate="faster">Faster animation</Radio>
+<Radio name="myRadio" animate="none">No animation</Radio>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Resetting Style">
+    <p class="not-prose">The <code>reset</code> prop removes all default styles from the Radio Button component, leaving only the applied custom styles. This is useful for complete control over styling.</p>
+    <Example>
+    {#snippet example()}
+<Radio name="myRadio" reset={true} class="border border-green-500 bg-green-200">Option 1</Radio>
+<Radio name="myRadio" reset={true} class="border border-green-500 bg-green-200">Option 2</Radio>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Radio name="myRadio" reset={true} class="border border-green-500 bg-green-200">Option 1</Radio>
+<Radio name="myRadio" reset={true} class="border border-green-500 bg-green-200">Option 2</Radio>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Customization">
+    <Example> 
+      <p class="not-prose">The Radio Button component offers multiple ways to customize its appearance:</p>
+      <ul class="my-0">
+        <li><span class="not-prose"><code>labelClasses</code></span> – Custom styles for the label. If used within a Form component, it inherits the Form's <span class="not-prose"><code>labelClasses</code></span>.</li>
+        <li><span class="not-prose"><code>wrapperClasses</code></span> – Additional classes for the wrapper &lt;div&gt;, useful for layout adjustments.</li>
+        <li><span class="not-prose"><code>class</code></span> – Apply custom styles to the radio button itself.</li>
+      </ul>
+    {#snippet example()}
+<Radio name="myRadio"
+  wrapperClasses="flex relative gap-4 text-nowrap"
+  labelClasses="text-red-500 font-bold z-[1]"
+  class="w-8 h-6"
+>
+  Option 1
+</Radio>
+<Radio name="myRadio"
+  wrapperClasses="flex relative gap-4 text-nowrap"
+  labelClasses="text-red-500 font-bold z-[1]"
+  class="w-8 h-6"
+>
+  Option 2
+</Radio>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Radio name="myRadio"
+  wrapperClasses="flex relative gap-4 text-nowrap"
+  labelClasses="text-red-500 font-bold z-[1]"
+  class="w-8 h-6"
+>
+  Option 1
+</Radio>
+
+<Radio name="myRadio"
+  wrapperClasses="flex relative gap-4 text-nowrap"
+  labelClasses="text-red-500 font-bold z-[1]"
+  class="w-8 h-6"
+>
+  Option 2
+</Radio>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Configuration">
+    <ConfigComponent {component} />
+  </DocBlock>
+
+  {#snippet sidebar()}
+    <a href={processID("About")}>About</a>
+    <a href={processID("Example")}>Example</a>
+    <a href={processID("Name and Value")}>Name and Value</a>
+    <a href={processID("Radio Button Sizes")}>Radio Button Sizes</a>
+    <a href={processID("Animation")}>Animation</a>
+    <a href={processID("Resetting Style")}>Resetting Style</a>
+    <a href={processID("Customization")}>Customization</a>
+    <a href={processID("Configuration")}>Configuration Options</a>
+  {/snippet}
+
+
+</DocLayout>

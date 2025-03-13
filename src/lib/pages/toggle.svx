@@ -28,7 +28,7 @@ description: Fully customizable switch that can replace traditional checkboxes a
     <Example>
       <p class="not-prose">The Toggle component can be used in various ways depending on your needs. Below is a basic example:</p>
       {#snippet example()}
-        <Toggle name="toggle" label="Enable Feature" />
+<Toggle name="toggle">Enable Feature</Toggle>
       {/snippet}
       {#snippet code()}
 
@@ -37,7 +37,7 @@ description: Fully customizable switch that can replace traditional checkboxes a
   import { Toggle } from "theui-svelte";
 </script>
 
-<Toggle name="my_input" label="Enable Feature" />
+<Toggle name="toggle">Enable Feature</Toggle>
 ```
       {/snippet}
     </Example>
@@ -48,43 +48,27 @@ description: Fully customizable switch that can replace traditional checkboxes a
     <Example>
       <p class="not-prose">The <code>type</code> prop defines whether the toggle functions as a checkbox or a radio button.</p>
       {#snippet example()}
-        <div class="flex flex-col w-1/2 text-left">
-          <h4 class="font-bold">Checkboxes</h4>
-          <Toggle name="toggle1" label="Checkbox 1" />
-          <Toggle name="toggle2" label="Checkbox 2" />
-        </div>
-        <div class="flex flex-col w-1/2">
-          <h4 class="font-bold">Radio buttons</h4>
-          <Toggle name="toggle3" label="Radio button 1" type="radio" />
-          <Toggle name="toggle3" label="Radio button 2" type="radio" />
-        </div>
+<div class="flex flex-col w-1/2 text-left">
+  <h4 class="font-bold">Checkboxes</h4>
+  <Toggle name="toggle1">Checkbox 1</Toggle>
+  <Toggle name="toggle2">Checkbox 2</Toggle>
+</div>
+<div class="flex flex-col w-1/2">
+  <h4 class="font-bold">Radio buttons</h4>
+  <Toggle name="toggle3" type="radio">Radio button 1</Toggle>
+  <Toggle name="toggle3" type="radio">Radio button 2</Toggle>
+</div>
       {/snippet}
       {#snippet code()}
 
 ```html
 <!-- Checkbox (default) -->
-<Toggle name="toggle1" label="Checkbox 1" type="checkbox" />
-<Toggle name="toggle2" label="Checkbox 2" type="checkbox" />
+<Toggle name="toggle1" type="checkbox">Checkbox 1</Toggle>
+<Toggle name="toggle2" type="checkbox">Checkbox 2</Toggle>
 
 <!-- Radio buttons -->
-<Toggle name="toggleRadio" label="Radio button 1" type="radio" />
-<Toggle name="toggleRadio" label="Radio button 2" type="radio" />
-```
-      {/snippet}
-    </Example>
-  </DocBlock>
-
-  <DocBlock title="Label">
-    <Example>
-      <p class="not-prose">The <code>label</code> prop allows adding a label next to the <code>toggle</code>. The <code>id</code> is crucial for associating the <code>label</code> with the toggle input, ensuring better usability and screen reader support. If no <code>id</code> is provided, a unique one is automatically generated.</p>
-      {#snippet example()}
-        <Toggle name="toggle" label="Toggle 1" id="myToggle" />
-      {/snippet}
-      {#snippet code()}
-
-```html
-<!-- Toggle with custom ID -->
-<Toggle name="toggle" label="Toggle 1" id="myToggle" />
+<Toggle name="toggle3" type="radio">Radio button 1</Toggle>
+<Toggle name="toggle3" type="radio">Radio button 2</Toggle>
 ```
       {/snippet}
     </Example>
@@ -98,15 +82,15 @@ description: Fully customizable switch that can replace traditional checkboxes a
         <li>The <span class="not-prose"><code>value</code></span> prop controls the toggle's state and can be <span class="not-prose"><code>true</code></span>, <span class="not-prose"><code>false</code></span>, or <span class="not-prose"><code>null</code></span>. When used as a radio button, the value represents the selected option.</li>
       </ul>
       {#snippet example()}
-        <Toggle name="preferences" type="checkbox" value="ok" label="Enable Notifications" />
-        <Toggle name="theme" type="radio" value="dark" label="Dark Mode" />
+<Toggle name="preferences" value="ok">Enable Notifications</Toggle>
+<Toggle name="theme" type="radio" value="dark">Dark Mode</Toggle>
       {/snippet}
       {#snippet code()}
 
 ```html
 <!-- Toggle with custom ID -->
-<Toggle label="Enable Notifications" type="checkbox" name="preferences" value={true} />
-<Toggle label="Dark Mode" type="radio" name="theme" value="dark" />
+<Toggle name="preferences" type="checkbox" value="ok">Enable Notifications</Toggle>
+<Toggle name="theme" type="radio" value="dark">Dark Mode</Toggle>
 ```
       {/snippet}
     </Example>
@@ -116,20 +100,20 @@ description: Fully customizable switch that can replace traditional checkboxes a
     <Example>
       <p class="not-prose">The <code>size</code> prop controls the dimensions of the toggle switch, allowing it to fit various UI designs. Whether you need a compact switch for minimal layouts or a larger one for better accessibility, the <code>size</code> prop provides flexibility. Available sizes are: <code>sm</code>, <code>md</code> (default), <code>lg</code> and <code>xl</code>.</p>
       {#snippet example()}
-      <div class="flex flex-col gap-1">
-        <Toggle name="toggle" label="Small (sm) toggle" size="sm" />
-        <Toggle name="toggle" label="Medium (md) toggle" size="md" />
-        <Toggle name="toggle" label="Large (lg) toggle" size="lg" />
-        <Toggle name="toggle" label="Extra large (xl) toggle" size="xl" />
-      </div>
+<div class="flex flex-col gap-1">
+  <Toggle name="toggle" size="sm">Small (sm) toggle</Toggle>
+  <Toggle name="toggle" size="md">Medium (md) toggle</Toggle>
+  <Toggle name="toggle" size="lg">Large (lg) toggle</Toggle>
+  <Toggle name="toggle" size="xl">Extra large (xl) toggle</Toggle>
+</div>
       {/snippet}
       {#snippet code()}
 
 ```html
-<Toggle name="toggle" label="Small (sm) toggle" size="sm" />
-<Toggle name="toggle" label="Medium (md) toggle" size="md" />
-<Toggle name="toggle" label="Large (lg) toggle" size="lg" />
-<Toggle name="toggle" label="Extra large (xl) toggle" size="xl" />
+<Toggle name="toggle" size="sm">Small (sm) toggle</Toggle>
+<Toggle name="toggle" size="md">Medium (md) toggle</Toggle>
+<Toggle name="toggle" size="lg">Large (lg) toggle</Toggle>
+<Toggle name="toggle" size="xl">Extra large (xl) toggle</Toggle>
 ```
       {/snippet}
     </Example>
@@ -139,22 +123,24 @@ description: Fully customizable switch that can replace traditional checkboxes a
     <Example>
       <p class="not-prose">The <code>animate</code> prop controls the transition effect when toggling between states. Smooth animations enhance the user experience by making interactions feel more natural. Available values are: <code>slower</code>, <code>slow</code>, <code>normal</code> (default), <code>fast</code> and <code>faster</code>.</p>
       {#snippet example()}
-      <div class="flex flex-col">
-        <Toggle name="toggle" label="Slower animation" animate="slower" />
-        <Toggle name="toggle" label="Slow animation" animate="slow" />
-        <Toggle name="toggle" label="Normal animation" animate="normal" />
-        <Toggle name="toggle" label="Fast animation" animate="fast" />
-        <Toggle name="toggle" label="Faster animation" animate="faster" />
-      </div>
+<div class="flex flex-col">
+  <Toggle name="toggle" animate="slower">Slower animation</Toggle>
+  <Toggle name="toggle" animate="slow">Slow animation</Toggle>
+  <Toggle name="toggle" animate="normal">Normal animation</Toggle>
+  <Toggle name="toggle" animate="fast">Fast animation</Toggle>
+  <Toggle name="toggle" animate="faster">Faster animation</Toggle>
+  <Toggle name="toggle" animate="none">No animation</Toggle>
+</div>
       {/snippet}
       {#snippet code()}
 
 ```html
-<Toggle name="toggle" label="Slower animation" animate="slower" />
-<Toggle name="toggle" label="Slow animation" animate="slow" />
-<Toggle name="toggle" label="Normal animation" animate="normal" />
-<Toggle name="toggle" label="Fast animation" animate="fast" />
-<Toggle name="toggle" label="Faster animation" animate="faster" />
+<Toggle name="toggle" animate="slower">Slower animation</Toggle>
+<Toggle name="toggle" animate="slow">Slow animation</Toggle>
+<Toggle name="toggle" animate="normal">Normal animation</Toggle>
+<Toggle name="toggle" animate="fast">Fast animation</Toggle>
+<Toggle name="toggle" animate="faster">Faster animation</Toggle>
+<Toggle name="toggle" animate="none">No animation</Toggle>
 ```
       {/snippet}
     </Example>
@@ -164,14 +150,14 @@ description: Fully customizable switch that can replace traditional checkboxes a
     <Example>
       <p class="not-prose">The <code>rounded</code> prop defines the shape of the toggle’s switch and background. By adjusting this property, you can make the toggle appear more circular or squared. Available values are: <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code>, <code>full</code> (default) and <code>none</code>.</p>
       {#snippet example()}
-      <div class="flex flex-col gap-1">
-        <Toggle name="toggle" label="Small rounded" size="xl" rounded="sm" />
-        <Toggle name="toggle" label="Medium rounded" size="xl" rounded="md" />
-        <Toggle name="toggle" label="Large rounded" size="xl" rounded="lg" />
-        <Toggle name="toggle" label="Extra large rounded" size="xl" rounded="xl" />
-        <Toggle name="toggle" label="Full rounded" size="xl" rounded="full" />
-        <Toggle name="toggle" label="Not rounded" size="xl" rounded="none" />
-      </div>
+<div class="flex flex-col gap-2">
+  <Toggle name="toggle" size="xl" rounded="sm">Small rounded</Toggle>
+  <Toggle name="toggle" size="xl" rounded="md">Medium rounded</Toggle>
+  <Toggle name="toggle" size="xl" rounded="lg">Large rounded</Toggle>
+  <Toggle name="toggle" size="xl" rounded="xl">Extra large rounded</Toggle>
+  <Toggle name="toggle" size="xl" rounded="full">Full rounded</Toggle>
+  <Toggle name="toggle" size="xl" rounded="none">Not rounded</Toggle>
+</div>
       {/snippet}
       {#snippet code()}
 
@@ -196,21 +182,23 @@ description: Fully customizable switch that can replace traditional checkboxes a
     <Example>
       {#snippet example()}
       <Toggle
-        label="CUSTOM TOGGLE"
         labelClasses="text-red-500 font-bold"
-        wrapperClasses="shadow-xl"
+        wrapperClasses="shadow-xl py-2 px-4 bg-gray-100 dark:bg-gray-800 rounded-full"
         class="bg-blue-200 checked:hover:bg-green-500 checked:focus:bg-green-500 checked:bg-green-500 focus:!ring-gray-500 checked:focus:!ring-green-500"
-      />
+      >
+        CUSTOM TOGGLE
+      </Toggle>
       {/snippet}
       {#snippet code()}
 
 ```html
 <Toggle
-  label="CUSTOM TOGGLE"
   labelClasses="text-red-500 font-bold"
-  wrapperClasses="shadow-xl"
+  wrapperClasses="shadow-xl py-2 px-4 bg-gray-100 dark:bg-gray-800 rounded-full"
   class="bg-blue-200 checked:hover:bg-green-500 checked:focus:bg-green-500 checked:bg-green-500 focus:!ring-gray-500 checked:focus:!ring-green-500"
-/>
+>
+  CUSTOM TOGGLE
+</Toggle>
 ```
       {/snippet}
     </Example>

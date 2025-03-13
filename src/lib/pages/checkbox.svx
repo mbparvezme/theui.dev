@@ -1,0 +1,206 @@
+---
+title: Checkbox
+dir: ".lib/pages"
+description: The Checkbox component is a versatile and customizable input element used for selecting one or multiple options in a form. It supports various sizes, animations, and styling options to fit different UI requirements.
+---
+
+<script lang="ts">
+  import DocLayout from "$lib/ui/doc/DocLayout.svelte";
+  import DocHead from "$lib/ui/doc/Head.svelte";
+  import DocBlock from "$lib/ui/doc/Block.svelte";
+  import Code from "$lib/ui/doc/CodeBlock.svelte";
+  import Example from "$lib/ui/doc/Example.svelte";
+  import ConfigComponent from "$lib/ui/doc/ConfigComponent.svelte";
+  import { processID } from "$lib";
+  let { component, edit_url }: {component: any, edit_url?: string } = $props();
+
+  import { Checkbox, HelperText } from "theui-svelte";
+</script>
+
+<DocLayout>
+  <DocHead title="Checkbox" text="The Checkbox component is a versatile and customizable input element used for selecting one or multiple options in a form. It supports various sizes, animations, and styling options to fit different UI requirements." {edit_url}/>
+
+  <DocBlock title="About">
+    <p class="not-prose">This Checkbox component enhances the default checkbox input with additional styling and customization options. It allows for easy integration into forms while providing a clean and modern design. The component supports different sizes, animations, and customization settings, making it adaptable to various use cases.</p>
+  </DocBlock>
+
+  <DocBlock title="Example">
+    <p class="not-prose">Here is a basic usage example of the Checkbox component:</p>
+    <Example>
+      {#snippet example()}
+<Checkbox name="terms">I agree to the terms and conditions</Checkbox>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<script>
+  import { Checkbox } from "theui-svelte";
+</script>
+
+<Checkbox name="terms">I agree to the terms and conditions</Checkbox>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Name and Value">
+    <p class="not-prose">The <code>name</code> and <code>value</code> props are crucial for form handling. The <code>name</code> prop groups checkboxes, allowing multiple selections under the same category. The <code>value</code> prop determines the selected state of the checkbox.</p>
+    <Example>
+    {#snippet example()}
+<div>
+  <Checkbox name="myCheckbox" value="dark-mode">Enable Dark Mode</Checkbox>
+  <Checkbox name="myCheckbox" value="notifications">Enable Notifications</Checkbox>
+</div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Checkbox name="myCheckbox" value="dark-mode">Enable Dark Mode</Checkbox>
+<Checkbox name="myCheckbox" value="notifications">Enable Notifications</Checkbox>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Checkbox Sizes">
+    <p class="not-prose">The <code>size</code> prop controls the overall size of the checkbox, making it adaptable to different layouts and UI designs. The available sizes are <code>"sm"</code>, <code>"md"</code> (default), <code>"lg"</code> and <code>"xl"</code>.</p>
+    <Example>
+    {#snippet example()}
+<div class="flex flex-col gap-2">
+  <Checkbox name="myCheckbox" size="sm">Small (sm) checkbox</Checkbox>
+  <Checkbox name="myCheckbox" size="md">Medium (md) checkbox</Checkbox>
+  <Checkbox name="myCheckbox" size="lg">Large (lg) checkbox</Checkbox>
+  <Checkbox name="myCheckbox" size="xl">Extra Large (xl) checkbox</Checkbox>
+</div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Checkbox name="myCheckbox" size="sm">Small (sm) checkbox</Checkbox>
+<Checkbox name="myCheckbox" size="md">Medium (md) checkbox</Checkbox>
+<Checkbox name="myCheckbox" size="lg">Large (lg) checkbox</Checkbox>
+<Checkbox name="myCheckbox" size="xl">Extra Large (xl) checkbox</Checkbox>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Animation">
+    <p class="not-prose">The <code>animate</code> prop determines the speed of the checkbox's interaction effects, such as transitions when toggling states. It helps improve user experience by making interactions feel smoother. The available animation speeds are <code>"none"</code>, <code>"slower"</code>, <code>"slow"</code> <code>"normal"</code> (default), <code>"fast"</code> and <code>"faster"</code>.</p>
+    <p class="not-prose">Setting it to <code>"none"</code>disables animations, while other values can be used to adjust the transition speed based on preference.</p>
+    <Example>
+    {#snippet example()}
+<div class="flex flex-col gap-2">
+  <Checkbox name="myCheckbox" animate="slower">Slower animation</Checkbox>
+  <Checkbox name="myCheckbox" animate="slow">Slow animation</Checkbox>
+  <Checkbox name="myCheckbox" animate="normal">Normal animation</Checkbox>
+  <Checkbox name="myCheckbox" animate="fast">Fast animation</Checkbox>
+  <Checkbox name="myCheckbox" animate="faster">Faster animation</Checkbox>
+  <Checkbox name="myCheckbox" animate="none">No animation</Checkbox>
+</div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Checkbox name="myCheckbox" animate="slower">Slower animation</Checkbox>
+<Checkbox name="myCheckbox" animate="slow">Slow animation</Checkbox>
+<Checkbox name="myCheckbox" animate="normal">Normal animation</Checkbox>
+<Checkbox name="myCheckbox" animate="fast">Fast animation</Checkbox>
+<Checkbox name="myCheckbox" animate="faster">Faster animation</Checkbox>
+<Checkbox name="myCheckbox" animate="none">No animation</Checkbox>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Rounded Checkbox">
+    <p class="not-prose">The <code>rounded</code> prop defines the border-radius of the checkbox, allowing customization of its shape. The available values are <code>"none"</code>, <code>"sm"</code>, <code>"md"</code> <code>"lg"</code>, <code>"xl"</code> and <code>"full"</code>.</p>
+    <p class="not-prose">Setting it to <code>"none"</code>disables animations, while other values can be used to adjust the transition speed based on preference.</p>
+    <Example>
+    {#snippet example()}
+<div class="flex flex-col gap-2">
+  <Checkbox name="myCheckbox" size="xl" rounded="none">Rounded none checkbox</Checkbox>
+  <Checkbox name="myCheckbox" size="xl" rounded="sm">Rounded small checkbox</Checkbox>
+  <Checkbox name="myCheckbox" size="xl" rounded="md">Rounded medium checkbox</Checkbox>
+  <Checkbox name="myCheckbox" size="xl" rounded="lg">Rounded large checkbox</Checkbox>
+  <Checkbox name="myCheckbox" size="xl" rounded="xl">Rounded extra large checkbox</Checkbox>
+  <Checkbox name="myCheckbox" size="xl" rounded="full">Rounded full checkbox</Checkbox>
+</div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Checkbox name="myCheckbox" size="xl" rounded="none">Rounded none checkbox</Checkbox>
+<Checkbox name="myCheckbox" size="xl" rounded="sm">Rounded small checkbox</Checkbox>
+<Checkbox name="myCheckbox" size="xl" rounded="md">Rounded medium checkbox</Checkbox>
+<Checkbox name="myCheckbox" size="xl" rounded="lg">Rounded large checkbox</Checkbox>
+<Checkbox name="myCheckbox" size="xl" rounded="xl">Rounded extra large checkbox</Checkbox>
+<Checkbox name="myCheckbox" size="xl" rounded="full">Rounded full checkbox</Checkbox>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Resetting Style">
+    <p class="not-prose">The <code>reset</code> prop removes all default styles from the Checkbox component, allowing only custom styles to be applied. This is useful when you want full control over the design. Just set <code>reset</code> to <code>false</code> to apply reset.</p>
+    <Example>
+    {#snippet example()}
+<Checkbox name="myCheckbox" reset={true} class="border border-green-500 bg-green-200">Enable Dark Mode</Checkbox>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Checkbox name="myCheckbox" reset={true} class="border border-green-500 bg-green-200">Enable Dark Mode</Checkbox>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Customization">
+    <Example> 
+      <p class="not-prose">The Checkbox component provides multiple ways to customize its appearance:</p>
+      <ul class="my-0">
+        <li><span class="not-prose"><code>labelClasses</code></span> – Custom styles for the label. If used within a Form component, it inherits the Form's <span class="not-prose"><code>labelClasses</code></span>.</li>
+        <li><span class="not-prose"><code>wrapperClasses</code></span> – Additional classes for the wrapper &lt;div&gt;, useful for layout adjustments.</li>
+        <li><span class="not-prose"><code>class</code></span> – Apply custom styles to the checkbox itself.</li>
+      </ul>
+    {#snippet example()}
+<Checkbox name="myCheckbox"
+  wrapperClasses="flex flex-col relative gap-0"
+  labelClasses="text-red-500 font-bold z-[1]"
+  class="w-full h-8">CUSTOM CHECKBOX</Checkbox>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Checkbox
+  name="myCheckbox"
+  wrapperClasses="flex flex-col relative gap-0"
+  labelClasses="text-red-500 font-bold z-[1]"
+  class="w-full h-8"
+>
+  CUSTOM CHECKBOX
+</Checkbox>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Configuration">
+    <ConfigComponent {component} />
+  </DocBlock>
+
+  {#snippet sidebar()}
+    <a href={processID("About")}>About</a>
+    <a href={processID("Example")}>Example</a>
+    <a href={processID("Name and Value")}>Name and Value</a>
+    <a href={processID("Checkbox Sizes")}>Checkbox Sizes</a>
+    <a href={processID("Animation")}>Animation</a>
+    <a href={processID("Rounded Checkbox")}>Rounded Checkbox</a>
+    <a href={processID("Resetting Style")}>Resetting Style</a>
+    <a href={processID("Customization")}>Customization</a>
+    <a href={processID("Configuration")}>Configuration</a>
+  {/snippet}
+
+
+</DocLayout>

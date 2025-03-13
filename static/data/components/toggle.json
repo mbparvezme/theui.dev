@@ -4,12 +4,6 @@
     "title": "Props",
     "data": [
       {
-        "name": "label",
-        "type": "string | Snippet",
-        "default": "undefined",
-        "description": "Defines the label text or a snippet for the toggle."
-      },
-      {
         "name": "type",
         "type": "\"checkbox\" | \"radio\"",
         "default": "\"checkbox\"",
@@ -29,9 +23,9 @@
       },
       {
         "name": "value",
-        "type": "boolean | string",
+        "type": "unknown",
         "default": "undefined",
-        "description": "Controls the toggle's state. Can be true, false, or a string value."
+        "description": "Value of the toggle input. It could be anything, text, numeric or boolean!"
       },
       {
         "name": "size",
