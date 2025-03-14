@@ -4,10 +4,10 @@
     "title": "Props",
     "data": [
       {
-        "name": "animate",
-        "type": "<a href=\"/docs/types#common-types\">ANIMATE_SPEED</a>",
-        "default": "\"normal\"",
-        "description": "Controls the animation speed for inputs."
+        "name": "method",
+        "type": "'GET' | 'POST'",
+        "default": "\"POST\"",
+        "description": "Defines the form submit method."
       },
       {
         "name": "variant",
@@ -16,16 +16,22 @@
         "description": "Defines the visual style of the inputs."
       },
       {
+        "name": "size",
+        "type": "<a href=\"/docs/types##input-size\">INPUT_SIZE</a>",
+        "default": "\"md\"",
+        "description": "Defines the size of the inputs. Options typically include \"sm\", \"md\", and \"lg\"."
+      },
+      {
         "name": "floatingLabel",
         "type": "boolean",
         "default": "true (if variant == \"flat\")",
         "description": "Enables or disables floating labels for inputs. If variant is set to \"flat\", this defaults to true and false otherwise."
       },
       {
-        "name": "labelClasses",
-        "type": "string",
-        "default": "\"\"",
-        "description": "Allows custom CSS classes to be applied to input labels for additional styling."
+        "name": "animate",
+        "type": "<a href=\"/docs/types#common-types\">ANIMATE_SPEED</a>",
+        "default": "\"normal\"",
+        "description": "Controls the animation speed for inputs."
       },
       {
         "name": "rounded",
@@ -34,10 +40,10 @@
         "description": "Controls the border radius of inputs."
       },
       {
-        "name": "size",
-        "type": "<a href=\"/docs/types##input-size\">INPUT_SIZE</a>",
-        "default": "\"md\"",
-        "description": "Defines the size of the inputs. Options typically include \"sm\", \"md\", and \"lg\"."
+        "name": "labelClasses",
+        "type": "string",
+        "default": "\"\"",
+        "description": "Allows custom CSS classes to be applied to input labels for additional styling."
       },
       {
         "name": "reset",

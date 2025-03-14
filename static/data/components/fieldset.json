@@ -2,7 +2,56 @@
   {
     "key": "props",
     "title": "Props",
-    "data": null
+    "data": [
+      {
+        "name": "title",
+        "type": "string",
+        "default": "undefined",
+        "description": "Legend or title of the fieldset for the assertive technology. Only visible to the screen readers."
+      },
+      {
+        "name": "variant",
+        "type": "<a href=\"/docs/types##input-variant\">INPUT_VARIANT</a>",
+        "default": "\"bordered\"",
+        "description": "Defines the visual style of the inputs."
+      },
+      {
+        "name": "size",
+        "type": "<a href=\"/docs/types##input-size\">INPUT_SIZE</a>",
+        "default": "\"md\"",
+        "description": "Defines the size of the inputs. Options typically include \"sm\", \"md\", and \"lg\"."
+      },
+      {
+        "name": "floatingLabel",
+        "type": "boolean",
+        "default": "true (if variant == \"flat\")",
+        "description": "Enables or disables floating labels for inputs. If variant is set to \"flat\", this defaults to true and false otherwise."
+      },
+      {
+        "name": "animate",
+        "type": "<a href=\"/docs/types#common-types\">ANIMATE_SPEED</a>",
+        "default": "\"normal\"",
+        "description": "Controls the animation speed for inputs."
+      },
+      {
+        "name": "rounded",
+        "type": "<a href=\"/docs/types#common-types\">ROUNDED</a>",
+        "default": "\"md\"",
+        "description": "Controls the border radius of inputs."
+      },
+      {
+        "name": "labelClasses",
+        "type": "string",
+        "default": "\"\"",
+        "description": "Allows custom CSS classes to be applied to input labels for additional styling."
+      },
+      {
+        "name": "reset",
+        "type": "boolean",
+        "default": "false",
+        "description": "Resets all the defaults styles and apply only the custom styles."
+      }
+    ]
   },
   {
     "key": "dynamicProps",
