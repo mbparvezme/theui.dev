@@ -31,7 +31,8 @@
 		"tailwindcss": "^3.4.9",
 		"typescript": "^5.7.2",
 		"vite": "^6.0.0",
-		"vitest": "^3.0.8"
+		"vitest": "^3.0.8",
+		"wrangler": "^4.0.0"
 	},
 	"dependencies": {
 		"theui-svelte": "^2.0.0-rc56",
