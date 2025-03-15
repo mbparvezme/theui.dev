@@ -34,7 +34,6 @@
 		"vitest": "^3.0.8"
 	},
 	"dependencies": {
-		"theui-svelte": "^2.0.0-rc56",
 		"tw-color-shades": "^1.1.0"
 	}
 }
