@@ -1,0 +1,71 @@
+---
+title: Input
+dir: ".lib/pages"
+description: The Input component is a flexible and customizable form element that supports various input types. It ensures a consistent and seamless experience across different use cases.
+---
+
+<script lang="ts">
+  import DocLayout from "$lib/ui/doc/DocLayout.svelte";
+  import DocHead from "$lib/ui/doc/Head.svelte";
+  import DocBlock from "$lib/ui/doc/Block.svelte";
+  import Code from "$lib/ui/doc/CodeBlock.svelte";
+  import Example from "$lib/ui/doc/Example.svelte";
+  import ConfigComponent from "$lib/ui/doc/ConfigComponent.svelte";
+  import { processID } from "$lib";
+  let { component, edit_url }: {component: any, edit_url?: string } = $props();
+
+  import { Input } from "theui-svelte";
+</script>
+
+<DocLayout>
+  <DocHead title="Input" text="The Input component is a flexible and customizable form element that supports various input types. It ensures a consistent and seamless experience across different use cases." {edit_url}/>
+
+  <DocBlock title="About">
+    <p class="not-prose">Designed for versatility, the <code>Input</code> component adapts to different form requirements, from basic text fields to advanced data inputs. With built-in styling, validation, and accessibility features, it enhances usability while maintaining a uniform look. It seamlessly integrates with the Form and Fieldset components, inheriting styles and behaviors for effortless form management.</p>
+  </DocBlock>
+
+  <DocBlock title="Example">
+    <Example>
+      <p class="not-prose">To use the <b>Helper</b> component, pass the content prop with the desired text or snippet. Here's a basic example:</p>
+      {#snippet example()}
+<Input placeholder="Type your full name">Name</Input>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<script>
+  import { Input } from "theui-svelte";
+</script>
+
+<Input placeholder="Type your full name">Name</Input>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Customization">
+    <Example>
+      <p class="not-prose">The <code>Helper</code> component can be customized using the <code>class</code> attribute to apply additional styles or override default ones.</p>
+      {#snippet code()}
+
+```html
+<Helper content="..." class="text-blue-600 italic" />
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Configuration">
+    <ConfigComponent {component} />
+  </DocBlock>
+
+  {#snippet sidebar()}
+    <a href={processID("About")}>About</a>
+    <a href={processID("Example")}>Example</a>
+    <a href={processID("Helper Text Content")}>Helper Text Content</a>
+    <a href={processID("Customization")}>Customization</a>
+    <a href={processID("Configuration")}>Configuration</a>
+  {/snippet}
+
+
+</DocLayout>
