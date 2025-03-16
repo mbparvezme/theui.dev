@@ -10,18 +10,6 @@
         "description": "Specifies whether the toggle functions as a checkbox or a radio button."
       },
       {
-        "name": "name",
-        "type": "string",
-        "default": "undefined",
-        "description": "Sets the name attribute, useful for grouping toggles in forms."
-      },
-      {
-        "name": "id",
-        "type": "string",
-        "default": "&lt;RANDOM STRING&gt;",
-        "description": "Unique identifier for the toggle. If not provided, a random ID is generated."
-      },
-      {
         "name": "value",
         "type": "unknown",
         "default": "undefined",

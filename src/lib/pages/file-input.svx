@@ -172,7 +172,7 @@ description: The FileInput component is a customizable wrapper for file selectio
       {#snippet example()}
 <FileInput 
   name="document"
-  wrapperClasses="shadow-xl"
+  wrapperClasses="flex-row items-center justify-between gap-8"
   labelClasses="text-xl font-semibold uppercase"
   class="focus:ring-2 focus-within:ring-purple-500 focus:ring-purple-500 bg-purple-100 file:bg-purple-300"
   variant="flat"
@@ -185,7 +185,7 @@ description: The FileInput component is a customizable wrapper for file selectio
 ```html
 <FileInput 
   name="document"
-  wrapperClasses="shadow-xl"
+  wrapperClasses="flex-row items-center justify-between gap-8"
   labelClasses="text-xl font-semibold uppercase"
   class="focus:ring-2 focus-within:ring-purple-500 focus:ring-purple-500 bg-purple-100 file:bg-purple-300"
   variant="flat"
@@ -198,14 +198,17 @@ description: The FileInput component is a customizable wrapper for file selectio
   </DocBlock>
 
   <DocBlock title="Configuration">
-    <p class="not-prose">The <code>Form</code> component includes a set of props that are not directly applied to the form itself but are passed down to all its child inputs. These props ensure a consistent appearance and behavior across all form inputs, making it easier to maintain uniformity without manually configuring each input.</p>
     <ConfigComponent {component} />
   </DocBlock>
 
   {#snippet sidebar()}
     <a href={processID("About")}>About</a>
     <a href={processID("Example")}>Example</a>
-    <a href={processID("Form Method")}>Form Method</a>
+    <a href={processID("Size")}>Size</a>
+    <a href={processID("Variant")}>Variant</a>
+    <a href={processID("Rounded")}>Rounded</a>
+    <a href={processID("Helper Text")}>Helper Text</a>
+    <a href={processID("Customization")}>Customization</a>
     <a href={processID("Configuration")}>Configuration</a>
   {/snippet}
 

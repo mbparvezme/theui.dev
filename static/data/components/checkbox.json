@@ -4,18 +4,6 @@
     "title": "Props",
     "data": [
       {
-        "name": "name",
-        "type": "string",
-        "default": "undefined",
-        "description": "Specifies the name of the checkbox, used for form handling."
-      },
-      {
-        "name": "id",
-        "type": "string",
-        "default": "&lt;RANDOM STRING&gt;",
-        "description": "Unique identifier for the checkbox. If not provided, an ID is automatically generated."
-      },
-      {
         "name": "value",
         "type": "unknown",
         "default": "null",

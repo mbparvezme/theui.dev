@@ -4,18 +4,6 @@
     "title": "Props",
     "data": [
       {
-        "name": "name",
-        "type": "string",
-        "default": "undefined",
-        "description": "Specifies the name of the radio button, used to group radio buttons together."
-      },
-      {
-        "name": "id",
-        "type": "string",
-        "default": "&lt;RANDOM STRING&gt;",
-        "description": "Unique identifier for the radio button. If not provided, an ID is automatically generated."
-      },
-      {
         "name": "value",
         "type": "unknown",
         "default": "null",
