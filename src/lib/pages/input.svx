@@ -43,6 +43,66 @@ description: The Input component is a flexible and customizable form element tha
     </Example>
   </DocBlock>
 
+  <DocBlock title="Input Type">
+    <Example classes="items-start">
+      <p class="not-prose">The <code>Input</code> component supports various input types, making it a flexible solution for different use cases. Whether you need a standard text field, a password input, or a date picker, this component adapts to your needs. To specify the type of input, use the type prop. Here's an example:</p>
+      {#snippet example()}
+<div class="flex flex-col gap-2 w-full">
+  <Input class="w-full" name="username" type="text" placeholder="Enter your username">Username</Input>
+  <Input class="w-full" name="email" type="email" placeholder="Enter your email">Email</Input>
+  <Input class="w-full" name="password" type="password" placeholder="Enter your password">Password</Input>
+</div>
+<div class="flex flex-col gap-2 w-full">
+  <Input class="w-full" name="dob" type="date">Date of birth</Input>
+  <Input class="w-full" name="url" type="url" placeholder="Enter your profile URL">URL</Input>
+  <Input class="w-full" name="days" type="number">Number of days</Input>
+</div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Input type="text" name="username" placeholder="Enter your username">Username</Input>
+<Input type="email" name="email" placeholder="Enter your email">Email</Input>
+<Input type="password" name="password" placeholder="Enter your password">Password</Input>
+<Input type="date" name="dob">Date of birth</Input>
+<Input type="url" name="url" placeholder="Enter your profile URL">URL</Input>
+<Input type="number" name="days" placeholder="Enter numbers">Number of days</Input>
+```
+      {/snippet}
+    </Example>
+    <p class="not-prose">Other available input types are: datetime-local, month, tel, time, week, search, textarea</p>
+  </DocBlock>
+
+  <DocBlock title="Textarea">
+    <Example classes="items-start">
+      <p class="not-prose">The <code>Input</code> component supports various input types, making it a flexible solution for different use cases. Whether you need a standard text field, a password input, or a date picker, this component adapts to your needs. To specify the type of input, use the type prop. Here's an example:</p>
+      {#snippet example()}
+<div class="flex flex-col gap-2 w-full">
+  <Input class="w-full" name="username" type="text" placeholder="Enter your username">Username</Input>
+  <Input class="w-full" name="email" type="email" placeholder="Enter your email">Email</Input>
+  <Input class="w-full" name="password" type="password" placeholder="Enter your password">Password</Input>
+</div>
+<div class="flex flex-col gap-2 w-full">
+  <Input class="w-full" name="dob" type="date">Date of birth</Input>
+  <Input class="w-full" name="url" type="url" placeholder="Enter your profile URL">URL</Input>
+  <Input class="w-full" name="days" type="number">Number of days</Input>
+</div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Input type="text" name="username" placeholder="Enter your username">Username</Input>
+<Input type="email" name="email" placeholder="Enter your email">Email</Input>
+<Input type="password" name="password" placeholder="Enter your password">Password</Input>
+<Input type="date" name="dob">Date of birth</Input>
+<Input type="url" name="url" placeholder="Enter your profile URL">URL</Input>
+<Input type="number" name="days" placeholder="Enter numbers">Number of days</Input>
+```
+      {/snippet}
+    </Example>
+    <p class="not-prose">Other available input types are: datetime-local, month, tel, time, week, search, textarea</p>
+  </DocBlock>
+
   <DocBlock title="Customization">
     <Example>
       <p class="not-prose">The <code>Helper</code> component can be customized using the <code>class</code> attribute to apply additional styles or override default ones.</p>
