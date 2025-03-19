@@ -70,37 +70,144 @@ description: The Input component is a flexible and customizable form element tha
 ```
       {/snippet}
     </Example>
-    <p class="not-prose">Other available input types are: datetime-local, month, tel, time, week, search, textarea</p>
+
+    <p class="not-prose">Other available input types are: <code>datetime-local</code>, month, tel, time, week, search, textarea</p>
   </DocBlock>
 
   <DocBlock title="Textarea">
     <Example classes="items-start">
-      <p class="not-prose">The <code>Input</code> component supports various input types, making it a flexible solution for different use cases. Whether you need a standard text field, a password input, or a date picker, this component adapts to your needs. To specify the type of input, use the type prop. Here's an example:</p>
+      <p class="not-prose">When the <code>type</code> prop is set to <code>"textarea"</code>, the Input component renders a <code>&lt;textarea&gt;</code> instead of a standard input field. By default, the textarea has 3 rows, but you can customize it using the rows attribute.</p>
       {#snippet example()}
-<div class="flex flex-col gap-2 w-full">
-  <Input class="w-full" name="username" type="text" placeholder="Enter your username">Username</Input>
-  <Input class="w-full" name="email" type="email" placeholder="Enter your email">Email</Input>
-  <Input class="w-full" name="password" type="password" placeholder="Enter your password">Password</Input>
-</div>
-<div class="flex flex-col gap-2 w-full">
-  <Input class="w-full" name="dob" type="date">Date of birth</Input>
-  <Input class="w-full" name="url" type="url" placeholder="Enter your profile URL">URL</Input>
-  <Input class="w-full" name="days" type="number">Number of days</Input>
+<div class="inline-flex flex-col gap-2">
+  <Input name="message" type="textarea" placeholder="Write your message...">Your message</Input>
+  <Input name="feedback" type="textarea" rows="5" placeholder="Share your feedback...">Your feedback</Input>
 </div>
       {/snippet}
       {#snippet code()}
 
 ```html
-<Input type="text" name="username" placeholder="Enter your username">Username</Input>
-<Input type="email" name="email" placeholder="Enter your email">Email</Input>
-<Input type="password" name="password" placeholder="Enter your password">Password</Input>
-<Input type="date" name="dob">Date of birth</Input>
-<Input type="url" name="url" placeholder="Enter your profile URL">URL</Input>
-<Input type="number" name="days" placeholder="Enter numbers">Number of days</Input>
+<Input name="message" type="textarea" placeholder="Write your message...">Your message</Input>
+<Input name="feedback" type="textarea" rows="5" placeholder="Share your feedback...">Your feedback</Input>
 ```
       {/snippet}
     </Example>
-    <p class="not-prose">Other available input types are: datetime-local, month, tel, time, week, search, textarea</p>
+  </DocBlock>
+
+  <DocBlock title="Default Value">
+    <Example classes="items-start">
+      <p class="not-prose">The <code>value</code> prop allows you to set a default value for the input field or textarea. This is useful when you want the input to start with a predefined value, such as prefilled user data, placeholders for editing forms, or default selections.</p>
+      <p class="not-prose">The <code>value</code> prop work for all the input types including <b>textarea</b>.</p>
+      {#snippet example()}
+<div class="inline-flex flex-col gap-2">
+  <Input name="username" type="text" value="john_doe">Username</Input>
+  <Input name="bio" type="textarea" value="A passionate developer who loves coding.">About you</Input>
+</div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Input name="username" type="text" value="john_doe">Username</Input>
+<Input name="bio" type="textarea" value="A passionate developer who loves coding.">About you</Input>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Input Variant">
+    <Example classes="items-start">
+      <p class="not-prose">The <code>variant</code> prop allows you to control the visual style of the input field. There are two available variants:</p>
+      <ul class="mt-0">
+        <li><span class="not-prose"><code>bordered</code></span>(default): Displays the input with a visible border, making it distinct and clearly separated from the background.</li>
+        <li><span class="not-prose"><code>flat</code></span>(default): Removes the border for a more minimalistic and seamless appearance, blending with the surrounding design.</li>
+      </ul>
+      <p class="not-prose">This prop helps you match the input style with your overall UI theme.</p>
+      {#snippet example()}
+<div class="inline-flex flex-col gap-4">
+  <Input name="username" type="text" variant="bordered">Username</Input>
+  <Input name="email" type="email" variant="flat">Email</Input>
+</div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Input name="username" type="text" variant="bordered">Username</Input>
+<Input name="email" type="email" variant="flat">Email</Input>
+```
+      {/snippet}
+    </Example>
+    <p class="not-prose">Using <code>flat</code> is great for modern, clean designs, while <code>bordered</code> ensures clear separation and visibility.</p>
+  </DocBlock>
+
+  <DocBlock title="Label">
+    <Example classes="items-start">
+      <p class="not-prose"></p>
+      {#snippet example()}
+<div class="inline-flex flex-col gap-2">
+  <Input name="username" type="text" placeholder="Enter your user name" variant="flat" floatingLabel={true}>Username</Input>
+  <Input name="bio" type="textarea" placeholder="Write about you.." variant="flat">About you</Input>
+</div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Sizing">
+    <Example classes="items-start">
+      <p class="not-prose"></p>
+      {#snippet example()}
+<div class="inline-flex flex-col gap-2">
+  <Input name="username" type="text" placeholder="Enter your user name" variant="flat" floatingLabel={true}>Username</Input>
+  <Input name="bio" type="textarea" placeholder="Write about you.." variant="flat">About you</Input>
+</div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Animation Speed">
+    <Example classes="items-start">
+      <p class="not-prose"></p>
+      {#snippet example()}
+<div class="inline-flex flex-col gap-2">
+  <Input name="username" type="text" placeholder="Enter your user name" variant="flat" floatingLabel={true}>Username</Input>
+  <Input name="bio" type="textarea" placeholder="Write about you.." variant="flat">About you</Input>
+</div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Rounded Input">
+    <Example classes="items-start">
+      <p class="not-prose"></p>
+      {#snippet example()}
+<div class="inline-flex flex-col gap-2">
+  <Input name="username" type="text" placeholder="Enter your user name" variant="flat" floatingLabel={true}>Username</Input>
+  <Input name="bio" type="textarea" placeholder="Write about you.." variant="flat">About you</Input>
+</div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+
+```
+      {/snippet}
+    </Example>
   </DocBlock>
 
   <DocBlock title="Customization">
