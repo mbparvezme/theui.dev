@@ -17,7 +17,7 @@
   let {children, example, code, classes, title, codeTitle, mt = true}: Props = $props();
 </script>
 
-<div class="example-section" class:!mt-0={!mt}>
+<div class="example-section w-full" class:!mt-0={!mt}>
   {#if title}
     <h4 id={processID(title, false)} class="not-prose text-xl font-semibold font-body text-gray-700 dark:text-gray-400 mt-0 mb-2">{@html title}</h4>
   {/if}
