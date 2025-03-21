@@ -229,27 +229,27 @@ description: Enable seamless content navigation in your Svelte app with theui-sv
   </DocBlock>
 
   <DocBlock title="Animation Speed">
-    <p class="not-prose">The <code>animate</code> prop controls the animation (hover animation in this case) speed of <code>Pagination</code>. Options include <code>'none'</code> for no animation, <code>'slower'</code> or <code>slow</code> for a gradual effect, <code>normal</code> (default) for standard speed, and <code>fast</code> or <code>faster</code> for quicker animations.</p>
+    <p class="not-prose">The <code>animateSpeed</code> prop controls the animation (hover animation in this case) speed of <code>Pagination</code>. Options include <code>'none'</code> for no animation, <code>'slower'</code> or <code>slow</code> for a gradual effect, <code>normal</code> (default) for standard speed, and <code>fast</code> or <code>faster</code> for quicker animations.</p>
     <Example>
       {#snippet example()}
         <div class="flex flex-col gap-2 w-full">
-          <Pagination data={paginationData} animate="slower" />
-          <Pagination data={paginationData} animate="slow" />
-          <Pagination data={paginationData} animate="normal" />
-          <Pagination data={paginationData} animate="fast" />
-          <Pagination data={paginationData} animate="faster" />
-          <Pagination data={paginationData} animate="none" />
+          <Pagination data={paginationData} animateSpeed="slower" />
+          <Pagination data={paginationData} animateSpeed="slow" />
+          <Pagination data={paginationData} animateSpeed="normal" />
+          <Pagination data={paginationData} animateSpeed="fast" />
+          <Pagination data={paginationData} animateSpeed="faster" />
+          <Pagination data={paginationData} animateSpeed="none" />
         </div>
       {/snippet}
       {#snippet code()}
 
 ```html
-<Pagination {data} animate="slower" />
-<Pagination {data} animate="slow" />
-<Pagination {data} animate="normal" />
-<Pagination {data} animate="fast" />
-<Pagination {data} animate="faster" />
-<Pagination {data} animate="none" />
+<Pagination {data} animateSpeed="slower" />
+<Pagination {data} animateSpeed="slow" />
+<Pagination {data} animateSpeed="normal" />
+<Pagination {data} animateSpeed="fast" />
+<Pagination {data} animateSpeed="faster" />
+<Pagination {data} animateSpeed="none" />
 ```
       {/snippet}
     </Example>

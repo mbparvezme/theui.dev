@@ -386,7 +386,7 @@ description:
 
   <DocBlock title="Animation">
     <Example>
-      <p class="not-prose">The <code>animate</code> prop lets you control the speed of the dropdown's animation. You can choose from various options like <code>slower</code> for a very slow animation, <code>slow</code> for a slightly slower effect, <code>medium</code> for the default speed, <code>fast</code> for quicker animations, and <code>faster</code> for the fastest effect. If you prefer to disable the animation altogether, you can set the prop to false.</p>
+      <p class="not-prose">The <code>animation</code> prop controls how the dropdown appears when opened. It supports multiple animation styles to enhance user experience. By default, the dropdown uses the <code>slide-up</code> animation. Adjust this prop to match your design preferences.</p>
       <ul class="my-0">
         <li><b>slide-left</b>: The dropdown slides in from the left.</li>
         <li><b>slide-up</b>: The default animation, sliding in from the bottom.</li>
@@ -438,25 +438,26 @@ description:
   </DocBlock>
 
   <DocBlock title="Animation Speed">
+    <p class="not-prose">The <code>animateSpeed</code> prop controls the speed of the dropdown animation, allowing for smooth transitions at different paces. It accepts the following values <code>none</code>, <code>slower</code>, <code>slow</code>, <code>normal</code>, <code>fast</code> and <code>faster</code></p>
     <Example>
       {#snippet example()}
       <div class="flex justify-between w-full flex-wrap gap-y-4">
-        <Dropdown label="Slower" animate="slower">
+        <Dropdown label="Slower" animateSpeed="slower">
           {@render dropdownBasic()}
         </Dropdown>
-        <Dropdown label="Slow" animate="slow">
+        <Dropdown label="Slow" animateSpeed="slow">
           {@render dropdownBasic()}
         </Dropdown>
-        <Dropdown label="Medium" animate="medium">
+        <Dropdown label="Medium" animateSpeed="medium">
           {@render dropdownBasic()}
         </Dropdown>
-        <Dropdown label="Fast" animation="fast">
+        <Dropdown label="Fast" animateSpeed="fast">
           {@render dropdownBasic()}
         </Dropdown>
-        <Dropdown label="Faster" animation="faster">
+        <Dropdown label="Faster" animateSpeed="faster">
           {@render dropdownBasic()}
         </Dropdown>
-        <Dropdown label="No Animate" animation={false}>
+        <Dropdown label="No Animate" animateSpeed="none">
           {@render dropdownBasic()}
         </Dropdown>
       </div>
@@ -464,12 +465,12 @@ description:
 
       {#snippet code()}
 ```html
-<Dropdown animate="slower"> ... </Dropdown>
-<Dropdown animate="slow"> ... </Dropdown>
-<Dropdown animate="medium"> ... </Dropdown>
-<Dropdown animation="fast"> ... </Dropdown>
-<Dropdown animation="faster"> ... </Dropdown>
-<Dropdown animation={false}> ... </Dropdown>
+<Dropdown animateSpeed="slower"> ... </Dropdown>
+<Dropdown animateSpeed="slow"> ... </Dropdown>
+<Dropdown animateSpeed="medium"> ... </Dropdown>
+<Dropdown animateSpeed="fast"> ... </Dropdown>
+<Dropdown animateSpeed="faster"> ... </Dropdown>
+<Dropdown animateSpeed="none"> ... </Dropdown>
 ```
       {/snippet}
     </Example>

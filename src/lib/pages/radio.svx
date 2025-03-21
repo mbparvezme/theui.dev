@@ -86,28 +86,28 @@ description: The Radio Button component allows users to select a single option f
   </DocBlock>
 
   <DocBlock title="Animation">
-    <p class="not-prose">The <code>animate</code> prop defines the speed of the radio button's selection transition. This improves user interaction by adding smooth effects when selecting options. The available values are <code>"none"</code>, <code>"slower"</code>, <code>"slow"</code> <code>"normal"</code> (default), <code>"fast"</code> and <code>"faster"</code>.</p>
+    <p class="not-prose">The <code>animateSpeed</code> prop defines the speed of the radio button's selection transition. This improves user interaction by adding smooth effects when selecting options. The available values are <code>"none"</code>, <code>"slower"</code>, <code>"slow"</code> <code>"normal"</code> (default), <code>"fast"</code> and <code>"faster"</code>.</p>
     <p class="not-prose">Setting it to <code>"none"</code>disables animations, while other values changes the transition speed.</p>
     <Example>
     {#snippet example()}
 <div class="flex flex-col gap-2">
-  <Radio name="myRadio" animate="slower">Slower animation</Radio>
-  <Radio name="myRadio" animate="slow">Slow animation</Radio>
-  <Radio name="myRadio" animate="normal">Normal animation</Radio>
-  <Radio name="myRadio" animate="fast">Fast animation</Radio>
-  <Radio name="myRadio" animate="faster">Faster animation</Radio>
-  <Radio name="myRadio" animate="none">No animation</Radio>
+  <Radio name="myRadio" animateSpeed="slower">Slower animation</Radio>
+  <Radio name="myRadio" animateSpeed="slow">Slow animation</Radio>
+  <Radio name="myRadio" animateSpeed="normal">Normal animation</Radio>
+  <Radio name="myRadio" animateSpeed="fast">Fast animation</Radio>
+  <Radio name="myRadio" animateSpeed="faster">Faster animation</Radio>
+  <Radio name="myRadio" animateSpeed="none">No animation</Radio>
 </div>
       {/snippet}
 
       {#snippet code()}
 ```html
-<Radio name="myRadio" animate="slower">Slower animation</Radio>
-<Radio name="myRadio" animate="slow">Slow animation</Radio>
-<Radio name="myRadio" animate="normal">Normal animation</Radio>
-<Radio name="myRadio" animate="fast">Fast animation</Radio>
-<Radio name="myRadio" animate="faster">Faster animation</Radio>
-<Radio name="myRadio" animate="none">No animation</Radio>
+<Radio name="myRadio" animateSpeed="slower">Slower animation</Radio>
+<Radio name="myRadio" animateSpeed="slow">Slow animation</Radio>
+<Radio name="myRadio" animateSpeed="normal">Normal animation</Radio>
+<Radio name="myRadio" animateSpeed="fast">Fast animation</Radio>
+<Radio name="myRadio" animateSpeed="faster">Faster animation</Radio>
+<Radio name="myRadio" animateSpeed="none">No animation</Radio>
 ```
       {/snippet}
     </Example>

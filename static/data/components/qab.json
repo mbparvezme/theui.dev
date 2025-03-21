@@ -40,7 +40,7 @@
         "description": "Determines the roundness of the button corners."
       },
       {
-        "name": "animate",
+        "name": "animationSpeed",
         "type": "<a href=\"/docs/types#common-types\">ANIMATE_SPEED</a>",
         "default": "normal",
         "description": "Controls the speed of the animation."

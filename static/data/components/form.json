@@ -28,7 +28,7 @@
         "description": "Enables or disables floating labels for inputs. If variant is set to \"flat\", this defaults to true and false otherwise."
       },
       {
-        "name": "animate",
+        "name": "animationSpeed",
         "type": "<a href=\"/docs/types#common-types\">ANIMATE_SPEED</a>",
         "default": "\"normal\"",
         "description": "Controls the animation speed for inputs."

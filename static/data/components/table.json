@@ -70,7 +70,7 @@
         "description": "Custom classes for table cells. Used to style individual cells."
       },
       {
-        "name": "animate",
+        "name": "animationSpeed",
         "type": "<a href=\"/docs/types#common-types\">ANIMATE_SPEED</a>",
         "default": "\"normal\"",
         "description": "Controls the animation speed for the transitions on hover or other activities."

@@ -22,7 +22,7 @@
         "description": "Defines the size of the toggle."
       },
       {
-        "name": "animate",
+        "name": "animationSpeed",
         "type": "<a href=\"/docs/types#common-types\">ANIMATE_SPEED</a>",
         "default": "\"normal\"",
         "description": "Controls the animation speed when toggling."

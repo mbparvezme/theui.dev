@@ -10,7 +10,7 @@
         "default": ""
       },
       {
-        "name": "animate",
+        "name": "animationSpeed",
         "type": "<a href=\"/docs/types#common-types\">ANIMATE_SPEED</a>",
         "description": "Speed of the animation when the component is shown or hidden.",
         "default": "fast"

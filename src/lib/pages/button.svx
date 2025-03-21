@@ -341,24 +341,26 @@ description: Create responsive and stylish buttons for your Svelte app with TheU
 
   <DocBlock title="Button Animation Speed">
     <Example>
-      <p class="not-prose">The <code>animate</code> determines the speed of the button's animation, with options including <code>"none"</code>, <code>"slower"</code>, <code>"slow"</code>, <code>"normal"</code>, <code>"fast"</code>, and <code>"faster"</code>.</p>
+      <p class="not-prose">The <code>animationSpeed</code> determines the speed of the button's animation, with options including <code>"none"</code>, <code>"slower"</code>, <code>"slow"</code>, <code>"normal"</code>, <code>"fast"</code>, and <code>"faster"</code>.</p>
       {#snippet example()}
-        <Button animate="slower">Slower</Button>
-        <Button animate="slow">Slow</Button>
-        <Button animate="normal">Normal</Button>
-        <Button animate="fast">Fast</Button>
-        <Button animate="faster">Faster</Button>
-        <Button animate="none">No Animation</Button>
+      <div class="flex flex-col gap-4">
+        <Button animationSpeed="slower">Slower animation</Button>
+        <Button animationSpeed="slow">Slow animation</Button>
+        <Button animationSpeed="normal">Normal animation</Button>
+        <Button animationSpeed="fast">Fast animation</Button>
+        <Button animationSpeed="faster">Faster animation</Button>
+        <Button animationSpeed="none">No Animation animation</Button>
+      </div>
       {/snippet}
       {#snippet code()}
 
 ```html
-<Button rounded="sm">Small</Button>
-<Button rounded="md">Medium</Button>
-<Button rounded="lg">Large</Button>
-<Button rounded="xl">Extra large</Button>
-<Button rounded="full">Full</Button>
-<Button rounded="none">None</Button>
+<Button animationSpeed="slower">Slower animation</Button>
+<Button animationSpeed="slow">Slow animation</Button>
+<Button animationSpeed="normal">Normal animation</Button>
+<Button animationSpeed="fast">Fast animation</Button>
+<Button animationSpeed="faster">Faster animation</Button>
+<Button animationSpeed="none">No Animation animation</Button>
 ```
       {/snippet}
     </Example>

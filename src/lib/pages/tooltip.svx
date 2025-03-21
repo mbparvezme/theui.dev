@@ -102,18 +102,18 @@ description: Add informative tooltips to your Svelte app with theui-svelte's Too
 
   <DocBlock title="Animation Speed">
     <Example>
-      <p class="not-prose">You can control the tooltip's animation speed using the <code>animate</code> prop or the <code>data-tooltip-animate</code> attribute on the trigger element. Available values are <code>none</code>, <code>slower</code>, <code>slow</code>, <code>normal</code>, <code>fast</code> and <code>faster</code>.</p>
+      <p class="not-prose">You can control the tooltip's animation speed using the <code>animateSpeed</code> prop or the <code>data-tooltip-animateSpeed</code> attribute on the trigger element. Available values are <code>none</code>, <code>slower</code>, <code>slow</code>, <code>normal</code>, <code>fast</code> and <code>faster</code>.</p>
       <ul class="my-0">
-        <li>The <span class="not-prose"><code>animate</code></span> prop applies the same animation speed to all tooltips.</li>
-        <li>The <span class="not-prose"><code>data-tooltip-animate</code></span> attribute allows setting the animation speed for a specific tooltip without affecting others.</li>
+        <li>The <span class="not-prose"><code>animateSpeed</code></span> prop applies the same animation speed to all tooltips.</li>
+        <li>The <span class="not-prose"><code>data-tooltip-animateSpeed</code></span> attribute allows setting the animation speed for a specific tooltip without affecting others.</li>
       </ul>
       {#snippet example()}
-        <Button data-tooltip="I'm tooltip!" data-tooltip-animate="none">Button</Button>
+        <Button data-tooltip="I'm tooltip!" data-tooltip-animateSpeed="none">Button</Button>
       {/snippet}
       {#snippet code()}
 
 ```html
-<Button data-tooltip="I'm tooltip!" data-tooltip-animate="none">Button</Button>
+<Button data-tooltip="I'm tooltip!" data-tooltip-animateSpeed="none">Button</Button>
 ```
       {/snippet}
     </Example>

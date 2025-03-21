@@ -10,7 +10,7 @@
         "description": "Defines the visual style of the tabs. By default, the variant is set to 'pills'."
       },
       {
-        "name": "animate",
+        "name": "animationSpeed",
         "type": "<a href=\"/docs/types#common-types\">ANIMATE_SPEED</a>",
         "default": "'normal'",
         "description": "Defines the speed of tab transitions. The default value is 'normal'."

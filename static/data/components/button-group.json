@@ -52,7 +52,7 @@
         "default": "\"default\""
       },
       {
-        "name": "animate",
+        "name": "animationSpeed",
         "type": "ANIMATE_SPEED",
         "description": "Controls the animation speed for the button group.",
         "default": "\"normal\""

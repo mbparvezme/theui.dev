@@ -34,7 +34,7 @@
         "description": "Sets the distance between the trigger and the popover."
       },
       {
-        "name": "animate",
+        "name": "animationSpeed",
         "type": "<a href=\"/docs/types#common-types\">ANIMATE_SPEED</a>",
         "default": "\"normal\"",
         "description": "Controls the animation speed of the popover."

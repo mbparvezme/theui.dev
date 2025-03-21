@@ -86,28 +86,28 @@ description: The Checkbox component is a versatile and customizable input elemen
   </DocBlock>
 
   <DocBlock title="Animation">
-    <p class="not-prose">The <code>animate</code> prop determines the speed of the checkbox's interaction effects, such as transitions when toggling states. It helps improve user experience by making interactions feel smoother. The available animation speeds are <code>"none"</code>, <code>"slower"</code>, <code>"slow"</code> <code>"normal"</code> (default), <code>"fast"</code> and <code>"faster"</code>.</p>
+    <p class="not-prose">The <code>animateSpeed</code> prop determines the speed of the checkbox's interaction effects, such as transitions when toggling states. It helps improve user experience by making interactions feel smoother. The available animation speeds are <code>"none"</code>, <code>"slower"</code>, <code>"slow"</code> <code>"normal"</code> (default), <code>"fast"</code> and <code>"faster"</code>.</p>
     <p class="not-prose">Setting it to <code>"none"</code>disables animations, while other values can be used to adjust the transition speed based on preference.</p>
     <Example>
     {#snippet example()}
 <div class="flex flex-col gap-2">
-  <Checkbox name="myCheckbox" animate="slower">Slower animation</Checkbox>
-  <Checkbox name="myCheckbox" animate="slow">Slow animation</Checkbox>
-  <Checkbox name="myCheckbox" animate="normal">Normal animation</Checkbox>
-  <Checkbox name="myCheckbox" animate="fast">Fast animation</Checkbox>
-  <Checkbox name="myCheckbox" animate="faster">Faster animation</Checkbox>
-  <Checkbox name="myCheckbox" animate="none">No animation</Checkbox>
+  <Checkbox name="myCheckbox" animateSpeed="slower">Slower animation</Checkbox>
+  <Checkbox name="myCheckbox" animateSpeed="slow">Slow animation</Checkbox>
+  <Checkbox name="myCheckbox" animateSpeed="normal">Normal animation</Checkbox>
+  <Checkbox name="myCheckbox" animateSpeed="fast">Fast animation</Checkbox>
+  <Checkbox name="myCheckbox" animateSpeed="faster">Faster animation</Checkbox>
+  <Checkbox name="myCheckbox" animateSpeed="none">No animation</Checkbox>
 </div>
       {/snippet}
 
       {#snippet code()}
 ```html
-<Checkbox name="myCheckbox" animate="slower">Slower animation</Checkbox>
-<Checkbox name="myCheckbox" animate="slow">Slow animation</Checkbox>
-<Checkbox name="myCheckbox" animate="normal">Normal animation</Checkbox>
-<Checkbox name="myCheckbox" animate="fast">Fast animation</Checkbox>
-<Checkbox name="myCheckbox" animate="faster">Faster animation</Checkbox>
-<Checkbox name="myCheckbox" animate="none">No animation</Checkbox>
+<Checkbox name="myCheckbox" animateSpeed="slower">Slower animation</Checkbox>
+<Checkbox name="myCheckbox" animateSpeed="slow">Slow animation</Checkbox>
+<Checkbox name="myCheckbox" animateSpeed="normal">Normal animation</Checkbox>
+<Checkbox name="myCheckbox" animateSpeed="fast">Fast animation</Checkbox>
+<Checkbox name="myCheckbox" animateSpeed="faster">Faster animation</Checkbox>
+<Checkbox name="myCheckbox" animateSpeed="none">No animation</Checkbox>
 ```
       {/snippet}
     </Example>

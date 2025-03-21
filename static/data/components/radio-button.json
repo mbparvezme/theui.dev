@@ -16,7 +16,7 @@
         "description": "Controls the size of the radio button. Available options: \"sm\", \"md\", \"lg\", \"xl\"."
       },
       {
-        "name": "animate",
+        "name": "animationSpeed",
         "type": "<a href=\"/docs/types#common-types\">ANIMATE_SPEED</a>",
         "default": "\"normal\"",
         "description": "Determines the animation speed for state changes. Options: \"none\", \"normal\", \"fast\", \"slow\"."

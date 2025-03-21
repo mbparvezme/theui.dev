@@ -26,7 +26,7 @@ description: The Input component is a flexible and customizable form element tha
 
   <DocBlock title="Example">
     <Example>
-      <p class="not-prose">To use the <b>Helper</b> component, pass the content prop with the desired text or snippet. Here's a basic example:</p>
+      <p class="not-prose">Here's a basic example of the Input component in action:</p>
       {#snippet example()}
 <Input placeholder="Type your full name">Name</Input>
       {/snippet}
@@ -44,15 +44,15 @@ description: The Input component is a flexible and customizable form element tha
   </DocBlock>
 
   <DocBlock title="Input Type">
-    <Example classes="items-start">
-      <p class="not-prose">The <code>Input</code> component supports various input types, making it a flexible solution for different use cases. Whether you need a standard text field, a password input, or a date picker, this component adapts to your needs. To specify the type of input, use the type prop. Here's an example:</p>
+    <Example classes="gap-8">
+      <p class="not-prose">The <b>Input</b> component supports various input types, making it a flexible solution for different use cases. Whether you need a standard text field, a password input, or a date picker, this component adapts to your needs. To specify the type of input, use the <code>type</code> prop. Here's an example:</p>
       {#snippet example()}
-<div class="flex flex-col gap-2 w-full">
+<div class="flex flex-col gap-4 w-full">
   <Input class="w-full" name="username" placeholder="Enter your username">Username</Input>
   <Input class="w-full" name="email" type="email" placeholder="Enter your email">Email</Input>
   <Input class="w-full" name="password" type="password" placeholder="Enter your password">Password</Input>
 </div>
-<div class="flex flex-col gap-2 w-full">
+<div class="flex flex-col gap-4 w-full">
   <Input class="w-full" name="dob" type="date">Date of birth</Input>
   <Input class="w-full" name="url" type="url" placeholder="Enter your profile URL">URL</Input>
   <Input class="w-full" name="days" type="number">Number of days</Input>
@@ -71,12 +71,12 @@ description: The Input component is a flexible and customizable form element tha
       {/snippet}
     </Example>
 
-    <p class="not-prose">Other available input types are: <code>datetime-local</code>, month, tel, time, week, search, textarea</p>
+    <p class="not-prose">Other available input types are: <code>datetime-local</code>, <code>month</code>, <code>tel</code>, <code>time</code>, <code>week</code>, <code>search</code>, <code>textarea</code>.</p>
   </DocBlock>
 
   <DocBlock title="Textarea">
-    <Example classes="items-start">
-      <p class="not-prose">When the <code>type</code> prop is set to <code>"textarea"</code>, the Input component renders a <code>&lt;textarea&gt;</code> instead of a standard input field. By default, the textarea has 3 rows, but you can customize it using the rows attribute.</p>
+    <Example>
+      <p class="not-prose">When the <code>type</code> prop is set to <code>"textarea"</code>, the Input component renders a <b>&lt;textarea&gt;</b> instead of a standard input field. By default, the textarea has 3 rows, but you can customize it using the rows attribute.</p>
       {#snippet example()}
 <Input name="message" type="textarea" placeholder="Write your message...">Your message</Input>
       {/snippet}
@@ -90,11 +90,11 @@ description: The Input component is a flexible and customizable form element tha
   </DocBlock>
 
   <DocBlock title="Default Value">
-    <Example classes="items-start">
+    <Example>
       <p class="not-prose">The <code>value</code> prop allows you to set a default value for the input field or textarea. This is useful when you want the input to start with a predefined value, such as prefilled user data, placeholders for editing forms, or default selections.</p>
       <p class="not-prose">The <code>value</code> prop work for all the input types including <b>textarea</b>.</p>
       {#snippet example()}
-<div class="inline-flex flex-col gap-2">
+<div class="inline-flex flex-col gap-4">
   <Input name="username" value="john_doe">Username</Input>
   <Input name="bio" type="textarea" value="A passionate developer who loves coding.">About you</Input>
 </div>
@@ -110,7 +110,7 @@ description: The Input component is a flexible and customizable form element tha
   </DocBlock>
 
   <DocBlock title="Input Variant">
-    <Example classes="items-start">
+    <Example>
       <p class="not-prose">The <code>variant</code> prop allows you to control the visual style of the input field. There are two available variants:</p>
       <ul class="mt-0">
         <li><span class="not-prose"><code>bordered</code></span>(default): Displays the input with a visible border, making it distinct and clearly separated from the background.</li>
@@ -136,10 +136,10 @@ description: The Input component is a flexible and customizable form element tha
 
   <DocBlock title="Label">
     <p class="not-prose">Labels help users understand the purpose of an input field. The Input component allows you to define labels in two ways: by passing plain text or using a mix of elements inside the component.</p>
-    <Example title="Adding a Label" classes="items-start">
+    <Example title="Adding a Label">
       <p class="not-prose">To add a label, simply place text or elements inside the Input component. This can be a simple text label or a combination of icons, tooltips, or other elements. By default, the label appears above the input field.</p>
       {#snippet example()}
-<div class="inline-flex flex-col gap-2">
+<div class="inline-flex flex-col gap-4">
   <Input name="username">Username</Input>
   <Input name="password" type="password">
     🔒 Password
@@ -164,9 +164,9 @@ description: The Input component is a flexible and customizable form element tha
 
     <Example title="Floating Labels" classes="gap-8">
       <p class="not-prose mb-2">The <code>floatingLabel</code> prop allows the label to float inside the input field, giving a sleek, modern design. When enabled, the label starts inside the input and moves to the top when the user types.</p>
-      <p class="not-prose">The floating label works with both the "bordered" and "flat" input variants. However, it is enabled by default when the variant is set to "flat", unless explicitly disabled. For the "bordered" variant, you must enable it manually by adding the <code>floatingLabel</code> prop.</p>
+      <p class="not-prose">The floating label works with both the <code>"bordered"</code> and <code>"flat"</code> input variants. However, it is enabled by default when the variant is set to "flat", unless explicitly disabled. For the "bordered" variant, you must enable it manually by adding the <code>floatingLabel</code> prop.</p>
       {#snippet example()}
-<Input name="myInput" variant="bordered" floatingLabel>Name</Input>
+<Input name="myInput" variant="bordered" floatingLabel labelClasses="dark:bg-[#0d0d11]">Name</Input>
 <Input name="myInput" variant="flat" floatingLabel>Name</Input>
       {/snippet}
       {#snippet code()}
@@ -181,22 +181,22 @@ description: The Input component is a flexible and customizable form element tha
 
   <DocBlock title="Sizing">
     <Example classes="justify-between">
-      <p class="not-prose">The <code>size</code> prop controls the input field's size and supports "sm", "md", "lg", and "xl". The default is "md". Adjusting this prop allows you to customize the input's appearance to fit different design needs.</p>
+      <p class="not-prose">The <code>size</code> prop controls the input field's size and supports <code>"sm"</code>, <code>"md"</code>, <code>"lg"</code>, and <code>"xl"</code>. The default is <code>"md"</code>. Adjusting this prop allows you to customize the input's appearance to fit different design needs.</p>
       {#snippet example()}
 <div class="inline-flex flex-col gap-2 w-full">
   <div class="flex flex-col md:flex-row items-end gap-8 w-full">
     <Input name="myInput" size="sm" wrapperClasses="w-full">Small</Input>
     <Input name="myInput" size="sm" variant="flat" wrapperClasses="w-full">Small</Input>
   </div>
-  <div class="flex items-end gap-8">
+  <div class="flex flex-col md:flex-row items-end gap-8 w-full">
     <Input name="myInput" size="md" wrapperClasses="w-full">Medium (Default)</Input>
   <Input name="myInput" size="md" variant="flat" wrapperClasses="w-full">Medium (Default)</Input>
   </div>
-  <div class="flex items-end gap-8">
+  <div class="flex flex-col md:flex-row items-end gap-8 w-full">
     <Input name="myInput" size="lg" wrapperClasses="w-full">Large</Input>
     <Input name="myInput" size="lg" variant="flat" wrapperClasses="w-full">Large</Input>
   </div>
-  <div class="flex items-end gap-8">
+  <div class="flex flex-col md:flex-row items-end gap-8 w-full">
     <Input name="myInput" size="xl" wrapperClasses="w-full">Extra Large</Input>
     <Input name="myInput" size="xl" variant="flat" wrapperClasses="w-full">Extra Large</Input>
   </div>
@@ -216,36 +216,36 @@ description: The Input component is a flexible and customizable form element tha
 
   <DocBlock title="Animation Speed">
     <Example classes="gap-8">
-      <p class="not-prose">The <code>animate</code> prop controls the speed of input animations, allowing for smooth transitions and interactions. Available values are "none", "slower", "slow", "normal", "fast", and "faster", with "normal" as the default. Adjusting this prop helps create a more dynamic or subtle user experience based on your design preferences.</p>
+      <p class="not-prose">The <code>animateSpeed</code> prop controls the speed of input animations, allowing for smooth transitions and interactions. Available values are <code>"none"</code>, <code>"slower"</code>, <code>"slow"</code>, <code>"normal"</code>, <code>"fast"</code>, and <code>"faster"</code>, with <code>"normal"</code> as the default. Adjusting this prop helps create a more dynamic or subtle user experience based on your design preferences.</p>
       {#snippet example()}
 <div class="inline-flex flex-col gap-4">
-  <Input name="myInput" variant="flat" animate="slower">Animation slower</Input>
-  <Input name="myInput" variant="flat" animate="slow">Animation slow</Input>
-  <Input name="myInput" variant="flat" animate="normal">Animation normal</Input>
+  <Input name="myInput" variant="flat" animateSpeed="slower">Animation slower</Input>
+  <Input name="myInput" variant="flat" animateSpeed="slow">Animation slow</Input>
+  <Input name="myInput" variant="flat" animateSpeed="normal">Animation normal</Input>
 </div>
 <div class="inline-flex flex-col gap-4">
-  <Input name="myInput" variant="flat" animate="fast">Animation fast</Input>
-  <Input name="myInput" variant="flat" animate="faster">Animation faster</Input>
-  <Input name="myInput" variant="flat" animate="none">Animation none</Input>
+  <Input name="myInput" variant="flat" animateSpeed="fast">Animation fast</Input>
+  <Input name="myInput" variant="flat" animateSpeed="faster">Animation faster</Input>
+  <Input name="myInput" variant="flat" animateSpeed="none">Animation none</Input>
 </div>
       {/snippet}
       {#snippet code()}
 
 ```html
-<Input ... animate="slower">Animation slower</Input>
-<Input ... animate="slow">Animation slow</Input>
-<Input ... animate="normal">Animation normal</Input>
-<Input ... animate="fast">Animation fast</Input>
-<Input ... animate="faster">Animation faster</Input>
-<Input ... animate="none">Animation none</Input>
+<Input ... animateSpeed="slower">Animation slower</Input>
+<Input ... animateSpeed="slow">Animation slow</Input>
+<Input ... animateSpeed="normal">Animation normal</Input>
+<Input ... animateSpeed="fast">Animation fast</Input>
+<Input ... animateSpeed="faster">Animation faster</Input>
+<Input ... animateSpeed="none">Animation none</Input>
 ```
       {/snippet}
     </Example>
   </DocBlock>
 
   <DocBlock title="Rounded Input">
-    <Example classes="items-start">
-      <p class="not-prose">The <code>rounded</code> prop controls the roundness of the input's corners, allowing for different visual styles. Available values are "none", "sm", "md", "lg", "xl", and "full", with "md" as the default. Use this prop to adjust the input's appearance, from sharp edges to fully rounded corners, depending on your design needs.</p>
+    <Example>
+      <p class="not-prose">The <code>rounded</code> prop controls the roundness of the input's corners, allowing for different visual styles. Available values are <code>"none"</code>, <code>"sm"</code>, <code>"md"</code>, <code>"lg"</code>, <code>"xl"</code>, and <code>"full"</code>, with <code>"md"</code> as the default. Use this prop to adjust the input's appearance, from sharp edges to fully rounded corners, depending on your design needs.</p>
       {#snippet example()}
 <div class="inline-flex flex-col gap-4">
   <Input name="myInput" rounded="none">Rounded none</Input>
@@ -274,11 +274,32 @@ description: The Input component is a flexible and customizable form element tha
 
   <DocBlock title="Customization">
     <Example>
-      <p class="not-prose">The <code>Helper</code> component can be customized using the <code>class</code> attribute to apply additional styles or override default ones.</p>
+      <p class="not-prose">The <code>Input</code> component provides several ways to customize its appearance, allowing you to match it with your design needs.</p>
+      <ul class="mt-0">
+        <li><span class="not-prose"><code>wrapperClasses</code>: Applied to the outermost wrapper <b>&lt;div&gt;</b>, allowing full control over the container's styling.</span></li>
+        <li><span class="not-prose"><code>labelClasses</code>: Applied directly to the <code>label</code>, making it easy to adjust typography, spacing, or colors.</span></li>
+        <li><span class="not-prose"><code>class</code></span> attribute: This is the standard HTML class attribute applied to the input element itself, giving you direct control over its styling.</li>
+      </ul>
+      <p class="not-prose">By combining these options, you can fully customize the input's layout and appearance while keeping its functionality intact.</p>
+      {#snippet example()}
+<Input
+  name="myInput"
+  placeholder="Enter username"
+  wrapperClasses="flex-row items-center gap-16"
+  labelClasses="text-xl text-blue-500"
+  class="text-blue-500 focus:ring-blue-500 focus:border-blue-500"
+>USERNAME</Input>
+      {/snippet}
       {#snippet code()}
 
 ```html
-<Helper content="..." class="text-blue-600 italic" />
+<Input
+  name="myInput"
+  placeholder="Enter username"
+  wrapperClasses="flex-row items-center gap-16"
+  labelClasses="text-xl text-blue-500"
+  class="text-blue-500 focus:ring-blue-500 focus:border-blue-500"
+>USERNAME</Input>
 ```
       {/snippet}
     </Example>

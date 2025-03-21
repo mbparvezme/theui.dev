@@ -121,26 +121,26 @@ description: Fully customizable switch that can replace traditional checkboxes a
 
   <DocBlock title="Animation">
     <Example>
-      <p class="not-prose">The <code>animate</code> prop controls the transition effect when toggling between states. Smooth animations enhance the user experience by making interactions feel more natural. Available values are: <code>slower</code>, <code>slow</code>, <code>normal</code> (default), <code>fast</code> and <code>faster</code>.</p>
+      <p class="not-prose">The <code>animateSpeed</code> prop controls the transition effect when toggling between states. Smooth animations enhance the user experience by making interactions feel more natural. Available values are: <code>slower</code>, <code>slow</code>, <code>normal</code> (default), <code>fast</code> and <code>faster</code>.</p>
       {#snippet example()}
 <div class="flex flex-col">
-  <Toggle name="toggle" animate="slower">Slower animation</Toggle>
-  <Toggle name="toggle" animate="slow">Slow animation</Toggle>
-  <Toggle name="toggle" animate="normal">Normal animation</Toggle>
-  <Toggle name="toggle" animate="fast">Fast animation</Toggle>
-  <Toggle name="toggle" animate="faster">Faster animation</Toggle>
-  <Toggle name="toggle" animate="none">No animation</Toggle>
+  <Toggle name="toggle" animateSpeed="slower">Slower animation</Toggle>
+  <Toggle name="toggle" animateSpeed="slow">Slow animation</Toggle>
+  <Toggle name="toggle" animateSpeed="normal">Normal animation</Toggle>
+  <Toggle name="toggle" animateSpeed="fast">Fast animation</Toggle>
+  <Toggle name="toggle" animateSpeed="faster">Faster animation</Toggle>
+  <Toggle name="toggle" animateSpeed="none">No animation</Toggle>
 </div>
       {/snippet}
       {#snippet code()}
 
 ```html
-<Toggle name="toggle" animate="slower">Slower animation</Toggle>
-<Toggle name="toggle" animate="slow">Slow animation</Toggle>
-<Toggle name="toggle" animate="normal">Normal animation</Toggle>
-<Toggle name="toggle" animate="fast">Fast animation</Toggle>
-<Toggle name="toggle" animate="faster">Faster animation</Toggle>
-<Toggle name="toggle" animate="none">No animation</Toggle>
+<Toggle name="toggle" animateSpeed="slower">Slower animation</Toggle>
+<Toggle name="toggle" animateSpeed="slow">Slow animation</Toggle>
+<Toggle name="toggle" animateSpeed="normal">Normal animation</Toggle>
+<Toggle name="toggle" animateSpeed="fast">Fast animation</Toggle>
+<Toggle name="toggle" animateSpeed="faster">Faster animation</Toggle>
+<Toggle name="toggle" animateSpeed="none">No animation</Toggle>
 ```
       {/snippet}
     </Example>
