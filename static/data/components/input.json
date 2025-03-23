@@ -48,7 +48,7 @@
       {
         "name": "animationSpeed",
         "description": "Defines the animation speed for transitions. Available options: \"none\", \"slower\", \"slow\", \"normal\", \"fast\", \"faster\".",
-        "type": "\"none\" | \"slower\" | \"slow\" | \"normal\" | \"fast\" | \"faster\"",
+        "type": "<a href=\"/docs/types#common-types\">ANIMATE_SPEED</a>",
         "default": "\"normal\""
       },
       {

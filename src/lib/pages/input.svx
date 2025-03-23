@@ -325,6 +325,4 @@ description: The Input component is a flexible and customizable form element tha
     <a href={processID("Customization")}>Customization</a>
     <a href={processID("Configuration")}>Configuration</a>
   {/snippet}
-
-
 </DocLayout>

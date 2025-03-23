@@ -1,8 +1,11 @@
-<script>
-  import ComingSoon from "$lib/ui/ComingSoon.svelte";
+<script lang="ts">
+  import type { PageData } from "./$types";
+  import Page from "$lib/pages/select.svx";
+
+  let { data }: { data: PageData|any } = $props();
   import SEO from "$lib/SEO.svelte"
 </script>
 
-<SEO title="Select Input" />
+<SEO title="Select" />
 
-<ComingSoon class="h-auto" />
+<Page component={data.component} edit_url={data.editURL} />
