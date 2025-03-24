@@ -14,7 +14,13 @@ description: Provides a customizable dropdown for selecting options. It supports
   import { processID } from "$lib";
   let { component, edit_url }: {component: any, edit_url?: string } = $props();
 
-  import { Select, HelperText } from "theui-svelte";
+  import { Select, HelperText, Label } from "theui-svelte";
+
+  let data = [
+    { text: "Option 1", value: "1" },
+    { text: "Option 2", value: "2"},
+    { text: "Option 3 (Disabled)", value: "3", disabled: true }
+  ]
 </script>
 
 <DocLayout>
@@ -28,7 +34,7 @@ description: Provides a customizable dropdown for selecting options. It supports
     <Example>
       <p class="not-prose">You can use a <code>Select</code> component in two different ways. Either use the <code>option</code> prop to pass an array of options dynamically, define the <b>options</b> manually inside the component. Here's a basic example of the Select component in action:</p>
       {#snippet example()}
-
+<Select label="Select an option" options={data} />
       {/snippet}
       {#snippet code()}
 
@@ -38,8 +44,8 @@ description: Provides a customizable dropdown for selecting options. It supports
 
   let data = [
     { text: "Option 1", value: "1" },
-    { text: "Option 2", value: "2" },
-    { text: "Option 3", value: "3", disabled: true }
+    { text: "Option 2", value: "2", selected: true },
+    { text: "Option 3 (Disabled)", value: "3", disabled: true }
   ]
 </script>
 
@@ -48,9 +54,15 @@ description: Provides a customizable dropdown for selecting options. It supports
       {/snippet}
 
       {#snippet children2()}
-      <p class="not-prose mt-8">Or, you can use the <b>&lt;option&gt;</b> tag directly.</p>
+<p class="not-prose mt-8">Or, you can use the <b>&lt;option&gt;</b> tag directly.</p>
       {/snippet}
-
+      {#snippet example2()}
+<Select label="Choose a category">
+  <option value="books">Books</option>
+  <option value="electronics">Electronics</option>
+  <option value="clothing" disabled>Clothing (Unavailable)</option>
+</Select>
+      {/snippet}
       {#snippet code2()}
 
 ```html
@@ -65,6 +77,106 @@ description: Provides a customizable dropdown for selecting options. It supports
 </Select>
 ```
       {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Default Value">
+    <Example>
+      <p class="not-prose">The <code>value</code> prop allows you to set a default selection for the <code>Select</code> component. If a value is provided, the corresponding option will be pre-selected when the component loads. This ensures that users see a predefined choice without needing to manually select it. If no <code>value</code> is set, the first option (if available) will be selected by default.</p>
+      {#snippet example()}
+<Select label="Select an option" options={data} value="2" />
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Select label="Select an option" options={data} value="2" />
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Variant">
+    <Example classes="gap-8">
+      <p class="not-prose">The <code>variant</code> prop controls the appearance of the <code>Select</code> component. It has two options:</p>
+      <ul class="mt-0">
+        <li><span class="not-prose"><code>bordered</code></span>(default): Displays the select input with a visible border, making it distinct and well-defined.</li>
+        <li><span class="not-prose"><code>flat</code></span>: Removes the border for a more minimalistic and seamless look.</li>
+      </ul>
+      <p class="not-prose">If <code>floatingLabel</code> is enabled, it works with both variants, ensuring the label moves above the input when a value is selected.</p>
+      {#snippet example()}
+<Select label="Select an option" options={data} />
+<Select label="Select an option" options={data} variant="flat" />
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Select label="Select an option" options={data} variant="bordered" />
+<Select label="Select an option" options={data} variant="flat" />
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Label">
+    <p class="not-prose">The <code>label</code> prop allows you to add a label to the <code>Select</code> component, improving accessibility and user experience. The label can be simple text or a more complex element using a <code>Snippet</code>.</p>  
+    <p class="not-prose">If <code>floatingLabel</code> is enabled, the label floats above the input when a value is selected. It stays static otherwise. This only works when the label is a prop, not a <code>Snippet</code>.</p>
+    <Example>
+      {#snippet example()}
+<div class="flex flex-col gap-4">
+  <Select label="Select an option" options={data} />
+  <Select options={data}>
+    {#snippet label()}
+      <div>
+        <Label>Select an option</Label>
+        <HelperText>This is helper text for the select input!</HelperText>
+      </div>
+    {/snippet}
+  </Select>
+</div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<!-- Using label prop -->
+<Select label="Select an option" options={data} />
+
+<!-- Using label snippet -->
+<Select options={data}>
+  {#snippet label()}
+    <div>
+      <Label>Select an option</Label>
+      <HelperText>This is helper text for the select input!</HelperText>
+    </div>
+  {/snippet}
+</Select>
+```
+      {/snippet}
+
+      {#snippet children2()}
+<p class="not-prose mt-8">Label using <code>floatingLabel</code>.</p>
+      {/snippet}
+
+      {#snippet example2()}
+<Select label="Select an option" options={data} floatingLabel />&nbsp;
+<Select label="Select an option" options={data} variant="flat" floatingLabel />
+      {/snippet}
+      {#snippet code2()}
+
+```html
+<Select ... floatingLabel />
+<Select ... floatingLabel variant="flat" />
+```
+      {/snippet}
+
+
+
+
+
+
+
+
+
+
     </Example>
   </DocBlock>
 

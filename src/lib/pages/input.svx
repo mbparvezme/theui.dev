@@ -114,7 +114,7 @@ description: The Input component is a flexible and customizable form element tha
       <p class="not-prose">The <code>variant</code> prop allows you to control the visual style of the input field. There are two available variants:</p>
       <ul class="mt-0">
         <li><span class="not-prose"><code>bordered</code></span>(default): Displays the input with a visible border, making it distinct and clearly separated from the background.</li>
-        <li><span class="not-prose"><code>flat</code></span>(default): Removes the border for a more minimalistic and seamless appearance, blending with the surrounding design.</li>
+        <li><span class="not-prose"><code>flat</code></span>: Removes the border for a more minimalistic and seamless appearance, blending with the surrounding design.</li>
       </ul>
       <p class="not-prose">This prop helps you match the input style with your overall UI theme.</p>
       {#snippet example()}
