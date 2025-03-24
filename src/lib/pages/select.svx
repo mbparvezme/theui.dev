@@ -1,7 +1,7 @@
 ---
 title: Select
 dir: ".lib/pages"
-description: The Input component is a flexible and customizable form element that supports various input types. It ensures a consistent and seamless experience across different use cases.
+description: Provides a customizable dropdown for selecting options. It supports static and dynamic options, floating labels, and various styling options for flexibility.
 ---
 
 <script lang="ts">
@@ -18,15 +18,15 @@ description: The Input component is a flexible and customizable form element tha
 </script>
 
 <DocLayout>
-  <DocHead title="Select" text="The Input component is a flexible and customizable form element that supports various input types. It ensures a consistent and seamless experience across different use cases." {edit_url}/>
+  <DocHead title="Select" text="The Select component provides a customizable dropdown for selecting options. It supports static and dynamic options, floating labels, and various styling options for flexibility." {edit_url}/>
 
   <DocBlock title="About">
-    <p class="not-prose">Designed for versatility, the <code>Input</code> component adapts to different form requirements, from basic text fields to advanced data inputs. With built-in styling, validation, and accessibility features, it enhances usability while maintaining a uniform look. It seamlessly integrates with the Form and Fieldset components, inheriting styles and behaviors for effortless form management.</p>
+    <p class="not-prose">Designed for versatility, the <code>Select</code> component offers complete control over styling, behavior, and data handling. Whether you use static options or generate them dynamically, it ensures a seamless and consistent user experience. With built-in support for floating labels, animations, and custom styling, this component adapts to any design system effortlessly.</p>
   </DocBlock>
 
   <DocBlock title="Example">
     <Example>
-      <p class="not-prose">Here's a basic example of the Input component in action:</p>
+      <p class="not-prose">You can use a <code>Select</code> component in two different ways. Either use the <code>option</code> prop to pass an array of options dynamically, define the <b>options</b> manually inside the component. Here's a basic example of the Select component in action:</p>
       {#snippet example()}
 
       {/snippet}
@@ -35,9 +35,34 @@ description: The Input component is a flexible and customizable form element tha
 ```html
 <script>
   import { Select } from "theui-svelte";
+
+  let data = [
+    { text: "Option 1", value: "1" },
+    { text: "Option 2", value: "2" },
+    { text: "Option 3", value: "3", disabled: true }
+  ]
 </script>
 
+<Select label="Select an option" options={data} />
+```
+      {/snippet}
 
+      {#snippet children2()}
+      <p class="not-prose mt-8">Or, you can use the <b>&lt;option&gt;</b> tag directly.</p>
+      {/snippet}
+
+      {#snippet code2()}
+
+```html
+<script>
+  import { Select } from "theui-svelte";
+</script>
+
+<Select label="Choose a category">
+  <option value="books">Books</option>
+  <option value="electronics">Electronics</option>
+  <option value="clothing" disabled>Clothing (Unavailable)</option>
+</Select>
 ```
       {/snippet}
     </Example>
