@@ -167,18 +167,99 @@ description: Provides a customizable dropdown for selecting options. It supports
 <Select ... floatingLabel variant="flat" />
 ```
       {/snippet}
-
-
-
-
-
-
-
-
-
-
     </Example>
   </DocBlock>
+
+  <DocBlock title="Sizing">
+    <Example>
+      <p class="not-prose">The <code>size</code> prop controls the overall size of the Select component. Available options are <code>"sm"</code>, <code>"md"</code>, <code>"lg"</code>, and <code>"xl"</code>, with <code>"md"</code> as the default. This affects padding, font size, and spacing for a consistent UI.</p>
+      {#snippet example()}
+<div class="flex flex-col gap-4">
+  <Select label="Small (sm) Select" options={data} size="sm" />
+  <Select label="Medium (md) Select" options={data} size="md" />
+  <Select label="Large (lg) Select" options={data} size="lg" />
+  <Select label="Extra large (xl) Select" options={data} size="xl" />
+</div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Select ... size="sm" />
+<Select ... size="md" />
+<Select ... size="lg" />
+<Select ... size="xl" />
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Rounded">
+    <Example>
+      <p class="not-prose">The <code>size</code> prop controls the border-radius of the Select component. You can choose from <code>"sm"</code>, <code>"md"</code>, <code>"lg"</code>, <code>"xl"</code>, <code>"full"</code>, and <code>"none"</code>to determine the roundness of the corners. The default value is <code>"md"</code> , giving the component a moderate rounded appearance.</p>
+      {#snippet example()}
+<div class="flex flex-col gap-4">
+  <Select label="Not Rounded" options={data} rounded="none" />
+  <Select label="Small (sm) Rounded" options={data} rounded="sm" />
+  <Select label="Medium (md) Rounded" options={data} rounded="md" />
+</div>
+<div class="flex flex-col gap-4">
+  <Select label="large (lg) Rounded" options={data} rounded="lg" />
+  <Select label="Extra large (xl) Rounded" options={data} rounded="xl" />
+  <Select label="Full (full) Rounded" options={data} rounded="full" />
+</div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Select ... rounded="none" />
+<Select ... rounded="sm" />
+<Select ... rounded="md" />
+<Select ... rounded="lg" />
+<Select ... rounded="xl" />
+<Select ... rounded="full" />
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Animation Speed">
+    <Example>
+      <p class="not-prose">The <code>animationSpeed</code> prop allows you to control the speed of animations in the Select component. Available values include <code>"none"</code>, <code>"slower"</code>, <code>"slow"</code>, <code>"normal"</code>, <code>"fast"</code>, <code>"faster"</code>, with <code>"normal"</code> being the default. Adjust this value to make transitions quicker or slower based on your needs.</p>
+      {#snippet example()}
+<div class="flex flex-col gap-4">
+  <Select label="Small (sm) Rounded" options={data} animationSpeed="slower" />
+  <Select label="Medium (md) Rounded" options={data} animationSpeed="slow" />
+  <Select label="large (lg) Rounded" options={data} animationSpeed="normal" />
+</div>
+<div class="flex flex-col gap-4">
+  <Select label="Extra large (xl) Rounded" options={data} animationSpeed="fast" />
+  <Select label="Full (full) Rounded" options={data} animationSpeed="faster" />
+  <Select label="Not Rounded" options={data} animationSpeed="none" />
+</div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Select ... animationSpeed="slower" />
+<Select ... animationSpeed="slow" />
+<Select ... animationSpeed="normal" />
+<Select ... animationSpeed="fast" />
+<Select ... animationSpeed="faster" />
+<Select ... animationSpeed="none" />
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+
+
+
+
+
+
+
+
+
 
   <DocBlock title="Configuration">
     <ConfigComponent {component} />
