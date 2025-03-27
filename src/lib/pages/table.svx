@@ -10,7 +10,12 @@ description: Present data effectively in your Svelte app with theui-svelte's Tab
   import DocBlock from "$lib/ui/doc/Block.svelte";
   import Code from "$lib/ui/doc/CodeBlock.svelte";
   import Example from "$lib/ui/doc/Example.svelte";
-  import ConfigComponent from "$lib/ui/doc/ConfigComponent.svelte";
+
+  import TableConfigComponent from "$lib/ui/doc/ConfigComponent.svelte";
+  import THeadConfigComponent from "$lib/ui/doc/ConfigComponent.svelte";
+  import TBodyConfigComponent from "$lib/ui/doc/ConfigComponent.svelte";
+  import TRConfigComponent from "$lib/ui/doc/ConfigComponent.svelte";
+
   import { processID } from "$lib";
   let { component, edit_url }: {component: any, edit_url?: string } = $props();
 
@@ -336,7 +341,10 @@ description: Present data effectively in your Svelte app with theui-svelte's Tab
   </DocBlock>
 
   <DocBlock title="Configuration">
-    <ConfigComponent component={component} />
+    <TableConfigComponent title="Table" component={component.table} />
+    <THeadConfigComponent title="Table Head" component={component.thead} />
+    <TBodyConfigComponent title="Table Body" component={component.tbody} />
+    <TRConfigComponent title="Table Row"component={component.tr} />
   </DocBlock>
 
   {#snippet sidebar()}
@@ -365,5 +373,9 @@ description: Present data effectively in your Svelte app with theui-svelte's Tab
     <a href={processID("Customization")}>Customization</a>
     <a href={processID("Accessibility")}>Accessibility</a>
     <a href={processID("Configuration")}>Configuration</a>
+    <a class="ps-4" href={processID("Table")}>Table</a>
+    <a class="ps-4" href={processID("Table Head")}>Table head</a>
+    <a class="ps-4" href={processID("Table body")}>Table body</a>
+    <a class="ps-4" href={processID("Table row")}>Table row</a>
   {/snippet}
 </DocLayout>

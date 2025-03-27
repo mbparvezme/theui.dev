@@ -58,7 +58,6 @@ description: Toggle content visibility in your Svelte app with TheUI-Svelte's Co
   </DocBlock>
 
   {#snippet sidebar()}
-    <a href={processID("Setup")}>Setup</a>
     <a href={processID("Example")}>Example</a>
     <a href={processID("Configuration")}>Configuration</a>
   {/snippet}

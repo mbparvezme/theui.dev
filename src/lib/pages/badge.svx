@@ -129,7 +129,6 @@ description: Add dynamic visual indicators to your Svelte app with TheUI-Svelte'
   </DocBlock>
 
   {#snippet sidebar()}
-    <a href={processID("Setup")}>Setup</a>
     <a href={processID("Example")}>Example</a>
     <a href={processID("Grow Badge")}>Alert Grow Badge</a>
     <a href={processID("Fixed Top Badge")}>Fixed Top Badge</a>

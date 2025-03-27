@@ -36,7 +36,7 @@
       {
         "name": "size",
         "description": "Defines the input size. Available options: \"sm\", \"md\", \"lg\", \"xl\".",
-        "type": "<a href=\"/docs/types##input-size\">INPUT_SIZE</a>",
+        "type": "<a href=\"/docs/types#input-size\">INPUT_SIZE</a>",
         "default": "\"md\""
       },
       {

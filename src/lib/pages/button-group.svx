@@ -370,7 +370,7 @@ description: Create responsive and stylish buttons for your Svelte app with TheU
     <a href={processID("Stacked Button")}>Stacked Button</a>
     <a href={processID("Outlined Button")}>Outlined Button</a>
     <a href={processID("Group Button Sizing")}>Group Button Sizing</a>
-    <a href={processID("Square Group Button")}>PGroup Button</a>
+    <a href={processID("Square Group Button")}>Square Button Group</a>
     <a href={processID("Rounded Button Control")}>Rounded Button Control</a>
     <a href={processID("Button Group Variants")}>Button Variants</a>
     <a href={processID("Button Group Color")}>Group Color</a>

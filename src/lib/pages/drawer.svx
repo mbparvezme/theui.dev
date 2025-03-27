@@ -144,7 +144,6 @@ description: The Drawer component is a versatile UI element that slides in from 
   </DocBlock>
 
   {#snippet sidebar()}
-    <a href={processID("Setup")}>Setup</a>
     <a href={processID("Example")}>Example</a>
     <a href={processID("Drawer Position")}>Position</a>
     <a href={processID("Controlling the Backdrop")}>Controlling Backdrop</a>

@@ -2,7 +2,6 @@
   {
     "key": "props",
     "title": "Props",
-    "text": "The component has the following props with the given default values. Please visit <a href=\"/docs/types\">types page</a> for detailed type definitions.",
     "data": [
       {
         "name": "size",
@@ -21,7 +20,6 @@
   {
     "key": "dynamicProps", 
     "title": "Dynamic props",
-    "text": "The component has the following dynamicProps:",
     "data": [
       {
         "name": "disabled",
@@ -37,7 +35,6 @@
   {
     "key": "functions",
     "title": "Functions",
-    "text": "The component uses the following functions available:",
     "data": [
       {
         "name": "onclick",

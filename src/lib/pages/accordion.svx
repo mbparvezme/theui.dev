@@ -336,7 +336,7 @@ description: Enhance your Svelte app with theui-svelte's Accordion component. Ea
   </DocBlock>
 
   <DocBlock title="Configuration">
-    <AccordionConfig title="Accordion" component={component.accordion} />
+    <AccordionConfig title="Accordion" component={component.accordion} hideText={true} />
     <ItemConfig title="Accordion Item" component={component.item} />
   </DocBlock>
 
@@ -350,6 +350,8 @@ description: Enhance your Svelte app with theui-svelte's Accordion component. Ea
     <a href={processID("Customization")}>Customization</a>
     <a href={processID("Accessibility")}>Accessibility</a>
     <a href={processID("Configuration")}>Configuration</a>
+    <a class="ps-4" href={processID("Accordion")}>Accordion</a>
+    <a class="ps-4" href={processID("Accordion Item")}>Accordion Item</a>
   {/snippet}
 
 </DocLayout>

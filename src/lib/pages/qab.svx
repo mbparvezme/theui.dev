@@ -396,6 +396,8 @@ description:
     <a href={processID("Customization")}>Customization</a>
     <a href={processID("Accessibility")}>Accessibility</a>
     <a href={processID("Configuration")}>Configuration</a>
+    <a class="ps-4" href={processID("QAB")}>QAB</a>
+    <a class="ps-4" href={processID("QAB Item")}>QAB Item</a>
   {/snippet}
 
 </DocLayout>

@@ -117,7 +117,7 @@ description: Provides a customizable dropdown for selecting options. It supports
     </Example>
   </DocBlock>
 
-  <DocBlock title="Label">
+  <DocBlock title="Label & Floating Label">
     <p class="not-prose">The <code>label</code> prop allows you to add a label to the <code>Select</code> component, improving accessibility and user experience. The label can be simple text or a more complex element using a <code>Snippet</code>.</p>  
     <p class="not-prose">If <code>floatingLabel</code> is enabled, the label floats above the input when a value is selected. It stays static otherwise. This only works when the label is a prop, not a <code>Snippet</code>.</p>
     <Example>
@@ -251,15 +251,80 @@ description: Provides a customizable dropdown for selecting options. It supports
     </Example>
   </DocBlock>
 
+  <DocBlock title="Helper Text">
+    <Example>
+      <p class="not-prose">The <code>helperText</code> prop allows you to add additional guidance or information below the Select component. It can be a simple string or a Snippet for more complex content. This is useful for providing instructions or any other contextual information to enhance user experience.</p>
+      {#snippet example()}
+<Select label="Select an option" options={data} helperText="This is helper text for the select input!" />
+<Select label="Select an option" options={data}>
+  {#snippet helperText()}
+    This is helper text for the select input!
+  {/snippet}
+</Select>
+      {/snippet}
+      {#snippet code()}
 
+```html
+<!-- Using prop -->
+<Select label="Select an option" options={data} helperText="This is helper text for the select input!" />
+<!-- Using Snippet -->
+<Select label="Select an option" options={data}>
+  {#snippet helperText()}
+    This is helper text for the select input!
+  {/snippet}
+</Select>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
 
+  <DocBlock title="Resetting All Styles">
+    <Example>
+      <p class="not-prose">The <code>reset</code> prop removes all default styles, applying only the styles you provide. This gives full control over the appearance, making it ideal for custom designs.</p>
+      {#snippet example()}
+<Select label="Resetting " options={data} size="sm" rounded="full" reset />
+      {/snippet}
+      {#snippet code()}
 
+```html
+<Select ... size="sm" rounded="full" reset />
+```
+      {/snippet}
+    </Example>
+    <p class="not-prose">In this example, even though <code>size="sm"</code> and <code>rounded="full"</code> are set, they won’t take effect because the <code>reset</code> prop removes all default styles, including size and rounded settings. Only the styles you manually apply will be used.</p>
+  </DocBlock>
 
+  <DocBlock title="Customization">
+    <Example classes="gap-8">
+      <p class="not-prose">The Select component provides several options to customize its appearance, ensuring it blends seamlessly with different UI designs.</p>
+      <ul class="mt-0">
+        <li><span class="not-prose"><code>wrapperClasses</code>: Style the outer container of the Select component to adjust margins, padding, or additional styling needs.</span></li>
+        <li><span class="not-prose"><code>labelClasses</code>: Customize the label's style by applying custom classes, allowing better control over typography, spacing, and alignment.</span></li>
+        <li><span class="not-prose"><code>class</code></span> attribute: Directly modify the Select element itself, giving you control over borders, background, and overall appearance.</li>
+      </ul>
+      <p class="not-prose">By using these customization options, you can easily align the Select component with your design system while maintaining consistency across forms.</p>
 
+      {#snippet example()}
+<div class="flex flex-col gap-8">
+  <Select label="Select an option" options={data}
+    wrapperClasses="flex-row items-center gap-16"
+    labelClasses="text-xl text-blue-500"
+    class="text-blue-500 focus:ring-blue-500 focus:border-blue-500"
+  />
+</div>
+      {/snippet}
+      {#snippet code()}
 
-
-
-
+```html
+<Select label="Select an option" options={data}
+  wrapperClasses="flex-row items-center gap-16"
+  labelClasses="text-xl text-blue-500"
+  class="text-blue-500 focus:ring-blue-500 focus:border-blue-500"
+/>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
 
   <DocBlock title="Configuration">
     <ConfigComponent {component} />
@@ -268,16 +333,14 @@ description: Provides a customizable dropdown for selecting options. It supports
   {#snippet sidebar()}
     <a href={processID("About")}>About</a>
     <a href={processID("Example")}>Example</a>
-    <a href={processID("Input Type")}>Input Type</a>
-    <a href={processID("Textarea")}>Textarea</a>
     <a href={processID("Default Value")}>Default Value</a>
-    <a href={processID("Input Variant")}>Input Variant</a>
-    <a href={processID("Label")}>Label</a>
-    <a href={processID("Adding a Label")} class="ps-4">Adding a Label</a>
-    <a href={processID("Floating Labels")} class="ps-4">Floating Labels</a>
+    <a href={processID("Variant")}>Variant</a>
+    <a href={processID("Label & Floating Label")}>Label</a>
     <a href={processID("Sizing")}>Sizing</a>
+    <a href={processID("Rounded")}>Rounded</a>
     <a href={processID("Animation Speed")}>Animation Speed</a>
-    <a href={processID("Rounded Input")}>Rounded Input</a>
+    <a href={processID("Helper Text")}>Helper Text</a>
+    <a href={processID("Resetting All Styles")}>Reset</a>
     <a href={processID("Customization")}>Customization</a>
     <a href={processID("Configuration")}>Configuration</a>
   {/snippet}

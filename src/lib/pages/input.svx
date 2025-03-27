@@ -214,35 +214,6 @@ description: The Input component is a flexible and customizable form element tha
     </Example>
   </DocBlock>
 
-  <DocBlock title="Animation Speed">
-    <Example classes="gap-8">
-      <p class="not-prose">The <code>animateSpeed</code> prop controls the speed of input animations, allowing for smooth transitions and interactions. Available values are <code>"none"</code>, <code>"slower"</code>, <code>"slow"</code>, <code>"normal"</code>, <code>"fast"</code>, and <code>"faster"</code>, with <code>"normal"</code> as the default. Adjusting this prop helps create a more dynamic or subtle user experience based on your design preferences.</p>
-      {#snippet example()}
-<div class="inline-flex flex-col gap-4">
-  <Input name="myInput" variant="flat" animateSpeed="slower">Animation slower</Input>
-  <Input name="myInput" variant="flat" animateSpeed="slow">Animation slow</Input>
-  <Input name="myInput" variant="flat" animateSpeed="normal">Animation normal</Input>
-</div>
-<div class="inline-flex flex-col gap-4">
-  <Input name="myInput" variant="flat" animateSpeed="fast">Animation fast</Input>
-  <Input name="myInput" variant="flat" animateSpeed="faster">Animation faster</Input>
-  <Input name="myInput" variant="flat" animateSpeed="none">Animation none</Input>
-</div>
-      {/snippet}
-      {#snippet code()}
-
-```html
-<Input ... animateSpeed="slower">Animation slower</Input>
-<Input ... animateSpeed="slow">Animation slow</Input>
-<Input ... animateSpeed="normal">Animation normal</Input>
-<Input ... animateSpeed="fast">Animation fast</Input>
-<Input ... animateSpeed="faster">Animation faster</Input>
-<Input ... animateSpeed="none">Animation none</Input>
-```
-      {/snippet}
-    </Example>
-  </DocBlock>
-
   <DocBlock title="Rounded Input">
     <Example>
       <p class="not-prose">The <code>rounded</code> prop controls the roundness of the input's corners, allowing for different visual styles. Available values are <code>"none"</code>, <code>"sm"</code>, <code>"md"</code>, <code>"lg"</code>, <code>"xl"</code>, and <code>"full"</code>, with <code>"md"</code> as the default. Use this prop to adjust the input's appearance, from sharp edges to fully rounded corners, depending on your design needs.</p>
@@ -267,6 +238,35 @@ description: The Input component is a flexible and customizable form element tha
 <Input ... rounded="lg">Rounded large</Input>
 <Input ... rounded="xl">Rounded extra large</Input>
 <Input ... rounded="full">Rounded full</Input>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Animation Speed">
+    <Example classes="gap-8">
+      <p class="not-prose">The <code>animateSpeed</code> prop controls the speed of input animations, allowing for smooth transitions and interactions. Available values are <code>"none"</code>, <code>"slower"</code>, <code>"slow"</code>, <code>"normal"</code>, <code>"fast"</code>, and <code>"faster"</code>, with <code>"normal"</code> as the default. Adjusting this prop helps create a more dynamic or subtle user experience based on your design preferences.</p>
+      {#snippet example()}
+<div class="inline-flex flex-col gap-4">
+  <Input name="myInput" variant="flat" animateSpeed="slower">Animation slower</Input>
+  <Input name="myInput" variant="flat" animateSpeed="slow">Animation slow</Input>
+  <Input name="myInput" variant="flat" animateSpeed="normal">Animation normal</Input>
+</div>
+<div class="inline-flex flex-col gap-4">
+  <Input name="myInput" variant="flat" animateSpeed="fast">Animation fast</Input>
+  <Input name="myInput" variant="flat" animateSpeed="faster">Animation faster</Input>
+  <Input name="myInput" variant="flat" animateSpeed="none">Animation none</Input>
+</div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Input ... animateSpeed="slower">Animation slower</Input>
+<Input ... animateSpeed="slow">Animation slow</Input>
+<Input ... animateSpeed="normal">Animation normal</Input>
+<Input ... animateSpeed="fast">Animation fast</Input>
+<Input ... animateSpeed="faster">Animation faster</Input>
+<Input ... animateSpeed="none">Animation none</Input>
 ```
       {/snippet}
     </Example>
@@ -320,8 +320,8 @@ description: The Input component is a flexible and customizable form element tha
     <a href={processID("Adding a Label")} class="ps-4">Adding a Label</a>
     <a href={processID("Floating Labels")} class="ps-4">Floating Labels</a>
     <a href={processID("Sizing")}>Sizing</a>
-    <a href={processID("Animation Speed")}>Animation Speed</a>
     <a href={processID("Rounded Input")}>Rounded Input</a>
+    <a href={processID("Animation Speed")}>Animation Speed</a>
     <a href={processID("Customization")}>Customization</a>
     <a href={processID("Configuration")}>Configuration</a>
   {/snippet}

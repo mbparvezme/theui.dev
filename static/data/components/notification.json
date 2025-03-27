@@ -30,6 +30,11 @@
   {
     "key": "functions",
     "title": "Functions",
-    "data": null
+    "data": [
+      {
+        "name" : "notify",
+        "description": "Triggers the notifications with customizable options. For more details, read the <a href=\"#notify-function\">notify() Function doc.</a>"
+      }
+    ]
   }
 ]
