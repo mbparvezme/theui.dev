@@ -55,11 +55,21 @@ description: Design responsive and accessible navigation bars for your Svelte ap
 {/snippet}
 
 <DocLayout>
-  <DocHead title="Navbar" text="A responsive navigation bar with support for dropdown menus, keyboard navigation, and customizable styling. It’s ideal for building primary site navigation or complex menu systems." {edit_url}/>
+  <DocHead title="Navbar" text="A responsive navigation bar with support for dropdown menus, keyboard navigation, and customizable styling. It's ideal for building primary site navigation or complex menu systems." {edit_url}/>
+
+  <DocBlock title="About">
+    <p class="not-prose">The <code>Navbar</code> component provides a fully responsive and accessible navigation bar for your application. It supports branding, grouped links, and dropdown menus, making it suitable for both simple and complex navigation structures. With built-in keyboard navigation and customizable styling options, the Navbar ensures a seamless user experience across all devices.</p>
+  </DocBlock>
 
   <DocBlock title="Example">
-    <p class="not-prose">..</p>
     <Example classes="p-4">
+      <p class="not-prose">The <code>Navbar</code> component is built using multiple elements, each serving a specific role:</p>
+      <ul class="my-0">
+        <li><span class="not-prose"><code>NavBrand</code></span>Displays the brand name or logo and links to the homepage or any specified URL.</li>
+        <li><span class="not-prose"><code>NavLinkGroup</code></span>A wrapper for organizing multiple navigation links in a structured manner.</li>
+        <li><span class="not-prose"><code>NavLink</code></span>Represents an individual navigation link with customizable text and URL.</li>
+        <li><span class="not-prose"><code>NavDropdown</code></span>A dropdown menu inside the Navbar that contains additional navigation links.</li>
+      </ul>
       {#snippet example()}
         <Navbar>
           <NavBrand href="#">BRAND</NavBrand>
@@ -95,11 +105,11 @@ description: Design responsive and accessible navigation bars for your Svelte ap
     <p class="not-prose">..</p>
     <Example classes="p-4 w-full flex flex-col gap-2">
       {#snippet example()}
-        <Button class="w-full max-w-60 justify-between" href="/example/navbar/" target="_blank" size="sm">Default Navbar</Button>
-        <Button class="w-full max-w-60 justify-between" href="/example/navbar/" target="_blank" size="sm">Fixed Navbar</Button>
-        <Button class="w-full max-w-60 justify-between" href="/example/navbar/" target="_blank" size="sm">Shrink on Scroll Down</Button>
-        <Button class="w-full max-w-60 justify-between" href="/example/navbar/" target="_blank" size="sm">Hide on Scroll Down</Button>
-        <Button class="w-full max-w-60 justify-between" href="/example/navbar/" target="_blank" size="sm">Shrink and Hide on Scroll Down</Button>
+        <Button class="w-full max-w-60 justify-between" href="/example/navbar?q=default" target="_blank" size="sm">Default Navbar</Button>
+        <Button class="w-full max-w-60 justify-between" href="/example/navbar?q=fixed" target="_blank" size="sm">Fixed Navbar</Button>
+        <Button class="w-full max-w-60 justify-between" href="/example/navbar?q=shrinkOnScrollDown" target="_blank" size="sm">Shrink on Scroll</Button>
+        <Button class="w-full max-w-60 justify-between" href="/example/navbar?q=hideOnScrollDown" target="_blank" size="sm">Hide on Scroll</Button>
+        <Button class="w-full max-w-60 justify-between" href="/example/navbar?q=shrinkAndHide" target="_blank" size="sm">Shrink and Hide on Scroll</Button>
       {/snippet}
       {#snippet code()}
 
