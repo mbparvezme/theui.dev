@@ -103,14 +103,14 @@ description: Design responsive and accessible navigation bars for your Svelte ap
 
   <DocBlock title="Scroll Behavior">
     <p class="not-prose">The <code>scrollBehavior</code> prop controls how the Navbar behaves when the user scrolls. It provides flexibility in handling visibility and size adjustments based on scrolling direction.</p>
+    <Example title="Navbar Scrolling Effects" classes="p-4 w-full flex flex-col gap-2">
       <ul class="my-0">
         <li><span class="not-prose"><code>default</code></span> - The Navbar remains static and does not react to scrolling.</li>
         <li><span class="not-prose"><code>fixed</code></span> - The Navbar stays fixed at the top of the page, even when scrolling.</li>
-        <li><span class="not-prose"><code>shrinkOnScrollDown</code></span> - The Navbar reduces in height when scrolling down and restores its size when scrolling up.</li>
-        <li><span class="not-prose"><code>hideOnScrollDown</code></span> - The Navbar disappears when scrolling down and reappears when scrolling up.</li>
+        <li><span class="not-prose"><code>shrinkOnScrollDown</code> - The Navbar reduces in height when scrolling down and restores its size when scrolling up. You can control the scroll amount with the <code>scrollAmountToShrink</code> prop to shrink the <b>Navbar</b>.</span> Follow <a href="#hide/shrink-scroll-amount">this for more</a>.</li>
+        <li><span class="not-prose"><code>hideOnScrollDown</code> - The Navbar disappears when scrolling down and reappears when scrolling up. Use the <code>scrollAmountToHide</code> prop to change the scroll amount to hide the <b>Navbar</b>.</span> Follow <a href="#hide/shrink-scroll-amount">this for more</a>.</li>
         <li><span class="not-prose"><code>shrinkAndHide</code></span> - The Navbar first shrinks on scroll down and then hides completely, reappearing at full size when scrolling up.</li>
       </ul>
-    <Example classes="p-4 w-full flex flex-col gap-2">
       {#snippet example()}
         <Button class="w-full max-w-60 justify-between" href="/example/navbar?q=default" target="_blank" size="sm">Default Navbar</Button>
         <Button class="w-full max-w-60 justify-between" href="/example/navbar?q=fixed" target="_blank" size="sm">Fixed Navbar</Button>
@@ -129,6 +129,13 @@ description: Design responsive and accessible navigation bars for your Svelte ap
 ```
       {/snippet}
     </Example>
+
+    <Example title="Hide/Shrink Scroll Amount" classes="p-4 w-full flex flex-col gap-2">
+      <p class="not-prose">The <code>scrollAmountToShrink</code> and <code>scrollAmountToHide</code> props allow fine-tuned control over how the Navbar reacts to scrolling. These values determine the scroll distance (in pixels) required to trigger shrinking or hiding effects, making the Navbar more adaptive to different layouts.</p>  
+      <p class="not-prose">By default, <code>scrollAmountToShrink</code> is set to <b>32px</b>, meaning the Navbar will shrink after scrolling this distance when <code>shrinkOnScrollDown</code> or <code>shrinkAndHide</code> is enabled. Similarly, <code>scrollAmountToHide</code> is <b>128px</b>, which controls when the Navbar fully disappears when <code>hideOnScrollDown</code> or <code>shrinkAndHide</code> is used. Adjusting these values ensures a smooth and customized scroll behavior.</p>  
+    </Example>
+
+
   </DocBlock>
 
   <DocBlock title="Navbar Height">
@@ -380,7 +387,10 @@ description: Design responsive and accessible navigation bars for your Svelte ap
     </Example>
 
     <Example title="Dropdown Event" classes="p-4 w-full flex flex-col">
-      <p class="not-prose">By default, the dropdown opens when clicked. If you prefer it to open on hover, set the <code>dropdownEvent</code> prop to <code>"hover"</code>. It accepts two props, <code>"click"</code> & <code>"hover"</code>.</p>
+      <p class="not-prose">By default, the dropdown opens when clicked. Both the <b>Navbar</b> and <b>NavDropdown</b> components have the <code>dropdownEvent</code> prop. If you set it in the <b>Navbar</b>, it applies to all dropdowns. However, if you set it in a <b>NavDropdown</b>, it affects only that dropdown and overrides the Navbar's <code>dropdownEvent</code> value. You can choose between <code>"click"</code> and <code>"hover"</code>.
+      
+      
+      By default, the dropdown opens when clicked. If you prefer it to open on hover, set the <code>dropdownEvent</code> prop to <code>"hover"</code>. It accepts two props, <code>"click"</code> & <code>"hover"</code>.</p>
       {#snippet example()}
 <Navbar>
   <NavBrand href="#">BRAND</NavBrand>
@@ -532,7 +542,24 @@ description: Design responsive and accessible navigation bars for your Svelte ap
   </DocBlock>
 
   {#snippet sidebar()}
+    <a href={processID("About")}>About</a>
     <a href={processID("Example")}>Example</a>
+    <a href={processID("Scroll Behavior")}>Scroll behavior</a>
+    <a href={processID("Navbar Scrolling Effects")} class="ps-4">Scrolling Effects</a>
+    <a href={processID("Hide/Shrink Scroll Amount")} class="ps-4">Scroll Amount</a>
+    <a href={processID("Navbar Height")}>Navbar height</a>
+    <a href={processID("Responsive Navbar")}>Responsive navbar</a>
+    <a href={processID("NavCollapse")} class="ps-4">Navbar collapse</a>
+    <a href={processID("navBreakpoint")} class="ps-4">Navbar breakpoint</a>
+    <a href={processID("Link Alignment")}>Link alignment</a>
+    <a href={processID("Navbar Dropdown")}>Navbar Dropdown</a>
+    <a href={processID("Dropdown Label")} class="ps-4">Dropdown Label</a>
+    <a href={processID("Dropdown Width")} class="ps-4">Dropdown Width</a>
+    <a href={processID("Dropdown Alignment")} class="ps-4">Dropdown Alignment</a>
+    <a href={processID("Dropdown Event")} class="ps-4">Dropdown Event</a>
+    <a href={processID("Dropdown Animation")} class="ps-4">Dropdown Animation</a>
+    <a href={processID("Dropdown Arrow")} class="ps-4">Dropdown Arrow</a>
+    <a href={processID("Mega Menu")}>Mega Menu</a>
     ...
     <a href={processID("Customization")}>Customization</a>
     <a href={processID("Accessibility")}>Accessibility</a>
