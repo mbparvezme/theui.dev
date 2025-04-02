@@ -47,6 +47,7 @@
   {/if}
 
   {@render children2?.()}
+
   {#if example2 || code2}
     <div class="rounded-md mt-4 border border-gray-200 dark:border-gray-800">
 
