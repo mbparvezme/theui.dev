@@ -421,7 +421,7 @@ description: Design responsive and accessible navigation bars for your Svelte ap
     </Example>
 
     <Example title="Dropdown Animation" classes="p-4 w-full flex flex-col">
-      <p class="not-prose">The dropdown supports animations to enhance its appearance. You can choose from three animation styles: <code>"fade"</code>, <code>"slide"</code>, and <code>"zoom"</code>. By default, the dropdown uses the <code>"fade"</code> effect for a smooth transition. These animations make the dropdown feel more interactive and visually appealing.</p>
+      <p class="not-prose">The dropdown supports animations to enhance its appearance. You can choose from three animation styles: <code>"fade"</code>, <code>"slide"</code>, and <code>"zoom"</code>. By default, the dropdown uses the <code>"fade"</code> effect for a smooth transition. These animations make the dropdown feel more interactive and visually appealing. To control animation speed, <a class="prose" href="#animation-speed">follow this</a>.</p>
       {#snippet example()}
         <Navbar>
           <NavBrand href="#">BRAND</NavBrand>
@@ -532,9 +532,52 @@ description: Design responsive and accessible navigation bars for your Svelte ap
 
   </DocBlock>
 
+  <DocBlock title="Mega Menu">
+    <p class="not-prose">The Navbar is designed to be highly versatile, making it suitable for both simple navigation and complex menu structures. Whether you need a minimal navigation bar or a feature-rich menu system, it adapts to your design needs effortlessly.</p>
+    <Example classes="p-4 w-full flex flex-col">
+      <p class="not-prose">For more advanced layouts, the Navbar includes a Mega Menu option. When the <code>width</code> prop of a <code>NavDropdown</code> is set to <code>"full"</code>, the dropdown expands to take the full width of the Navbar, creating a spacious layout for organizing multiple links, sections, or even embedded content. This makes the Mega Menu ideal for websites that require a detailed navigation structure, such as e-commerce platforms, dashboards, and content-heavy websites.</p>
+      {#snippet example()}
+<Navbar>
+  <NavBrand href="#">BRAND</NavBrand>
+  <NavCollapse>
+    <NavLinkGroup align="start">
+      {@render navDropdownGroup()}
+      <NavDropdown label="Mega menu" width="full">
+        <div class="grid grid-cols-2 gap-4 p-2">
+          <div>
+            <a class="px-4 py-2 hover:bg-blue-100 dark:hover:bg-blue-800 rounded-md transition block" href="#"><b>About</b><br>This is a custom link in the mega menu</a>
+            <a class="px-4 py-2 hover:bg-blue-100 dark:hover:bg-blue-800 rounded-md transition block" href="#"><b>Company</b><br>This is a custom link in the mega menu</a>
+          </div>
+          <div class="px-4 py-2 bg-pink-50 dark:bg-pink-950 rounded-md">
+            <h4>Hello!</h4>
+            This is some demo content in the mega menu section.
+          </div>
+        </div>
+      </NavDropdown>
+    </NavLinkGroup>
+  </NavCollapse>
+</Navbar>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<NavDropdown label="Mega menu" width="full">
+  <div class="...">
+    ...
+  </div>
+</NavDropdown>
+```
+      {/snippet}
+    </Example>
+
+  </DocBlock>
+
   <DocBlock title="Accessibility">
-    <p class="not-prose">The Alert component is built with accessibility in mind, handling all necessary ARIA attributes, including <code>role="alert"</code> and <code>aria-label="Close alert"</code>, to ensure compatibility with assistive technologies. These attributes are automatically applied, so you don't need to configure them manually.</p>
-    <p class="not-prose font-bold">The only consideration required is maintaining proper color contrast for the alert's text and background to ensure readability and compliance with accessibility standards.</p>
+    <p class="not-prose">The Navbar is designed with accessibility in mind, ensuring smooth navigation for all users, including those using screen readers and keyboard navigation.</p>
+    <p class="not-prose">To enhance accessibility, use the <code>ariaLabel</code> prop in the <code>Navbar</code> component to define an appropriate <code>aria-label</code> value. This helps screen readers identify the purpose of the navigation.</p>
+    <p class="not-prose">All interactive elements, including links and dropdowns, are fully keyboard-accessible. Users can open dropdowns with <code>Enter</code> or <code>Space</code>, navigate through links and move between dropdown items using the <code>Tab</code> key. The <code>Escape</code> key closes open dropdowns.</p>
+    <p class="not-prose">For better accessibility, ensure that all links have clear, descriptive text. If using a <code>NavDropdown</code>, the <code>aria-expanded</code> attribute updates dynamically to reflect its open or closed state, improving the experience for screen reader users.</p>
+    <p class="not-prose">By following these guidelines and utilizing the provided accessibility features, you can create a navigation system that is inclusive and user-friendly.</p>
   </DocBlock>
 
   <DocBlock title="Configuration">
