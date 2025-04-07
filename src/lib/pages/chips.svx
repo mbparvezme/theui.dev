@@ -146,8 +146,10 @@ description: Implement interactive and stylish chips in your Svelte app with The
     <a href={processID("Chips With Image")}>Chips With Image</a>
     <a href={processID("Disable Close Button")}>Disable Close Button</a>
     <a href={processID("Chips Size")}>Chips Size</a>
-    <a href={processID("Accessibility")}>Accessibility</a>
     <a href={processID("Customization")}>Customization</a>
+    <a href={processID("Chip Customization")} class="ps-4">Chip customization</a>
+    <a href={processID("Image Customization")} class="ps-4">Image customization</a>
+    <a href={processID("Accessibility")}>Accessibility</a>
     <a href={processID("Configuration")}>Configuration</a>
   {/snippet}
 </DocLayout>
