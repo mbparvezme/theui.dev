@@ -32,12 +32,6 @@
         "type": "boolean",
         "description": "Prevent Drawer from closing on backdrop click.",
         "default": false
-      },
-      {
-        "name": "id",
-        "type": "string",
-        "description": "Unique identifier for the Drawer component.",
-        "default": "&lt;RANDOM STRING&gt;"
       }
     ]
   },

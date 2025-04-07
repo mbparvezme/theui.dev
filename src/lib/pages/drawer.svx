@@ -21,7 +21,7 @@ description: The Drawer component is a versatile UI element that slides in from 
   <DocHead title="Drawer" text="The Drawer component is a versatile UI element that slides in from the edge of the screen, providing a convenient way to display additional content or navigation without disrupting the main view." {edit_url}/>
 
   <DocBlock title="Example">
-    <p class="not-prose">Import the Drawer component first to use it in your application. Here’s a basic example demonstrating how to use the Drawer component:</p>
+    <p class="not-prose">Import the Drawer component first to use it in your application. Here's a basic example demonstrating how to use the Drawer component:</p>
     <Example>
       {#snippet example()}
         <Drawer label="Open Drawer">
@@ -29,6 +29,15 @@ description: The Drawer component is a versatile UI element that slides in from 
             Drawer content
           </div>
         </Drawer>
+
+        <Drawer id="idTest" label="ID Test" />
+
+        <Drawer id="idTest">
+          <div class="p-8">
+            ID test content
+          </div>
+        </Drawer>
+
       {/snippet}
 
       {#snippet code()}
@@ -50,7 +59,7 @@ description: The Drawer component is a versatile UI element that slides in from 
 
   <DocBlock title="Drawer Position">
     <Example>
-    <p class="not-prose">The <code>position</code> prop allows you to control where the Drawer appears on the screen. You can choose from four positions: <code>top</code>, <code>end</code>, <code>bottom</code>, or <code>start</code>. This flexibility lets you tailor the Drawer’s placement to fit the layout and design of your application.</p>
+    <p class="not-prose">The <code>position</code> prop allows you to control where the Drawer appears on the screen. You can choose from four positions: <code>top</code>, <code>end</code>, <code>bottom</code>, or <code>start</code>. This flexibility lets you tailor the Drawer's placement to fit the layout and design of your application.</p>
     <p class="not-prose">Simply set the <code>position</code> prop to your desired value to change where the Drawer opens from, creating a more intuitive user experience based on your app's needs.</p>
       {#snippet example()}
         <Drawer label="Start">
@@ -86,7 +95,36 @@ description: The Drawer component is a versatile UI element that slides in from 
     </Example>
   </DocBlock>
 
-  <DocBlock title="Controlling the Backdrop">
+  <DocBlock title="Outlying Trigger">
+    <p class="not-prose">Sometimes, you may want to trigger a <code>Drawer</code> from an external button or element. You can easily do this by using the same <code>id</code> to both the trigger and the target component. This binds them together, allowing the trigger to control the drawer's visibility.</p>
+    <p class="not-prose">This method is helpful when your open button is placed outside the main layout or when using custom controls. You can use any element as a trigger, as long as it shares the matching <code>id</code>.</p>
+    <Example>
+      {#snippet example()}
+        <Drawer id="myDrawerID" label="Outlying Trigger" />
+        <Drawer id="myDrawerID">
+          <div class="p-8">
+            Outlying drawer content..
+          </div>
+        </Drawer>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<!-- Create the outlaying Label -->
+<Drawer id="myDrawerID" label="Outlying Trigger" />
+
+<!-- Create the drawer content -->
+<Drawer id="myDrawerID">
+  <div class="p-8">
+    Outlying drawer content..
+  </div>
+</Drawer>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Backdrop">
     <Example title="Custom Backdrop Style">
     <p class="not-prose">The Drawer includes a backdrop which is enabled by default. It can be toggled or styled using the backdrop prop. Set it to <code>false</code> to disable it, <code>true</code> for a default backdrop or provide a custom classes for styling.</p>
       {#snippet example()}
@@ -139,6 +177,20 @@ description: The Drawer component is a versatile UI element that slides in from 
     </Example>
   </DocBlock>
 
+  <DocBlock title="Accessibility">
+    <div>
+    <p class="not-prose">The <code>Drawer</code> component follows accessibility best practices:</p>
+    <ul class="my-0">
+      <li>The trigger element uses <span class="not-prose"><code>aria-controls</code>, <code>aria-expanded</code>, and <code>aria-label</code> to describe its relationship with the <b>Drawer</b></span>.</li>
+      <li>Supports both text labels and custom elements, with keyboard interactions (<kbd>Enter</kbd>/<kbd>Space</kbd> key) for non-button triggers.</li>
+      <li><span class="not-prose">The Drawer container uses <code>role="complementary"</code> and references the trigger using <code>aria-labelledby</code></span>.</li>
+      <li><span class="not-prose"><code>aria-hidden</code></span> is used to hide the Drawer from assistive technologies when it's not active.</li>
+      <li>The backdrop is marked with <span class="not-prose"><code>aria-hidden</code></span> to avoid it being announced by screen readers.</li>
+      <li>A visible and accessible Close button is included for easy dismissal.</li>
+    </ul>
+    </div>
+  </DocBlock>
+
   <DocBlock title="Configuration">
     <ConfigComponent {component} />
   </DocBlock>
@@ -146,7 +198,12 @@ description: The Drawer component is a versatile UI element that slides in from 
   {#snippet sidebar()}
     <a href={processID("Example")}>Example</a>
     <a href={processID("Drawer Position")}>Position</a>
-    <a href={processID("Controlling the Backdrop")}>Controlling Backdrop</a>
+    <a href={processID("Outlying Trigger")}>Outlying trigger</a>
+    <a href={processID("Backdrop")}>Backdrop</a>
+    <a href={processID("Custom Backdrop Style")} class="ps-4">Custom style</a>
+    <a href={processID("Preventing Backdrop Click")} class="ps-4">Preventing click</a>
+    <a href={processID("Disable Backdrop")} class="ps-4">Disable Backdrop</a>
+    <a href={processID("Accessibility")}>Accessibility</a>
     <a href={processID("Configuration")}>Configuration</a>
   {/snippet}
 </DocLayout>

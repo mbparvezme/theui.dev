@@ -19,7 +19,7 @@ description:
 </script>
 
 <DocLayout>
-  <DocHead title="Quick Action Button" text="The Quick Action Button (QAB) is a small but important button designed to provide fast and easy access to key actions. It helps users quickly perform important tasks without navigating through multiple menus." {edit_url}/>
+  <DocHead title="Quick Action Button (QAB)" text="The Quick Action Button (QAB) is a small but important button designed to provide fast and easy access to key actions. It helps users quickly perform important tasks without navigating through multiple menus." {edit_url}/>
 
   <DocBlock title="About">
     <p class="not-prose">The Quick Action Button (QAB) is designed to offer users quick and easy access to important actions or features. Positioned prominently, it enhances user engagement and streamlines workflows. The QAB supports various styles and configurations, making it a versatile and essential component for improving efficiency and user experience.</p>
