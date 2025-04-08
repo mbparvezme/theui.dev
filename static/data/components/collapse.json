@@ -4,15 +4,9 @@
     "title": "Props",
     "data": [
       {
-        "name": "title",
+        "name": "trigger",
         "type": "Snippet",
         "description": "The header or trigger content for the collapse.",
-        "default": "undefined"
-      },
-      {
-        "name": "content",
-        "type": "string",
-        "description": "The text or HTML content inside the collapsible section.",
         "default": "undefined"
       },
       {
@@ -20,12 +14,6 @@
         "type": "<a href=\"/docs/types#common-types\">ANIMATE_SPEED</a>",
         "description": "Controls the speed of the collapse animation.",
         "default": "fast"
-      },
-      {
-        "name": "id",
-        "type": "string",
-        "description": "Unique identifier to link the collapse trigger and content.",
-        "default": "generateToken()"
       },
       {
         "name": "ariaLabel",
@@ -51,8 +39,8 @@
     "title": "Snippets",
     "data": [
       {
-        "name": "title",
-        "description": "The header or trigger content for the collapse."
+        "name": "trigger",
+        "description": "The trigger content for the collapse."
       }
     ]
   },

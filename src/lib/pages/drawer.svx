@@ -29,15 +29,6 @@ description: The Drawer component is a versatile UI element that slides in from 
             Drawer content
           </div>
         </Drawer>
-
-        <Drawer id="idTest" label="ID Test" />
-
-        <Drawer id="idTest">
-          <div class="p-8">
-            ID test content
-          </div>
-        </Drawer>
-
       {/snippet}
 
       {#snippet code()}
@@ -101,7 +92,7 @@ description: The Drawer component is a versatile UI element that slides in from 
     <Example>
       {#snippet example()}
         <Drawer id="myDrawerID" label="Outlying Trigger" />
-        <Drawer id="myDrawerID">
+        <Drawer id="myDrawerID" animationSpeed="slower">
           <div class="p-8">
             Outlying drawer content..
           </div>
@@ -122,6 +113,7 @@ description: The Drawer component is a versatile UI element that slides in from 
 ```
       {/snippet}
     </Example>
+    <p class="not-prose">This example uses the same <code>id="myDrawerID"</code> in both Drawer components. The first one is the trigger with a label, and the second one contains the content. Sharing the same ID links them — clicking the trigger opens the content drawer.</p>
   </DocBlock>
 
   <DocBlock title="Backdrop">
@@ -175,6 +167,57 @@ description: The Drawer component is a versatile UI element that slides in from 
 ```
       {/snippet}
     </Example>
+  </DocBlock>
+
+  <DocBlock title="Animation Speed">
+    <Example>
+      <p class="not-prose">The animationSpeed prop controls how quickly the Drawer appears or disappears. It supports the following values: <code>"none"</code>, <code>"slower"</code>, <code>"slow"</code>, <code>"normal"</code>, <code>"fast"</code> (default), and <code>"faster"</code>.</p>
+      <p class="not-prose">This gives you flexibility to adjust the opening and closing speed based on your design needs — whether you want a smooth, slow transition or a quick, snappy feel.</p>
+      {#snippet example()}
+        <Drawer animationSpeed="slower" label="Slower">
+          <div class="p-8">
+            Slower animation...
+          </div>
+        </Drawer>
+        <Drawer animationSpeed="slow" label="Slow">
+          <div class="p-8">
+            Slower animation...
+          </div>
+        </Drawer>
+        <Drawer animationSpeed="normal" label="Normal">
+          <div class="p-8">
+            Slower animation...
+          </div>
+        </Drawer>
+        <Drawer animationSpeed="fast" label="Fast">
+          <div class="p-8">
+            Slower animation...
+          </div>
+        </Drawer>
+        <Drawer animationSpeed="faster" label="Faster">
+          <div class="p-8">
+            Slower animation...
+          </div>
+        </Drawer>
+        <Drawer animationSpeed="none" label="No animation">
+          <div class="p-8">
+            Slower animation...
+          </div>
+        </Drawer>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Drawer animationSpeed="slower" ...> ... </Drawer>
+<Drawer animationSpeed="slow" ...> ... </Drawer>
+<Drawer animationSpeed="normal" ...> ... </Drawer>
+<Drawer animationSpeed="fast" ...> ... </Drawer>
+<Drawer animationSpeed="faster" ...> ... </Drawer>
+<Drawer animationSpeed="none" ...> ... </Drawer>
+```
+      {/snippet}
+    </Example>
+    <p class="not-prose">This example uses the same <code>id="myDrawerID"</code> in both Drawer components. The first one is the trigger with a label, and the second one contains the content. Sharing the same ID links them — clicking the trigger opens the content drawer.</p>
   </DocBlock>
 
   <DocBlock title="Accessibility">

@@ -261,7 +261,7 @@ description: Enhance your Svelte app with theui-svelte's Accordion component. Ea
 
   <DocBlock title="Animation Speed">
     <Example>
-      <p class="not-prose">The <code>animationSpeed</code> prop controls how fast the accordion opens and closes. It accepts values from the <code><a href="">ANIMATE_SPEED</a></code> type and defaults to <code>"fast"</code>. You can adjust this to match your desired interaction speed and user experience.</p>
+      <p class="not-prose">The <code>animationSpeed</code> prop controls how fast the accordion opens and closes. Available values are <code>"none"</code>, <code>"slower"</code>, <code>"slow"</code>, <code>"normal"</code>, <code>"fast"</code> (default), and <code>"faster"</code>. It helps you control the overall feel of the Accordion, allowing for subtle or sharp transitions depending on your preference.</p>
       {#snippet example()}
       <div>
         <Accordion>
@@ -367,7 +367,7 @@ description: Enhance your Svelte app with theui-svelte's Accordion component. Ea
   </DocBlock>
 
   <DocBlock title="Configuration">
-    <AccordionConfig title="Accordion" component={component.accordion} hideText={true} />
+    <AccordionConfig title="Accordion" component={component.accordion} />
     <ItemConfig title="Accordion Item" component={component.item} />
   </DocBlock>
 
@@ -380,11 +380,12 @@ description: Enhance your Svelte app with theui-svelte's Accordion component. Ea
     <a href={processID("Accordion Size")}>Accordion size</a>
     <a href={processID("Accordion Open State")}>Accordion open state</a>
     <a href={processID("Accordion: Standalone Mode")}>Standalone mode</a>
+    <a href={processID("Animation Speed")}>Animation Speed</a>
     <a href={processID("Customization")}>Customization</a>
     <a href={processID("Accessibility")}>Accessibility</a>
     <a href={processID("Configuration")}>Configuration</a>
-    <a class="ps-4" href={processID("Accordion")}>accordion</a>
-    <a class="ps-4" href={processID("Accordion Item")}>Accordion Item</a>
+    <a class="ps-4" href={processID("Accordion")}>Accordion</a>
+    <a class="ps-4" href={processID("Accordion Item")}>Accordion item</a>
   {/snippet}
 
 </DocLayout>

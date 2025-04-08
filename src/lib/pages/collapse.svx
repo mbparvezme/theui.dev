@@ -26,8 +26,8 @@ description: Toggle content visibility in your Svelte app with TheUI-Svelte's Co
       {#snippet example()}
       <div>
         <Collapse ariaLabel="COLLAPSE">
-          {#snippet title()}
-            <Button>Flush collapse title</Button>
+          {#snippet trigger()}
+            <Button>Flush collapse trigger</Button>
           {/snippet}
           <p>Nam pretium turpis et arcu. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nam adipiscing. Quisque libero metus, condimentum nec, tempor a, commodo mollis, magna. Curabitur suscipit suscipit tellus.</p>
         </Collapse>
@@ -41,16 +41,16 @@ description: Toggle content visibility in your Svelte app with TheUI-Svelte's Co
 </script>
 
 <Collapse ariaLabel="COLLAPSE">
-  {#snippet title()}
-    <Button>Flush collapse title</Button>
+  {#snippet trigger()}
+    <Button>Flush collapse trigger</Button>
   {/snippet}
   <p> ..... </p>
 </Collapse>
 ```
       {/snippet}
     </Example>
-    <p class="not-prose">The title snippet <code>{"{" + "#snippet title()" + "}"}</code> defines the trigger for the collapse. In this case, a button labeled "Flush Collapse Title" acts as the clickable element to toggle the collapse.</p>
-    <p class="not-prose">Any component outside the title snippet will be considered as the content of the collapse and will be revealed or hidden based on the collapse state.</p>
+    <p class="not-prose">The <code>trigger</code> snippet <code>{"{" + "#snippet trigger()" + "}"}</code> defines the trigger for the collapse. In this case, a button labeled "Flush Collapse Trigger" acts as the clickable element to toggle the collapse.</p>
+    <p class="not-prose">Any component outside the trigger snippet will be considered as the content of the collapse and will be revealed or hidden based on the collapse state.</p>
   </DocBlock>
 
   <DocBlock title="Accessibility">
