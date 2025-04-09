@@ -72,23 +72,23 @@ description:
         <li><b>custom</b>: Use this option when you want to set a custom size for the dropdown through additional styling.</li>
       </ul>
       {#snippet example()}
-      <div class="flex justify-between w-full flex-wrap gap-y-4">
-        <Dropdown label="Auto" width="auto">
+      <div class="flex flex-col justify-between w-full md:w-1/2 flex-wrap gap-y-2">
+        <Dropdown label="Auto" width="auto" buttonClasses="w-full">
           {@render dropdownBasic()}
         </Dropdown>
-        <Dropdown label="Small" width="sm">
+        <Dropdown label="Small" width="sm" buttonClasses="w-full">
           {@render dropdownBasic()}
         </Dropdown>
-        <Dropdown label="Medium" width="md">
+        <Dropdown label="Medium" width="md" buttonClasses="w-full">
           {@render dropdownBasic()}
         </Dropdown>
-        <Dropdown label="Large" width="lg">
+        <Dropdown label="Large" width="lg" buttonClasses="w-full">
           {@render dropdownBasic()}
         </Dropdown>
-        <Dropdown label="Full width" width="full">
+        <Dropdown label="Full width" width="full" buttonClasses="w-full">
           {@render dropdownBasic()}
         </Dropdown>
-        <Dropdown label="Custom" width="custom">
+        <Dropdown label="Custom" width="custom" buttonClasses="w-full" dropdownClasses="w-[300px]">
           {@render dropdownBasic()}
         </Dropdown>
       </div>
@@ -111,8 +111,8 @@ description:
 <!-- Full-width dropdown -->
 <Dropdown size="full"> ... </Dropdown>
 
-<!-- Custom size dropdown (you can set custom styles) -->
-<Dropdown size="custom"> ... </Dropdown>
+<!-- Custom size dropdown - set custom width using TailwindCSS class -->
+<Dropdown size="custom" dropdownClasses="w-[300px]"> ... </Dropdown>
 
 ```
       {/snippet}
@@ -154,15 +154,17 @@ description:
     <p class="not-prose">The <code>dropdownEvent</code> prop defines how the dropdown is triggered. By default, the dropdown opens when clicked, but you can change this behavior to trigger on hover by setting it to <code>"hover"</code>.</p>
     <Example>
       {#snippet example()}
-      <div>
+        <Dropdown label="Dropdown on click">
+          {@render dropdownBasic()}
+        </Dropdown>
         <Dropdown label="Dropdown on hover" dropdownEvent="hover">
           {@render dropdownBasic()}
         </Dropdown>
-      </div>
       {/snippet}
 
       {#snippet code()}
 ```html
+<Dropdown dropdownEvent="click"> ... </Dropdown> <!-- Default -->
 <Dropdown dropdownEvent="hover"> ... </Dropdown>
 ```
       {/snippet}
@@ -258,7 +260,7 @@ description:
       {#snippet example()}
       <div>
         <Dropdown label="Dropdown">
-          <DropdownItem url="/"></DropdownItem> Link>
+          <DropdownItem url="/">Link</DropdownItem>
           <DropdownItem url="/" active={true}>Active Link</DropdownItem>
           <DropdownItem url="/">Link</DropdownItem>
         </Dropdown>
@@ -268,7 +270,7 @@ description:
       {#snippet code()}
 ```html
 <Dropdown label="Dropdown">
-  <DropdownItem url="/"></DropdownItem> Link>
+  <DropdownItem url="/">Link</DropdownItem>
   <DropdownItem url="/" active={true}>Active Link</DropdownItem>
   <DropdownItem url="/">Link</DropdownItem>
 </Dropdown>
@@ -385,7 +387,8 @@ description:
   </DocBlock>
 
   <DocBlock title="Animation">
-    <Example>
+    <p class="not-prose">Based on your design requirements, you can customize the animation type and the speed of the <code>Dropdown</code> using the <code>animation</code> and <code>animationSpeed</code> props.</p>
+    <Example title="Animation Type">
       <p class="not-prose">The <code>animation</code> prop controls how the dropdown appears when opened. It supports multiple animation styles to enhance user experience. By default, the dropdown uses the <code>slide-up</code> animation. Adjust this prop to match your design preferences.</p>
       <ul class="my-0">
         <li><b>slide-left</b>: The dropdown slides in from the left.</li>
@@ -397,26 +400,26 @@ description:
         <li><b>zoom-out</b>: The dropdown zooms out from a larger size.</li>
       </ul>
       {#snippet example()}
-      <div class="flex justify-between w-full flex-wrap gap-y-4">
-        <Dropdown label="Slide left" animation="slide-left">
+      <div class="flex flex-col justify-between w-full md:w-1/2 flex-wrap gap-y-2">
+        <Dropdown label="Slide left" animation="slide-left" buttonClasses="w-full">
           {@render dropdownBasic()}
         </Dropdown>
-        <Dropdown label="Slide up" animation="slide-up">
+        <Dropdown label="Slide up" animation="slide-up" buttonClasses="w-full">
           {@render dropdownBasic()}
         </Dropdown>
-        <Dropdown label="Slide right" animation="slide-right">
+        <Dropdown label="Slide right" animation="slide-right" buttonClasses="w-full">
           {@render dropdownBasic()}
         </Dropdown>
-        <Dropdown label="Slide down" animation="slide-down">
+        <Dropdown label="Slide down" animation="slide-down" buttonClasses="w-full">
           {@render dropdownBasic()}
         </Dropdown>
-        <Dropdown label="Fade" animation="fade">
+        <Dropdown label="Fade" animation="fade" buttonClasses="w-full">
           {@render dropdownBasic()}
         </Dropdown>
-        <Dropdown label="Zoom in" animation="zoom-in">
+        <Dropdown label="Zoom in" animation="zoom-in" buttonClasses="w-full">
           {@render dropdownBasic()}
         </Dropdown>
-        <Dropdown label="Zoom out" animation="zoom-out">
+        <Dropdown label="Zoom out" animation="zoom-out" buttonClasses="w-full">
           {@render dropdownBasic()}
         </Dropdown>
       </div>
@@ -435,29 +438,26 @@ description:
       {/snippet}
     </Example>
     <p class="not-prose">These animation options help create a more engaging and visually appealing dropdown experience.</p>
-  </DocBlock>
-
-  <DocBlock title="Animation Speed">
-    <p class="not-prose">The <code>animateSpeed</code> prop controls the speed of the dropdown animation, allowing for smooth transitions at different paces. It accepts the following values <code>none</code>, <code>slower</code>, <code>slow</code>, <code>normal</code>, <code>fast</code> and <code>faster</code></p>
-    <Example>
+    <Example title="Animation Speed">
+      <p class="not-prose">The <code>animationSpeed</code> prop controls the speed of the dropdown animation, allowing for smooth transitions at different paces. It accepts the following values <code>none</code>, <code>slower</code>, <code>slow</code>, <code>normal</code>, <code>fast</code> and <code>faster</code></p>
       {#snippet example()}
-      <div class="flex justify-between w-full flex-wrap gap-y-4">
-        <Dropdown label="Slower" animateSpeed="slower">
+      <div class="flex flex-col justify-between w-full md:w-1/2 flex-wrap gap-y-2">
+        <Dropdown label="Slower" animationSpeed="slower" buttonClasses="w-full">
           {@render dropdownBasic()}
         </Dropdown>
-        <Dropdown label="Slow" animateSpeed="slow">
+        <Dropdown label="Slow" animationSpeed="slow" buttonClasses="w-full">
           {@render dropdownBasic()}
         </Dropdown>
-        <Dropdown label="Medium" animateSpeed="medium">
+        <Dropdown label="Medium" animationSpeed="medium" buttonClasses="w-full">
           {@render dropdownBasic()}
         </Dropdown>
-        <Dropdown label="Fast" animateSpeed="fast">
+        <Dropdown label="Fast" animationSpeed="fast" buttonClasses="w-full">
           {@render dropdownBasic()}
         </Dropdown>
-        <Dropdown label="Faster" animateSpeed="faster">
+        <Dropdown label="Faster" animationSpeed="faster" buttonClasses="w-full">
           {@render dropdownBasic()}
         </Dropdown>
-        <Dropdown label="No Animate" animateSpeed="none">
+        <Dropdown label="No Animate" animationSpeed="none" buttonClasses="w-full">
           {@render dropdownBasic()}
         </Dropdown>
       </div>
@@ -465,12 +465,12 @@ description:
 
       {#snippet code()}
 ```html
-<Dropdown animateSpeed="slower"> ... </Dropdown>
-<Dropdown animateSpeed="slow"> ... </Dropdown>
-<Dropdown animateSpeed="medium"> ... </Dropdown>
-<Dropdown animateSpeed="fast"> ... </Dropdown>
-<Dropdown animateSpeed="faster"> ... </Dropdown>
-<Dropdown animateSpeed="none"> ... </Dropdown>
+<Dropdown animationSpeed="slower"> ... </Dropdown>
+<Dropdown animationSpeed="slow"> ... </Dropdown>
+<Dropdown animationSpeed="medium"> ... </Dropdown>
+<Dropdown animationSpeed="fast"> ... </Dropdown>
+<Dropdown animationSpeed="faster"> ... </Dropdown>
+<Dropdown animationSpeed="none"> ... </Dropdown>
 ```
       {/snippet}
     </Example>
@@ -576,6 +576,24 @@ description:
     <p class="not-prose">These props enable you to tailor the dropdown's look and feel, ensuring it aligns with your design preferences and project requirements.</p>
   </DocBlock>
 
+  <DocBlock title="Accessibility">
+    <div>
+      <p class="not-prose">The Dropdown component follows WAI-ARIA best practices.</p>
+      <ul class="my-0">
+        <li><span class="not-prose">The trigger button uses <code>aria-haspopup="menu"</code>, <code>aria-expanded</code>, and <code>aria-controls</code> to describe the dropdown behavior.</span></li>
+        <li>
+          <span class="not-prose">The dropdown list uses <code>role="menu"</code> with each item using appropriate roles:</span>
+          <ul class="my-0">
+            <li><span class="not-prose"><code>menuitem</code> for clickable items</span></li>
+            <li><span class="not-prose"><code>heading</code> for group labels</span></li>
+            <li><span class="not-prose"><code>presentation</code> for dividers</span></li>
+          </ul>
+        </li>
+        <li><span class="not-prose">Keyboard navigation is supported via arrow keys, <code>Enter</code> and <code>Escape</code>.</li>
+      </ul>
+    </div>
+  </DocBlock>
+
   <DocBlock title="Configuration">
     <DropdownConfig title="Dropdown" component={component.dropdown} />
     <ItemConfig title="Dropdown Item" component={component.item} />
@@ -597,6 +615,7 @@ description:
     <a href={processID("Dropdown Backdrop")}>Dropdown Backdrop</a>
     <a href={processID("Close on Outside Click")}>Close on Outside Click</a>
     <a href={processID("Customization")}>Customization</a>
+    <a href={processID("Accessibility")}>Accessibility</a>
     <a href={processID("Configuration")}>Configuration</a>
     <a class="ps-4" href={processID("Dropdown")}>Dropdown</a>
     <a class="ps-4" href={processID("Dropdown Item")}>Dropdown Item</a>
