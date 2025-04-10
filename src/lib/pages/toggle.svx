@@ -204,6 +204,10 @@ description: Fully customizable switch that can replace traditional checkboxes a
     </Example>
   </DocBlock>
 
+  <DocBlock title="Accessibility">
+    <p class="not-prose">The Toggle component is more than just good looks — it's smart, too. With built-in <code>role="switch"</code> and dynamic <code>aria-checked</code>, screen readers instantly know whether it's on or off. Whether you're using it as a checkbox or a radio button, it adapts and communicates its state clearly. The linked label and responsive design ensure a smooth, accessible toggle every time.</p>
+  </DocBlock>
+
   <DocBlock title="Configuration">
     <ConfigComponent {component} />
   </DocBlock>
@@ -218,8 +222,8 @@ description: Fully customizable switch that can replace traditional checkboxes a
     <a href={processID("Toggle Sizes")}>Toggle Sizes</a>
     <a href={processID("Animation")}>Animation</a>
     <a href={processID("Rounded Toggle")}>Rounded Toggle</a>
-
     <a href={processID("Customization")}>Customization</a>
+    <a href={processID("Accessibility")}>Accessibility</a>
     <a href={processID("Configuration")}>Configuration</a>
   {/snippet}
 

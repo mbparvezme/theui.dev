@@ -54,6 +54,10 @@ description: The Fieldset component is a wrapper for input groups, providing bet
     </Example>
   </DocBlock> -->
 
+  <DocBlock title="Accessibility">
+    <p class="not-prose">Use <code>Fieldset</code> to semantically group related inputs like checkboxes or radios. It includes a visually hidden <code>legend</code> so screen readers can announce the purpose of the group. Clean markup, meaningful structure — accessibility baked in.</p>
+  </DocBlock>
+
   <DocBlock title="Configuration">
     <p class="not-prose">The <code>Fieldset</code> component includes a set of props that are not directly applied to the Fieldset itself but are inherited by all its child inputs. This allows for a consistent appearance and behavior across all enclosed form inputs, ensuring a cohesive design without the need for individual configuration.</p>
     <ConfigComponent {component} />
@@ -62,6 +66,7 @@ description: The Fieldset component is a wrapper for input groups, providing bet
   {#snippet sidebar()}
     <a href={processID("About")}>About</a>
     <a href={processID("Example")}>Example</a>
+    <a href={processID("Accessibility")}>Accessibility</a>
     <a href={processID("Configuration")}>Configuration</a>
   {/snippet}
 

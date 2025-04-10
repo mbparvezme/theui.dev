@@ -326,6 +326,10 @@ description: Provides a customizable dropdown for selecting options. It supports
     </Example>
   </DocBlock>
 
+  <DocBlock title="Accessibility">
+    <p class="not-prose">The <code>Select</code> component is fully accessible by default. It supports a linked label (floating or static) and connects to <code>HelperText</code> using <code>aria-describedby</code> for screen reader clarity. You can provide options via the <code>options</code> prop or render them directly using slot content. A default placeholder is shown unless disabled, and all <code>&lt;option&gt;</code> tags support <code>disabled</code> for better control. Just make sure a visible <code>label</code> or <code>aria-label</code> is provided.</p>
+  </DocBlock>
+
   <DocBlock title="Configuration">
     <ConfigComponent {component} />
   </DocBlock>
@@ -342,6 +346,7 @@ description: Provides a customizable dropdown for selecting options. It supports
     <a href={processID("Helper Text")}>Helper Text</a>
     <a href={processID("Resetting All Styles")}>Reset</a>
     <a href={processID("Customization")}>Customization</a>
+    <a href={processID("Accessibility")}>Accessibility</a>
     <a href={processID("Configuration")}>Configuration</a>
   {/snippet}
 

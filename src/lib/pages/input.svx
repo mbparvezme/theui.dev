@@ -305,6 +305,10 @@ description: The Input component is a flexible and customizable form element tha
     </Example>
   </DocBlock>
 
+  <DocBlock title="Accessibility">
+    <p class="not-prose">Our Input component is built for both clarity and accessibility. It smartly connects the <code>&lt;label&gt;</code> to the input using the <code>for</code> and <code>id</code> attributes, making sure screen readers announce labels without confusion. When helper text is present, <code>aria-describedby</code> links it perfectly to the input so assistive tech users get the full context. Whether you're typing in a textbox or writing paragraphs in a textarea, everything flows beautifully and accessibly.</p>
+  </DocBlock>
+
   <DocBlock title="Configuration">
     <ConfigComponent {component} />
   </DocBlock>
@@ -323,6 +327,7 @@ description: The Input component is a flexible and customizable form element tha
     <a href={processID("Rounded Input")}>Rounded Input</a>
     <a href={processID("Animation Speed")}>Animation Speed</a>
     <a href={processID("Customization")}>Customization</a>
+    <a href={processID("Accessibility")}>Accessibility</a>
     <a href={processID("Configuration")}>Configuration</a>
   {/snippet}
 </DocLayout>

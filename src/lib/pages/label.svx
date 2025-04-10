@@ -73,7 +73,7 @@ description: A reusable component for rendering form labels, ensuring consistent
   </DocBlock>
 
   <DocBlock title="Accessibility">
-    <p class="not-prose">The <code>Label</code> component is based on the native <code>&gt;Label&lt;</code> element, which improves   accessibility by providing an associated label for form elements. It automatically connects with the input field using the <code>for</code> attribute, making it easier for users, especially those using screen readers, to understand what each input is for. The label also increases the clickable area, improving the user experience.</p>
+    <p class="not-prose">The <code>Label</code> component is based on the native <code>&lt;Label&gt;</code> element, which improves   accessibility by providing an associated label for form elements. It automatically connects with the input field using the <code>for</code> attribute, making it easier for users, especially those using screen readers, to understand what each input is for. The label also increases the clickable area, improving the user experience.</p>
   </DocBlock>
 
   <DocBlock title="Configuration">

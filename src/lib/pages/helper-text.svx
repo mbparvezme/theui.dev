@@ -70,6 +70,10 @@ description: A lightweight component designed to provide additional context or g
     </Example>
   </DocBlock>
 
+  <DocBlock title="Accessibility">
+    <p class="not-prose"><code>HelperText</code> gives users additional guidance without distraction. It's screen reader-friendly through <code>aria-describedby</code>, and styled to stay secondary in visual hierarchy. It accepts both plain text and render functions for flexibility.</p>
+  </DocBlock>
+
   <DocBlock title="Configuration">
     <ConfigComponent {component} />
   </DocBlock>
@@ -79,6 +83,7 @@ description: A lightweight component designed to provide additional context or g
     <a href={processID("Example")}>Example</a>
     <a href={processID("Helper Text Content")}>Helper Text Content</a>
     <a href={processID("Customization")}>Customization</a>
+    <a href={processID("Accessibility")}>Accessibility</a>
     <a href={processID("Configuration")}>Configuration</a>
   {/snippet}
 

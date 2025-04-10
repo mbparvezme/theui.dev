@@ -197,6 +197,10 @@ description: The FileInput component is a customizable wrapper for file selectio
     </Example>
   </DocBlock>
 
+  <DocBlock title="Accessibility">
+    <p class="not-prose">Uploading files should be simple - and accessible. Our File component pairs each file input with a clear, connected <code>&lt;label&gt;</code>, and uses <code>aria-describedby</code> to guide screen readers to any helpful hints or messages. It's a smooth, informative experience for all users, whether navigating with a mouse or a screen reader.</p>
+  </DocBlock>
+
   <DocBlock title="Configuration">
     <ConfigComponent {component} />
   </DocBlock>
@@ -209,8 +213,7 @@ description: The FileInput component is a customizable wrapper for file selectio
     <a href={processID("Rounded")}>Rounded</a>
     <a href={processID("Helper Text")}>Helper Text</a>
     <a href={processID("Customization")}>Customization</a>
+    <a href={processID("Accessibility")}>Accessibility</a>
     <a href={processID("Configuration")}>Configuration</a>
   {/snippet}
-
-
 </DocLayout>

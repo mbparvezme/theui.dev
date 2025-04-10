@@ -54,9 +54,7 @@ description: Toggle content visibility in your Svelte app with TheUI-Svelte's Co
   </DocBlock>
 
   <DocBlock title="Accessibility">
-    <div>
-      <p class="not-prose">The <code>Collapse</code> component is fully accessible and keyboard-friendly. The toggle element uses <code>role="button"</code> and is focusable with <code>tabindex="0"</code>, allowing users to control it using the Enter or Space keys. It includes <code>aria-expanded</code>, <code>aria-controls</code>, and <code>aria-labelledby</code> to communicate state and relationships clearly to assistive technologies. The content area is hidden from screen readers when collapsed using <code>aria-hidden</code>. You can also use the <code>ariaLabel</code> prop to provide a custom accessible label for better context.</p>
-    </div>
+    <p class="not-prose">The <code>Collapse</code> component is fully accessible and keyboard-friendly. The toggle element uses <code>role="button"</code> and is focusable with <code>tabindex="0"</code>, allowing users to control it using the Enter or Space keys. It includes <code>aria-expanded</code>, <code>aria-controls</code>, and <code>aria-labelledby</code> to communicate state and relationships clearly to assistive technologies. The content area is hidden from screen readers when collapsed using <code>aria-hidden</code>. You can also use the <code>ariaLabel</code> prop to provide a custom accessible label for better context.</p>
   </DocBlock>
 
   <DocBlock title="Configuration">
