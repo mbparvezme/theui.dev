@@ -144,6 +144,15 @@ description: Add scalable vector icons to your Svelte app with TheUI-Svelte's SV
     </Example>
   </DocBlock>
 
+  <DocBlock title="Accessibility">
+    <p class="not-prose">The <code>SVG</code> component is built for flexible, accessible icons.</p>
+    <ul class="my-0">
+      <li><span class="not-prose"><b>Decorative by default</b>: Uses <code>aria-hidden="true"</code> and <code>tabindex="-1"</code> to skip screen readers and keyboard navigation.</span></li>
+      <li><span class="not-prose"><b>Custom size and viewbox</b>: Easily adjust using <code>size</code> and <code>viewBox</code> props.</span></li>
+      <li><span class="not-prose"><b>Dynamic styling</b>: Use <code>stroke</code> prop or <code>class</code> for visual customization.</span></li>
+    </ul>
+  </DocBlock>
+
   <DocBlock title="Configuration">
     <ConfigComponent {component} />
   </DocBlock>
@@ -154,6 +163,7 @@ description: Add scalable vector icons to your Svelte app with TheUI-Svelte's SV
     <a href={processID("Modify viewBox")}>Modify viewBox</a>
     <a href={processID("Stroke Icon")}>Stroke Icon</a>
     <a href={processID("Customization")}>Customization</a>
+    <a href={processID("Accessibility")}>Accessibility</a>
     <a href={processID("Configuration")}>Configuration</a>
   {/snippet}
 </DocLayout>
