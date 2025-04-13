@@ -3,7 +3,8 @@
   "account_id": "74c0c0beae6fa8f113955e4a18cc258f",
   "main": "./.cloudflare/worker.js",
   "compatibility_date": "2025-04-13",
-  "site": {
-    "bucket": "./.cloudflare/public"
+  "assets": {
+    "directory": ".cloudflare/public",
+    "binding": "ASSETS"
   }
 }
