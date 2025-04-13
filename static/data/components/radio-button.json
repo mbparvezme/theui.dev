@@ -4,18 +4,6 @@
     "title": "Props",
     "data": [
       {
-        "name": "name",
-        "type": "string",
-        "default": "undefined",
-        "description": "Specifies the name of the radio button, used to group radio buttons together."
-      },
-      {
-        "name": "id",
-        "type": "string",
-        "default": "&lt;RANDOM STRING&gt;",
-        "description": "Unique identifier for the radio button. If not provided, an ID is automatically generated."
-      },
-      {
         "name": "value",
         "type": "unknown",
         "default": "null",
@@ -28,7 +16,7 @@
         "description": "Controls the size of the radio button. Available options: \"sm\", \"md\", \"lg\", \"xl\"."
       },
       {
-        "name": "animate",
+        "name": "animationSpeed",
         "type": "<a href=\"/docs/types#common-types\">ANIMATE_SPEED</a>",
         "default": "\"normal\"",
         "description": "Determines the animation speed for state changes. Options: \"none\", \"normal\", \"fast\", \"slow\"."

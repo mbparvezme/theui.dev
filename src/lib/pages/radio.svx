@@ -86,28 +86,28 @@ description: The Radio Button component allows users to select a single option f
   </DocBlock>
 
   <DocBlock title="Animation">
-    <p class="not-prose">The <code>animate</code> prop defines the speed of the radio button's selection transition. This improves user interaction by adding smooth effects when selecting options. The available values are <code>"none"</code>, <code>"slower"</code>, <code>"slow"</code> <code>"normal"</code> (default), <code>"fast"</code> and <code>"faster"</code>.</p>
+    <p class="not-prose">The <code>animateSpeed</code> prop defines the speed of the radio button's selection transition. This improves user interaction by adding smooth effects when selecting options. The available values are <code>"none"</code>, <code>"slower"</code>, <code>"slow"</code> <code>"normal"</code> (default), <code>"fast"</code> and <code>"faster"</code>.</p>
     <p class="not-prose">Setting it to <code>"none"</code>disables animations, while other values changes the transition speed.</p>
     <Example>
     {#snippet example()}
 <div class="flex flex-col gap-2">
-  <Radio name="myRadio" animate="slower">Slower animation</Radio>
-  <Radio name="myRadio" animate="slow">Slow animation</Radio>
-  <Radio name="myRadio" animate="normal">Normal animation</Radio>
-  <Radio name="myRadio" animate="fast">Fast animation</Radio>
-  <Radio name="myRadio" animate="faster">Faster animation</Radio>
-  <Radio name="myRadio" animate="none">No animation</Radio>
+  <Radio name="myRadio" animateSpeed="slower">Slower animation</Radio>
+  <Radio name="myRadio" animateSpeed="slow">Slow animation</Radio>
+  <Radio name="myRadio" animateSpeed="normal">Normal animation</Radio>
+  <Radio name="myRadio" animateSpeed="fast">Fast animation</Radio>
+  <Radio name="myRadio" animateSpeed="faster">Faster animation</Radio>
+  <Radio name="myRadio" animateSpeed="none">No animation</Radio>
 </div>
       {/snippet}
 
       {#snippet code()}
 ```html
-<Radio name="myRadio" animate="slower">Slower animation</Radio>
-<Radio name="myRadio" animate="slow">Slow animation</Radio>
-<Radio name="myRadio" animate="normal">Normal animation</Radio>
-<Radio name="myRadio" animate="fast">Fast animation</Radio>
-<Radio name="myRadio" animate="faster">Faster animation</Radio>
-<Radio name="myRadio" animate="none">No animation</Radio>
+<Radio name="myRadio" animateSpeed="slower">Slower animation</Radio>
+<Radio name="myRadio" animateSpeed="slow">Slow animation</Radio>
+<Radio name="myRadio" animateSpeed="normal">Normal animation</Radio>
+<Radio name="myRadio" animateSpeed="fast">Fast animation</Radio>
+<Radio name="myRadio" animateSpeed="faster">Faster animation</Radio>
+<Radio name="myRadio" animateSpeed="none">No animation</Radio>
 ```
       {/snippet}
     </Example>
@@ -177,6 +177,10 @@ description: The Radio Button component allows users to select a single option f
     </Example>
   </DocBlock>
 
+  <DocBlock title="Accessibility">
+    <p class="not-prose">The <code>Radio</code> component uses the native <code>&lt;input type="radio"&gt;</code> with the <code>aria-checked</code> attribute to reflect its selected state. It also supports <code>aria-disabled</code> through <code>props</code> for disabled states. Each radio button is associated with a <code>&lt;Label&gt;</code> for better accessibility. The radio buttons are grouped together, ensuring that only one can be selected at a time, and the layout can be reversed when needed for RTL or right-aligned designs.</p>
+  </DocBlock>
+
   <DocBlock title="Configuration">
     <ConfigComponent {component} />
   </DocBlock>
@@ -189,7 +193,8 @@ description: The Radio Button component allows users to select a single option f
     <a href={processID("Animation")}>Animation</a>
     <a href={processID("Resetting Style")}>Resetting Style</a>
     <a href={processID("Customization")}>Customization</a>
-    <a href={processID("Configuration")}>Configuration Options</a>
+    <a href={processID("Accessibility")}>Accessibility</a>
+    <a href={processID("Configuration")}>Configuration</a>
   {/snippet}
 
 

@@ -23,13 +23,13 @@
       },
       {
         "name": "topImage",
-        "type": "Snippet | {class?: string, src?: string, alt?: string, [key: string]: unknown}",
+        "type": "Snippet | <a href=\"/docs/types#card-image-type\">CARD_IMAGE_TYPE</a>",
         "default": "undefined",
         "description": "An optional top image, which can be a Snippet or an object with image properties."
       },
       {
         "name": "bottomImage",
-        "type": "Snippet | {class?: string, src?: string, alt?: string, [key: string]: unknown}",
+        "type": "Snippet | <a href=\"/docs/types#card-image-type\">CARD_IMAGE_TYPE</a>",
         "default": "undefined",
         "description": "An optional bottom image, which can be a Snippet or an object with image properties."
       },

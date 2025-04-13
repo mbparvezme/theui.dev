@@ -17,15 +17,15 @@ description: Design responsive and accessible navigation bars for your Svelte ap
   import {Navbar, NavBrand, NavCollapse, NavLinkGroup, NavDropdown, NavLink, Button, Svg} from "theui-svelte";
 </script>
 
-{#snippet navLinks()}
-  <NavLink href="#" text="Link 1" />
-  <NavLink href="#" text="Link 2" />
-  <NavLink href="#" text="Link 3" />
+{#snippet navLinks(count = 3, start = 1)}
+  {#each Array(count).keys() as i}
+    <NavLink href="#" text={"Link " +  (start + i)} />
+  {/each}
 {/snippet}
 
-{#snippet navLinksGroup(align = "start")}
+{#snippet navLinksGroup(align = "start", count = 3, start = 1)}
   <NavLinkGroup {align}>
-     {@render navLinks()}
+    {@render navLinks(count, start)}
   </NavLinkGroup>
 {/snippet}
 
@@ -55,16 +55,26 @@ description: Design responsive and accessible navigation bars for your Svelte ap
 {/snippet}
 
 <DocLayout>
-  <DocHead title="Navbar" text="A responsive navigation bar with support for dropdown menus, keyboard navigation, and customizable styling. It’s ideal for building primary site navigation or complex menu systems." {edit_url}/>
+  <DocHead title="Navbar" text="A responsive navigation bar with support for dropdown menus, keyboard navigation, and customizable styling. It's ideal for building primary site navigation or complex menu systems." {edit_url}/>
+
+  <DocBlock title="About">
+    <p class="not-prose">The <code>Navbar</code> component provides a fully responsive and accessible navigation bar for your application. It supports branding, grouped links, and dropdown menus, making it suitable for both simple and complex navigation structures. With built-in keyboard navigation and customizable styling options, the Navbar ensures a seamless user experience across all devices.</p>
+  </DocBlock>
 
   <DocBlock title="Example">
-    <p class="not-prose">..</p>
     <Example classes="p-4">
+      <p class="not-prose">The <code>Navbar</code> component is built using multiple elements, each serving a specific role:</p>
+      <ul class="my-0">
+        <li><span class="not-prose"><code>NavBrand</code></span>Displays the brand name or logo and links to the homepage or any specified URL.</li>
+        <li><span class="not-prose"><code>NavLinkGroup</code></span>A wrapper for organizing multiple navigation links in a structured manner.</li>
+        <li><span class="not-prose"><code>NavLink</code></span>Represents an individual navigation link with customizable text and URL.</li>
+        <li><span class="not-prose"><code>NavDropdown</code></span>A dropdown menu inside the Navbar that contains additional navigation links.</li>
+      </ul>
       {#snippet example()}
-        <Navbar>
-          <NavBrand href="#">BRAND</NavBrand>
-          {@render navLinksDropdownGroup()}
-        </Navbar>
+<Navbar>
+  <NavBrand href="#">BRAND</NavBrand>
+  {@render navLinksDropdownGroup()}
+</Navbar>
       {/snippet}
       {#snippet code()}
 
@@ -92,47 +102,62 @@ description: Design responsive and accessible navigation bars for your Svelte ap
   </DocBlock>
 
   <DocBlock title="Scroll Behavior">
-    <p class="not-prose">..</p>
-    <Example classes="p-4 w-full flex flex-col gap-2">
+    <p class="not-prose">The <code>scrollBehavior</code> prop controls how the Navbar behaves when the user scrolls. It provides flexibility in handling visibility and size adjustments based on scrolling direction.</p>
+    <Example title="Navbar Scrolling Effects" classes="p-4 w-full flex flex-col gap-2">
+      <ul class="my-0">
+        <li><span class="not-prose"><code>default</code></span> - The Navbar remains static and does not react to scrolling.</li>
+        <li><span class="not-prose"><code>fixed</code></span> - The Navbar stays fixed at the top of the page, even when scrolling.</li>
+        <li><span class="not-prose"><code>shrinkOnScrollDown</code> - The Navbar reduces in height when scrolling down and restores its size when scrolling up. You can control the scroll amount with the <code>scrollAmountToShrink</code> prop to shrink the <b>Navbar</b>.</span> Follow <a href="#hide/shrink-scroll-amount">this for more</a>.</li>
+        <li><span class="not-prose"><code>hideOnScrollDown</code> - The Navbar disappears when scrolling down and reappears when scrolling up. Use the <code>scrollAmountToHide</code> prop to change the scroll amount to hide the <b>Navbar</b>.</span> Follow <a href="#hide/shrink-scroll-amount">this for more</a>.</li>
+        <li><span class="not-prose"><code>shrinkAndHide</code></span> - The Navbar first shrinks on scroll down and then hides completely, reappearing at full size when scrolling up.</li>
+      </ul>
       {#snippet example()}
-        <Button class="w-full max-w-60 justify-between" href="/example/navbar/" target="_blank" size="sm">Default Navbar</Button>
-        <Button class="w-full max-w-60 justify-between" href="/example/navbar/" target="_blank" size="sm">Fixed Navbar</Button>
-        <Button class="w-full max-w-60 justify-between" href="/example/navbar/" target="_blank" size="sm">Shrink on Scroll Down</Button>
-        <Button class="w-full max-w-60 justify-between" href="/example/navbar/" target="_blank" size="sm">Hide on Scroll Down</Button>
-        <Button class="w-full max-w-60 justify-between" href="/example/navbar/" target="_blank" size="sm">Shrink and Hide on Scroll Down</Button>
+        <Button class="w-full max-w-60 justify-between" href="/example/navbar?q=default" target="_blank" size="sm">Default Navbar</Button>
+        <Button class="w-full max-w-60 justify-between" href="/example/navbar?q=fixed" target="_blank" size="sm">Fixed Navbar</Button>
+        <Button class="w-full max-w-60 justify-between" href="/example/navbar?q=shrinkOnScrollDown" target="_blank" size="sm">Shrink on Scroll</Button>
+        <Button class="w-full max-w-60 justify-between" href="/example/navbar?q=hideOnScrollDown" target="_blank" size="sm">Hide on Scroll</Button>
+        <Button class="w-full max-w-60 justify-between" href="/example/navbar?q=shrinkAndHide" target="_blank" size="sm">Shrink and Hide on Scroll</Button>
       {/snippet}
       {#snippet code()}
 
 ```html
-<Navbar height="sm"> ... </Navbar>
-<Navbar height="md"> ... </Navbar> <!-- Default -->
-<Navbar height="lg"> ... </Navbar>
-<Navbar height="xl"> ... </Navbar>
+<Navbar scrollBehavior="default"> ... </Navbar>
+<Navbar scrollBehavior="fixed"> ... </Navbar>
+<Navbar scrollBehavior="shrinkOnScrollDown"> ... </Navbar>
+<Navbar scrollBehavior="hideOnScrollDown"> ... </Navbar>
+<Navbar scrollBehavior="shrinkAndHide"> ... </Navbar>
 ```
       {/snippet}
     </Example>
+
+    <Example title="Hide/Shrink Scroll Amount" classes="p-4 w-full flex flex-col gap-2">
+      <p class="not-prose">The <code>scrollAmountToShrink</code> and <code>scrollAmountToHide</code> props allow fine-tuned control over how the Navbar reacts to scrolling. These values determine the scroll distance (in pixels) required to trigger shrinking or hiding effects, making the Navbar more adaptive to different layouts.</p>  
+      <p class="not-prose">By default, <code>scrollAmountToShrink</code> is set to <b>32px</b>, meaning the Navbar will shrink after scrolling this distance when <code>shrinkOnScrollDown</code> or <code>shrinkAndHide</code> is enabled. Similarly, <code>scrollAmountToHide</code> is <b>128px</b>, which controls when the Navbar fully disappears when <code>hideOnScrollDown</code> or <code>shrinkAndHide</code> is used. Adjusting these values ensures a smooth and customized scroll behavior.</p>  
+    </Example>
+
+
   </DocBlock>
 
   <DocBlock title="Navbar Height">
-    <p class="not-prose">..</p>
+    <p class="not-prose">The <code>height</code> prop allows you to control the height of the Navbar. It helps in maintaining a consistent design while adjusting for different UI requirements. Available heights are: <code>sm</code>, <code>md</code>, <code>lg</code> and <code>xl</code>. Default is <code>md</code>.</p>
     <Example classes="p-4 w-full flex flex-col">
       {#snippet example()}
-        <Navbar height="sm">
-          <NavBrand href="#">BRAND</NavBrand>
-          {@render navLinksGroup()}
-        </Navbar>
-        <Navbar height="md">
-          <NavBrand href="#">BRAND</NavBrand>
-          {@render navLinksGroup()}
-        </Navbar>
-        <Navbar height="lg">
-          <NavBrand href="#">BRAND</NavBrand>
-          {@render navLinksGroup()}
-        </Navbar>
-        <Navbar height="xl">
-          <NavBrand href="#">BRAND</NavBrand>
-          {@render navLinksGroup()}
-        </Navbar>
+<Navbar height="sm" class="z-[24]">
+  <NavBrand href="#">BRAND</NavBrand>
+  {@render navLinksDropdownGroup()}
+</Navbar>
+<Navbar height="md" class="z-[23]">
+  <NavBrand href="#">BRAND</NavBrand>
+  {@render navLinksDropdownGroup()}
+</Navbar>
+<Navbar height="lg" class="z-[22]">
+  <NavBrand href="#">BRAND</NavBrand>
+  {@render navLinksDropdownGroup()}
+</Navbar>
+<Navbar height="xl">
+  <NavBrand href="#">BRAND</NavBrand>
+  {@render navLinksDropdownGroup()}
+</Navbar>
       {/snippet}
       {#snippet code()}
 
@@ -147,20 +172,28 @@ description: Design responsive and accessible navigation bars for your Svelte ap
   </DocBlock>
 
   <DocBlock title="Responsive Navbar">
-    <p class="not-prose">..</p>
-    <Example classes="p-4 w-full flex flex-col">
+    <p class="not-prose">The <b>Navbar</b> is fully responsive and adapts to different screen sizes with the help of the <code>NavCollapse</code> component. Any navigation elements placed inside <code>NavCollapse</code> will automatically collapse into a toggleable menu on smaller screens, ensuring a clean and accessible navigation experience. This is particularly useful for mobile and tablet views where space is limited.</p>
+    <Example title="NavCollapse">
+      <p class="not-prose">The <code>NavCollapse</code> component acts as a wrapper for collapsible navigation items. When used inside the <b>Navbar</b>, it ensures that the contained elements are hidden on smaller screens and can be revealed through a toggle button. Without <code>NavCollapse</code>, all navigation items will remain visible, even on small screens, potentially affecting layout and usability.</p>
+    </Example>
+    <Example title="navBreakpoint" mt={false}>
+      <p class="not-prose">The <code>navBreakpoint</code> prop in the <b>Navbar</b> component determines at which screen size the navigation should collapse. Available values are <code>'sm'</code>, <code>'md'</code>, <code>'lg'</code> (default), and <code>'xl'</code>. When the screen width is smaller than the defined breakpoint, <code>NavCollapse</code> will activate, hiding its content until toggled. Adjusting this value allows you to fine-tune when the menu should collapse based on your design needs.</p>
       {#snippet example()}
-        <Navbar>
-          <NavBrand href="#">BRAND</NavBrand>
-          <NavCollapse>
-            {@render navLinksDropdownGroup()}
-          </NavCollapse>
-        </Navbar>
+<script>
+  import {Navbar, NavBrand, NavCollapse, NavLinkGroup, NavDropdown, NavLink} from "theui-svelte";
+</script>
+
+<Navbar navBreakpoint="md">
+  <NavBrand href="#">BRAND</NavBrand>
+  <NavCollapse>
+    {@render navLinksDropdownGroup()}
+  </NavCollapse>
+</Navbar>
       {/snippet}
       {#snippet code()}
 
 ```html
-<Navbar>
+<Navbar navBreakpoint="md">
   <NavBrand href="#">BRAND</NavBrand>
   <NavCollapse>
     <NavLinkGroup>
@@ -171,22 +204,21 @@ description: Design responsive and accessible navigation bars for your Svelte ap
 ```
       {/snippet}
     </Example>
+    <p class="not-prose">In this example, the navigation items inside <code>NavCollapse</code> will collapse into a toggleable menu when the screen width is smaller than the <code>md</code> breakpoint.</p>
   </DocBlock>
 
   <DocBlock title="Link Alignment">
-    <p class="not-prose">..</p>
+    <p class="not-prose">The <code>align</code> prop in the <code>NavLinkGroup</code> component controls how navigation links are positioned within the group. By default, links are aligned to the <code>"start"</code>, keeping them on the left. If you want the links to be centered, set align to <code>"center"</code>. To push the links to the right, use <code>"end"</code>. In the example below, different <code>NavLinkGroup</code> elements demonstrate these alignments inside <code>NavCollapse</code>.</p>
     <Example classes="p-4 w-full flex flex-col">
       {#snippet example()}
-        <Navbar>
-          <NavBrand href="#">BRAND</NavBrand>
-          <NavCollapse>
-            {@render navLinksGroup()}
-            <NavLinkGroup align="end">
-              <NavLink href="#" text="Link 4" />
-              <NavLink href="#" text="Link 5" />
-            </NavLinkGroup>
-          </NavCollapse>
-        </Navbar>
+<Navbar>
+  <NavBrand href="#">BRAND</NavBrand>
+  <NavCollapse>
+    {@render navLinksGroup("start", 2)}
+    {@render navLinksGroup("center", 2, 3)}
+    {@render navLinksGroup("end", 2, 5)}
+  </NavCollapse>
+</Navbar>
       {/snippet}
       {#snippet code()}
 
@@ -194,12 +226,9 @@ description: Design responsive and accessible navigation bars for your Svelte ap
 <Navbar>
   <NavBrand href="#">BRAND</NavBrand>
   <NavCollapse>
-    <NavLinkGroup align="start"> <!-- Default -->
-      ...
-    </NavLinkGroup>
-    <NavLinkGroup align="end">
-      ...
-    </NavLinkGroup>
+    <NavLinkGroup align="start"> ... </NavLinkGroup> <!-- Default -->
+    <NavLinkGroup align="center"> ... </NavLinkGroup>
+    <NavLinkGroup align="end"> ... </NavLinkGroup>
   </NavCollapse>
 </Navbar>
 ```
@@ -208,15 +237,15 @@ description: Design responsive and accessible navigation bars for your Svelte ap
   </DocBlock>
 
   <DocBlock title="Navbar Dropdown">
-    <p class="not-prose">..</p>
     <Example classes="p-4 w-full flex flex-col">
+      <p class="not-prose">The <code>NavDropdown</code> component allows you to create dropdown menus within the <code>Navbar</code>, making it easy to organize navigation links under expandable sections. It supports various customizations, including event triggers, alignment, width, animations, and arrow icon control.</p>
       {#snippet example()}
-        <Navbar>
-          <NavBrand href="#">BRAND</NavBrand>
-          <NavCollapse>
-            {@render navDropdownGroup()}
-          </NavCollapse>
-        </Navbar>
+<Navbar>
+  <NavBrand href="#">BRAND</NavBrand>
+  <NavCollapse>
+    {@render navDropdownGroup()}
+  </NavCollapse>
+</Navbar>
       {/snippet}
       {#snippet code()}
 
@@ -224,7 +253,7 @@ description: Design responsive and accessible navigation bars for your Svelte ap
 <Navbar>
   <NavBrand href="#">BRAND</NavBrand>
   <NavCollapse>
-    <NavLinkGroup align="start">
+    <NavLinkGroup>
       ...
       <NavDropdown label="Dropdown">
         <NavLink href="#" text="Dropdown Link 1" />
@@ -237,59 +266,257 @@ description: Design responsive and accessible navigation bars for your Svelte ap
 ```
       {/snippet}
     </Example>
-    <Example title="Dropdown Alignment" classes="p-4 w-full flex flex-col">
+
+    <Example title="Dropdown Label" classes="p-4 w-full flex flex-col">
+      <p class="not-prose">The <code>label</code> prop/snippet in the <code>NavDropdown</code> defines the dropdown's visible label. You can pass it as a simple string or use a Snippet for more complex elements. For simple text or other simple content use it as a prop. For complex element, use <code>label</code> as a snippet.</p>
       {#snippet example()}
-        <Navbar>
-          <NavBrand href="#">BRAND</NavBrand>
-          {@render navDropdownGroup("start", "start")}
-          {@render navDropdownGroup("end", "end", 3)}
-        </Navbar>
+<Navbar>
+  <NavBrand href="#">BRAND</NavBrand>
+    <NavCollapse>
+      <NavLinkGroup>
+        <NavDropdown label="Simple text label">
+          {@render navDropdownLinks()}
+        </NavDropdown>
+    </NavLinkGroup>
+  </NavCollapse>
+</Navbar>
       {/snippet}
       {#snippet code()}
 
 ```html
-<NavDropdown label="Dropdown" align="start"> ... </NavDropdown> <!-- Default -->
-<NavDropdown label="Dropdown" align="end"> ... </NavDropdown>
+<NavDropdown label="Simple text label"> ... </NavDropdown>
+```
+      {/snippet}
+
+      {#snippet children2()}
+        <p class="not-prose mt-4">Following example demonstrate the <code>label</code> as snippet.</p>
+      {/snippet}
+
+      {#snippet example2()}
+<Navbar>
+  <NavBrand href="#">BRAND</NavBrand>
+    <NavCollapse>
+      <NavLinkGroup>
+        <NavDropdown>
+          {#snippet label()}
+            <Svg>
+              <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z"/>
+            </Svg>
+            <b>My Profile</b>
+          {/snippet}
+          {@render navDropdownLinks()}
+        </NavDropdown>
+    </NavLinkGroup>
+  </NavCollapse>
+</Navbar>
+      {/snippet}
+      {#snippet code2()}
+
+```html
+<NavDropdown>
+  {#snippet label()}
+    <Svg>
+      <path d="M8 8a3 3 0 ... 1.418-.832 1.664z"/>
+    </Svg>
+    <b>My Profile</b>
+  {/snippet}
+  <!-- Add dropdown links here -->
+</NavDropdown>
 ```
       {/snippet}
     </Example>
+
     <Example title="Dropdown Width" classes="p-4 w-full flex flex-col">
+      <p class="not-prose">The width of the dropdown menu can be controlled using the <code>width</code> prop. Available values are <code>"sm"</code>, <code>"md"</code>, <code>"lg"</code>, <code>"xl"</code>, and <code>"full"</code>. The <code>"full"</code> width setting is particularly useful for creating a mega menu.</p>
+      {#snippet example()}
+<Navbar>
+  <NavBrand href="#">BRAND</NavBrand>
+  <NavCollapse>
+    <NavLinkGroup>
+      <NavDropdown label="Small Dropdown" width="sm">
+        {@render navDropdownLinks()}
+      </NavDropdown>
+      <NavDropdown label="Medium Dropdown" width="md">
+        {@render navDropdownLinks()}
+      </NavDropdown>
+      <NavDropdown label="Large Dropdown" width="lg">
+        {@render navDropdownLinks()}
+      </NavDropdown>
+      <NavDropdown label="XL Dropdown" width="xl" align="end">
+        {@render navDropdownLinks()}
+      </NavDropdown>
+    </NavLinkGroup>
+  </NavCollapse>
+</Navbar>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<NavDropdown ... width="sm"> ... </NavDropdown>
+<NavDropdown ... width="md"> ... </NavDropdown> <!-- Default -->
+<NavDropdown ... width="lg"> ... </NavDropdown>
+<NavDropdown ... width="xl"> ... </NavDropdown>
+```
+      {/snippet}
+    </Example>
+
+    <Example title="Dropdown Alignment" classes="p-4 w-full flex flex-col">
+      <p class="not-prose">The dropdown menu can be aligned to either <code>"start"</code> (default) or <code>"end"</code>. Setting <code>align="end"</code> pushes the dropdown content to the right.</p>
+      {#snippet example()}
+<Navbar>
+  <NavBrand href="#">BRAND</NavBrand>
+  <NavCollapse>
+    <NavLinkGroup>
+      <NavDropdown label="Align start" width="lg">
+        {@render navDropdownLinks()}
+      </NavDropdown>
+      <NavDropdown label="Align end" width="lg" align="end">
+        {@render navDropdownLinks()}
+      </NavDropdown>
+    </NavLinkGroup>
+  </NavCollapse>
+</Navbar>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<NavDropdown ... align="start"> ... </NavDropdown> <!-- Default -->
+<NavDropdown ... align="end"> ... </NavDropdown>
+```
+      {/snippet}
+    </Example>
+
+    <Example title="Dropdown Event" classes="p-4 w-full flex flex-col">
+      <p class="not-prose">By default, the dropdown opens when clicked. Both the <b>Navbar</b> and <b>NavDropdown</b> components have the <code>dropdownEvent</code> prop. If you set it in the <b>Navbar</b>, it applies to all dropdowns. However, if you set it in a <b>NavDropdown</b>, it affects only that dropdown and overrides the Navbar's <code>dropdownEvent</code> value. You can choose between <code>"click"</code> and <code>"hover"</code>.
+      
+      
+      By default, the dropdown opens when clicked. If you prefer it to open on hover, set the <code>dropdownEvent</code> prop to <code>"hover"</code>. It accepts two props, <code>"click"</code> & <code>"hover"</code>.</p>
+      {#snippet example()}
+<Navbar>
+  <NavBrand href="#">BRAND</NavBrand>
+  <NavCollapse>
+    <NavLinkGroup>
+      <NavDropdown label="Click me">
+        {@render navDropdownLinks()}
+      </NavDropdown>
+      <NavDropdown label="Hover me" dropdownEvent="hover">
+        {@render navDropdownLinks()}
+      </NavDropdown>
+    </NavLinkGroup>
+  </NavCollapse>
+</Navbar>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Navbar>
+  <NavBrand href="#">BRAND</NavBrand>
+  <NavLinkGroup>
+    <NavDropdown ... dropdownEvent="click"> ... </NavDropdown> <!-- Default -->
+    <NavDropdown ... dropdownEvent="hover"> ... </NavDropdown>
+  </NavLinkGroup>
+</Navbar>
+```
+      {/snippet}
+    </Example>
+
+    <Example title="Dropdown Animation" classes="p-4 w-full flex flex-col">
+      <p class="not-prose">The dropdown supports animations to enhance its appearance. You can choose from three animation styles: <code>"fade"</code>, <code>"slide"</code>, and <code>"zoom"</code>. By default, the dropdown uses the <code>"fade"</code> effect for a smooth transition. These animations make the dropdown feel more interactive and visually appealing. To control animation speed, <a class="prose" href="#animation-speed">follow this</a>.</p>
       {#snippet example()}
         <Navbar>
           <NavBrand href="#">BRAND</NavBrand>
-          <NavLinkGroup align="start">
-            <NavDropdown label="Dropdown" width="lg">
-              {@render navDropdownLinks()}
-            </NavDropdown>
-          </NavLinkGroup>
+          <NavCollapse>
+            <NavLinkGroup>
+              <NavDropdown label="Fade animation" animation="fade">
+                {@render navDropdownLinks()}
+              </NavDropdown>
+              <NavDropdown label="Slide animation" animation="slide">
+                {@render navDropdownLinks(3)}
+              </NavDropdown>
+              <NavDropdown label="Zoom animation" animation="zoom">
+                {@render navDropdownLinks(6)}
+              </NavDropdown>
+            </NavLinkGroup>
+          </NavCollapse>
         </Navbar>
       {/snippet}
       {#snippet code()}
 
 ```html
-<NavDropdown label="Dropdown" width="lg"> ... </NavDropdown>
+<NavDropdown ... animation="fade"> ... </NavDropdown> <!-- Default -->
+<NavDropdown ... animation="slide"> ... </NavDropdown>
+<NavDropdown ... animation="zoom"> ... </NavDropdown>
 ```
       {/snippet}
     </Example>
-    <Example title="Mega Menu" classes="p-4 w-full flex flex-col">
+    <Example title="Dropdown Arrow" classes="p-4 w-full flex flex-col">
+      <p class="not-prose">The dropdown includes an arrow icon by default. You can hide it by setting the <code>arrowIcon</code> prop to false. If you wish to add your custom icon, use the <code>arrowIcon</code> as a snippet and place your icon inside it.</p>
       {#snippet example()}
         <Navbar>
           <NavBrand href="#">BRAND</NavBrand>
-          <NavLinkGroup align="start">
-            <NavDropdown label="Mega menu" width="full">
-              <div class="grid grid-cols-2 gap-4 p-2">
-                <div>
-                  <a class="px-4 py-2 hover:bg-blue-100 dark:hover:bg-blue-800 rounded-md transition block" href="#"><b>About</b><br>This is a custom link in the mega menu</a>
-                  <a class="px-4 py-2 hover:bg-blue-100 dark:hover:bg-blue-800 rounded-md transition block" href="#"><b>Company</b><br>This is a custom link in the mega menu</a>
-                </div>
-                <div class="px-4 py-2 bg-pink-50 dark:bg-pink-950 rounded-md">
-                  <h4>Hello!</h4>
-                  This is some demo content in the mega menu section.
-                </div>
-              </div>
-            </NavDropdown>
-          </NavLinkGroup>
+          <NavCollapse>
+            <NavLinkGroup>
+              <NavDropdown label="Default arrow">
+                {@render navDropdownLinks()}
+              </NavDropdown>
+              <NavDropdown label="No arrow" arrowIcon={false}>
+                {@render navDropdownLinks(3)}
+              </NavDropdown>
+              <NavDropdown label="Custom arrow">
+                {#snippet arrowIcon()}
+                  <Svg size={.75}>
+                    <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+                  </Svg>
+                {/snippet}
+                {@render navDropdownLinks(6)}
+              </NavDropdown>
+            </NavLinkGroup>
+          </NavCollapse>
         </Navbar>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<!-- No arrow icon -->
+<NavDropdown label="No arrow" arrowIcon={false}> ... </NavDropdown>
+
+<!-- Custom arrow icon -->
+<NavDropdown label="Custom arrow">
+  {#snippet arrowIcon()}
+    <Svg> <path d="...."/> </Svg>
+  {/snippet}
+  ...
+</NavDropdown>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Mega Menu">
+    <p class="not-prose">The Navbar is designed to be highly versatile, making it suitable for both simple navigation and complex menu structures. Whether you need a minimal navigation bar or a feature-rich menu system, it adapts to your design needs effortlessly.</p>
+    <Example classes="p-4 w-full flex flex-col">
+      <p class="not-prose">For more advanced layouts, the Navbar includes a Mega Menu option. When the <code>width</code> prop of a <code>NavDropdown</code> is set to <code>"full"</code>, the dropdown expands to take the full width of the Navbar, creating a spacious layout for organizing multiple links, sections, or even embedded content. This makes the Mega Menu ideal for websites that require a detailed navigation structure, such as e-commerce platforms, dashboards, and content-heavy websites.</p>
+      {#snippet example()}
+<Navbar>
+  <NavBrand href="#">BRAND</NavBrand>
+  <NavCollapse>
+    <NavLinkGroup align="start">
+      {@render navDropdownGroup()}
+      <NavDropdown label="Mega menu" width="full">
+        <div class="grid grid-cols-2 gap-4 p-2">
+          <div>
+            <a class="px-4 py-2 hover:bg-blue-100 dark:hover:bg-blue-800 rounded-md transition block" href="#"><b>About</b><br>This is a custom link in the mega menu</a>
+            <a class="px-4 py-2 hover:bg-blue-100 dark:hover:bg-blue-800 rounded-md transition block" href="#"><b>Company</b><br>This is a custom link in the mega menu</a>
+          </div>
+          <div class="px-4 py-2 bg-pink-50 dark:bg-pink-950 rounded-md">
+            <h4>Hello!</h4>
+            This is some demo content in the mega menu section.
+          </div>
+        </div>
+      </NavDropdown>
+    </NavLinkGroup>
+  </NavCollapse>
+</Navbar>
       {/snippet}
       {#snippet code()}
 
@@ -302,112 +529,55 @@ description: Design responsive and accessible navigation bars for your Svelte ap
 ```
       {/snippet}
     </Example>
-    <Example title="Dropdown Event" classes="p-4 w-full flex flex-col">
-      {#snippet example()}
-        <Navbar>
-          <NavBrand href="#">BRAND</NavBrand>
-          <NavLinkGroup align="start">
-            <NavDropdown label="Click me" dropdownEvent="click">
-              {@render navDropdownLinks()}
-            </NavDropdown>
-          </NavLinkGroup>
-          <NavLinkGroup align="end">
-            <NavDropdown label="Hover me" dropdownEvent="hover">
-              {@render navDropdownLinks(3)}
-            </NavDropdown>
-          </NavLinkGroup>
-        </Navbar>
-      {/snippet}
-      {#snippet code()}
 
-```html
+  </DocBlock>
+
+  <DocBlock title="Mega Menu">
+    <p class="not-prose">The Navbar is designed to be highly versatile, making it suitable for both simple navigation and complex menu structures. Whether you need a minimal navigation bar or a feature-rich menu system, it adapts to your design needs effortlessly.</p>
+    <Example classes="p-4 w-full flex flex-col">
+      <p class="not-prose">For more advanced layouts, the Navbar includes a Mega Menu option. When the <code>width</code> prop of a <code>NavDropdown</code> is set to <code>"full"</code>, the dropdown expands to take the full width of the Navbar, creating a spacious layout for organizing multiple links, sections, or even embedded content. This makes the Mega Menu ideal for websites that require a detailed navigation structure, such as e-commerce platforms, dashboards, and content-heavy websites.</p>
+      {#snippet example()}
 <Navbar>
   <NavBrand href="#">BRAND</NavBrand>
-  <NavLinkGroup align="start">
-    <NavDropdown label="Click me" dropdownEvent="click"> <!-- Default -->
-      ...
-    </NavDropdown>
-  </NavLinkGroup>
-  <NavLinkGroup align="end">
-    <NavDropdown label="Hover me" dropdownEvent="hover">
-      ...
-    </NavDropdown>
-  </NavLinkGroup>
+  <NavCollapse>
+    <NavLinkGroup align="start">
+      {@render navDropdownGroup()}
+      <NavDropdown label="Mega menu" width="full">
+        <div class="grid grid-cols-2 gap-4 p-2">
+          <div>
+            <a class="px-4 py-2 hover:bg-blue-100 dark:hover:bg-blue-800 rounded-md transition block" href="#"><b>About</b><br>This is a custom link in the mega menu</a>
+            <a class="px-4 py-2 hover:bg-blue-100 dark:hover:bg-blue-800 rounded-md transition block" href="#"><b>Company</b><br>This is a custom link in the mega menu</a>
+          </div>
+          <div class="px-4 py-2 bg-pink-50 dark:bg-pink-950 rounded-md">
+            <h4>Hello!</h4>
+            This is some demo content in the mega menu section.
+          </div>
+        </div>
+      </NavDropdown>
+    </NavLinkGroup>
+  </NavCollapse>
 </Navbar>
-```
-      {/snippet}
-    </Example>
-    <Example title="Dropdown Animation" classes="p-4 w-full flex flex-col">
-      {#snippet example()}
-        <Navbar>
-          <NavBrand href="#">BRAND</NavBrand>
-          <NavLinkGroup>
-            <NavDropdown label="Fade animation" animation="fade">
-              {@render navDropdownLinks()}
-            </NavDropdown>
-            <NavDropdown label="Slide animation" animation="slide">
-              {@render navDropdownLinks(3)}
-            </NavDropdown>
-            <NavDropdown label="Zoom animation" animation="zoom">
-              {@render navDropdownLinks(6)}
-            </NavDropdown>
-          </NavLinkGroup>
-        </Navbar>
       {/snippet}
       {#snippet code()}
 
 ```html
-<NavDropdown label="Fade animation" animation="fade"> ... </NavDropdown> <!-- Default -->
-<NavDropdown label="Fade animation" animation="slide"> ... </NavDropdown>
-<NavDropdown label="Fade animation" animation="zoom"> ... </NavDropdown>
-```
-      {/snippet}
-    </Example>
-    <Example title="Dropdown Arrow" classes="p-4 w-full flex flex-col">
-      {#snippet example()}
-        <Navbar>
-          <NavBrand href="#">BRAND</NavBrand>
-          <NavLinkGroup>
-            <NavDropdown label="Default arrow">
-              {@render navDropdownLinks()}
-            </NavDropdown>
-            <NavDropdown label="No arrow" arrowIcon={false}>
-              {@render navDropdownLinks(3)}
-            </NavDropdown>
-            <NavDropdown label="Custom arrow">
-              {#snippet arrowIcon()}
-                <Svg size={.75}>
-                  <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
-                </Svg>
-              {/snippet}
-              {@render navDropdownLinks(6)}
-            </NavDropdown>
-          </NavLinkGroup>
-        </Navbar>
-      {/snippet}
-      {#snippet code()}
-
-```html
-<!-- No arrow icon -->
-<NavDropdown label="No arrow" arrowIcon={false}> ... </NavDropdown>
-
-<!-- Custom arrow icon -->
-<NavDropdown label="Custom arrow">
-  {#snippet arrowIcon()}
-    <Svg>
-      <path d="...."/>
-    </Svg>
-  {/snippet}
-  ...
+<NavDropdown label="Mega menu" width="full">
+  <div class="...">
+    ...
+  </div>
 </NavDropdown>
 ```
       {/snippet}
     </Example>
+
   </DocBlock>
 
   <DocBlock title="Accessibility">
-    <p class="not-prose">The Alert component is built with accessibility in mind, handling all necessary ARIA attributes, including <code>role="alert"</code> and <code>aria-label="Close alert"</code>, to ensure compatibility with assistive technologies. These attributes are automatically applied, so you don't need to configure them manually.</p>
-    <p class="not-prose font-bold">The only consideration required is maintaining proper color contrast for the alert's text and background to ensure readability and compliance with accessibility standards.</p>
+    <p class="not-prose">The Navbar is designed with accessibility in mind, ensuring smooth navigation for all users, including those using screen readers and keyboard navigation.</p>
+    <p class="not-prose">To enhance accessibility, use the <code>ariaLabel</code> prop in the <code>Navbar</code> component to define an appropriate <code>aria-label</code> value. This helps screen readers identify the purpose of the navigation.</p>
+    <p class="not-prose">All interactive elements, including links and dropdowns, are fully keyboard-accessible. Users can open dropdowns with <code>Enter</code> or <code>Space</code>, navigate through links and move between dropdown items using the <code>Tab</code> key. The <code>Escape</code> key closes open dropdowns.</p>
+    <p class="not-prose">For better accessibility, ensure that all links have clear, descriptive text. If using a <code>NavDropdown</code>, the <code>aria-expanded</code> attribute updates dynamically to reflect its open or closed state, improving the experience for screen reader users.</p>
+    <p class="not-prose">By following these guidelines and utilizing the provided accessibility features, you can create a navigation system that is inclusive and user-friendly.</p>
   </DocBlock>
 
   <DocBlock title="Configuration">
@@ -415,8 +585,24 @@ description: Design responsive and accessible navigation bars for your Svelte ap
   </DocBlock>
 
   {#snippet sidebar()}
+    <a href={processID("About")}>About</a>
     <a href={processID("Example")}>Example</a>
-    ...
+    <a href={processID("Scroll Behavior")}>Scroll behavior</a>
+    <a href={processID("Navbar Scrolling Effects")} class="ps-4">Scrolling Effects</a>
+    <a href={processID("Hide/Shrink Scroll Amount")} class="ps-4">Scroll Amount</a>
+    <a href={processID("Navbar Height")}>Navbar height</a>
+    <a href={processID("Responsive Navbar")}>Responsive navbar</a>
+    <a href={processID("NavCollapse")} class="ps-4">Navbar collapse</a>
+    <a href={processID("navBreakpoint")} class="ps-4">Navbar breakpoint</a>
+    <a href={processID("Link Alignment")}>Link alignment</a>
+    <a href={processID("Navbar Dropdown")}>Navbar Dropdown</a>
+    <a href={processID("Dropdown Label")} class="ps-4">Dropdown Label</a>
+    <a href={processID("Dropdown Width")} class="ps-4">Dropdown Width</a>
+    <a href={processID("Dropdown Alignment")} class="ps-4">Dropdown Alignment</a>
+    <a href={processID("Dropdown Event")} class="ps-4">Dropdown Event</a>
+    <a href={processID("Dropdown Animation")} class="ps-4">Dropdown Animation</a>
+    <a href={processID("Dropdown Arrow")} class="ps-4">Dropdown Arrow</a>
+    <a href={processID("Mega Menu")}>Mega Menu</a>
     <a href={processID("Customization")}>Customization</a>
     <a href={processID("Accessibility")}>Accessibility</a>
     <a href={processID("Configuration")}>Configuration</a>

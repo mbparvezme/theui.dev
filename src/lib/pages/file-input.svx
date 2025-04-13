@@ -1,0 +1,219 @@
+---
+title: FileInput
+dir: ".lib/pages"
+description: The FileInput component is a customizable wrapper for file selection, providing a more flexible and consistent way to handle file uploads in forms.
+---
+
+<script lang="ts">
+  import DocLayout from "$lib/ui/doc/DocLayout.svelte";
+  import DocHead from "$lib/ui/doc/Head.svelte";
+  import DocBlock from "$lib/ui/doc/Block.svelte";
+  import Code from "$lib/ui/doc/CodeBlock.svelte";
+  import Example from "$lib/ui/doc/Example.svelte";
+  import ConfigComponent from "$lib/ui/doc/ConfigComponent.svelte";
+  import { processID } from "$lib";
+  let { component, edit_url }: {component: any, edit_url?: string } = $props();
+
+  import { FileInput } from "theui-svelte";
+</script>
+
+<DocLayout>
+  <DocHead title="FileInput" text="The FileInput component is a customizable wrapper for file selection, providing a more flexible and consistent way to handle file uploads in forms." {edit_url}/>
+
+  <DocBlock title="About">
+    <p class="not-prose">The <code>FileInput</code> component enhances the default file input by integrating with the Form and Fieldset components, ensuring consistent styling and behavior across different form inputs. It allows customization of size, shape, and appearance while maintaining accessibility and usability.</p>
+  </DocBlock>
+
+  <DocBlock title="Example">
+    <Example>
+      <p class="not-prose">The <code>FileInput</code> component can be used within a form or a fieldset to inherit global styles and behaviors, ensuring uniformity across file inputs. Here's a basic example:</p>
+      {#snippet example()}
+<FileInput name="document">Upload</FileInput>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<script>
+  import { FileInput } from "theui-svelte";
+</script>
+
+<FileInput name="document">Upload</FileInput>
+```
+      {/snippet}
+    </Example>
+    <p class="not-prose">The <code>name</code> prop is mandatory for the FileInput component. It ensures the input field is properly recognized when submitting a form. Without a name, the uploaded file data will not be sent. The content inside the <code>FileInput</code> component will be display as a label.</p>
+  </DocBlock>
+
+  <DocBlock title="Size">
+    <Example>
+      <p class="not-prose">The <code>size</code> prop determines the overall size of the <code>FileInput</code> component. It affects the padding and dimensions of the input field, ensuring consistency with other form elements. Available sizes: <code>"sm"</code>, <code>"md"</code> (default), <code>"lg"</code> and <code>"xl"</code>.</p>
+      <p class="not-prose">By default, the <code>FileInput</code> inherits the <code>size</code> from the nearest Fieldset or Form component. However, you can override it manually if needed.</p>
+      {#snippet example()}
+<div class="flex flex-col gap-4">
+  <FileInput name="document" size="sm">Upload</FileInput>
+  <FileInput name="document" size="md">Upload</FileInput>
+  <FileInput name="document" size="lg">Upload</FileInput>
+  <FileInput name="document" size="xl">Upload</FileInput>
+</div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<FileInput name="document" size="sm">Upload</FileInput>
+<FileInput name="document" size="md">Upload</FileInput>
+<FileInput name="document" size="lg">Upload</FileInput>
+<FileInput name="document" size="xl">Upload</FileInput>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Variant">
+    <Example>
+      <p class="not-prose">The <code>variant</code> prop controls the visual style of the FileInput, allowing you to adjust its appearance based on form design preferences. Available values: <code>"bordered"</code> (default) and <code>"flat"</code>.</p>
+      <p class="not-prose">If the <code>FileInput</code> is inside a <b>Fieldset</b> or <b>Form</b> , it inherits the <code>variant</code> automatically unless explicitly set.</p>
+      {#snippet example()}
+<div class="flex flex-col gap-4">
+  <FileInput name="document" variant="bordered">Upload</FileInput>
+  <FileInput name="document" variant="flat">Upload</FileInput>
+</div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<FileInput name="document" variant="bordered">Upload</FileInput>
+<FileInput name="document" variant="flat">Upload</FileInput>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Rounded">
+    <Example classes="gap-8">
+      <p class="not-prose">The <code>rounded</code> prop defines the border-radius of the FileInput, giving it different levels of rounded corners. Available values: <code>"sm"</code>, <code>"md"</code> (default), <code>"lg"</code>, <code>"xl"</code>, <code>"full"</code>, <code>"none"</code>.</p>
+      <p class="not-prose">By default, the <code>FileInput</code> inherits the <code>rounded</code> value from the <b>Fieldset</b> or <b>Form</b>, ensuring a uniform look.</p>
+      {#snippet example()}
+<div class="flex flex-col gap-4">
+  <FileInput name="document" rounded="none">Upload</FileInput>
+  <FileInput name="document" rounded="sm">Upload</FileInput>
+  <FileInput name="document" rounded="md">Upload</FileInput>
+  <FileInput name="document" rounded="lg">Upload</FileInput>
+  <FileInput name="document" rounded="xl">Upload</FileInput>
+  <FileInput name="document" rounded="full">Upload</FileInput>
+</div>
+<div class="flex flex-col gap-4">
+  <FileInput name="document" variant="flat" rounded="none">Upload</FileInput>
+  <FileInput name="document" variant="flat" rounded="sm">Upload</FileInput>
+  <FileInput name="document" variant="flat" rounded="md">Upload</FileInput>
+  <FileInput name="document" variant="flat" rounded="lg">Upload</FileInput>
+  <FileInput name="document" variant="flat" rounded="xl">Upload</FileInput>
+  <FileInput name="document" variant="flat" rounded="full">Upload</FileInput>
+</div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<FileInput name="document" rounded="none">Upload</FileInput>
+<FileInput name="document" rounded="sm">Upload</FileInput>
+<FileInput name="document" rounded="md">Upload</FileInput>
+<FileInput name="document" rounded="lg">Upload</FileInput>
+<FileInput name="document" rounded="xl">Upload</FileInput>
+<FileInput name="document" rounded="full">Upload</FileInput>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Helper Text">
+    <p class="not-prose">The <code>helperText</code> prop allows you to add additional guidance or information below the file input field. This can be useful for providing instructions, specifying accepted file formats, or any other relevant details for the user. You can pass either a <b>string</b> or a <b>Snippet</b> as the helper text.</p>
+    <Example>
+      {#snippet example()}
+<FileInput name="document" helperText="Accepted formats: PDF, DOCX. Max size: 5MB.">Upload</FileInput>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<FileInput name="document" helperText="Accepted formats: PDF, DOCX. Max size: 5MB.">Upload</FileInput>
+```
+      {/snippet}
+    </Example>
+    <Example mt={false}>
+      <p class="not-prose">Or using a Snippet for more flexibility:</p>
+      {#snippet example()}
+<FileInput name="document">
+  Upload
+  {#snippet helperText()}
+    Accepted formats: PDF, DOCX. Max size: 5MB.
+  {/snippet}
+</FileInput>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<FileInput name="document">
+  Upload
+  {#snippet helperText()}
+    Accepted formats: PDF, DOCX. Max size: 5MB.
+  {/snippet}
+</FileInput>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Customization">
+    <Example>
+      <p class="not-prose">The <code>FileInput</code> component provides several ways to customize its appearance to match your design requirements. You can modify the container, label, and input field styles using the following props:</p>
+      <ul class="my-0">
+        <li><span class="not-prose"><code>labelClasses</code></span> – Custom styles for the FileInput. If used within a Form component, it inherits the Form's <span class="not-prose"><code>labelClasses</code></span>.</li>
+        <li><span class="not-prose"><code>wrapperClasses</code></span> – Additional classes for the wrapper &lt;div&gt;, useful for layout adjustments.</li>
+        <li><span class="not-prose"><code>class</code></span> – Apply custom styles to the file input itself.</li>
+      </ul>
+      {#snippet example()}
+<FileInput 
+  name="document"
+  wrapperClasses="flex-row items-center justify-between gap-8"
+  labelClasses="text-xl font-semibold uppercase"
+  class="focus:ring-2 focus-within:ring-purple-500 focus:ring-purple-500 bg-purple-100 file:bg-purple-300"
+  variant="flat"
+>
+  Upload
+</FileInput>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<FileInput 
+  name="document"
+  wrapperClasses="flex-row items-center justify-between gap-8"
+  labelClasses="text-xl font-semibold uppercase"
+  class="focus:ring-2 focus-within:ring-purple-500 focus:ring-purple-500 bg-purple-100 file:bg-purple-300"
+  variant="flat"
+>
+  Upload
+</FileInput>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Accessibility">
+    <p class="not-prose">Uploading files should be simple - and accessible. Our File component pairs each file input with a clear, connected <code>&lt;label&gt;</code>, and uses <code>aria-describedby</code> to guide screen readers to any helpful hints or messages. It's a smooth, informative experience for all users, whether navigating with a mouse or a screen reader.</p>
+  </DocBlock>
+
+  <DocBlock title="Configuration">
+    <ConfigComponent {component} />
+  </DocBlock>
+
+  {#snippet sidebar()}
+    <a href={processID("About")}>About</a>
+    <a href={processID("Example")}>Example</a>
+    <a href={processID("Size")}>Size</a>
+    <a href={processID("Variant")}>Variant</a>
+    <a href={processID("Rounded")}>Rounded</a>
+    <a href={processID("Helper Text")}>Helper Text</a>
+    <a href={processID("Customization")}>Customization</a>
+    <a href={processID("Accessibility")}>Accessibility</a>
+    <a href={processID("Configuration")}>Configuration</a>
+  {/snippet}
+</DocLayout>

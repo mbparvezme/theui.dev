@@ -160,11 +160,11 @@
         "link": "/docs/label"
       },
       {
-        "text": "File input <small>Coming soon</small>",
+        "text": "File input",
         "link": "/docs/file-input"
       },
       {
-        "text": "Text input <small>Coming soon</small>",
+        "text": "Text input",
         "link": "/docs/input"
       },
       {
@@ -172,7 +172,7 @@
         "link": "/docs/toggle"
       },
       {
-        "text": "Select <small>Coming soon</small>",
+        "text": "Select",
         "link": "/docs/select"
       },
       {
@@ -180,7 +180,7 @@
         "link": "/docs/helper-text"
       },
       {
-        "text": "Fieldset <small>Coming soon</small>",
+        "text": "Fieldset",
         "link": "/docs/fieldset"
       }
     ]

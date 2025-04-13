@@ -16,7 +16,7 @@
         "description": "Determines how the tooltip is triggered, either on hover or click."
       },
       {
-        "name": "animate",
+        "name": "animationSpeed",
         "type": "<a href=\"/docs/types#common-types\">ANIMATE_SPEED</a>",
         "default": "normal",
         "description": "Sets the animation speed for showing and hiding the tooltip."

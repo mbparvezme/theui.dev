@@ -35,7 +35,7 @@
           "default": "\"slide-up\""
         },
         {
-          "name": "animate",
+          "name": "animationSpeed",
           "type": "<a href=\"/docs/types#common-types\">ANIMATE_SPEED</a>",
           "description": "Controls the speed of dropdown animations.",
           "default": "\"fast\""

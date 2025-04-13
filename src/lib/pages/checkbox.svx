@@ -86,28 +86,28 @@ description: The Checkbox component is a versatile and customizable input elemen
   </DocBlock>
 
   <DocBlock title="Animation">
-    <p class="not-prose">The <code>animate</code> prop determines the speed of the checkbox's interaction effects, such as transitions when toggling states. It helps improve user experience by making interactions feel smoother. The available animation speeds are <code>"none"</code>, <code>"slower"</code>, <code>"slow"</code> <code>"normal"</code> (default), <code>"fast"</code> and <code>"faster"</code>.</p>
+    <p class="not-prose">The <code>animateSpeed</code> prop determines the speed of the checkbox's interaction effects, such as transitions when toggling states. It helps improve user experience by making interactions feel smoother. The available animation speeds are <code>"none"</code>, <code>"slower"</code>, <code>"slow"</code> <code>"normal"</code> (default), <code>"fast"</code> and <code>"faster"</code>.</p>
     <p class="not-prose">Setting it to <code>"none"</code>disables animations, while other values can be used to adjust the transition speed based on preference.</p>
     <Example>
     {#snippet example()}
 <div class="flex flex-col gap-2">
-  <Checkbox name="myCheckbox" animate="slower">Slower animation</Checkbox>
-  <Checkbox name="myCheckbox" animate="slow">Slow animation</Checkbox>
-  <Checkbox name="myCheckbox" animate="normal">Normal animation</Checkbox>
-  <Checkbox name="myCheckbox" animate="fast">Fast animation</Checkbox>
-  <Checkbox name="myCheckbox" animate="faster">Faster animation</Checkbox>
-  <Checkbox name="myCheckbox" animate="none">No animation</Checkbox>
+  <Checkbox name="myCheckbox" animateSpeed="slower">Slower animation</Checkbox>
+  <Checkbox name="myCheckbox" animateSpeed="slow">Slow animation</Checkbox>
+  <Checkbox name="myCheckbox" animateSpeed="normal">Normal animation</Checkbox>
+  <Checkbox name="myCheckbox" animateSpeed="fast">Fast animation</Checkbox>
+  <Checkbox name="myCheckbox" animateSpeed="faster">Faster animation</Checkbox>
+  <Checkbox name="myCheckbox" animateSpeed="none">No animation</Checkbox>
 </div>
       {/snippet}
 
       {#snippet code()}
 ```html
-<Checkbox name="myCheckbox" animate="slower">Slower animation</Checkbox>
-<Checkbox name="myCheckbox" animate="slow">Slow animation</Checkbox>
-<Checkbox name="myCheckbox" animate="normal">Normal animation</Checkbox>
-<Checkbox name="myCheckbox" animate="fast">Fast animation</Checkbox>
-<Checkbox name="myCheckbox" animate="faster">Faster animation</Checkbox>
-<Checkbox name="myCheckbox" animate="none">No animation</Checkbox>
+<Checkbox name="myCheckbox" animateSpeed="slower">Slower animation</Checkbox>
+<Checkbox name="myCheckbox" animateSpeed="slow">Slow animation</Checkbox>
+<Checkbox name="myCheckbox" animateSpeed="normal">Normal animation</Checkbox>
+<Checkbox name="myCheckbox" animateSpeed="fast">Fast animation</Checkbox>
+<Checkbox name="myCheckbox" animateSpeed="faster">Faster animation</Checkbox>
+<Checkbox name="myCheckbox" animateSpeed="none">No animation</Checkbox>
 ```
       {/snippet}
     </Example>
@@ -186,6 +186,10 @@ description: The Checkbox component is a versatile and customizable input elemen
     </Example>
   </DocBlock>
 
+  <DocBlock title="Accessibility">
+    <p class="not-prose">The <code>Checkbox</code> component uses the native <code>&lt;input type="checkbox"&gt;</code> and automatically adjusts the <code>aria-checked</code> attribute based on whether the checkbox is checked or unchecked. It also supports <code>aria-required</code> and <code>aria-disabled</code> attributes through <code>props</code>, making it more accessible for users with assistive technologies. Each checkbox has an associated <code>&lt;Label&gt;</code> component to provide a clear description, and the layout can be reversed for right-aligned designs.</p>
+  </DocBlock>
+
   <DocBlock title="Configuration">
     <ConfigComponent {component} />
   </DocBlock>
@@ -199,6 +203,7 @@ description: The Checkbox component is a versatile and customizable input elemen
     <a href={processID("Rounded Checkbox")}>Rounded Checkbox</a>
     <a href={processID("Resetting Style")}>Resetting Style</a>
     <a href={processID("Customization")}>Customization</a>
+    <a href={processID("Accessibility")}>Accessibility</a>
     <a href={processID("Configuration")}>Configuration</a>
   {/snippet}
 

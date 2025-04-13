@@ -96,10 +96,8 @@ description: The DarkMode component is a user-friendly theme switcher designed t
 
   <DocBlock title="Style Customization">
     <p class="not-prose">For customization, you can add your own classes to adjust the spacing, alignment, or other styles:</p>
-
-
     <Example>
-      Here’s how to use the DarkMode component in your application:
+      Here's how to use the DarkMode component in your application:
       {#snippet example()}
         <DarkMode class="bg-brand-primary-500/20 text-brand-primary-500 rounded-md p-2" />
       {/snippet}
@@ -112,6 +110,16 @@ description: The DarkMode component is a user-friendly theme switcher designed t
     </Example>
   </DocBlock>
 
+  <DocBlock title="Accessibility">
+    <p class="not-prose">The <code>DarkMode</code> Button component toggles between light and dark themes, designed for accessibility.</p>
+    <ul class="my-0">
+      <li><span class="not-prose"><code>aria-label="Toggle light or dark mode"</code>: Provides a clear description for screen readers about the button's function.</span></li>
+      <li><span class="not-prose"><code>aria-pressed</code>: Indicates the button's current state (<code>true</code> for dark mode, <code>false</code> for light mode), giving feedback on whether the button is active.</span></li>
+      <li><span class="not-prose"><b>Keyboard Accessibility</b>: The button is focusable and can be activated with the <code>Enter</code> or <code>Space</code> key, ensuring full keyboard navigation.</span></li>
+    </ul>
+    <p class="not-prose"><b>Best Practices</b>: Use the <code>aria-label</code> attribute for clear message to the screen readers. By default, the value is <b>"Toggle light or dark mode"</b>.</p>
+  </DocBlock>
+
   <DocBlock title="Configuration">
     <ConfigComponent {component} />
   </DocBlock>
@@ -122,6 +130,7 @@ description: The DarkMode component is a user-friendly theme switcher designed t
     <a href={processID("System Default Theme")}>System default</a>
     <a href={processID("Theme Switch Icon")}>Button icon</a>
     <a href={processID("Style Customization")}>Custom style</a>
+    <a href={processID("Accessibility")}>Accessibility</a>
     <a href={processID("Configuration")}>Configuration</a>
   {/snippet}
 </DocLayout>

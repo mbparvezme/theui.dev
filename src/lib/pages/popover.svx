@@ -180,10 +180,10 @@ description: a flexible and customizable UI element that displays additional con
   </DocBlock>
 
   <DocBlock title="Animation Speed">
-    <p class="not-prose">The <code>animate</code> prop controls the speed of the animation when the Popover appears or disappears. It accepts the following values <code>none</code>, <code>slower</code>, <code>slow</code>, <code>normal</code>, <code>fast</code> and <code>faster</code> - which can be used to define how quickly the popover fades in and out.</p>
+    <p class="not-prose">The <code>animateSpeed</code> prop controls the speed of the animation when the Popover appears or disappears. It accepts the following values <code>none</code>, <code>slower</code>, <code>slow</code>, <code>normal</code>, <code>fast</code> and <code>faster</code> - which can be used to define how quickly the popover fades in and out.</p>
     <Example>
       {#snippet example()}
-        <Popover trigger="my-popover8" animate="slower">
+        <Popover trigger="my-popover8" animateSpeed="slower">
           This popover has a larger gap from the trigger.
         </Popover>
         <Button id="my-popover8">Show popover</Button>
@@ -191,7 +191,7 @@ description: a flexible and customizable UI element that displays additional con
 
       {#snippet code()}
 ```html
-<Popover trigger="my-popover" animate="slower">
+<Popover trigger="my-popover" animateSpeed="slower">
   This popover has a larger gap from the trigger.
 </Popover>
 ```

@@ -10,7 +10,7 @@
         "default": ""
       },
       {
-        "name": "animate",
+        "name": "animationSpeed",
         "type": "<a href=\"/docs/types#common-types\">ANIMATE_SPEED</a>",
         "description": "Speed of the animation when the component is shown or hidden.",
         "default": "fast"
@@ -32,12 +32,6 @@
         "type": "boolean",
         "description": "Prevent Drawer from closing on backdrop click.",
         "default": false
-      },
-      {
-        "name": "id",
-        "type": "string",
-        "description": "Unique identifier for the Drawer component.",
-        "default": "&lt;RANDOM STRING&gt;"
       }
     ]
   },

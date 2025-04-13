@@ -178,12 +178,7 @@ notify("Hello world!", "error", {removeOnClick: false})
     </Example>
   </DocBlock>
 
-  <DocBlock title="Accessibility">
-    <p class="not-prose">The Alert component is built with accessibility in mind, handling all necessary ARIA attributes, including <code>role="alert"</code> and <code>aria-label="Close alert"</code>, to ensure compatibility with assistive technologies. These attributes are automatically applied, so you don't need to configure them manually.</p>
-    <p class="not-prose font-bold">The only consideration required is maintaining proper color contrast for the alert's text and background to ensure readability and compliance with accessibility standards.</p>
-  </DocBlock>
-
-  <DocBlock title="notify() Function">
+  <DocBlock id={processID("notify-function", false)} title="notify() Function">
     <p class="not-prose">The <code>notify</code> function displays notifications with customizable options. It accepts three parameters:</p>
     <ul class="my-0">
       <li><strong>msg</strong> (type string) – The message displayed in the notification.</li>
@@ -202,6 +197,11 @@ notify("Hello world!", "error", {removeOnClick: false})
     </div>
   </DocBlock>
 
+  <DocBlock title="Accessibility">
+    <p class="not-prose">The Alert component is built with accessibility in mind, handling all necessary ARIA attributes, including <code>role="alert"</code> and <code>aria-label="Close alert"</code>, to ensure compatibility with assistive technologies. These attributes are automatically applied, so you don't need to configure them manually.</p>
+    <p class="not-prose font-bold">The only consideration required is maintaining proper color contrast for the alert's text and background to ensure readability and compliance with accessibility standards.</p>
+  </DocBlock>
+
   <DocBlock title="Configuration">
     <ConfigComponent {component} />
   </DocBlock>
@@ -218,8 +218,8 @@ notify("Hello world!", "error", {removeOnClick: false})
     <a href={processID("Notification Duration")}>Duration</a>
     <a href={processID("Remove On Click")}>Remove On Click</a>
     <a href={processID("Customization")}>Customization</a>
+    <a href={processID("notify-function")}>notify() Function</a>
     <a href={processID("Accessibility")}>Accessibility</a>
-    <a href={processID("notify() Function")}>notify() Function</a>
     <a href={processID("Configuration")}>Configuration</a>
   {/snippet}
 

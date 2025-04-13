@@ -259,16 +259,47 @@ description: Enhance your Svelte app with theui-svelte's Accordion component. Ea
     </Example>
   </DocBlock>
 
+  <DocBlock title="Animation Speed">
+    <Example>
+      <p class="not-prose">The <code>animationSpeed</code> prop controls how fast the accordion opens and closes. Available values are <code>"none"</code>, <code>"slower"</code>, <code>"slow"</code>, <code>"normal"</code>, <code>"fast"</code> (default), and <code>"faster"</code>. It helps you control the overall feel of the Accordion, allowing for subtle or sharp transitions depending on your preference.</p>
+      {#snippet example()}
+      <div>
+        <Accordion>
+          <AccordionItem title={accordionTitle + ": 1"}>
+            {@html accordionContent}
+          </AccordionItem>
+          <AccordionItem open title={accordionTitle + ": 2"}>
+            {@html accordionContent}
+          </AccordionItem>
+        </Accordion>
+      </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Accordion>
+  <AccordionItem>
+    ...
+  </AccordionItem>
+  <AccordionItem open>
+    ...
+  </AccordionItem>
+</Accordion>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
   <DocBlock title="Customization">
     <p class="not-prose">The accordion component in <b>theui-svelte</b> offers a wide range of style customization options through several props. These props let you apply custom classes to different parts of the accordion, ensuring it matches your design perfectly.</p>
     <Example title="Available Props for Customization">
       <ul>
-        <li><b>containerClasses</b>: Apply custom classes to the accordion's main container.</li>
-        <li><b>openContainerClasses</b>: Set custom classes for the container when the accordion is active (expanded).</li>
-        <li><b>contentClasses</b>: Define custom classes for the content section.</li>
-        <li><b>openContentClasses</b>: Specify classes for the content when it is active (visible).</li>
-        <li><b>titleClasses</b>: Customize the classes for the title of each accordion item.</li>
-        <li><b>openTitleClasses</b>: Apply specific classes to the title when the accordion is active (expanded).</li>
+        <li><span class="not-prose"><code>containerClasses</code></span>: Apply custom classes to the accordion's main container.</li>
+        <li><span class="not-prose"><code>openContainerClasses</code></span>: Set custom classes for the container when the accordion is active (expanded).</li>
+        <li><span class="not-prose"><code>contentClasses</code></span>: Define custom classes for the content section.</li>
+        <li><span class="not-prose"><code>openContentClasses</code></span>: Specify classes for the content when it is active (visible).</li>
+        <li><span class="not-prose"><code>titleClasses</code></span>: Customize the classes for the title of each accordion item.</li>
+        <li><span class="not-prose"><code>openTitleClasses</code></span>: Apply specific classes to the title when the accordion is active (expanded).</li>
       </ul>
       {#snippet example()}
       <div>
@@ -342,14 +373,19 @@ description: Enhance your Svelte app with theui-svelte's Accordion component. Ea
 
   {#snippet sidebar()}
     <a href={processID("Example")}>Example</a>
-    <a href={processID("Group Accordion")}>Group Accordion</a>
-    <a href={processID("Flash Accordion")}>Flash Accordion</a>
-    <a href={processID("Accordion Size")}>Accordion Size</a>
-    <a href={processID("Accordion Open State")}>Accordion Open State</a>
-    <a href={processID("Accordion: Standalone Mode")}>Standalone Mode</a>
+    <a href={processID("Accordion By Props")} class="ps-4">Using title prop</a>
+    <a href={processID("Accordion Using Snippet")} class="ps-4">Using title snippet</a>
+    <a href={processID("Group Accordion")}>Group accordion</a>
+    <a href={processID("Flash Accordion")}>Flash accordion</a>
+    <a href={processID("Accordion Size")}>Accordion size</a>
+    <a href={processID("Accordion Open State")}>Accordion open state</a>
+    <a href={processID("Accordion: Standalone Mode")}>Standalone mode</a>
+    <a href={processID("Animation Speed")}>Animation Speed</a>
     <a href={processID("Customization")}>Customization</a>
     <a href={processID("Accessibility")}>Accessibility</a>
     <a href={processID("Configuration")}>Configuration</a>
+    <a class="ps-4" href={processID("Accordion")}>Accordion</a>
+    <a class="ps-4" href={processID("Accordion Item")}>Accordion item</a>
   {/snippet}
 
 </DocLayout>

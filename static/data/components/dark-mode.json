@@ -2,7 +2,7 @@
 [
   {
     "key": "props",
-    "title": "Props","text": "The component has the following props with the given default values. Please visit <a href=\"/docs/types\">types page</a> for detailed type definitions.",
+    "title": "Props",
     "data": [
       {
         "name": "systemDefault",

@@ -18,7 +18,7 @@ description: Implement interactive and stylish chips in your Svelte app with The
 </script>
 
 <DocLayout>
-  <DocHead title="Container" text="The Chips component is a versatile UI element used to display small blocks of information, such as tags, categories, or interactive items. It supports images, text, and an optional close button for dismissing the chips." {edit_url}/>
+  <DocHead title="Chips" text="The Chips component is a versatile UI element used to display small blocks of information, such as tags, categories, or interactive items. It supports images, text, and an optional close button for dismissing the chips." {edit_url}/>
 
   <DocBlock title="Example">
     <p class="not-prose">First, import the Chips component from the library. Below is a simple example demonstrating how to use the Chips component. This example shows how to create a chip with a basic text label:</p>
@@ -134,7 +134,7 @@ description: Implement interactive and stylish chips in your Svelte app with The
   </DocBlock>
 
   <DocBlock title="Accessibility">
-    <p class="not-prose">The Breadcrumb component is fully accessible, with <code>aria-label="breadcrumb"</code> applied to the navigation container to identify it as a breadcrumb trail for assistive technologies. Each link is keyboard-navigable, and the current page is marked with <code>aria-current="page"</code>. You only need to provide meaningful link labels and ensure proper color contrast for readability.
+    <p class="not-prose">The <code>Chips</code> component supports accessibility best practices. When an image is used, it includes proper <code>alt</code> text for screen readers. If the <code>close</code> prop is enabled, the close button includes an <code>aria-label</code> to describe its action, allowing users to remove chips with assistive technologies. The component maintains proper semantics and structure for clear navigation and interaction.</p>
   </DocBlock>
 
   <DocBlock title="Configuration">
@@ -147,6 +147,9 @@ description: Implement interactive and stylish chips in your Svelte app with The
     <a href={processID("Disable Close Button")}>Disable Close Button</a>
     <a href={processID("Chips Size")}>Chips Size</a>
     <a href={processID("Customization")}>Customization</a>
+    <a href={processID("Chip Customization")} class="ps-4">Chip customization</a>
+    <a href={processID("Image Customization")} class="ps-4">Image customization</a>
+    <a href={processID("Accessibility")}>Accessibility</a>
     <a href={processID("Configuration")}>Configuration</a>
   {/snippet}
 </DocLayout>

@@ -9,6 +9,8 @@
     --ui-bg-secondary: 238 238 238;
     --ui-bg-tertiary: 228 228 228;
     --ui-bg-alt: 10 10 20;
+
+    --max-width: 1400px;
   }
 
   :root.dark {
@@ -29,7 +31,6 @@
 
   ::-webkit-scrollbar-thumb {
     @apply rounded-md bg-secondary hover:bg-tertiary dark:bg-tertiary dark:hover:bg-secondary;
-    /* background: linear-gradient(-45deg, rgba(231,191,0,.5) 20%, rgba(237,104,60,.5) 50%, rgba(216,67,45,.5) 80%, rgba(225,64,48,.5) 100%); */
   }
 
   .docs-block pre{

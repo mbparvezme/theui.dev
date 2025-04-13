@@ -17,7 +17,7 @@
       },
       {
         "name": "size",
-        "type": "BUTTON_SIZE",
+        "type": "<a href=\"/docs/types#button-size-type\">BUTTON_SIZE</a>",
         "description": "Specifies the size of the buttons in the group.",
         "default": "\"md\""
       },
@@ -29,7 +29,7 @@
       },
       {
         "name": "rounded",
-        "type": "ROUNDED",
+        "type": "<a href=\"/docs/types#common-types\">ROUNDED</a>",
         "description": "Controls the rounded corners of the buttons in the group.",
         "default": "\"md\""
       },
@@ -52,8 +52,8 @@
         "default": "\"default\""
       },
       {
-        "name": "animate",
-        "type": "ANIMATE_SPEED",
+        "name": "animationSpeed",
+        "type": "<a href=\"/docs/types#common-types\">ANIMATE_SPEED</a>",
         "description": "Controls the animation speed for the button group.",
         "default": "\"normal\""
       },

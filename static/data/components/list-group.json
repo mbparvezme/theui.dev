@@ -5,7 +5,7 @@
       "title": "Props",
       "data": [
         {
-          "name": "animate",
+          "name": "animationSpeed",
           "type": "<a href=\"/docs/types#common-types\">ANIMATE_SPEED</a>",
           "description": "Controls the animation speed for the List Group.",
           "default": "\"normal\""
@@ -64,8 +64,8 @@
           "default": "undefined"
         },
         {
-          "name": "animate",
-          "type": "ANIMATE_SPEED",
+          "name": "animationSpeed",
+          "type": "<a href=\"/docs/types#common-types\">ANIMATE_SPEED</a>",
           "description": "Controls the animation speed for the List Group item.",
           "default": "normal"
         }

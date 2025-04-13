@@ -1,0 +1,354 @@
+---
+title: Select
+dir: ".lib/pages"
+description: Provides a customizable dropdown for selecting options. It supports static and dynamic options, floating labels, and various styling options for flexibility.
+---
+
+<script lang="ts">
+  import DocLayout from "$lib/ui/doc/DocLayout.svelte";
+  import DocHead from "$lib/ui/doc/Head.svelte";
+  import DocBlock from "$lib/ui/doc/Block.svelte";
+  import Code from "$lib/ui/doc/CodeBlock.svelte";
+  import Example from "$lib/ui/doc/Example.svelte";
+  import ConfigComponent from "$lib/ui/doc/ConfigComponent.svelte";
+  import { processID } from "$lib";
+  let { component, edit_url }: {component: any, edit_url?: string } = $props();
+
+  import { Select, HelperText, Label } from "theui-svelte";
+
+  let data = [
+    { text: "Option 1", value: "1" },
+    { text: "Option 2", value: "2"},
+    { text: "Option 3 (Disabled)", value: "3", disabled: true }
+  ]
+</script>
+
+<DocLayout>
+  <DocHead title="Select" text="The Select component provides a customizable dropdown for selecting options. It supports static and dynamic options, floating labels, and various styling options for flexibility." {edit_url}/>
+
+  <DocBlock title="About">
+    <p class="not-prose">Designed for versatility, the <code>Select</code> component offers complete control over styling, behavior, and data handling. Whether you use static options or generate them dynamically, it ensures a seamless and consistent user experience. With built-in support for floating labels, animations, and custom styling, this component adapts to any design system effortlessly.</p>
+  </DocBlock>
+
+  <DocBlock title="Example">
+    <Example>
+      <p class="not-prose">You can use a <code>Select</code> component in two different ways. Either use the <code>option</code> prop to pass an array of options dynamically, define the <b>options</b> manually inside the component. Here's a basic example of the Select component in action:</p>
+      {#snippet example()}
+<Select label="Select an option" options={data} />
+      {/snippet}
+      {#snippet code()}
+
+```html
+<script>
+  import { Select } from "theui-svelte";
+
+  let data = [
+    { text: "Option 1", value: "1" },
+    { text: "Option 2", value: "2", selected: true },
+    { text: "Option 3 (Disabled)", value: "3", disabled: true }
+  ]
+</script>
+
+<Select label="Select an option" options={data} />
+```
+      {/snippet}
+
+      {#snippet children2()}
+<p class="not-prose mt-8">Or, you can use the <b>&lt;option&gt;</b> tag directly.</p>
+      {/snippet}
+      {#snippet example2()}
+<Select label="Choose a category">
+  <option value="books">Books</option>
+  <option value="electronics">Electronics</option>
+  <option value="clothing" disabled>Clothing (Unavailable)</option>
+</Select>
+      {/snippet}
+      {#snippet code2()}
+
+```html
+<script>
+  import { Select } from "theui-svelte";
+</script>
+
+<Select label="Choose a category">
+  <option value="books">Books</option>
+  <option value="electronics">Electronics</option>
+  <option value="clothing" disabled>Clothing (Unavailable)</option>
+</Select>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Default Value">
+    <Example>
+      <p class="not-prose">The <code>value</code> prop allows you to set a default selection for the <code>Select</code> component. If a value is provided, the corresponding option will be pre-selected when the component loads. This ensures that users see a predefined choice without needing to manually select it. If no <code>value</code> is set, the first option (if available) will be selected by default.</p>
+      {#snippet example()}
+<Select label="Select an option" options={data} value="2" />
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Select label="Select an option" options={data} value="2" />
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Variant">
+    <Example classes="gap-8">
+      <p class="not-prose">The <code>variant</code> prop controls the appearance of the <code>Select</code> component. It has two options:</p>
+      <ul class="mt-0">
+        <li><span class="not-prose"><code>bordered</code></span>(default): Displays the select input with a visible border, making it distinct and well-defined.</li>
+        <li><span class="not-prose"><code>flat</code></span>: Removes the border for a more minimalistic and seamless look.</li>
+      </ul>
+      <p class="not-prose">If <code>floatingLabel</code> is enabled, it works with both variants, ensuring the label moves above the input when a value is selected.</p>
+      {#snippet example()}
+<Select label="Select an option" options={data} />
+<Select label="Select an option" options={data} variant="flat" />
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Select label="Select an option" options={data} variant="bordered" />
+<Select label="Select an option" options={data} variant="flat" />
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Label & Floating Label">
+    <p class="not-prose">The <code>label</code> prop allows you to add a label to the <code>Select</code> component, improving accessibility and user experience. The label can be simple text or a more complex element using a <code>Snippet</code>.</p>  
+    <p class="not-prose">If <code>floatingLabel</code> is enabled, the label floats above the input when a value is selected. It stays static otherwise. This only works when the label is a prop, not a <code>Snippet</code>.</p>
+    <Example>
+      {#snippet example()}
+<div class="flex flex-col gap-4">
+  <Select label="Select an option" options={data} />
+  <Select options={data}>
+    {#snippet label()}
+      <div>
+        <Label>Select an option</Label>
+        <HelperText>This is helper text for the select input!</HelperText>
+      </div>
+    {/snippet}
+  </Select>
+</div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<!-- Using label prop -->
+<Select label="Select an option" options={data} />
+
+<!-- Using label snippet -->
+<Select options={data}>
+  {#snippet label()}
+    <div>
+      <Label>Select an option</Label>
+      <HelperText>This is helper text for the select input!</HelperText>
+    </div>
+  {/snippet}
+</Select>
+```
+      {/snippet}
+
+      {#snippet children2()}
+<p class="not-prose mt-8">Label using <code>floatingLabel</code>.</p>
+      {/snippet}
+
+      {#snippet example2()}
+<Select label="Select an option" options={data} floatingLabel />&nbsp;
+<Select label="Select an option" options={data} variant="flat" floatingLabel />
+      {/snippet}
+      {#snippet code2()}
+
+```html
+<Select ... floatingLabel />
+<Select ... floatingLabel variant="flat" />
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Sizing">
+    <Example>
+      <p class="not-prose">The <code>size</code> prop controls the overall size of the Select component. Available options are <code>"sm"</code>, <code>"md"</code>, <code>"lg"</code>, and <code>"xl"</code>, with <code>"md"</code> as the default. This affects padding, font size, and spacing for a consistent UI.</p>
+      {#snippet example()}
+<div class="flex flex-col gap-4">
+  <Select label="Small (sm) Select" options={data} size="sm" />
+  <Select label="Medium (md) Select" options={data} size="md" />
+  <Select label="Large (lg) Select" options={data} size="lg" />
+  <Select label="Extra large (xl) Select" options={data} size="xl" />
+</div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Select ... size="sm" />
+<Select ... size="md" />
+<Select ... size="lg" />
+<Select ... size="xl" />
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Rounded">
+    <Example>
+      <p class="not-prose">The <code>size</code> prop controls the border-radius of the Select component. You can choose from <code>"sm"</code>, <code>"md"</code>, <code>"lg"</code>, <code>"xl"</code>, <code>"full"</code>, and <code>"none"</code>to determine the roundness of the corners. The default value is <code>"md"</code> , giving the component a moderate rounded appearance.</p>
+      {#snippet example()}
+<div class="flex flex-col gap-4">
+  <Select label="Not Rounded" options={data} rounded="none" />
+  <Select label="Small (sm) Rounded" options={data} rounded="sm" />
+  <Select label="Medium (md) Rounded" options={data} rounded="md" />
+</div>
+<div class="flex flex-col gap-4">
+  <Select label="large (lg) Rounded" options={data} rounded="lg" />
+  <Select label="Extra large (xl) Rounded" options={data} rounded="xl" />
+  <Select label="Full (full) Rounded" options={data} rounded="full" />
+</div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Select ... rounded="none" />
+<Select ... rounded="sm" />
+<Select ... rounded="md" />
+<Select ... rounded="lg" />
+<Select ... rounded="xl" />
+<Select ... rounded="full" />
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Animation Speed">
+    <Example>
+      <p class="not-prose">The <code>animationSpeed</code> prop allows you to control the speed of animations in the Select component. Available values include <code>"none"</code>, <code>"slower"</code>, <code>"slow"</code>, <code>"normal"</code>, <code>"fast"</code>, <code>"faster"</code>, with <code>"normal"</code> being the default. Adjust this value to make transitions quicker or slower based on your needs.</p>
+      {#snippet example()}
+<div class="flex flex-col gap-4">
+  <Select label="Small (sm) Rounded" options={data} animationSpeed="slower" />
+  <Select label="Medium (md) Rounded" options={data} animationSpeed="slow" />
+  <Select label="large (lg) Rounded" options={data} animationSpeed="normal" />
+</div>
+<div class="flex flex-col gap-4">
+  <Select label="Extra large (xl) Rounded" options={data} animationSpeed="fast" />
+  <Select label="Full (full) Rounded" options={data} animationSpeed="faster" />
+  <Select label="Not Rounded" options={data} animationSpeed="none" />
+</div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Select ... animationSpeed="slower" />
+<Select ... animationSpeed="slow" />
+<Select ... animationSpeed="normal" />
+<Select ... animationSpeed="fast" />
+<Select ... animationSpeed="faster" />
+<Select ... animationSpeed="none" />
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Helper Text">
+    <Example>
+      <p class="not-prose">The <code>helperText</code> prop allows you to add additional guidance or information below the Select component. It can be a simple string or a Snippet for more complex content. This is useful for providing instructions or any other contextual information to enhance user experience.</p>
+      {#snippet example()}
+<Select label="Select an option" options={data} helperText="This is helper text for the select input!" />
+<Select label="Select an option" options={data}>
+  {#snippet helperText()}
+    This is helper text for the select input!
+  {/snippet}
+</Select>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<!-- Using prop -->
+<Select label="Select an option" options={data} helperText="This is helper text for the select input!" />
+<!-- Using Snippet -->
+<Select label="Select an option" options={data}>
+  {#snippet helperText()}
+    This is helper text for the select input!
+  {/snippet}
+</Select>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Resetting All Styles">
+    <Example>
+      <p class="not-prose">The <code>reset</code> prop removes all default styles, applying only the styles you provide. This gives full control over the appearance, making it ideal for custom designs.</p>
+      {#snippet example()}
+<Select label="Resetting " options={data} size="sm" rounded="full" reset />
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Select ... size="sm" rounded="full" reset />
+```
+      {/snippet}
+    </Example>
+    <p class="not-prose">In this example, even though <code>size="sm"</code> and <code>rounded="full"</code> are set, they won’t take effect because the <code>reset</code> prop removes all default styles, including size and rounded settings. Only the styles you manually apply will be used.</p>
+  </DocBlock>
+
+  <DocBlock title="Customization">
+    <Example classes="gap-8">
+      <p class="not-prose">The Select component provides several options to customize its appearance, ensuring it blends seamlessly with different UI designs.</p>
+      <ul class="mt-0">
+        <li><span class="not-prose"><code>wrapperClasses</code>: Style the outer container of the Select component to adjust margins, padding, or additional styling needs.</span></li>
+        <li><span class="not-prose"><code>labelClasses</code>: Customize the label's style by applying custom classes, allowing better control over typography, spacing, and alignment.</span></li>
+        <li><span class="not-prose"><code>class</code></span> attribute: Directly modify the Select element itself, giving you control over borders, background, and overall appearance.</li>
+      </ul>
+      <p class="not-prose">By using these customization options, you can easily align the Select component with your design system while maintaining consistency across forms.</p>
+
+      {#snippet example()}
+<div class="flex flex-col gap-8">
+  <Select label="Select an option" options={data}
+    wrapperClasses="flex-row items-center gap-16"
+    labelClasses="text-xl text-blue-500"
+    class="text-blue-500 focus:ring-blue-500 focus:border-blue-500"
+  />
+</div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Select label="Select an option" options={data}
+  wrapperClasses="flex-row items-center gap-16"
+  labelClasses="text-xl text-blue-500"
+  class="text-blue-500 focus:ring-blue-500 focus:border-blue-500"
+/>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Accessibility">
+    <p class="not-prose">The <code>Select</code> component is fully accessible by default. It supports a linked label (floating or static) and connects to <code>HelperText</code> using <code>aria-describedby</code> for screen reader clarity. You can provide options via the <code>options</code> prop or render them directly using slot content. A default placeholder is shown unless disabled, and all <code>&lt;option&gt;</code> tags support <code>disabled</code> for better control. Just make sure a visible <code>label</code> or <code>aria-label</code> is provided.</p>
+  </DocBlock>
+
+  <DocBlock title="Configuration">
+    <ConfigComponent {component} />
+  </DocBlock>
+
+  {#snippet sidebar()}
+    <a href={processID("About")}>About</a>
+    <a href={processID("Example")}>Example</a>
+    <a href={processID("Default Value")}>Default Value</a>
+    <a href={processID("Variant")}>Variant</a>
+    <a href={processID("Label & Floating Label")}>Label</a>
+    <a href={processID("Sizing")}>Sizing</a>
+    <a href={processID("Rounded")}>Rounded</a>
+    <a href={processID("Animation Speed")}>Animation Speed</a>
+    <a href={processID("Helper Text")}>Helper Text</a>
+    <a href={processID("Resetting All Styles")}>Reset</a>
+    <a href={processID("Customization")}>Customization</a>
+    <a href={processID("Accessibility")}>Accessibility</a>
+    <a href={processID("Configuration")}>Configuration</a>
+  {/snippet}
+
+
+</DocLayout>

@@ -10,10 +10,10 @@
         "default": true
       },
       {
-        "name": "fill",
-        "type": "boolean",
-        "description": "Specifies if the chip should have a filled background style.",
-        "default": true
+        "name": "size",
+        "type": "'sm' | 'md' | 'lg'",
+        "description": "Sets the size of the chip, affecting padding and image dimensions. 'md' is the default size.",
+        "default": "\"md\""
       },
       {
         "name": "imageUrl",
@@ -37,13 +37,7 @@
         "name": "rounded",
         "type": "<a href=\"/docs/types#common-types\">ROUNDED</a>",
         "description": "Determines the border-radius style of the chip for rounded corners.",
-        "default": "full"
-      },
-      {
-        "name": "size",
-        "type": "'sm' | 'md' | 'lg'",
-        "description": "Sets the size of the chip, affecting padding and image dimensions. 'md' is the default size.",
-        "default": "md"
+        "default": "\"full\""
       }
     ]
   },
