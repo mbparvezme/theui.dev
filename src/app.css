@@ -1,23 +1,9 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+@import 'tailwindcss';
+@plugin '@tailwindcss/forms';
+@plugin '@tailwindcss/typography';
 
 @layer base {
-
-  :root {
-    --ui-bg-primary: 255 255 255;
-    --ui-bg-secondary: 238 238 238;
-    --ui-bg-tertiary: 228 228 228;
-    --ui-bg-alt: 10 10 20;
-
-    --max-width: 1400px;
-  }
-
-  :root.dark {
-    --ui-bg-tertiary: 50 50 60;
-  }
-
-  html {
+html {
     @apply font-sans scroll-pt-24 scroll-smooth;
   }
   /* BROWSER SPECIFIC */
