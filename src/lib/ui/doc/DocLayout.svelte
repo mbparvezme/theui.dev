@@ -31,7 +31,8 @@
   {/if}
 </section>
 
-<style lang="postcss">
+<style>
+  @reference "../../../app.css";
   :global(.page-section.not-prose a){
     @apply text-gray-500 dark:text-gray-200 no-underline;
   }

@@ -41,7 +41,8 @@
   {/each}
 </Tabs>
 
-<style lang="postcss">
+<style>
+  @reference "../../../app.css";
 :global(.config-tabs + .config-title){
   @apply mt-4;
 }

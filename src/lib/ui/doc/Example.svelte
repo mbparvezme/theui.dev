@@ -67,7 +67,8 @@
   {/if}
 </div>
 
-<style lang="postcss">
+<style>
+  @reference "../../../app.css";
 :global(.example-section + .example-section){
   @apply mt-8;
 }

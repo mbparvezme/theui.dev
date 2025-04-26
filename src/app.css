@@ -2,8 +2,11 @@
 @plugin '@tailwindcss/forms';
 @plugin '@tailwindcss/typography';
 
+@import 'theui-svelte/style.css';
+@source "../node_modules/theui-svelte";
+
 @layer base {
-html {
+  html {
     @apply font-sans scroll-pt-24 scroll-smooth;
   }
   /* BROWSER SPECIFIC */
@@ -113,6 +116,11 @@ html {
     color: #cbd5e1;
   }
 }
+
+@theme {
+  --font-sans: "IBM Plex Sans", "sans-serif";
+}
+
 
 /* Custom classes */
 .gradient{
