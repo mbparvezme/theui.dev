@@ -29,98 +29,134 @@
   	letter-spacing: .2px;
     @apply bg-cyan-100/50 text-cyan-700 dark:bg-cyan-900/30 dark:text-cyan-500 font-mono px-1 pb-0.5 text-sm rounded;
   }
-
-  /**
-  * MIT License
-  * Copyright (c) 2021 Ayush Saini
-  * Holi Theme for prism.js
-  * @author Ayush Saini <@AyushCodes on Twitter>
-  */
-  code[class*='language-'], pre[class*='language-'] {
-    @apply font-mono text-sm leading-6 tracking-tight text-left hyphens-none;
-    text-shadow: none;
-    -moz-tab-size: 4;
-    -o-tab-size: 4;
-    tab-size: 4;
-  }
-  pre[class*='language-']::-moz-selection,
-  pre[class*='language-'] ::-moz-selection,
-  code[class*='language-']::-moz-selection,
-  code[class*='language-'] ::-moz-selection,
-  pre[class*='language-']::selection,
-  pre[class*='language-'] ::selection,
-  code[class*='language-']::selection,
-  code[class*='language-'] ::selection {
-    color: inherit;
-  }
-  pre[class*='language-'] {
-    @apply p-5 m-0 overflow-auto whitespace-pre;
-  }
-  pre[class*='language-']::-webkit-scrollbar {
-    @apply h-1;
-  }
-  pre[class*='language-']::-webkit-scrollbar-track {
-    @apply dark:bg-slate-900 bg-slate-800 rounded-b-md;
-  }
-  :not(pre) > code[class*='language-'] {
-    color: #f0f6f6;
-    background: #2a4555;
-    padding: 0.2em 0.3em;
-    border-radius: 0.2em;
-    box-decoration-break: clone;
-  }
-  .token.comment, .token.prolog, .token.doctype, .token.cdata {
-    color: #446e69;
-  }
-  .token.punctuation {
-    color: #d6b007;
-  }
-  .token.property, .token.tag, .token.boolean, .token.number, .token.constant, .token.symbol, .token.deleted {
-    color: #cbd5e1;
-  }
-  .token.selector, .token.attr-name, .token.builtin {
-    color: #ff5077;
-  }
-  .token.inserted-sign .token {
-    @apply bg-green-500/30 text-green-100;
-    &:first-child{
-      @apply rounded-s-sm pb-px;
-    }
-    &:last-child{
-      @apply rounded-e-sm pb-px;
-    }
-  }
-  .token.deleted-sign .token {
-    @apply bg-red-500/30 text-red-100;
-    &:first-child{
-      @apply rounded-s-sm pb-px;
-    }
-    &:last-child{
-      @apply rounded-e-sm pb-px;
-    }
-  }
-  .token.string, .token.char {
-    color: #49c6ec;
-  }
-  .token.operator, .token.entity, .token.url, .language-css .token.string, .style .token.string {
-    color: #ec8e01;
-    background: transparent;
-  }
-  .token.atrule, .token.attr-value, .token.keyword {
-    color: #0fe468;
-  }
-  .token.function, .token.class-name {
-    color: #78f3e9;
-  }
-  .token.regex, .token.important, .token.variable {
-    color: #cbd5e1;
-  }
 }
 
 @theme {
   --font-sans: "IBM Plex Sans", "sans-serif";
 }
 
+
+/**
+* MIT License
+* Copyright (c) 2021 Ayush Saini
+* Holi Theme for prism.js
+* @author Ayush Saini <@AyushCodes on Twitter>
+*/
+code[class*='language-'], pre[class*='language-'] {
+  @apply font-mono text-sm leading-6 tracking-tight text-left hyphens-none;
+  text-shadow: none;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+}
+pre[class*='language-']::-moz-selection,
+pre[class*='language-'] ::-moz-selection,
+code[class*='language-']::-moz-selection,
+code[class*='language-'] ::-moz-selection,
+pre[class*='language-']::selection,
+pre[class*='language-'] ::selection,
+code[class*='language-']::selection,
+code[class*='language-'] ::selection {
+  color: inherit;
+}
+pre[class*='language-'] {
+  @apply p-5 m-0 overflow-auto whitespace-pre;
+}
+pre[class*='language-']::-webkit-scrollbar {
+  @apply h-1;
+}
+pre[class*='language-']::-webkit-scrollbar-track {
+  @apply dark:bg-slate-900 bg-slate-800 rounded-b-md;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  @apply text-[#5f7e7b] dark:text-[#446e69];
+}
+
+.token.punctuation {
+  @apply text-[#a16207] dark:text-[#d6b007];
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+  @apply text-[#475569] dark:text-[#cbd5e1];
+}
+
+.token.selector,
+.token.attr-name,
+.token.builtin {
+  @apply text-[#dc2626] dark:text-[#ff5077];
+}
+
+.token.inserted-sign .token {
+  @apply bg-green-500/30 text-green-800 dark:bg-green-500/30 dark:text-green-100;
+  &:first-child {
+    @apply rounded-s-sm pb-px;
+  }
+  &:last-child {
+    @apply rounded-e-sm pb-px;
+  }
+}
+
+.token.deleted-sign .token {
+  @apply bg-red-500/30 text-red-800 dark:bg-red-500/30 dark:text-red-100;
+  &:first-child {
+    @apply rounded-s-sm pb-px;
+  }
+  &:last-child {
+    @apply rounded-e-sm pb-px;
+  }
+}
+
+.token.string,
+.token.char {
+  @apply text-[#0369a1] dark:text-[#49c6ec];
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+  @apply text-[#b45309] dark:text-[#ec8e01] bg-transparent;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+  @apply text-[#059669] dark:text-[#0fe468];
+}
+
+.token.function,
+.token.class-name {
+  @apply text-[#0d9488] dark:text-[#78f3e9];
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+  @apply text-[#475569] dark:text-[#cbd5e1];
+}
+
+.code-block pre{
+  @apply my-0 bg-slate-200 dark:bg-[var(--tw-prose-pre-bg)] text-slate-700 dark:text-[var(--tw-prose-pre-code)];
+}
+
+:not(pre) > code[class*='language-'] {
+  color: #f0f6f6;
+  background: #2a4555;
+  padding: 0.2em 0.3em;
+  border-radius: 0.2em;
+  box-decoration-break: clone;
+}
 
 /* Custom classes */
 .gradient{
