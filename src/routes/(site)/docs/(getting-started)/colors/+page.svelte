@@ -4,9 +4,8 @@
 
   let { data }: { data: PageData|any } = $props();
   import SEO from "$lib/SEO.svelte"
-  console.log(data.colors)
 </script>
 
 <SEO title="Color Configuration" />
 
-<Page edit_url={data.editURL} />
+<Page colors={data.colors} edit_url={data.editURL} />

@@ -11,7 +11,9 @@ description: Customize your Svelte app's appearance with TheUI-Svelte's Colors a
   import Code from "$lib/ui/doc/CodeBlock.svelte";
   import { processID } from "$lib";
   import { Alert, Table, TBody, TR, TH, TD, THead } from "theui-svelte";
-  let { components, edit_url }: {components: any, edit_url?: string } = $props();
+  let { colors, edit_url }: {colors: any, edit_url?: string } = $props();
+
+  console.log(colors)
 
   const availableColorClasses = [
     {
@@ -99,6 +101,7 @@ description: Customize your Svelte app's appearance with TheUI-Svelte's Colors a
       description: "A muted text color for less prominent content.",
     },
   ];
+
 </script>
 
 <DocLayout>
@@ -111,7 +114,34 @@ description: Customize your Svelte app's appearance with TheUI-Svelte's Colors a
   <DocBlock title="Available Color Classes">
     <p class="not-prose">Our component library provides a set of custom classes to make integrating these colors into your designs seamless and flexible. Below is the full list of available classes:</p>
 
-    <Table class="not-prose text-sm">
+    <div class="not-prose grid grid-cols-[auto_minmax(0,_1fr)] items-center gap-2">
+      <div class="sticky top-14 z-9 lg:top-12 bg-primary">&nbsp;</div>
+      <div class="sticky top-14 z-9 col-start-2 grid grid-cols-11 justify-items-center gap-1.5 font-medium text-gray-950 *:rotate-180 *:[writing-mode:vertical-lr] max-sm:py-1 sm:gap-2 sm:*:rotate-0 sm:*:[writing-mode:horizontal-tb] lg:top-12 dark:text-white bg-primary">
+        <div>50</div>
+        <div>100</div>
+        <div>200</div>
+        <div>300</div>
+        <div>400</div>
+        <div>500</div>
+        <div>600</div>
+        <div>700</div>
+        <div>800</div>
+        <div>900</div>
+        <div>950</div>
+      </div>
+      {#each colors.shadedColors as colorData}
+        <p class="font-medium text-gray-950 capitalize sm:pr-12 dark:text-white">{colorData.title}</p>
+        <div class="grid grid-cols-11 gap-1.5 sm:gap-2">
+          {#each colorData.colors as color}
+          <div class="contents">
+            <button type="button" class="aspect-1/1 w-full rounded-sm outline -outline-offset-1 outline-black/10 sm:rounded-md dark:outline-white/10 {color.class} cursor-pointer" data-tooltip={color.code}></button>
+          </div>
+        {/each}
+      </div>
+      {/each}
+    </div>
+
+    <!-- <Table class="not-prose text-sm">
       <THead>
         <TR tableHeader={true}>
           <TH class="font-semibold">Class</TH>
@@ -138,7 +168,7 @@ description: Customize your Svelte app's appearance with TheUI-Svelte's Colors a
         <strong>[S]</strong> = <strong>Shade</strong> (e.g., 50, 100-900, 950)<br>
         <strong>Example</strong>: <code>bg-brand-primary-500</code>, <code>text-on-brand-primary-500</code>, <code>bg-error-400</code>
       </p>
-    </Alert>
+    </Alert> -->
   </DocBlock>
 
   <DocBlock title="Modify Existing Colors">

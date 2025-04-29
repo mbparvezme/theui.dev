@@ -10,13 +10,11 @@
 
 <div class="fixed right-8 bottom-8 lg:hidden">
   <Drawer id="docSidebar">
-    <!-- <Button size="sm" rounded="full" class="h-12 w-12 flex items-center justify-center bg-brand-primary border-brand-primary-500"> -->
-     {#snippet label()}
-     <Svg size={1.5} viewBox="0 0 16 16" class="fill-white">
-       <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
-     </Svg>
-     {/snippet}
-    <!-- </Button> -->
+    {#snippet label()}
+    <Svg size={1.5} viewBox="0 0 16 16" class="fill-white">
+      <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+    </Svg>
+    {/snippet}
   </Drawer>
 </div>
 
