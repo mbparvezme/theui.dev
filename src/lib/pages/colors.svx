@@ -13,8 +13,7 @@ description: Customize your Svelte app's appearance with TheUI-Svelte's Colors a
   import { Alert, Table, TBody, TR, TH, TD, THead } from "theui-svelte";
   let { colors, edit_url }: {colors: any, edit_url?: string } = $props();
 
-  console.log(colors)
-
+  /**
   const availableColorClasses = [
     {
       className: ".[T]-brand-primary-[S]",
@@ -101,6 +100,7 @@ description: Customize your Svelte app's appearance with TheUI-Svelte's Colors a
       description: "A muted text color for less prominent content.",
     },
   ];
+  */
 
 </script>
 
@@ -114,32 +114,44 @@ description: Customize your Svelte app's appearance with TheUI-Svelte's Colors a
   <DocBlock title="Available Color Classes">
     <p class="not-prose">Our component library provides a set of custom classes to make integrating these colors into your designs seamless and flexible. Below is the full list of available classes:</p>
 
+    <h4 class="text-xl">Shaded Colors</h4>
     <div class="not-prose grid grid-cols-[auto_minmax(0,_1fr)] items-center gap-2">
-      <div class="sticky top-14 z-9 lg:top-12 bg-primary">&nbsp;</div>
-      <div class="sticky top-14 z-9 col-start-2 grid grid-cols-11 justify-items-center gap-1.5 font-medium text-gray-950 *:rotate-180 *:[writing-mode:vertical-lr] max-sm:py-1 sm:gap-2 sm:*:rotate-0 sm:*:[writing-mode:horizontal-tb] lg:top-12 dark:text-white bg-primary">
-        <div>50</div>
-        <div>100</div>
-        <div>200</div>
-        <div>300</div>
-        <div>400</div>
-        <div>500</div>
-        <div>600</div>
-        <div>700</div>
-        <div>800</div>
-        <div>900</div>
-        <div>950</div>
+      <div class="sticky top-14 z-9 lg:top-12 bg-primary sm:py-2">&nbsp;</div>
+      <div class="sticky top-14 z-9 col-start-2 grid grid-cols-11 justify-items-center gap-1.5 font-medium text-gray-950 *:rotate-180 *:[writing-mode:vertical-lr] sm:py-2 sm:gap-2 sm:*:rotate-0 sm:*:[writing-mode:horizontal-tb] lg:top-12 dark:text-white bg-primary">
+        <div class="font-semibold">50</div>
+        <div class="font-semibold">100</div>
+        <div class="font-semibold">200</div>
+        <div class="font-semibold">300</div>
+        <div class="font-semibold">400</div>
+        <div class="font-semibold">500</div>
+        <div class="font-semibold">600</div>
+        <div class="font-semibold">700</div>
+        <div class="font-semibold">800</div>
+        <div class="font-semibold">900</div>
+        <div class="font-semibold">950</div>
       </div>
       {#each colors.shadedColors as colorData}
-        <p class="font-medium text-gray-950 capitalize sm:pr-12 dark:text-white">{colorData.title}</p>
+        <p class="font-medium text-gray-950 sm:pr-12 dark:text-white">
+          <span class="font-semibold text-sm">{colorData.title}</span>
+          <span class="block text-sm text-muted">{colorData.variable}</span>
+        </p>
         <div class="grid grid-cols-11 gap-1.5 sm:gap-2">
           {#each colorData.colors as color}
           <div class="contents">
-            <button type="button" class="aspect-1/1 w-full rounded-sm outline -outline-offset-1 outline-black/10 sm:rounded-md dark:outline-white/10 {color.class} cursor-pointer" data-tooltip={color.code}></button>
+            <button type="button" class="aspect-1/1 w-full rounded-sm outline -outline-offset-1 outline-black/10 sm:rounded-md dark:outline-white/10 {color.class} cursor-pointer" data-tooltip={color.class.replace('bg', '[T]')}></button>
           </div>
         {/each}
       </div>
       {/each}
     </div>
+
+    <Alert class="not-prose" type="warning" theme="light">
+      <p>
+        <strong>[T]</strong> = <strong>Type</strong> (e.g., <code>bg</code>, <code>text</code>, <code>border</code>, <code>fill</code>, etc.)<br>
+        <strong>[S]</strong> = <strong>Shade</strong> (e.g., 50, 100-900, 950)<br>
+        <strong>Class example</strong>: <code>bg-brand-primary-500</code>, <code>text-on-brand-primary-500</code>, <code>bg-error-400</code>
+      </p>
+    </Alert>
 
     <!-- <Table class="not-prose text-sm">
       <THead>
@@ -160,19 +172,48 @@ description: Customize your Svelte app's appearance with TheUI-Svelte's Colors a
           </TR>
         {/each}
       </TBody>
+    </Table> -->
+
+    <h4 class="text-xl">Non-shaded Colors</h4>
+    <Table class="not-prose text-sm">
+      <THead>
+        <TR tableHeader={true}>
+          <TH colspan="2">&nbsp;</TH>
+          <TH class="w-28 text-center">Light mode</TH>
+          <TH class="w-28 text-center">Dark mode</TH>
+        </TR>
+      </THead>
+      <TBody>
+        {#each colors.nonShadedColors as colorData}
+          {#each colorData.colors as color, i}
+          <TR>
+            {#if i == 0}
+            <TD rowspan={colorData.colors.length}>{colorData.propertyName}</TD>
+            {/if}
+            <TD>
+              <span class="text-default font-semibold">{color.title} ({color.className})</span>
+              <span class="block text-sm text-muted">{color.variable}</span>
+            </TD>
+            <TD class="text-center">
+              <div class="contents">
+                <button type="button" class="aspect-1/1 w-10 rounded-sm outline -outline-offset-1 outline-black/10 sm:rounded-md dark:outline-white/10 {color.demoClass ?? color.className} cursor-pointer" data-tooltip={color.light}></button>
+              </div>
+            </TD>
+            <TD class="text-center">
+              <div class="contents dark">
+                <button type="button" class="dark aspect-1/1 w-10 rounded-sm outline -outline-offset-1 outline-black/10 sm:rounded-md dark:outline-white/10 border border-black/10 {color.demoClass ?? color.className} cursor-pointer" data-tooltip={color.dark}></button>
+              </div>
+            </TD>
+          </TR>
+          {/each}
+        {/each}
+      </TBody>
     </Table>
 
-    <Alert class="not-prose" type="warning" theme="light">
-      <p>
-        <strong>[T]</strong> = <strong>Type</strong> (e.g., <code>bg</code>, <code>text</code>, <code>border</code>, <code>fill</code>, etc.)<br>
-        <strong>[S]</strong> = <strong>Shade</strong> (e.g., 50, 100-900, 950)<br>
-        <strong>Example</strong>: <code>bg-brand-primary-500</code>, <code>text-on-brand-primary-500</code>, <code>bg-error-400</code>
-      </p>
-    </Alert> -->
   </DocBlock>
 
   <DocBlock title="Modify Existing Colors">
-    <p class="not-prose">TailwindCSS’s color system is enhanced for branding with support for shaded and non-shaded colors. Customize or add new colors via tailwind.config.ts for shades or directly edit CSS variables for non-shaded colors.</p>
+    <p class="not-prose">TailwindCSS's color system is enhanced for branding with support for shaded and non-shaded colors. Customize or add new colors via tailwind.config.ts for shades or directly edit CSS variables for non-shaded colors.</p>
     <h4 class="mt-6 mb-0" id={processID("Modify Shaded Colors", false)}>Modify Shaded Colors</h4>
     <p class="not-prose">If you want to modify a <strong>color with shades</strong> (i.e <code>brand-primary</code>, <code>brand-secondary</code> etc.), you can do it in <code>tailwind.config.ts</code>. For example, to change the primary brand color to <code>#001A6E</code> and secondary brand color to <code>#FFE893</code>, the code is given below:</p>
 

@@ -40,21 +40,21 @@ description: Manage stacking contexts in your Svelte application with TheUI-Svel
           <TD><span class="not-prose whitespace-nowrap"><code>.dropdown-content</code></span></TD>
           <TD>11</TD>
         </TR>
-        <TR>
+        <!-- <TR>
           <TD>Sticky positioned</TD>
           <TD><span class="not-prose whitespace-nowrap"><code>.sticky, [class$=:sticky]</code></span></TD>
           <TD>20</TD>
-        </TR>
+        </TR> -->
         <TR>
           <TD>Navbar</TD>
           <TD><span class="not-prose whitespace-nowrap"><code>.theui-navbar</code></span></TD>
           <TD>21</TD>
         </TR>
-        <TR>
+        <!-- <TR>
           <TD>Fixed positioned</TD>
           <TD><span class="not-prose whitespace-nowrap"><code>.fixed, [class$=:fixed]</code></span></TD>
           <TD>30</TD>
-        </TR>
+        </TR> -->
         <TR>
           <TD>Offcanvas</TD>
           <TD><span class="not-prose whitespace-nowrap"><code>.offcanvas</code></span></TD>
