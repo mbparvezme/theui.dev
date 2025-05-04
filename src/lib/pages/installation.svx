@@ -20,7 +20,7 @@ description: Follow our step-by-step guide to install TheUI-Svelte component lib
   <DocBlock title="Installation">
     <div>
       <p class="not-prose">Follow one of the two methods to install the component library:</p>
-      <ol class="my-0">
+      <ol class="mb-0 mt-0">
         <li class="my-0">Github boilerplate.</li>
         <li class="my-0">Manually installation.</li>
       </ol>
@@ -50,7 +50,7 @@ npm run dev
       <p class="not-prose">Easily add theui-svelte to your project via a GitHub boilerplate or manual installation. For manual setup:</p>
       <ul class="my-0">
         <li class="my-0 not-prose">Install Sveltekit with TailwindCSS and theui-svelte</li>
-        <li class="my-0 not-prose">Configure Tailwind by updating <code>tailwind.config.cjs</code> and importing <code>theui-svelte/style</code> in <code>+layout.svelte</code>.</li>
+        <li class="my-0 not-prose">Configure Tailwind CSS by updating the <code>./src/app.css</code> file.</li>
       </ul>
     </div>
     <p class="not-prose font-semibold">2.1 Install</p>

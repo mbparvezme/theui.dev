@@ -13,7 +13,7 @@ description: Begin your journey with "theui-svelte". Learn how to quickly set up
 
 <DocLayout>
 
-  <DocHead title="theui-svelte: Svelte 5 Component Library" text="Kickstart your development with the theui-svelte, a comprehensive component library designed for the Svelte ecosystem. Leveraging the power of Svelte and TailwindCSS, the theui-svelte accelerates your development process, helping you build and deliver projects faster." {edit_url} />
+  <DocHead title="theui-svelte: Svelte 5 Component Library" text="Kickstart your development with the theui-svelte, a comprehensive component library designed for the Svelte ecosystem. Leveraging the power of Svelte (v5) and Tailwind CSS (v4), the theui-svelte accelerates your development process, helping you build and deliver projects faster." {edit_url} />
 
   <DocBlock title="Introduction">
     <p class="not-prose">Welcome to the <b>theui-svelte</b>, the component library for Svelte by TheUI, built on top of TailwindCSS. Our components are designed to be highly accessible and customizable out of the box. By combining the capabilities of Svelte with the versatile features of TailwindCSS, the <b>theui-svelte</b> offers a powerful tool-set to enhance your development workflow.</p>
