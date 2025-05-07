@@ -272,40 +272,40 @@ description: Integrate customizable modals into your Svelte app with TheUI-Svelt
     </Example>
 
     <Example title="Animation Speed">
-      <p class="not-prose">The <code>animateSpeed</code> prop controls the speed of the Modal's animation. It accepts the following values: <code>'none'</code>, <code>'slower'</code>, <code>'slow'</code>, <code>'normal'</code>, <code>'fast'</code>, and <code>'faster'</code>. Setting this prop to false will disable the animation, while the other values adjust the animation speed accordingly.</p>
+      <p class="not-prose">The <code>animationSpeed</code> prop controls the speed of the Modal's animation. It accepts the following values: <code>'none'</code>, <code>'slower'</code>, <code>'slow'</code>, <code>'normal'</code>, <code>'fast'</code>, and <code>'faster'</code>. Setting this prop to false will disable the animation, while the other values adjust the animation speed accordingly.</p>
       {#snippet example()}
       <div>
-        <Modal animation="slide-down" animateSpeed="slower">
+        <Modal animation="slide-down" animationSpeed="slower">
           {#snippet label()}
             <Button>Slower</Button>
           {/snippet}
           Modal with slide-down animation
         </Modal>
-        <Modal animation="slide-down" animateSpeed="slow">
+        <Modal animation="slide-down" animationSpeed="slow">
           {#snippet label()}
             <Button>Slow</Button>
           {/snippet}
           Modal with slide-down animation
         </Modal>
-        <Modal animation="slide-down" animateSpeed="normal">
+        <Modal animation="slide-down" animationSpeed="normal">
           {#snippet label()}
             <Button>Normal (Default)</Button>
           {/snippet}
           Modal with slide-down animation
         </Modal>
-        <Modal animation="slide-down" animateSpeed="fast">
+        <Modal animation="slide-down" animationSpeed="fast">
           {#snippet label()}
             <Button>Fast</Button>
           {/snippet}
           Modal with slide-down animation
         </Modal>
-        <Modal animation="slide-down" animateSpeed="faster">
+        <Modal animation="slide-down" animationSpeed="faster">
           {#snippet label()}
             <Button>Faster</Button>
           {/snippet}
           Modal with slide-down animation
         </Modal>
-        <Modal animation="slide-down" animateSpeed="none">
+        <Modal animation="slide-down" animationSpeed="none">
           {#snippet label()}
             <Button>No animation</Button>
           {/snippet}
@@ -316,12 +316,12 @@ description: Integrate customizable modals into your Svelte app with TheUI-Svelt
 
       {#snippet code()}
 ```html
-<Modal animateSpeed="slower"> ... </Modal>
-<Modal animateSpeed="slow"> ... </Modal>
-<Modal animateSpeed="normal"> ... </Modal>
-<Modal animateSpeed="fast"> ... </Modal>
-<Modal animateSpeed="faster"> ... </Modal>
-<Modal animateSpeed="none"> ... </Modal>
+<Modal animationSpeed="slower"> ... </Modal>
+<Modal animationSpeed="slow"> ... </Modal>
+<Modal animationSpeed="normal"> ... </Modal>
+<Modal animationSpeed="fast"> ... </Modal>
+<Modal animationSpeed="faster"> ... </Modal>
+<Modal animationSpeed="none"> ... </Modal>
 ```
       {/snippet}
     </Example>
@@ -360,7 +360,7 @@ description: Integrate customizable modals into your Svelte app with TheUI-Svelt
         </Modal>
         <Modal backdrop="bg-brand-primary-500/30">
           {#snippet label()}
-            <Button>Modal Without Backdrop</Button>
+            <Button>Modal With Custom Backdrop</Button>
           {/snippet}
            Modal with no backdrop
         </Modal>
