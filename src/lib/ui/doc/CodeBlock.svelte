@@ -41,8 +41,8 @@
 
 <div {id} class="relative {twMerge("border border-gray-200 dark:border-gray-800 rounded-md", classes)}" class:my-6={space=="both"} class:mt-6={space=="top"} class:mb-6={space=="bottom"}>
   <div class="bg-slate-100 dark:bg-slate-900 px-4 h-11 w-full flex items-center justify-between rounded-t-md">
-    {#if title}<span class="not-prose text-gray-500 dark:text-gray-400 text-sm mr-auto font-mono font-semibold">{@html title}</span>{/if}
-    <div class="ml-auto flex justify-content-between gap-8">
+    {#if title}<span class="not-prose text-gray-500 dark:text-gray-400 text-sm font-mono font-semibold">{@html title}</span>{/if}
+    <div class="ms-auto flex justify-content-between gap-8">
       {#if copyBtn}
       <button class="relative font-medium w-[12px] h-[12px]" data-tooltip="Copy code" data-tooltip-position="left" onclick={()=>copy()}>
         <Svg slot="label">
