@@ -22,7 +22,7 @@ description: Begin your journey with "theui-svelte". Learn how to quickly set up
   <DocBlock title="Features">
     <div>
       <p class="not-prose">The main features of the component library are:</p>
-      <ul>
+      <ul class="list-my-0">
         <li>Built with ARIA roles and WCAG compliance for better usability.</li>
         <li>Highly customizable</li>
         <li>Support LTR/RTL.</li>
@@ -30,35 +30,31 @@ description: Begin your journey with "theui-svelte". Learn how to quickly set up
         <li>Optimized for leveraging svelte's reactivity</li>
         <li>Includes smooth transitions and animations for better user experience.</li>
         <li>Fully typed for enhanced development</li>
-        <li>Offers examples, and usage guides tailored for Svelte.</li>
+        <!-- <li>Offers examples, and usage guides tailored for Svelte.</li> -->
       </ul>
     </div>
   </DocBlock>
 
   <DocBlock title="Components">
-    <div class="flex w-full">
-      <div class="grow">
-        <h6 class="mb-0 font-bold">UI COMPONENTS</h6>
-        <ul class="not-prose">
-          {#each components.components.links as component}
-            <li><a class="not-prose" href={component.link}>{component.text}</a></li>
-          {/each}
-        </ul>
-      </div>
-      <div class="grow">
-        <h6 class="mb-0 font-bold">FORM ELEMENTS</h6>
-        <ul class="not-prose mb-6">
-          {#each components.forms.links as component}
-            <li><a class="not-prose" href={component.link}>{component.text}</a></li>
-          {/each}
-        </ul>
-        <h6 class="mb-0 font-bold">UTILITIES</h6>
-        <ul class="not-prose">
-          {#each components.utilities.links as component}
-            <li><a class="not-prose" href={component.link}>{component.text}</a></li>
-          {/each}
-        </ul>
-      </div>
+    <div class="grow">
+      <h6 class="mb-1 font-bold text-muted">UI COMPONENTS</h6>
+      <ul class="not-prose grid xs:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-y-1 mb-6">
+        {#each components.components.links as component}
+          <li><a class="not-prose" href={component.link}>{component.text}</a></li>
+        {/each}
+      </ul>
+      <h6 class="mb-1 font-bold text-muted">FORM ELEMENTS</h6>
+      <ul class="not-prose grid xs:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-y-1 mb-6">
+        {#each components.forms.links as component}
+          <li><a class="not-prose" href={component.link}>{component.text}</a></li>
+        {/each}
+      </ul>
+      <h6 class="mb-1 font-bold text-muted">UTILITIES</h6>
+      <ul class="not-prose grid xs:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-y-1 mb-6">
+        {#each components.utilities.links as component}
+          <li><a class="not-prose" href={component.link}>{component.text}</a></li>
+        {/each}
+      </ul>
     </div>
   </DocBlock>
 
