@@ -21,8 +21,8 @@ description: Utilize theui-svelte's Alert component to display crucial messages 
   <DocHead title="Alert" text="The Alert component displays feedback or contextual messages to your users. Using the Alert component, you can provide various types of feedback such as success, error, warning, or general information." {edit_url}/>
 
   <DocBlock title="Example">
-    <p class="not-prose">To use the Alert component in your project, import the required component.</p>
-    <p class="not-prose">There are 4 types of <code>Alert</code> you can create using the <code>type</code> prop. The default type is <code>error</code>. Other types are <code>'info'</code>, <code>'success'</code> and <code>'warning'</code>. Here are some examples:</p>
+    <p class="not-prose">To use the <code>Alert</code> component in your project, import the required component.</p>
+    <p class="not-prose">There are 4 types of alert you can create using the <code>type</code> prop. The default type is <code>error</code>. Other types are <code>'info'</code>, <code>'success'</code> and <code>'warning'</code>. Here are some examples:</p>
     <Example>
       {#snippet example()}
         <div class="w-full">
@@ -49,9 +49,8 @@ description: Utilize theui-svelte's Alert component to display crucial messages 
   </DocBlock>
 
   <DocBlock title="Icon">
-    <p class="not-prose">The Alert component in theui-svelte offers flexible icon customization to enhance the visual feedback for users. You can choose whether to display an icon and what type of icon should appear based on the alert type.</p>
+    <p class="not-prose">The <code>Alert</code> component supports customizable icons for better visual feedback. By default, no icon is shown. Simply add the <code>icon</code> attribute to display an icon matching the alert type (success, error, warning, or info). No value needed—it auto-selects the appropriate icon.</p>
     <Example>
-      <p class="not-prose">By default, the Alert component does not display any icon. To enable an icon, simply add the icon attribute to the Alert component. No need to provide a value; just including the icon attribute will automatically display an icon that corresponds to the alert type (e.g., success, error, warning, info).</p>
       {#snippet example()}
       <div class="w-full">
         <Alert icon>I'm error (default) alert!</Alert>
@@ -73,11 +72,11 @@ description: Utilize theui-svelte's Alert component to display crucial messages 
   </DocBlock>
 
   <DocBlock title="Theme">
-    <p class="not-prose">The Alert component offers two distinct themes to control its overall appearance. These themes help in aligning the alert's style with your application's design requirements.</p>
+    <p class="not-prose">The <code>Alert</code> component offers two distinct themes to control its overall appearance. These themes help in aligning the alert's style with your application's design requirements.</p>
     <Example title="Available Themes">
       <ul>
         <li><b>default</b>: This is the standard theme, offering a balanced look suitable for most use cases.</li>
-        <li><b>light</b>: A lighter variant that provides a more subtle and softer appearance.</li>
+        <li><b>soft</b>: A lighter variant that provides a more subtle and softer appearance.</li>
       </ul>
       {#snippet example()}
       <div class="w-full">
@@ -89,7 +88,7 @@ description: Utilize theui-svelte's Alert component to display crucial messages 
 
 ```html
 <Alert theme="default">...</Alert>
-<Alert theme="light">...</Alert>
+<Alert theme="soft">...</Alert>
 ```
       {/snippet}
     </Example>
@@ -115,17 +114,17 @@ description: Utilize theui-svelte's Alert component to display crucial messages 
       {#snippet code()}
 
 ```html
-<Alert theme="light" variant="card">...</Alert>
-<Alert theme="light" variant="borderTop">...</Alert>
-<Alert theme="light" variant="borderBottom">...</Alert>
-<Alert theme="light" variant="borderStart">...</Alert>
+<Alert theme="soft" variant="card">...</Alert>
+<Alert theme="soft" variant="borderTop">...</Alert>
+<Alert theme="soft" variant="borderBottom">...</Alert>
+<Alert theme="soft" variant="borderStart">...</Alert>
 ```
       {/snippet}
     </Example>
   </DocBlock>
 
   <DocBlock title="Dismissible Alert">
-    <p class="not-prose">The Alert component also includes a dismissible feature, allowing users to close the alert when it's no longer needed. To make an alert dismissible, simply add the dismissible attribute to the Alert component. No need to provide a value; just including the dismissible attribute will automatically add a close button to the alert.</p>
+    <p class="not-prose">You can close alerts with a click - just add the <code>dismissible</code> attribute. The component handles the rest, adding a close button automatically.</p>
     <Example>
       {#snippet example()}
       <div class="w-full">
@@ -143,7 +142,7 @@ description: Utilize theui-svelte's Alert component to display crucial messages 
 
   <DocBlock title="Rounded Corners">
     <Example>
-      <p class="not-prose">The <code>rounded</code> prop controls the corner radius of the Alert component, allowing you to adjust its appearance for a more customized look. By setting this prop, you can define how rounded the corners of the Alert should be. The default value is <code>"md"</code>, and it accepts the following predefined values: <code>"sm"</code>, <code>"md"</code>, <code>"lg"</code>, <code>"xl"</code>, <code>"full"</code>, or <code>"none"</code> to suit your design preferences.</p>
+      <p class="not-prose">You can adjust the alert's corners using the <code>rounded</code> prop to tweak the border radius. Choose from preset sizes like <code>"sm"</code>, <code>"md"</code> (default), <code>"lg"</code>, <code>"xl"</code>, <code>"full"</code>, or <code>"none"</code> for a polished look.</p>
       {#snippet example()}
       <div class="w-full">
         <Alert rounded="none">This Alert has no rounded corners (sharp edges).</Alert>
@@ -170,23 +169,25 @@ description: Utilize theui-svelte's Alert component to display crucial messages 
 
   <DocBlock title="Customization">
     <Example>
-      <p class="not-prose">The Alert component in theui-svelte allows full customization through the class attribute, giving you control over the styling to match your application's design needs. This flexibility ensures that the alert can seamlessly blend with various UI themes and aesthetics.</p>
+      <p class="not-prose">The <code>Alert</code> component in theui-svelte allows full customization through the class attribute, giving you control over the styling to match your application's design needs. This flexibility ensures that the alert can seamlessly blend with various UI themes and aesthetics.</p>
       {#snippet example()}
       <div class="w-full">
-        <Alert class="bg-gradient-to-r from-red-400 to-yellow-500">I'm custom styled alert message!</Alert>
+        <Alert class="bg-gradient-to-r from-red-200 dark:from-red-800 to-yellow-400 dark:to-yellow-500 text-default">I'm custom styled alert message!</Alert>
       </div>
       {/snippet}
       {#snippet code()}
 
 ```html
-<Alert class="bg-gradient-to-r from-red-400 to-yellow-500">...</Alert>
+<Alert class="bg-gradient-to-r from-red-200 dark:from-red-800 to-yellow-400 dark:to-yellow-500 text-default">
+  I'm custom styled alert message!
+</Alert>
 ```
       {/snippet}
     </Example>
   </DocBlock>
 
   <DocBlock title="Accessibility">
-    <p class="not-prose">The Alert component is built with accessibility in mind, handling all necessary ARIA attributes, including <code>role="alert"</code> and <code>aria-label="Close alert"</code>, to ensure compatibility with assistive technologies. These attributes are automatically applied, so you don't need to configure them manually.</p>
+    <p class="not-prose">The <code>Alert</code> component is built with accessibility in mind, handling all necessary ARIA attributes, including <code>role="alert"</code> and <code>aria-label="Close alert"</code>, to ensure compatibility with assistive technologies. These attributes are automatically applied, so you don't need to configure them manually.</p>
     <p class="not-prose font-bold">The only consideration required is maintaining proper color contrast for the alert's text and background to ensure readability and compliance with accessibility standards.</p>
   </DocBlock>
 
