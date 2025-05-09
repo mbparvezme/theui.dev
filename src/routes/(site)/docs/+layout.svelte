@@ -4,10 +4,6 @@
   import { Container, Svg, Drawer } from "theui-svelte";
   import { twMerge } from 'tailwind-merge';
 
-  /**
-   * 
-  */
-
 
   let { children, data }: {children: Snippet, data: any } = $props();
   let linkClasses = (active: boolean = false) => twMerge("border-s-2 border-gray-500/10 ps-4 py-1 inline text-default", active && "border-brand-primary-500 text-brand-primary-500");
@@ -83,8 +79,8 @@
   </div>
 </Drawer>
 
-<Container class="relative grid lg:grid-cols-6 gap-8 min-h-screen pb-48 pt-28">
-  <aside class="doc-sidebar top-28 fixed lg:sticky lg:w-auto bg-primary lg:bg-transparent -translate-x-[288px] lg:translate-x-0" style="height: calc(100vh - 76px)">
+<Container class="relative flex gap-8 min-h-screen pb-48 pt-28">
+  <aside class="doc-sidebar top-28 fixed lg:sticky bg-primary lg:bg-transparent hidden lg:block w-64">
     <div class="flex flex-col h-full overflow-y-auto pb-16">
 
       <section>
@@ -145,7 +141,7 @@
 
     </div>
   </aside>
-  <div class="docs lg:col-span-5 min-h-screen max-w-full prose dark:prose-invert dark:prose-h1:text-default dark:prose-h2:text-default dark:prose-h3:text-default dark:prose-h4:text-gray-500 prose-pre:whitespace-pre-wrap relative">
+  <div class="docs min-h-screen flex-1 max-w-full prose dark:prose-invert dark:prose-h1:text-default dark:prose-h2:text-default dark:prose-h3:text-default dark:prose-h4:text-gray-500 prose-pre:whitespace-pre-wrap relative">
     {@render children()}
   </div>
 </Container>
