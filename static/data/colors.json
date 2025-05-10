@@ -156,7 +156,6 @@
           "title": "Primary",
           "className": "bg-primary",
           "variable": "--background-color-primary",
-          "classWithVar": "bg-[var(--background-color-primary)]",
           "light": "#FFFDFD",
           "dark": "#16161D"
         },
@@ -164,7 +163,6 @@
           "title": "Secondary",
           "className": "bg-secondary",
           "variable": "--background-color-secondary",
-          "classWithVar": "bg-[var(--background-color-secondary)]",
           "light": "#F5F3F3",
           "dark": "#1E1E26"
         },
@@ -172,7 +170,6 @@
           "title": "Tertiary",
           "className": "bg-tertiary",
           "variable": "--background-color-tertiary",
-          "classWithVar": "bg-[var(--background-color-tertiary)]",
           "light": "#EBE9E9",
           "dark": "#26262F"
         },
@@ -180,7 +177,6 @@
           "title": "Alternate background",
           "className": "bg-alt",
           "variable": "--background-color-alt",
-          "classWithVar": "bg-[var(--background-color-alt)]",
           "light": "#16161D",
           "dark": "#F5F3F3"
         }
@@ -193,8 +189,6 @@
           "title": "Default",
           "className": "text-default",
           "variable": "--text-color-default",
-          "classWithVar": "text-[var(--text-color-default)]",
-          "demoClass": "bg-[var(--text-color-default)]",
           "light": "#16161D",
           "dark": "#F5F3F3"
         },
@@ -202,8 +196,6 @@
           "title": "Text on brand primary",
           "className": "text-on-brand-primary",
           "variable": "--text-color-on-brand-primary",
-          "classWithVar": "text-[var(--text-color-on-brand-primary)]",
-          "demoClass": "bg-[var(--text-color-on-brand-primary)]",
           "light": "#ffffff",
           "dark": "#ffffff"
         },
@@ -211,17 +203,13 @@
           "title": "Text on brand secondary",
           "className": "text-on-brand-secondary",
           "variable": "--text-color-on-brand-secondary",
-          "classWithVar": "text-[var(--text-color-on-brand-secondary)]",
-          "demoClass": "bg-[var(--text-color-on-brand-secondary)]",
-          "light": "#2E2105",
-          "dark": "#2E2105"
+          "light": "var(--text-color-on-brand-secondary)",
+          "dark": "var(--text-color-on-brand-secondary)"
         },
         {
           "title": "Muted",
           "className": "text-muted",
           "variable": "--text-color-muted",
-          "classWithVar": "text-[var(--text-color-muted)]",
-          "demoClass": "bg-[var(--text-color-muted)]",
           "light": "#636369",
           "dark": "#A1A1AA"
         },
@@ -229,8 +217,6 @@
           "title": "Alternate text",
           "className": "text-alt",
           "variable": "--text-color-alt",
-          "classWithVar": "text-[var(--text-color-alt)]",
-          "demoClass": "bg-[var(--text-color-alt)]",
           "light": "#FFFDFD",
           "dark": "#16161D"
         }
