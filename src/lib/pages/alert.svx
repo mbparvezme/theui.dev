@@ -21,8 +21,7 @@ description: Utilize theui-svelte's Alert component to display crucial messages 
   <DocHead title="Alert" text="The Alert component displays feedback or contextual messages to your users. Using the Alert component, you can provide various types of feedback such as success, error, warning, or general information." {edit_url}/>
 
   <DocBlock title="Example">
-    <p class="not-prose">To use the <code>Alert</code> component in your project, import the required component.</p>
-    <p class="not-prose">There are 4 types of alert you can create using the <code>type</code> prop. The default type is <code>error</code>. Other types are <code>'info'</code>, <code>'success'</code> and <code>'warning'</code>. Here are some examples:</p>
+    <p class="not-prose">Import the <code>Alert</code> component to use it in your project. There are 4 types of alert you can create using the <code>type</code> prop. The default type is <code>error</code>. Other types are <code>'info'</code>, <code>'success'</code> and <code>'warning'</code>. Here are some examples:</p>
     <Example>
       {#snippet example()}
         <div class="w-full">
@@ -49,7 +48,7 @@ description: Utilize theui-svelte's Alert component to display crucial messages 
   </DocBlock>
 
   <DocBlock title="Icon">
-    <p class="not-prose">The <code>Alert</code> component supports customizable icons for better visual feedback. By default, no icon is shown. Simply add the <code>icon</code> attribute to display an icon matching the alert type (success, error, warning, or info). No value needed—it auto-selects the appropriate icon.</p>
+    <p class="not-prose">The <code>Alert</code> component supports predefined icons for each alert type for for better visual feedback. By default, no icon is shown. Simply add the <code>icon</code> attribute to display an icon matching the alert type (success, error, warning, or info). No value needed - it auto-selects the appropriate icon.</p>
     <Example>
       {#snippet example()}
       <div class="w-full">
@@ -72,7 +71,7 @@ description: Utilize theui-svelte's Alert component to display crucial messages 
   </DocBlock>
 
   <DocBlock title="Theme">
-    <p class="not-prose">The <code>Alert</code> component offers two distinct themes to control its overall appearance. These themes help in aligning the alert's style with your application's design requirements.</p>
+    <p class="not-prose">Use the <code>theme</code> prop to switch between two Alert styles that complement your design system.</p>
     <Example title="Available Themes">
       <ul>
         <li><b>default</b>: This is the standard theme, offering a balanced look suitable for most use cases.</li>
@@ -95,7 +94,7 @@ description: Utilize theui-svelte's Alert component to display crucial messages 
   </DocBlock>
 
   <DocBlock title="Variant">
-    <p class="not-prose">The <code>Alert</code> component also supports different visual variants to further customize its appearance. These variants determine the structural style of the alert.</p>
+    <p class="not-prose">The <code>Alert</code> component also supports different visual variants to further customize its appearance using the <code>variant</code> prop. These variants determine the structural style of the alert.</p>
     <Example title="Available Variants">
       <ul>
         <li><b>card</b>: Displays the alert as a card with defined borders and padding.</li>
@@ -169,7 +168,7 @@ description: Utilize theui-svelte's Alert component to display crucial messages 
 
   <DocBlock title="Customization">
     <Example>
-      <p class="not-prose">The <code>Alert</code> component in theui-svelte allows full customization through the class attribute, giving you control over the styling to match your application's design needs. This flexibility ensures that the alert can seamlessly blend with various UI themes and aesthetics.</p>
+      <p class="not-prose">The <code>Alert</code> component provides full styling control through its class attribute, letting you customize every detail to match your app’s design. Whether tweaking colors or overhauling layouts, this flexibility ensures alerts blend seamlessly with your UI while maintaining brand consistency.</p>
       {#snippet example()}
       <div class="w-full">
         <Alert class="bg-gradient-to-r from-red-200 dark:from-red-800 to-yellow-400 dark:to-yellow-500 text-default">I'm custom styled alert message!</Alert>
@@ -187,7 +186,7 @@ description: Utilize theui-svelte's Alert component to display crucial messages 
   </DocBlock>
 
   <DocBlock title="Accessibility">
-    <p class="not-prose">The <code>Alert</code> component is built with accessibility in mind, handling all necessary ARIA attributes, including <code>role="alert"</code> and <code>aria-label="Close alert"</code>, to ensure compatibility with assistive technologies. These attributes are automatically applied, so you don't need to configure them manually.</p>
+    <p class="not-prose">Designed for screen readers from the ground up, the component is built with accessibility in mind, handling all necessary ARIA attributes, including <code>role="alert"</code> and <code>aria-label="Close alert"</code>, to ensure compatibility with assistive technologies. These attributes are automatically applied, so you don't need to configure them manually.</p>
     <p class="not-prose font-bold">The only consideration required is maintaining proper color contrast for the alert's text and background to ensure readability and compliance with accessibility standards.</p>
   </DocBlock>
 

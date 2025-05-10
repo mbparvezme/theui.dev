@@ -95,8 +95,7 @@ description: Add dynamic visual indicators to your Svelte app with TheUI-Svelte'
 
   <DocBlock title="Customization">
     <Example>
-      <p class="not-prose">The <code>Badge</code> component allows you to customize its colors to match your application's theme or convey specific meanings. By default, it uses standard styles, but you can easily override them with custom CSS classes.</p>
-      <p class="not-prose">To change the background color, simply add your own CSS classes to the Badge component. Here’s an example:</p>
+      <p class="not-prose">Tailor every Badge to your needs with flexible color options that support both branding and semantic meaning. Built-in styles get you started, while custom CSS classes let you take full control. To change the background color, simply add your own CSS classes to the Badge component. Here’s an example:</p>
       {#snippet example()}
         <Badge ariaTitle="Demo badge" class="bg-green-500"/>
         <Badge ariaTitle="New badge" class="bg-yellow-400 text-black">New</Badge>
@@ -120,7 +119,7 @@ description: Add dynamic visual indicators to your Svelte app with TheUI-Svelte'
   </DocBlock>
 
   <DocBlock title="Accessibility">
-    <p class="not-prose">The Badge component is designed with accessibility in mind, automatically handling ARIA attributes like <code>aria-label</code> through a visually hidden <code>&lt;span&gt;</code> element. This ensures assistive technologies can describe the badge's purpose. You only need to focus on providing meaningful text and maintaining proper color contrast for readability.</p>
+    <p class="not-prose">The component is designed with accessibility in mind, automatically handling ARIA attributes like <code>aria-label</code> through a visually hidden <code>&lt;span&gt;</code> element. This ensures assistive technologies can describe the badge's purpose. You only need to focus on providing meaningful text and maintaining proper color contrast for readability.</p>
   </DocBlock>
 
   <DocBlock title="Configuration">

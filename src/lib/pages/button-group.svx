@@ -21,7 +21,7 @@ description: Create responsive and stylish buttons for your Svelte app with TheU
   <DocHead title="Button Group" text="Helps you group multiple buttons together for a cohesive and organized layout. Ideal for presenting related actions or options side by side or vertically" {edit_url}/>
 
   <DocBlock title="About">
-    <p class="not-prose">The <code>ButtonGroup</code> component allows you to combine multiple Button components into a unified group. It supports various styles, sizes, and configurations, making it easy to create visually appealing and functional button groups. Whether you're creating a toolbar, a set of navigation links, or action buttons, the ButtonGroup ensures that the buttons are well-aligned and maintain a consistent spacing and styling. This component enhances the user interface by providing a structured way to present related buttons in a single, cohesive block.</p>
+    <p class="not-prose">The <code>ButtonGroup</code> component lets you group multiple <code>Button</code> components together in a unified block. It supports different styles, sizes, and layouts, making it easy to build toolbars, navigation links, or action button sets. It keeps buttons well-aligned with consistent spacing and styling, helping you create a clean and structured user interface.</p>
   </DocBlock>
 
   <DocBlock title="Example">
@@ -53,9 +53,8 @@ description: Create responsive and stylish buttons for your Svelte app with TheU
   </DocBlock>
 
   <DocBlock title="Stacked Button">
-    <p class="not-prose">The <code>ButtonGroup</code> component supports a stacked layout, which vertically arranges the buttons instead of aligning them horizontally. This is useful when you want to display multiple actions in a column format, ideal for mobile or narrow screen designs.</p>
+    <p class="not-prose">The <code>ButtonGroup</code> component supports a stacked layout that arranges buttons vertically instead of side by side. This is helpful for mobile or narrow screens where space is limited. To use it, set the <code>stacked</code> prop to <code>true</code>.</p>
     <Example>
-      <p class="not-prose">To enable <code>stacked</code> buttons, use the stacked prop and set it to <code>true</code>.</p>
       {#snippet example()}
         <ButtonGroup stacked={true}>
           <Button>Save</Button>
@@ -74,7 +73,7 @@ description: Create responsive and stylish buttons for your Svelte app with TheU
   </DocBlock>
 
   <DocBlock title="Outlined Button">
-    <p class="not-prose">The <code>outline</code> prop in the <code>ButtonGroup</code> component applies an outlined style to all buttons in the group, giving them a bordered appearance with a transparent background. This prop is useful for creating a distinct, less prominent button style while maintaining visual consistency.</p>
+    <p class="not-prose">The <code>outline</code> prop in the <code>ButtonGroup</code> component gives all buttons a bordered look with a transparent background. It’s useful when you want a lighter, less prominent style while keeping a consistent design.</p>
     <Example>
       {#snippet example()}
         <ButtonGroup outline={true}>
@@ -94,9 +93,8 @@ description: Create responsive and stylish buttons for your Svelte app with TheU
   </DocBlock>
 
   <DocBlock title="Group Button Sizing">
-    <p class="not-prose">The <code>size</code> prop in the <code>ButtonGroup</code> component controls the size of all buttons within the group. This prop ensures consistency in the button sizes, making it easier to maintain a cohesive design.</p>
+    <p class="not-prose">The <code>size</code> prop in the <code>ButtonGroup</code> component sets the size of all buttons in the group, keeping them consistent. You can use predefined values like <code>'xs'</code>, <code>'sm'</code>, <code>'md'</code>, <code>'lg'</code>, or <code>'xl'</code> to control the button dimensions.</p>
     <Example>
-      <p class="not-prose">You can set the <code>size</code> prop to any predefined BUTTON_SIZE value, such as <code>'xs'</code>, <code>'sm'</code>, <code>'md'</code>, <code>'lg'</code>, or <code>'xl'</code>, to adjust the buttons' dimensions accordingly.</p>
       {#snippet example()}
         <div class="flex flex-col items-center gap-4 w-full">
           <ButtonGroup size="auto">
@@ -147,9 +145,8 @@ description: Create responsive and stylish buttons for your Svelte app with TheU
   </DocBlock>
 
   <DocBlock title="Square Group Button">
-    <p class="not-prose">The <code>ButtonGroup</code> component supports a stacked layout, which vertically arranges the buttons instead of aligning them horizontally. This is useful when you want to display multiple actions in a column format, ideal for mobile or narrow screen designs.</p>
+    <p class="not-prose">The <code>ButtonGroup</code> component can stack buttons vertically instead of placing them side by side. This is useful for mobile or narrow screens. To enable it, set the <code>stacked</code> prop to <code>true</code>.</p>
     <Example>
-      <p class="not-prose">To enable <code>stacked</code> buttons, use the stacked prop and set it to <code>true</code>.</p>
       {#snippet example()}
         <ButtonGroup square={true}>
           <Button>

@@ -24,7 +24,7 @@ description: A dynamic and versatile way to showcase content, with a variety of 
   <DocHead title="Card" text="The Card component offers a dynamic and versatile way to showcase content, with a variety of customization options to fit any style or purpose." {edit_url}/>
 
   <DocBlock title="About">
-    <p class="not-prose">The Card component is a versatile UI element used to present content in a structured and visually appealing way. It supports various customizations, allowing you to adjust its layout, images, and styling to fit different use cases. Whether you need to display text, images, or a combination of both, the Card component provides a flexible solution.</p>
+    <p class="not-prose">The <code>Card</code> component is a versatile UI element used to present content in a structured and visually appealing way. It supports various customizations, allowing you to adjust its layout, images, and styling to fit different use cases. Whether you need to display text, images, or a combination of both, the Card component provides a flexible solution.</p>
   </DocBlock>
 
   <DocBlock title="Example">
@@ -232,9 +232,9 @@ description: A dynamic and versatile way to showcase content, with a variety of 
   </DocBlock>
 
   <DocBlock title="Customization">
-    <p class="not-prose">The Card component is easy to customize, letting you style it to match your needs. You can change how any part of the card looks. Whether it's the content, title, shadow, or shape, you have full control.</p>
+    <p class="not-prose">The <code>Card</code> component is easy to customize, letting you style it to match your needs. You can change how any part of the card looks. Whether it's the content, title, shadow, or shape, you have full control.</p>
     <p class="not-prose">You can either use snippets for custom components or utilize these props directly for more straightforward customization. Here are the key props available for customization:</p>
-    <ul class="my-0 list-inside">
+    <ul class="mt-0 mb-0 list-inside">
       <li><b>class</b>: Apply custom styles to the card's container.</li>
       <li><b>contentClasses</b>: Apply custom styles to the card's content.</li>
       <li><b>titleClasses</b>: Style the title with your preferred classes.</li>

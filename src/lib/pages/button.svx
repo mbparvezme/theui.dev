@@ -28,12 +28,12 @@ description: Create responsive and stylish buttons for your Svelte app with TheU
   <DocHead title="Button" text="The Button component provides a versatile and customizable button for various use cases. It supports different sizes, styles, and types, and can be used as a regular button or a link." {edit_url}/>
 
   <DocBlock title="About">
-    <p class="not-prose">The Button component is a flexible and customizable element designed to meet various needs. It supports multiple sizes, styles, and types, making it suitable for diverse use cases. You can use it as a standard button or as a link, depending on your requirements. The component allows for additional customization through props, enabling you to style and animate it to match your application's theme.</p>
+    <p class="not-prose">The <code>Button</code> component is a flexible and customizable element designed to meet various needs. It supports multiple sizes, styles, and types, making it suitable for diverse use cases. You can use it as a standard button or as a link, depending on your requirements. The component allows for additional customization through props, enabling you to style and animate it to match your application's theme.</p>
   </DocBlock>
 
   <DocBlock title="Example">
     <Example>
-      <p class="not-prose">Import the Button component into your Svelte file. The following example shows how to use the button component!</p>
+      <p class="not-prose">Import the <code>Button</code> component into your Svelte file. The following example shows how to use the button component!</p>
       {#snippet example()}
         <Button>Button</Button>
       {/snippet}
@@ -52,7 +52,7 @@ description: Create responsive and stylish buttons for your Svelte app with TheU
 
   <DocBlock title="Link Button">
     <Example>
-      <p class="not-prose">You can turn the Button into a link by adding the href prop. This makes the button behave like a regular link. This will navigate to the home page when clicked.</p>
+      <p class="not-prose">You can turn the <code>Button</code> into a link by adding the href prop. This makes the button behave like a regular link. This will navigate to the home page when clicked.</p>
       {#snippet example()}
         <Button href="/">Link button</Button>
       {/snippet}
@@ -63,9 +63,10 @@ description: Create responsive and stylish buttons for your Svelte app with TheU
 ```
       {/snippet}
     </Example>
+
     <Example title="New Tab Icon">
-      <p class="not-prose">In some cases, a new tab arrow icon may be needed to indicate that a link opens in a new window or tab. The <code>newTabIcon</code> Boolean prop enables this functionality. By default, it is <code>false</code>, so the icon is hidden. When set to <code>true</code>, the icon appears if the link includes a <code>target</code> attribute.</p>
-      <p class="not-prose">The <code>target</code> attribute is required for the <code>newTabIcon</code> to appear. Without it, the icon will not be displayed, even if <code>newTabIcon</code> is set to true.</p>
+      <p class="not-prose">Sometimes, you may want to show an arrow icon to indicate that a link opens in a new tab. You can do this by setting the <code>newTabIcon</code> prop to <code>true</code>. By default, it's <code>false</code>, so the icon is hidden.</p>
+      <p class="not-prose"><b>Important:</b> The link must have a <code>target</code> attribute (like <code>target="_blank"</code>) for the icon to appear. If there's no <code>target</code>, the icon won't show - even if <code>newTabIcon</code> is <code>true</code>.</p>
       {#snippet example()}
         <Button href="/" target="_blank" newTabIcon={true}>New Tab Link</Button>
       {/snippet}
@@ -79,9 +80,8 @@ description: Create responsive and stylish buttons for your Svelte app with TheU
   </DocBlock>
 
   <DocBlock title="Button Content">
-    <p class="not-prose">The <code>Button</code> component provides <code>beforeLabel</code> and <code>afterLabel</code> snippet blocks, allowing you to add custom content before and after the button's label. This structure is especially useful for adding icons, badges, or any other elements, giving you more control over the button's appearance and behavior.</p>
-    <p class="not-prose">While you can manually add custom elements directly inside the <code>Button</code> element using standard HTML and CSS, the snippet approach ensures a cleaner and more maintainable structure. It also simplifies the integration of custom elements, reducing the need for additional styling and layout adjustments.</p>
-    <p class="not-prose">For cleaner structure, flexibility and consistency the <code>beforeLabel</code> and <code>afterLabel</code> snippet blocks are perfect for you.</p>
+    <p class="not-prose">The <code>Button</code> component offers <code>beforeLabel</code> and <code>afterLabel</code> snippet blocks that let you add custom content before or after the button’s label. This is useful for icons, badges, or other elements, giving you more control over the button’s look and behavior. Although you can add elements manually with HTML and CSS, using these snippets keeps the structure cleaner and easier to maintain. It also simplifies layout and styling.</p>
+    <p class="not-prose">For better structure, flexibility, and consistency, <code>beforeLabel</code> and <code>afterLabel</code> are great options.</p>
     <Example title="Example Using Snippets">
       {#snippet example()}
         <Button class="gap-4">
@@ -152,7 +152,7 @@ description: Create responsive and stylish buttons for your Svelte app with TheU
 
   <DocBlock title="Button Color">
     <Example>
-      <p class="not-prose">The <code>color</code> prop customizes the button's appearance by applying predefined color themes. These themes correspond to various statuses or actions, ensuring consistent visual design throughout your application. The available color options are <code>"brand"</code>, <code>"error"</code>, <code>"info"</code>, <code>"success"</code>, and <code>"warning"</code>. The default value is <code>"brand"</code>.</p>
+      <p class="not-prose">The <code>color</code> prop lets you style the button using predefined themes like <code>"brand"</code>, <code>"error"</code>, <code>"info"</code>, <code>"success"</code>, and <code>"warning"</code>. These match common statuses or actions to keep your app’s design consistent. The default is <code>"brand"</code>.</p>
       {#snippet example()}
         <Button color="brand">Brand</Button>
         <Button color="error">Error</Button>
@@ -175,7 +175,7 @@ description: Create responsive and stylish buttons for your Svelte app with TheU
   </DocBlock>
 
   <DocBlock title="Theme">
-    <p class="not-prose">The <code>theme</code> prop determines the overall style and background of the button. It accepts three values: <code>'default'</code>, <code>'light'</code>, and <code>'gradient'</code>. The default theme applies the standard button styles, while the light theme uses lighter versions of the default colors for a softer look. The gradient theme gives a more vibrant feel by applying gradient backgrounds to the button.</p>
+    <p class="not-prose">The <code>theme</code> prop controls the button’s overall style and background. It supports three values: <code>'default'</code>, <code>'light'</code>, and <code>'gradient'</code>. The default theme gives the standard button look, the light theme uses softer colors, and the gradient theme adds a vibrant background with gradient styling.</p>
     <div>
     <Example title="Light Theme">
       <p class="not-prose">The light theme is a softer variation of the default button colors, making it suitable for more subtle designs.</p>
