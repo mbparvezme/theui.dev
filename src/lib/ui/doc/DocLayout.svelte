@@ -9,15 +9,14 @@
   let {children, sidebar}: Props = $props()
 </script>
 
-<section class="flex gap-8" class:lg:grid-cols-5={sidebar}>
-
-  <article class="flex-grow line-numbers">
+<section class="w-full flex gap-8">
+  <article class="grow line-numbers w-full lg:w-[calc(100%_-_16rem)] prose max-w-full dark:prose-invert dark:prose-h1:text-default dark:prose-h2:text-default dark:prose-h3:text-default dark:prose-h4:text-gray-500 prose-pre:whitespace-pre-wrap">
     {@render children?.()}
     <!-- <p class="bg-red-500">END MESSAGE</p> -->
   </article>
 
   {#if sidebar}
-  <aside class="shrink-0 hidden lg:block overflow-y-auto top-28 lg:sticky h-[calc(100vh_-_160px)] w-56 ">
+  <aside class="shrink-0 hidden lg:block overflow-y-auto top-28 lg:sticky h-[calc(100vh_-_160px)] w-56">
     <div class="page-section text-sm">
       <h6 class="mt-0 flex justify-between items-center mb-4">
         <span class="font-bold text-xs">ON THIS PAGE</span>

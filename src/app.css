@@ -5,6 +5,11 @@
 @import 'theui-svelte/style';
 @source "../node_modules/theui-svelte";
 
+@theme {
+  --max-width: 1400px;
+  --font-sans: "IBM Plex Sans", "sans-serif";
+}
+
 @layer base {
   html {
     @apply font-sans scroll-pt-24 scroll-smooth;
@@ -29,10 +34,6 @@
   	letter-spacing: .2px;
     @apply bg-cyan-100/50 text-cyan-700 dark:bg-cyan-900/30 dark:text-cyan-500 font-mono px-1 pb-0.5 text-sm rounded;
   }
-}
-
-@theme {
-  --font-sans: "IBM Plex Sans", "sans-serif";
 }
 
 

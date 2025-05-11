@@ -6,7 +6,7 @@
 
 
   let { children, data }: {children: Snippet, data: any } = $props();
-  let linkClasses = (active: boolean = false) => twMerge("border-s-2 border-gray-500/10 ps-4 py-1 inline text-default tracking-wide font-normal", active && "border-brand-primary-500 text-brand-primary-500 dark:border-brand-primary-200 dark:text-brand-primary-200");
+  let linkClasses = (active: boolean = false) => twMerge("border-s-2 border-gray-500/10 ps-4 py-1 inline text-default tracking-wide font-normal", active && "border-brand-primary-500 text-brand-primary-500 dark:border-brand-primary-300 dark:text-brand-primary-300");
 </script>
 
 <div class="fixed right-8 bottom-8 lg:hidden">
@@ -80,7 +80,7 @@
 </Drawer>
 
 <Container class="relative flex gap-8 min-h-screen pb-48 pt-28">
-  <aside class="doc-sidebar top-28 fixed lg:sticky bg-primary lg:bg-transparent hidden lg:block w-64">
+  <aside class="doc-sidebar top-28 fixed lg:sticky bg-primary lg:bg-transparent hidden lg:block w-64 shrink-0">
     <div class="flex flex-col h-full overflow-y-auto pb-16">
 
       <section>
@@ -141,7 +141,7 @@
 
     </div>
   </aside>
-  <div class="docs min-h-screen flex-1 max-w-full prose dark:prose-invert dark:prose-h1:text-default dark:prose-h2:text-default dark:prose-h3:text-default dark:prose-h4:text-gray-500 prose-pre:whitespace-pre-wrap relative">
+  <div class="docs min-h-screen grow relative w-full lg:max-w-[calc(100%_-_18rem)]">
     {@render children()}
   </div>
 </Container>
