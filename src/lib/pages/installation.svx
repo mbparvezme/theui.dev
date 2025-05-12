@@ -28,13 +28,13 @@ description: Follow our step-by-step guide to install TheUI-Svelte component lib
   </DocBlock>
 
   <DocBlock title="Use Github Boilerplate" id="boilerplate">
-    <p class="not-prose">To install the boilerplate template, open your terminal and use the following command, replacing <code class="text-nowrap">my-app</code> with your desired project name.</p>
+    <p class="not-prose">To install the starter template clone <a href="https://github.com/mbparvezme/theui-svelte-starter" target="_blank">this Github repo</a> from your terminal using the following commands, replacing <code class="text-nowrap">my-app</code> with your desired project name.</p>
 
 <Code title="Clone from Github">
 
 ```bash
 # Clone the project
-git clone https://github.com/mbparvezme/theui-svelte-boilerplate.git my-app
+git clone https://github.com/mbparvezme/theui-svelte-starter.git my-app
 # Navigate to the project directory
 cd my-app
 # Install node modules
@@ -82,7 +82,7 @@ npm install theui-svelte
 ```
 </Code>
 
-  <p>That's it! You’re ready to start building your awesome project. Now, run your application with:</p>
+  <p>That's it! You're ready to start building your awesome project. Now, run your application with:</p>
 
 <Code title="Install SvelteKit">
 
