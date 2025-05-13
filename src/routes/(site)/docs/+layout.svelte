@@ -4,22 +4,21 @@
   import { Container, Svg, Drawer } from "theui-svelte";
   import { twMerge } from 'tailwind-merge';
 
-
   let { children, data }: {children: Snippet, data: any } = $props();
   let linkClasses = (active: boolean = false) => twMerge("border-s-2 border-gray-500/10 ps-4 py-1 inline text-default tracking-wide font-normal", active && "border-brand-primary-500 text-brand-primary-500 dark:border-brand-primary-300 dark:text-brand-primary-300");
 </script>
 
-<div class="fixed right-8 bottom-8 lg:hidden">
-  <Drawer id="docSidebar">
-    {#snippet label()}
-    <Svg size={1.5} viewBox="0 0 16 16" class="fill-white">
-      <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
-    </Svg>
-    {/snippet}
+<!-- <div class="fixed right-8 bottom-8 lg:hidden">
+  <Drawer id="docSidebar" buttonClasses="cursor-pointer z-40">
   </Drawer>
-</div>
+</div> -->
 
 <Drawer id="docSidebar">
+  {#snippet label()}
+  <Svg size={1.5} viewBox="0 0 16 16" class="fill-white">
+    <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+  </Svg>
+  {/snippet}
   <div class="flex flex-col h-full overflow-y-auto pb-16">
     <section>
       <h3 class="font-semibold mb-4 flex gap-3 items-center">
