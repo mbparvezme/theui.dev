@@ -36,7 +36,6 @@
   }
 }
 
-
 /**
 * MIT License
 * Copyright (c) 2021 Ayush Saini
@@ -74,7 +73,7 @@ pre[class*='language-']::-webkit-scrollbar-track {
 .token.prolog,
 .token.doctype,
 .token.cdata {
-  @apply text-[#5f7e7b] dark:text-[#446e69];
+  @apply text-[#b2b8b8] dark:text-[#446e69];
 }
 
 .token.punctuation {
@@ -98,7 +97,7 @@ pre[class*='language-']::-webkit-scrollbar-track {
 }
 
 .token.inserted-sign .token {
-  @apply bg-green-500/30 text-green-800 dark:bg-green-500/30 dark:text-green-100;
+  @apply bg-green-500/20 dark:bg-green-500/30 text-green-800 dark:text-green-100;
   &:first-child {
     @apply rounded-s-sm pb-px;
   }

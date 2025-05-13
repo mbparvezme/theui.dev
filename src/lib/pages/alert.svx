@@ -80,7 +80,7 @@ description: Utilize theui-svelte's Alert component to display crucial messages 
       {#snippet example()}
       <div class="w-full">
         <Alert theme="default">This is an error message in default theme!</Alert>
-        <Alert theme="light">This is an error message in light theme!</Alert>
+        <Alert theme="soft">This is an error message in light theme!</Alert>
       </div>
       {/snippet}
       {#snippet code()}
@@ -104,10 +104,10 @@ description: Utilize theui-svelte's Alert component to display crucial messages 
       </ul>
       {#snippet example()}
       <div class="w-full">
-        <Alert theme="light" variant="card">This is a card (default) variant alert!</Alert>
-        <Alert theme="light" variant="borderTop">This alert has a top border!</Alert>
-        <Alert theme="light" variant="borderBottom">This alert has a bottom border!</Alert>
-        <Alert theme="light" variant="borderStart">This alert has a starting border!</Alert>
+        <Alert theme="soft" variant="card">This is a card (default) variant alert!</Alert>
+        <Alert theme="soft" variant="borderTop">This alert has a top border!</Alert>
+        <Alert theme="soft" variant="borderBottom">This alert has a bottom border!</Alert>
+        <Alert theme="soft" variant="borderStart">This alert has a starting border!</Alert>
       </div>
       {/snippet}
       {#snippet code()}

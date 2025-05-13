@@ -55,7 +55,7 @@ description: Customize your Svelte app's appearance with TheUI-Svelte's Colors a
       {/each}
     </div>
 
-    <Alert class="not-prose" type="warning" theme="light">
+    <Alert class="not-prose" type="warning" theme="soft">
       <p>
         <strong>[T]</strong> = <strong>Type</strong> (e.g., <code>bg</code>, <code>text</code>, <code>border</code>, <code>fill</code>, etc.)<br>
         <strong>[S]</strong> = <strong>Shade</strong> (e.g., 50, 100-900, 950)<br>

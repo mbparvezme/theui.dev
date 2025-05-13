@@ -97,18 +97,18 @@ notify("Hello world!", "success") // You can replace "success" with any message 
   </DocBlock>
 
   <DocBlock title="Notification Theme">
-    <p class="not-prose">You can control the background color of the notifications with the <code>theme</code> prop. It supports three options: <code>'default'</code>, <code>'light'</code>, and <code>'gradient'</code>. The <code>'default'</code> theme follows the standard notification styling, the <code>'light'</code> theme provides a softer color palette for a more subtle look, and the <code>'gradient'</code> theme introduces a bold, eye-catching background with smooth color transitions.</p>
+    <p class="not-prose">You can control the background color of the notifications with the <code>theme</code> prop. It supports three options: <code>'default'</code>, <code>'soft'</code>, and <code>'gradient'</code>. The <code>'default'</code> theme follows the standard notification styling, the <code>'soft'</code> theme provides a softer color palette for a more subtle look, and the <code>'gradient'</code> theme introduces a bold, eye-catching background with smooth color transitions.</p>
 
     <div>
-      <Example title="Light Theme">
-        <p class="not-prose">With the <code>'light'</code> theme, notifications adopt a gentle color scheme, making them blend seamlessly into minimalistic interfaces.</p>
+      <Example title="Soft Theme">
+        <p class="not-prose">With the <code>'soft'</code> theme, notifications adopt a gentle color scheme, making them blend seamlessly into minimalistic interfaces.</p>
         {#snippet example()}
-          <iframe src="/example/notification-theme-light" style="width: 100%; height: 260px;" scrolling="no"></iframe>
+          <iframe src="/example/notification-theme-soft" style="width: 100%; height: 260px;" scrolling="no"></iframe>
         {/snippet}
         {#snippet code()}
 
 ```js
-notify( "Hello world!", "success", {theme: "light"} )
+notify( "Hello world!", "success", {theme: "soft"} )
 ```
         {/snippet}
       </Example>
@@ -138,7 +138,7 @@ notify( "Hello world!", "success", {theme: "gradient"} )
       {#snippet code()}
 
 ```js
-notify("Hello world!", "success", {theme: "light", variant: "borderTop"})
+notify("Hello world!", "success", {theme: "soft", variant: "borderTop"})
 ```
       {/snippet}
     </Example>
@@ -191,7 +191,7 @@ notify("Hello world!", "error", {removeOnClick: false})
         <li><span class="not-prose"><strong>removeAfter</strong> (type number) – Duration in milliseconds before the notification disappears. Set to <code>0</code> for persistent notifications.<br>- Default is <code>5000</code>.</span></li>
         <li><span class="not-prose"><strong>removeOnClick</strong> (type boolean) – Determines if the notification should close when clicked.<br>- Default is <code>true</code>.</span></li>
         <li><span class="not-prose"><strong>rounded</strong> (type <a href="/docs/types#common-types"><u class="decoration-wavy decoration-1 underline-offset-1">ROUNDED</u></a>) – Controls the border radius.<br>- Default is <code>'md'</code>.</span></li>
-        <li><span class="not-prose"><strong>theme</strong> (type string) – Sets the notification theme. Options: <code>'default'</code>, <code>'light'</code>, <code>'gradient'</code>.<br>- Default is <code>'default'</code>.</span></li>
+        <li><span class="not-prose"><strong>theme</strong> (type string) – Sets the notification theme. Options: <code>'default'</code>, <code>'soft'</code>, <code>'gradient'</code>.<br>- Default is <code>'default'</code>.</span></li>
         <li><span class="not-prose"><strong>variant</strong> (type string) – Defines the notification style. Options: <code>'card'</code>, <code>'barTop'</code>, <code>'barBottom'</code>, <code>'barStart'</code>.<br>- Default is <code>'card'</code>.</span></li>
       </ul>
     </div>
@@ -210,15 +210,15 @@ notify("Hello world!", "error", {removeOnClick: false})
     <a href={processID("About")}>About</a>
     <a href={processID("Example")}>Example</a>
     <a href={processID("Notification Position")}>Position</a>
-    <a href={processID("Notification Type")}>Notification Type</a>
+    <a href={processID("Notification Type")}>Notification type</a>
     <a href={processID("Notification Theme")}>Theme</a>
-    <a href={processID("Light Theme")} class="ps-4">Light Theme</a>
-    <a href={processID("Gradient Theme")} class="ps-4">Gradient Theme</a>
+    <a href={processID("Soft Theme")} class="ps-4">Soft color theme</a>
+    <a href={processID("Gradient Theme")} class="ps-4">Gradient theme</a>
     <a href={processID("Notification Variant")}>Variant</a>
     <a href={processID("Notification Duration")}>Duration</a>
-    <a href={processID("Remove On Click")}>Remove On Click</a>
+    <a href={processID("Remove On Click")}>Remove on click</a>
     <a href={processID("Customization")}>Customization</a>
-    <a href={processID("notify-function")}>notify() Function</a>
+    <a href={processID("notify-function")}>notify() function</a>
     <a href={processID("Accessibility")}>Accessibility</a>
     <a href={processID("Configuration")}>Configuration</a>
   {/snippet}

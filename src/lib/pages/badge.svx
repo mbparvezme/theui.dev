@@ -72,10 +72,10 @@ description: Add dynamic visual indicators to your Svelte app with TheUI-Svelte'
       {#snippet example()}
         <div class="flex items-center gap-8">
           <p class="relative p-2 bg-secondary">
-            Notifications <Badge fixed />
+            Notifications <Badge fixed class="dark:border-[#0d0d11]" />
           </p>
           <p class="relative p-2 bg-secondary">
-            Notifications <Badge fixed>New</Badge>
+            Notifications <Badge fixed class="dark:border-[#0d0d11]">New</Badge>
           </p>
         </div>
       {/snippet}
