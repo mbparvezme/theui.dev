@@ -13,7 +13,7 @@
   </Drawer>
 </div> -->
 
-<Drawer id="docSidebar">
+<!-- <Drawer id="docSidebar">
   {#snippet label()}
   <Svg size={1.5} viewBox="0 0 16 16" class="fill-white">
     <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
@@ -76,10 +76,10 @@
       </nav>
     </section>
   </div>
-</Drawer>
+</Drawer> -->
 
 <Container class="relative flex gap-8 min-h-screen pb-48 pt-28">
-  <aside class="doc-sidebar top-28 fixed lg:sticky bg-primary lg:bg-transparent hidden lg:block w-64 shrink-0">
+  <aside class="doc-sidebar top-28 fixed md:sticky bg-primary md:bg-transparent hidden md:block w-64 md:w-48 lg:w-64 shrink-0">
     <div class="flex flex-col h-full overflow-y-auto pb-16">
 
       <section>
@@ -140,7 +140,7 @@
 
     </div>
   </aside>
-  <div class="docs min-h-screen grow relative w-full lg:max-w-[calc(100%_-_18rem)]">
+  <div class="docs min-h-screen grow relative w-full md:max-w-[calc(100%_-_14rem)] lg:max-w-[calc(100%_-_18rem)]">
     {@render children()}
   </div>
 </Container>
