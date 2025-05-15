@@ -8,12 +8,7 @@
   let linkClasses = (active: boolean = false) => twMerge("border-s-2 border-gray-500/10 ps-4 py-1 inline text-default tracking-wide font-normal", active && "border-brand-primary-500 text-brand-primary-500 dark:border-brand-primary-300 dark:text-brand-primary-300");
 </script>
 
-<!-- <div class="fixed right-8 bottom-8 lg:hidden">
-  <Drawer id="docSidebar" buttonClasses="cursor-pointer z-40">
-  </Drawer>
-</div> -->
-
-<!-- <Drawer id="docSidebar">
+<!-- <!-- <Drawer id="docSidebar">
   {#snippet label()}
   <Svg size={1.5} viewBox="0 0 16 16" class="fill-white">
     <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
@@ -79,7 +74,7 @@
 </Drawer> -->
 
 <Container class="relative flex gap-8 min-h-screen pb-48 pt-28">
-  <aside class="doc-sidebar top-28 fixed md:sticky bg-primary md:bg-transparent hidden md:block w-64 md:w-48 lg:w-64 shrink-0">
+  <aside class="doc-sidebar fixed md:sticky top-28 block w-64 shrink-0 bg-primary md:bg-transparent md:translate-x-0 -translate-x-64 md:w-48 lg:w-64 transition-transform">
     <div class="flex flex-col h-full overflow-y-auto pb-16">
 
       <section>
@@ -140,6 +135,7 @@
 
     </div>
   </aside>
+
   <div class="docs min-h-screen grow relative w-full md:max-w-[calc(100%_-_14rem)] lg:max-w-[calc(100%_-_18rem)]">
     {@render children()}
   </div>
