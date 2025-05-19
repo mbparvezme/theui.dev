@@ -39,6 +39,6 @@
 	},
 	"dependencies": {
 		"tailwind-merge": "^3.2.0",
-		"theui-svelte": "^2.0.2"
+		"theui-svelte": "^2.0.3"
 	}
 }
