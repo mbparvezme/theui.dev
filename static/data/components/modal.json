@@ -46,16 +46,16 @@
         "default": "\"fast\""
       },
       {
-        "name": "staticBackdrop",
-        "type": "boolean",
-        "description": "Disables closing the modal by clicking on the backdrop.",
-        "default": "false"
-      },
-      {
         "name": "backdrop",
         "type": "boolean|string",
         "description": "Controls the modal backdrop. Can be boolean or a string for custom backdrop.",
         "default": "true"
+      },
+      {
+        "name": "staticBackdrop",
+        "type": "boolean",
+        "description": "Disables closing the modal by clicking on the backdrop.",
+        "default": "false"
       },
       {
         "name": "closeButton",
@@ -64,52 +64,57 @@
         "default": "true"
       },
       {
-        "name": "open",
-        "type": "boolean",
-        "description": "Tracks the visibility status of the modal.",
-        "default": "false"
-      },
-      {
         "name": "rounded",
         "type": "<a href=\"/docs/types#common-types\">ROUNDED</a>",
         "description": "Border-radius of the modal.",
         "default": "\"md\""
       },
       {
-        "name": "modalHeaderClasses",
-        "type": "string",
-        "description": "CSS classes for the modal header.",
-        "default": "\"\""
+        "name": "open",
+        "type": "boolean",
+        "description": "Tracks the visibility status of the modal.",
+        "default": "false"
       },
       {
-        "name": "modalBodyClasses",
+        "name": "buttonClasses",
+        "type": "string",
+        "description": "Classes for the modal trigger button.",
+        "default": "undefined"
+      },
+      {
+        "name": "containerClasses",
+        "type": "string",
+        "description": "Classes for the modal container.",
+        "default": "undefined"
+      },
+      {
+        "name": "bodyClasses",
         "type": "string",
         "description": "CSS classes for the modal body.",
-        "default": "\"\""
+        "default": "undefined"
       },
       {
-        "name": "modalFooterClasses",
+        "name": "headerClasses",
+        "type": "string",
+        "description": "CSS classes for the modal header.",
+        "default": "undefined"
+      },
+      {
+        "name": "footerClasses",
         "type": "string",
         "description": "CSS classes for the modal footer.",
-        "default": "\"\""
-      },
-      {
-        "name": "id",
-        "type": "string",
-        "description": "Unique identifier for the modal.",
-        "default": "&lt;RANDOM STRING&gt;"
+        "default": "undefined"
       }
     ]
-  },
-  {
-    "key": "dynamicProps",
-    "title": "Dynamic props",
-    "data": null
   },
   {
     "key": "snippets",
     "title": "Snippets",
     "data": [
+      {
+        "name": "children",
+        "description": "Main content of the component."
+      },
       {
         "name": "label",
         "description": "Content or element that triggers the modal."
@@ -123,10 +128,5 @@
         "description": "Content for the modal footer."
       }
     ]
-  },
-  {
-    "key": "functions",
-    "title": "Functions",
-    "data": null
   }
 ]

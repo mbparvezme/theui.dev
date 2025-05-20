@@ -48,7 +48,7 @@ description: The Drawer component is a versatile UI element that slides in from 
     <p class="not-prose">In this example, the <code>Drawer</code> slides in from the left side of the screen which is the default behavior. The trigger snippet contains a button that toggles the visibility of the Drawer. You can replace the content inside the Drawer with any elements you need.</p>
   </DocBlock>
 
-  <DocBlock title="Drawer Position">
+  <DocBlock title="Position">
     <Example>
     <p class="not-prose">The <code>position</code> prop allows you to control where the Drawer appears on the screen. You can choose from four positions: <code>top</code>, <code>end</code>, <code>bottom</code>, or <code>start</code>. This flexibility lets you tailor the Drawer's placement to fit the layout and design of your application.</p>
     <p class="not-prose">Simply set the <code>position</code> prop to your desired value to change where the Drawer opens from, creating a more intuitive user experience based on your app's needs.</p>
@@ -239,7 +239,7 @@ description: The Drawer component is a versatile UI element that slides in from 
 
   {#snippet sidebar()}
     <a href={processID("Example")}>Example</a>
-    <a href={processID("Drawer Position")}>Position</a>
+    <a href={processID("Position")}>Position</a>
     <a href={processID("Outlying Trigger")}>Outlying trigger</a>
     <a href={processID("Backdrop")}>Backdrop</a>
     <a href={processID("Custom Backdrop Style")} class="ps-4">Custom style</a>

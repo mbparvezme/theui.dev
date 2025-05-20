@@ -11,9 +11,9 @@
           "default": "undefined"
         },
         {
-          "name": "size",
+          "name": "width",
           "type": "'sm' | 'md' | 'lg' | 'full' | 'auto' | 'custom'",
-          "description": "Defines the size of the dropdown.",
+          "description": "Specifies the width of the dropdown container. If set to 'custom', the width class defined in dropdownClasses will be applied.",
           "default": "\"auto\""
         },
         {
@@ -23,7 +23,7 @@
           "default": "\"end\""
         },
         {
-          "name": "dropdownEvent",
+          "name": "triggerEvent",
           "type": "'hover' | 'click'",
           "description": "Defines the event that triggers the dropdown.",
           "default": "\"click\""

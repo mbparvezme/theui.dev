@@ -51,7 +51,7 @@ description: Integrate customizable modals into your Svelte app with TheUI-Svelt
 
   <DocBlock title="Modal Trigger">
     <p class="not-prose">The Modal trigger is the element that opens the Modal when clicked. You can create this trigger using either the <code>label</code> prop or the <code>label</code> snippet. The label prop generates a default button with the provided text, making it simple to open the Modal. Alternatively, the label snippet lets you customize the trigger with any element or component, giving you more flexibility.</p>
-    <Example title="Trigger with the label prop" codeTitle="label as prop">
+    <Example title="Trigger with the label prop">
       {#snippet code()}
 
 ```html
@@ -59,7 +59,20 @@ description: Integrate customizable modals into your Svelte app with TheUI-Svelt
 ```
       {/snippet}
     </Example>
-    <Example title="Trigger with the label snippet" codeTitle="label as snippet">
+    <Example title="Trigger with the label snippet">
+      {#snippet code()}
+
+```html
+<Modal>
+  {#snippet label()}
+    <Button>Modal Trigger</Button>
+  {/snippet}
+  ...
+</Modal>
+```
+      {/snippet}
+    </Example>
+    <Example title="Trigger From Outside">
       {#snippet code()}
 
 ```html
@@ -510,18 +523,21 @@ description: Integrate customizable modals into your Svelte app with TheUI-Svelt
   {#snippet sidebar()}
     <a href={processID("About")}>About</a>
     <a href={processID("Example")}>Example</a>
-    <a href={processID("Modal Trigger")}>Modal Trigger</a>
-    <a href={processID("Modal Content")}>Modal Content</a>
+    <a href={processID("Modal Trigger")}>Modal trigger</a>
+    <a href={processID("Trigger with the label prop")} class="ps-4">Using label prop</a>
+    <a href={processID("Trigger with the label snippet")} class="ps-4">Using label snippet</a>
+    <a href={processID("Trigger From Outside")} class="ps-4">Trigger from outside</a>
+    <a href={processID("Modal Content")}>Modal content</a>
     <a href={processID("Positioning")}>Positioning</a>
     <a href={processID("Sizing")}>Sizing</a>
     <a href={processID("Animation")}>Animation</a>
     <a href={processID("Animation Type")} class="ps-4">Animation type</a>
     <a href={processID("Animation Speed")} class="ps-4">Animation speed</a>
-    <a href={processID("Modal Backdrop")}>Modal Backdrop</a>
-    <a href={processID("Static Backdrop")} class="ps-4">Static Backdrop</a>
-    <a href={processID("Backdrop Customization")} class="ps-4">Customizing Backdrop</a>
-    <a href={processID("Disable Close Button")}>Disable Close Button</a>
-    <a href={processID("Modal Open State")}>Modal Open State</a>
+    <a href={processID("Modal Backdrop")}>Modal backdrop</a>
+    <a href={processID("Static Backdrop")} class="ps-4">Static backdrop</a>
+    <a href={processID("Backdrop Customization")} class="ps-4">Customizing backdrop</a>
+    <a href={processID("Disable Close Button")}>Disable close button</a>
+    <a href={processID("Modal Open State")}>Modal open state</a>
     <a href={processID("Customization")}>Customization</a>
     <a href={processID("Accessibility")}>Accessibility</a>
     <a href={processID("Configuration")}>Configuration</a>
