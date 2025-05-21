@@ -416,14 +416,14 @@ description: Integrate customizable modals into your Svelte app with TheUI-Svelt
 
   <DocBlock title="Modal Open State">
     <Example>
-      <p class="not-prose">The <code>modalOpen</code> prop controls whether the Modal is visible when the page loads. By default, <code>modalOpen</code> is set to <code>false</code>, meaning the Modal is hidden initially. If you set <code>modalOpen</code> to <code>true</code>, the Modal will be open and visible as soon as the page loads.</p>
+      <p class="not-prose">The <code>open</code> prop controls whether the Modal is visible when the page loads. By default, <code>open</code> is set to <code>false</code>, meaning the Modal is hidden initially. If you set <code>open</code> to <code>true</code>, the Modal will be open and visible as soon as the page loads.</p>
       {#snippet example()}
         <Button href="/example/modal-open-state" target="_blank">View example</Button>
       {/snippet}
 
       {#snippet code()}
 ```html
-<Modal modalOpen={true}> ... </Modal>
+<Modal open={true}> ... </Modal>
 ```
       {/snippet}
     </Example>
@@ -441,9 +441,9 @@ description: Integrate customizable modals into your Svelte app with TheUI-Svelt
     <Example>
       {#snippet example()}
         <Modal
-          modalBodyClasses="bg-blue-100 dark:bg-blue-950 text-blue-800 dark:text-blue-300 border-blue-500/50 border-4 py-8"
-          modalHeaderClasses="bg-blue-400/50 text-blue-600 dark:text-blue-100 shadow-blue-500/50 rounded-md p-4 border-0 shadow-md text-lg font-bold"
-          modalFooterClasses="border-blue-300/50 border rounded-xl p-2"
+          bodyClasses="bg-blue-100 dark:bg-blue-950 text-blue-800 dark:text-blue-300 border-blue-500/50 border-4 py-8"
+          headerClasses="bg-blue-400/50 text-blue-600 dark:text-blue-100 shadow-blue-500/50 rounded-md p-4 border-0 shadow-md text-lg font-bold"
+          footerClasses="border-blue-300/50 border rounded-xl p-2"
         >
           {#snippet label()}
             <Button>Modal Button</Button>
@@ -471,9 +471,9 @@ description: Integrate customizable modals into your Svelte app with TheUI-Svelt
       {#snippet code()}
 ```html
 <Modal
-  modalBodyClasses="bg-blue-100 dark:bg-blue-950 text-blue-800 dark:text-blue-300 border-blue-500/50 border-4 py-8"
-  modalHeaderClasses="bg-blue-400/50 text-blue-600 dark:text-blue-100 shadow-blue-500/50 rounded-md p-4 border-0 shadow-md text-lg font-bold"
-  modalFooterClasses="border-blue-300/50 border rounded-xl p-2"
+  bodyClasses="bg-blue-100 dark:bg-blue-950 text-blue-800 dark:text-blue-300 border-blue-500/50 border-4 py-8"
+  headerClasses="bg-blue-400/50 text-blue-600 dark:text-blue-100 shadow-blue-500/50 rounded-md p-4 border-0 shadow-md text-lg font-bold"
+  footerClasses="border-blue-300/50 border rounded-xl p-2"
 >
   {#snippet label()}
     <Button label="Modal Button" />

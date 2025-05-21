@@ -27,7 +27,7 @@
     {#if c.data && c.data.length > 0}
       <TabPanel>
         {#if !hideText}
-          <p class="mb-4">
+          <p class="mb-0">
             {#if c.key == 'props'}This component has the following props with their default values. For more details, visit the <a href="/docs/types">types page</a>.{/if}
             {#if c.key == 'dynamicProps'}Dynamic props are props that don't require a value. Their effect depends on whether they are present or missing in the component, similar to HTML attributes. The component has the following dynamic props:{/if}
             {#if c.key == 'snippets'}Use the following snippet to add custom content or elements:{/if}

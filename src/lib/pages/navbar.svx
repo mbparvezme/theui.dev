@@ -15,6 +15,7 @@ description: Design responsive and accessible navigation bars for your Svelte ap
   let { component, edit_url }: {component: any, edit_url?: string } = $props();
 
   import {Navbar, NavBrand, NavCollapse, NavLinkGroup, NavDropdown, NavLink, Button, Svg} from "theui-svelte";
+  console.log(component)
 </script>
 
 {#snippet navLinks(count = 3, start = 1)}
@@ -581,31 +582,42 @@ description: Design responsive and accessible navigation bars for your Svelte ap
   </DocBlock>
 
   <DocBlock title="Configuration">
-    <ConfigComponent {component} />
+    <ConfigComponent title="Navbar" component={component.navbar} />
+    <ConfigComponent title="Navbar Brand" component={component.navBrand} />
+    <ConfigComponent title="Navbar Collapse" component={component.navCollapse} />
+    <ConfigComponent title="Navbar Dropdown" component={component.navDropdown} />
+    <ConfigComponent title="Navbar Link" component={component.navLink} />
+    <ConfigComponent title="Navbar Link Group" component={component.navLinkGroup} />
   </DocBlock>
 
   {#snippet sidebar()}
     <a href={processID("About")}>About</a>
     <a href={processID("Example")}>Example</a>
     <a href={processID("Scroll Behavior")}>Scroll behavior</a>
-    <a href={processID("Navbar Scrolling Effects")} class="ps-4">Scrolling Effects</a>
-    <a href={processID("Hide/Shrink Scroll Amount")} class="ps-4">Scroll Amount</a>
+    <a href={processID("Navbar Scrolling Effects")} class="ps-4">Scrolling effects</a>
+    <a href={processID("Hide/Shrink Scroll Amount")} class="ps-4">Scroll amount</a>
     <a href={processID("Navbar Height")}>Navbar height</a>
     <a href={processID("Responsive Navbar")}>Responsive navbar</a>
     <a href={processID("NavCollapse")} class="ps-4">Navbar collapse</a>
     <a href={processID("navBreakpoint")} class="ps-4">Navbar breakpoint</a>
     <a href={processID("Link Alignment")}>Link alignment</a>
-    <a href={processID("Navbar Dropdown")}>Navbar Dropdown</a>
-    <a href={processID("Dropdown Label")} class="ps-4">Dropdown Label</a>
-    <a href={processID("Dropdown Width")} class="ps-4">Dropdown Width</a>
-    <a href={processID("Dropdown Alignment")} class="ps-4">Dropdown Alignment</a>
-    <a href={processID("Dropdown Event")} class="ps-4">Dropdown Event</a>
-    <a href={processID("Dropdown Animation")} class="ps-4">Dropdown Animation</a>
-    <a href={processID("Dropdown Arrow")} class="ps-4">Dropdown Arrow</a>
-    <a href={processID("Mega Menu")}>Mega Menu</a>
+    <a href={processID("Navbar Dropdown")}>Navbar dropdown</a>
+    <a href={processID("Dropdown Label")} class="ps-4">Dropdown label</a>
+    <a href={processID("Dropdown Width")} class="ps-4">Dropdown width</a>
+    <a href={processID("Dropdown Alignment")} class="ps-4">Dropdown alignment</a>
+    <a href={processID("Dropdown Event")} class="ps-4">Dropdown event</a>
+    <a href={processID("Dropdown Animation")} class="ps-4">Dropdown animation</a>
+    <a href={processID("Dropdown Arrow")} class="ps-4">Dropdown arrow</a>
+    <a href={processID("Mega Menu")}>Mega menu</a>
     <a href={processID("Customization")}>Customization</a>
     <a href={processID("Accessibility")}>Accessibility</a>
     <a href={processID("Configuration")}>Configuration</a>
+    <a href={processID("Configuration")} class="ps-4">Navbar</a>
+    <a href={processID("Configuration")} class="ps-4">Navbar brand</a>
+    <a href={processID("Configuration")} class="ps-4">Navbar collapse</a>
+    <a href={processID("Configuration")} class="ps-4">Navbar dropdown</a>
+    <a href={processID("Configuration")} class="ps-4">Navbar link</a>
+    <a href={processID("Configuration")} class="ps-4">Navbar link group</a>
   {/snippet}
 
 </DocLayout>
