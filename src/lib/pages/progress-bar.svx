@@ -80,7 +80,7 @@ description: The Progress component is used to display progress visually. It hel
   <DocBlock title="Thickness">
     <p class="not-prose">The <code>thickness</code> prop controls the thickness of the progress bar. It accepts five values: <code>'px'</code>, <code>'sm'</code>, <code>'md'</code>, <code>'lg'</code>, and <code>'xl'</code>. The default value is <code>'md'</code>.</p>
     
-    <Alert type="warning" theme="light" variant="borderStart"><span class="not-prose">
+    <Alert type="warning" theme="soft" variant="borderStart"><span class="not-prose">
     If the <code>thickness</code> is set to <code>'px'</code>, <code>'sm'</code> or <code>'md'</code>, the label will always be displayed as a bubble, regardless of the <code>labelVariant</code> setting.
     </span></Alert>
 
@@ -125,7 +125,7 @@ description: The Progress component is used to display progress visually. It hel
 ```
       {/snippet}
     </Example>
-    <Alert type="warning" theme="light" variant="borderStart"><span class="not-prose">Regardless of the <code>labelVariant</code> setting, if the <code>thickness</code> is not <code>'lg'</code> or <code>'xl'</code>, the label will automatically use the <code>"bubble"</code> variant. Otherwise, it will follow the specified <code>labelVariant</code> value. More in the thickness section.</span></Alert>
+    <Alert type="warning" theme="soft" variant="borderStart"><span class="not-prose">Regardless of the <code>labelVariant</code> setting, if the <code>thickness</code> is not <code>'lg'</code> or <code>'xl'</code>, the label will automatically use the <code>"bubble"</code> variant. Otherwise, it will follow the specified <code>labelVariant</code> value. More in the thickness section.</span></Alert>
   </DocBlock>
 
   <DocBlock title="Vertical Progress">

@@ -222,7 +222,7 @@ description: Create responsive and stylish buttons for your Svelte app with TheU
       {/snippet}
     </Example>
     </div>
-    <Alert type="warning" theme="light" variant="borderStart">The color prop can still be used with each theme to specify the button's color, allowing flexibility while maintaining consistency across different button themes.</Alert>
+    <Alert type="warning" theme="soft" variant="borderStart">The color prop can still be used with each theme to specify the button's color, allowing flexibility while maintaining consistency across different button themes.</Alert>
   </DocBlock>
 
   <DocBlock title="Outline">

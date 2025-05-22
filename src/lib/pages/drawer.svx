@@ -15,6 +15,7 @@ description: The Drawer component is a versatile UI element that slides in from 
   let { component, edit_url }: {component: any, edit_url?: string } = $props();
 
   import { Drawer, Button } from "theui-svelte";
+  let openDrawer: boolean = $state(false)
 </script>
 
 <DocLayout>
@@ -87,32 +88,36 @@ description: The Drawer component is a versatile UI element that slides in from 
   </DocBlock>
 
   <DocBlock title="Outlying Trigger">
-    <p class="not-prose">To trigger the <code>Drawer</code> from an external button or element, simply assign the same <code>id</code> to both your trigger and the <code>Drawer</code> component. This links them together - clicking your external element will automatically control the Drawer's visibility. This approach works with any element (buttons, icons, etc.) and is especially useful when your trigger exists outside the main layout or requires custom styling.</p>
+    <p class="not-prose">You can open or close the <code>Drawer</code> from outside by binding a reactive variable to its <code>open</code> prop. This is useful when the trigger button is placed elsewhere in your layout.</p>
     <Example>
       {#snippet example()}
-        <Drawer id="myDrawerID" label="Outlying Trigger" />
-        <Drawer id="myDrawerID" animationSpeed="slower">
+
+        <Button onclick={()=>openDrawer=!openDrawer}>Trigger drawer</Button>
+
+        <Drawer bind:open={openDrawer}>
           <div class="p-8">
             Outlying drawer content..
           </div>
         </Drawer>
+
       {/snippet}
 
       {#snippet code()}
 ```html
-<!-- Create the outlaying Label -->
-<Drawer id="myDrawerID" label="Outlying Trigger" />
+<script>
+  let openDrawer: boolean = $state(false)
+</script>
 
-<!-- Create the drawer content -->
+<!-- Outlaying button -->
+<Button onclick={()=>openDrawer=!openDrawer}>Trigger drawer</Button>
+
 <Drawer id="myDrawerID">
-  <div class="p-8">
-    Outlying drawer content..
-  </div>
+  <!-- Drawer content -->  
 </Drawer>
 ```
       {/snippet}
     </Example>
-    <p class="not-prose">This example uses the same <code>id="myDrawerID"</code> in both Drawer components. The first one is the trigger with a label, and the second one contains the content. Sharing the same ID links them — clicking the trigger opens the content drawer.</p>
+    <p class="not-prose">The <code>Button</code> updates the <code>openDrawer</code> state, and the <code>Drawer</code> reacts to it. This allows full control from any part of your component.</p>
   </DocBlock>
 
   <DocBlock title="Backdrop">
@@ -216,7 +221,6 @@ description: The Drawer component is a versatile UI element that slides in from 
 ```
       {/snippet}
     </Example>
-    <p class="not-prose">This example uses the same <code>id="myDrawerID"</code> in both Drawer components. The first one is the trigger with a label, and the second one contains the content. Sharing the same ID links them — clicking the trigger opens the content drawer.</p>
   </DocBlock>
 
   <DocBlock title="Accessibility">
@@ -245,6 +249,7 @@ description: The Drawer component is a versatile UI element that slides in from 
     <a href={processID("Custom Backdrop Style")} class="ps-4">Custom style</a>
     <a href={processID("Preventing Backdrop Click")} class="ps-4">Preventing click</a>
     <a href={processID("Disable Backdrop")} class="ps-4">Disable Backdrop</a>
+    <a href={processID("Animation Speed")}>Animation Speed</a>
     <a href={processID("Accessibility")}>Accessibility</a>
     <a href={processID("Configuration")}>Configuration</a>
   {/snippet}
