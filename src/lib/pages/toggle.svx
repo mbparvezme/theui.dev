@@ -179,7 +179,7 @@ description: Fully customizable switch that can replace traditional checkboxes a
 ```
       {/snippet}
     </Example>
-    <Alert type="info" theme="light">Note: The "xl" size is used for better visibility, making the toggle more prominent and easier to interact with.</Alert>
+    <Alert type="info" theme="soft">Note: The "xl" size is used for better visibility, making the toggle more prominent and easier to interact with.</Alert>
   </DocBlock>
 
   <DocBlock title="Customization">

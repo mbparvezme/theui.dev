@@ -11,7 +11,7 @@
       },
       {
         "name": "animationSpeed",
-        "type": "<a href=\"/docs/types#common-types\">ANIMATE_SPEED</a>",
+        "type": "<a href=\"/docs/types#animation-speed-type\">ANIMATE_SPEED</a>",
         "default": "'normal'",
         "description": "Defines the speed of tab transitions. The default value is 'normal'."
       },
@@ -24,25 +24,25 @@
       {
         "name": "tabContainerClasses",
         "type": "string",
-        "default": "\"\"",
+        "default": "null",
         "description": "Custom classes for the tab list container."
       },
       {
         "name": "tabClasses",
         "type": "string",
-        "default": "\"\"",
+        "default": "null",
         "description": "Custom classes for each tab element."
       },
       {
         "name": "tabActiveClasses",
         "type": "string",
-        "default": "\"\"",
+        "default": "null",
         "description": "Custom classes applied to the active tab."
       },
       {
         "name": "tabPanelClasses",
         "type": "string",
-        "default": "\"\"",
+        "default": "null",
         "description": "Custom classes for each tab panel."
       },
       {

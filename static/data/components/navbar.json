@@ -6,7 +6,7 @@
       "data": [
           {
             "name": "scrollBehavior",
-            "type": "NAV_SCROLL_BEHAVIOR",
+            "type": "<a href=\"/docs/types#navbar-scroll-behavior-type\">NAV_SCROLL_BEHAVIOR</a>",
             "default": "default",
             "description": "Behavior when scrolling (e.g., fixed/shrink/hide)"
           },
@@ -24,25 +24,25 @@
           },
           {
             "name": "height",
-            "type": "NAV_HEIGHT_TYPES | string",
+            "type": "'sm' | 'md' | 'lg' | 'xl' | string",
             "default": "md",
             "description": "Height of the navbar. Accepts predefined values or custom height classes."
           },
           {
             "name": "navBreakpoint",
-            "type": "string",
+            "type": "'sm' | 'md' | 'lg' | 'xl'",
             "default": "lg",
             "description": "Responsive breakpoint for collapse behavior ('sm' | 'md' | 'lg' | 'xl')"
           },
           {
             "name": "animationSpeed",
-            "type": "ANIMATE_SPEED",
+            "type": "<a href=\"/docs/types#animation-speed-type\">ANIMATE_SPEED</a>",
             "default": "fast",
             "description": "Transition speed for animations of the Navbar and all the components inside it."
           },
           {
             "name": "rounded",
-            "type": "ROUNDED",
+            "type": "<a href=\"/docs/types#rounded-type\">ROUNDED</a>",
             "default": "md",
             "description": "Controls border radius size of the Navbar and its components."
           },
@@ -192,7 +192,7 @@
         },
         {
           "name": "width",
-          "type": "MOBILE_NAV_ON | 'full'",
+          "type": "'sm' | 'md' | 'lg' | 'xl' | 'full'",
           "default": "sm",
           "description": "Dropdown width (responsive or full-width)"
         },

@@ -41,7 +41,7 @@
       },
       {
         "name": "animationSpeed",
-        "type": "<a href=\"/docs/types#common-types\">ANIMATE_SPEED</a>",
+        "type": "<a href=\"/docs/types#animation-speed-type\">ANIMATE_SPEED</a>",
         "description": "Speed of the animation.",
         "default": "\"fast\""
       },
@@ -65,7 +65,7 @@
       },
       {
         "name": "rounded",
-        "type": "<a href=\"/docs/types#common-types\">ROUNDED</a>",
+        "type": "<a href=\"/docs/types#rounded-type\">ROUNDED</a>",
         "description": "Border-radius of the modal.",
         "default": "\"md\""
       },

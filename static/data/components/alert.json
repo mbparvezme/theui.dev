@@ -23,7 +23,7 @@
       },
       {
         "name": "rounded",
-        "type": "<a href=\"/docs/types#common-types\">ROUNDED</a>",
+        "type": "<a href=\"/docs/types#rounded-type\">ROUNDED</a>",
         "default": "\"md\"",
         "description": "Defines the border-radius of the alert, providing control over its rounded corners."
       }

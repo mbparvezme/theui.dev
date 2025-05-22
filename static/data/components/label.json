@@ -12,24 +12,9 @@
       {
         "name": "id",
         "type": "string",
-        "default": "\"\"",
+        "default": "null",
         "description": "The ID of the label that bind it with the input."
       }
     ]
-  },
-  {
-    "key": "dynamicProps",
-    "title": "Dynamic props",
-    "data": null
-  },
-  {
-    "key": "snippets",
-    "title": "Snippets",
-    "data": null
-  },
-  {
-    "key": "functions",
-    "title": "Functions",
-    "data": null
-  }
+  } 
 ]

@@ -35,19 +35,19 @@
       },
       {
         "name": "animationSpeed",
-        "type": "<a href=\"/docs/types#common-types\">ANIMATE_SPEED</a>",
+        "type": "<a href=\"/docs/types#animation-speed-type\">ANIMATE_SPEED</a>",
         "default": "\"normal\"",
         "description": "Controls the animation speed of the popover."
       },
       {
         "name": "rounded",
-        "type": "<a href=\"/docs/types#common-types\">ROUNDED</a>",
+        "type": "<a href=\"/docs/types#rounded-type\">ROUNDED</a>",
         "default": "\"md\"",
         "description": "Defines the border-radius of the popover."
       },
       {
         "name": "shadow",
-        "type": "<a href=\"/docs/types#common-types\">SHADOW</a>",
+        "type": "<a href=\"/docs/types#shadow-types\">SHADOW</a>",
         "default": "\"lg\"",
         "description": "Controls the shadow intensity of the popover."
       },
@@ -60,13 +60,13 @@
       {
         "name": "titleClasses",
         "type": "string",
-        "default": "\"\"",
+        "default": "null",
         "description": "Allows custom classes for styling the title."
       },
       {
         "name": "bodyClasses",
         "type": "string",
-        "default": "\"\"",
+        "default": "null",
         "description": "Allows custom classes for styling the popover body."
       }
     ]

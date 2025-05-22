@@ -30,7 +30,7 @@
       {
         "name": "bubbleClasses",
         "type": "string",
-        "default": "\"\"",
+        "default": "null",
         "description": "Custom classes to style the bubble label when 'labelVariant' is set to 'bubble'."
       },
       {
@@ -47,7 +47,7 @@
       },
       {
         "name": "rounded",
-        "type": "<a href=\"/docs/types#common-types\">ROUNDED</a>",
+        "type": "<a href=\"/docs/types#rounded-type\">ROUNDED</a>",
         "default": "full",
         "description": "Controls the rounded corners of the progress bar. This helps maintain design consistency."
       },

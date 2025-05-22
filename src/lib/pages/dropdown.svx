@@ -590,8 +590,8 @@ description:
   </DocBlock>
 
   <DocBlock title="Configuration">
-    <DropdownConfig title="Dropdown" component={component.dropdown} />
-    <ItemConfig title="Dropdown Item" component={component.item} />
+    <DropdownConfig title="Dropdown Config" component={component.dropdown} />
+    <ItemConfig title="Dropdown Item Config" component={component.item} />
   </DocBlock>
 
   {#snippet sidebar()}
@@ -615,7 +615,7 @@ description:
     <a href={processID("Customization")}>Customization</a>
     <a href={processID("Accessibility")}>Accessibility</a>
     <a href={processID("Configuration")}>Configuration</a>
-    <a class="ps-4" href={processID("Dropdown")}>Dropdown</a>
-    <a class="ps-4" href={processID("Dropdown Item")}>Dropdown item</a>
+    <a class="ps-4" href={processID("Dropdown Config")}>Dropdown config</a>
+    <a class="ps-4" href={processID("Dropdown Item Config")}>Dropdown item config</a>
   {/snippet}
 </DocLayout>

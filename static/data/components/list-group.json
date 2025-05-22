@@ -6,13 +6,13 @@
       "data": [
         {
           "name": "animationSpeed",
-          "type": "<a href=\"/docs/types#common-types\">ANIMATE_SPEED</a>",
+          "type": "<a href=\"/docs/types#animation-speed-type\">ANIMATE_SPEED</a>",
           "description": "Controls the animation speed for the List Group.",
           "default": "\"normal\""
         },
         {
           "name": "rounded",
-          "type": "<a href=\"/docs/types#common-types\">ROUNDED</a>",
+          "type": "<a href=\"/docs/types#rounded-type\">ROUNDED</a>",
           "description": "Determines the border radius of the List Group items.",
           "default": "\"md\""
         },
@@ -35,21 +35,6 @@
           "default": "ul"
         }
       ]
-    },
-    {
-      "key": "dynamicProps",
-      "title": "Dynamic props",
-      "data": null
-    },
-    {
-      "key": "snippets",
-      "title": "Snippets",
-      "data": null
-    },
-    {
-      "key": "functions",
-      "title": "Functions",
-      "data": null
     }
   ],
   "listItem": [
@@ -65,7 +50,7 @@
         },
         {
           "name": "animationSpeed",
-          "type": "<a href=\"/docs/types#common-types\">ANIMATE_SPEED</a>",
+          "type": "<a href=\"/docs/types#animation-speed-type\">ANIMATE_SPEED</a>",
           "description": "Controls the animation speed for the List Group item.",
           "default": "normal"
         }

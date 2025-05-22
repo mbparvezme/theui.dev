@@ -36,7 +36,7 @@
         },
         {
           "name": "animationSpeed",
-          "type": "<a href=\"/docs/types#common-types\">ANIMATE_SPEED</a>",
+          "type": "<a href=\"/docs/types#animation-speed-type\">ANIMATE_SPEED</a>",
           "description": "Controls the speed of dropdown animations.",
           "default": "\"fast\""
         },
@@ -54,7 +54,7 @@
         },
         {
           "name": "rounded",
-          "type": "<a href=\"/docs/types#common-types\">ROUNDED</a>",
+          "type": "<a href=\"/docs/types#rounded-type\">ROUNDED</a>",
           "description": "Controls the border radius of the dropdown.",
           "default": "\"md\""
         },
@@ -103,11 +103,6 @@
       ]
     },
     {
-      "key": "dynamicProps",
-      "title": "Dynamic props",
-      "data": null
-    },
-    {
       "key": "snippets",
       "title": "Snippets",
       "data": [
@@ -116,11 +111,6 @@
           "description": "Specifies the label or trigger content for the dropdown, which can be a simple text or a custom snippet for more complex designs."
         }
       ]
-    },
-    {
-      "key": "functions",
-      "title": "Functions",
-      "data": null
     }
   ],
   "item": [
@@ -160,16 +150,11 @@
         },
         {
           "name": "preload",
-          "type": "PRELOAD",
+          "type": "<a href=\"/docs/types#dropdown-preload-type\">PRELOAD</a>",
           "description": "Defines the preload behavior for the dropdown item.",
           "default": "\"hover\""
         }
       ]
-    },
-    {
-      "key": "dynamicProps",
-      "title": "Dynamic props",
-      "data": null
     },
     {
       "key": "snippets",
@@ -184,11 +169,6 @@
           "description": "Defines a custom snippet block to be displayed after the dropdown text, suitable for badges, extra messages, or any supplementary content."
         }
       ]
-    },
-    {
-      "key": "functions",
-      "title": "Functions",
-      "data": null
     }
   ]
 }

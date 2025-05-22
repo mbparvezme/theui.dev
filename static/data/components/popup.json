@@ -29,16 +29,11 @@
       },
       {
         "name": "rounded",
-        "type": "<a href=\"/docs/types#common-types\">ROUNDED</a>",
+        "type": "<a href=\"/docs/types#rounded-type\">ROUNDED</a>",
         "default": "\"xl\"",
         "description": "Defines the border-radius of the popup for consistent design."
       }
     ]
-  },
-  {
-    "key": "dynamicProps",
-    "title": "Dynamic props",
-    "data": null
   },
   {
     "key": "snippets",
@@ -53,10 +48,5 @@
         "description": "Content to display when the popup is triggered on page exit."
       }
     ]
-  },
-  {
-    "key": "functions",
-    "title": "Functions",
-    "data": null
   }
 ]

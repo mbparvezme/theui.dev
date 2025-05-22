@@ -25,35 +25,20 @@
         "name": "imageClasses",
         "type": "string",
         "description": "Custom CSS classes to apply to the chip's image for additional styling.",
-        "default": "\"\""
+        "default": ""
       },
       {
         "name": "altText",
         "type": "string",
         "description": "The alternative text for the chip's image, enhancing accessibility.",
-        "default": "\"\""
+        "default": ""
       },
       {
         "name": "rounded",
-        "type": "<a href=\"/docs/types#common-types\">ROUNDED</a>",
+        "type": "<a href=\"/docs/types#rounded-type\">ROUNDED</a>",
         "description": "Determines the border-radius style of the chip for rounded corners.",
         "default": "\"full\""
       }
     ]
-  },
-  {
-    "key": "dynamicProps",
-    "title": "Dynamic props",
-    "data": null
-  },
-  {
-    "key": "snippets",
-    "title": "Snippets",
-    "data": null
-  },
-  {
-    "key": "functions",
-    "title": "Functions",
-    "data": null
   }
 ]
