@@ -93,6 +93,31 @@ description: Add dynamic visual indicators to your Svelte app with TheUI-Svelte'
     </Example>
   </DocBlock>
 
+  <DocBlock title="Rounded Corner">
+    <p class="not-prose">The <code>rounded</code> prop in the <code>Badge</code> component controls its border radius. Values: <code>none</code>, <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code>, <code>full</code>. Default is <code>md</code>.</p>
+    <Example>
+      {#snippet example()}
+        <div class="flex items-center gap-8">
+          <Badge ariaTitle="Demo badge" rounded="xl">New</Badge>
+          <Badge ariaTitle="Demo badge" rounded="lg">New</Badge>
+          <Badge ariaTitle="Demo badge" rounded="md">New</Badge>
+          <Badge ariaTitle="Demo badge" rounded="sm">New</Badge>
+          <Badge ariaTitle="Demo badge" rounded="none">New</Badge>
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Badge ... rounded="xl">New</Badge>
+<Badge ... rounded="lg">New</Badge>
+<Badge ... rounded="md">New</Badge>
+<Badge ... rounded="sm">New</Badge>
+<Badge ... rounded="none">New</Badge>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
   <DocBlock title="Customization">
     <Example>
       <p class="not-prose">Tailor every Badge to your needs with flexible color options that support both branding and semantic meaning. Built-in styles get you started, while custom CSS classes let you take full control. To change the background color, simply add your own CSS classes to the Badge component. Here’s an example:</p>
@@ -128,8 +153,9 @@ description: Add dynamic visual indicators to your Svelte app with TheUI-Svelte'
 
   {#snippet sidebar()}
     <a href={processID("Example")}>Example</a>
-    <a href={processID("Grow Badge")}>Alert Grow Badge</a>
-    <a href={processID("Fixed Top Badge")}>Fixed Top Badge</a>
+    <a href={processID("Grow Badge")}>Alert grow badge</a>
+    <a href={processID("Fixed Top Badge")}>Fixed top badge</a>
+    <a href={processID("Rounded Corner")}>Rounded corner</a>
     <a href={processID("Customization")}>Customization</a>
     <a href={processID("Accessibility")}>Accessibility</a>
     <a href={processID("Configuration")}>Configuration</a>

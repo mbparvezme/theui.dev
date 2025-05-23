@@ -35,7 +35,7 @@ description: Enhance your Svelte app with theui-svelte's Accordion component. Ea
 ```
     </Code>
     <p class="not-prose">You can create an accordion in two ways, using props and using Svelte 5 snippet. The example are showing below:</p>
-    <Example title="Accordion By Props">
+    <Example title="Title Using prop">
       <p class="not-prose">You can create an accordion item with a title and content props using the following example. </p>
       {#snippet example()}
       <div>
@@ -54,7 +54,7 @@ description: Enhance your Svelte app with theui-svelte's Accordion component. Ea
       {/snippet}
     </Example>
 
-    <Example title="Accordion Using Snippet">
+    <Example title="Title Using Snippet">
       <p class="not-prose">If you have custom content/elements in the title or content, you ca use <b>Svelte 5</b>'s <code>snippet</code> showing the following example:</p>
       {#snippet example()}
       <div>
@@ -136,7 +136,7 @@ description: Enhance your Svelte app with theui-svelte's Accordion component. Ea
     </Example>
   </DocBlock>
 
-  <DocBlock title="Accordion Size">
+  <DocBlock title="Sizes">
     <Example>
       <p class="not-prose mb-4">The <code>Accordion</code> and <code>AccordionItem</code> component provides a <code>size</code> prop to control the size of the accordion items. The <code>size</code> prop can take one of the following values: <code>'compact'</code>, <code>'default'</code>, or <code>'large'</code>.</p>
       <p class="not-prose">When the <code>size</code> prop is set on the <code>Accordion</code> component, all <code>AccordionItem</code> components within it will inherit this size. This ensures a consistent appearance for all items in the accordion.</p>
@@ -201,7 +201,7 @@ description: Enhance your Svelte app with theui-svelte's Accordion component. Ea
           <AccordionItem title={accordionTitle + ": 1"}>
             {@html accordionContent}
           </AccordionItem>
-          <AccordionItem open title={accordionTitle + ": 2"}>
+          <AccordionItem title={accordionTitle + ": 2"} open={true}>
             {@html accordionContent}
           </AccordionItem>
         </Accordion>
@@ -223,7 +223,7 @@ description: Enhance your Svelte app with theui-svelte's Accordion component. Ea
     </Example>
   </DocBlock>
 
-  <DocBlock title="Accordion: Standalone Mode">
+  <DocBlock title="Standalone Mode">
     <Example>
       <p class="not-prose">The <code>Accordion</code> component comes with a <code>standalone</code> prop that controls how accordion items behave when they are opened or closed. This prop determines whether multiple items can remain open simultaneously or if only one item can stay open at a time.</p>
       <ul class="my-0">
@@ -263,28 +263,36 @@ description: Enhance your Svelte app with theui-svelte's Accordion component. Ea
     <Example>
       <p class="not-prose">The <code>animationSpeed</code> prop controls how fast the accordion opens and closes. Available values are <code>"none"</code>, <code>"slower"</code>, <code>"slow"</code>, <code>"normal"</code>, <code>"fast"</code> (default), and <code>"faster"</code>. It helps you control the overall feel of the Accordion, allowing for subtle or sharp transitions depending on your preference.</p>
       {#snippet example()}
-      <div>
-        <Accordion>
-          <AccordionItem title={accordionTitle + ": 1"}>
+      <div class="flex flex-col gap-4">
+          <AccordionItem title="Animation speed: Slower" animationSpeed="slower">
             {@html accordionContent}
           </AccordionItem>
-          <AccordionItem open title={accordionTitle + ": 2"}>
+          <AccordionItem title="Animation speed: Slow" animationSpeed="slow">
             {@html accordionContent}
           </AccordionItem>
-        </Accordion>
+          <AccordionItem title="Animation speed: normal" animationSpeed="normal">
+            {@html accordionContent}
+          </AccordionItem>
+          <AccordionItem title="Animation speed: fast" animationSpeed="fast">
+            {@html accordionContent}
+          </AccordionItem>
+          <AccordionItem title="Animation speed: faster" animationSpeed="faster">
+            {@html accordionContent}
+          </AccordionItem>
+          <AccordionItem title="Animation speed: none" animationSpeed="none">
+            {@html accordionContent}
+          </AccordionItem>
       </div>
       {/snippet}
       {#snippet code()}
 
 ```html
-<Accordion>
-  <AccordionItem>
-    ...
-  </AccordionItem>
-  <AccordionItem open>
-    ...
-  </AccordionItem>
-</Accordion>
+<AccordionItem ... animationSpeed="slower"> ... </AccordionItem>
+<AccordionItem ... animationSpeed="slow"> ... </AccordionItem>
+<AccordionItem ... animationSpeed="normal"> ... </AccordionItem>
+<AccordionItem ... animationSpeed="fast"> ... </AccordionItem>
+<AccordionItem ... animationSpeed="faster"> ... </AccordionItem>
+<AccordionItem ... animationSpeed="none"> ... </AccordionItem>
 ```
       {/snippet}
     </Example>
@@ -373,12 +381,12 @@ description: Enhance your Svelte app with theui-svelte's Accordion component. Ea
 
   {#snippet sidebar()}
     <a href={processID("Example")}>Example</a>
-    <a href={processID("Accordion By Props")} class="ps-4">Using title prop</a>
-    <a href={processID("Accordion Using Snippet")} class="ps-4">Using title snippet</a>
+    <a href={processID("Accordion By Props")} class="ps-4">Title using prop</a>
+    <a href={processID("Accordion Using Snippet")} class="ps-4">Title using snippet</a>
     <a href={processID("Group Accordion")}>Group accordion</a>
     <a href={processID("Flash Accordion")}>Flash accordion</a>
-    <a href={processID("Accordion Size")}>Accordion size</a>
-    <a href={processID("Accordion Open State")}>Accordion open state</a>
+    <a href={processID("Accordion Size")}>Sizes</a>
+    <!-- <a href={processID("Accordion Open State")}>Open state</a> -->
     <a href={processID("Accordion: Standalone Mode")}>Standalone mode</a>
     <a href={processID("Animation Speed")}>Animation Speed</a>
     <a href={processID("Customization")}>Customization</a>
@@ -387,5 +395,5 @@ description: Enhance your Svelte app with theui-svelte's Accordion component. Ea
     <a class="ps-4" href={processID("Accordion")}>Accordion</a>
     <a class="ps-4" href={processID("Accordion Item")}>Accordion item</a>
   {/snippet}
-
+ 
 </DocLayout>

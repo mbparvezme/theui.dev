@@ -73,14 +73,18 @@ description: Integrate customizable modals into your Svelte app with TheUI-Svelt
       {/snippet}
     </Example>
     <Example title="Trigger From Outside">
+      <p class="not-prose">To control the <code>Modal</code> from outside, bind a reactive variable to its <code>open</code> prop. This is helpful when the open button is not placed inside the Modal.</p>
       {#snippet code()}
 
 ```html
-<Modal>
-  {#snippet label()}
-    <Button>Modal Trigger</Button>
-  {/snippet}
-  ...
+<script>
+    let openModal: boolean = $state(false)
+</script>
+
+<Button onclick={() => openModal = true}>Open Modal</Button>
+
+<Modal bind:open={openModal} id="myModalID">
+    <!-- Modal content -->
 </Modal>
 ```
       {/snippet}
