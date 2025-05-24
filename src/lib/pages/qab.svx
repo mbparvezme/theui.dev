@@ -120,11 +120,10 @@ description:
   <DocBlock title="QAB Color">
     <p class="not-prose">The <code>color</code> prop customizes the QAB button's appearance by applying predefined color themes. These themes correspond to various statuses or actions, ensuring consistent visual design throughout your application. The available color options are <code>"brand"</code>, <code>"error"</code>, <code>"info"</code>, <code>"success"</code>, and <code>"warning"</code>. The default value is <code>"brand"</code>.</p>
     <Tabs variant="tabs">
-      {#snippet tabList()}
+      {#snippet tabs()}
         <Tab>QAB Main Button</Tab>
         <Tab>QAB Item Color</Tab>
       {/snippet}
-      {#snippet tabPanel()}
         <TabPanel>
           <Example>
             {#snippet example()}
@@ -133,7 +132,10 @@ description:
             {#snippet code()}
 
   ```html
-  <Qab color="info"> ... </Qab>
+<Qab color="info">
+    <QabItem>1</QabItem>
+    <QabItem>2</QabItem>
+</Qab>
   ```
             {/snippet}
           </Example>
@@ -147,39 +149,37 @@ description:
 
   ```html
 <Qab>
-  <QabItem color="success">1</QabItem>
-  <QabItem color="error">2</QabItem>
-  <QabItem color="warning">3</QabItem>
+    <QabItem color="success">1</QabItem>
+    <QabItem color="error">2</QabItem>
+    <QabItem color="warning">3</QabItem>
 </Qab>
   ```
             {/snippet}
           </Example>
         </TabPanel>
-      {/snippet}
     </Tabs>
     <p class="not-prose">Each color serves a purpose, making design intuitive and user-friendly. While you can customize colors with the class attribute, the <code>color</code> prop offers a quick and consistent solution.</p>
   </DocBlock>
 
   <DocBlock title="Theme">
-    <p class="not-prose">The <code>theme</code> prop determines the overall style and background of the button. It accepts three values: <code>'default'</code>, <code>'light'</code>, and <code>'gradient'</code>. The default theme applies the standard button styles, while the light theme uses lighter versions of the default colors for a softer look. The gradient theme gives a more vibrant feel by applying gradient backgrounds to the button.</p>
+    <p class="not-prose">The <code>theme</code> prop determines the overall style and background of the button. It accepts three values: <code>'default'</code>, <code>'soft'</code>, and <code>'gradient'</code>. The default theme applies the standard button styles, while the soft theme uses softer versions of the default colors for a softer look. The gradient theme gives a more vibrant feel by applying gradient backgrounds to the button.</p>
 
-    <Example title="Light Theme">
-      <p class="not-prose">The light theme is a softer variation of the default button colors, making it suitable for more subtle designs.</p>
+    <Example title="Soft Theme">
+      <p class="not-prose">The soft theme is a softer variation of the default button colors, making it suitable for more subtle designs.</p>
       <Tabs variant="tabs">
-        {#snippet tabList()}
+        {#snippet tabs()}
           <Tab>QAB Main Button</Tab>
           <Tab>QAB Item Color</Tab>
         {/snippet}
-        {#snippet tabPanel()}
           <TabPanel>
             <Example>
               {#snippet example()}
-                <iframe src="/example/qab-light" style="width: 100%; height: 210px;" scrolling="no"></iframe>
+                <iframe src="/example/qab-soft" style="width: 100%; height: 210px;" scrolling="no"></iframe>
               {/snippet}
               {#snippet code()}
 
 ```html
-<Qab theme="light" color="info"> ... </Qab>
+<Qab theme="soft" color="info"> ... </Qab>
 ```
               {/snippet}
             </Example>
@@ -187,32 +187,30 @@ description:
           <TabPanel>
             <Example>
               {#snippet example()}
-                <iframe src="/example/qab-light-item" style="width: 100%; height: 260px;" scrolling="no"></iframe>
+                <iframe src="/example/qab-soft-item" style="width: 100%; height: 260px;" scrolling="no"></iframe>
               {/snippet}
               {#snippet code()}
 
 ```html
 <Qab>
-  <QabItem theme="light" color="success">1</QabItem>
-  <QabItem theme="light" color="info">2</QabItem>
-  <QabItem theme="light" color="error">3</QabItem>
+  <QabItem theme="soft" color="success">1</QabItem>
+  <QabItem theme="soft" color="info">2</QabItem>
+  <QabItem theme="soft" color="error">3</QabItem>
 </Qab>
 ```
               {/snippet}
             </Example>
           </TabPanel>
-        {/snippet}
       </Tabs>
     </Example>
 
     <Example title="Gradient Theme">
       <p class="not-prose">The gradient theme applies vibrant gradient colors to the button background, providing a more modern and eye-catching look.</p>
       <Tabs variant="tabs">
-        {#snippet tabList()}
+        {#snippet tabs()}
           <Tab>QAB Main Button</Tab>
           <Tab>QAB Item Color</Tab>
         {/snippet}
-        {#snippet tabPanel()}
           <TabPanel>
             <Example>
               {#snippet example()}
@@ -235,15 +233,14 @@ description:
 
 ```html
 <Qab>
-  <QabItem theme="light" color="success">1</QabItem>
-  <QabItem theme="light" color="info">2</QabItem>
-  <QabItem theme="light" color="error">3</QabItem>
+  <QabItem theme="soft" color="success">1</QabItem>
+  <QabItem theme="soft" color="info">2</QabItem>
+  <QabItem theme="soft" color="error">3</QabItem>
 </Qab>
 ```
               {/snippet}
             </Example>
           </TabPanel>
-        {/snippet}
       </Tabs>
     </Example>
     <Alert type="warning" theme="soft" variant="borderStart">The color prop can still be used with each theme to specify the button's color, allowing flexibility while maintaining consistency across different button themes.</Alert>
@@ -378,7 +375,6 @@ description:
     <QABItemComponent title="QAB Item" component={component.item} />
   </DocBlock>
 
-
   {#snippet sidebar()}
     <a href={processID("About")}>About</a>
     <a href={processID("Example")}>Example</a>
@@ -388,7 +384,7 @@ description:
     <a href={processID("Direction")}>Direction</a>
     <a href={processID("QAB Color")}>QAB Color</a>
     <a href={processID("Theme")}>Theme</a>
-    <a href={processID("Light Theme")} class="ps-4">Light Theme</a>
+    <a href={processID("Soft Theme")} class="ps-4">Soft Theme</a>
     <a href={processID("Gradient Theme")} class="ps-4">Gradient Theme</a>
     <a href={processID("QAB Trigger Event")}>Trigger Event</a>
     <a href={processID("Rounded Corner Button")}>Rounded Button</a>

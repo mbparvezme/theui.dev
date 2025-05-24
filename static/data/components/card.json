@@ -36,13 +36,13 @@
       {
         "name": "contentClasses",
         "type": "string",
-        "default": "\"\"",
+        "default": "null",
         "description": "CSS classes for styling the content area."
       },
       {
         "name": "titleClasses",
         "type": "string",
-        "default": "\"\"",
+        "default": "null",
         "description": "CSS classes for styling the title."
       }
     ]

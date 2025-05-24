@@ -175,27 +175,27 @@ description: Create responsive and stylish buttons for your Svelte app with TheU
   </DocBlock>
 
   <DocBlock title="Theme">
-    <p class="not-prose">The <code>theme</code> prop controls the button’s overall style and background. It supports three values: <code>'default'</code>, <code>'light'</code>, and <code>'gradient'</code>. The default theme gives the standard button look, the light theme uses softer colors, and the gradient theme adds a vibrant background with gradient styling.</p>
+    <p class="not-prose">The <code>theme</code> prop controls the button’s overall style and background. It supports three values: <code>'default'</code>, <code>'soft'</code>, and <code>'gradient'</code>. The default theme gives the standard button look, the soft theme uses softer colors, and the gradient theme adds a vibrant background with gradient styling.</p>
     <div>
-    <Example title="Light Theme">
-      <p class="not-prose">The light theme is a softer variation of the default button colors, making it suitable for more subtle designs.</p>
+    <Example title="Soft Theme">
+      <p class="not-prose">The soft theme is a softer variation of the default button colors, making it suitable for more subtle designs.</p>
       {#snippet example()}
         <div class="w-full flex justify-center gap-4">
-          <Button theme="light" color="brand">Brand</Button>
-          <Button theme="light" color="error">Error</Button>
-          <Button theme="light" color="info">Info</Button>
-          <Button theme="light" color="success">Success</Button>
-          <Button theme="light" color="warning">Warning</Button>
+          <Button theme="soft" color="brand">Brand</Button>
+          <Button theme="soft" color="error">Error</Button>
+          <Button theme="soft" color="info">Info</Button>
+          <Button theme="soft" color="success">Success</Button>
+          <Button theme="soft" color="warning">Warning</Button>
         </div>
       {/snippet}
       {#snippet code()}
 
 ```html
-<Button theme="light" color="brand">Brand</Button>
-<Button theme="light" color="error">Error</Button>
-<Button theme="light" color="info">Info</Button>
-<Button theme="light" color="success">Success</Button>
-<Button theme="light" color="warning">Warning</Button>
+<Button theme="soft" color="brand">Brand</Button>
+<Button theme="soft" color="error">Error</Button>
+<Button theme="soft" color="info">Info</Button>
+<Button theme="soft" color="success">Success</Button>
+<Button theme="soft" color="warning">Warning</Button>
 ```
       {/snippet}
     </Example>
@@ -404,7 +404,7 @@ description: Create responsive and stylish buttons for your Svelte app with TheU
     <a href={processID("Button Content")}>Button Content</a>
     <a href={processID("Button Color")}>Button Color</a>
     <a href={processID("Theme")}>Theme</a>
-    <a href={processID("Light Theme")} class="ps-4">Light Theme</a>
+    <a href={processID("Soft Theme")} class="ps-4">Soft Theme</a>
     <a href={processID("Gradient Theme")} class="ps-4">Gradient Theme</a>
     <a href={processID("Outline")}>Outline</a>
     <a href={processID("Size")}>Size</a>
