@@ -6,6 +6,6 @@
   "pages_build_output_dir": ".svelte-kit/cloudflare",
   "assets": {
       "directory": ".cloudflare/public",
-      "binding": "ASSETS"
+      "binding": "STATIC_ASSETS"
     }
   }
