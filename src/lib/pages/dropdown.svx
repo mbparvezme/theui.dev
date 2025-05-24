@@ -534,7 +534,7 @@ description:
       <div>
         <Dropdown
           label="Customized Dropdown"
-          containerClasses="border-4 rounded-lg"
+          containerClasses="border-4 rounded-xl"
           dropdownClasses="shadow-lg bg-green-50"
           linkClasses="text-green-500 hover:bg-green-100"
           activeLinkClasses="text-white bg-green-500"
@@ -553,7 +553,7 @@ description:
 ```html
 <Dropdown
   label="Customized Dropdown"
-  containerClasses="border-4 rounded-lg"
+  containerClasses="border-4 rounded-xl"
   dropdownClasses="shadow-lg bg-green-50"
   linkClasses="text-green-500 hover:bg-green-100"
   activeLinkClasses="text-white bg-green-500"

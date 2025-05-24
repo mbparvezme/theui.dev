@@ -15,10 +15,10 @@
     </ButtonGroup>
     <p class="font-semibold mt-4">Light theme</p>
     <ButtonGroup size="sm">
-      <Button onclick={()=>notify("Hello world!", "success", {theme: "light", variant: "card"})}>Card (Default)</Button>
-      <Button onclick={()=>notify("Hello world!", "success", {theme: "light", variant: "borderTop"})}>Border Top</Button>
-      <Button onclick={()=>notify("Hello world!", "success", {theme: "light", variant: "borderStart"})}>Border Start</Button>
-      <Button onclick={()=>notify("Hello world!", "success", {theme: "light", variant: "borderBottom"})}>Border Bottom</Button>
+      <Button onclick={()=>notify("Hello world!", "success", {theme: "soft", variant: "card"})}>Card (Default)</Button>
+      <Button onclick={()=>notify("Hello world!", "success", {theme: "soft", variant: "borderTop"})}>Border Top</Button>
+      <Button onclick={()=>notify("Hello world!", "success", {theme: "soft", variant: "borderStart"})}>Border Start</Button>
+      <Button onclick={()=>notify("Hello world!", "success", {theme: "soft", variant: "borderBottom"})}>Border Bottom</Button>
     </ButtonGroup>
   </div>
 </Container>

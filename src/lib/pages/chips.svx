@@ -78,7 +78,7 @@ description: Implement interactive and stylish chips in your Svelte app with The
     <p class="not-prose">The <code>imageUrl</code> prop specifies the path to the image ("/path/to/image.png"), adding an image to the chip.</p>
   </DocBlock>
 
-  <DocBlock title="Chips Size">
+  <DocBlock title="Sizes">
     <p class="not-prose">The <code>Chips</code> component allows you to adjust its size using the <code>size</code> prop. This prop controls the padding and dimensions of the chip, including any accompanying image. The available size options are:<br>- <b>sm</b> (small)<br>- <b>md</b> (medium) – <i>default</i><br>- <b>lg</b> (large)</p>
     <p class="not-prose">By choosing the appropriate size, you can ensure that the chips fit seamlessly into your design. This flexibility helps you customize the appearance of chips to suit various layout needs.</p>
     <Example>
@@ -99,6 +99,31 @@ description: Implement interactive and stylish chips in your Svelte app with The
       {/snippet}
     </Example>
     <p class="not-prose">The <code>imageUrl</code> prop specifies the path to the image ("/path/to/image.png"), adding an image to the chip.</p>
+  </DocBlock>
+
+  <DocBlock title="Rounded Corner">
+    <p class="not-prose">The <code>rounded</code> prop in the <code>Chips</code> component controls its border radius. Values: <code>none</code>, <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code>, <code>full</code>. Default is <code>full</code>.</p>
+    <Example>
+      {#snippet example()}
+        <div class="flex flex-col items-center gap-4">
+        <Chips imageUrl="https://randomuser.me/api/portraits/women/65.jpg" rounded="none">Jasmine Kira</Chips>
+        <Chips imageUrl="https://randomuser.me/api/portraits/women/66.jpg" rounded="md">Jasmine Kira</Chips>
+        <Chips imageUrl="https://randomuser.me/api/portraits/women/67.jpg" rounded="lg">Jasmine Kira</Chips>
+        <Chips imageUrl="https://randomuser.me/api/portraits/women/68.jpg" rounded="xl">Jasmine Kira</Chips>
+        <Chips imageUrl="https://randomuser.me/api/portraits/women/69.jpg" rounded="full">Jasmine Kira</Chips>
+        </div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Chips rounded="none">...</Chips>
+<Chips rounded="md">...</Chips>
+<Chips rounded="lg">...</Chips>
+<Chips rounded="xl">...</Chips>
+<Chips rounded="full">...</Chips>
+```
+      {/snippet}
+    </Example>
   </DocBlock>
 
   <DocBlock title="Customization">
@@ -145,7 +170,7 @@ description: Implement interactive and stylish chips in your Svelte app with The
     <a href={processID("Example")}>Example</a>
     <a href={processID("Chips With Image")}>Chips With Image</a>
     <a href={processID("Disable Close Button")}>Disable Close Button</a>
-    <a href={processID("Chips Size")}>Chips Size</a>
+    <a href={processID("Sizes")}>Sizes</a>
     <a href={processID("Customization")}>Customization</a>
     <a href={processID("Chip Customization")} class="ps-4">Chip customization</a>
     <a href={processID("Image Customization")} class="ps-4">Image customization</a>
