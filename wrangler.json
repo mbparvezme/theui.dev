@@ -1,9 +1,10 @@
 {
   "name": "theui-dev",
+  "account_id": "74c0c0beae6fa8f113955e4a18cc258f",
   "main": "./.cloudflare/worker.js",
   "compatibility_date": "2025-05-25",
-  "pages_build_output_dir": ".svelte-kit/cloudflare",
-  "build": {
-    "command": "npm run build"
+  "assets": {
+      "directory": ".cloudflare/public",
+      "binding": "ASSETS"
+    }
   }
-}
