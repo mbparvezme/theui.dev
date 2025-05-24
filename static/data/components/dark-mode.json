@@ -11,20 +11,5 @@
         "description": "Determines how dark mode is handled. When true, the app initially adopts the system's preferred color scheme."
       }
     ]
-  },
-  {
-    "key": "dynamicProps",
-    "title": "Dynamic props",
-    "data": null
-  },
-  {
-    "key": "snippets",
-    "title": "Snippets",
-    "data": null
-  },
-  {
-    "key": "functions",
-    "title": "Functions",
-    "data": null
   }
 ]

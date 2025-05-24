@@ -174,7 +174,7 @@ description: The FileInput component is a customizable wrapper for file selectio
   name="document"
   wrapperClasses="flex-row items-center justify-between gap-8"
   labelClasses="text-xl font-semibold uppercase"
-  class="focus:ring-2 focus-within:ring-purple-500 focus:ring-purple-500 bg-purple-100 file:bg-purple-300"
+  class="focus:ring-2 focus-within:ring-purple-500 focus:ring-purple-500 bg-purple-100 file:bg-purple-300 text-gray-900 dark:file:text-gray-900"
   variant="flat"
 >
   Upload

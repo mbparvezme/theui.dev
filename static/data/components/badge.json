@@ -11,7 +11,7 @@
       },
       {
         "name": "rounded",
-        "type": "<a href=\"/docs/types#common-types\">ROUNDED</a>",
+        "type": "<a href=\"/docs/types#rounded-type\">ROUNDED</a>",
         "default": "\"full\"",
         "description": "Defines the border radius of the component."
       }

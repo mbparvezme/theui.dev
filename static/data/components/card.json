@@ -11,13 +11,13 @@
       },
       {
         "name": "rounded",
-        "type": "<a href=\"/docs/types#common-types\">ROUNDED</a>",
+        "type": "<a href=\"/docs/types#rounded-type\">ROUNDED</a>",
         "default": "\"md\"",
         "description": "Defines the border radius of the component."
       },
       {
         "name": "shadow",
-        "type": "<a href=\"/docs/types#common-types\">SHADOW</a>",
+        "type": "<a href=\"/docs/types#shadow-types\">SHADOW</a>",
         "default": "\"md\"",
         "description": "Specifies the shadow depth for the component."
       },
@@ -36,13 +36,13 @@
       {
         "name": "contentClasses",
         "type": "string",
-        "default": "\"\"",
+        "default": "null",
         "description": "CSS classes for styling the content area."
       },
       {
         "name": "titleClasses",
         "type": "string",
-        "default": "\"\"",
+        "default": "null",
         "description": "CSS classes for styling the title."
       }
     ]

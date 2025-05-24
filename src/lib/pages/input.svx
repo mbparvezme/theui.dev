@@ -245,28 +245,28 @@ description: The Input component is a flexible and customizable form element tha
 
   <DocBlock title="Animation Speed">
     <Example classes="gap-8">
-      <p class="not-prose">The <code>animateSpeed</code> prop controls the speed of input animations, allowing for smooth transitions and interactions. Available values are <code>"none"</code>, <code>"slower"</code>, <code>"slow"</code>, <code>"normal"</code>, <code>"fast"</code>, and <code>"faster"</code>, with <code>"normal"</code> as the default. Adjusting this prop helps create a more dynamic or subtle user experience based on your design preferences.</p>
+      <p class="not-prose">The <code>animationSpeed</code> prop controls the speed of input animations, allowing for smooth transitions and interactions. Available values are <code>"none"</code>, <code>"slower"</code>, <code>"slow"</code>, <code>"normal"</code>, <code>"fast"</code>, and <code>"faster"</code>, with <code>"normal"</code> as the default. Adjusting this prop helps create a more dynamic or subtle user experience based on your design preferences.</p>
       {#snippet example()}
 <div class="inline-flex flex-col gap-4">
-  <Input name="myInput" variant="flat" animateSpeed="slower">Animation slower</Input>
-  <Input name="myInput" variant="flat" animateSpeed="slow">Animation slow</Input>
-  <Input name="myInput" variant="flat" animateSpeed="normal">Animation normal</Input>
+  <Input name="myInput" variant="flat" animationSpeed="slower">Animation slower</Input>
+  <Input name="myInput" variant="flat" animationSpeed="slow">Animation slow</Input>
+  <Input name="myInput" variant="flat" animationSpeed="normal">Animation normal</Input>
 </div>
 <div class="inline-flex flex-col gap-4">
-  <Input name="myInput" variant="flat" animateSpeed="fast">Animation fast</Input>
-  <Input name="myInput" variant="flat" animateSpeed="faster">Animation faster</Input>
-  <Input name="myInput" variant="flat" animateSpeed="none">Animation none</Input>
+  <Input name="myInput" variant="flat" animationSpeed="fast">Animation fast</Input>
+  <Input name="myInput" variant="flat" animationSpeed="faster">Animation faster</Input>
+  <Input name="myInput" variant="flat" animationSpeed="none">Animation none</Input>
 </div>
       {/snippet}
       {#snippet code()}
 
 ```html
-<Input ... animateSpeed="slower">Animation slower</Input>
-<Input ... animateSpeed="slow">Animation slow</Input>
-<Input ... animateSpeed="normal">Animation normal</Input>
-<Input ... animateSpeed="fast">Animation fast</Input>
-<Input ... animateSpeed="faster">Animation faster</Input>
-<Input ... animateSpeed="none">Animation none</Input>
+<Input ... animationSpeed="slower">Animation slower</Input>
+<Input ... animationSpeed="slow">Animation slow</Input>
+<Input ... animationSpeed="normal">Animation normal</Input>
+<Input ... animationSpeed="fast">Animation fast</Input>
+<Input ... animationSpeed="faster">Animation faster</Input>
+<Input ... animationSpeed="none">Animation none</Input>
 ```
       {/snippet}
     </Example>

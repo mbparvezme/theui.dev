@@ -10,8 +10,20 @@
         "default": ""
       },
       {
+        "name": "position",
+        "type": "'top' | 'end' | 'bottom' | 'start'",
+        "description": "Drawer position relative to screen.",
+        "default": "start"
+      },
+      {
+        "name": "open",
+        "type": "boolean",
+        "description": "Controls the visibility of the Drawer. You can use this prop to programmatically open or close the Drawer.",
+        "default": "false"
+      },
+      {
         "name": "animationSpeed",
-        "type": "<a href=\"/docs/types#common-types\">ANIMATE_SPEED</a>",
+        "type": "<a href=\"/docs/types#animation-speed-type\">ANIMATE_SPEED</a>",
         "description": "Speed of the animation when the component is shown or hidden.",
         "default": "fast"
       },
@@ -22,37 +34,51 @@
         "default": true
       },
       {
-        "name": "position",
-        "type": "'top' | 'end' | 'bottom' | 'start'",
-        "description": "Drawer position relative to screen.",
-        "default": "start"
-      },
-      {
         "name": "staticBackdrop",
         "type": "boolean",
         "description": "Prevent Drawer from closing on backdrop click.",
         "default": false
+      },
+      {
+        "name": "buttonClasses",
+        "type": "string",
+        "description": "Classes for the drawer trigger button.",
+        "default": ""
+      },
+      {
+        "name": "ariaLabel",
+        "type": "string",
+        "description": "Aria label for accessibility for the Drawer component.",
+        "default": "Drawer"
       }
     ]
   },
   {
     "key": "dynamicProps",
     "title": "Dynamic props",
-    "data": null
+    "data": [
+      {
+        "name": "fullscreen",
+        "description": "Use the fullscreen prop to make the Drawer component take up the entire screen."
+      },
+      {
+        "name": "class",
+        "description": "Any CSS classes used in the class prop will be applied to the Drawer body directly. It will override the default classes."
+      }
+    ]
   },
   {
     "key": "snippets",
     "title": "Snippets",
     "data": [
       {
-        "name": "trigger",
+        "name": "children",
+        "description": "Main content of the component."
+      },
+      {
+        "name": "label",
         "description": "The element that triggers the opening of the component."
       }
     ]
-  },
-  {
-    "key": "functions",
-    "title": "Functions",
-    "data": null
   }
 ]

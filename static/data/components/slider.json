@@ -54,37 +54,37 @@
       {
         "name": "slideClasses",
         "type": "string",
-        "default": "\"\"",
+        "default": "null",
         "description": "Custom classes for individual slides."
       },
       {
         "name": "controlButtonClasses",
         "type": "string",
-        "default": "\"\"",
+        "default": "null",
         "description": "Custom classes for navigation control buttons."
       },
       {
         "name": "indicatorContainerClasses",
         "type": "string",
-        "default": "\"\"",
+        "default": "null",
         "description": "Custom classes for the container that holds slide indicators."
       },
       {
         "name": "indicatorClasses",
         "type": "string",
-        "default": "\"\"",
+        "default": "null",
         "description": "Custom classes for individual slide indicators."
       },
       {
         "name": "indicatorActiveClasses",
         "type": "string",
-        "default": "\"\"",
+        "default": "null",
         "description": "Custom classes for the active slide indicator."
       },
       {
         "name": "timerClasses",
         "type": "string",
-        "default": "\"\"",
+        "default": "null",
         "description": "Custom classes for the timer element."
       }
     ]

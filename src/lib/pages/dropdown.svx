@@ -151,21 +151,21 @@ description:
   </DocBlock>
 
   <DocBlock title="Dropdown Trigger Event">
-    <p class="not-prose">The <code>dropdownEvent</code> prop defines how the dropdown is triggered. By default, the dropdown opens when clicked, but you can change this behavior to trigger on hover by setting it to <code>"hover"</code>.</p>
+    <p class="not-prose">The <code>triggerEvent</code> prop defines how the dropdown is triggered. By default, the dropdown opens when clicked, but you can change this behavior to trigger on hover by setting it to <code>"hover"</code>.</p>
     <Example>
       {#snippet example()}
         <Dropdown label="Dropdown on click">
           {@render dropdownBasic()}
         </Dropdown>
-        <Dropdown label="Dropdown on hover" dropdownEvent="hover">
+        <Dropdown label="Dropdown on hover" triggerEvent="hover">
           {@render dropdownBasic()}
         </Dropdown>
       {/snippet}
 
       {#snippet code()}
 ```html
-<Dropdown dropdownEvent="click"> ... </Dropdown> <!-- Default -->
-<Dropdown dropdownEvent="hover"> ... </Dropdown>
+<Dropdown triggerEvent="click"> ... </Dropdown> <!-- Default -->
+<Dropdown triggerEvent="hover"> ... </Dropdown>
 ```
       {/snippet}
     </Example>
@@ -207,183 +207,6 @@ description:
 ```
       {/snippet}
     </Example>
-  </DocBlock>
-
-  <DocBlock title="Item Types">
-    <Example title="Link">
-      <p class="not-prose">The <code>DropdownItem</code> component supports four native types for consistent UI: link, button, header, and divider. The type of each item is controlled by the <code>type</code> prop, which defaults to <code>link</code>. The <code>type</code> prop can be set to <code>'link' | 'divider' | 'header' | 'button'</code>.</p>
-      <ul class="my-0">
-        <li><b>link</b>: The default type, renders a standard hyperlink.</li>
-        <li><b>button</b>: Renders a clickable button within the dropdown.</li>
-        <li><b>header</b>: Creates a non-clickable header to separate sections.</li>
-        <li><b>divider</b>: Adds a visual divider to separate items.</li>
-      </ul>
-      <p class="not-prose">You can also add custom items, but these four types are provided natively for a consistent UI experience.</p>
-      {#snippet example()}
-      <div>
-        <Dropdown label="Dropdown">
-          <!-- Header item -->
-          <DropdownItem type="header">Section Header</DropdownItem>
-          <!-- Link item (default) -->
-          <DropdownItem url="/">Link 1</DropdownItem>
-          <DropdownItem url="/">Link 2</DropdownItem>
-          <!-- Divider item -->
-          <DropdownItem type="divider"></DropdownItem>
-          <!-- Button item -->
-          <DropdownItem type="button">Button 1</DropdownItem>
-        </Dropdown>
-      </div>
-      {/snippet}
-
-      {#snippet code()}
-```html
-<Dropdown label="Dropdown">
-  <!-- Header item -->
-  <DropdownItem type="header">Section Header</DropdownItem>
-  <!-- Link item (default) -->
-  <DropdownItem url="/">Link 1</DropdownItem>
-  <DropdownItem url="/">Link 2</DropdownItem>
-  <!-- Divider item -->
-  <DropdownItem type="divider" />
-  <!-- Button item -->
-  <DropdownItem type="button">Button 1</DropdownItem>
-</Dropdown>
-```
-      {/snippet}
-    </Example>
-    <p class="not-prose">This setup ensures your dropdown maintains a uniform appearance and functionality across different types of items.</p>
-  </DocBlock>
-
-  <DocBlock title="Active State">
-    <Example>
-      <p class="not-prose">The <code>active</code> prop in the <code>DropdownItem</code> component is used to indicate whether the item is currently active. This prop accepts a boolean value and defaults to <code>false</code>. When set to <code>true</code>, the item will appear highlighted to show it is active.</p>
-      {#snippet example()}
-      <div>
-        <Dropdown label="Dropdown">
-          <DropdownItem url="/">Link</DropdownItem>
-          <DropdownItem url="/" active={true}>Active Link</DropdownItem>
-          <DropdownItem url="/">Link</DropdownItem>
-        </Dropdown>
-      </div>
-      {/snippet}
-
-      {#snippet code()}
-```html
-<Dropdown label="Dropdown">
-  <DropdownItem url="/">Link</DropdownItem>
-  <DropdownItem url="/" active={true}>Active Link</DropdownItem>
-  <DropdownItem url="/">Link</DropdownItem>
-</Dropdown>
-```
-      {/snippet}
-    </Example>
-    <p class="not-prose">Using the active prop helps visually distinguish the selected or currently active item within the dropdown.</p>
-  </DocBlock>
-
-  <DocBlock title="Dropdown Item's Content">
-    <Example>
-      <p class="not-prose">The <code>DropdownItem</code> component provides two snippet blocks, <code>startItem</code> and <code>endItem</code>, for adding custom content before or after the dropdown text.</p>
-      <ul class="my-0">
-        <li><b>startItem</b>: Displays content before the dropdown text, ideal for icons, images, or similar elements.</li>
-        <li><b>endItem</b>: Shows content after the dropdown text, perfect for badges, extra messages, or additional icons.</li>
-      </ul>
-      {#snippet example()}
-      <div>
-        <Dropdown label="Dropdown" size="md">
-          <DropdownItem url="/">
-            {#snippet startItem()}
-              <Svg>
-                <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2M8 1.918l-.797.161A4 4 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4 4 0 0 0-3.203-3.92zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5 5 0 0 1 13 6c0 .88.32 4.2 1.22 6"/>
-              </Svg>
-            {/snippet}
-            Notification
-          </DropdownItem>
-          <DropdownItem url="/">
-            Notification
-            {#snippet endItem()}
-              <Badge>New</Badge>
-            {/snippet}
-          </DropdownItem>
-          <DropdownItem url="/">
-            {#snippet startItem()}
-              <Svg>
-                <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2M8 1.918l-.797.161A4 4 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4 4 0 0 0-3.203-3.92zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5 5 0 0 1 13 6c0 .88.32 4.2 1.22 6"/>
-              </Svg>
-            {/snippet}
-            Notification
-            {#snippet endItem()}
-              <Badge>New</Badge>
-            {/snippet}
-          </DropdownItem>
-        </Dropdown>
-      </div>
-      {/snippet}
-
-      {#snippet code()}
-```html
-<Dropdown label="Dropdown" size="md">
-  <DropdownItem url="/">
-    {#snippet startItem()}
-      <Svg>
-        <path d="M8 16a2 2 0 0 ... 13 6c0 .88.32 4.2 1.22 6"/>
-      </Svg>
-    {/snippet}
-    Notification
-  </DropdownItem>
-  <DropdownItem url="/">
-    Notification
-    {#snippet endItem()}
-      <Badge>New</Badge>
-    {/snippet}
-  </DropdownItem>
-  <DropdownItem url="/">
-    {#snippet startItem()}
-      <Svg>
-        <path d="M8 16a2 2 0 0 ... 13 6c0 .88.32 4.2 1.22 6"/>
-      </Svg>
-    {/snippet}
-    Notification
-    {#snippet endItem()}
-      <Badge>New</Badge>
-    {/snippet}
-  </DropdownItem>
-</Dropdown>
-```
-      {/snippet}
-    </Example>
-    <p class="not-prose">These snippet blocks provide flexibility to enhance the dropdown items with additional content while maintaining a clean and consistent design.</p>
-  </DocBlock>
-
-  <DocBlock title="Custom Item">
-    <Example>
-      <p class="not-prose">The <code>DropdownItem</code> component also supports fully custom content, allowing you to create items beyond the predefined types. By using custom markup within <code>DropdownItem</code>, you can design complex or unique dropdown items to fit your specific needs.</p>
-      {#snippet example()}
-      <div>
-        <Dropdown label="Custom Dropdown" size="md">
-          <DropdownItem url="/" class="hover:bg-brand-primary-500 hover:text-on-brand-primary-500 flex-wrap">
-            <div class="w-full text-start">
-              <p class="font-bold">Svelte 5 Component</p>
-              Kickstart your development with the theui-svelte, a comprehensive component library designed for the Svelte ecosystem.
-            </div>
-          </DropdownItem>
-        </Dropdown>
-      </div>
-      {/snippet}
-
-      {#snippet code()}
-```html
-<Dropdown label="Custom Dropdown" size="md">
-  <DropdownItem url="/" class="hover:bg-brand-primary-500 ... flex-wrap">
-    <div class="w-full text-start">
-      <p class="font-bold">Svelte 5 Component</p>
-      Kickstart your ... ecosystem.
-    </div>
-  </DropdownItem>
-</Dropdown>
-```
-      {/snippet}
-    </Example>
-    <p class="not-prose">This approach offers full flexibility, enabling you to craft dropdown items with custom content and styling, perfect for tailored user interfaces.</p>
   </DocBlock>
 
   <DocBlock title="Animation">
@@ -524,6 +347,178 @@ description:
     </Example>
   </DocBlock>
 
+  <DocBlock title="Dropdown Item">
+    <Example title="Item Types">
+      <p class="not-prose">The <code>DropdownItem</code> component supports four native types for consistent UI: link, button, header, and divider. The type of each item is controlled by the <code>type</code> prop, which defaults to <code>link</code>. The <code>type</code> prop can be set to <code>'link' | 'divider' | 'header' | 'button'</code>.</p>
+      <ul class="my-0">
+        <li><b>link</b>: The default type, renders a standard hyperlink.</li>
+        <li><b>button</b>: Renders a clickable button within the dropdown.</li>
+        <li><b>header</b>: Creates a non-clickable header to separate sections.</li>
+        <li><b>divider</b>: Adds a visual divider to separate items.</li>
+      </ul>
+      <p class="not-prose">You can also add custom items, but these four types are provided natively for a consistent UI experience.</p>
+      {#snippet example()}
+      <div>
+        <Dropdown label="Dropdown">
+          <!-- Header item -->
+          <DropdownItem type="header">Section Header</DropdownItem>
+          <!-- Link item (default) -->
+          <DropdownItem url="/">Link 1</DropdownItem>
+          <DropdownItem url="/">Link 2</DropdownItem>
+          <!-- Divider item -->
+          <DropdownItem type="divider"></DropdownItem>
+          <!-- Button item -->
+          <DropdownItem type="button">Button 1</DropdownItem>
+        </Dropdown>
+      </div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Dropdown label="Dropdown">
+  <!-- Header item -->
+  <DropdownItem type="header">Section Header</DropdownItem>
+  <!-- Link item (default) -->
+  <DropdownItem url="/">Link 1</DropdownItem>
+  <DropdownItem url="/">Link 2</DropdownItem>
+  <!-- Divider item -->
+  <DropdownItem type="divider" />
+  <!-- Button item -->
+  <DropdownItem type="button">Button 1</DropdownItem>
+</Dropdown>
+```
+      {/snippet}
+    </Example>
+    <p class="not-prose">This setup ensures your dropdown maintains a uniform appearance and functionality across different types of items.</p>
+
+    <Example title="Before and After Items">
+      <p class="not-prose">The <code>DropdownItem</code> component provides two snippet blocks, <code>startItem</code> and <code>endItem</code>, for adding custom content before or after the dropdown text.</p>
+      <ul class="my-0">
+        <li><b>startItem</b>: Displays content before the dropdown text, ideal for icons, images, or similar elements.</li>
+        <li><b>endItem</b>: Shows content after the dropdown text, perfect for badges, extra messages, or additional icons.</li>
+      </ul>
+      {#snippet example()}
+      <div>
+        <Dropdown label="Dropdown" size="md">
+          <DropdownItem url="/">
+            {#snippet startItem()}
+              <Svg>
+                <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2M8 1.918l-.797.161A4 4 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4 4 0 0 0-3.203-3.92zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5 5 0 0 1 13 6c0 .88.32 4.2 1.22 6"/>
+              </Svg>
+            {/snippet}
+            Notification
+          </DropdownItem>
+          <DropdownItem url="/">
+            Notification
+            {#snippet endItem()}
+              <Badge>New</Badge>
+            {/snippet}
+          </DropdownItem>
+          <DropdownItem url="/">
+            {#snippet startItem()}
+              <Svg>
+                <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2M8 1.918l-.797.161A4 4 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4 4 0 0 0-3.203-3.92zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5 5 0 0 1 13 6c0 .88.32 4.2 1.22 6"/>
+              </Svg>
+            {/snippet}
+            Notification
+            {#snippet endItem()}
+              <Badge>New</Badge>
+            {/snippet}
+          </DropdownItem>
+        </Dropdown>
+      </div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Dropdown label="Dropdown" size="md">
+  <DropdownItem url="/">
+    {#snippet startItem()}
+      <Svg>
+        <path d="M8 16a2 2 0 0 ... 13 6c0 .88.32 4.2 1.22 6"/>
+      </Svg>
+    {/snippet}
+    Notification
+  </DropdownItem>
+  <DropdownItem url="/">
+    Notification
+    {#snippet endItem()}
+      <Badge>New</Badge>
+    {/snippet}
+  </DropdownItem>
+  <DropdownItem url="/">
+    {#snippet startItem()}
+      <Svg>
+        <path d="M8 16a2 2 0 0 ... 13 6c0 .88.32 4.2 1.22 6"/>
+      </Svg>
+    {/snippet}
+    Notification
+    {#snippet endItem()}
+      <Badge>New</Badge>
+    {/snippet}
+  </DropdownItem>
+</Dropdown>
+```
+      {/snippet}
+    </Example>
+    <p class="not-prose">These snippet blocks provide flexibility to enhance the dropdown items with additional content while maintaining a clean and consistent design.</p>
+    <Example title="Custom Item">
+      <p class="not-prose">The <code>DropdownItem</code> component also supports fully custom content, allowing you to create items beyond the predefined types. By using custom markup within <code>DropdownItem</code>, you can design complex or unique dropdown items to fit your specific needs.</p>
+      {#snippet example()}
+      <div>
+        <Dropdown label="Custom Dropdown" size="md">
+          <DropdownItem url="/" class="hover:bg-brand-primary-500 hover:text-on-brand-primary-500 flex-wrap">
+            <div class="w-full text-start">
+              <p class="font-bold">Svelte 5 Component</p>
+              Kickstart your development with the theui-svelte, a comprehensive component library designed for the Svelte ecosystem.
+            </div>
+          </DropdownItem>
+        </Dropdown>
+      </div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Dropdown label="Custom Dropdown" size="md">
+  <DropdownItem url="/" class="hover:bg-brand-primary-500 ... flex-wrap">
+    <div class="w-full text-start">
+      <p class="font-bold">Svelte 5 Component</p>
+      Kickstart your ... ecosystem.
+    </div>
+  </DropdownItem>
+</Dropdown>
+```
+      {/snippet}
+    </Example>
+    <p class="not-prose">This approach offers full flexibility, enabling you to craft dropdown items with custom content and styling, perfect for tailored user interfaces.</p>
+  </DocBlock>
+
+  <DocBlock title="Active State">
+    <Example>
+      <p class="not-prose">The <code>active</code> prop in the <code>DropdownItem</code> component is used to indicate whether the item is currently active. This prop accepts a boolean value and defaults to <code>false</code>. When set to <code>true</code>, the item will appear highlighted to show it is active.</p>
+      {#snippet example()}
+      <div>
+        <Dropdown label="Dropdown">
+          <DropdownItem url="/">Link</DropdownItem>
+          <DropdownItem url="/" active={true}>Active Link</DropdownItem>
+          <DropdownItem url="/">Link</DropdownItem>
+        </Dropdown>
+      </div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Dropdown label="Dropdown">
+  <DropdownItem url="/">Link</DropdownItem>
+  <DropdownItem url="/" active={true}>Active Link</DropdownItem>
+  <DropdownItem url="/">Link</DropdownItem>
+</Dropdown>
+```
+      {/snippet}
+    </Example>
+    <p class="not-prose">Using the active prop helps visually distinguish the selected or currently active item within the dropdown.</p>
+  </DocBlock>
+
   <DocBlock title="Customization">
     <Example>
       <p class="not-prose">The <code>Dropdown</code> component provides several props to customize the appearance of the dropdown items and container. These props allow you to apply custom classes for different elements, giving you full control over the styling.</p>
@@ -539,7 +534,7 @@ description:
       <div>
         <Dropdown
           label="Customized Dropdown"
-          containerClasses="border-4 rounded-lg"
+          containerClasses="border-4 rounded-xl"
           dropdownClasses="shadow-lg bg-green-50"
           linkClasses="text-green-500 hover:bg-green-100"
           activeLinkClasses="text-white bg-green-500"
@@ -558,7 +553,7 @@ description:
 ```html
 <Dropdown
   label="Customized Dropdown"
-  containerClasses="border-4 rounded-lg"
+  containerClasses="border-4 rounded-xl"
   dropdownClasses="shadow-lg bg-green-50"
   linkClasses="text-green-500 hover:bg-green-100"
   activeLinkClasses="text-white bg-green-500"
@@ -595,8 +590,8 @@ description:
   </DocBlock>
 
   <DocBlock title="Configuration">
-    <DropdownConfig title="Dropdown" component={component.dropdown} />
-    <ItemConfig title="Dropdown Item" component={component.item} />
+    <DropdownConfig title="Dropdown Config" component={component.dropdown} />
+    <ItemConfig title="Dropdown Item Config" component={component.item} />
   </DocBlock>
 
   {#snippet sidebar()}
@@ -604,20 +599,23 @@ description:
     <a href={processID("Example")}>Example</a>
     <a href={processID("Dropdown Sizing")}>Sizing</a>
     <a href={processID("Alignment")}>Alignment</a>
-    <a href={processID("Dropdown Trigger Event")}>Trigger Event</a>
-    <a href={processID("Custom Dropdown Trigger")}>Custom Trigger</a>
-    <a href={processID("Item Types")}>Item Types</a>
-    <a href={processID("Active State")}>Active State</a>
-    <a href={processID("Dropdown Item's Icon")}>Dropdown Item's Icon</a>
-    <a href={processID("Custom Item")}>Custom Item</a>
+    <a href={processID("Dropdown Trigger Event")}>Trigger event</a>
+    <a href={processID("Custom Dropdown Trigger")}>Custom trigger</a>
     <a href={processID("Animation")}>Animation</a>
-    <a href={processID("Animation Speed")}>Animation Speed</a>
-    <a href={processID("Dropdown Backdrop")}>Dropdown Backdrop</a>
-    <a href={processID("Close on Outside Click")}>Close on Outside Click</a>
+    <a href={processID("Animation Type")} class="ps-4">Animation type</a>
+    <a href={processID("Animation Speed")} class="ps-4">Animation speed</a>
+    <a href={processID("Dropdown Backdrop")}>Backdrop</a>
+    <a href={processID("Close on Outside Click")}>Close on outside click</a>
+
+    <a href={processID("Dropdown Item")}>Dropdown item</a>
+    <a href={processID("Item Types")} class="ps-4">Item types</a>
+    <a href={processID("Before and After Items")} class="ps-4">Before and after items</a>
+    <a href={processID("Custom Item")} class="ps-4">Custom Item</a>
+    <a href={processID("Active State")}>Active State</a>
     <a href={processID("Customization")}>Customization</a>
     <a href={processID("Accessibility")}>Accessibility</a>
     <a href={processID("Configuration")}>Configuration</a>
-    <a class="ps-4" href={processID("Dropdown")}>Dropdown</a>
-    <a class="ps-4" href={processID("Dropdown Item")}>Dropdown Item</a>
+    <a class="ps-4" href={processID("Dropdown Config")}>Dropdown config</a>
+    <a class="ps-4" href={processID("Dropdown Item Config")}>Dropdown item config</a>
   {/snippet}
 </DocLayout>

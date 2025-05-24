@@ -24,7 +24,7 @@ description: A dynamic and versatile way to showcase content, with a variety of 
   <DocHead title="Card" text="The Card component offers a dynamic and versatile way to showcase content, with a variety of customization options to fit any style or purpose." {edit_url}/>
 
   <DocBlock title="About">
-    <p class="not-prose">The Card component is a versatile UI element used to present content in a structured and visually appealing way. It supports various customizations, allowing you to adjust its layout, images, and styling to fit different use cases. Whether you need to display text, images, or a combination of both, the Card component provides a flexible solution.</p>
+    <p class="not-prose">The <code>Card</code> component is a versatile UI element used to present content in a structured and visually appealing way. It supports various customizations, allowing you to adjust its layout, images, and styling to fit different use cases. Whether you need to display text, images, or a combination of both, the Card component provides a flexible solution.</p>
   </DocBlock>
 
   <DocBlock title="Example">
@@ -231,10 +231,35 @@ description: A dynamic and versatile way to showcase content, with a variety of 
 
   </DocBlock>
 
+  <DocBlock title="Rounded Corner">
+    <p class="not-prose">Control the corner of the card using the <code>rounded</code> prop. Available values are: <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code>, <code>full</code> and <code>none</code>, Default value is <code>md</code></p>
+
+    <Example>
+      {#snippet example()}
+        <Card class="w-96" topImage={imgData} title="Card Title" rounded="none">
+          <p>This is card content..</p>
+        </Card>
+        <Card class="w-96" topImage={imgData} title="Card Title" rounded="xl">
+          <p>This is card content..</p>
+        </Card>
+      <div>
+      </div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Card ... rounded="none"> ... </Card>
+<Card ... rounded="xl"> ... </Card>
+```
+      {/snippet}
+    </Example>
+
+  </DocBlock>
+
   <DocBlock title="Customization">
-    <p class="not-prose">The Card component is easy to customize, letting you style it to match your needs. You can change how any part of the card looks. Whether it's the content, title, shadow, or shape, you have full control.</p>
+    <p class="not-prose">The <code>Card</code> component is easy to customize, letting you style it to match your needs. You can change how any part of the card looks. Whether it's the content, title, shadow, or shape, you have full control.</p>
     <p class="not-prose">You can either use snippets for custom components or utilize these props directly for more straightforward customization. Here are the key props available for customization:</p>
-    <ul class="my-0 list-inside">
+    <ul class="mt-0 mb-0 list-inside">
       <li><b>class</b>: Apply custom styles to the card's container.</li>
       <li><b>contentClasses</b>: Apply custom styles to the card's content.</li>
       <li><b>titleClasses</b>: Style the title with your preferred classes.</li>
@@ -275,12 +300,13 @@ description: A dynamic and versatile way to showcase content, with a variety of 
   {#snippet sidebar()}
     <a href={processID("About")}>About</a>
     <a href={processID("Example")}>Example</a>
-    <a href={processID("Card Elements")}>Card Elements</a>
-    <a href={processID("Card Title")} class="ps-4">Card Title</a>
-    <a href={processID("Card's Top Image")} class="ps-4">Top Image</a>
-    <a href={processID("Card's Bottom Image")} class="ps-4">Bottom Image</a>
-    <a href={processID("Card Content")} class="ps-4">Card Content</a>
-    <a href={processID("Horizontal Card")}>Horizontal Card</a>
+    <a href={processID("Card Elements")}>Card elements</a>
+    <a href={processID("Card Title")} class="ps-4">Card title</a>
+    <a href={processID("Card's Top Image")} class="ps-4">Top image</a>
+    <a href={processID("Card's Bottom Image")} class="ps-4">Bottom image</a>
+    <a href={processID("Card Content")} class="ps-4">Card content</a>
+    <a href={processID("Horizontal Card")}>Horizontal card</a>
+    <a href={processID("Rounded Corner")}>Rounded corner</a>
     <a href={processID("Customization")}>Customization</a>
     <a href={processID("Configuration")}>Configuration</a>
   {/snippet}

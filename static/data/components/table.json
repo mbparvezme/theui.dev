@@ -55,24 +55,24 @@
         {
           "name": "trHeadClasses",
           "type": "string",
-          "default": "\"\"",
+          "default": "null",
           "description": "Custom classes for table row headers. Used to style header rows individually."
         },
         {
           "name": "trClasses",
           "type": "string",
-          "default": "\"\"",
+          "default": "null",
           "description": "Custom classes for the table rows. Used to style individual rows."
         },
         {
           "name": "tdClasses",
           "type": "string",
-          "default": "\"\"",
+          "default": "null",
           "description": "Custom classes for table cells. Used to style individual cells."
         },
         {
           "name": "animationSpeed",
-          "type": "<a href=\"/docs/types#common-types\">ANIMATE_SPEED</a>",
+          "type": "<a href=\"/docs/types#animation-speed-type\">ANIMATE_SPEED</a>",
           "default": "\"normal\"",
           "description": "Controls the animation speed for the transitions on hover or other activities."
         },

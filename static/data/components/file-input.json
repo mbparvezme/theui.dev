@@ -11,13 +11,13 @@
       },
       {
         "name": "size",
-        "type": "<a href=\"/docs/types#input-size\">INPUT_SIZE</a>",
+        "type": "<a href=\"/docs/types#input-size-type\">INPUT_SIZE</a>",
         "default": "\"md\"",
         "description": "Controls the size of the file input, affecting its padding and overall dimensions."
       },
       {
         "name": "variant",
-        "type": "<a href=\"/docs/types#input-variant\">INPUT_VARIANT</a>",
+        "type": "<a href=\"/docs/types#input-variant-type\">INPUT_VARIANT</a>",
         "default": "\"bordered\"",
         "description": "Defines the visual style of the input field. Options include bordered, underline, and flat."
       },
@@ -29,7 +29,7 @@
       },
       {
         "name": "rounded",
-        "type": "<a href=\"/docs/types#common-types\">ROUNDED</a>",
+        "type": "<a href=\"/docs/types#rounded-type\">ROUNDED</a>",
         "default": "\"md\"",
         "description": "Defines the border-radius of the checkbox. Options: \"none\", \"sm\", \"md\", \"lg\", \"full\"."
       },

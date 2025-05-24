@@ -5,7 +5,7 @@
     "data": [
       {
         "name": "options",
-        "type": "<a href=\"/docs/types#select-data\">SELECT_DATA</a>[]",
+        "type": "<a href=\"/docs/types#select-data-type\">SELECT_DATA</a>[]",
         "default": "undefined",
         "description": "Array of options for the select input."
       },
@@ -35,19 +35,19 @@
       },
       {
         "name": "size",
-        "type": "<a href=\"/docs/types##input-size\">INPUT_SIZE</a>",
+        "type": "<a href=\"/docs/types#input-size-type\">INPUT_SIZE</a>",
         "default": "\"md\"",
         "description": "Controls the size of the select input."
       },
       {
         "name": "rounded",
-        "type": "<a href=\"/docs/types#common-types\">ROUNDED</a>",
+        "type": "<a href=\"/docs/types#rounded-type\">ROUNDED</a>",
         "default": "\"md\"",
         "description": "Defines the border radius of the select input."
       },
       {
         "name": "animationSpeed",
-        "type": "<a href=\"/docs/types#common-types\">ANIMATE_SPEED</a>",
+        "type": "<a href=\"/docs/types#animation-speed-type\">ANIMATE_SPEED</a>",
         "default": "\"normal\"",
         "description": "Controls the animation speed of the select input."
       },
@@ -76,20 +76,5 @@
         "description": "Removes all default styles, applying only user-defined styles."
       }
     ]
-  },
-  {
-    "key": "dynamicProps",
-    "title": "Dynamic props",
-    "data": null
-  },
-  {
-    "key": "snippets",
-    "title": "Snippets",
-    "data": null
-  },
-  {
-    "key": "functions",
-    "title": "Functions",
-    "data": null
   }
 ]

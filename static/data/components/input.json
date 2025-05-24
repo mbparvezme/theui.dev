@@ -6,7 +6,7 @@
       {
         "name": "type",
         "description": "Defines the input type.",
-        "type": "<a href=\"/docs/types##input-type\">INPUT_TYPE</a>",
+        "type": "<a href=\"/docs/types#input-type-type\">INPUT_TYPE</a>",
         "default": "\"text\""
       },
       {
@@ -36,19 +36,19 @@
       {
         "name": "size",
         "description": "Defines the input size. Available options: \"sm\", \"md\", \"lg\", \"xl\".",
-        "type": "<a href=\"/docs/types#input-size\">INPUT_SIZE</a>",
+        "type": "<a href=\"/docs/types#input-size-type\">INPUT_SIZE</a>",
         "default": "\"md\""
       },
       {
         "name": "rounded",
         "description": "Controls the border-radius of the input. Available options: \"sm\", \"md\", \"lg\", \"xl\", \"full\", \"none\".",
-        "type": "<a href=\"/docs/types#common-types\">ROUNDED</a>",
+        "type": "<a href=\"/docs/types#rounded-type\">ROUNDED</a>",
         "default": "\"md\""
       },
       {
         "name": "animationSpeed",
         "description": "Defines the animation speed for transitions. Available options: \"none\", \"slower\", \"slow\", \"normal\", \"fast\", \"faster\".",
-        "type": "<a href=\"/docs/types#common-types\">ANIMATE_SPEED</a>",
+        "type": "<a href=\"/docs/types#animation-speed-type\">ANIMATE_SPEED</a>",
         "default": "\"normal\""
       },
       {
@@ -70,20 +70,5 @@
         "default": "false"
       }
     ]
-  },
-  {
-    "key": "dynamicProps",
-    "title": "Dynamic props",
-    "data": null
-  },
-  {
-    "key": "snippets",
-    "title": "Snippets",
-    "data": null
-  },
-  {
-    "key": "functions",
-    "title": "Functions",
-    "data": null
   }
 ]

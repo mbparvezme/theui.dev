@@ -11,7 +11,7 @@
       },
       {
         "name": "animationSpeed",
-        "type": "<a href=\"/docs/types#common-types\">ANIMATE_SPEED</a>",
+        "type": "<a href=\"/docs/types#animation-speed-type\">ANIMATE_SPEED</a>",
         "description": "Controls the speed of the collapse animation.",
         "default": "fast"
       },

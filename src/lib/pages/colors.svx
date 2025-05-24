@@ -11,94 +11,7 @@ description: Customize your Svelte app's appearance with TheUI-Svelte's Colors a
   import Code from "$lib/ui/doc/CodeBlock.svelte";
   import { processID } from "$lib";
   import { Alert, Table, TBody, TR, TH, TD, THead } from "theui-svelte";
-  let { components, edit_url }: {components: any, edit_url?: string } = $props();
-
-  const availableColorClasses = [
-    {
-      className: ".[T]-brand-primary-[S]",
-      shades: "50, 100-900, 950",
-      defaultValue: "#E93E3A",
-      description: "Use this class to apply the primary brand color, e.g., <code>.bg-brand-primary-500</code> for background or <code>.text-brand-primary-500</code> for text.",
-    },
-    {
-      className: ".text-on-brand-primary-[S]",
-      shades: "50, 100-900, 950",
-      defaultValue: "#FFFFFF",
-      description: "A foreground color designed to complement <code>.bg-brand-primary-500</code> as the background.",
-    },
-    {
-      className: ".[T]-brand-secondary-[S]",
-      shades: "50, 100-900, 950",
-      defaultValue: "#E8E838",
-      description: "Apply the secondary brand color, e.g., <code>.bg-brand-secondary-500</code> for background or <code>.text-brand-secondary-500</code> for text.",
-    },
-    {
-      className: ".text-on-brand-secondary-[S]",
-      shades: "50, 100-900, 950",
-      defaultValue: "#2E2105",
-      description: "A foreground color specifically for use with <code>.bg-brand-secondary-500</code> as the background.",
-    },
-    {
-      className: ".[T]-error-[S]",
-      shades: "50, 100-900, 950",
-      defaultValue: "#E53935",
-      description: "Represent errors in your components with these color classes.",
-    },
-    {
-      className: ".[T]-info-[S]",
-      shades: "50, 100-900, 950",
-      defaultValue: "#29B6F6",
-      description: "Use this class for informational or neutral messages.",
-    },
-    {
-      className: ".[T]-success-[S]",
-      shades: "50, 100-900, 950",
-      defaultValue: "#00C853",
-      description: "Ideal for success messages or positive states in your components.",
-    },
-    {
-      className: ".[T]-warning-[S]",
-      shades: "50, 100-900, 950",
-      defaultValue: "#FFC107",
-      description: "Perfect for warning or caution-related messages.",
-    },
-      {
-      className: ".bg-primary",
-      shades: "N/A",
-      defaultValue: "Light: 250 250 250<br>Dark: 10 10 20",
-      description: "A static background color for primary elements, defined via CSS variables.",
-    },
-    {
-      className: ".bg-secondary",
-      shades: "N/A",
-      defaultValue: "Light: 238 238 238<br>Dark: 30 30 40",
-      description: "A static background color for secondary elements, defined via CSS variables.",
-    },
-    {
-      className: ".bg-alt",
-      shades: "N/A",
-      defaultValue: "Light: 10 10 20<br>Dark: 250 250 250",
-      description: "A static background color for alternative sections, defined via CSS variables.",
-    },
-    {
-      className: ".text-default",
-      shades: "N/A",
-      defaultValue: "Light: 33 33 33<br>Dark: 245 245 245",
-      description: "The default text color in our library, defined via CSS variables.",
-    },
-    {
-      className: ".text-alt",
-      shades: "N/A",
-      defaultValue: "Light: 189 189 189<br>Dark: 245 245 245",
-      description: "A static alternative text color, ideal for secondary content.",
-    },
-    {
-      className: ".text-muted",
-      shades: "N/A",
-      defaultValue: "Light: 117 117 117<br>Dark: 175 175 175",
-      description: "A muted text color for less prominent content.",
-    },
-  ];
+  let { colors, edit_url }: {colors: any, edit_url?: string } = $props();
 </script>
 
 <DocLayout>
@@ -111,172 +24,269 @@ description: Customize your Svelte app's appearance with TheUI-Svelte's Colors a
   <DocBlock title="Available Color Classes">
     <p class="not-prose">Our component library provides a set of custom classes to make integrating these colors into your designs seamless and flexible. Below is the full list of available classes:</p>
 
+    <h4 id={processID("Shaded Colors", false)} class="text-xl">Shaded Colors</h4>
+    <div class="not-prose grid grid-cols-[auto_minmax(0,_1fr)] items-center gap-2">
+      <div class="sticky top-14 z-9 lg:top-12 bg-primary sm:py-2">&nbsp;</div>
+      <div class="sticky top-14 z-9 col-start-2 grid grid-cols-11 justify-items-center gap-1.5 font-medium text-gray-950 *:rotate-180 *:[writing-mode:vertical-lr] sm:py-2 sm:gap-2 sm:*:rotate-0 sm:*:[writing-mode:horizontal-tb] lg:top-12 dark:text-white bg-primary">
+        <div class="font-semibold">50</div>
+        <div class="font-semibold">100</div>
+        <div class="font-semibold">200</div>
+        <div class="font-semibold">300</div>
+        <div class="font-semibold">400</div>
+        <div class="font-semibold">500</div>
+        <div class="font-semibold">600</div>
+        <div class="font-semibold">700</div>
+        <div class="font-semibold">800</div>
+        <div class="font-semibold">900</div>
+        <div class="font-semibold">950</div>
+      </div>
+      {#each colors.shadedColors as colorData}
+        <p class="font-medium text-gray-950 sm:pr-12 dark:text-white">
+          <span class="font-semibold text-sm">{colorData.title}</span>
+          <span class="block text-sm text-muted">{colorData.variable}</span>
+        </p>
+        <div class="grid grid-cols-11 gap-1.5 sm:gap-2">
+          {#each colorData.colors as color}
+          <div class="contents">
+            <button type="button" class="aspect-1/1 w-full rounded-sm outline -outline-offset-1 outline-black/10 sm:rounded-md dark:outline-white/10 {color.class} cursor-pointer" data-tooltip={color.class.replace('bg', '[T]')}></button>
+          </div>
+        {/each}
+      </div>
+      {/each}
+    </div>
+
+    <Alert class="not-prose" type="warning" theme="soft">
+      <p>
+        <strong>[T]</strong> = <strong>Type</strong> (e.g., <code>bg</code>, <code>text</code>, <code>border</code>, <code>fill</code>, etc.)<br>
+        <strong>[S]</strong> = <strong>Shade</strong> (e.g., 50, 100-900, 950)<br>
+        <strong>Class example</strong>: <code>bg-brand-primary-500</code>, <code>text-on-brand-primary-500</code>, <code>bg-error-400</code>
+      </p>
+    </Alert>
+
+    <h4 id={processID("Non-shaded Colors", false)} class="text-xl">Non-shaded Colors</h4>
     <Table class="not-prose text-sm">
       <THead>
         <TR tableHeader={true}>
-          <TH class="font-semibold">Class</TH>
-          <TH class="font-semibold">Shades</TH>
-          <TH class="font-semibold">Default</TH>
-          <TH class="font-semibold">Description</TH>
+          <TH colspan="2">&nbsp;</TH>
+          <TH class="w-28 text-center">Light mode</TH>
+          <TH class="w-28 text-center">Dark mode</TH>
         </TR>
       </THead>
       <TBody>
-        {#each availableColorClasses as colorData}
+        {#each colors.nonShadedColors as colorData}
+          {#each colorData.colors as color, i}
           <TR>
-            <TD class="text-nowrap">{colorData.className}</TD>
-            <TD class="text-nowrap">{colorData.shades}</TD>
-            <TD class="text-nowrap">{@html colorData.defaultValue}</TD>
-            <TD>{@html colorData.description}</TD>
+            {#if i == 0}
+            <TD rowspan={colorData.colors.length}>{colorData.propertyName}</TD>
+            {/if}
+            <TD>
+              <span class="text-default font-semibold">{color.title} ({color.className})</span>
+              <span class="block text-sm text-muted">{color.variable}</span>
+            </TD>
+            <TD class="text-center">
+              <div class="contents">
+                <button type="button" class="aspect-1/1 w-10 rounded-sm outline -outline-offset-1 outline-black/10 sm:rounded-md dark:outline-white/10 cursor-pointer" style="background-color:{color.light}" data-tooltip={color.light} data-classname={color.className}></button>
+              </div>
+            </TD>
+            <TD class="text-center">
+              <div class="contents dark">
+                <button type="button" class="aspect-1/1 w-10 rounded-sm outline -outline-offset-1 outline-black/10 sm:rounded-md dark:outline-white/10 cursor-pointer" style="background-color:{color.dark}" data-tooltip={color.dark} data-classname={color.className}></button>
+              </div>
+            </TD>
           </TR>
+          {/each}
         {/each}
       </TBody>
     </Table>
 
-    <Alert class="not-prose" type="warning" theme="light">
-      <p>
-        <strong>[T]</strong> = <strong>Type</strong> (e.g., <code>bg</code>, <code>text</code>, <code>border</code>, <code>fill</code>, etc.)<br>
-        <strong>[S]</strong> = <strong>Shade</strong> (e.g., 50, 100-900, 950)<br>
-        <strong>Example</strong>: <code>bg-brand-primary-500</code>, <code>text-on-brand-primary-500</code>, <code>bg-error-400</code>
-      </p>
-    </Alert>
   </DocBlock>
 
-  <DocBlock title="Modify Existing Colors">
-    <p class="not-prose">TailwindCSS’s color system is enhanced for branding with support for shaded and non-shaded colors. Customize or add new colors via tailwind.config.ts for shades or directly edit CSS variables for non-shaded colors.</p>
-    <h4 class="mt-6 mb-0" id={processID("Modify Shaded Colors", false)}>Modify Shaded Colors</h4>
-    <p class="not-prose">If you want to modify a <strong>color with shades</strong> (i.e <code>brand-primary</code>, <code>brand-secondary</code> etc.), you can do it in <code>tailwind.config.ts</code>. For example, to change the primary brand color to <code>#001A6E</code> and secondary brand color to <code>#FFE893</code>, the code is given below:</p>
+    <!-- <p class="not-prose">The ui-svelte color system extends Tailwind CSS's approach with enhanced branding support, offering both shaded color palettes and standalone color variables. All colors can be modified, added, or removed using the same intuitive syntax as Tailwind—ensuring a seamless workflow.</p> -->
 
-<Code title="tailwind.config.js" space="bottom">
+  <DocBlock title="Modify Colors">
+    <p class="not-prose">You can override the library's default colors by assigning new values to the corresponding CSS theme variables:</p>
 
-```js
-// Modify colors in tailwind.config.ts
-import twShades from 'tw-color-shades';
-export default {
-  theme: {
-    extend: {
-      colors: {
-        "brand-primary": twShades('#001A6E'),
-        "brand-secondary": twShades('#FFE893')
-      }
-    }
-  }
-};
-```
-</Code>
-
-    <h4 class="my-0" id={processID("Modify Non-shaded Colors", false)}>Modify Non-shaded Colors</h4>
-    <p class="not-prose">There are some colors like background colors, text colors etc. behave differently in light and dark mode! These colors are <strong>shadeless</strong> and cannot be handled in the way shown above. For these colors we have use CSS variables! You can modify directly in the CSS file. For example, to change the primary background color in light mode to <code>rgb(253 247 244)</code> and in dark mode to <code>rgb(104 87 82)</code> and default text color in light mode to <code>rgb(42 51 53)</code> and in dark mode to <code>rgb(253 247 244)</code>, the code is given below:</p>
-
-<Code title="app.css or app.postcss">
+<Code title="./src/app.css">
 
 ```css
-/* Modify colors in app.css or app.postcss */
-@layer base {
-  :root {
-    --ui-bg-primary: 253 247 244;
-    --ui-text-default: 42 51 53;
-  }
-  :root.dark {
-    --ui-bg-primary: 104 87 82;
-    --ui-text-default: 253 247 244;
-  }
+@theme {
+  /* Modify brand primary colors */
+  --color-brand-primary-50: #f0f9ff;
+  --color-brand-primary-100: #e0f2fe;
+  --color-brand-primary-200: #bae6fd;
+  --color-brand-primary-300: #7dd3fc;
+  --color-brand-primary-400: #38bdf8;
+  --color-brand-primary-500: #0ea5e9;
+  --color-brand-primary-600: #0284c7;
+  --color-brand-primary-700: #0369a1;
+  --color-brand-primary-800: #075985;
+  --color-brand-primary-900: #0c4a6e;
+  --color-brand-primary-950: #082f49;
+
+  /* Modify background colors */
+  --background-color-primary: #ffffff;
+  --background-color-secondary: #f8fafc;
+  
+  /* Modify text colors */
+  --text-color-default: #1e293b;
+  --text-color-muted: #64748b;
 }
 ```
 </Code>
-
-    <Alert class="not-prose font-normal" type="warning" theme="light">
-      <p class="not-prose">Writing the color values in the format provided, such as <code>253 247 244</code>, rather than the conventional RGB code like <code>rgb(253 247 244)</code> is essential because it aligns with TailwindCSS's methodology for applying opacity to colors.</p>
-    </Alert>
   </DocBlock>
 
   <DocBlock title="Add New Color">
-    <h4 class="my-0" id={processID("Add Shaded Colors", false)}>Add Shaded Colors</h4>
-    <p class="not-prose">If you want to add a new class for <strong>color with shades</strong>, you can do it in the <code>tailwind.config.ts</code> file. For example, let's say, you want to add a new class in the color system named <code>brand-tertiary</code> with the base value <code>#009990</code>. Just follow the below steps:</p>
+    <p class="not-prose">You can extend your theme by adding new colors in Tailwind CSS 4. These can be <b>shaded</b> (multi-value scales like <code>--color-accent-100</code> to <code>--color-accent-950</code>) or <b>non-shaded</b> (single-value utilities like <code>--background-surface</code>). For single-value colors (e.g., a special background or text color), define a new theme variable:</p>
 
-<Code title="tailwind.config.js">
-
-```js
-// Generate new colors in tailwind.config.ts
-import twShades from 'tw-color-shades';
-export default {
-  theme: {
-    extend: {
-      colors: {
-        "brand-tertiary": twShades('#009990')
-      }
-    }
-  }
-};
-```
-</Code>
-    <p class="not-prose mb-6">Now you can access this color with <code>bg-brand-tertiary-500</code> or other shades like <code>bg-brand-tertiary-100</code> or  <code>bg-brand-tertiary-800</code>.</p>
-
-    <h4 class="mt-4 mb-0" id={processID("Add Non-shaded Colors", false)}>Add Non-shaded Colors</h4>
-    <p class="not-prose">If you want to add a new color that behaves differently in light and dark mode and you do not need "shades" for this colors, you can do this in your CSS file and then generate colors in <code>tailwind.config.ts</code>. To add a new color <code>bg-tertiary</code> in the color system, you can follow the below process:</p>
-
-<Code title="app.css or app.postcss">
+<Code title="./src/app.css">
 
 ```css
-/* define colors in app.css or app.postcss */
-@layer base {
-  :root {
-    --my-css-var: 233 237 234;
-  }
-  :root.dark {
-    --my-css-var: 114 97 92;
-  }
+@theme {
+  --color-accent-50: #f0f9ff;
+  --color-accent-100: #e0f2fe;
+  --color-accent-200: #bae6fd;
+  /* ... add more shades as needed */
+  --color-accent-900: #0c4a6e;
+  --color-accent-950: #082f49;
+
+  --background-surface: #f8fafc;
+  --text-highlight: #4338ca;
+}
+```
+</Code>
+    <p class="not-prose mb-6">After defining, use it in your components with utility classes like <code>bg-accent-500</code>, <code>text-accent-300</code>, <code>border-accent-700</code>, <code>bg-surface</code>, <code>text-highlight</code> etc.</p>
+  </DocBlock>
+
+  <DocBlock title="Remove A Color">
+    <p class="not-prose">To completely remove a color from your theme, set its namespace to initial:</p>
+
+<Code title="./src/app.css">
+
+```css
+@theme {
+  /* Remove the warning color palette */
+  --color-warning-*: initial;
+  
+  /* Remove specific non-shaded colors */
+  --background-color-tertiary: initial;
+  --text-color-alt: initial;
 }
 ```
 </Code>
 
-<Code title="tailwind.config.js">
-
-```js
-// Generate the colors in tailwind.config.ts
-import twShades from 'tw-color-shades';
-export default {
-  theme: {
-    extend: {
-      backgroundColor: {
-        tertiary: twShades("--my-css-var")
-      }
-    }
-  }
-};
-```
-</Code>
+    <p class="not-prose">This will remove all the <code>warning</code> color classes, <code>bg-tertiary</code> and <code>text-alt</code> class from the application!</p>
   </DocBlock>
 
-  <DocBlock title="Remove A Color">
-    <p class="not-prose">To remove a color follow the Tailwind CSS way, just set the color to <code>undefined</code> in the <code>tailwind.config.ts</code>.</p>
+  <DocBlock title="Available Color Palette">
+    <p class="not-prose">Here's a complete list of the available colors and their values for reference:</p>
 
-<Code title="tailwind.config.js">
+<Code title="theui-svelte/style.css">
 
-```js
-// Remove colors in tailwind.config.ts
-export default {
-  theme: {
-    extend: {
-      colors: {
-        "brand-secondary": undefined
-      },
-      backgroundColor: {
-        secondary: undefined
-      }
-    }
+```css
+--color-brand-primary-50 : oklch(0.97 0.0152 12.42);
+--color-brand-primary-100: oklch(0.94 0.0298 12.58);
+--color-brand-primary-200: oklch(0.89 0.0535 11.01);
+--color-brand-primary-300: oklch(0.81 0.1036 12.12);
+--color-brand-primary-400: oklch(0.72 0.1642 13.87);
+--color-brand-primary-500: oklch(0.62 0.2276 19.57);
+--color-brand-primary-600: oklch(0.58 0.2180 17.89);
+--color-brand-primary-700: oklch(0.51 0.1952 17.24);
+--color-brand-primary-800: oklch(0.45 0.1684 13.59);
+--color-brand-primary-900: oklch(0.41 0.1468 10.14);
+--color-brand-primary-950: oklch(0.27 0.0989 11.14);
+--text-color-on-brand-primary: #FFFFFF;
+
+--color-brand-secondary-50 : var(--color-emerald-50);
+--color-brand-secondary-100: var(--color-emerald-100);
+--color-brand-secondary-200: var(--color-emerald-200);
+--color-brand-secondary-300: var(--color-emerald-300);
+--color-brand-secondary-400: var(--color-emerald-400);
+--color-brand-secondary-500: var(--color-emerald-500);
+--color-brand-secondary-600: var(--color-emerald-600);
+--color-brand-secondary-700: var(--color-emerald-700);
+--color-brand-secondary-800: var(--color-emerald-800);
+--color-brand-secondary-900: var(--color-emerald-900);
+--color-brand-secondary-950: var(--color-emerald-950);
+--text-color-on-brand-secondary: #2E2105;
+
+--color-error-50 : var(--color-red-50);
+--color-error-100: var(--color-red-100);
+--color-error-200: var(--color-red-200);
+--color-error-300: var(--color-red-300);
+--color-error-400: var(--color-red-400);
+--color-error-500: var(--color-red-500);
+--color-error-600: var(--color-red-600);
+--color-error-700: var(--color-red-700);
+--color-error-800: var(--color-red-800);
+--color-error-900: var(--color-red-900);
+--color-error-950: var(--color-red-950);
+
+--color-info-50 : var(--color-sky-50);
+--color-info-100: var(--color-sky-100);
+--color-info-200: var(--color-sky-200);
+--color-info-300: var(--color-sky-300);
+--color-info-400: var(--color-sky-400);
+--color-info-500: var(--color-sky-500);
+--color-info-600: var(--color-sky-600);
+--color-info-700: var(--color-sky-700);
+--color-info-800: var(--color-sky-800);
+--color-info-900: var(--color-sky-900);
+--color-info-950: var(--color-sky-950);
+
+--color-success-50 : var(--color-green-50);
+--color-success-100: var(--color-green-100);
+--color-success-200: var(--color-green-200);
+--color-success-300: var(--color-green-300);
+--color-success-400: var(--color-green-400);
+--color-success-500: var(--color-green-500);
+--color-success-600: var(--color-green-600);
+--color-success-700: var(--color-green-700);
+--color-success-800: var(--color-green-800);
+--color-success-900: var(--color-green-900);
+--color-success-950: var(--color-green-950);
+
+--color-warning-50 : var(--color-yellow-50);
+--color-warning-100: var(--color-yellow-100);
+--color-warning-200: var(--color-yellow-200);
+--color-warning-300: var(--color-yellow-300);
+--color-warning-400: var(--color-yellow-400);
+--color-warning-500: var(--color-yellow-500);
+--color-warning-600: var(--color-yellow-600);
+--color-warning-700: var(--color-yellow-700);
+--color-warning-800: var(--color-yellow-800);
+--color-warning-900: var(--color-yellow-900);
+--color-warning-950: var(--color-yellow-950);
+
+--text-color-default: #16161D;
+--text-color-muted: #636369;
+--text-color-alt: #FFFDFD;
+
+--background-color-primary: #FFFDFD;
+--background-color-secondary: #F5F3F3;
+--background-color-tertiary: #EBE9E9;
+--background-color-alt: #16161D;
+
+@layer base {
+  .dark {
+    --text-color-default: #F5F3F3;
+    --text-color-muted: #A1A1AA;
+    --text-color-alt: #16161D;
+
+    --background-color-primary: #16161D;
+    --background-color-secondary: #1E1E26;
+    --background-color-tertiary: #26262F;
+    --background-color-alt: #F5F3F3;
   }
-};
+}
 ```
 </Code>
-
-    <p class="not-prose">This will remove all the <code>brand-secondary</code> color classes and <code>bg-secondary</code> class from the application build!</p>
   </DocBlock>
 
   {#snippet sidebar()}
     <a href={processID("Available Color Classes")}>Available Color Classes</a>
+    <a href={processID("Shaded Colors")} class="pl-4">Shaded Colors</a>
+    <a href={processID("Non-shaded Colors")} class="pl-4">Non-shaded Colors</a>
     <a href={processID("Modify Existing Colors")}>Modify Existing Colors</a>
-    <a href={processID("Modify Shaded Colors")} class="pl-4">Modify Shaded Colors</a>
-    <a href={processID("Modify Non-shaded Colors")} class="pl-4">Modify Non-shaded Colors</a>
     <a href={processID("Add New Color")}>Add New Color</a>
     <a href={processID("Add Shaded Colors")} class="pl-4">Add Shaded Colors</a>
     <a href={processID("Add Non-shaded Colors")} class="pl-4">Add Non-shaded Colors</a>

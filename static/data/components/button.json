@@ -17,7 +17,7 @@
       },
       {
         "name": "animationSpeed",
-        "type": "<a href=\"/docs/types#common-types\">ANIMATE_SPEED</a>",
+        "type": "<a href=\"/docs/types#animation-speed-type\">ANIMATE_SPEED</a>",
         "description": "Controls the animation speed of the button.",
         "default": "\"normal\""
       },
@@ -47,13 +47,13 @@
       },
       {
         "name": "rounded",
-        "type": "<a href=\"/docs/types#common-types\">ROUNDED</a>",
+        "type": "<a href=\"/docs/types#rounded-type\">ROUNDED</a>",
         "description": "Specifies the rounded corners of the button.",
         "default": "\"md\""
       },
       {
         "name": "shadow",
-        "type": "<a href=\"/docs/types#common-types\">SHADOW</a>",
+        "type": "<a href=\"/docs/types#shadow-types\">SHADOW</a>",
         "description": "Controls the shadow of the button.",
         "default": "\"md\""
       },

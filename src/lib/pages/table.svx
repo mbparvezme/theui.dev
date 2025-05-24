@@ -336,7 +336,7 @@ description: Present data effectively in your Svelte app with theui-svelte's Tab
       <li><span class="not-prose"><code>trClasses</code></span> - Applies custom classes to all table body rows (&lt;tr&gt; inside &lt;tbody&gt;). Use this to control row styling, such as padding, text alignment, or hover effects.</li>
       <li><span class="not-prose"><code>tdClasses</code></span> - Adds custom classes to all table cells (&lt;td&gt;), enabling precise control over text size, padding, alignment, or other styles.</li>
     </ul>
-    <Alert type="warning" theme="light"><span>you can use <span class="not-prose"><code>class</code></span> attribute with any table related component to add your custom CSS classes.</span></Alert>
+    <Alert type="warning" theme="soft"><span>you can use <span class="not-prose"><code>class</code></span> attribute with any table related component to add your custom CSS classes.</span></Alert>
     <p class="not-prose">These props provide flexibility in styling, making it easy to adapt the table to different designs and themes.</p>
   </DocBlock>
 

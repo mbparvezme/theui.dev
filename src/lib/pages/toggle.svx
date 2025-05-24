@@ -48,7 +48,7 @@ description: Fully customizable switch that can replace traditional checkboxes a
     <Example>
       <p class="not-prose">The <code>type</code> prop defines whether the toggle functions as a checkbox or a radio button.</p>
       {#snippet example()}
-<div class="flex flex-col w-1/2 text-left">
+<div class="flex flex-col w-1/2 text-start">
   <h4 class="font-bold">Checkboxes</h4>
   <Toggle name="toggle1">Checkbox 1</Toggle>
   <Toggle name="toggle2">Checkbox 2</Toggle>
@@ -82,8 +82,16 @@ description: Fully customizable switch that can replace traditional checkboxes a
         <li>The <span class="not-prose"><code>value</code></span> prop controls the toggle's state and can be <span class="not-prose"><code>true</code></span>, <span class="not-prose"><code>false</code></span>, or <span class="not-prose"><code>null</code></span>. When used as a radio button, the value represents the selected option.</li>
       </ul>
       {#snippet example()}
-<Toggle name="preferences" value="ok">Enable Notifications</Toggle>
-<Toggle name="theme" type="radio" value="dark">Dark Mode</Toggle>
+        <div class="flex flex-col gap-4">
+          <Toggle name="preferences" value="ok">Enable Notifications</Toggle>
+          <div class="flex flex-col">
+            <h3 class="font-bold">Gender</h3>
+            <div class="flex flex-row gap-4">
+            <Toggle name="gender" type="radio" value="male">Male</Toggle>
+            <Toggle name="gender" type="radio" value="female">Female</Toggle>
+            </div>
+          </div>
+        </div>
       {/snippet}
       {#snippet code()}
 
@@ -171,7 +179,7 @@ description: Fully customizable switch that can replace traditional checkboxes a
 ```
       {/snippet}
     </Example>
-    <Alert type="info" theme="light">Note: The "xl" size is used for better visibility, making the toggle more prominent and easier to interact with.</Alert>
+    <Alert type="info" theme="soft">Note: The "xl" size is used for better visibility, making the toggle more prominent and easier to interact with.</Alert>
   </DocBlock>
 
   <DocBlock title="Customization">

@@ -20,68 +20,69 @@ description: Manage stacking contexts in your Svelte application with TheUI-Svel
   <DocBlock>
     <p class="not-prose">This library leverages z-index for stacking elements. Avoid modifying z-index values to prevent layout disruptions.</p>
     <p class="not-prose mb-4">The z-index property helps manage the overlay and layout of elements relative to one another, controlling their arrangement along the z-axis. Customizing these values is not recommended, as it may disrupt the intended layout.</p>
-
-    <Table class="my-0">
-      <THead>
-        <TR>
-          <TH>Component</TH>
-          <TH>Class</TH>
-          <TH>Value (z-index)</TH>
-        </TR>
-      </THead>
-      <TBody>
-        <TR>
-          <TD>Dropdown</TD>
-          <TD><span class="not-prose whitespace-nowrap"><code>.dropdown .backdrop</code></span></TD>
-          <TD>10</TD>
-        </TR>
-        <TR>
-          <TD>Dropdown</TD>
-          <TD><span class="not-prose whitespace-nowrap"><code>.dropdown-content</code></span></TD>
-          <TD>11</TD>
-        </TR>
-        <TR>
-          <TD>Sticky positioned</TD>
-          <TD><span class="not-prose whitespace-nowrap"><code>.sticky, [class$=:sticky]</code></span></TD>
-          <TD>20</TD>
-        </TR>
-        <TR>
-          <TD>Navbar</TD>
-          <TD><span class="not-prose whitespace-nowrap"><code>.theui-navbar</code></span></TD>
-          <TD>21</TD>
-        </TR>
-        <TR>
-          <TD>Fixed positioned</TD>
-          <TD><span class="not-prose whitespace-nowrap"><code>.fixed, [class$=:fixed]</code></span></TD>
-          <TD>30</TD>
-        </TR>
-        <TR>
-          <TD>Offcanvas</TD>
-          <TD><span class="not-prose whitespace-nowrap"><code>.offcanvas</code></span></TD>
-          <TD>40</TD>
-        </TR>
-        <TR>
-          <TD>Modal</TD>
-          <TD><span class="not-prose whitespace-nowrap"><code>.modal</code></span></TD>
-          <TD>50</TD>
-        </TR>
-        <TR>
-          <TD>Popup</TD>
-          <TD><span class="not-prose whitespace-nowrap"><code>.popup</code></span></TD>
-          <TD>60</TD>
-        </TR>
-        <TR>
-          <TD>Tooltip</TD>
-          <TD><span class="not-prose whitespace-nowrap"><code>.tooltip</code></span></TD>
-          <TD>70</TD>
-        </TR>
-        <TR>
-          <TD>Notifications</TD>
-          <TD><span class="not-prose whitespace-nowrap"><code>.notifications</code></span></TD>
-          <TD>80</TD>
-        </TR>
-      </TBody>
-    </Table>
+    <div class="not-prose">
+      <Table class="my-0">
+        <THead>
+          <TR>
+            <TH>Component</TH>
+            <TH>Class</TH>
+            <TH>Value (z-index)</TH>
+          </TR>
+        </THead>
+        <TBody>
+          <!-- <TR>
+            <TD>Dropdown</TD>
+            <TD><span class="not-prose whitespace-nowrap"><code>.dropdown .backdrop</code></span></TD>
+            <TD>10</TD>
+          </TR> 
+          <TR>
+            <TD>Sticky positioned</TD>
+            <TD><span class="not-prose whitespace-nowrap"><code>.sticky, [class$=:sticky]</code></span></TD>
+            <TD>20</TD>
+          </TR>
+          <TR>
+            <TD>Fixed positioned</TD>
+            <TD><span class="not-prose whitespace-nowrap"><code>.fixed, [class$=:fixed]</code></span></TD>
+            <TD>30</TD>
+          </TR> -->
+          <TR>
+            <TD>Navbar</TD>
+            <TD><span class="not-prose whitespace-nowrap"><code>.z-100</code></span></TD>
+            <TD>100</TD>
+          </TR>
+          <TR>
+            <TD>Dropdown</TD>
+            <TD><span class="not-prose whitespace-nowrap"><code>.z-200</code></span></TD>
+            <TD>200</TD>
+          </TR>
+          <TR>
+            <TD>Drawer</TD>
+            <TD><span class="not-prose whitespace-nowrap"><code>.z-300</code></span></TD>
+            <TD>300</TD>
+          </TR>
+          <TR>
+            <TD>Modal</TD>
+            <TD><span class="not-prose whitespace-nowrap"><code>.z-400</code></span></TD>
+            <TD>400</TD>
+          </TR>
+          <TR>
+            <TD>Popup</TD>
+            <TD><span class="not-prose whitespace-nowrap"><code>.z-500</code></span></TD>
+            <TD>500</TD>
+          </TR>
+          <TR>
+            <TD>Tooltip</TD>
+            <TD><span class="not-prose whitespace-nowrap"><code>.z-600</code></span></TD>
+            <TD>600</TD>
+          </TR>
+          <TR>
+            <TD>Notifications</TD>
+            <TD><span class="not-prose whitespace-nowrap"><code>.z-700</code></span></TD>
+            <TD>700</TD>
+          </TR>
+        </TBody>
+      </Table>
+    </div>
 
     <div>
       <h4>Important Notes</h4>

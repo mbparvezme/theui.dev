@@ -11,13 +11,13 @@
       },
       {
         "name": "variant",
-        "type": "<a href=\"/docs/types##input-variant\">INPUT_VARIANT</a>",
+        "type": "<a href=\"/docs/types#input-variant-type\">INPUT_VARIANT</a>",
         "default": "\"bordered\"",
         "description": "Defines the visual style of the inputs."
       },
       {
         "name": "size",
-        "type": "<a href=\"/docs/types##input-size\">INPUT_SIZE</a>",
+        "type": "<a href=\"/docs/types#input-size-type\">INPUT_SIZE</a>",
         "default": "\"md\"",
         "description": "Defines the size of the inputs. Options typically include \"sm\", \"md\", and \"lg\"."
       },
@@ -29,13 +29,13 @@
       },
       {
         "name": "animationSpeed",
-        "type": "<a href=\"/docs/types#common-types\">ANIMATE_SPEED</a>",
+        "type": "<a href=\"/docs/types#animation-speed-type\">ANIMATE_SPEED</a>",
         "default": "\"normal\"",
         "description": "Controls the animation speed for inputs."
       },
       {
         "name": "rounded",
-        "type": "<a href=\"/docs/types#common-types\">ROUNDED</a>",
+        "type": "<a href=\"/docs/types#rounded-type\">ROUNDED</a>",
         "default": "\"md\"",
         "description": "Controls the border radius of inputs."
       },
@@ -52,20 +52,5 @@
         "description": "Resets all the defaults styles and apply only the custom styles."
       }
     ]
-  },
-  {
-    "key": "dynamicProps",
-    "title": "Dynamic props",
-    "data": null
-  },
-  {
-    "key": "snippets",
-    "title": "Snippets",
-    "data": null
-  },
-  {
-    "key": "functions",
-    "title": "Functions",
-    "data": null
   }
 ]

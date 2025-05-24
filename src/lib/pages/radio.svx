@@ -117,14 +117,14 @@ description: The Radio Button component allows users to select a single option f
     <p class="not-prose">The <code>reset</code> prop removes all default styles from the Radio Button component, leaving only the applied custom styles. This is useful for complete control over styling.</p>
     <Example>
     {#snippet example()}
-<Radio name="myRadio" reset={true} class="border border-green-500 bg-green-200">Option 1</Radio>
-<Radio name="myRadio" reset={true} class="border border-green-500 bg-green-200">Option 2</Radio>
+<Radio name="myRadio" reset={true} class="checked:bg-green-500 focus:ring-green-200 focus:border-green-200">Option 1</Radio>
+<Radio name="myRadio" reset={true} class="checked:bg-green-500 focus:ring-green-200 focus:border-green-200">Option 2</Radio>
       {/snippet}
 
       {#snippet code()}
 ```html
-<Radio name="myRadio" reset={true} class="border border-green-500 bg-green-200">Option 1</Radio>
-<Radio name="myRadio" reset={true} class="border border-green-500 bg-green-200">Option 2</Radio>
+<Radio name="myRadio" reset={true} class="checked:bg-green-500 focus:ring-green-200 focus:border-green-200">Option 1</Radio>
+<Radio name="myRadio" reset={true} class="checked:bg-green-500 focus:ring-green-200 focus:border-green-200">Option 2</Radio>
 ```
       {/snippet}
     </Example>

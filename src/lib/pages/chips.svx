@@ -18,10 +18,10 @@ description: Implement interactive and stylish chips in your Svelte app with The
 </script>
 
 <DocLayout>
-  <DocHead title="Chips" text="The Chips component is a versatile UI element used to display small blocks of information, such as tags, categories, or interactive items. It supports images, text, and an optional close button for dismissing the chips." {edit_url}/>
+  <DocHead title="Chips" text="The <code>Chips</code> component is a versatile UI element used to display small blocks of information, such as tags, categories, or interactive items. It supports images, text, and an optional close button for dismissing the chips." {edit_url}/>
 
   <DocBlock title="Example">
-    <p class="not-prose">First, import the Chips component from the library. Below is a simple example demonstrating how to use the Chips component. This example shows how to create a chip with a basic text label:</p>
+    <p class="not-prose">First, import the <code>Chips</code> component from the library. Below is a simple example demonstrating how to use the Chips component. This example shows how to create a chip with a basic text label:</p>
     <Example>
       {#snippet example()}
       <div>
@@ -39,11 +39,11 @@ description: Implement interactive and stylish chips in your Svelte app with The
 ```
       {/snippet}
     </Example>
-    <p class="not-prose">In this example the Chips component is used with the text prop which creates a chip displaying the text "Example Chips".</p>
+    <p class="not-prose">In this example the <code>Chips</code> component is used with the text prop which creates a chip displaying the text "Example Chips".</p>
   </DocBlock>
 
   <DocBlock title="Chips With Image">
-    <p class="not-prose">You can enhance the Chips component by including an image alongside the text. Below is a basic example demonstrating how to use the Chips component with an image:</p>
+    <p class="not-prose">You can enhance the <code>Chips</code> component by including an image alongside the text. Below is a basic example demonstrating how to use the Chips component with an image:</p>
     <Example>
       {#snippet example()}
       <div>
@@ -61,7 +61,7 @@ description: Implement interactive and stylish chips in your Svelte app with The
   </DocBlock>
 
   <DocBlock title="Disable Close Button">
-    <p class="not-prose">The <b>Chips</b> component includes a close button by default, allowing users to dismiss the chip. This is controlled by the <code>close</code> prop, which is set to <code>true</code> by default. If you prefer not to display the close button, you can disable it by setting the <code>close</code> prop to <code>false</code>.</p>
+    <p class="not-prose">The <code>Chips</code> component includes a close button by default, allowing users to dismiss the chip. This is controlled by the <code>close</code> prop, which is set to <code>true</code> by default. If you prefer not to display the close button, you can disable it by setting the <code>close</code> prop to <code>false</code>.</p>
     <Example>
       {#snippet example()}
       <div>
@@ -78,8 +78,8 @@ description: Implement interactive and stylish chips in your Svelte app with The
     <p class="not-prose">The <code>imageUrl</code> prop specifies the path to the image ("/path/to/image.png"), adding an image to the chip.</p>
   </DocBlock>
 
-  <DocBlock title="Chips Size">
-    <p class="not-prose">The Chips component allows you to adjust its size using the <code>size</code> prop. This prop controls the padding and dimensions of the chip, including any accompanying image. The available size options are:<br>- <b>sm</b> (small)<br>- <b>md</b> (medium) – <i>default</i><br>- <b>lg</b> (large)</p>
+  <DocBlock title="Sizes">
+    <p class="not-prose">The <code>Chips</code> component allows you to adjust its size using the <code>size</code> prop. This prop controls the padding and dimensions of the chip, including any accompanying image. The available size options are:<br>- <b>sm</b> (small)<br>- <b>md</b> (medium) – <i>default</i><br>- <b>lg</b> (large)</p>
     <p class="not-prose">By choosing the appropriate size, you can ensure that the chips fit seamlessly into your design. This flexibility helps you customize the appearance of chips to suit various layout needs.</p>
     <Example>
       {#snippet example()}
@@ -101,8 +101,33 @@ description: Implement interactive and stylish chips in your Svelte app with The
     <p class="not-prose">The <code>imageUrl</code> prop specifies the path to the image ("/path/to/image.png"), adding an image to the chip.</p>
   </DocBlock>
 
+  <DocBlock title="Rounded Corner">
+    <p class="not-prose">The <code>rounded</code> prop in the <code>Chips</code> component controls its border radius. Values: <code>none</code>, <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code>, <code>full</code>. Default is <code>full</code>.</p>
+    <Example>
+      {#snippet example()}
+        <div class="flex flex-col items-center gap-4">
+        <Chips imageUrl="https://randomuser.me/api/portraits/women/65.jpg" rounded="none">Jasmine Kira</Chips>
+        <Chips imageUrl="https://randomuser.me/api/portraits/women/66.jpg" rounded="md">Jasmine Kira</Chips>
+        <Chips imageUrl="https://randomuser.me/api/portraits/women/67.jpg" rounded="lg">Jasmine Kira</Chips>
+        <Chips imageUrl="https://randomuser.me/api/portraits/women/68.jpg" rounded="xl">Jasmine Kira</Chips>
+        <Chips imageUrl="https://randomuser.me/api/portraits/women/69.jpg" rounded="full">Jasmine Kira</Chips>
+        </div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Chips rounded="none">...</Chips>
+<Chips rounded="md">...</Chips>
+<Chips rounded="lg">...</Chips>
+<Chips rounded="xl">...</Chips>
+<Chips rounded="full">...</Chips>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
   <DocBlock title="Customization">
-    <p class="not-prose">The <b>Chips</b> component offers extensive customization options using Tailwind CSS classes. You can easily style both the chip and the accompanying image by applying custom classes through the <code>class</code> and <code>imageClasses</code> props.</p>
+    <p class="not-prose">The <code>Chips</code> component offers extensive customization options using Tailwind CSS classes. You can easily style both the chip and the accompanying image by applying custom classes through the <code>class</code> and <code>imageClasses</code> props.</p>
     <Example title="Chip Customization">
       <p class="not-prose">To customize the chip's appearance, use the <code>class</code> prop to add your own Tailwind CSS classes. This allows you to control the border, background, padding, and more.</p>
       {#snippet example()}
@@ -145,7 +170,7 @@ description: Implement interactive and stylish chips in your Svelte app with The
     <a href={processID("Example")}>Example</a>
     <a href={processID("Chips With Image")}>Chips With Image</a>
     <a href={processID("Disable Close Button")}>Disable Close Button</a>
-    <a href={processID("Chips Size")}>Chips Size</a>
+    <a href={processID("Sizes")}>Sizes</a>
     <a href={processID("Customization")}>Customization</a>
     <a href={processID("Chip Customization")} class="ps-4">Chip customization</a>
     <a href={processID("Image Customization")} class="ps-4">Image customization</a>

@@ -5,27 +5,17 @@
     "data": [
       {
         "name": "position",
-        "type": "'top-end' | 'top-center' | 'top-start' | 'bottom-end' | 'bottom-center' | 'bottom-start'",
+        "type": "<a href=\"/docs/types#notification-position\">NOTIFICATION_POSITION</a>",
         "description": "Position of the modal on the screen.",
         "default": "\"center\""
       },
       {
         "name": "animationSpeed",
-        "type": "<a href=\"/docs/types#common-types\">ANIMATE_SPEED</a>",
+        "type": "<a href=\"/docs/types#animation-speed-type\">ANIMATE_SPEED</a>",
         "description": "Speed of the animation.",
         "default": "\"fast\""
       }
     ]
-  },
-  {
-    "key": "dynamicProps",
-    "title": "Dynamic props",
-    "data": null
-  },
-  {
-    "key": "snippets",
-    "title": "Snippets",
-    "data": null
   },
   {
     "key": "functions",

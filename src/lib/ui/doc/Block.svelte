@@ -21,7 +21,7 @@
 <section class="docs-block flex flex-col gap-4 mb-16 scroll-mt-2" id={id}>
   {#if title}
     <div class="flex items-center gap-2">
-      <h2 class="my-0 font-bold text-2xl font-body">{@html title}</h2>
+      <h2 class="not-prose my-0 font-bold text-2xl font-body">{@html title}</h2>
       {#if id}
         <span class="not-prose ms-auto flex items-center">
           <button class="font-medium w-6 h-6 flex justify-center items-center text-default opacity-40 hover:opacity-100 transition-opacity duration-300" data-tooltip="Copy link" data-tooltip-position="left" onclick={()=>copy()}>

@@ -27,9 +27,8 @@ description: Improve navigation in your Svelte app with TheUI-Svelte's Breadcrum
   <DocHead title="Breadcrumb" text="The Breadcrumb component displays the location of the current page within a navigational hierarchy. It helps users understand the structure of your site and navigate back to previous pages easily." {edit_url}/>
 
   <DocBlock title="Example">
-    <p class="not-prose">To use the Breadcrumb component, you need to import it into your Svelte file as shown below.</p>
     <Example>
-      <p class="not-prose">To use the <code>Breadcrumb</code> component, you can pass an array of breadcrumb items (<a href="/docs/types#breadcrumb-data-type"><code>BREADCRUMB_DATA</code></a>) with their respective text and URLs. Here's a simple example:</p>
+      <p class="not-prose">Start by importing the <code>Breadcrumb</code> component into your Svelte file, then pass it an array of breadcrumb items (like <a class="underline" href="/docs/types#breadcrumb-data-type">BREADCRUMB_DATA</a>) containing each item's text and URL. Here's a basic example:</p>
       {#snippet example()}
       <div class="w-full">
         <Breadcrumb data={breadcrumbData} />
@@ -72,7 +71,7 @@ description: Improve navigation in your Svelte app with TheUI-Svelte's Breadcrum
   </DocBlock>
 
   <DocBlock title="Customization">
-    <p class="not-prose">The Breadcrumb component offers flexibility for styling, allowing you to easily adapt it to match your design requirements.</p>
+    <p class="not-prose">The <code>Breadcrumb</code> component offers flexibility for styling, allowing you to easily adapt it to match your design requirements.</p>
     <Example>
       <p class="not-prose">To customize the breadcrumb container itself, you can use the standard <code>class</code> attribute to apply custom styles. For further customization, there are two props designed to style the breadcrumb links:</p>
       <ul class="my-0">
@@ -103,7 +102,7 @@ description: Improve navigation in your Svelte app with TheUI-Svelte's Breadcrum
   </DocBlock>
 
   <DocBlock title="Accessibility">
-    <p class="not-prose">The Breadcrumb component is fully accessible, with <code>aria-label="breadcrumb"</code> applied to the navigation container to identify it as a breadcrumb trail for assistive technologies. Each link is keyboard-navigable, and the current page is marked with <code>aria-current="page"</code>. You only need to provide meaningful link labels and ensure proper color contrast for readability.
+    <p class="not-prose">The <code>Breadcrumb</code> component is fully accessible, with <code>aria-label="breadcrumb"</code> applied to the navigation container to identify it as a breadcrumb trail for assistive technologies. Each link is keyboard-navigable, and the current page is marked with <code>aria-current="page"</code>. You only need to provide meaningful link labels and ensure proper color contrast for readability.
   </DocBlock>
 
   <DocBlock title="Configuration">

@@ -5,7 +5,7 @@
     "data": [
       {
         "name": "data",
-        "type": "Array&lt;<a href=\"/docs/types#common-types\">BREADCRUMB_DATA</a>&gt;",
+        "type": "Array&lt;<a href=\"/docs/types#breadcrumb-data-type\">BREADCRUMB_DATA</a>&gt;",
         "default": "[]",
         "description": "An array of breadcrumb items to display."
       },
@@ -28,20 +28,5 @@
         "description": "The character or element used to separate breadcrumb items."
       }
     ]
-  },
-  {
-    "key": "dynamicProps",
-    "title": "Dynamic props",
-    "data": null
-  },
-  {
-    "key": "snippets",
-    "title": "Snippets",
-    "data": null
-  },
-  {
-    "key": "functions",
-    "title": "Functions",
-    "data": null
   }
 ]
