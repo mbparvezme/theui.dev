@@ -5,6 +5,7 @@
   "compatibility_date": "2025-04-13",
   "assets": {
     "directory": ".cloudflare/public",
+    "pages_build_output_dir" : "build",
     "binding": "ASSETS"
   }
 }
