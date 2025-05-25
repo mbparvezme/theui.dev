@@ -1,0 +1,1 @@
+import{t as r,a as e}from"../chunks/CIHljEz0.js";import"../chunks/CnVk723C.js";import{n as s}from"../chunks/DDSqhxMg.js";import{P as a}from"../chunks/hXFXh-_s.js";function $(t){a(t,{children:(o,n)=>{s();var p=r("This is entry popup!");e(o,p)},$$slots:{default:!0}})}export{$ as component};

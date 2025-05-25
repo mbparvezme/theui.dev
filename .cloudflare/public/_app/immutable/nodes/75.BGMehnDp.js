@@ -1,0 +1,1 @@
+import{t as p,a as e}from"../chunks/CIHljEz0.js";import"../chunks/CnVk723C.js";import{n}from"../chunks/DDSqhxMg.js";import{P as s}from"../chunks/hXFXh-_s.js";function f(o){s(o,{rounded:"none",children:(t,a)=>{n();var r=p("This popup has no rounded corners!");e(t,r)},$$slots:{default:!0}})}export{f as component};

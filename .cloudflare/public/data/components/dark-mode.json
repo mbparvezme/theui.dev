@@ -1,0 +1,15 @@
+
+[
+  {
+    "key": "props",
+    "title": "Props",
+    "data": [
+      {
+        "name": "systemDefault",
+        "type": "boolean",
+        "default": "true",
+        "description": "Determines how dark mode is handled. When true, the app initially adopts the system's preferred color scheme."
+      }
+    ]
+  }
+]

@@ -1,0 +1,1 @@
+import{t as r,a as e}from"../chunks/CIHljEz0.js";import"../chunks/CnVk723C.js";import{n as a}from"../chunks/DDSqhxMg.js";import{P as m}from"../chunks/hXFXh-_s.js";function u(o){m(o,{children:(t,s)=>{a();var p=r("Hello! I'm popup!");e(t,p)},$$slots:{default:!0}})}export{u as component};

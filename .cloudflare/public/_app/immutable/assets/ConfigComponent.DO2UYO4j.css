@@ -1,0 +1,1 @@
+.example-section+.example-section{margin-top:calc(var(--spacing,.25rem)*8)}/*! tailwindcss v4.1.7 | MIT License | https://tailwindcss.com */.config-tabs+.config-title{margin-top:calc(var(--spacing,.25rem)*4)}

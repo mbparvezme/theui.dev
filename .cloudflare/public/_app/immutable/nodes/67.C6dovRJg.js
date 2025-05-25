@@ -1,0 +1,1 @@
+import{t as a,a as r}from"../chunks/CIHljEz0.js";import"../chunks/CnVk723C.js";import{n as s}from"../chunks/DDSqhxMg.js";import{P as e}from"../chunks/hXFXh-_s.js";function d(o){e(o,{backdrop:!1,children:(p,n)=>{s();var t=a("This popup has no backdrop!");r(p,t)},$$slots:{default:!0}})}export{d as component};
