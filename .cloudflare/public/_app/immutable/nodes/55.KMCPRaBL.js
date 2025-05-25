@@ -1,1 +1,0 @@
-import{f as i,a as m}from"../chunks/CIHljEz0.js";import{f as s,s as n}from"../chunks/DDSqhxMg.js";import{S as p}from"../chunks/BmOsGaYy.js";import{C as f}from"../chunks/Lz3FxpAN.js";var e=i("<!> <!>",1);function _(t,l){var o=e(),r=s(o);p(r,{title:"UI Blocks"});var a=n(r,2);f(a,{title:"Exciting UI blocks"}),m(t,o)}export{_ as component};

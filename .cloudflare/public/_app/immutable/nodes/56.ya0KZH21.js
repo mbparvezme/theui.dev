@@ -1,1 +1,0 @@
-import{t as a,a as s}from"../chunks/CIHljEz0.js";import"../chunks/CnVk723C.js";import{n as p}from"../chunks/DDSqhxMg.js";import{C as l}from"../chunks/B8CH1EQ4.js";import{M as n}from"../chunks/CbmYafQx.js";function x(o){l(o,{children:(t,m)=>{n(t,{open:!0,children:(r,i)=>{p();var e=a("Hello Modal!");s(r,e)},$$slots:{default:!0}})},$$slots:{default:!0}})}export{x as component};

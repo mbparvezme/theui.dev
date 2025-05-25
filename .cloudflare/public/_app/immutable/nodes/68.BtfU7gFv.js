@@ -1,1 +1,0 @@
-import{t as a,a as r}from"../chunks/CIHljEz0.js";import"../chunks/CnVk723C.js";import{n as s}from"../chunks/DDSqhxMg.js";import{P as e}from"../chunks/hXFXh-_s.js";function d(t){e(t,{staticBackdrop:!0,children:(o,i)=>{s();var p=a("This popup has a static backdrop!");r(o,p)},$$slots:{default:!0}})}export{d as component};
