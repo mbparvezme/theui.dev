@@ -1,16 +1,19 @@
 <script lang="ts">
   import type { Snippet } from 'svelte';
   import { page } from "$app/state";
-  import { Container, Svg } from "theui-svelte";
+  import { Container, Svg, Qab } from "theui-svelte";
   import { twMerge } from 'tailwind-merge';
 
   let { children, data }: {children: Snippet, data: any } = $props();
-  let linkClasses = (active: boolean = false) => twMerge("border-s-2 border-gray-500/10 ps-4 py-1 inline text-default tracking-wide font-normal", active && "border-brand-primary-500 text-brand-primary-500 dark:border-brand-primary-300 dark:text-brand-primary-300");
+  let linkClasses = (active: boolean = false) => twMerge("border-s-2 border-gray-500/10 ps-4 py-1 inline-block text-default tracking-wide font-normal", active && "border-brand-primary-500 text-brand-primary-500 dark:border-brand-primary-300 dark:text-brand-primary-300");
+
+  let sidebar: boolean = $state(false)
+  const toggleSidebar = () => sidebar = !sidebar
 </script>
 
-<Container class="relative flex gap-8 min-h-screen pb-48 pt-28">
-  <aside class="doc-sidebar fixed md:sticky top-28 block w-64 shrink-0 bg-primary md:bg-transparent md:translate-x-0 -translate-x-64 md:w-48 lg:w-64 transition-transform">
-    <div class="flex flex-col h-full overflow-y-auto pb-16">
+<Container class="relative flex md:gap-8 min-h-screen pb-48 pt-28">
+  <aside class="doc-sidebar fixed top-0 md:top-28 start-0 md:start-auto bottom-0 md:bottom-auto block w-full md:h-[calc(100vh_-_112px)] shrink-0 bg-primary md:bg-transparent md:translate-x-0 md:w-48 lg:w-64 transition-transform z-[110] bg-primary" class:-translate-x-[calc(100%_+_32px)]={!sidebar}>
+    <div class="flex flex-col h-full overflow-y-auto py-16 md:pt-0 ps-8 md:ps-0">
 
       <section>
         <h3 class="font-semibold mb-4 flex gap-3 items-center">
@@ -21,7 +24,9 @@
         </h3>
         <nav class="sidebar-link flex-grow flex flex-col text-sm mb-8 dark:font-light">
           {#each data.components.intro.links as component}
-            <a class={linkClasses(page.url.pathname==component.link)} href={component.link}>{@html component.text}</a>
+            <div>
+              <a class={linkClasses(page.url.pathname==component.link)} href={component.link}>{@html component.text}</a>
+            </div>
           {/each}
         </nav>
       </section>
@@ -35,7 +40,9 @@
         </h3>
         <nav class="sidebar-link flex-grow flex flex-col text-sm mb-8 dark:font-light">
           {#each data.components.components.links as component}
-            <a class={linkClasses(page.url.pathname==component.link)} href={component.link}>{@html component.text}</a>
+            <div>
+              <a class={linkClasses(page.url.pathname==component.link)} href={component.link}>{@html component.text}</a>
+            </div>
           {/each}
         </nav>
       </section>
@@ -49,7 +56,9 @@
         </h3>
         <nav class="sidebar-link flex-grow flex flex-col text-sm mb-8 dark:font-light">
           {#each data.components.forms.links as component}
-            <a class={linkClasses(page.url.pathname==component.link)} href={component.link}>{@html component.text}</a>
+            <div>
+              <a class={linkClasses(page.url.pathname==component.link)} href={component.link}>{@html component.text}</a>
+            </div>
           {/each}
         </nav>
       </section>
@@ -63,7 +72,9 @@
         </h3>
         <nav class="sidebar-link flex-grow flex flex-col text-sm mb-8 dark:font-light">
           {#each data.components.utilities.links as component}
-            <a class={linkClasses(page.url.pathname==component.link)} href={component.link}>{@html component.text}</a>
+            <div>
+              <a class={linkClasses(page.url.pathname==component.link)} href={component.link}>{@html component.text}</a>
+            </div>
           {/each}
         </nav>
       </section>
@@ -71,7 +82,11 @@
     </div>
   </aside>
 
-  <div class="docs min-h-screen grow relative w-full md:max-w-[calc(100%_-_14rem)] lg:max-w-[calc(100%_-_18rem)]">
+  <div class="docs min-h-screen grow relative w-full md:max-w-[calc(100%_-_14rem)] lg:max-w-[calc(100%_-_18rem)] md:ms-[224px] lg:ms-[288px]">
     {@render children()}
   </div>
+
+  <button onclick={()=>toggleSidebar()} aria-label="Quick Action Button" class="flex md:hidden items-center justify-center cursor-pointer bg-brand-primary-500 hover:bg-brand-primary-600 text-on-brand-primary focus:ring-brand-primary-500/50 shadow-2xl w-14 h-14 rounded-full ease-in-out duration-300 transition-all fixed end-6 bottom-6 z-[120]">
+    <svg width="1rem" height="1rem" viewBox="0 0 16 16" focusable="false" aria-hidden="true" class="theui-svg-icon shrink-0 fill-current w-[60%] h-[60%]" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"></path></svg>
+  </button>
 </Container>
