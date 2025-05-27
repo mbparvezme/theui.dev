@@ -8,4 +8,4 @@
 
 <SEO title="Color Configuration" />
 
-<Page colors={data.colors} edit_url={data.editURL} />
+<Page colors={data.colors} />

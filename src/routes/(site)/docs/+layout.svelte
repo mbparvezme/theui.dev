@@ -1,10 +1,11 @@
 <script lang="ts">
   import type { Snippet } from 'svelte';
   import { page } from "$app/state";
-  import { Container, Svg, Qab } from "theui-svelte";
+  import { Container, Svg } from "theui-svelte";
   import { twMerge } from 'tailwind-merge';
+  import { components } from "$lib/components"
 
-  let { children, data }: {children: Snippet, data: any } = $props();
+  let { children }: {children: Snippet } = $props();
   let linkClasses = (active: boolean = false) => twMerge("border-s-2 border-gray-500/10 ps-4 py-1 inline-block text-default tracking-wide font-normal", active && "border-brand-primary-500 text-brand-primary-500 dark:border-brand-primary-300 dark:text-brand-primary-300");
 
   let sidebar: boolean = $state(false)
@@ -12,7 +13,7 @@
 </script>
 
 <Container class="relative flex md:gap-8 min-h-screen pb-48 pt-28">
-  <aside class="doc-sidebar fixed top-0 md:top-28 start-0 md:start-auto bottom-0 md:bottom-auto block w-full md:h-[calc(100vh_-_112px)] shrink-0 bg-primary md:bg-transparent md:translate-x-0 md:w-48 lg:w-64 transition-transform z-[110] bg-primary" class:-translate-x-[calc(100%_+_32px)]={!sidebar}>
+  <aside class="doc-sidebar fixed top-0 md:top-28 start-0 md:start-auto bottom-0 md:bottom-auto block w-full md:h-[calc(100vh_-_112px)] shrink-0 md:bg-transparent md:translate-x-0 md:w-48 lg:w-64 transition-transform z-[110] bg-primary" class:-translate-x-[calc(100%_+_32px)]={!sidebar}>
     <div class="flex flex-col h-full overflow-y-auto py-16 md:pt-0 ps-8 md:ps-0">
 
       <section>
@@ -23,7 +24,7 @@
           Getting Started
         </h3>
         <nav class="sidebar-link flex-grow flex flex-col text-sm mb-8 dark:font-light">
-          {#each data.components.intro.links as component}
+          {#each components.intro.links as component}
             <div>
               <a class={linkClasses(page.url.pathname==component.link)} href={component.link}>{@html component.text}</a>
             </div>
@@ -39,7 +40,7 @@
           Components
         </h3>
         <nav class="sidebar-link flex-grow flex flex-col text-sm mb-8 dark:font-light">
-          {#each data.components.components.links as component}
+          {#each components.components.links as component}
             <div>
               <a class={linkClasses(page.url.pathname==component.link)} href={component.link}>{@html component.text}</a>
             </div>
@@ -55,7 +56,7 @@
           Forms
         </h3>
         <nav class="sidebar-link flex-grow flex flex-col text-sm mb-8 dark:font-light">
-          {#each data.components.forms.links as component}
+          {#each components.forms.links as component}
             <div>
               <a class={linkClasses(page.url.pathname==component.link)} href={component.link}>{@html component.text}</a>
             </div>
@@ -71,7 +72,7 @@
           Utilities
         </h3>
         <nav class="sidebar-link flex-grow flex flex-col text-sm mb-8 dark:font-light">
-          {#each data.components.utilities.links as component}
+          {#each components.utilities.links as component}
             <div>
               <a class={linkClasses(page.url.pathname==component.link)} href={component.link}>{@html component.text}</a>
             </div>

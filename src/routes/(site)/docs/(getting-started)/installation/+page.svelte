@@ -8,4 +8,4 @@
 
 <SEO title="installation" />
 
-<Page edit_url={data.editURL} />
+<Page />

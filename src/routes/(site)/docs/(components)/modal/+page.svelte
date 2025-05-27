@@ -8,4 +8,4 @@
 
 <SEO title="Modal" />
 
-<Page component={data.component} edit_url={data.editURL} />
+<Page component={data.component} />

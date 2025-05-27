@@ -8,4 +8,4 @@
 
 <SEO title="Right to Left (rtl) support" />
 
-<Page edit_url={data.editURL} />
+<Page />

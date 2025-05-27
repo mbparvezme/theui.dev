@@ -8,4 +8,4 @@
 
 <SEO title="Tabs and Pills" />
 
-<Page component={data.component} edit_url={data.editURL} />
+<Page component={data.component} />

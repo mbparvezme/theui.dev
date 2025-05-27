@@ -8,4 +8,4 @@
 
 <SEO title="Quick Action Button - QAB" />
 
-<Page component={data.component} edit_url={data.editURL} />
+<Page component={data.component} />

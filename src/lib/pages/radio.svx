@@ -11,14 +11,14 @@ description: The Radio Button component allows users to select a single option f
   import Code from "$lib/ui/doc/CodeBlock.svelte";
   import Example from "$lib/ui/doc/Example.svelte";
   import ConfigComponent from "$lib/ui/doc/ConfigComponent.svelte";
-  import { processID } from "$lib";
-  let { component, edit_url }: {component: any, edit_url?: string } = $props();
+  import { processID, editURL } from "$lib";
+  let { component }: {component: any } = $props();
 
   import { Radio, HelperText } from "theui-svelte";
 </script>
 
 <DocLayout>
-  <DocHead title="Radio Button" text="Provides a modern and customizable alternative to the default radio input, supporting various sizes, animations, and styling options." {edit_url}/>
+  <DocHead title="Radio Button" text="Provides a modern and customizable alternative to the default radio input, supporting various sizes, animations, and styling options." edit_url={editURL("radio")} />
 
   <DocBlock title="About">
     <p class="not-prose">This <code>Radio</code> Button component enhances standard radio inputs with additional styling and customization features. It ensures proper form handling by allowing only one selection per group while providing a smooth user experience. The component supports different sizes, animations, and customization options, making it adaptable to various UI needs.</p>

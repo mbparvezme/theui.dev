@@ -8,4 +8,4 @@
 
 <SEO title="License" />
 
-<Page edit_url={data.editURL} />
+<Page />

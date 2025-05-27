@@ -11,8 +11,8 @@ description: Improve navigation in your Svelte app with TheUI-Svelte's Breadcrum
   import Code from "$lib/ui/doc/CodeBlock.svelte";
   import Example from "$lib/ui/doc/Example.svelte";
   import ConfigComponent from "$lib/ui/doc/ConfigComponent.svelte";
-  import { processID } from "$lib";
-  let { component, edit_url }: {component: any, edit_url?: string } = $props();
+  import { processID, editURL } from "$lib";
+  let { component }: {component: any } = $props();
 
   import { Breadcrumb } from "theui-svelte";
 
@@ -24,7 +24,7 @@ description: Improve navigation in your Svelte app with TheUI-Svelte's Breadcrum
 </script>
 
 <DocLayout>
-  <DocHead title="Breadcrumb" text="The Breadcrumb component displays the location of the current page within a navigational hierarchy. It helps users understand the structure of your site and navigate back to previous pages easily." {edit_url}/>
+  <DocHead title="Breadcrumb" text="The Breadcrumb component displays the location of the current page within a navigational hierarchy. It helps users understand the structure of your site and navigate back to previous pages easily." edit_url={editURL("breadcrumb")} />
 
   <DocBlock title="Example">
     <Example>

@@ -11,14 +11,14 @@ description: Fully customizable switch that can replace traditional checkboxes a
   import Code from "$lib/ui/doc/CodeBlock.svelte";
   import Example from "$lib/ui/doc/Example.svelte";
   import ConfigComponent from "$lib/ui/doc/ConfigComponent.svelte";
-  import { processID } from "$lib";
-  let { component, edit_url }: {component: any, edit_url?: string } = $props();
+  import { processID, editURL } from "$lib";
+  let { component }: {component: any } = $props();
 
   import { Toggle, Alert } from "theui-svelte";
 </script>
 
 <DocLayout>
-  <DocHead title="Toggle" text="Fully customizable switch that can replace traditional checkboxes and radio buttons." {edit_url}/>
+  <DocHead title="Toggle" text="Fully customizable switch that can replace traditional checkboxes and radio buttons." edit_url={editURL("toggle")} />
 
   <DocBlock title="About">
     <p class="not-prose">The <code>Toggle</code> component provides a modern and user-friendly way to handle Boolean inputs in forms. It supports labels, customizable styling, and works seamlessly with checkboxes and radio button types. The component is fully accessible and integrates well with different UI requirements.</p>

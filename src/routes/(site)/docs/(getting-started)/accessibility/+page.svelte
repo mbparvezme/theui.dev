@@ -8,4 +8,4 @@
 
 <SEO title="Accessibility Guide" />
 
-<Page edit_url={data.editURL} />
+<Page />

@@ -11,12 +11,12 @@ description: The Fieldset component is a wrapper for input groups, providing bet
   import Code from "$lib/ui/doc/CodeBlock.svelte";
   import Example from "$lib/ui/doc/Example.svelte";
   import ConfigComponent from "$lib/ui/doc/ConfigComponent.svelte";
-  import { processID } from "$lib";
-  let { component, edit_url }: {component: any, edit_url?: string } = $props();
+  import { processID, editURL } from "$lib";
+  let { component }: {component: any } = $props();
 </script>
 
 <DocLayout>
-  <DocHead title="Fieldset" text="The Fieldset component is a wrapper for input groups, providing better structure and styling control. It helps in grouping related inputs together while maintaining a consistent design." {edit_url}/>
+  <DocHead title="Fieldset" text="The Fieldset component is a wrapper for input groups, providing better structure and styling control. It helps in grouping related inputs together while maintaining a consistent design." edit_url={editURL("fieldset")} />
 
   <DocBlock title="About">
     <p class="not-prose">The <code>Fieldset</code> component allows you to manage input styles and behaviors, but at a more granular level. While the <code>Form</code> component ensures uniform styling across all form elements, the Fieldset component lets you separate a section of inputs from others, giving you more control over a specific input group.</p>

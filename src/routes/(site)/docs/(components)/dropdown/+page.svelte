@@ -8,4 +8,4 @@
 
 <SEO title="Dropdown" />
 
-<Page component={data.component} edit_url={data.editURL} />
+<Page component={data.component} />

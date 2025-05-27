@@ -8,4 +8,4 @@
 
 <SEO title="Type definitions" />
 
-<Page edit_url={data.editURL} />
+<Page />

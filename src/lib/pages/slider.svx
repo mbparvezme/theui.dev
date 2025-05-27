@@ -11,14 +11,14 @@ description: Organize content into navigable sections in your Svelte app with th
   import Code from "$lib/ui/doc/CodeBlock.svelte";
   import Example from "$lib/ui/doc/Example.svelte";
   import ConfigComponent from "$lib/ui/doc/ConfigComponent.svelte";
-  import { processID } from "$lib";
-  let { component, edit_url }: {component: any, edit_url?: string } = $props();
+  import { processID, editURL } from "$lib";
+  let { component }: {component: any } = $props();
 
   import {Slider, Slide, Svg} from "theui-svelte";
 </script>
 
 <DocLayout>
-  <DocHead title="Slider" text="A versatile and interactive element for displaying images or content in a dynamic, scrollable format, enhancing user engagement with smooth transitions and customizable options." {edit_url}/>
+  <DocHead title="Slider" text="A versatile and interactive element for displaying images or content in a dynamic, scrollable format, enhancing user engagement with smooth transitions and customizable options." edit_url={editURL("slider")} />
 
   <DocBlock title="About">
     <p class="not-prose">The Slider component allows you to create visually appealing slideshows for images or content sections. It supports various configurations, including autoplay, navigation controls, and dynamic content loading. Highly customizable, it provides smooth animations and adaptive layouts for different screen sizes.</p>

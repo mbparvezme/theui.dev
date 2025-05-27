@@ -8,4 +8,4 @@
 
 <SEO title="Z-index guide" />
 
-<Page edit_url={data.editURL} />
+<Page />

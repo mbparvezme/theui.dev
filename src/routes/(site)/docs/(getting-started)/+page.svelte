@@ -8,4 +8,4 @@
 
 <SEO title="Introduction" />
 
-<Page components={data.components} edit_url={data.editURL} />
+<Page components={data.components} />

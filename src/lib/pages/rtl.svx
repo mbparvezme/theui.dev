@@ -10,8 +10,8 @@ description: Implement right-to-left (RTL) support in your Svelte app with TheUI
   import DocBlock from "$lib/ui/doc/Block.svelte";
   import Code from "$lib/ui/doc/CodeBlock.svelte";
   import { AccordionItem, Button } from "theui-svelte";
-  import { processID } from "$lib";
-  let { components, edit_url }: {components: any, edit_url?: string } = $props();
+  import { processID, editURL } from "$lib";
+  let { components }: {components: any } = $props();
 
   let toggleComponentDirection = () => {
     const element = document.getElementById("rtl-demo-accordion");
@@ -26,7 +26,7 @@ description: Implement right-to-left (RTL) support in your Svelte app with TheUI
 
 <DocLayout>
 
-  <DocHead title="RTL" text="Enable RTL support and styling globally across your site or to specific components only, ensuring flexibility and control over your layout." {edit_url} />
+  <DocHead title="RTL" text="Enable RTL support and styling globally across your site or to specific components only, ensuring flexibility and control over your layout." edit_url={editURL("rtl")} />
 
 
   <DocBlock>

@@ -9,13 +9,13 @@ description: Understand the various component types in TheUI-Svelte. Learn how t
   import DocHead from "$lib/ui/doc/Head.svelte"
   import DocBlock from "$lib/ui/doc/Block.svelte"
   import Code from "$lib/ui/doc/CodeBlock.svelte"
-  import { processID } from "$lib"
-  let { components, edit_url }: {components: any, edit_url?: string } = $props()
+  import { processID, editURL } from "$lib"
+  let { components }: {components: any } = $props()
 </script>
 
 <DocLayout>
 
-  <DocHead title="Types" text="This components library utilizing Typescript to define the types of the configurations of the components." {edit_url} />
+  <DocHead title="Types" text="This components library utilizing Typescript to define the types of the configurations of the components." edit_url={editURL("types")} />
 
   <DocBlock title="Animation Speed Type">
 <Code title="Typescript">

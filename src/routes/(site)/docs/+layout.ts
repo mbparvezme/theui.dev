@@ -13,7 +13,7 @@ export const load: LayoutServerLoad = async ({ fetch, url }) => {
   try {
     const components = await fetch("/data/components.json", {headers: { "Accept": "application/json" }}).then(data => data.json());
     const segment: string[] = url.pathname.split('/').filter((part: string) => part !== '');
-    const lastSegment = segment.at(-1) ?? ''; 
+    const lastSegment = segment.at(-1) ?? '';
 
     if (segment.length > 1) {
       if (lastSegment && !noJsonData.includes(lastSegment)) {
