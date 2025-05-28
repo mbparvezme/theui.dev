@@ -2,8 +2,9 @@
 <Page {component} />
 
 <script lang="ts">
-  import Page from "$lib/pages/breadcrumb.svx"
   import SEO from "$lib/SEO.svelte"
+  import Page from "$lib/pages/breadcrumb.svx"
+
   const component = [
     {
       "key": "props",

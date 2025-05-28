@@ -1,7 +1,7 @@
 <script lang="ts">
-  import { Container, Button, Svg } from "theui-svelte";
-  import PageHead from "$lib/ui/PageHeader.svelte"
+  import { Container, Button, Svg } from "theui-svelte"
   import SEO from "$lib/SEO.svelte"
+  import PageHead from "$lib/ui/PageHeader.svelte"
 </script>
 
 <SEO />

@@ -2,8 +2,8 @@
 <Page {component} />
 
 <script lang="ts">
-  import Page from "$lib/pages/navbar.svx"
   import SEO from "$lib/SEO.svelte"
+  import Page from "$lib/pages/navbar.svx"
 
   const component = {
     "navbar" : [

@@ -5,8 +5,8 @@
   import { twMerge } from 'tailwind-merge'
   import { components } from "$lib/components"
 
-  let { children }: {children: Snippet } = $props();
-  let linkClasses = (active: boolean = false) => twMerge("border-s-2 border-gray-500/10 ps-4 py-1 inline-block text-default tracking-wide font-normal", active && "border-brand-primary-500 text-brand-primary-500 dark:border-brand-primary-300 dark:text-brand-primary-300");
+  let { children }: {children: Snippet } = $props()
+  let linkClasses = (active: boolean = false) => twMerge("border-s-2 border-gray-500/10 ps-4 py-1 inline-block text-default tracking-wide font-normal", active && "border-brand-primary-500 text-brand-primary-500 dark:border-brand-primary-300 dark:text-brand-primary-300")
 
   let sidebar: boolean = $state(false)
   const toggleSidebar = () => sidebar = !sidebar

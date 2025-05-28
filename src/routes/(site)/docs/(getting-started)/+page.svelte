@@ -2,7 +2,7 @@
 <Page {components} />
 
 <script lang="ts">
-  import Page from "$lib/pages/introduction.svx"
   import SEO from "$lib/SEO.svelte"
+  import Page from "$lib/pages/introduction.svx"
   import { components } from "$lib/components"
 </script>

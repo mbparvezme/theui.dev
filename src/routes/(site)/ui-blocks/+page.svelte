@@ -24,8 +24,8 @@
 
 <script lang="ts">
   import { Button, Card, Container } from 'theui-svelte'
-  import PageHead from "$lib/ui/PageHeader.svelte"
   import SEO from "$lib/SEO.svelte"
+  import PageHead from "$lib/ui/PageHeader.svelte"
   import ComingSoon from "$lib/ui/ComingSoon.svelte"
 
   const blocks = [

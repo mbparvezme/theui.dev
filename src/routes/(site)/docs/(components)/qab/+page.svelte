@@ -2,8 +2,8 @@
 <Page {component} />
 
 <script lang="ts">
-  import Page from "$lib/pages/qab.svx"
   import SEO from "$lib/SEO.svelte"
+  import Page from "$lib/pages/qab.svx"
 
   const component = {
     "qab" : [
