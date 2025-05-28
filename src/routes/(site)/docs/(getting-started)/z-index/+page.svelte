@@ -1,11 +1,7 @@
-<script lang="ts">
-  import type { PageData } from "./$types";
-  import Page from "$lib/pages/z-index.svx";
+<SEO title="Z-index guide" />
+<Page />
 
-  let { data }: { data: PageData|any } = $props();
+<script lang="ts">
+  import Page from "$lib/pages/z-index.svx"
   import SEO from "$lib/SEO.svelte"
 </script>
-
-<SEO title="Z-index guide" />
-
-<Page />

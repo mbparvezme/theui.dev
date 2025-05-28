@@ -1,8 +1,8 @@
 <script lang="ts">
-  import type { Snippet } from 'svelte';
-  import { page } from "$app/state";
-  import { Container, Svg } from "theui-svelte";
-  import { twMerge } from 'tailwind-merge';
+  import type { Snippet } from 'svelte'
+  import { page } from "$app/state"
+  import { Container, Svg } from "theui-svelte"
+  import { twMerge } from 'tailwind-merge'
   import { components } from "$lib/components"
 
   let { children }: {children: Snippet } = $props();

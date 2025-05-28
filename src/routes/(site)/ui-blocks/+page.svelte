@@ -1,14 +1,4 @@
-<script lang="ts">
-  import type { PageData } from "../$types"
-  import { Button, Card, Container } from 'theui-svelte'
-  import PageHead from "$lib/ui/PageHeader.svelte"
-  import SEO from "$lib/SEO.svelte"
-  import ComingSoon from "$lib/ui/ComingSoon.svelte"
-  let { data }: {data: PageData } = $props()
-</script>
-
 <SEO title="UI Blocks" />
-
 <ComingSoon title="Exciting UI blocks" />
 
 <!-- <PageHead h1 = "Supercharge Your UI Workflow <br class='sm:hidden md:block'>with Ready UI Blocks" h2="Build beautiful apps in minutes, not hours." classes="text-start items-start">
@@ -31,3 +21,257 @@
     {/each}
   </section>
 </Container> -->
+
+<script lang="ts">
+  import { Button, Card, Container } from 'theui-svelte'
+  import PageHead from "$lib/ui/PageHeader.svelte"
+  import SEO from "$lib/SEO.svelte"
+  import ComingSoon from "$lib/ui/ComingSoon.svelte"
+
+  const blocks = [
+    {
+      "title": "Blog Blocks",
+      "slug": "blog",
+      "blocks": [
+        {
+          "title": "Blog Card",
+          "slug": "blog-card"
+        },
+        {
+          "title": "Blog Grid/List",
+          "slug": "blog-grid-list"
+        },
+        {
+          "title": "Featured Post",
+          "slug": "featured-post"
+        },
+        {
+          "title": "Post Header",
+          "slug": "post-header"
+        },
+        {
+          "title": "Post Body",
+          "slug": "post-body"
+        },
+        {
+          "title": "Author Bio",
+          "slug": "author-bio"
+        },
+        {
+          "title": "Comments Section",
+          "slug": "comments-section"
+        },
+        {
+          "title": "Tags / Category Badges",
+          "slug": "tags-category-badges"
+        },
+        {
+          "title": "Related Posts",
+          "slug": "related-posts"
+        }
+      ]
+    },
+    {
+      "title": "Ecommerce Blocks",
+      "slug": "ecommerce",
+      "blocks": [
+        {
+          "title": "Product Card",
+          "slug": "product-card"
+        },
+        {
+          "title": "Product Grid/List",
+          "slug": "product-grid-list"
+        },
+        {
+          "title": "Product Details",
+          "slug": "product-details"
+        },
+        {
+          "title": "Cart Preview",
+          "slug": "cart-preview"
+        },
+        {
+          "title": "Checkout Form",
+          "slug": "checkout-form"
+        },
+        {
+          "title": "Order Summary",
+          "slug": "order-summary"
+        },
+        {
+          "title": "Filters & Sort",
+          "slug": "filters-sort"
+        },
+        {
+          "title": "Category Header",
+          "slug": "category-header"
+        },
+        {
+          "title": "Review Section",
+          "slug": "review-section"
+        },
+        {
+          "title": "Empty Cart / Wishlist",
+          "slug": "empty-cart-wishlist"
+        }
+      ]
+    },
+    {
+      "title": "Form Blocks",
+      "slug": "forms",
+      "blocks": [
+        {
+          "title": "Contact Form",
+          "slug": "contact-form"
+        },
+        {
+          "title": "Newsletter Signup",
+          "slug": "newsletter-signup"
+        },
+        {
+          "title": "Checkout Form",
+          "slug": "checkout-form"
+        },
+        {
+          "title": "Multi-step Form",
+          "slug": "multi-step-form"
+        },
+        {
+          "title": "Profile Update Form",
+          "slug": "profile-update-form"
+        },
+        {
+          "title": "Search Form",
+          "slug": "search-form"
+        },
+        {
+          "title": "Feedback Form",
+          "slug": "feedback-form"
+        },
+        {
+          "title": "Job Application Form",
+          "slug": "job-application-form"
+        },
+        {
+          "title": "Support Ticket Form",
+          "slug": "support-ticket-form"
+        },
+        {
+          "title": "Survey / Quiz Form",
+          "slug": "survey-quiz-form"
+        },
+        {
+          "title": "Reservation / Booking Form",
+          "slug": "reservation-booking-form"
+        },
+        {
+          "title": "Payment Form",
+          "slug": "payment-form"
+        }
+      ]
+    },
+    {
+      "title": "Authentication Blocks",
+      "slug": "authentication",
+      "blocks": [
+        {
+          "title": "Login Form",
+          "slug": "login-form"
+        },
+        {
+          "title": "Register / Signup Form",
+          "slug": "register-signup-form"
+        },
+        {
+          "title": "Reset Password Form",
+          "slug": "reset-password-form"
+        },
+        {
+          "title": "Welcome Screens",
+          "slug": "welcome-screens"
+        },
+        {
+          "title": "PIN Code",
+          "slug": "pin-code"
+        }
+      ]
+    },
+    {
+      "title": "Business Blocks",
+      "slug": "business-sections",
+      "blocks": [
+        {
+          "title": "Pricing",
+          "slug": "pricing"
+        },
+        {
+          "title": "Testimonials",
+          "slug": "testimonials"
+        },
+        {
+          "title": "Call to Action",
+          "slug": "call-to-action"
+        },
+        {
+          "title": "FAQ",
+          "slug": "faq"
+        },
+        {
+          "title": "Features",
+          "slug": "features"
+        },
+        {
+          "title": "Teams",
+          "slug": "teams"
+        },
+        {
+          "title": "Stats",
+          "slug": "stats"
+        }
+      ]
+    },
+    {
+      "title": "Page Blocks",
+      "slug": "page-sections",
+      "blocks": [
+        {
+          "title": "Navigation",
+          "slug": "navigation"
+        },
+        {
+          "title": "Hero Sections",
+          "slug": "hero-sections"
+        },
+        {
+          "title": "Cards",
+          "slug": "cards"
+        },
+        {
+          "title": "Tables",
+          "slug": "tables"
+        },
+        {
+          "title": "Pagination",
+          "slug": "pagination"
+        },
+        {
+          "title": "Alerts",
+          "slug": "alerts"
+        },
+        {
+          "title": "Modals",
+          "slug": "modals"
+        },
+        {
+          "title": "Popups",
+          "slug": "popups"
+        },
+        {
+          "title": "Footers",
+          "slug": "footers"
+        }
+      ]
+    }
+  ]
+</script>

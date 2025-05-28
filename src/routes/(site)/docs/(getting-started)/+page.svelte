@@ -1,11 +1,8 @@
-<script lang="ts">
-  import type { PageData } from "./$types";
-  import Page from "$lib/pages/introduction.svx";
-
-  let { data }: { data: PageData|any } = $props();
-  import SEO from "$lib/SEO.svelte"
-</script>
-
 <SEO title="Introduction" />
+<Page {components} />
 
-<Page components={data.components} />
+<script lang="ts">
+  import Page from "$lib/pages/introduction.svx"
+  import SEO from "$lib/SEO.svelte"
+  import { components } from "$lib/components"
+</script>

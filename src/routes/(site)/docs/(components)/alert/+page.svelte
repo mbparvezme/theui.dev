@@ -2,7 +2,7 @@
 <Page {component} />
 
 <script lang="ts">
-  import Page from "$lib/pages/alert.svx";
+  import Page from "$lib/pages/alert.svx"
   import SEO from "$lib/SEO.svelte"
   const component = [
     {
