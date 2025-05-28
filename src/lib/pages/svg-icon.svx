@@ -11,14 +11,14 @@ description: Add scalable vector icons to your Svelte app with TheUI-Svelte's SV
   import Code from "$lib/ui/doc/CodeBlock.svelte";
   import Example from "$lib/ui/doc/Example.svelte";
   import ConfigComponent from "$lib/ui/doc/ConfigComponent.svelte";
-  import { processID } from "$lib";
+  import { processID, editURL } from "$lib";
   let { component, edit_url }: {component: any, edit_url?: string } = $props();
 
   import { Svg } from "theui-svelte";
 </script>
 
 <DocLayout>
-  <DocHead title="SVG Icon" text="The Svg component allows you to easily add SVG icons to your project. It acts as a wrapper for SVG elements and can replace the standard svg tag. You can include any path or other SVG elements within it." {edit_url}/>
+  <DocHead title="SVG Icon" text="The Svg component allows you to easily add SVG icons to your project. It acts as a wrapper for SVG elements and can replace the standard svg tag. You can include any path or other SVG elements within it." edit_url={editURL("svg-icon")} />
 
   <DocBlock title="About">
     <p class="not-prose">The <code>Svg</code> component is a versatile wrapper for incorporating SVG icons into your project. It simplifies the process of adding custom SVG elements, offering a convenient alternative to the standard <code>&lt;svg&gt;</code> tag.</p>

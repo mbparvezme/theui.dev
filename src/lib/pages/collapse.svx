@@ -11,14 +11,14 @@ description: Toggle content visibility in your Svelte app with TheUI-Svelte's Co
   import Code from "$lib/ui/doc/CodeBlock.svelte";
   import Example from "$lib/ui/doc/Example.svelte";
   import ConfigComponent from "$lib/ui/doc/ConfigComponent.svelte";
-  import { processID } from "$lib";
-  let { component, edit_url }: {component: any, edit_url?: string } = $props();
+  import { processID, editURL } from "$lib";
+  let { component }: {component: any } = $props();
 
   import { Collapse, Button } from "theui-svelte";
 </script>
 
 <DocLayout>
-  <DocHead title="Collapse" text="The Collapse component allows you to show and hide content independently. It is unstyled by default, giving you the flexibility to use any content and design according to your needs." {edit_url}/>
+  <DocHead title="Collapse" text="The Collapse component allows you to show and hide content independently. It is unstyled by default, giving you the flexibility to use any content and design according to your needs." edit_url={editURL("collapse")} />
 
   <DocBlock title="Example">
     <p class="not-prose">Ensure you have the <code>Collapse</code> component available. Below is a simple example demonstrating how to use the Chips component. This example shows how to create a chip with a basic text label:</p>

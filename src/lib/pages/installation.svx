@@ -9,13 +9,13 @@ description: Follow our step-by-step guide to install TheUI-Svelte component lib
   import DocHead from "$lib/ui/doc/Head.svelte";
   import DocBlock from "$lib/ui/doc/Block.svelte";
   import Code from "$lib/ui/doc/CodeBlock.svelte";
-  import { processID } from "$lib";
-  let { components, edit_url }: {components: any, edit_url?: string } = $props();
+  import { processID, editURL } from "$lib";
+  let { components }: {components: any } = $props();
 </script>
 
 <DocLayout>
 
-  <DocHead title="Installation" text="Install the <b>theui-svelte</b> component library in your project or start a new project with the boilerplate template. Install it to build fast and deliver faster." {edit_url} />
+  <DocHead title="Installation" text="Install the <b>theui-svelte</b> component library in your project or start a new project with the boilerplate template. Install it to build fast and deliver faster." edit_url={editURL("installation")} />
 
   <DocBlock title="Installation">
     <div>

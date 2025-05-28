@@ -14,7 +14,7 @@ description: Review the licensing terms for TheUI-Svelte. Understand how you can
 </script>
 
 <DocLayout>
-  <DocHead title="License" text="MIT License" {edit_url}/>
+  <DocHead title="License" text="MIT License" />
 
   <DocBlock>
     <div class="min-h-screen">

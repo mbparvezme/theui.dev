@@ -9,12 +9,12 @@ description: Enhance the accessibility of your Svelte applications with TheUI-Sv
   import DocHead from "$lib/ui/doc/Head.svelte";
   import DocBlock from "$lib/ui/doc/Block.svelte";
   import Code from "$lib/ui/doc/CodeBlock.svelte";
-  import { processID } from "$lib";
-  let { components, edit_url }: {components: any, edit_url?: string } = $props();
+  import { processID, editURL } from "$lib";
+  let { components }: {components: any } = $props();
 </script>
 
 <DocLayout>
-  <DocHead title="Accessibility Guide" text="Get to know the best practices and tips for making your site accessible with specific accessibility features available in <b>theui-svelte</b>." {edit_url}/>
+  <DocHead title="Accessibility Guide" text="Get to know the best practices and tips for making your site accessible with specific accessibility features available in <b>theui-svelte</b>." edit_url={editURL("accessibility")} />
 
   <DocBlock>
     <p class="not-prose"><b>theui-svelte</b> is designed with accessibility in mind, ensuring that all users, including those with disabilities, can interact with your components smoothly.</p>

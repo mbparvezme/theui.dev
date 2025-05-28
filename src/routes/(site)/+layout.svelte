@@ -1,13 +1,14 @@
 <script lang="ts">
-  import { type Snippet } from "svelte";
-	import '../../app.css';
-	import { page } from "$app/state";
-	import {Tooltip} from "theui-svelte";
-	import Navbar from  "$lib/ui/Navbar.svelte";
-	import Footer from  "$lib/ui/Footer.svelte";
-	import Shade from "$lib/ui/Shade.svelte";
+  import { type Snippet } from "svelte"
+	import '../../app.css'
 
-	let { children }: {children: Snippet} = $props();
+	import { page } from "$app/state"
+	import {Tooltip} from "theui-svelte"
+	import Navbar from  "$lib/ui/Navbar.svelte"
+	import Footer from  "$lib/ui/Footer.svelte"
+	import Shade from "$lib/ui/Shade.svelte"
+
+	let { children }: {children: Snippet} = $props()
 </script>
 
 <Navbar />

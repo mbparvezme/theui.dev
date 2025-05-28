@@ -9,13 +9,14 @@ description: Manage stacking contexts in your Svelte application with TheUI-Svel
   import DocHead from "$lib/ui/doc/Head.svelte";
   import DocBlock from "$lib/ui/doc/Block.svelte";
   import Code from "$lib/ui/doc/CodeBlock.svelte";
+  import { editURL } from "$lib";
   import { Alert, Table, TBody, TR, TH, TD, THead } from "theui-svelte";
-  let { components, edit_url }: {components: any, edit_url?: string } = $props();
+  let { components }: { components: any } = $props();
 </script>
 
 <DocLayout>
 
-  <DocHead title="Z-index" text="In this library, several components utilize z-index. This document will let you know the order of the z-index in components." {edit_url} />
+  <DocHead title="Z-index" text="In this library, several components utilize z-index. This document will let you know the order of the z-index in components." edit_url={editURL("z-index")} />
 
   <DocBlock>
     <p class="not-prose">This library leverages z-index for stacking elements. Avoid modifying z-index values to prevent layout disruptions.</p>

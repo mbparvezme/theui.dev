@@ -9,13 +9,13 @@ description: Customize your Svelte app's appearance with TheUI-Svelte's Colors a
   import DocHead from "$lib/ui/doc/Head.svelte";
   import DocBlock from "$lib/ui/doc/Block.svelte";
   import Code from "$lib/ui/doc/CodeBlock.svelte";
-  import { processID } from "$lib";
+  import { processID, editURL } from "$lib";
   import { Alert, Table, TBody, TR, TH, TD, THead } from "theui-svelte";
-  let { colors, edit_url }: {colors: any, edit_url?: string } = $props();
+  let { colors }: {colors: any } = $props();
 </script>
 
 <DocLayout>
-  <DocHead title="Colors and Branding" text="One of the main features of theui-svelte components library is its customizable color options, allowing you to maintain brand identity and ensure consistent theming efficiently." {edit_url}/>
+  <DocHead title="Colors and Branding" text="One of the main features of theui-svelte components library is its customizable color options, allowing you to maintain brand identity and ensure consistent theming efficiently." edit_url={editURL("colors")} />
 
   <DocBlock>
     <p class="not-prose">The color system in TailwindCSS is a powerful tool for developers, and we've taken it a step further in our component library! By leveraging TailwindCSS, we've introduced additional custom color classes tailored for consistent branding. These new classes work just like Tailwind's native color classes but are specifically designed for branding and come with full support for shades. Using the built-in color system you can generate both shaded and non-shaded color classes.</p>

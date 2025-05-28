@@ -1,11 +1,28 @@
-<script lang="ts">
-  import type { PageData } from "./$types";
-  import Page from "$lib/pages/label.svx";
-
-  let { data }: { data: PageData|any } = $props();
-  import SEO from "$lib/SEO.svelte"
-</script>
-
 <SEO title="Label" />
+<Page {component} />
 
-<Page component={data.component} edit_url={data.editURL} />
+<script lang="ts">
+  import SEO from "$lib/SEO.svelte"
+  import Page from "$lib/pages/label.svx"
+
+  const component = [
+    {
+      "key": "props",
+      "title": "Props",
+      "data": [
+        {
+          "name": "label",
+          "type": "string | Snippet",
+          "default": "undefined",
+          "description": "The label prop defines the content of the label as plain string, HTML string or Svelte Snippet."
+        },
+        {
+          "name": "id",
+          "type": "string",
+          "default": "null",
+          "description": "The ID of the label that bind it with the input."
+        }
+      ]
+    } 
+  ]
+</script>

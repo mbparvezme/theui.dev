@@ -11,14 +11,14 @@ description: The DarkMode component is a user-friendly theme switcher designed t
   import Code from "$lib/ui/doc/CodeBlock.svelte";
   import Example from "$lib/ui/doc/Example.svelte";
   import ConfigComponent from "$lib/ui/doc/ConfigComponent.svelte";
-  import { processID } from "$lib";
-  let { component, edit_url }: {component: any, edit_url?: string } = $props();
+  import { processID, editURL } from "$lib";
+  let { component }: {component: any } = $props();
 
   import { DarkMode, Svg } from "theui-svelte";
 </script>
 
 <DocLayout>
-  <DocHead title="DarkMode" text="The DarkMode component is a user-friendly theme switcher designed to toggle between light and dark modes effortlessly. It ensures an optimal user experience by adapting the interface to different lighting conditions or personal preferences." {edit_url}/>
+  <DocHead title="DarkMode" text="The DarkMode component is a user-friendly theme switcher designed to toggle between light and dark modes effortlessly. It ensures an optimal user experience by adapting the interface to different lighting conditions or personal preferences." edit_url={editURL("dark-mode")} />
 
   <DocBlock title="About">
     <p class="not-prose">This component is accessible, and easy to integrate into any project. It leverages TailwindCSS's darkMode configuration to provide seamless theme transitions, making it an essential tool for creating modern, responsive applications.</p>
