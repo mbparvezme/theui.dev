@@ -1,7 +1,9 @@
 ---
 title: Chips
+category: Components
+description: Add interactive and stylish chips for tags and filters with theui-svelte’s Chips component.
 dir: ".lib/pages"
-description: Implement interactive and stylish chips in your Svelte app with TheUI-Svelte's Chips component, perfect for tags and filters.
+tags: [chips, tags, filters, interactive, component, svelte, svelte-5, theui-svelte, component-library, ui, tailwindcss]
 ---
 
 <script lang="ts">

@@ -1,7 +1,9 @@
 ---
 title: Tooltip
+category: Components
+description: Provide contextual information using informative tooltips in your Svelte app.
 dir: ".lib/pages"
-description: Add informative tooltips to your Svelte app with theui-svelte's Tooltip component, providing users with contextual information.
+tags: [tooltip, info, popup, component, svelte, svelte-5, theui-svelte, component-library, ui, tailwindcss]
 ---
 
 <script lang="ts">

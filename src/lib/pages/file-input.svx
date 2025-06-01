@@ -1,7 +1,9 @@
 ---
 title: FileInput
+category: Components
+description: A customizable file selection input to handle uploads with consistent style and behavior.
 dir: ".lib/pages"
-description: The FileInput component is a customizable wrapper for file selection, providing a more flexible and consistent way to handle file uploads in forms.
+tags: [file-input, upload, input, form, component, svelte, svelte-5, theui-svelte, component-library, ui, tailwindcss]
 ---
 
 <script lang="ts">

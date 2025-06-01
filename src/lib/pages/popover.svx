@@ -1,7 +1,9 @@
 ---
 title: Popover
+category: Components
+description: Flexible UI element showing extra content on user interaction for context or actions.
 dir: ".lib/pages"
-description: a flexible and customizable UI element that displays additional content when triggered by user interaction. It is useful for providing contextual information, tooltips, or action menus without cluttering the interface.
+tags: [popover, tooltip, context-menu, component, svelte, svelte-5, theui-svelte, component-library, ui, tailwindcss]
 ---
 
 <script lang="ts">

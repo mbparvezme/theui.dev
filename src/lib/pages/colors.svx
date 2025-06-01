@@ -1,7 +1,9 @@
 ---
 title: Colors
+category: Guides
+description: Customize your app's look using theui-svelte's Colors and Branding guide to apply brand colors easily.
 dir: ".lib/pages"
-description: Customize your Svelte app's appearance with TheUI-Svelte's Colors and Branding guide. Learn how to apply your brand colors effortlessly.
+tags: [colors, branding, style, guide, theme, customization, theui-svelte, svelte, component-library]
 ---
 
 <script lang="ts">

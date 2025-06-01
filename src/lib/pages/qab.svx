@@ -1,7 +1,9 @@
 ---
 title: Quick Action Button - QAB
+category: Components
+description: A button designed for quick user actions, customizable and responsive.
 dir: ".lib/pages"
-description: 
+tags: [quick-action-button, qab, fab, fab-button, button, component, svelte, svelte-5, theui-svelte, component-library, ui, tailwindcss]
 ---
 
 <script lang="ts">

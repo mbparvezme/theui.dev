@@ -1,7 +1,9 @@
 ---
-title: Dark mode
+title: Dark Mode
+category: Components
+description: A user-friendly theme switcher to toggle between light and dark modes effortlessly.
 dir: ".lib/pages"
-description: The DarkMode component is a user-friendly theme switcher designed to toggle between light and dark modes effortlessly.
+tags: [dark-mode, theme-switcher, theme, toggle, component, svelte, svelte-5, theui-svelte, component-library, ui, tailwindcss]
 ---
 
 <script lang="ts">

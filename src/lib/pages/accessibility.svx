@@ -1,7 +1,9 @@
 ---
-title: Accessability guide
+title: Accessibility Guide
+category: Guides
+description: Learn how to make your theui-svelte components accessible and user-friendly for everyone.
 dir: ".lib/pages"
-description: Enhance the accessibility of your Svelte applications with TheUI-Svelte's Accessibility guide. Ensure your components are user-friendly for all.
+tags: [accessibility, a11y, guide, component-library, theui-svelte, svelte]
 ---
 
 <script lang="ts">

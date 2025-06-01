@@ -1,7 +1,9 @@
 ---
 title: Dropdown
+category: Components
+description: A customizable dropdown menu component for selecting options with smooth interaction and accessibility.
 dir: ".lib/pages"
-description: 
+tags: [dropdown, menu, select, options, component, svelte, svelte-5, theui-svelte, component-library, ui, tailwindcss]
 ---
 
 <script lang="ts">

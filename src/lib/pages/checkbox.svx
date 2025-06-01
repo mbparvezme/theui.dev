@@ -1,7 +1,9 @@
 ---
 title: Checkbox
+category: Components
+description: A versatile and customizable input for selecting options in forms, with support for sizes, animations, and styles.
 dir: ".lib/pages"
-description: The Checkbox component is a versatile and customizable input element used for selecting one or multiple options in a form. It supports various sizes, animations, and styling options to fit different UI requirements.
+tags: [checkbox, input, form, selection, component, svelte, svelte-5, theui-svelte, component-library, ui, tailwindcss]
 ---
 
 <script lang="ts">

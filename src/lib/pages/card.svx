@@ -1,7 +1,9 @@
 ---
 title: Card
+category: Components
+description: A dynamic and versatile way to showcase content, with many customization options for any style or purpose.
 dir: ".lib/pages"
-description: A dynamic and versatile way to showcase content, with a variety of customization options to fit any style or purpose.
+tags: [card, content, container, display, component, svelte, svelte-5, theui-svelte, component-library, ui, tailwindcss]
 ---
 
 <script lang="ts">

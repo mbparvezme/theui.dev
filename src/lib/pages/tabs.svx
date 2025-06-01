@@ -1,7 +1,9 @@
 ---
 title: Tabs
+category: Components
+description: Organize content into navigable sections with tabs and pills for a smooth user experience.
 dir: ".lib/pages"
-description: Organize content into navigable sections in your Svelte app with theui-svelte's Tabs and Pills component, ensuring a smooth UX.
+tags: [tabs, navigation, pills, component, svelte, svelte-5, theui-svelte, component-library, ui, tailwindcss]
 ---
 
 <script lang="ts">

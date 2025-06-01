@@ -1,7 +1,9 @@
 ---
 title: Pagination
+category: Components
+description: Manage large data sets with seamless navigation using the pagination component.
 dir: ".lib/pages"
-description: Enable seamless content navigation in your Svelte app with theui-svelte's Pagination component, ideal for managing large data sets.
+tags: [pagination, navigation, data, component, svelte, svelte-5, theui-svelte, component-library, ui, tailwindcss]
 ---
 
 <script lang="ts">

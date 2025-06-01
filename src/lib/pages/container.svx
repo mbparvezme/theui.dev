@@ -1,7 +1,9 @@
 ---
 title: Container
+category: Components
+description: Structure your Svelte app with theui-svelte's Container component for flexible and responsive layouts.
 dir: ".lib/pages"
-description: Structure your Svelte app with the Container component, providing a flexible and responsive layout foundation.
+tags: [container, layout, structure, responsive, component, svelte, svelte-5, theui-svelte, component-library, ui, tailwindcss]
 ---
 
 <script lang="ts">

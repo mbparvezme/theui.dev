@@ -1,7 +1,9 @@
 ---
-title: z-index guide
+title: Z-index Guide
+category: Guides
+description: Manage stacking order and visibility of components with TheUI-Svelte's z-index guide.
 dir: ".lib/pages"
-description: Manage stacking contexts in your Svelte application with TheUI-Svelte's Z-index guide. Ensure proper layering and visibility of components.
+tags: [z-index, stacking, css, guide, theui-svelte, svelte, component-library]
 ---
 
 <script lang="ts">

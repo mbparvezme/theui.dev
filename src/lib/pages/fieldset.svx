@@ -1,7 +1,9 @@
 ---
 title: Fieldset
+category: Components
+description: A wrapper for grouping related inputs, providing better structure and styling control in forms.
 dir: ".lib/pages"
-description: The Fieldset component is a wrapper for input groups, providing better structure and styling control. It helps in grouping related inputs together while maintaining a consistent design.
+tags: [fieldset, form-group, inputs, structure, component, svelte, svelte-5, theui-svelte, component-library, ui, tailwindcss]
 ---
 
 <script lang="ts">
