@@ -1,7 +1,9 @@
 ---
 title: Button Group
+category: Components
+description: Create responsive and stylish button groups for your Svelte app with theui-svelte, fully customizable with TailwindCSS.
 dir: ".lib/pages"
-description: Create responsive and stylish buttons for your Svelte app with TheUI-Svelte's Button component, fully customizable with TailwindCSS.
+tags: [button-group, button, buttons, group, component, svelte, svelte-5, theui-svelte, component-library, ui, tailwindcss]
 ---
 
 <script lang="ts">

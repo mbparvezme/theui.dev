@@ -1,7 +1,9 @@
 ---
 title: Drawer
+category: Components
+description: A versatile UI element that slides in from the screen edge to show extra content or navigation without blocking the main view.
 dir: ".lib/pages"
-description: The Drawer component is a versatile UI element that slides in from the edge of the screen, providing a convenient way to display additional content or navigation without disrupting the main view.
+tags: [drawer, sidebar, slide-in, navigation, component, svelte, svelte-5, theui-svelte, component-library, ui, tailwindcss]
 ---
 
 <script lang="ts">

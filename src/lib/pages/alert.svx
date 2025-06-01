@@ -1,7 +1,9 @@
 ---
 title: Alert
+category: Components
+description: Display important messages in your Svelte app with theui-svelte’s customizable Alert component.
 dir: ".lib/pages"
-description: Utilize theui-svelte's Alert component to display crucial messages and notifications in your Svelte applications with customizable styles.
+tags: [alert, notification, message, component, svelte, svelte-5, theui-svelte, component-library, ui, tailwindcss]
 ---
 
 <script lang="ts">

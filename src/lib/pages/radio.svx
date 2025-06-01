@@ -1,7 +1,9 @@
 ---
 title: Radio Button
+category: Components
+description: Select a single option from a group with a modern, customizable radio button supporting sizes and animations.
 dir: ".lib/pages"
-description: The Radio Button component allows users to select a single option from a group. It provides a modern and customizable alternative to the default radio input, supporting various sizes, animations, and styling options.
+tags: [radio-button, form-input, component, svelte, svelte-5, theui-svelte, component-library, ui, tailwindcss]
 ---
 
 <script lang="ts">

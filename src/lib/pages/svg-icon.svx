@@ -1,7 +1,9 @@
 ---
 title: Svg Icon
+category: Components
+description: Add scalable vector icons to your Svelte app, improving UI clarity and style.
 dir: ".lib/pages"
-description: Add scalable vector icons to your Svelte app with TheUI-Svelte's SVG Icon component, enhancing your UI with clarity and style.
+tags: [svg-icon, icon, vector, component, svelte, svelte-5, theui-svelte, component-library, ui, tailwindcss]
 ---
 
 <script lang="ts">

@@ -1,7 +1,9 @@
 ---
 title: Badge
+category: Components
+description: Add dynamic visual indicators like notifications and status labels with theui-svelte’s Badge component.
 dir: ".lib/pages"
-description: Add dynamic visual indicators to your Svelte app with TheUI-Svelte's Badge component. Perfect for notifications and status labels.
+tags: [badge, notification, status-label, component, svelte, svelte-5, theui-svelte, component-library, ui, tailwindcss]
 ---
 
 <script lang="ts">

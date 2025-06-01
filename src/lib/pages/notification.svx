@@ -1,7 +1,9 @@
 ---
 title: Notification
+category: Components
+description: Deliver user notifications with various alert styles for effective communication.
 dir: ".lib/pages"
-description: Deliver user notifications effectively in your Svelte app with theui-svelte's Notification component, supporting various alert styles.
+tags: [notification, alert, message, component, svelte, svelte-5, theui-svelte, component-library, ui, tailwindcss]
 ---
 
 <script lang="ts">

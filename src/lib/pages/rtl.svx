@@ -1,7 +1,9 @@
 ---
-title: RTL support guide
+title: RTL Support Guide
+category: Guides
+description: Implement right-to-left text support for seamless bidirectional layouts in your Svelte app.
 dir: ".lib/pages"
-description: Implement right-to-left (RTL) support in your Svelte app with TheUI-Svelte's comprehensive RTL guide. Achieve seamless bidirectional text compatibility.
+tags: [rtl, bidirectional, guide, theui-svelte, svelte, component-library]
 ---
 
 <script lang="ts">

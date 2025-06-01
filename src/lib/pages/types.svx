@@ -1,7 +1,9 @@
 ---
-title: Type definition
+title: Type Definition
+category: Guides
+description: Understand and use the component types in TheUI-Svelte to build robust Svelte apps.
 dir: ".lib/pages"
-description: Understand the various component types in TheUI-Svelte. Learn how to use them effectively to build a versatile and robust Svelte application.
+tags: [types, definition, guide, theui-svelte, svelte, component-library]
 ---
 
 <script lang="ts">

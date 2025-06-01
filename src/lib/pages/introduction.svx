@@ -1,7 +1,9 @@
 ---
 title: Introduction
+category: Guides
+description: Get started quickly with theui-svelte. Learn how to set up and integrate the component library in your SvelteKit projects.
 dir: ".lib/pages"
-description: Begin your journey with "theui-svelte". Learn how to quickly set up and integrate "theui-svelte" component library into your Sveltekit projects.
+tags: [introduction, getting-started, guide, theui-svelte, svelte, component-library]
 ---
 
 <script lang="ts">

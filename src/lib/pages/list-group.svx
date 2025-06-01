@@ -1,7 +1,9 @@
 ---
 title: List Group
+category: Components
+description: Group list items with interactive and collapsible functionality for organized content display.
 dir: ".lib/pages"
-description: Toggle content visibility in your Svelte app with TheUI-Svelte's Collapse component, offering a seamless user experience.
+tags: [list-group, list, group, collapsible, component, svelte, svelte-5, theui-svelte, component-library, ui, tailwindcss]
 ---
 
 <script lang="ts">

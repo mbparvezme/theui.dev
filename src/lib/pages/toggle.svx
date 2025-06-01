@@ -1,7 +1,9 @@
 ---
 title: Toggle
+category: Components
+description: Customizable switch component replacing checkboxes and radio buttons.
 dir: ".lib/pages"
-description: Fully customizable switch that can replace traditional checkboxes and radio buttons.
+tags: [toggle, switch, form-input, component, svelte, svelte-5, theui-svelte, component-library, ui, tailwindcss]
 ---
 
 <script lang="ts">

@@ -1,7 +1,9 @@
 ---
 title: Input
+category: Components
+description: A flexible, customizable input component supporting various types for consistent user experience.
 dir: ".lib/pages"
-description: The Input component is a flexible and customizable form element that supports various input types. It ensures a consistent and seamless experience across different use cases.
+tags: [input, form, text-input, customizable, component, svelte, svelte-5, theui-svelte, component-library, ui, tailwindcss]
 ---
 
 <script lang="ts">

@@ -1,7 +1,9 @@
 ---
 title: Collapse
+category: Components
+description: Toggle content visibility smoothly with theui-svelte’s Collapse component for a better user experience.
 dir: ".lib/pages"
-description: Toggle content visibility in your Svelte app with TheUI-Svelte's Collapse component, offering a seamless user experience.
+tags: [collapse, toggle, content, animation, component, svelte, svelte-5, theui-svelte, component-library, ui, tailwindcss]
 ---
 
 <script lang="ts">

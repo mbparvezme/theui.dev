@@ -1,7 +1,9 @@
 ---
 title: Progress Bar
+category: Components
+description: Visual indicator of task progress with customizable styling options.
 dir: ".lib/pages"
-description: The Progress component is used to display progress visually. It helps indicate completion status in a clear and customizable way.
+tags: [progress-bar, progress, indicator, component, svelte, svelte-5, theui-svelte, component-library, ui, tailwindcss]
 ---
 
 <script lang="ts">

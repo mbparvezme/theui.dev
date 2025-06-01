@@ -1,7 +1,9 @@
 ---
 title: Table
+category: Components
+description: Display data responsively with customizable tables for your Svelte app.
 dir: ".lib/pages"
-description: Present data effectively in your Svelte app with theui-svelte's Table component, supporting responsive and customizable designs.
+tags: [table, data, grid, component, svelte, svelte-5, theui-svelte, component-library, ui, tailwindcss]
 ---
 
 <script lang="ts">

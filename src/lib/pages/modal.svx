@@ -1,7 +1,9 @@
 ---
 title: Modal
+category: Components
+description: Customizable modal dialogs and pop-ups to enhance your Svelte app’s user interface.
 dir: ".lib/pages"
-description: Integrate customizable modals into your Svelte app with TheUI-Svelte's Modal component, perfect for dialogs and pop-ups.
+tags: [modal, dialog, popup, overlay, component, svelte, svelte-5, theui-svelte, component-library, ui, tailwindcss]
 ---
 
 <script lang="ts">

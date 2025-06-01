@@ -1,7 +1,9 @@
 ---
-title: Close button
+title: Close Button
+category: Components
+description: A functional close button component for your Svelte app in theui-svelte library.
 dir: ".lib/pages"
-description: A functional close button available for the Svelte app in theui-svelte library.
+tags: [close-button, button, interaction, component, svelte, svelte-5, theui-svelte, component-library, ui, tailwindcss]
 ---
 
 <script lang="ts">
