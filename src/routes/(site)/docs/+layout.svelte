@@ -8,13 +8,13 @@
   let { children }: {children: Snippet } = $props()
   let linkClasses = (active: boolean = false) => twMerge("border-s-2 border-gray-500/10 ps-4 py-1 inline-block text-default tracking-wide font-normal", active && "border-brand-primary-500 text-brand-primary-500 dark:border-brand-primary-300 dark:text-brand-primary-300")
 
-  let sidebar: boolean = $state(false)
-  const toggleSidebar = () => sidebar = !sidebar
+  let showSidebar: boolean = $state(false)
+  const toggleSidebar = () => showSidebar = !showSidebar
 </script>
 
-<Container class="relative flex md:gap-8 min-h-screen pb-48 pt-28">
-  <aside class="doc-sidebar fixed top-0 md:top-28 start-0 md:start-auto bottom-0 md:bottom-auto block w-full md:h-[calc(100vh_-_112px)] shrink-0 md:bg-transparent md:translate-x-0 md:w-48 lg:w-64 transition-transform z-[110] bg-primary" class:-translate-x-[calc(100%_+_32px)]={!sidebar}>
-    <div class="flex flex-col h-full overflow-y-auto py-16 md:pt-0 ps-8 md:ps-0">
+<Container class="relative flex lg:gap-8 min-h-screen">
+  <aside class="doc-sidebar fixed h-fit lg:sticky top-14 lg:top-28 self-start left-0 right-0 z-99 lg:z-auto bg-primary ps-8 pt-16 pb-32 lg:ps-0 lg:pt-0 lg:pb-0 lg:translate-x-0 transition-transform duration-300" class:-translate-x-full={!showSidebar}>
+    <div class="max-h-[calc(100vh-7rem)] overflow-y-auto overflow-x-hidden pr-2 w-full lg:w-64">
 
       <section>
         <h3 class="font-semibold mb-4 flex gap-3 items-center">
@@ -71,7 +71,7 @@
           </Svg>
           Utilities
         </h3>
-        <nav class="sidebar-link flex-grow flex flex-col text-sm mb-8 dark:font-light">
+        <nav class="sidebar-link flex-grow flex flex-col text-sm dark:font-light">
           {#each components.utilities.links as component}
             <div>
               <a class={linkClasses(page.url.pathname==component.link)} href={component.link}>{@html component.text}</a>
@@ -83,11 +83,11 @@
     </div>
   </aside>
 
-  <div class="docs min-h-screen grow relative w-full md:max-w-[calc(100%_-_14rem)] lg:max-w-[calc(100%_-_18rem)] md:ms-[224px] lg:ms-[288px]">
+  <div class="docs min-h-screen grow relative">
     {@render children()}
   </div>
 
-  <button onclick={()=>toggleSidebar()} aria-label="Quick Action Button" class="flex md:hidden items-center justify-center cursor-pointer bg-brand-primary-500 hover:bg-brand-primary-600 text-on-brand-primary focus:ring-brand-primary-500/50 shadow-2xl w-14 h-14 rounded-full ease-in-out duration-300 transition-all fixed end-6 bottom-6 z-[120]">
+  <button onclick={()=>toggleSidebar()} aria-label="Quick Action Button" class="flex lg:hidden items-center justify-center cursor-pointer bg-brand-primary-500 hover:bg-brand-primary-600 text-on-brand-primary focus:ring-brand-primary-500/50 shadow-2xl w-14 h-14 rounded-full ease-in-out duration-300 transition-all fixed end-6 bottom-6 z-[120]">
     <svg width="1rem" height="1rem" viewBox="0 0 16 16" focusable="false" aria-hidden="true" class="theui-svg-icon shrink-0 fill-current w-[60%] h-[60%]" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"></path></svg>
   </button>
 </Container>
