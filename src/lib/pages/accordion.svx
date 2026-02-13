@@ -1,7 +1,9 @@
 ---
 title: Accordion
+category: Components
+description: A flexible and accessible accordion component for Svelte apps using theui-svelte.
 dir: ".lib/pages"
-description: Enhance your Svelte app with theui-svelte's Accordion component. Easily create collapsible sections to streamline your content presentation.
+tags: [accordion, collapsible, toggle, component, svelte, svelte-5, theui-svelte, component-library, ui, tailwindcss]
 ---
 
 <script lang="ts">

@@ -1,7 +1,9 @@
 ---
 title: Select
+category: Components
+description: Customizable dropdown for selecting options with support for static/dynamic options and floating labels.
 dir: ".lib/pages"
-description: Provides a customizable dropdown for selecting options. It supports static and dynamic options, floating labels, and various styling options for flexibility.
+tags: [select, dropdown, form-input, component, svelte, svelte-5, theui-svelte, component-library, ui, tailwindcss]
 ---
 
 <script lang="ts">

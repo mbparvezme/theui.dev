@@ -1,7 +1,9 @@
 ---
 title: License
+category: Guides
+description: Review licensing terms for TheUI-Svelte, including usage and distribution rules.
 dir: ".lib/pages"
-description: Review the licensing terms for TheUI-Svelte. Understand how you can use and distribute this component library in your Svelte projects.
+tags: [license, terms, guide, theui-svelte, svelte, component-library]
 ---
 
 <script lang="ts">

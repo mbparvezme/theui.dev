@@ -1,7 +1,9 @@
 ---
 title: Form
+category: Components
+description: A reusable wrapper for HTML forms to simplify creation, submission, and event handling.
 dir: ".lib/pages"
-description: A reusable wrapper for the HTML <form> element, simplifying form creation, submission handling, and event management.
+tags: [form, submission, inputs, wrapper, component, svelte, svelte-5, theui-svelte, component-library, ui, tailwindcss]
 ---
 
 <script lang="ts">

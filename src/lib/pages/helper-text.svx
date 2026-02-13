@@ -1,7 +1,9 @@
 ---
 title: Helper Text
+category: Components
+description: Provides additional context or guidance for form inputs, like hints or error messages, supporting plain and dynamic text.
 dir: ".lib/pages"
-description: A lightweight component designed to provide additional context or guidance for form inputs, such as descriptions, hints, or error messages. It supports both plain text and dynamic content for flexibility.
+tags: [helper-text, hints, guidance, form, component, svelte, svelte-5, theui-svelte, component-library, ui, tailwindcss]
 ---
 
 <script lang="ts">

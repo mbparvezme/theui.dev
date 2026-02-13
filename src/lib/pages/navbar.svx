@@ -1,7 +1,9 @@
 ---
 title: Navbar
+category: Components
+description: Responsive and accessible navigation bars tailored for usability in your Svelte app.
 dir: ".lib/pages"
-description: Design responsive and accessible navigation bars for your Svelte app with theui-svelte's Navbar component, tailored for usability.
+tags: [navbar, navigation, responsive, menu, component, svelte, svelte-5, theui-svelte, component-library, ui, tailwindcss]
 ---
 
 <script lang="ts">

@@ -1,7 +1,9 @@
 ---
 title: Popup
+category: Components
+description: Engaging entrance and exit popups to enhance user interaction in your Svelte app.
 dir: ".lib/pages"
-description: Create engaging entrance and exit popups for your Svelte app with theui-svelte's Popup component, enhancing user interaction.
+tags: [popup, modal, alert, entrance, exit, component, svelte, svelte-5, theui-svelte, component-library, ui, tailwindcss]
 ---
 
 <script lang="ts">

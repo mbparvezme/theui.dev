@@ -1,7 +1,9 @@
 ---
 title: Label
+category: Components
+description: A reusable component for consistent form labels supporting strings and snippets, integrated with form inputs.
 dir: ".lib/pages"
-description: A reusable component for rendering form labels, ensuring consistent styling and behavior across all inputs. It supports both string and snippet-based labels and integrates seamlessly with the Form input components.
+tags: [label, form-label, form, component, svelte, svelte-5, theui-svelte, component-library, ui, tailwindcss]
 ---
 
 <script lang="ts">

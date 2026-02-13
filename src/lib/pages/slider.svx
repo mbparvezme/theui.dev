@@ -1,7 +1,9 @@
 ---
 title: Slider
+category: Components
+description: Navigate content sections easily with theui-svelte's Slider component for smooth UX.
 dir: ".lib/pages"
-description: Organize content into navigable sections in your Svelte app with theui-svelte's Tabs and Pills component, ensuring a smooth UX.
+tags: [slider, carousel, navigation, component, svelte, svelte-5, theui-svelte, component-library, ui, tailwindcss]
 ---
 
 <script lang="ts">

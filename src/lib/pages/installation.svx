@@ -1,7 +1,9 @@
 ---
-title: Installation guide
+title: Installation Guide
+category: Guides
+description: Step-by-step instructions to install theui-svelte component library for seamless integration.
 dir: ".lib/pages"
-description: Follow our step-by-step guide to install TheUI-Svelte component library. Get started with easy installation instructions for seamless integration.
+tags: [installation, setup, guide, theui-svelte, svelte, component-library]
 ---
 
 <script lang="ts">
