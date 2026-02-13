@@ -49,17 +49,17 @@ tags: [chips, tags, filters, interactive, component, svelte, svelte-5, theui-sve
     <Example>
       {#snippet example()}
       <div>
-        <Chips imageUrl="https://randomuser.me/api/portraits/women/66.jpg">Jasmine Kira</Chips>
+        <Chips imgSrc="https://randomuser.me/api/portraits/women/66.jpg">Jasmine Kira</Chips>
       </div>
       {/snippet}
 
       {#snippet code()}
 ```html
-<Chips imageUrl="/path/to/image.png">...</Chips>
+<Chips imgSrc="/path/to/image.png">...</Chips>
 ```
       {/snippet}
     </Example>
-    <p class="not-prose">The <code>imageUrl</code> prop specifies the path to the image ("/path/to/image.png"), adding an image to the chip.</p>
+    <p class="not-prose">The <code>imgSrc</code> prop specifies the path to the image ("/path/to/image.png"), adding an image to the chip.</p>
   </DocBlock>
 
   <DocBlock title="Disable Close Button">
@@ -67,7 +67,7 @@ tags: [chips, tags, filters, interactive, component, svelte, svelte-5, theui-sve
     <Example>
       {#snippet example()}
       <div>
-        <Chips imageUrl="/assets/img/theui-logo.png" close={false}>Example Chips</Chips>
+        <Chips imgSrc="/assets/img/theui-logo.png" close={false}>Example Chips</Chips>
       </div>
       {/snippet}
 
@@ -77,7 +77,7 @@ tags: [chips, tags, filters, interactive, component, svelte, svelte-5, theui-sve
 ```
       {/snippet}
     </Example>
-    <p class="not-prose">The <code>imageUrl</code> prop specifies the path to the image ("/path/to/image.png"), adding an image to the chip.</p>
+    <p class="not-prose">The <code>imgSrc</code> prop specifies the path to the image ("/path/to/image.png"), adding an image to the chip.</p>
   </DocBlock>
 
   <DocBlock title="Sizes">
@@ -86,9 +86,9 @@ tags: [chips, tags, filters, interactive, component, svelte, svelte-5, theui-sve
     <Example>
       {#snippet example()}
         <div class="flex flex-col items-center gap-4">
-        <Chips imageUrl="https://randomuser.me/api/portraits/women/66.jpg" size="sm">Jasmine Kira</Chips>
-        <Chips imageUrl="https://randomuser.me/api/portraits/women/66.jpg" size="md">Jasmine Kira</Chips>
-        <Chips imageUrl="https://randomuser.me/api/portraits/women/66.jpg" size="lg">Jasmine Kira</Chips>
+        <Chips imgSrc="https://randomuser.me/api/portraits/women/66.jpg" size="sm">Jasmine Kira</Chips>
+        <Chips imgSrc="https://randomuser.me/api/portraits/women/66.jpg" size="md">Jasmine Kira</Chips>
+        <Chips imgSrc="https://randomuser.me/api/portraits/women/66.jpg" size="lg">Jasmine Kira</Chips>
         </div>
       {/snippet}
 
@@ -100,7 +100,7 @@ tags: [chips, tags, filters, interactive, component, svelte, svelte-5, theui-sve
 ```
       {/snippet}
     </Example>
-    <p class="not-prose">The <code>imageUrl</code> prop specifies the path to the image ("/path/to/image.png"), adding an image to the chip.</p>
+    <p class="not-prose">The <code>imgSrc</code> prop specifies the path to the image ("/path/to/image.png"), adding an image to the chip.</p>
   </DocBlock>
 
   <DocBlock title="Rounded Corner">
@@ -108,11 +108,11 @@ tags: [chips, tags, filters, interactive, component, svelte, svelte-5, theui-sve
     <Example>
       {#snippet example()}
         <div class="flex flex-col items-center gap-4">
-        <Chips imageUrl="https://randomuser.me/api/portraits/women/65.jpg" rounded="none">Jasmine Kira</Chips>
-        <Chips imageUrl="https://randomuser.me/api/portraits/women/66.jpg" rounded="md">Jasmine Kira</Chips>
-        <Chips imageUrl="https://randomuser.me/api/portraits/women/67.jpg" rounded="lg">Jasmine Kira</Chips>
-        <Chips imageUrl="https://randomuser.me/api/portraits/women/68.jpg" rounded="xl">Jasmine Kira</Chips>
-        <Chips imageUrl="https://randomuser.me/api/portraits/women/69.jpg" rounded="full">Jasmine Kira</Chips>
+        <Chips imgSrc="https://randomuser.me/api/portraits/women/65.jpg" rounded="none">Jasmine Kira</Chips>
+        <Chips imgSrc="https://randomuser.me/api/portraits/women/66.jpg" rounded="md">Jasmine Kira</Chips>
+        <Chips imgSrc="https://randomuser.me/api/portraits/women/67.jpg" rounded="lg">Jasmine Kira</Chips>
+        <Chips imgSrc="https://randomuser.me/api/portraits/women/68.jpg" rounded="xl">Jasmine Kira</Chips>
+        <Chips imgSrc="https://randomuser.me/api/portraits/women/69.jpg" rounded="full">Jasmine Kira</Chips>
         </div>
       {/snippet}
 
@@ -129,7 +129,7 @@ tags: [chips, tags, filters, interactive, component, svelte, svelte-5, theui-sve
   </DocBlock>
 
   <DocBlock title="Customization">
-    <p class="not-prose">The <code>Chips</code> component offers extensive customization options using Tailwind CSS classes. You can easily style both the chip and the accompanying image by applying custom classes through the <code>class</code> and <code>imageClasses</code> props.</p>
+    <p class="not-prose">The <code>Chips</code> component offers extensive customization options using Tailwind CSS classes. You can easily style both the chip and the accompanying image by applying custom classes through the <code>class</code> and <code>imgClasses</code> props.</p>
     <Example title="Chip Customization">
       <p class="not-prose">To customize the chip's appearance, use the <code>class</code> prop to add your own Tailwind CSS classes. This allows you to control the border, background, padding, and more.</p>
       {#snippet example()}
@@ -145,16 +145,16 @@ tags: [chips, tags, filters, interactive, component, svelte, svelte-5, theui-sve
       {/snippet}
     </Example>
     <Example title="Image Customization">
-      <p class="not-prose">Similarly, you can style the image within the chip using the <code>imageClasses</code> prop. This lets you apply specific styles like borders, padding, and background to the image.</p>
+      <p class="not-prose">Similarly, you can style the image within the chip using the <code>imgClasses</code> prop. This lets you apply specific styles like borders, padding, and background to the image.</p>
       {#snippet example()}
       <div>
-        <Chips imageUrl="https://randomuser.me/api/portraits/women/66.jpg" imageClasses="border-2 border-brand-primary-500">Jasmine Kira</Chips>
+        <Chips imgSrc="https://randomuser.me/api/portraits/women/66.jpg" imgClasses="border-2 border-brand-primary-500">Jasmine Kira</Chips>
       </div>
       {/snippet}
 
       {#snippet code()}
 ```html
-<Chips imageClasses="border border-brand-primary-500">...</Chips>
+<Chips imgClasses="border border-brand-primary-500">...</Chips>
 ```
       {/snippet}
     </Example>

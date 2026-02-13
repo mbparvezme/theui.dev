@@ -14,7 +14,7 @@
           "name": "close",
           "type": "boolean",
           "description": "Determines whether a close button is displayed on the chip. Set to false to hide the close button.",
-          "default": true
+          "default": false
         },
         {
           "name": "size",
@@ -23,13 +23,13 @@
           "default": "\"md\""
         },
         {
-          "name": "imageUrl",
+          "name": "imgSrc",
           "type": "string | undefined",
           "description": "The URL of the image to display within the chip. Leave undefined if no image is used.",
           "default": "undefined"
         },
         {
-          "name": "imageClasses",
+          "name": "imgClasses",
           "type": "string",
           "description": "Custom CSS classes to apply to the chip's image for additional styling.",
           "default": ""

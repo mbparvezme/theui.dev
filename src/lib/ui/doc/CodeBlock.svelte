@@ -61,7 +61,7 @@
     </div>
   </div>
 
-  <div id="{id}-code" class="code-block -mt-1">
+  <div id="{id}-code" class="code-block -mt-1 overflow-x-scroll">
   {@render children?.()}
   </div>
 </div>

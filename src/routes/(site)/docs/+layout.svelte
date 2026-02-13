@@ -8,8 +8,8 @@
   let { children }: {children: Snippet } = $props()
   let linkClasses = (active: boolean = false) => twMerge("border-s-2 border-gray-500/10 ps-4 py-1 inline-block text-default tracking-wide font-normal", active && "border-brand-primary-500 text-brand-primary-500 dark:border-brand-primary-300 dark:text-brand-primary-300")
 
-  let sidebar: boolean = $state(false)
-  const toggleSidebar = () => sidebar = !sidebar
+  let showSidebar: boolean = $state(false)
+  const toggleSidebar = () => showSidebar = !showSidebar
 </script>
 
 <Container class="pt-28">
@@ -90,7 +90,7 @@
     </div>
   </div>
 
-  <button onclick={()=>toggleSidebar()} aria-label="Quick Action Button" class="flex md:hidden items-center justify-center cursor-pointer bg-brand-primary-500 hover:bg-brand-primary-600 text-on-brand-primary focus:ring-brand-primary-500/50 shadow-2xl w-14 h-14 rounded-full ease-in-out duration-300 transition-all fixed end-6 bottom-6 z-[120]">
+  <button onclick={()=>toggleSidebar()} aria-label="Quick Action Button" class="flex lg:hidden items-center justify-center cursor-pointer bg-brand-primary-500 hover:bg-brand-primary-600 text-on-brand-primary focus:ring-brand-primary-500/50 shadow-2xl w-14 h-14 rounded-full ease-in-out duration-300 transition-all fixed end-6 bottom-6 z-[120]">
     <svg width="1rem" height="1rem" viewBox="0 0 16 16" focusable="false" aria-hidden="true" class="theui-svg-icon shrink-0 fill-current w-[60%] h-[60%]" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"></path></svg>
   </button>
 </Container>

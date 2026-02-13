@@ -14,6 +14,12 @@
   html {
     @apply font-sans scroll-pt-24 scroll-smooth;
   }
+
+  .code-block pre {
+    min-width: max-content;
+    white-space: pre;
+  }
+
   /* BROWSER SPECIFIC */
   ::-webkit-scrollbar {
     @apply w-2;
