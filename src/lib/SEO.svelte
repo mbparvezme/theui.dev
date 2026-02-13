@@ -13,15 +13,14 @@
     schema
   }: DataType = $props()
 
-
-  const pageTitle: string = (title ? (title + " | ") : "") + "TheUI - Component Library, UI Blocks & Theme"
+  const pageTitle: string = $derived((title ? (title + " | ") : "") + "TheUI - Component Library, UI Blocks & Theme")
   const url: string = page.url.origin + page.url.pathname
-  const pageDescription = description || "..........."
-  const pageImage = img || "/assets/img/theui-logo.png?v=1"
-  const pageKeywords = keywords || "svelte, sveltekit, component, component library, button component, modern ui, javascript"
-  const pageVideo = video || null
-  const pageCanonical = canonical || null
-  const pageSchema = schema || null
+  const pageDescription = $derived(description || "...........")
+  const pageImage = $derived(img || "/assets/img/theui-logo.png?v=1")
+  const pageKeywords = $derived(keywords || "svelte, sveltekit, component, component library, button component, modern ui, javascript")
+  const pageVideo = $derived(video || null)
+  const pageCanonical = $derived(canonical || null)
+  const pageSchema = $derived(schema || null)
 
   const websiteSchemaScript = {
     "@context": "https://schema.org",
