@@ -1,9 +1,9 @@
-<SEO title="Notification" />
+<SEO title="Notification" description={metadata.description} keywords={metadata.tags?.join(", ")} />
 <Page {component} />
 
 <script lang="ts">
   import SEO from "$lib/SEO.svelte"
-  import Page from "$lib/pages/notification.svx"
+  import Page, { metadata } from "$lib/pages/notification.svx"
 
   const component = [
     {
@@ -13,14 +13,14 @@
         {
           "name": "position",
           "type": "<a href=\"/docs/types#notification-position\">NOTIFICATION_POSITION</a>",
-          "description": "Position of the modal on the screen.",
-          "default": "\"center\""
+          "description": "Position of the notifications on the screen.",
+          "default": "\"top-end\""
         },
         {
           "name": "animationSpeed",
-          "type": "<a href=\"/docs/types#animation-speed-type\">ANIMATE_SPEED</a>",
-          "description": "Speed of the animation.",
-          "default": "\"fast\""
+          "type": "boolean",
+          "description": "Enables or disables the show and hide animation of the notifications.",
+          "default": "true"
         }
       ]
     },

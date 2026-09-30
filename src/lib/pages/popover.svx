@@ -56,9 +56,9 @@ tags: [popover, tooltip, context-menu, component, svelte, svelte-5, theui-svelte
   <DocBlock title="Popover Title">
     <p class="not-prose">The <b>Popover</b> component allows adding a title to provide a heading or short description before the main content. You can add a title in two ways:</p>
     <Example title="Using the title Prop">
-      <p class="not-prose">You can use the <code>title</code> prop to define the title of the <b>Popover</b>. Just pass the text of the title in the prop.</p>
+      <p class="not-prose">You can use the <code>title</code> prop to define the title of the <b>Popover</b>. Just pass the text of the title in the prop. It renders as plain text, so use the title snippet for markup.</p>
       {#snippet example()}
-        <Popover trigger="my-popover2">
+        <Popover trigger="my-popover2" title="Popover Title">
           Popover - am amazing component for the displaying additional content.
         </Popover>
         <Button id="my-popover2">Test popover</Button>
@@ -77,7 +77,7 @@ tags: [popover, tooltip, context-menu, component, svelte, svelte-5, theui-svelte
       {#snippet example()}
         <Popover trigger="my-popover3">
           {#snippet title()}
-            <div>Popover <span class="text-brand-primary-500">Title</span></div>
+            <div>Popover <span class="text-brand-500">Title</span></div>
           {/snippet}
           Popover - am amazing component for the displaying additional content.
         </Popover>
@@ -88,7 +88,7 @@ tags: [popover, tooltip, context-menu, component, svelte, svelte-5, theui-svelte
 ```html
 <Popover trigger="my-popover">
   {#snippet title()}
-    Popover <span class="text-brand-primary-500">Title</span>
+    Popover <span class="text-brand-500">Title</span>
   {/snippet}
   ...
 </Popover>
@@ -162,10 +162,10 @@ tags: [popover, tooltip, context-menu, component, svelte, svelte-5, theui-svelte
   </DocBlock>
 
   <DocBlock title="Close on Clicking Popover">
-    <p class="not-prose">The <code>closeOnClick</code> prop determines whether the Popover should close when clicking inside it. By default, this is set to <code>true</code>, meaning the popover will close when the user interacts with its content.</p>
+    <p class="not-prose">The <code>closeOnClick</code> prop determines whether the Popover should close when clicking inside it. By default, this is set to <code>true</code>, meaning the popover will close when the user interacts with its content. Set it to <code>false</code> to keep the popover open when clicking inside it.</p>
     <Example>
       {#snippet example()}
-        <Popover trigger="my-popover7" closeOnClick={true}>
+        <Popover trigger="my-popover7" closeOnClick={false}>
           Clicking inside this popover won't close it.
         </Popover>
         <Button id="my-popover7">Show popover</Button>
@@ -173,7 +173,7 @@ tags: [popover, tooltip, context-menu, component, svelte, svelte-5, theui-svelte
 
       {#snippet code()}
 ```html
-<Popover trigger="my-popover7" closeOnClick={true}>
+<Popover trigger="my-popover7" closeOnClick={false}>
   Clicking inside this popover won't close it.
 </Popover>
 ```
@@ -182,10 +182,10 @@ tags: [popover, tooltip, context-menu, component, svelte, svelte-5, theui-svelte
   </DocBlock>
 
   <DocBlock title="Animation Speed">
-    <p class="not-prose">The <code>animateSpeed</code> prop controls the speed of the animation when the Popover appears or disappears. It accepts the following values <code>none</code>, <code>slower</code>, <code>slow</code>, <code>normal</code>, <code>fast</code> and <code>faster</code> - which can be used to define how quickly the popover fades in and out.</p>
+    <p class="not-prose">The <code>animationSpeed</code> prop controls the speed of the animation when the Popover appears or disappears. It accepts the following values <code>none</code>, <code>slower</code>, <code>slow</code>, <code>normal</code>, <code>fast</code> and <code>faster</code> - which can be used to define how quickly the popover fades in and out.</p>
     <Example>
       {#snippet example()}
-        <Popover trigger="my-popover8" animateSpeed="slower">
+        <Popover trigger="my-popover8" animationSpeed="slower">
           This popover has a larger gap from the trigger.
         </Popover>
         <Button id="my-popover8">Show popover</Button>
@@ -193,7 +193,7 @@ tags: [popover, tooltip, context-menu, component, svelte, svelte-5, theui-svelte
 
       {#snippet code()}
 ```html
-<Popover trigger="my-popover" animateSpeed="slower">
+<Popover trigger="my-popover" animationSpeed="slower">
   This popover has a larger gap from the trigger.
 </Popover>
 ```
@@ -202,7 +202,7 @@ tags: [popover, tooltip, context-menu, component, svelte, svelte-5, theui-svelte
   </DocBlock>
 
   <DocBlock title="Rounded Corners">
-    <p class="not-prose">The <code>rounded</code> prop controls the corner rounding of the <b>Popover</b>. You can adjust it using predefined values to give the popover a smooth, rounded appearance. Available values are <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code>, <code>full</code> and <code>none</code>.</p>
+    <p class="not-prose">The <code>rounded</code> prop controls the corner rounding of the <b>Popover</b>. You can adjust it using predefined values to give the popover a smooth, rounded appearance. Available values are <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code>, <code>2xl</code>, <code>full</code> and <code>none</code>.</p>
     <Example>
       {#snippet example()}
         <Popover trigger="my-popover9" rounded="none">
@@ -282,6 +282,7 @@ tags: [popover, tooltip, context-menu, component, svelte, svelte-5, theui-svelte
 ```
       {/snippet}
     </Example>
+    <p class="not-prose mb-0">Anything else you pass reaches the element itself, so a <code>title</code>, a <code>data-*</code> attribute or an event handler all work the way they would on a <code>&lt;div&gt;</code>. The <code>id</code> is the exception: the component sets its own so the trigger can point at it with <code>aria-controls</code>.</p>
   </DocBlock>
 
   <DocBlock title="Accessibility">
@@ -291,7 +292,7 @@ tags: [popover, tooltip, context-menu, component, svelte, svelte-5, theui-svelte
         <li>
           <b>Keyboard Navigation</b>
           <ul class="my-0">
-            <li>Users can open and close the popover using the <kbd>Space</kbd> or <kbd>Enter</kbd> keys when <span class="not-prose"><code>triggerEvent="click"</code></span>.</li>
+            <li>Users can open and close the popover using the <kbd>Space</kbd> or <kbd>Enter</kbd> keys while the trigger element is focused when <span class="not-prose"><code>triggerEvent="click"</code></span>. The trigger element is made focusable automatically.</li>
             <li>Pressing <kbd>Escape</kbd> closes the popover when it is open when <span class="not-prose"><code>triggerEvent="click"</code></span>.</li>
             <li>The popovers triggered by hover are also accessible via focus for keyboard users.</li>
           </ul>
@@ -302,15 +303,16 @@ tags: [popover, tooltip, context-menu, component, svelte, svelte-5, theui-svelte
           <ul class="my-0">
             <li>The <span class="not-prose"><code>aria-controls</code></span> links the trigger element to the popover container.</li>
             <li>The <span class="not-prose"><code>aria-haspopup</code></span> on the trigger element to indicate a popover is available.</li>
-            <li>The <span class="not-prose"><code>aria-expanded</code></span> attribute will be managed by the component itself for proper accessibility.</li>
+            <li>The popover uses <span class="not-prose"><code>role="dialog"</code></span> when <span class="not-prose"><code>triggerEvent="click"</code></span> and <span class="not-prose"><code>role="tooltip"</code></span> when <span class="not-prose"><code>triggerEvent="hover"</code></span>.</li>
           </ul>
         </li>
         <li>
           <b>Focus Management</b>
           <ul class="my-0">
-            <li>When opened, focus remains on the trigger or shifts inside the popover for better navigation.</li>
-            <li>When closed, focus returns to the trigger element to maintain a logical navigation flow.</li>
-            <li>While using <span class="not-prose"><code>triggerEvent="hover"</code></span>, keyboard users to focus on the trigger and navigate inside the popover.</li>
+            <li>When opened, focus remains on the trigger element.</li>
+            <li>With <span class="not-prose"><code>triggerEvent="click"</code></span>, the popover closes when clicking outside it or when keyboard focus moves away from both the trigger and the popover.</li>
+            <li>With <span class="not-prose"><code>triggerEvent="hover"</code></span>, the popover opens when the trigger receives focus and closes when it loses focus.</li>
+            <li>The popover keeps its position next to the trigger while the page scrolls or resizes.</li>
           </ul>
         </li>
       </ol>

@@ -1,0 +1,245 @@
+---
+title: Range
+category: Forms
+description: Let users pick a number by dragging, with a value bubble, ticks and full form support, using theui-svelte’s Range component.
+dir: ".lib/pages"
+tags: [range, slider, input, form, component, svelte, svelte-5, theui-svelte, component-library, ui, tailwindcss]
+---
+
+<script lang="ts">
+  import DocLayout from "$lib/ui/doc/DocLayout.svelte";
+  import DocHead from "$lib/ui/doc/Head.svelte";
+  import DocBlock from "$lib/ui/doc/Block.svelte";
+  import Code from "$lib/ui/doc/CodeBlock.svelte";
+  import Example from "$lib/ui/doc/Example.svelte";
+  import ConfigComponent from "$lib/ui/doc/ConfigComponent.svelte";
+  import { processID, editURL } from "$lib";
+  let { component }: {component: any } = $props();
+
+  import { Range } from "theui-svelte";
+
+  let volume = $state(40)
+  let budget = $state(250)
+  let temperature = $state(21)
+</script>
+
+<DocLayout>
+  <DocHead title="Range" text="The Range component lets the user choose a number by dragging a handle. It is a native range input underneath, so the keyboard, touch and screen readers all work, while the track, the handle and the value bubble follow your theme." edit_url={editURL("range")} />
+
+  <DocBlock title="Example">
+    <p class="not-prose">Import the component, bind a number and give it a label as the child. The track fills up to the value as it moves.</p>
+    <Example>
+      {#snippet example()}
+        <div class="w-full max-w-sm">
+          <Range bind:value={volume}>Volume</Range>
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<script>
+  import { Range } from "theui-svelte";
+  let volume = $state(40)
+</script>
+
+<Range bind:value={volume}>Volume</Range>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Min, Max and Step">
+    <p class="not-prose">Use <code>min</code>, <code>max</code> and <code>step</code> the way you would on a native input. The default range is <code>0</code> to <code>100</code> in steps of <code>1</code>.</p>
+    <Example>
+      {#snippet example()}
+        <div class="flex w-full max-w-sm flex-col gap-6">
+          <Range value={30} min={0} max={100} step={10}>Steps of 10</Range>
+          <Range bind:value={temperature} min={10} max={30} step={0.5}>Half degrees</Range>
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Range value={30} min={0} max={100} step={10}>Steps of 10</Range>
+<Range bind:value={temperature} min={10} max={30} step={0.5}>Half degrees</Range>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Showing the Value">
+    <p class="not-prose">Set <code>showValue</code> to put the number beside the slider, or <code>showValue="tooltip"</code> to float it above the handle as it moves.</p>
+    <Example>
+      {#snippet example()}
+        <div class="flex w-full max-w-sm flex-col gap-6">
+          <Range bind:value={volume} showValue>Inline value</Range>
+          <Range bind:value={volume} showValue="tooltip">Value bubble</Range>
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Range bind:value={volume} showValue>Inline value</Range>
+<Range bind:value={volume} showValue="tooltip">Value bubble</Range>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Formatting">
+    <p class="not-prose">The <code>format</code> prop turns the number into the text that is shown, for money, units or anything else. It is used by the inline value, the bubble and the text read out to screen readers.</p>
+    <Example>
+      {#snippet example()}
+        <div class="flex w-full max-w-sm flex-col gap-6">
+          <Range bind:value={budget} min={0} max={1000} step={10} showValue="tooltip" format={(v) => `$${v}`}>Budget</Range>
+          <Range bind:value={temperature} min={10} max={30} step={0.5} showValue format={(v) => `${v} °C`}>Temperature</Range>
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Range bind:value={budget} min={0} max={1000} step={10} showValue="tooltip" format={(v) => `$${v}`}>
+  Budget
+</Range>
+
+<Range bind:value={temperature} min={10} max={30} step={0.5} showValue format={(v) => `${v} °C`}>
+  Temperature
+</Range>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Ticks">
+    <p class="not-prose">Pass <code>ticks</code> to mark places along the track. Give it plain numbers, or objects with your own text.</p>
+    <Example>
+      {#snippet example()}
+        <div class="flex w-full max-w-sm flex-col gap-8">
+          <Range bind:value={temperature} min={10} max={30} ticks={[10, 15, 20, 25, 30]}>Numbers</Range>
+          <Range value={2} min={1} max={4} ticks={[{value: 1, label: "Low"}, {value: 2, label: "Fair"}, {value: 3, label: "Good"}, {value: 4, label: "Best"}]}>Labels</Range>
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Range bind:value={temperature} min={10} max={30} ticks={[10, 15, 20, 25, 30]}>Numbers</Range>
+
+<Range
+  value={2}
+  min={1}
+  max={4}
+  ticks={[
+    {value: 1, label: "Low"},
+    {value: 2, label: "Fair"},
+    {value: 3, label: "Good"},
+    {value: 4, label: "Best"}
+  ]}
+>Labels</Range>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Sizes">
+    <p class="not-prose">The <code>size</code> prop takes <code>sm</code>, <code>md</code>, <code>lg</code> and <code>xl</code>, changing the thickness of the track and the size of the handle. Inside a <a href="/docs/form">Form</a> or a <a href="/docs/fieldset">Fieldset</a> the size is inherited, so you set it once.</p>
+    <Example>
+      {#snippet example()}
+        <div class="flex w-full max-w-sm flex-col gap-6">
+          <Range value={40} size="sm" />
+          <Range value={40} size="md" />
+          <Range value={40} size="lg" />
+          <Range value={40} size="xl" />
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Range value={40} size="sm" />
+<Range value={40} size="md" />
+<Range value={40} size="lg" />
+<Range value={40} size="xl" />
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Helper Text and Disabled">
+    <p class="not-prose">Add <code>helperText</code> to explain the field, and <code>disabled</code> to switch it off. The helper text is linked to the input, so screen readers read it with the label.</p>
+    <Example>
+      {#snippet example()}
+        <div class="flex w-full max-w-sm flex-col gap-6">
+          <Range value={60} helperText="Drag, or use the arrow keys">Quality</Range>
+          <Range value={60} disabled>Disabled</Range>
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Range value={60} helperText="Drag, or use the arrow keys">Quality</Range>
+<Range value={60} disabled>Disabled</Range>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Reset Styles">
+    <p class="not-prose">Set <code>reset</code> to <code>true</code> to drop the custom track and thumb and hand the control back to the browser, so the slider is drawn the way the operating system draws it. Anything you pass in <code>rangeClasses</code> still applies, and the size variables stay, so the label and the helper text are unchanged. The default is <code>false</code>, and a <a href="/docs/form">Form</a> or a <a href="/docs/fieldset">Fieldset</a> can set it for every field it holds.</p>
+    <Example>
+      {#snippet example()}
+        <div class="w-full max-w-sm">
+          <Range reset rangeClasses="w-full accent-brand-500">Native slider</Range>
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Range reset rangeClasses="w-full accent-brand-500">Native slider</Range>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Customization">
+    <p class="not-prose">The colour of the filled track and the handle follows the text colour, so a single class recolours both. Use <code>rangeClasses</code> for the input itself and <code>wrapperClasses</code> for the field around it.</p>
+    <Example>
+      {#snippet example()}
+        <div class="flex w-full max-w-sm flex-col gap-6">
+          <Range value={40} class="text-info-500" />
+          <Range value={60} class="text-success-500" size="lg" />
+          <Range value={80} class="text-error-500" size="xl" showValue />
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Range value={40} class="text-info-500" />
+<Range value={60} class="text-success-500" size="lg" />
+<Range value={80} class="text-error-500" size="xl" showValue />
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Accessibility">
+    <p class="not-prose">The component is a native <code>&lt;input type="range"&gt;</code>, so the browser gives it the slider role, the minimum, maximum and current value, and the usual keys: the arrows move by one step, Page Up and Page Down move in bigger jumps, and Home and End go to the ends. The label you pass is tied to the input, and <code>helperText</code> is linked with <code>aria-describedby</code>. Where the number needs words, such as a price or a temperature, the <code>format</code> function is used for the spoken value as well. The fill direction follows the page, so a right to left page fills from the right.</p>
+  </DocBlock>
+
+  <DocBlock title="Configuration">
+    <ConfigComponent {component} />
+  </DocBlock>
+
+  {#snippet sidebar()}
+    <a href={processID("Example")}>Example</a>
+    <a href={processID("Min, Max and Step")}>Min, max and step</a>
+    <a href={processID("Showing the Value")}>Showing the value</a>
+    <a href={processID("Formatting")}>Formatting</a>
+    <a href={processID("Ticks")}>Ticks</a>
+    <a href={processID("Sizes")}>Sizes</a>
+    <a href={processID("Helper Text and Disabled")}>Helper text and disabled</a>
+    <a href={processID("Reset Styles")}>Reset styles</a>
+    <a href={processID("Customization")}>Customization</a>
+    <a href={processID("Accessibility")}>Accessibility</a>
+    <a href={processID("Configuration")}>Configuration</a>
+  {/snippet}
+
+</DocLayout>

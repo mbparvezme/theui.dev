@@ -1,9 +1,9 @@
-<SEO title="Accordion" />
+<SEO title="Accordion" description={metadata.description} keywords={metadata.tags?.join(", ")} />
 <Page {component} />
 
 <script lang="ts">
   import SEO from "$lib/SEO.svelte"
-  import Page from "$lib/pages/accordion.svx"
+  import Page, { metadata } from "$lib/pages/accordion.svx"
 
   const component = {
     "accordion" : [
@@ -25,44 +25,44 @@
           },
           {
             "name": "animationSpeed",
-            "type": "<a href=\"/docs/types#common-types\">ANIMATE_SPEED</a>",
+            "type": "<a href=\"/docs/types#animation-speed-type\">ANIMATE_SPEED</a>",
             "default": "\"fast\"",
             "description": "Specifies the speed of the opening and closing animation of the accordion items."
           },
           {
             "name": "rounded",
-            "type": "<a href=\"/docs/types#common-types\">ROUNDED</a>",
+            "type": "<a href=\"/docs/types#rounded-type\">ROUNDED</a>",
             "default": "\"md\"",
             "description": "Determines the border radius of the accordion items."
           },
           {
             "name": "containerClasses",
             "type": "string",
-            "default": "null",
+            "default": "\"\"",
             "description": "Custom classes for the main container of the accordion items."
           },
           {
             "name": "openContainerClasses",
             "type": "string",
-            "default": "null",
+            "default": "\"\"",
             "description": "Custom classes for the active (expanded) state of the accordion's container of the accordion items."
           },
           {
             "name": "titleClasses",
             "type": "string",
-            "default": "null",
+            "default": "\"\"",
             "description": "Custom classes for the title of the accordion items."
           },
           {
             "name": "openTitleClasses",
             "type": "string",
-            "default": "null",
+            "default": "\"\"",
             "description": "Custom classes for the title when the accordion item is active (expanded). Applied to all the Accordion items."
           },
           {
             "name": "contentClasses",
             "type": "string",
-            "default": "null",
+            "default": "\"\"",
             "description": "Custom classes for the content section for all the accordion items."
           }
         ]
@@ -97,7 +97,7 @@
             "name": "title",
             "type": "string | Snippet",
             "default": "undefined",
-            "description": "Sets the title of the accordion item."
+            "description": "Sets the title of the accordion item. A string renders as plain text; use a snippet for markup."
           },
           {
             "name": "size",
@@ -120,31 +120,31 @@
           {
             "name": "containerClasses",
             "type": "string",
-            "default": "null",
+            "default": "\"\"",
             "description": "Custom classes for the accordion's main container."
           },
           {
             "name": "openContainerClasses",
             "type": "string",
-            "default": "null",
+            "default": "\"\"",
             "description": "Custom classes for the active (expanded) state of the accordion's container."
           },
           {
             "name": "titleClasses",
             "type": "string",
-            "default": "null",
+            "default": "\"\"",
             "description": "Custom classes for the title of the accordion item."
           },
           {
             "name": "openTitleClasses",
             "type": "string",
-            "default": "null",
+            "default": "\"\"",
             "description": "Custom classes for the title when the accordion item is active (expanded)."
           },
           {
             "name": "contentClasses",
             "type": "string",
-            "default": "null",
+            "default": "\"\"",
             "description": "Custom classes for the content section of the accordion."
           }
         ]
@@ -159,7 +159,7 @@
           },
           {
             "name": "open",
-            "description": "Custom classes for the title when the accordion item is active (expanded)."
+            "description": "If added, the accordion item is expanded by default. Inside a standalone Accordion, it closes the other items of the group."
           }
         ]
       },

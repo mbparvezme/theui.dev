@@ -50,7 +50,7 @@ tags: [colors, branding, style, guide, theme, customization, theui-svelte, svelt
         <div class="grid grid-cols-11 gap-1.5 sm:gap-2">
           {#each colorData.colors as color}
           <div class="contents">
-            <button type="button" class="aspect-1/1 w-full rounded-sm outline -outline-offset-1 outline-black/10 sm:rounded-md dark:outline-white/10 {color.class} cursor-pointer" data-tooltip={color.class.replace('bg', '[T]')}></button>
+            <button type="button" aria-label={color.class.replace('bg-', '')} class="aspect-1/1 w-full rounded-sm outline -outline-offset-1 outline-black/10 sm:rounded-md dark:outline-white/10 {color.class} cursor-pointer" data-tooltip={color.class.replace('bg', '[T]')}></button>
           </div>
         {/each}
       </div>
@@ -61,7 +61,8 @@ tags: [colors, branding, style, guide, theme, customization, theui-svelte, svelt
       <p>
         <strong>[T]</strong> = <strong>Type</strong> (e.g., <code>bg</code>, <code>text</code>, <code>border</code>, <code>fill</code>, etc.)<br>
         <strong>[S]</strong> = <strong>Shade</strong> (e.g., 50, 100-900, 950)<br>
-        <strong>Class example</strong>: <code>bg-brand-primary-500</code>, <code>text-on-brand-primary-500</code>, <code>bg-error-400</code>
+        <strong>Class example</strong>: <code>bg-brand-500</code>, <code>text-brand-600</code>, <code>bg-error-400</code><br>
+        The foreground colors have no shades: <code>text-on-brand</code>, <code>text-default</code>, <code>text-muted</code>.
       </p>
     </Alert>
 
@@ -85,14 +86,15 @@ tags: [colors, branding, style, guide, theme, customization, theui-svelte, svelt
               <span class="text-default font-semibold">{color.title} ({color.className})</span>
               <span class="block text-sm text-muted">{color.variable}</span>
             </TD>
+            <!-- Both swatches read the live variable, so they cannot disagree with the stylesheet -->
             <TD class="text-center">
               <div class="contents">
-                <button type="button" class="aspect-1/1 w-10 rounded-sm outline -outline-offset-1 outline-black/10 sm:rounded-md dark:outline-white/10 cursor-pointer" style="background-color:{color.light}" data-tooltip={color.light} data-classname={color.className}></button>
+                <button type="button" aria-label="{color.title} in light mode" class="aspect-1/1 w-10 rounded-sm outline -outline-offset-1 outline-black/10 sm:rounded-md dark:outline-white/10 cursor-pointer" style="background-color: var({color.variable})" data-tooltip={color.variable} data-classname={color.className}></button>
               </div>
             </TD>
             <TD class="text-center">
               <div class="contents dark">
-                <button type="button" class="aspect-1/1 w-10 rounded-sm outline -outline-offset-1 outline-black/10 sm:rounded-md dark:outline-white/10 cursor-pointer" style="background-color:{color.dark}" data-tooltip={color.dark} data-classname={color.className}></button>
+                <button type="button" aria-label="{color.title} in dark mode" class="aspect-1/1 w-10 rounded-sm outline -outline-offset-1 outline-black/10 sm:rounded-md dark:outline-white/10 cursor-pointer" style="background-color: var({color.variable})" data-tooltip={color.variable} data-classname={color.className}></button>
               </div>
             </TD>
           </TR>
@@ -105,7 +107,146 @@ tags: [colors, branding, style, guide, theme, customization, theui-svelte, svelt
 
     <!-- <p class="not-prose">The ui-svelte color system extends Tailwind CSS's approach with enhanced branding support, offering both shaded color palettes and standalone color variables. All colors can be modified, added, or removed using the same intuitive syntax as Tailwind—ensuring a seamless workflow.</p> -->
 
-  <DocBlock title="Modify Colors">
+  <DocBlock title="What Each Color Controls">
+    <p class="not-prose">Before changing anything, it helps to know which token does what. Most of the library runs on a handful of them.</p>
+    <div class="not-prose">
+      <Table class="my-0" ariaLabel="What each color token controls">
+        <THead>
+          <TR>
+            <TH>Token</TH>
+            <TH>Where you see it</TH>
+          </TR>
+        </THead>
+        <TBody>
+          <TR>
+            <TD><span class="whitespace-nowrap"><code>--color-brand-*</code></span></TD>
+            <TD>Primary buttons, the active tab, the selected day of a calendar, the filled part of a range, wizard steps, links and every focus ring. Shade <code>500</code> carries most of it, with <code>600</code> for hover and <code>300</code> for lighter accents.</TD>
+          </TR>
+          <TR>
+            <TD><span class="whitespace-nowrap"><code>--text-color-on-brand</code></span></TD>
+            <TD>The text and icons that sit on top of a brand background. It is one value, not a scale.</TD>
+          </TR>
+          <TR>
+            <TD><span class="whitespace-nowrap"><code>--color-error-*</code></span>, <code>info</code>, <code>success</code>, <code>warning</code></TD>
+            <TD>Alerts, badges, notifications, and the states of a form field.</TD>
+          </TR>
+          <TR>
+            <TD><span class="whitespace-nowrap"><code>--background-color-*</code></span></TD>
+            <TD>Surfaces: the page (<code>primary</code>), cards, menus and panels (<code>secondary</code>), the layer above those (<code>tertiary</code>), and the inverted one (<code>alt</code>).</TD>
+          </TR>
+          <TR>
+            <TD><span class="whitespace-nowrap"><code>--text-color-*</code></span></TD>
+            <TD>Body text (<code>default</code>), secondary text such as helper text and placeholders (<code>muted</code>), and text on the inverted surface (<code>alt</code>).</TD>
+          </TR>
+        </TBody>
+      </Table>
+    </div>
+    <p class="not-prose mb-0">So a rebrand is usually two things: the brand scale, and the foreground that goes on top of it. Everything else follows.</p>
+  </DocBlock>
+
+  <DocBlock title="Rebrand In One Step">
+    <p class="not-prose">The library's own brand scale is nothing but aliases of Tailwind's rose palette. Point those eleven variables at another Tailwind palette and every component moves with it.</p>
+
+<Code title="./src/app.css">
+
+```css
+@import 'tailwindcss';
+@import 'theui-svelte/style';
+
+@theme {
+  --color-brand-50: var(--color-indigo-50);
+  --color-brand-100: var(--color-indigo-100);
+  --color-brand-200: var(--color-indigo-200);
+  --color-brand-300: var(--color-indigo-300);
+  --color-brand-400: var(--color-indigo-400);
+  --color-brand-500: var(--color-indigo-500);
+  --color-brand-600: var(--color-indigo-600);
+  --color-brand-700: var(--color-indigo-700);
+  --color-brand-800: var(--color-indigo-800);
+  --color-brand-900: var(--color-indigo-900);
+  --color-brand-950: var(--color-indigo-950);
+}
+```
+</Code>
+    <p class="not-prose">Your own palette works the same way, with values in place of the aliases. Any CSS color will do, though <code>oklch</code> is what Tailwind itself uses, and it keeps the steps between shades even.</p>
+
+<Code title="./src/app.css">
+
+```css
+@theme {
+  --color-brand-500: oklch(0.62 0.19 264);
+  --color-brand-600: oklch(0.55 0.19 264);
+  /* ... and the rest of the scale */
+}
+```
+</Code>
+    <p class="not-prose"><b>Where you put this matters.</b> The override has to come after <code>@import 'theui-svelte/style'</code>. Both declarations land in the same layer, so the later one wins; put it above the import and nothing changes.</p>
+    <p class="not-prose mb-0"><b>Check the contrast while you are here.</b> <code>--text-color-on-brand</code> is white, which suits a mid or dark brand color. Pick a light one, such as amber or lime, and every primary button becomes white on light — unreadable. Set the foreground with the brand, aiming for at least 4.5:1 against shade <code>500</code>; the <a href="/docs/accessibility">accessibility guide</a> covers the targets.</p>
+
+<Code title="./src/app.css">
+
+```css
+@theme {
+  --color-brand-500: var(--color-amber-400);
+  --text-color-on-brand: #16161D;   /* dark text on a light brand */
+}
+```
+</Code>
+  </DocBlock>
+
+  <DocBlock title="Colors In Dark Mode">
+    <p class="not-prose">Surfaces and text colors are declared twice: once for light mode in <code>@theme</code>, and again inside <code>.dark</code> in the base layer. The base layer comes after the theme layer, so the dark values win whenever the <code>dark</code> class is on the page. An override in <code>@theme</code> alone therefore changes light mode only, and the change appears to vanish the moment you switch to dark.</p>
+    <p class="not-prose">To change both, write both. Surfaces and text go in two places; the brand and status scales are not re-declared for dark mode, so those need the <code>@theme</code> block only.</p>
+
+<Code title="./src/app.css">
+
+```css
+@import 'tailwindcss';
+@import 'theui-svelte/style';
+
+@theme {
+  /* light mode, and the brand scale for both modes */
+  --color-brand-500: var(--color-indigo-500);
+  --background-color-primary: #ffffff;
+  --background-color-secondary: #f4f4f7;
+  --text-color-muted: #5a5a63;
+}
+
+@layer base {
+  .dark {
+    /* dark mode only */
+    --background-color-primary: #0b0b10;
+    --background-color-secondary: #14141b;
+    --text-color-muted: #9b9ba3;
+  }
+}
+```
+</Code>
+    <p class="not-prose mb-0">The <code>dark</code> class itself belongs on the <code>&lt;html&gt;</code> element. The <a href="/docs/dark-mode">DarkMode</a> component puts it there and remembers the choice.</p>
+  </DocBlock>
+  <DocBlock title="Reskin Every Surface At Once">
+    <p class="not-prose">Behind the surface and text tokens sit eight raw values. Six are the surfaces, three for light and three for dark: every <code>bg-*</code> token is built from those, and <code>text-default</code> and <code>text-alt</code> borrow from them too. That makes them the shortest way to change the feel of a whole app without touching a single component.</p>
+    <p class="not-prose">The other two are <code>--text-muted-on-light</code> and <code>--text-muted-on-dark</code>, which feed <code>--text-color-muted</code>, the color of the <code>text-muted</code> class: helper text, placeholders, timestamps and other secondary text. They stand apart from the six because muted text is not a surface. It has to stay readable against the page while still sitting back from the body text, and the value that does that in light mode is not the one that does it in dark mode. The library picks the right one for the current mode, so you set both and think no further about it.</p>
+
+<Code title="./src/app.css">
+
+```css
+:root {
+  --theui-light1: #FFFFFF;   /* the page */
+  --theui-light2: #F4F4F7;   /* cards, menus, panels */
+  --theui-light3: #E8E8EE;   /* the layer above those */
+  --theui-dark1: #0B0B10;    /* the page, in dark mode */
+  --theui-dark2: #14141B;
+  --theui-dark3: #1C1C26;
+  --text-muted-on-light: #5A5A63;
+  --text-muted-on-dark: #9B9BA3;
+}
+```
+</Code>
+    <p class="not-prose">These are plain CSS variables rather than theme tokens, so they build no utilities of their own; they only feed the tokens above. That also makes them simpler to override than a theme token: they live on <code>:root</code>, so a <code>:root</code> block of your own in <code>app.css</code> replaces them, with no <code>@theme</code> and no separate rule for dark mode. Redefine them after the import, as with everything else on this page.</p>
+    <p class="not-prose mb-0">Set only the ones you want to move. Anything you leave out keeps the library's value, so changing <code>--text-muted-on-dark</code> alone is a perfectly good edit.</p>
+  </DocBlock>
+  <DocBlock title="Modify Existing Colors">
     <p class="not-prose">You can override the library's default colors by assigning new values to the corresponding CSS theme variables:</p>
 
 <Code title="./src/app.css">
@@ -113,17 +254,17 @@ tags: [colors, branding, style, guide, theme, customization, theui-svelte, svelt
 ```css
 @theme {
   /* Modify brand primary colors */
-  --color-brand-primary-50: #f0f9ff;
-  --color-brand-primary-100: #e0f2fe;
-  --color-brand-primary-200: #bae6fd;
-  --color-brand-primary-300: #7dd3fc;
-  --color-brand-primary-400: #38bdf8;
-  --color-brand-primary-500: #0ea5e9;
-  --color-brand-primary-600: #0284c7;
-  --color-brand-primary-700: #0369a1;
-  --color-brand-primary-800: #075985;
-  --color-brand-primary-900: #0c4a6e;
-  --color-brand-primary-950: #082f49;
+  --color-brand-50: #f0f9ff;
+  --color-brand-100: #e0f2fe;
+  --color-brand-200: #bae6fd;
+  --color-brand-300: #7dd3fc;
+  --color-brand-400: #38bdf8;
+  --color-brand-500: #0ea5e9;
+  --color-brand-600: #0284c7;
+  --color-brand-700: #0369a1;
+  --color-brand-800: #075985;
+  --color-brand-900: #0c4a6e;
+  --color-brand-950: #082f49;
 
   /* Modify background colors */
   --background-color-primary: #ffffff;
@@ -138,7 +279,10 @@ tags: [colors, branding, style, guide, theme, customization, theui-svelte, svelt
   </DocBlock>
 
   <DocBlock title="Add New Color">
-    <p class="not-prose">You can extend your theme by adding new colors in Tailwind CSS 4. These can be <b>shaded</b> (multi-value scales like <code>--color-accent-100</code> to <code>--color-accent-950</code>) or <b>non-shaded</b> (single-value utilities like <code>--background-surface</code>). For single-value colors (e.g., a special background or text color), define a new theme variable:</p>
+    <p class="not-prose">Colors of your own go in the same <code>@theme</code> block, and the name you choose decides which utilities Tailwind builds from it. Get the prefix wrong and nothing is reported: the variable is defined, the class simply never exists.</p>
+
+    <h4 id={processID("Add Shaded Colors", false)} class="text-xl">Add Shaded Colors</h4>
+    <p class="not-prose">A name under <code>--color-*</code> gives you the whole family of utilities for that color: background, text, border, ring, fill, and the rest.</p>
 
 <Code title="./src/app.css">
 
@@ -146,18 +290,35 @@ tags: [colors, branding, style, guide, theme, customization, theui-svelte, svelt
 @theme {
   --color-accent-50: #f0f9ff;
   --color-accent-100: #e0f2fe;
-  --color-accent-200: #bae6fd;
   /* ... add more shades as needed */
-  --color-accent-900: #0c4a6e;
+  --color-accent-500: #0ea5e9;
   --color-accent-950: #082f49;
+}
+```
+</Code>
+    <p class="not-prose">Use them as <code>bg-accent-500</code>, <code>text-accent-300</code>, <code>border-accent-700</code>, <code>ring-accent-500</code>.</p>
 
+    <h4 id={processID("Add Non-shaded Colors", false)} class="text-xl">Add Non-shaded Colors</h4>
+    <p class="not-prose">A single color for one purpose belongs under the namespace of the property it serves: <code>--background-color-*</code> for backgrounds and <code>--text-color-*</code> for text, the same namespaces this library uses for its own surfaces. <code>--background-*</code> and <code>--text-*</code> are <b>not</b> color namespaces, and <code>--text-*</code> in particular belongs to font sizes, so a color defined there quietly produces nothing.</p>
+
+<Code title="./src/app.css">
+
+```css
+@theme {
+  /* Right: these build bg-surface and text-highlight */
+  --background-color-surface: #f8fafc;
+  --text-color-highlight: #4338ca;
+
+  /* Wrong: no utility comes out of either of these */
   --background-surface: #f8fafc;
   --text-highlight: #4338ca;
 }
 ```
 </Code>
-    <p class="not-prose mb-6">After defining, use it in your components with utility classes like <code>bg-accent-500</code>, <code>text-accent-300</code>, <code>border-accent-700</code>, <code>bg-surface</code>, <code>text-highlight</code> etc.</p>
+    <p class="not-prose mb-0">Then write <code>bg-surface</code> and <code>text-highlight</code> as you would any other utility. The same pattern holds for <code>--border-color-*</code>, <code>--fill-*</code> and <code>--ring-color-*</code>.</p>
   </DocBlock>
+
+
 
   <DocBlock title="Remove A Color">
     <p class="not-prose">To completely remove a color from your theme, set its namespace to initial:</p>
@@ -180,119 +341,90 @@ tags: [colors, branding, style, guide, theme, customization, theui-svelte, svelt
   </DocBlock>
 
   <DocBlock title="Available Color Palette">
-    <p class="not-prose">Here's a complete list of the available colors and their values for reference:</p>
+    <p class="not-prose">This is what <code>theui-svelte/style.css</code> defines. The brand and status scales are aliases of Tailwind's own palettes, which is why pointing one at another palette takes a single line each.</p>
 
 <Code title="theui-svelte/style.css">
 
 ```css
---color-brand-primary-50 : oklch(0.97 0.0152 12.42);
---color-brand-primary-100: oklch(0.94 0.0298 12.58);
---color-brand-primary-200: oklch(0.89 0.0535 11.01);
---color-brand-primary-300: oklch(0.81 0.1036 12.12);
---color-brand-primary-400: oklch(0.72 0.1642 13.87);
---color-brand-primary-500: oklch(0.62 0.2276 19.57);
---color-brand-primary-600: oklch(0.58 0.2180 17.89);
---color-brand-primary-700: oklch(0.51 0.1952 17.24);
---color-brand-primary-800: oklch(0.45 0.1684 13.59);
---color-brand-primary-900: oklch(0.41 0.1468 10.14);
---color-brand-primary-950: oklch(0.27 0.0989 11.14);
---text-color-on-brand-primary: #FFFFFF;
+:root {
+  /* The raw surface values every light and dark background is built from */
+  --theui-light1: #FFFDFD;
+  --theui-light2: #F5F3F3;
+  --theui-light3: #EBE9E9;
+  --theui-dark1: #16161D;
+  --theui-dark2: #1E1E26;
+  --theui-dark3: #26262F;
+  --text-muted-on-light: #636369;
+  --text-muted-on-dark: #A1A1AA;
+}
 
---color-brand-secondary-50 : var(--color-emerald-50);
---color-brand-secondary-100: var(--color-emerald-100);
---color-brand-secondary-200: var(--color-emerald-200);
---color-brand-secondary-300: var(--color-emerald-300);
---color-brand-secondary-400: var(--color-emerald-400);
---color-brand-secondary-500: var(--color-emerald-500);
---color-brand-secondary-600: var(--color-emerald-600);
---color-brand-secondary-700: var(--color-emerald-700);
---color-brand-secondary-800: var(--color-emerald-800);
---color-brand-secondary-900: var(--color-emerald-900);
---color-brand-secondary-950: var(--color-emerald-950);
---text-color-on-brand-secondary: #2E2105;
+@theme {
+  /* Brand: 50 to 950, aliased to Tailwind's rose scale */
+  --color-brand-50: var(--color-rose-50);
+  --color-brand-100: var(--color-rose-100);
+  --color-brand-200: var(--color-rose-200);
+  --color-brand-300: var(--color-rose-300);
+  --color-brand-400: var(--color-rose-400);
+  --color-brand-500: var(--color-rose-500);
+  --color-brand-600: var(--color-rose-600);
+  --color-brand-700: var(--color-rose-700);
+  --color-brand-800: var(--color-rose-800);
+  --color-brand-900: var(--color-rose-900);
+  --color-brand-950: var(--color-rose-950);
 
---color-error-50 : var(--color-red-50);
---color-error-100: var(--color-red-100);
---color-error-200: var(--color-red-200);
---color-error-300: var(--color-red-300);
---color-error-400: var(--color-red-400);
---color-error-500: var(--color-red-500);
---color-error-600: var(--color-red-600);
---color-error-700: var(--color-red-700);
---color-error-800: var(--color-red-800);
---color-error-900: var(--color-red-900);
---color-error-950: var(--color-red-950);
+  /* What text and icons use on top of a brand background */
+  --text-color-on-brand: #FFFFFF;
 
---color-info-50 : var(--color-sky-50);
---color-info-100: var(--color-sky-100);
---color-info-200: var(--color-sky-200);
---color-info-300: var(--color-sky-300);
---color-info-400: var(--color-sky-400);
---color-info-500: var(--color-sky-500);
---color-info-600: var(--color-sky-600);
---color-info-700: var(--color-sky-700);
---color-info-800: var(--color-sky-800);
---color-info-900: var(--color-sky-900);
---color-info-950: var(--color-sky-950);
+  /* Status colors, each aliased the same way across all 11 shades */
+  --color-error-50 … --color-error-950:   var(--color-red-*);
+  --color-info-50 … --color-info-950:     var(--color-sky-*);
+  --color-success-50 … --color-success-950: var(--color-green-*);
+  --color-warning-50 … --color-warning-950: var(--color-yellow-*);
 
---color-success-50 : var(--color-green-50);
---color-success-100: var(--color-green-100);
---color-success-200: var(--color-green-200);
---color-success-300: var(--color-green-300);
---color-success-400: var(--color-green-400);
---color-success-500: var(--color-green-500);
---color-success-600: var(--color-green-600);
---color-success-700: var(--color-green-700);
---color-success-800: var(--color-green-800);
---color-success-900: var(--color-green-900);
---color-success-950: var(--color-green-950);
+  /* Text */
+  --text-color-default: var(--theui-dark1);
+  --text-color-muted: var(--text-muted-on-light);
+  --text-color-alt: var(--theui-light1);
 
---color-warning-50 : var(--color-yellow-50);
---color-warning-100: var(--color-yellow-100);
---color-warning-200: var(--color-yellow-200);
---color-warning-300: var(--color-yellow-300);
---color-warning-400: var(--color-yellow-400);
---color-warning-500: var(--color-yellow-500);
---color-warning-600: var(--color-yellow-600);
---color-warning-700: var(--color-yellow-700);
---color-warning-800: var(--color-yellow-800);
---color-warning-900: var(--color-yellow-900);
---color-warning-950: var(--color-yellow-950);
+  /* Surfaces */
+  --background-color-primary: var(--theui-light1);
+  --background-color-secondary: var(--theui-light2);
+  --background-color-tertiary: var(--theui-light3);
+  --background-color-alt: var(--theui-dark1);
+}
 
---text-color-default: #16161D;
---text-color-muted: #636369;
---text-color-alt: #FFFDFD;
-
---background-color-primary: #FFFDFD;
---background-color-secondary: #F5F3F3;
---background-color-tertiary: #EBE9E9;
---background-color-alt: #16161D;
-
+/* Dark mode swaps the same names, so every component follows */
 @layer base {
   .dark {
-    --text-color-default: #F5F3F3;
-    --text-color-muted: #A1A1AA;
-    --text-color-alt: #16161D;
+    --text-color-default: var(--theui-light2);
+    --text-color-muted: var(--text-muted-on-dark);
+    --text-color-alt: var(--theui-dark1);
 
-    --background-color-primary: #16161D;
-    --background-color-secondary: #1E1E26;
-    --background-color-tertiary: #26262F;
-    --background-color-alt: #F5F3F3;
+    --background-color-primary: var(--theui-dark1);
+    --background-color-secondary: var(--theui-dark2);
+    --background-color-tertiary: var(--theui-dark3);
+    --background-color-alt: var(--theui-light2);
   }
 }
 ```
 </Code>
+    <p class="not-prose mb-0">The status scales are written out in full in the stylesheet; they are shortened here because every shade follows the same pattern. Read the file in the <a href="https://github.com/mbparvezme/theui-svelte" target="_blank" rel="noopener">GitHub repository</a> for the literal source.</p>
   </DocBlock>
 
   {#snippet sidebar()}
     <a href={processID("Available Color Classes")}>Available Color Classes</a>
     <a href={processID("Shaded Colors")} class="pl-4">Shaded Colors</a>
     <a href={processID("Non-shaded Colors")} class="pl-4">Non-shaded Colors</a>
+    <a href={processID("What Each Color Controls")}>What Each Color Controls</a>
+    <a href={processID("Rebrand In One Step")}>Rebrand In One Step</a>
+    <a href={processID("Colors In Dark Mode")}>Colors In Dark Mode</a>
+    <a href={processID("Reskin Every Surface At Once")}>Reskin Every Surface</a>
     <a href={processID("Modify Existing Colors")}>Modify Existing Colors</a>
     <a href={processID("Add New Color")}>Add New Color</a>
     <a href={processID("Add Shaded Colors")} class="pl-4">Add Shaded Colors</a>
     <a href={processID("Add Non-shaded Colors")} class="pl-4">Add Non-shaded Colors</a>
     <a href={processID("Remove A Color")}>Remove A Color</a>
+    <a href={processID("Available Color Palette")}>Available Color Palette</a>
   {/snippet}
 
 </DocLayout>

@@ -14,22 +14,25 @@
     classes?: string,
     title?: string,
     codeTitle?: string,
-    code2Title?: string,
+    // code2Title?: string,
     mt?: boolean
   };
 
-  let {children, children2, example, example2, code, code2, classes, title, codeTitle, code2Title, mt = true}: Props = $props();
+  let {children, children2, example, example2, code, code2, classes, title, codeTitle,
+    // code2Title,
+  mt = true}: Props = $props();
 </script>
 
 <div class="example-section" class:!mt-0={!mt}>
   {#if title}
+    <!-- eslint-disable-next-line svelte/no-at-html-tags -->
     <h4 id={processID(title, false)} class="not-prose text-xl font-semibold font-body text-gray-700 dark:text-gray-400 mt-0 mb-2">{@html title}</h4>
   {/if}
 
   {@render children?.()}
 
   {#if example || code}
-    <div class="rounded-md mt-4 border border-gray-200 dark:border-gray-800">
+    <div class="rounded-md mt-4 border border-gray-200 dark:border-gray-800 min-w-0">
 
       {#if example}
       <div class="not-prose {twMerge("p-5 flex justify-center items-center gap-4 rounded-md bg-white dark:bg-black/40", classes)}">
@@ -49,7 +52,7 @@
   {@render children2?.()}
 
   {#if example2 || code2}
-    <div class="rounded-md mt-4 border border-gray-200 dark:border-gray-800">
+    <div class="rounded-md mt-4 border border-gray-200 dark:border-gray-800 min-w-0">
 
       {#if example2}
       <div class="not-prose {twMerge("p-5 flex justify-center items-center gap-4 rounded-md bg-white dark:bg-black/40", classes)}">

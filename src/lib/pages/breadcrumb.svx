@@ -20,8 +20,8 @@ tags: [breadcrumb, navigation, component, svelte, svelte-5, theui-svelte, compon
 
   let breadcrumbData = [
     { text: "Home", url: "/" },
-    { text: "About", url: "/about" },
-    { text: "Company" }
+    { text: "Docs", url: "/docs" },
+    { text: "Breadcrumb" }
   ];
 </script>
 
@@ -30,7 +30,7 @@ tags: [breadcrumb, navigation, component, svelte, svelte-5, theui-svelte, compon
 
   <DocBlock title="Example">
     <Example>
-      <p class="not-prose">Start by importing the <code>Breadcrumb</code> component into your Svelte file, then pass it an array of breadcrumb items (like <a class="underline" href="/docs/types#breadcrumb-data-type">BREADCRUMB_DATA</a>) containing each item's text and URL. Here's a basic example:</p>
+      <p class="not-prose">Start by importing the <code>Breadcrumb</code> component into your Svelte file, then pass it an array of breadcrumb items (like <a class="underline" href="/docs/types#breadcrumb-data-type">BREADCRUMB_DATA</a>) containing each item's text and URL. Each item's <code>text</code> must be unique, and the item without a <code>url</code> is treated as the current page. Here's a basic example:</p>
       {#snippet example()}
       <div class="w-full">
         <Breadcrumb data={breadcrumbData} />
@@ -44,8 +44,8 @@ tags: [breadcrumb, navigation, component, svelte, svelte-5, theui-svelte, compon
 
   let breadcrumbData: Array<BREADCRUMB_DATA> = [
     { text: "Home", url: "/" },
-    { text: "About", url: "/about" },
-    { text: "Company" }
+    { text: "Docs", url: "/docs" },
+    { text: "Breadcrumb" }
   ]
 </script>
 
@@ -67,6 +67,23 @@ tags: [breadcrumb, navigation, component, svelte, svelte-5, theui-svelte, compon
 
 ```html
 <Breadcrumb data={breadcrumbData} separator=">" />
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Rounded Corner">
+    <p class="not-prose">The <code>rounded</code> prop sets the border radius of the breadcrumb container and its items. Available values are <code>"none"</code>, <code>"sm"</code>, <code>"md"</code> (default), <code>"lg"</code>, <code>"xl"</code>, <code>"2xl"</code> and <code>"full"</code>. The corners are visible when the breadcrumb has a background or border, for example added with the <code>class</code> attribute.</p>
+    <Example>
+      {#snippet example()}
+          <div class="w-full">
+            <Breadcrumb data={breadcrumbData} rounded="full" class="bg-gray-100 dark:bg-gray-800 px-4 py-2" />
+          </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Breadcrumb data={breadcrumbData} rounded="full" class="bg-gray-100 px-4 py-2" />
 ```
       {/snippet}
     </Example>
@@ -101,6 +118,7 @@ tags: [breadcrumb, navigation, component, svelte, svelte-5, theui-svelte, compon
 ```
       {/snippet}
     </Example>
+    <p class="not-prose mb-0">Anything else you pass reaches the element itself, so an <code>id</code>, a <code>title</code>, a <code>data-*</code> attribute or an event handler all work the way they would on a <code>&lt;nav&gt;</code>.</p>
   </DocBlock>
 
   <DocBlock title="Accessibility">
@@ -114,6 +132,7 @@ tags: [breadcrumb, navigation, component, svelte, svelte-5, theui-svelte, compon
   {#snippet sidebar()}
     <a href={processID("Example")}>Example</a>
     <a href={processID("Change Link Separator")}>Change Link Separator</a>
+    <a href={processID("Rounded Corner")}>Rounded Corner</a>
     <a href={processID("Customization")}>Customization</a>
     <a href={processID("Accessibility")}>Accessibility</a>
     <a href={processID("Configuration")}>Configuration</a>

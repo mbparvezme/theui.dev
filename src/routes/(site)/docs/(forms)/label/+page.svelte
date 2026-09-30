@@ -1,9 +1,9 @@
-<SEO title="Label" />
+<SEO title="Label" description={metadata.description} keywords={metadata.tags?.join(", ")} />
 <Page {component} />
 
 <script lang="ts">
   import SEO from "$lib/SEO.svelte"
-  import Page from "$lib/pages/label.svx"
+  import Page, { metadata } from "$lib/pages/label.svx"
 
   const component = [
     {
@@ -11,18 +11,28 @@
       "title": "Props",
       "data": [
         {
-          "name": "label",
-          "type": "string | Snippet",
+          "name": "for",
+          "type": "string",
           "default": "undefined",
-          "description": "The label prop defines the content of the label as plain string, HTML string or Svelte Snippet."
+          "description": "The <code>id</code> of the input the label belongs to. It is a native attribute passed to the &lt;label&gt; element."
         },
         {
-          "name": "id",
+          "name": "class",
           "type": "string",
-          "default": "null",
-          "description": "The ID of the label that bind it with the input."
+          "default": "undefined",
+          "description": "Custom classes merged with the default label styles."
         }
       ]
-    } 
+    },
+    {
+      "key": "snippets",
+      "title": "Snippets",
+      "data": [
+        {
+          "name": "children",
+          "description": "The content of the label. It is required; a Label without content renders nothing."
+        }
+      ]
+    }
   ]
 </script>

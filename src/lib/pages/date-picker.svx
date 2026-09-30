@@ -1,0 +1,292 @@
+---
+title: Date Picker
+category: Forms
+description: Pick a date from a calendar with limits, disabled days, any locale and full keyboard support, using theui-svelte’s DatePicker component.
+dir: ".lib/pages"
+tags: [date picker, calendar, date input, form, svelte, svelte-5, theui-svelte, component-library, ui, tailwindcss]
+---
+
+<script lang="ts">
+  import DocLayout from "$lib/ui/doc/DocLayout.svelte";
+  import DocHead from "$lib/ui/doc/Head.svelte";
+  import DocBlock from "$lib/ui/doc/Block.svelte";
+  import Code from "$lib/ui/doc/CodeBlock.svelte";
+  import Example from "$lib/ui/doc/Example.svelte";
+  import ConfigComponent from "$lib/ui/doc/ConfigComponent.svelte";
+  import { processID, editURL } from "$lib";
+  let { component }: {component: any } = $props();
+
+  import { DatePicker } from "theui-svelte";
+
+  let date = $state("")
+  let meeting = $state("")
+  let inline = $state("")
+</script>
+
+<DocLayout>
+  <DocHead title="Date Picker" text="The DatePicker component opens a calendar under the field and gives back the chosen day. The value is a plain “YYYY-MM-DD” string, so it submits with a form and travels to a server without any date library. The calendar follows the Material style: circular days, a month and year list, and a today and clear action." edit_url={editURL("date-picker")} />
+
+  <DocBlock title="Example">
+    <p class="not-prose">Import the component and bind a string. Click the field to open the calendar.</p>
+    <Example>
+      {#snippet example()}
+        <div class="flex w-full max-w-sm flex-col gap-3">
+          <DatePicker bind:value={date} placeholder="Pick a date">Birthday</DatePicker>
+          <p class="not-prose text-sm text-muted">value: "{date}"</p>
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<script>
+  import { DatePicker } from "theui-svelte";
+  let date = $state("")
+</script>
+
+<DatePicker bind:value={date} placeholder="Pick a date">Birthday</DatePicker>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Limits and Disabled Days">
+    <p class="not-prose">Use <code>min</code> and <code>max</code>, both ISO dates, to fence the calendar in. For anything else, <code>disabledDates</code> is asked about each day and returns <code>true</code> for the ones to turn off, such as weekends or days that are already taken.</p>
+    <Example>
+      {#snippet example()}
+        <div class="w-full max-w-sm">
+          <DatePicker
+            bind:value={meeting}
+            min="2026-01-01"
+            max="2026-12-31"
+            disabledDates={(d) => d.getDay() === 5 || d.getDay() === 6}
+            helperText="2026 only, and no weekends"
+          >Meeting day</DatePicker>
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<DatePicker
+  bind:value={meeting}
+  min="2026-01-01"
+  max="2026-12-31"
+  disabledDates={(date) => date.getDay() === 5 || date.getDay() === 6}
+>Meeting day</DatePicker>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Locale and First Day">
+    <p class="not-prose">The <code>locale</code> prop decides the language of the month and weekday names and how the value is shown, and <code>firstDayOfWeek</code> sets which day starts the week, where <code>0</code> is Sunday and <code>1</code> is Monday. Both use the browser's own date formatting, so nothing extra is loaded.</p>
+    <Example>
+      {#snippet example()}
+        <div class="flex w-full max-w-sm flex-col gap-4">
+          <DatePicker value="2026-03-14" locale="en-GB" firstDayOfWeek={1}>British English, week starts Monday</DatePicker>
+          <DatePicker value="2026-03-14" locale="de-DE" firstDayOfWeek={1}>German</DatePicker>
+          <DatePicker value="2026-03-14" locale="bn-BD">Bangla</DatePicker>
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<DatePicker value="2026-03-14" locale="en-GB" firstDayOfWeek={1} />
+<DatePicker value="2026-03-14" locale="de-DE" firstDayOfWeek={1} />
+<DatePicker value="2026-03-14" locale="bn-BD" />
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Display Format">
+    <p class="not-prose">By default the date is shown in a medium style for the locale. Pass <code>format</code> to write it your own way. The value itself never changes, only what is read in the field.</p>
+    <Example>
+      {#snippet example()}
+        <div class="flex w-full max-w-sm flex-col gap-4">
+          <DatePicker value="2026-03-14">Default</DatePicker>
+          <DatePicker value="2026-03-14" format={(d) => d.toLocaleDateString("en-US", {dateStyle: "full"})}>Full</DatePicker>
+          <DatePicker value="2026-03-14" format={(d) => `${d.getDate()}/${d.getMonth() + 1}/${d.getFullYear()}`}>Day first</DatePicker>
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<DatePicker value="2026-03-14" />
+<DatePicker value="2026-03-14" format={(d) => d.toLocaleDateString("en-US", {dateStyle: "full"})} />
+<DatePicker value="2026-03-14" format={(d) => `${d.getDate()}/${d.getMonth() + 1}/${d.getFullYear()}`} />
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Typing a Date">
+    <p class="not-prose">The field is read-only by default, so a tap opens the calendar. Add <code>editable</code> to let the date be typed as well. Typing takes the ISO form, <code>YYYY-MM-DD</code>, and anything else is put back when the field loses focus.</p>
+    <Example>
+      {#snippet example()}
+        <div class="w-full max-w-sm">
+          <DatePicker bind:value={date} editable placeholder="YYYY-MM-DD" helperText="Try typing 2026-03-14">Typed date</DatePicker>
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<DatePicker bind:value={date} editable placeholder="YYYY-MM-DD">Typed date</DatePicker>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Inline Calendar">
+    <p class="not-prose">With <code>inline</code> the calendar is always open and there is no field, which suits a booking page or a filter panel.</p>
+    <Example>
+      {#snippet example()}
+        <div class="flex flex-col gap-3">
+          <DatePicker bind:value={inline} inline>Choose a day</DatePicker>
+          <p class="not-prose text-sm text-muted">value: "{inline}"</p>
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<DatePicker bind:value={date} inline>Choose a day</DatePicker>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Footer Actions">
+    <p class="not-prose">The calendar has a <b>Today</b> button and, once a date is chosen, a <b>Clear</b> button. Turn the first off with <code>showToday={false}</code> and the second with <code>clearable={false}</code>, or rename them with <code>todayText</code> and <code>clearText</code>.</p>
+    <Example>
+      {#snippet example()}
+        <div class="flex w-full max-w-sm flex-col gap-4">
+          <DatePicker value="2026-03-14" todayText="Jump to today" clearText="Remove">Renamed actions</DatePicker>
+          <DatePicker value="2026-03-14" showToday={false} clearable={false}>No actions</DatePicker>
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<DatePicker value="2026-03-14" todayText="Jump to today" clearText="Remove" />
+<DatePicker value="2026-03-14" showToday={false} clearable={false} />
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="In a Form">
+    <p class="not-prose">Give the component a <code>name</code> and the ISO value is submitted, which is the form every backend understands. The <code>onchange</code> callback runs with the new value.</p>
+    <Example>
+      {#snippet example()}
+        <form class="flex w-full max-w-sm flex-col items-start gap-3" onsubmit={(e) => e.preventDefault()}>
+          <DatePicker name="startDate" value="2026-03-14">Start date</DatePicker>
+          <button class="rounded-md bg-brand-500 px-4 py-2 font-medium text-on-brand">Save</button>
+        </form>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<form method="POST">
+  <DatePicker name="startDate" value="2026-03-14" onchange={(v) => console.log(v)}>
+    Start date
+  </DatePicker>
+  <button>Save</button>
+</form>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Animation Speed">
+    <p class="not-prose">The <code>animationSpeed</code> prop sets how quickly the field and the calendar react to focus, hover and opening. It takes <code>"none"</code>, <code>"slower"</code>, <code>"slow"</code>, <code>"normal"</code>, <code>"fast"</code> and <code>"faster"</code>, and the default is <code>"normal"</code>. Inside a <a href="/docs/form">Form</a> or a <a href="/docs/fieldset">Fieldset</a> the value is inherited, so one setting covers every field at once.</p>
+    <Example>
+      {#snippet example()}
+        <div class="flex w-full max-w-sm flex-col gap-4">
+          <DatePicker animationSpeed="slower" placeholder="Slower" />
+          <DatePicker animationSpeed="normal" placeholder="Normal" />
+          <DatePicker animationSpeed="faster" placeholder="Faster" />
+          <DatePicker animationSpeed="none" placeholder="No animation" />
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<DatePicker animationSpeed="slower" placeholder="Slower" />
+<DatePicker animationSpeed="normal" placeholder="Normal" />
+<DatePicker animationSpeed="faster" placeholder="Faster" />
+<DatePicker animationSpeed="none" placeholder="No animation" />
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Reset Styles">
+    <p class="not-prose">Set <code>reset</code> to <code>true</code> to drop the border, background and focus ring of the field and keep only the classes you pass. The calendar panel keeps its own styling, so only the closed field changes. The default is <code>false</code>, and a <a href="/docs/form">Form</a> or a <a href="/docs/fieldset">Fieldset</a> can set it for every field it holds.</p>
+    <Example>
+      {#snippet example()}
+        <div class="w-full max-w-sm">
+          <DatePicker reset class="w-full border-b-2 border-gray-400 px-1 py-2" placeholder="Underline only" />
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<DatePicker
+  reset
+  class="w-full border-b-2 border-gray-400 px-1 py-2"
+  placeholder="Underline only" />
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Customization">
+    <p class="not-prose">Sizes and variants come from the <a href="/docs/form">Form</a> or the <a href="/docs/fieldset">Fieldset</a>, or from the props here. Use <code>panelClass</code> for the calendar, <code>dayClasses</code> for every day and <code>selectedDayClasses</code> for the chosen one.</p>
+    <Example>
+      {#snippet example()}
+        <div class="flex w-full max-w-sm flex-col gap-4">
+          <DatePicker value="2026-03-14" size="lg" variant="flat">Flat and large</DatePicker>
+          <DatePicker value="2026-03-14" selectedDayClasses="bg-info-500 hover:bg-info-600">Blue selection</DatePicker>
+          <DatePicker value="2026-03-14" dayClasses="rounded-lg">Square days</DatePicker>
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<DatePicker value="2026-03-14" size="lg" variant="flat" />
+<DatePicker value="2026-03-14" selectedDayClasses="bg-info-500 hover:bg-info-600" />
+<DatePicker value="2026-03-14" dayClasses="rounded-lg" />
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Keyboard">
+    <p class="not-prose">In the field, the down arrow or Enter opens the calendar. Inside it, the arrow keys move a day at a time, Page Up and Page Down move a month, with Shift a year, Home and End go to the start and end of the week, Enter or Space takes the day, and Escape closes and puts the focus back on the field. Only one day is in the tab order at a time, so Tab leaves the calendar instead of walking through forty-two buttons.</p>
+  </DocBlock>
+
+  <DocBlock title="Accessibility">
+    <p class="not-prose">The calendar is a dialog with a grid inside it, the pattern screen readers know. Each day is a button named in full, such as "Saturday, 14 March 2026", so the number is never read alone; today is marked with <code>aria-current</code> and the chosen day with <code>aria-selected</code>. The month in view is announced politely as it changes, and days outside the range are disabled rather than hidden. The month and year button opens a list of years and months, so a distant date takes a few clicks instead of many. The panel is positioned with a fixed strategy, so it stays on screen inside scrolling boxes.</p>
+  </DocBlock>
+
+  <DocBlock title="Configuration">
+    <ConfigComponent {component} />
+  </DocBlock>
+
+  {#snippet sidebar()}
+    <a href={processID("Example")}>Example</a>
+    <a href={processID("Limits and Disabled Days")}>Limits and disabled days</a>
+    <a href={processID("Locale and First Day")}>Locale and first day</a>
+    <a href={processID("Display Format")}>Display format</a>
+    <a href={processID("Typing a Date")}>Typing a date</a>
+    <a href={processID("Inline Calendar")}>Inline calendar</a>
+    <a href={processID("Footer Actions")}>Footer actions</a>
+    <a href={processID("In a Form")}>In a form</a>
+    <a href={processID("Animation Speed")}>Animation speed</a>
+    <a href={processID("Reset Styles")}>Reset styles</a>
+    <a href={processID("Customization")}>Customization</a>
+    <a href={processID("Keyboard")}>Keyboard</a>
+    <a href={processID("Accessibility")}>Accessibility</a>
+    <a href={processID("Configuration")}>Configuration</a>
+  {/snippet}
+
+</DocLayout>

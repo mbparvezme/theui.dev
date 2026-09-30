@@ -1,9 +1,9 @@
-<SEO title="Entry-Exit Popup" />
+<SEO title="Entry-Exit Popup" description={metadata.description} keywords={metadata.tags?.join(", ")} />
 <Page {component} />
 
 <script lang="ts">
   import SEO from "$lib/SEO.svelte"
-  import Page from "$lib/pages/popup.svx"
+  import Page, { metadata } from "$lib/pages/popup.svx"
 
   const component = [
     {

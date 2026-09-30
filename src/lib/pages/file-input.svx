@@ -46,6 +46,30 @@ tags: [file-input, upload, input, form, component, svelte, svelte-5, theui-svelt
     <p class="not-prose">The <code>name</code> prop is mandatory for the FileInput component. It ensures the input field is properly recognized when submitting a form. Without a name, the uploaded file data will not be sent. The content inside the <code>FileInput</code> component will be display as a label.</p>
   </DocBlock>
 
+  <DocBlock title="Selected Files">
+    <p class="not-prose">The <code>files</code> prop holds the selected files as a <code>FileList</code>. It is bindable, so use <code>bind:files</code> to read what the user picked, for example to show the file names or upload them yourself. Add the native <code>multiple</code> attribute to allow more than one file, and <code>accept</code> to limit the file types.</p>
+    <Example>
+      {#snippet code()}
+
+```html
+<script>
+  let files = $state();
+</script>
+
+<FileInput name="documents" bind:files multiple accept=".pdf,.docx">Upload</FileInput>
+
+{#if files?.length}
+  <ul>
+    {#each Array.from(files) as file}
+      <li>{file.name}</li>
+    {/each}
+  </ul>
+{/if}
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
   <DocBlock title="Size">
     <Example>
       <p class="not-prose">The <code>size</code> prop determines the overall size of the <code>FileInput</code> component. It affects the padding and dimensions of the input field, ensuring consistency with other form elements. Available sizes: <code>"sm"</code>, <code>"md"</code> (default), <code>"lg"</code> and <code>"xl"</code>.</p>
@@ -92,7 +116,7 @@ tags: [file-input, upload, input, form, component, svelte, svelte-5, theui-svelt
 
   <DocBlock title="Rounded">
     <Example classes="gap-8">
-      <p class="not-prose">The <code>rounded</code> prop defines the border-radius of the FileInput, giving it different levels of rounded corners. Available values: <code>"sm"</code>, <code>"md"</code> (default), <code>"lg"</code>, <code>"xl"</code>, <code>"full"</code>, <code>"none"</code>.</p>
+      <p class="not-prose">The <code>rounded</code> prop defines the border-radius of the FileInput, giving it different levels of rounded corners. Available values: <code>"sm"</code>, <code>"md"</code> (default), <code>"lg"</code>, <code>"xl"</code>, <code>"2xl"</code>, <code>"full"</code>, <code>"none"</code>. It applies to the input and its file button.</p>
       <p class="not-prose">By default, the <code>FileInput</code> inherits the <code>rounded</code> value from the <b>Fieldset</b> or <b>Form</b>, ensuring a uniform look.</p>
       {#snippet example()}
 <div class="flex flex-col gap-4">
@@ -165,9 +189,9 @@ tags: [file-input, upload, input, form, component, svelte, svelte-5, theui-svelt
 
   <DocBlock title="Customization">
     <Example>
-      <p class="not-prose">The <code>FileInput</code> component provides several ways to customize its appearance to match your design requirements. You can modify the container, label, and input field styles using the following props:</p>
+      <p class="not-prose">The <code>FileInput</code> component provides several ways to customize its appearance to match your design requirements. The <code>size</code>, <code>variant</code>, <code>rounded</code> and <code>reset</code> props are inherited from the nearest <b>Fieldset</b> or <b>Form</b>. You can modify the container, label, and input field styles using the following props:</p>
       <ul class="my-0">
-        <li><span class="not-prose"><code>labelClasses</code></span> – Custom styles for the FileInput. If used within a Form component, it inherits the Form's <span class="not-prose"><code>labelClasses</code></span>.</li>
+        <li><span class="not-prose"><code>labelClasses</code></span> – Custom styles for the label of the FileInput. If used within a Fieldset or Form component, it inherits their <span class="not-prose"><code>labelClasses</code></span>.</li>
         <li><span class="not-prose"><code>wrapperClasses</code></span> – Additional classes for the wrapper &lt;div&gt;, useful for layout adjustments.</li>
         <li><span class="not-prose"><code>class</code></span> – Apply custom styles to the file input itself.</li>
       </ul>
@@ -210,6 +234,7 @@ tags: [file-input, upload, input, form, component, svelte, svelte-5, theui-svelt
   {#snippet sidebar()}
     <a href={processID("About")}>About</a>
     <a href={processID("Example")}>Example</a>
+    <a href={processID("Selected Files")}>Selected Files</a>
     <a href={processID("Size")}>Size</a>
     <a href={processID("Variant")}>Variant</a>
     <a href={processID("Rounded")}>Rounded</a>

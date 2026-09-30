@@ -1,0 +1,259 @@
+---
+title: OTP Input
+category: Forms
+description: Collect a one time code in separate boxes, with paste, backspace and SMS autofill support, using theui-svelte’s OtpInput component.
+dir: ".lib/pages"
+tags: [otp, one time code, pin, verification, two factor, form, svelte, svelte-5, theui-svelte, component-library, ui, tailwindcss]
+---
+
+<script lang="ts">
+  import DocLayout from "$lib/ui/doc/DocLayout.svelte";
+  import DocHead from "$lib/ui/doc/Head.svelte";
+  import DocBlock from "$lib/ui/doc/Block.svelte";
+  import Code from "$lib/ui/doc/CodeBlock.svelte";
+  import Example from "$lib/ui/doc/Example.svelte";
+  import ConfigComponent from "$lib/ui/doc/ConfigComponent.svelte";
+  import { processID, editURL } from "$lib";
+  let { component }: {component: any } = $props();
+
+  import { OtpInput } from "theui-svelte";
+
+  let otp = $state("")
+  let done = $state("")
+</script>
+
+<DocLayout>
+  <DocHead title="OTP Input" text="The OtpInput component collects a one time code, the kind sent by SMS or made by an authenticator app. Each character has its own box, typing moves forward by itself, and pasting a whole code fills every box at once." edit_url={editURL("otp-input")} />
+
+  <DocBlock title="Example">
+    <p class="not-prose">Import the component and bind a string. The value is the code as one piece of text, so you can send it straight to your server.</p>
+    <Example>
+      {#snippet example()}
+        <div class="flex flex-col gap-3">
+          <OtpInput bind:value={otp}>Verification code</OtpInput>
+          <p class="not-prose text-sm text-muted">value: "{otp}"</p>
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<script>
+  import { OtpInput } from "theui-svelte";
+  let code = $state("")
+</script>
+
+<OtpInput bind:value={code}>Verification code</OtpInput>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Length">
+    <p class="not-prose">The <code>length</code> prop sets how many boxes there are. The default is <code>6</code>.</p>
+    <Example>
+      {#snippet example()}
+        <div class="flex flex-col gap-4">
+          <OtpInput length={4} />
+          <OtpInput length={8} />
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<OtpInput length={4} />
+<OtpInput length={8} />
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Types">
+    <p class="not-prose">The <code>type</code> prop decides what may be typed: <code>number</code> (default) takes digits only and opens the number keypad on a phone, <code>text</code> takes letters and digits, and <code>password</code> hides what has been typed.</p>
+    <Example>
+      {#snippet example()}
+        <div class="flex flex-col gap-4">
+          <OtpInput type="number" length={4} helperText="Digits only" />
+          <OtpInput type="text" length={4} helperText="Letters and digits" />
+          <OtpInput type="password" length={4} helperText="Hidden" />
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<OtpInput type="number" length={4} />
+<OtpInput type="text" length={4} />
+<OtpInput type="password" length={4} />
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Separator">
+    <p class="not-prose">Use <code>separatorAfter</code> to break a long code into two halves, the way printed codes are grouped.</p>
+    <Example>
+      {#snippet example()}
+        <OtpInput length={6} separatorAfter={3} />
+      {/snippet}
+      {#snippet code()}
+
+```html
+<OtpInput length={6} separatorAfter={3} />
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="On Complete">
+    <p class="not-prose">The <code>oncomplete</code> callback runs as soon as the last box is filled, which is the moment to check the code without making the user press a button.</p>
+    <Example>
+      {#snippet example()}
+        <div class="flex flex-col gap-3">
+          <OtpInput length={4} oncomplete={(v) => done = v}>Enter any four digits</OtpInput>
+          <p class="not-prose text-sm text-muted">{done ? `Completed with "${done}"` : "Waiting for four digits…"}</p>
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<OtpInput length={4} oncomplete={(value) => verify(value)}>
+  Enter the code
+</OtpInput>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Sizes and Variants">
+    <p class="not-prose">Sizes run from <code>sm</code> to <code>xl</code>, and the <code>variant</code> can be <code>bordered</code> or <code>flat</code>. Both are inherited from a <a href="/docs/form">Form</a> or a <a href="/docs/fieldset">Fieldset</a>.</p>
+    <Example>
+      {#snippet example()}
+        <div class="flex flex-col gap-4">
+          <OtpInput length={4} size="sm" />
+          <OtpInput length={4} size="lg" />
+          <OtpInput length={4} variant="flat" />
+          <OtpInput length={4} rounded="full" />
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<OtpInput length={4} size="sm" />
+<OtpInput length={4} size="lg" />
+<OtpInput length={4} variant="flat" />
+<OtpInput length={4} rounded="full" />
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="In a Form">
+    <p class="not-prose">Give the component a <code>name</code> and the whole code is submitted as one field, not as six. Add <code>autofocus</code> when the code is the only thing on the page.</p>
+    <Example>
+      {#snippet example()}
+        <form class="flex flex-col items-start gap-3" onsubmit={(e) => e.preventDefault()}>
+          <OtpInput name="otp" length={6} helperText="We sent a code to your phone">One time code</OtpInput>
+          <button class="rounded-md bg-brand-500 px-4 py-2 font-medium text-on-brand">Verify</button>
+        </form>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<form method="POST">
+  <OtpInput name="otp" length={6} helperText="We sent a code to your phone">
+    One time code
+  </OtpInput>
+  <button>Verify</button>
+</form>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Animation Speed">
+    <p class="not-prose">The <code>animationSpeed</code> prop sets how quickly each box reacts to focus and hover. It takes <code>"none"</code>, <code>"slower"</code>, <code>"slow"</code>, <code>"normal"</code>, <code>"fast"</code> and <code>"faster"</code>, and the default is <code>"normal"</code>. Inside a <a href="/docs/form">Form</a> or a <a href="/docs/fieldset">Fieldset</a> the value is inherited, so one setting covers every field at once.</p>
+    <Example>
+      {#snippet example()}
+        <div class="flex flex-col gap-4">
+          <OtpInput animationSpeed="slower">Slower</OtpInput>
+          <OtpInput animationSpeed="faster">Faster</OtpInput>
+          <OtpInput animationSpeed="none">No animation</OtpInput>
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<OtpInput animationSpeed="slower">Slower</OtpInput>
+<OtpInput animationSpeed="faster">Faster</OtpInput>
+<OtpInput animationSpeed="none">No animation</OtpInput>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Reset Styles">
+    <p class="not-prose">Set <code>reset</code> to <code>true</code> to drop the border, background and focus ring of every box and keep only the classes you pass. The boxes stay in a row and keep their width, so paste and the arrow keys are unaffected. The default is <code>false</code>, and a <a href="/docs/form">Form</a> or a <a href="/docs/fieldset">Fieldset</a> can set it for every field it holds.</p>
+    <Example>
+      {#snippet example()}
+        <OtpInput reset boxClasses="border-0 border-b-2 border-gray-400">Underline only</OtpInput>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<OtpInput reset boxClasses="border-0 border-b-2 border-gray-400">
+  Underline only
+</OtpInput>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Customization">
+    <p class="not-prose">Use <code>boxClasses</code> for the boxes themselves, and <code>placeholder</code> to show a character in the empty ones.</p>
+    <Example>
+      {#snippet example()}
+        <div class="flex flex-col gap-4">
+          <OtpInput length={4} placeholder="•" />
+          <OtpInput length={4} boxClasses="w-12 text-xl font-semibold" />
+          <OtpInput length={4} variant="flat" boxClasses="border-b-4 text-2xl" />
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<OtpInput length={4} placeholder="•" />
+<OtpInput length={4} boxClasses="w-12 text-xl font-semibold" />
+<OtpInput length={4} variant="flat" boxClasses="border-b-4 text-2xl" />
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Keyboard and Paste">
+    <p class="not-prose">Typing a character moves to the next box. Backspace clears the box, or steps back and clears the one before when the box is already empty. The left and right arrows move between boxes, Home and End jump to the first and last, and Delete clears without moving. Pasting a code anywhere in the row fills the boxes from that point on, so a copied code never has to be typed.</p>
+  </DocBlock>
+
+  <DocBlock title="Accessibility">
+    <p class="not-prose">Every box is a real input with its own name, such as "Character 3 of 6", which you can reword with the <code>boxLabel</code> prop. The row is a group, so a screen reader user hears the label of the field before the boxes. The first box carries <code>autocomplete="one-time-code"</code>, which lets phones offer the code from an SMS, and the number type opens the numeric keypad. When you pass a <code>name</code>, the code is submitted once as a whole rather than as separate characters.</p>
+  </DocBlock>
+
+  <DocBlock title="Configuration">
+    <ConfigComponent {component} />
+  </DocBlock>
+
+  {#snippet sidebar()}
+    <a href={processID("Example")}>Example</a>
+    <a href={processID("Length")}>Length</a>
+    <a href={processID("Types")}>Types</a>
+    <a href={processID("Separator")}>Separator</a>
+    <a href={processID("On Complete")}>On complete</a>
+    <a href={processID("Sizes and Variants")}>Sizes and variants</a>
+    <a href={processID("In a Form")}>In a form</a>
+    <a href={processID("Animation Speed")}>Animation speed</a>
+    <a href={processID("Reset Styles")}>Reset styles</a>
+    <a href={processID("Customization")}>Customization</a>
+    <a href={processID("Keyboard and Paste")}>Keyboard and paste</a>
+    <a href={processID("Accessibility")}>Accessibility</a>
+    <a href={processID("Configuration")}>Configuration</a>
+  {/snippet}
+
+</DocLayout>

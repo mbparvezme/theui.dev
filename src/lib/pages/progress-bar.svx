@@ -71,7 +71,7 @@ tags: [progress-bar, progress, indicator, component, svelte, svelte-5, theui-sve
       {#snippet code()}
 ```html
 <Progress start={55} end={55} label="55" />
-<Progress start={75} end={55} label="55" />
+<Progress start={75} end={45} label="55" />
 <Progress start={25} end={55} label="55" />
 <Progress start={25} end={155} label="55" />
 ```
@@ -83,7 +83,7 @@ tags: [progress-bar, progress, indicator, component, svelte, svelte-5, theui-sve
     <p class="not-prose">The <code>thickness</code> prop controls the thickness of the progress bar. It accepts five values: <code>'px'</code>, <code>'sm'</code>, <code>'md'</code>, <code>'lg'</code>, and <code>'xl'</code>. The default value is <code>'md'</code>.</p>
     
     <Alert type="warning" theme="soft" variant="borderStart"><span class="not-prose">
-    If the <code>thickness</code> is set to <code>'px'</code>, <code>'sm'</code> or <code>'md'</code>, the label will always be displayed as a bubble, regardless of the <code>labelVariant</code> setting.
+    If the <code>thickness</code> is set to <code>'lg'</code> or <code>'xl'</code>, the label will always be displayed inline, regardless of the <code>labelVariant</code> setting.
     </span></Alert>
 
     <Example>
@@ -127,7 +127,7 @@ tags: [progress-bar, progress, indicator, component, svelte, svelte-5, theui-sve
 ```
       {/snippet}
     </Example>
-    <Alert type="warning" theme="soft" variant="borderStart"><span class="not-prose">Regardless of the <code>labelVariant</code> setting, if the <code>thickness</code> is not <code>'lg'</code> or <code>'xl'</code>, the label will automatically use the <code>"bubble"</code> variant. Otherwise, it will follow the specified <code>labelVariant</code> value. More in the thickness section.</span></Alert>
+    <Alert type="warning" theme="soft" variant="borderStart"><span class="not-prose">Regardless of the <code>labelVariant</code> setting, if the <code>thickness</code> is <code>'lg'</code> or <code>'xl'</code>, the label will automatically be displayed inline. Otherwise, it will follow the specified <code>labelVariant</code> value. More in the thickness section.</span></Alert>
   </DocBlock>
 
   <DocBlock title="Vertical Progress">
@@ -171,7 +171,7 @@ tags: [progress-bar, progress, indicator, component, svelte, svelte-5, theui-sve
       {#snippet code()}
 ```html
 <script lang="ts">
-  import {Progress} from "$lib";
+  import { Progress } from "theui-svelte";
   let startValue = $state(0)
   let endValue = $state(40)
 </script>
@@ -216,12 +216,13 @@ tags: [progress-bar, progress, indicator, component, svelte, svelte-5, theui-sve
 ```
       {/snippet}
     </Example>
+    <p class="not-prose mb-0">Anything else you pass reaches the element itself, so an <code>id</code>, a <code>title</code>, a <code>data-*</code> attribute or an event handler all work the way they would on a <code>&lt;div&gt;</code>.</p>
   </DocBlock>
 
   <DocBlock title="Accessibility">
-    <p class="not-prose">TThe Progress component is designed to be accessible, providing clear indicators of progress for all users. To ensure the component is fully accessible:</p>
+    <p class="not-prose">The Progress component is designed to be accessible, providing clear indicators of progress for all users. To ensure the component is fully accessible:</p>
     <ul class="my-0">
-      <li><b>ARIA attributes</b>: <span class="not-prose">The component automatically uses <code>aria-valuenow</code>, <code>aria-valuemin</code>, and <code>aria-valuemax</code> to communicate the current progress and its range to screen readers.</span></li>
+      <li><b>ARIA attributes</b>: <span class="not-prose">The component automatically uses <code>role="progressbar"</code>, <code>aria-valuenow</code>, <code>aria-valuemin</code>, and <code>aria-valuemax</code> to communicate the current progress and its range to screen readers.</span></li>
       <li><b>Color contrast</b>: <span class="not-prose">Ensure sufficient color contrast to make the progress bar readable for users with visual impairments.</span></li>
       <li><b>Label visibility</b>: <span class="not-prose">When using the <code>"bubble"</code> label variant, ensure the label is positioned properly and does not obstruct key content, ensuring a smooth user experience.</span></li>
     </ul>

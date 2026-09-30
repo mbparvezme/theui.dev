@@ -6,7 +6,7 @@
   import { components } from "$lib/components"
 
   let { children }: {children: Snippet } = $props()
-  let linkClasses = (active: boolean = false) => twMerge("border-s-2 border-gray-500/10 ps-4 py-1 inline-block text-default tracking-wide font-normal", active && "border-brand-primary-500 text-brand-primary-500 dark:border-brand-primary-300 dark:text-brand-primary-300")
+  let linkClasses = (active: boolean = false) => twMerge("border-s-2 border-gray-500/10 ps-4 py-1 inline-block text-default tracking-wide font-normal", active && "border-brand-500 text-brand-500 dark:border-brand-300 dark:text-brand-300")
 
   let showSidebar: boolean = $state(false)
   const toggleSidebar = () => showSidebar = !showSidebar
@@ -26,9 +26,10 @@
             Getting Started
           </h3>
           <nav class="sidebar-link grow flex flex-col text-sm mb-8 dark:font-light">
-            {#each components.intro.links as component}
+            {#each components.intro.links as component (component.link)}
               <div>
-                <a class={linkClasses(page.url.pathname==component.link)} href={component.link}>{@html component.text}</a>
+                <!-- eslint-disable-next-line svelte/no-navigation-without-resolve -- internal route, typed as Pathname in $lib/components; no base path configured -->
+                <a class={linkClasses(page.url.pathname==component.link)} href={component.link}>{component.text}</a>
               </div>
             {/each}
           </nav>
@@ -42,9 +43,10 @@
             Components
           </h3>
           <nav class="sidebar-link grow flex flex-col text-sm mb-8 dark:font-light">
-            {#each components.components.links as component}
+            {#each components.components.links as component (component.link)}
               <div>
-                <a class={linkClasses(page.url.pathname==component.link)} href={component.link}>{@html component.text}</a>
+                <!-- eslint-disable-next-line svelte/no-navigation-without-resolve -- internal route, typed as Pathname in $lib/components; no base path configured -->
+                <a class={linkClasses(page.url.pathname==component.link)} href={component.link}>{component.text}</a>
               </div>
             {/each}
           </nav>
@@ -58,9 +60,10 @@
             Forms
           </h3>
           <nav class="sidebar-link grow flex flex-col text-sm mb-8 dark:font-light">
-            {#each components.forms.links as component}
+            {#each components.forms.links as component (component.link)}
               <div>
-                <a class={linkClasses(page.url.pathname==component.link)} href={component.link}>{@html component.text}</a>
+                <!-- eslint-disable-next-line svelte/no-navigation-without-resolve -- internal route, typed as Pathname in $lib/components; no base path configured -->
+                <a class={linkClasses(page.url.pathname==component.link)} href={component.link}>{component.text}</a>
               </div>
             {/each}
           </nav>
@@ -74,9 +77,10 @@
             Utilities
           </h3>
           <nav class="sidebar-link grow flex flex-col text-sm mb-8 dark:font-light">
-            {#each components.utilities.links as component}
+            {#each components.utilities.links as component (component.link)}
               <div>
-                <a class={linkClasses(page.url.pathname==component.link)} href={component.link}>{@html component.text}</a>
+                <!-- eslint-disable-next-line svelte/no-navigation-without-resolve -- internal route, typed as Pathname in $lib/components; no base path configured -->
+                <a class={linkClasses(page.url.pathname==component.link)} href={component.link}>{component.text}</a>
               </div>
             {/each}
           </nav>
@@ -85,12 +89,12 @@
       </div>
     </aside>
      <!-- md:ms-[224px] lg:ms-[288px] -->
-    <div class="docs grow relative w-full">
+    <div class="docs grow relative w-full min-w-0">
       {@render children()}
     </div>
   </div>
 
-  <button onclick={()=>toggleSidebar()} aria-label="Quick Action Button" class="flex lg:hidden items-center justify-center cursor-pointer bg-brand-primary-500 hover:bg-brand-primary-600 text-on-brand-primary focus:ring-brand-primary-500/50 shadow-2xl w-14 h-14 rounded-full ease-in-out duration-300 transition-all fixed end-6 bottom-6 z-120">
+  <button onclick={()=>toggleSidebar()} aria-label="Quick Action Button" class="flex lg:hidden items-center justify-center cursor-pointer bg-brand-500 hover:bg-brand-600 text-on-brand focus:ring-brand-500/50 shadow-2xl w-14 h-14 rounded-full ease-in-out duration-300 transition-all fixed end-6 bottom-6 z-120">
     <svg width="1rem" height="1rem" viewBox="0 0 16 16" focusable="false" aria-hidden="true" class="theui-svg-icon shrink-0 fill-current w-[60%] h-[60%]" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"></path></svg>
   </button>
 </Container>

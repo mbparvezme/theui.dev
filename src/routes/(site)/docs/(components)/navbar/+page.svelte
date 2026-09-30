@@ -1,9 +1,9 @@
-<SEO title="Navbar" />
+<SEO title="Navbar" description={metadata.description} keywords={metadata.tags?.join(", ")} />
 <Page {component} />
 
 <script lang="ts">
   import SEO from "$lib/SEO.svelte"
-  import Page from "$lib/pages/navbar.svx"
+  import Page, { metadata } from "$lib/pages/navbar.svx"
 
   const component = {
     "navbar" : [
@@ -14,92 +14,92 @@
             {
               "name": "scrollBehavior",
               "type": "<a href=\"/docs/types#navbar-scroll-behavior-type\">NAV_SCROLL_BEHAVIOR</a>",
-              "default": "default",
-              "description": "Behavior when scrolling (e.g., fixed/shrink/hide)"
+              "default": "\"default\"",
+              "description": "Behavior when scrolling: \"default\", \"fixed\", \"shrinkOnScrollDown\", \"hideOnScrollDown\" or \"shrinkAndHide\". Every value except \"default\" makes the navbar fixed."
             },
             {
               "name": "scrollAmountToShrink",
               "type": "number",
-              "default": 32,
-              "description": "Scroll distance (px) before navbar shrinks"
+              "default": "32",
+              "description": "Scroll distance (px) before the navbar shrinks."
             },
             {
               "name": "scrollAmountToHide",
               "type": "number",
-              "default": 128,
-              "description": "Scroll distance (px) before navbar hides"
+              "default": "128",
+              "description": "Scroll distance (px) before the navbar hides."
             },
             {
               "name": "height",
               "type": "'sm' | 'md' | 'lg' | 'xl' | string",
-              "default": "md",
-              "description": "Height of the navbar. Accepts predefined values or custom height classes."
+              "default": "\"md\"",
+              "description": "Height of the navbar. The presets set its vertical padding; any other value is used as classes."
             },
             {
               "name": "navBreakpoint",
-              "type": "'sm' | 'md' | 'lg' | 'xl'",
-              "default": "lg",
-              "description": "Responsive breakpoint for collapse behavior ('sm' | 'md' | 'lg' | 'xl')"
+              "type": "'sm' | 'md' | 'lg' | 'xl' | false",
+              "default": "\"lg\"",
+              "description": "Screen size below which the content of <code>NavCollapse</code> folds into the toggle menu. Set it to false to never fold."
             },
             {
               "name": "animationSpeed",
               "type": "<a href=\"/docs/types#animation-speed-type\">ANIMATE_SPEED</a>",
-              "default": "fast",
-              "description": "Transition speed for animations of the Navbar and all the components inside it."
+              "default": "\"fast\"",
+              "description": "Transition speed of the navbar and all the components inside it."
             },
             {
               "name": "rounded",
               "type": "<a href=\"/docs/types#rounded-type\">ROUNDED</a>",
-              "default": "md",
-              "description": "Controls border radius size of the Navbar and its components."
+              "default": "\"md\"",
+              "description": "Corner radius of the links, the dropdown menus and the mobile menu."
             },
             {
               "name": "ariaLabel",
               "type": "string",
-              "default": "Navigation bar",
-              "description": "ARIA label for accessibility"
+              "default": "\"Navigation bar\"",
+              "description": "Accessible name of the <code>&lt;nav&gt;</code> element."
             },
             {
-              "name": "dropdownEvent",
-              "type": "string",
-              "default": "click",
-              "description": "Dropdown trigger event applied all the Navbar dropdown."
+              "name": "dropdownTriggerEvent",
+              "type": "'hover' | 'click'",
+              "default": "\"click\"",
+              "description": "How every <code>NavDropdown</code> of this navbar opens. A dropdown can override it with its own <code>triggerEvent</code>."
             },
             {
               "name": "navInnerClasses",
               "type": "string",
-              "default": "null",
-              "description": "Custom CSS classes for the inner navbar container"
+              "default": "undefined",
+              "description": "Custom classes for the inner container that holds the brand and the links."
             },
             {
               "name": "navCollapseClasses",
               "type": "string",
-              "default": "null",
-              "description": "Custom CSS classes for the collapsed navbar state"
+              "default": "undefined",
+              "description": "Custom classes for the mobile menu created by <code>NavCollapse</code>."
             },
             {
               "name": "scrollShrinkClasses",
               "type": "string",
-              "default": "null",
-              "description": "Custom CSS classes for the shrunk navbar state"
+              "default": "undefined",
+              "description": "Custom classes added while the navbar is shrunk."
             },
             {
               "name": "linkClasses",
               "type": "string",
-              "default": "null",
-              "description": "Custom CSS classes for navbar links"
+              "default": "undefined",
+              "description": "Custom classes for every <code>NavLink</code> and dropdown trigger."
             },
             {
               "name": "activeLinkClasses",
               "type": "string",
-              "default": "null",
-              "description": "Custom CSS classes for active navbar links"
+              "default": "undefined",
+              "description": "Custom classes added to an active <code>NavLink</code>."
             },
             {
               "name": "dropdownLinkClasses",
               "type": "string",
-              "default": "null",
-              "description": "Custom CSS classes for dropdown links"
+              "default": "undefined",
+              "description": "Custom classes for the <code>NavLink</code>s inside a <code>NavDropdown</code>."
             }
           ]
       },
@@ -109,7 +109,7 @@
         "data": [
           {
             "name": "class",
-            "description": "Any CSS classes used in the class prop will be applied to the container of the Navbar. It will override the default classes."
+            "description": "Classes for the <code>&lt;nav&gt;</code> element, merged with the default classes."
           }
         ]
       },
@@ -119,7 +119,7 @@
         "data": [
           {
             "name": "children",
-            "description": "Snippet for the main content of the component."
+            "description": "The content of the navbar: NavBrand, NavCollapse, NavLinkGroup and so on."
           }
         ]
       }
@@ -132,14 +132,14 @@
           {
             "name": "href",
             "type": "string",
-            "default": "/",
-            "description": "URL to navigate to when clicked (usually homepage)"
+            "default": "\"/\"",
+            "description": "URL of the brand link, usually the homepage."
           },
           {
             "name": "ariaLabel",
             "type": "string",
-            "default": "Logo: click to go to homepage",
-            "description": "ARIA label for accessibility (describes the brand link)"
+            "default": "undefined",
+            "description": "Accessible name of the brand link. Only needed when the brand has no readable content, such as an SVG logo."
           }
         ]
       },
@@ -149,7 +149,7 @@
         "data": [
           {
             "name": "class",
-            "description": "Any CSS classes used in the class prop will be applied to the van link. It will override the default classes."
+            "description": "Classes for the brand link, merged with the default classes."
           }
         ]
       },
@@ -159,7 +159,7 @@
         "data": [
           {
             "name": "children",
-            "description": "Snippet for the main content of the component."
+            "description": "The logo or site name."
           }
         ]
       }
@@ -171,11 +171,11 @@
         "data": [
           {
             "name": "children",
-            "description": "Snippet for the main content of the component."
+            "description": "The links and groups that fold into the toggle menu on small screens."
           },
           {
             "name": "toggleIcon",
-            "description": "Custom icon for the collapse toggle button. If provided, default icon will be replaced."
+            "description": "Custom icon for the toggle button. If provided, the default icon is replaced."
           }
         ]
       }
@@ -188,44 +188,44 @@
           {
             "name": "label",
             "type": "string | Snippet",
-            "default": "null",
-            "description": "Dropdown trigger label (text or custom content)"
+            "default": "undefined",
+            "description": "Trigger label. A string renders as plain text; a Snippet is rendered as it is."
           },
           {
             "name": "align",
-            "type": "string",
-            "default": "start",
-            "description": "Menu alignment ('start' | 'end')"
+            "type": "'start' | 'end'",
+            "default": "\"start\"",
+            "description": "Aligns the menu to the start or end of its trigger."
           },
           {
             "name": "width",
             "type": "'sm' | 'md' | 'lg' | 'xl' | 'full'",
-            "default": "sm",
-            "description": "Dropdown width (responsive or full-width)"
+            "default": "\"sm\"",
+            "description": "Width of the menu. \"full\" spans the whole navbar, for a mega menu."
           },
           {
             "name": "triggerEvent",
-            "type": "string",
-            "default": "click",
-            "description": "Dropdown trigger behavior ('hover' | 'click')"
+            "type": "'hover' | 'click'",
+            "default": "Inherited from the Navbar's dropdownTriggerEvent, or \"click\"",
+            "description": "How this dropdown opens."
           },
           {
             "name": "animation",
-            "type": "string",
-            "default": "fade",
-            "description": "Menu open/close animation ('fade' | 'slide' | 'zoom')"
+            "type": "'fade' | 'slide' | 'zoom'",
+            "default": "\"fade\"",
+            "description": "Open and close animation of the menu."
           },
           {
             "name": "arrowIcon",
             "type": "Snippet | boolean",
-            "default": true,
-            "description": "Custom arrow icon (Snippet) or visibility toggle (boolean)"
+            "default": "true",
+            "description": "Shows the arrow next to the label. Set it to false to hide it, or pass a Snippet to use your own icon."
           },
           {
             "name": "linkClasses",
             "type": "string",
-            "default": "null",
-            "description": "Custom CSS classes for dropdown links"
+            "default": "undefined",
+            "description": "Custom classes for the dropdown trigger, merged with the Navbar's <code>linkClasses</code>."
           }
         ]
       },
@@ -235,7 +235,7 @@
         "data": [
           {
             "name": "class",
-            "description": "Any CSS classes used in the class prop will be applied to the container of the navbar dropdown. It will override the default classes."
+            "description": "Classes for the menu panel, merged with the default classes."
           }
         ]
       },
@@ -245,7 +245,15 @@
         "data": [
           {
             "name": "children",
-            "description": "Snippet for the main content of the component."
+            "description": "The content of the menu, usually NavLinks or custom mega menu content."
+          },
+          {
+            "name": "label",
+            "description": "Custom trigger content, as an alternative to the string prop."
+          },
+          {
+            "name": "arrowIcon",
+            "description": "Replaces the default arrow icon."
           }
         ]
       }
@@ -258,14 +266,14 @@
           {
             "name": "text",
             "type": "string",
-            "default": "null",
-            "description": "Link text (alternative to using children slot)"
+            "default": "undefined",
+            "description": "Link content as a string, instead of writing it inside the component. It renders as plain text."
           },
           {
             "name": "active",
             "type": "string | boolean",
-            "default": false,
-            "description": "Controls active state (boolean) or adds a custom active class (string)"
+            "default": "false",
+            "description": "Marks the link of the current page. It adds the Navbar's <code>activeLinkClasses</code> and <code>aria-current=\"page\"</code>."
           }
         ]
       },
@@ -274,8 +282,12 @@
         "title": "Dynamic props",
         "data": [
           {
+            "name": "href",
+            "description": "URL of the link. Without it, the NavLink renders as a button when it has an onclick, and as plain text otherwise."
+          },
+          {
             "name": "class",
-            "description": "Any CSS classes used in the class prop will be applied to the container of the nav link. It will override the default classes."
+            "description": "Classes for the link, merged with the default classes."
           }
         ]
       },
@@ -285,7 +297,7 @@
         "data": [
           {
             "name": "children",
-            "description": "Snippet for the main content of the component."
+            "description": "The link content, used when the text prop is not set."
           }
         ]
       }
@@ -297,9 +309,9 @@
         "data": [
           {
             "name": "align",
-            "type": "string",
-            "default": "start",
-            "description": "Horizontal alignment of the link group ('start' | 'end' | 'center')"
+            "type": "'start' | 'center' | 'end'",
+            "default": "\"start\"",
+            "description": "Horizontal alignment of the link group."
           }
         ]
       },
@@ -309,7 +321,7 @@
         "data": [
           {
             "name": "class",
-            "description": "Any CSS classes used in the class prop will be applied to the container of the nav link. It will override the default classes."
+            "description": "Classes for the group container, merged with the default classes."
           }
         ]
       },
@@ -319,7 +331,7 @@
         "data": [
           {
             "name": "children",
-            "description": "Snippet for the main content of the component."
+            "description": "The NavLinks and NavDropdowns of the group."
           }
         ]
       }

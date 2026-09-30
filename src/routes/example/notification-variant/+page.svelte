@@ -4,7 +4,7 @@
 
 <Notification position="bottom-end" />
 
-<Container class="h-[260px] px-4 py-4 flex">
+<Container class="h-65  px-4 py-4 flex">
   <div class="mt-auto">
     <p class="font-semibold">Default theme</p>
     <ButtonGroup  size="sm">

@@ -1,9 +1,9 @@
-<SEO title="Chips" />
+<SEO title="Chips" description={metadata.description} keywords={metadata.tags?.join(", ")} />
 <Page {component} />
 
 <script lang="ts">
   import SEO from "$lib/SEO.svelte"
-  import Page from "$lib/pages/chips.svx"
+  import Page, { metadata } from "$lib/pages/chips.svx"
 
   const component =   [
     {
@@ -13,13 +13,13 @@
         {
           "name": "close",
           "type": "boolean",
-          "description": "Determines whether a close button is displayed on the chip. Set to false to hide the close button.",
+          "description": "Determines whether a close button is displayed on the chip. Set to true to show the close button.",
           "default": false
         },
         {
           "name": "size",
           "type": "'sm' | 'md' | 'lg'",
-          "description": "Sets the size of the chip, affecting padding and image dimensions. 'md' is the default size.",
+          "description": "Sets the size of the chip's image. Only applies when imgSrc is set. 'md' is the default size.",
           "default": "\"md\""
         },
         {
@@ -45,6 +45,12 @@
           "type": "<a href=\"/docs/types#rounded-type\">ROUNDED</a>",
           "description": "Determines the border-radius style of the chip for rounded corners.",
           "default": "\"full\""
+        },
+        {
+          "name": "href",
+          "type": "string | undefined",
+          "description": "If set, the chip is rendered as a link (<code>&lt;a&gt;</code>) pointing to this URL instead of a <code>&lt;span&gt;</code>.",
+          "default": "undefined"
         }
       ]
     }

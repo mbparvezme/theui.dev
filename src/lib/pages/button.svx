@@ -67,7 +67,7 @@ tags: [button, buttons, clickable, interactive, component, svelte, svelte-5, the
     </Example>
 
     <Example title="New Tab Icon">
-      <p class="not-prose">Sometimes, you may want to show an arrow icon to indicate that a link opens in a new tab. You can do this by setting the <code>newTabIcon</code> prop to <code>true</code>. By default, it's <code>false</code>, so the icon is hidden.</p>
+      <p class="not-prose">Sometimes, you may want to show an arrow icon to indicate that a link opens in a new tab. This is controlled by the <code>newTabIcon</code> prop. By default, it's <code>true</code>, so the icon is shown. Set it to <code>false</code> to hide the icon.</p>
       <p class="not-prose"><b>Important:</b> The link must have a <code>target</code> attribute (like <code>target="_blank"</code>) for the icon to appear. If there's no <code>target</code>, the icon won't show - even if <code>newTabIcon</code> is <code>true</code>.</p>
       {#snippet example()}
         <Button href="/" target="_blank" newTabIcon={true}>New Tab Link</Button>
@@ -317,7 +317,7 @@ tags: [button, buttons, clickable, interactive, component, svelte, svelte-5, the
 
   <DocBlock title="Rounded Corner Button">
     <Example>
-      <p class="not-prose">The <code>rounded</code> prop in the Button component allows you to easily control the border radius, ensuring consistent design throughout your application. This prop supports several predefined values, providing flexibility while maintaining a uniform look. Available values are: <code>none</code>, <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code>, and <code>full</code>. Default value <code>md</code>.</p>
+      <p class="not-prose">The <code>rounded</code> prop in the Button component allows you to easily control the border radius, ensuring consistent design throughout your application. This prop supports several predefined values, providing flexibility while maintaining a uniform look. Available values are: <code>none</code>, <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code>, <code>2xl</code>, and <code>full</code>. Default value <code>md</code>.</p>
       {#snippet example()}
         <Button rounded="none">None</Button>
         <Button rounded="sm">Small</Button>
@@ -339,6 +339,27 @@ tags: [button, buttons, clickable, interactive, component, svelte, svelte-5, the
       {/snippet}
     </Example>
     <p class="not-prose">Using the <code>rounded</code> prop ensures your buttons adhere to a consistent design pattern, enhancing the visual coherence of your UI.</p>
+  </DocBlock>
+
+  <DocBlock title="Button Shadow">
+    <Example>
+      <p class="not-prose">The <code>shadow</code> prop controls the button's shadow. Available values are <code>"none"</code>, <code>"xs"</code>, <code>"sm"</code>, <code>"md"</code> (default), <code>"lg"</code>, <code>"xl"</code>, <code>"2xl"</code> and <code>"inner"</code>. Buttons inside a <code>ButtonGroup</code> don't use it.</p>
+      {#snippet example()}
+        <Button shadow="none">No shadow</Button>
+        <Button shadow="sm">Small</Button>
+        <Button shadow="lg">Large</Button>
+        <Button shadow="2xl">2xl</Button>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Button shadow="none">No shadow</Button>
+<Button shadow="sm">Small</Button>
+<Button shadow="lg">Large</Button>
+<Button shadow="2xl">2xl</Button>
+```
+      {/snippet}
+    </Example>
   </DocBlock>
 
   <DocBlock title="Button Animation Speed">
@@ -369,20 +390,101 @@ tags: [button, buttons, clickable, interactive, component, svelte, svelte-5, the
     <p class="not-prose">Each value adjusts the animation timing to fit your design needs, ensuring a seamless user experience.</p>
   </DocBlock>
 
+  <DocBlock title="Loading State">
+    <Example>
+      <p class="not-prose">Set the <code>loading</code> prop to <code>true</code> to show a spinner in the button, for example while a form is being submitted. While loading, the button can't be clicked. The <code>loadingText</code> prop sets the text shown after the button label; the default is <code>"Loading..."</code>. Set it to an empty string to show only the spinner.</p>
+      {#snippet example()}
+        <Button loading={true}>Save</Button>
+        <Button loading={true} loadingText="">Save</Button>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<script>
+  let saving = $state(false);
+</script>
+
+<Button loading={saving} onclick={() => saving = true}>Save</Button>
+
+<!-- Spinner only -->
+<Button loading={true} loadingText="">Save</Button>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Active State">
+    <Example>
+      <p class="not-prose">Use the <code>isActive</code> prop to show a button in its pressed style, for example the selected option in a group of buttons or a toggle that is on. The default is <code>false</code>. On a button (not a link), <code>isActive</code> also sets <code>aria-pressed="true"</code> so screen readers announce it as pressed.</p>
+      {#snippet example()}
+        <Button>Inactive</Button>
+        <Button isActive={true}>Active</Button>
+        <Button outline={true} isActive={true}>Active outline</Button>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Button>Inactive</Button>
+<Button isActive={true}>Active</Button>
+<Button outline={true} isActive={true}>Active outline</Button>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Disabled Button">
+    <Example>
+      <p class="not-prose">Add the <code>disabled</code> attribute to disable a button. A disabled button is dimmed, can't be clicked and gets <code>aria-disabled="true"</code>. On a link button, the link is also removed, so it can't be opened with the mouse or the keyboard.</p>
+      {#snippet example()}
+        <Button disabled>Disabled button</Button>
+        <Button href="/" disabled>Disabled link</Button>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Button disabled>Disabled button</Button>
+<Button href="/" disabled>Disabled link</Button>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Actions">
+    <Example>
+      <p class="not-prose">The <code>actions</code> prop lets you apply <a href="https://svelte.dev/docs/svelte/use" target="_blank">Svelte actions</a> to the button element. Pass an array of <code>[action, params]</code> pairs; <code>params</code> is optional. Each action runs when the button is mounted, and its <code>destroy</code> function runs when the button is removed.</p>
+      {#snippet code()}
+
+```html
+<script>
+  const tooltip = (node, text) => {
+    node.title = text;
+    return { destroy: () => node.removeAttribute("title") };
+  };
+</script>
+
+<Button actions={[[tooltip, "Save your changes"]]}>Save</Button>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
   <DocBlock title="Accessibility">
     <div>
       <p class="not-prose">The Button component is designed with accessibility in mind, ensuring it can be used by everyone, including users relying on assistive technologies. By default, it includes the necessary ARIA attributes and supports keyboard navigation.</p>
       <ol class="my-0">
         <li>
-          <b>Keyboard Navigation</b>: Use <kbd>tab</kbd> to navigate between headers.</li>
+          <b>Keyboard Navigation</b>: Use <kbd>tab</kbd> to navigate between buttons, and <kbd>Enter</kbd> or <kbd>Space</kbd> to activate a button.</li>
         <li>
-          <b>ARIA Attributes</b>: The <span class="not-prose"><code>aria-label</code></span> attribute used to provide a descriptive label when the button’s text or icon alone may not be clear (e.g., icon-only buttons). You can use the <span class="not-prose"><code>ariaLabel</code></span> prop allows you to provide an accessible name for the button, ensuring screen readers can describe its function clearly.
+          <b>ARIA Attributes</b>: By default, screen readers use the button's visible text as its name. The <span class="not-prose"><code>ariaLabel</code></span> prop sets <span class="not-prose"><code>aria-label</code></span>, which replaces that text, so use it when the button's text or icon alone may not be clear (e.g., icon-only buttons).
               <Code>
 
 ```html
-<Button ariaLabel="Submit the form">Submit</Button>
-```           
+<Button square={true} ariaLabel="Open profile">
+  <Svg>...</Svg>
+</Button>
+```
 </Code>
+          A disabled button gets <span class="not-prose"><code>aria-disabled="true"</code></span>, and an active button (<span class="not-prose"><code>isActive</code></span>) gets <span class="not-prose"><code>aria-pressed="true"</code></span>.
         </li>
         <li>
           <b>Focus Management</b>: Focus styles are provided using focus-visible or focus-within to ensure a clear visual indicator when the button is focused.
@@ -412,6 +514,12 @@ tags: [button, buttons, clickable, interactive, component, svelte, svelte-5, the
     <a href={processID("Size")}>Size</a>
     <a href={processID("Square Button")}>Square Button</a>
     <a href={processID("Rounded Corner Button")}>Rounded Corner Button</a>
+    <a href={processID("Button Shadow")}>Button Shadow</a>
+    <a href={processID("Button Animation Speed")}>Animation Speed</a>
+    <a href={processID("Loading State")}>Loading State</a>
+    <a href={processID("Active State")}>Active State</a>
+    <a href={processID("Disabled Button")}>Disabled Button</a>
+    <a href={processID("Actions")}>Actions</a>
     <a href={processID("Accessibility")}>Accessibility</a>
     <a href={processID("Configuration")}>Configuration</a>
   {/snippet}

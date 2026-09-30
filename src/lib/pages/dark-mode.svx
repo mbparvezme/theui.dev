@@ -49,14 +49,13 @@ tags: [dark-mode, theme-switcher, theme, toggle, component, svelte, svelte-5, th
   <DocBlock title="System Default Theme">
     <p class="not-prose">You can seamlessly adopt system color schemes to manage the theme using the <code>systemDefault</code> feature. By default, <code>systemDefault</code> is set to <code>true</code>, which means the app will initially load with the user's device color scheme (light or dark). The theme can then be switched between dark and light as needed.</p>
     <p class="not-prose">If <code>systemDefault</code> is set to <code>false</code>, the app will load with the light theme by default. Users can still switch to their preferred theme manually after the initial load.</p>
+    <p class="not-prose">Once the user switches the theme, the choice is saved in <code>localStorage</code> under the <code>theui-theme</code> key and is used on the next visit instead of the system or default theme.</p>
     <p class="not-prose">This flexibility allows you to provide a user-friendly and adaptive experience tailored to individual preferences.</p>
 
     <Code>
 
 ```html
-<script>
-  <DarkMode systemDefault={false} />
-</script>
+<DarkMode systemDefault={false} />
 ```
     </Code>
   </DocBlock>
@@ -101,12 +100,12 @@ tags: [dark-mode, theme-switcher, theme, toggle, component, svelte, svelte-5, th
     <Example>
       Here's how to use the DarkMode component in your application:
       {#snippet example()}
-        <DarkMode class="bg-brand-primary-500/20 text-brand-primary-500 rounded-md p-2" />
+        <DarkMode class="bg-brand-500/20 text-brand-500 rounded-md p-2" />
       {/snippet}
       {#snippet code()}
 
 ```html
-<DarkMode class="bg-brand-primary-500/20 text-brand-primary-500 rounded-md p-2" />
+<DarkMode class="bg-brand-500/20 text-brand-500 rounded-md p-2" />
 ```
       {/snippet}
     </Example>

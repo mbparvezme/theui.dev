@@ -1,9 +1,9 @@
-<SEO title="Alert" />
+<SEO title="Alert" description={metadata.description} keywords={metadata.tags?.join(", ")} />
 <Page {component} />
 
 <script lang="ts">
   import SEO from "$lib/SEO.svelte"
-  import Page from "$lib/pages/alert.svx"
+  import Page, { metadata } from "$lib/pages/alert.svx"
 
   const component = [
     {
@@ -18,7 +18,7 @@
         },
         {
           "name": "theme",
-          "type": "\"default\" | \"light\"",
+          "type": "\"default\" | \"soft\"",
           "default": "\"default\"",
           "description": "Determines the overall appearance theme of the alert."
         },
@@ -33,6 +33,12 @@
           "type": "<a href=\"/docs/types#rounded-type\">ROUNDED</a>",
           "default": "\"md\"",
           "description": "Defines the border-radius of the alert, providing control over its rounded corners."
+        },
+        {
+          "name": "role",
+          "type": "string",
+          "default": "\"alert\"",
+          "description": "Sets the ARIA role of the alert. Use a less urgent role such as \"status\" for non-critical messages."
         }
       ]
     },
@@ -47,8 +53,8 @@
           "description": "Makes the alert dismissible by adding a close button."
         },
         {
-          "name": "hideIcon",
-          "description": "Hides the icon part from the alert."
+          "name": "icon",
+          "description": "Shows a predefined icon matching the alert type."
         }
       ]
     }

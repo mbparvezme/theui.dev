@@ -1,9 +1,9 @@
-<SEO title="Popover" />
+<SEO title="Popover" description={metadata.description} keywords={metadata.tags?.join(", ")} />
 <Page {component} />
 
 <script lang="ts">
   import SEO from "$lib/SEO.svelte"
-  import Page from "$lib/pages/popover.svx"
+  import Page, { metadata } from "$lib/pages/popover.svx"
 
   const component = [
     {
@@ -14,7 +14,7 @@
           "name": "title",
           "type": "string | Snippet",
           "default": "undefined",
-          "description": "Defines the title of the popover. Can be a string or a Snippet."
+          "description": "Defines the title of the popover. Can be a string or a Snippet. A string renders as plain text; use a Snippet for markup."
         },
         {
           "name": "trigger",
@@ -62,18 +62,18 @@
           "name": "closeOnClick",
           "type": "boolean",
           "default": "true",
-          "description": "Determines whether the popover closes when clicking outside."
+          "description": "Determines whether the popover closes when clicking inside it."
         },
         {
           "name": "titleClasses",
           "type": "string",
-          "default": "null",
+          "default": "\"\"",
           "description": "Allows custom classes for styling the title."
         },
         {
           "name": "bodyClasses",
           "type": "string",
-          "default": "null",
+          "default": "\"\"",
           "description": "Allows custom classes for styling the popover body."
         }
       ]

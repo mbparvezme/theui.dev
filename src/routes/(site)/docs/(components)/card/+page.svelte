@@ -1,9 +1,9 @@
-<SEO title="Card" />
+<SEO title="Card" description={metadata.description} keywords={metadata.tags?.join(", ")} />
 <Page {component} />
 
 <script lang="ts">
   import SEO from "$lib/SEO.svelte"
-  import Page from "$lib/pages/card.svx"
+  import Page, { metadata } from "$lib/pages/card.svx"
 
   const component =   [
     {
@@ -14,7 +14,7 @@
           "name": "title",
           "type": "Snippet | string",
           "default": "undefined",
-          "description": "The title of the component, which can be a string or a Snippet."
+          "description": "The title of the component, which can be a string or a Snippet. A string renders as plain text; use a Snippet for markup."
         },
         {
           "name": "rounded",
@@ -43,14 +43,20 @@
         {
           "name": "contentClasses",
           "type": "string",
-          "default": "null",
+          "default": "\"\"",
           "description": "CSS classes for styling the content area."
         },
         {
           "name": "titleClasses",
           "type": "string",
-          "default": "null",
+          "default": "\"\"",
           "description": "CSS classes for styling the title."
+        },
+        {
+          "name": "imageOverlay",
+          "type": "boolean | string",
+          "default": "false",
+          "description": "Places the card content over the image with a backdrop. Pass a string to add custom classes to the backdrop."
         }
       ]
     },
@@ -60,7 +66,7 @@
       "data": [
         {
           "name": "horizontal",
-          "description": "If true, displays the component in a horizontal layout."
+          "description": "If added, displays the component in a horizontal layout."
         }
       ]
     }

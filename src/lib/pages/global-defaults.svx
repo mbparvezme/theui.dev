@@ -1,0 +1,204 @@
+---
+title: Global Defaults
+category: Guides
+description: Set the corner radius, animation speed, shadow and reset for every theui-svelte component from one place with setTheuiDefaults.
+dir: ".lib/pages"
+tags: [defaults, global, configuration, rounded, animation, theui-svelte, svelte, component-library]
+---
+
+<script lang="ts">
+  import DocLayout from "$lib/ui/doc/DocLayout.svelte";
+  import DocHead from "$lib/ui/doc/Head.svelte";
+  import DocBlock from "$lib/ui/doc/Block.svelte";
+  import Code from "$lib/ui/doc/CodeBlock.svelte";
+  import { processID, editURL } from "$lib";
+  import { Alert, Table, TBody, TR, TH, TD, THead } from "theui-svelte";
+</script>
+
+<DocLayout>
+
+  <DocHead title="Global Defaults" text="Square corners everywhere, or no animation anywhere, without repeating the same prop on every component. setTheuiDefaults sets the value once and every component falls back to it." edit_url={editURL("global-defaults")} />
+
+  <DocBlock title="Setting The Defaults">
+    <p class="not-prose">Call <code>setTheuiDefaults</code> once with the values you want. Every component that has the matching prop uses it instead of its own built-in default.</p>
+<Code title="src/routes/+layout.svelte">
+
+```html
+<script module lang="ts">
+  import { setTheuiDefaults } from "theui-svelte/function";
+
+  setTheuiDefaults({
+    rounded: false,
+    animationSpeed: "fast"
+  });
+</script>
+
+<script lang="ts">
+  let { children } = $props();
+</script>
+
+{@render children()}
+```
+</Code>
+    <p class="not-prose">Keys you leave out keep their built-in value, so you only name what you want to change. Calling it again merges the new keys into the old ones rather than replacing them.</p>
+  </DocBlock>
+
+  <DocBlock title="Where To Call It">
+    <p class="not-prose">Call it <b>once, at module scope</b> — a <code>&lt;script module&gt;</code> block, or a plain module your app imports. The value is a single setting shared by everything the process renders.</p>
+    <Alert type="warning" class="not-prose">
+      Do not call it while a page renders — inside a <code>load</code> function, an <code>$effect</code>, or a component's instance script. On the server one process answers many visitors at once, so a value set during one visitor's render would reach another visitor's page.
+    </Alert>
+    <p class="not-prose">Pass plain, fixed values for the same reason. A default that depends on the request, such as a per-tenant theme, does not belong here; use the <code>rounded</code> prop on a <a href="/docs/form">Form</a>, a <a href="/docs/fieldset">Fieldset</a> or the components themselves.</p>
+  </DocBlock>
+
+  <DocBlock title="What You Can Set">
+    <div class="not-prose">
+      <Table class="my-0" ariaLabel="The keys setTheuiDefaults accepts">
+        <THead>
+          <TR>
+            <TH>Key</TH>
+            <TH>Values</TH>
+            <TH>Applies to</TH>
+          </TR>
+        </THead>
+        <TBody>
+          <TR>
+            <TD><code>rounded</code></TD>
+            <TD><code>true</code>, <code>false</code></TD>
+            <TD>Every component with a <code>rounded</code> prop</TD>
+          </TR>
+          <TR>
+            <TD><code>animationSpeed</code></TD>
+            <TD><span class="whitespace-nowrap"><code>"none"</code>, <code>"slower"</code>, <code>"slow"</code>, <code>"normal"</code>, <code>"fast"</code>, <code>"faster"</code></span></TD>
+            <TD>Every component with an <code>animationSpeed</code> prop</TD>
+          </TR>
+          <TR>
+            <TD><code>shadow</code></TD>
+            <TD><span class="whitespace-nowrap"><code>"none"</code>, <code>"sm"</code>, <code>"md"</code>, <code>"lg"</code>, <code>"xl"</code>, <code>"2xl"</code></span></TD>
+            <TD><code>Button</code>, <code>Card</code> and <code>Popover</code></TD>
+          </TR>
+          <TR>
+            <TD><code>reset</code></TD>
+            <TD><code>true</code>, <code>false</code></TD>
+            <TD>Every form component</TD>
+          </TR>
+        </TBody>
+      </Table>
+    </div>
+    <p class="not-prose"><code>rounded</code> is an off switch, and the one key that is not a fallback. <code>false</code> squares off every component whatever its <code>rounded</code> prop says, so <code>&lt;Badge rounded="full"&gt;</code> and a <code>Form</code> with <code>rounded="lg"</code> both come out square. After that only a class of your own can round a corner. <code>true</code>, or leaving the key out, keeps every <code>rounded</code> prop working as usual.</p>
+    <p class="not-prose">There is no global radius <i>size</i>, because the right value differs per component — a Badge is a pill, a Card is not. To give a group of fields one radius, set <code>rounded</code> on the <a href="/docs/form">Form</a> or <a href="/docs/fieldset">Fieldset</a> around them.</p>
+    <p class="not-prose"><code>size</code> and <code>variant</code> are deliberately not here. They mean different things on different components — <code>size</code> is <code>"default"</code> on an Accordion, <code>"xs"</code> to <code>"xl"</code> on a Button and a number on an Svg, and <code>variant</code> is <code>"card"</code> on an Alert, <code>"rect"</code> on a Skeleton and <code>"pills"</code> on Tabs — so one value could not mean the same thing everywhere. Set those on a <a href="/docs/form">Form</a> or a <a href="/docs/fieldset">Fieldset</a>, which cover a whole group of fields at once.</p>
+  </DocBlock>
+
+  <DocBlock title="What Wins">
+    <p class="not-prose"><code>animationSpeed</code>, <code>shadow</code> and <code>reset</code> are the last fallback, so anything you set closer to the component beats them. From strongest to weakest:</p>
+    <ol class="mt-0">
+      <li>The prop on the component itself</li>
+      <li>The nearest <a href="/docs/fieldset">Fieldset</a></li>
+      <li>The <a href="/docs/form">Form</a> around it</li>
+      <li><code>setTheuiDefaults</code></li>
+      <li>The component's own built-in default</li>
+    </ol>
+<Code title="A fallback: the nearest one wins">
+
+```html
+<!-- setTheuiDefaults({ animationSpeed: "slow" }) -->
+
+<Modal>Slow, from the global default</Modal>
+<Modal animationSpeed="fast">Fast, the prop wins</Modal>
+
+<Form animationSpeed="normal">
+  <Input name="a">Normal, from the Form</Input>
+
+  <Fieldset animationSpeed="faster">
+    <Input name="b">Faster, the Fieldset is nearer</Input>
+  </Fieldset>
+</Form>
+```
+</Code>
+    <p class="not-prose"><code>rounded</code> does not work that way. It is an off switch, so it beats every <code>rounded</code> prop rather than falling behind them:</p>
+<Code title="The switch: nothing beats it but your own class">
+
+```html
+<!-- setTheuiDefaults({ rounded: false }) -->
+
+<Button>Square</Button>
+<Button rounded="full">Square too — the switch beats the prop</Button>
+<Badge rounded="2xl">Square too</Badge>
+
+<Form rounded="lg">
+  <Input name="a">Square too</Input>
+</Form>
+
+<!-- Only your own class still rounds a corner -->
+<Button class="rounded-lg">Rounded</Button>
+```
+</Code>
+  </DocBlock>
+
+  <DocBlock title="Components That Keep Their Shape">
+    <p class="not-prose">A few components are built around a shape rather than merely decorated with one, so their built-in default is not <code>"md"</code>. Turning the switch off squares these as well:</p>
+    <div class="not-prose">
+      <Table class="my-0" ariaLabel="Components with a different built-in default">
+        <THead>
+          <TR>
+            <TH>Built-in default</TH>
+            <TH>Components</TH>
+          </TR>
+        </THead>
+        <TBody>
+          <TR>
+            <TD><code>rounded="full"</code></TD>
+            <TD>AvatarGroup, Badge, Chips, Progress, Qab, QabItem, Toggle</TD>
+          </TR>
+          <TR>
+            <TD><code>rounded="xl"</code></TD>
+            <TD>Popup</TD>
+          </TR>
+          <TR>
+            <TD><code>rounded="lg"</code></TD>
+            <TD>Tooltip</TD>
+          </TR>
+          <TR>
+            <TD><code>rounded="sm"</code></TD>
+            <TD>Checkbox</TD>
+          </TR>
+          <TR>
+            <TD><code>animationSpeed="fast"</code></TD>
+            <TD>Accordion, Collapse, Drawer, Dropdown, Modal, Navbar</TD>
+          </TR>
+        </TBody>
+      </Table>
+    </div>
+    <p class="not-prose">So <code>setTheuiDefaults(&#123; rounded: false &#125;)</code> does square off a Badge and a Toggle, because you asked for it everywhere. Leaving <code>rounded</code> out keeps each of these as it is.</p>
+    <p class="not-prose">The switch only covers the <code>rounded</code> prop. A shape a component needs in order to read correctly — the ring of a <a href="/docs/spinner">Spinner</a>, the dot on an <a href="/docs/avatar">Avatar</a>, the handle of a <a href="/docs/range">Range</a>, the step markers of a <a href="/docs/form-wizard">FormWizard</a> and the panels of the date and time pickers — stays as it is. Restyle those with a class where you need to.</p>
+  </DocBlock>
+
+  <DocBlock title="The Type">
+    <p class="not-prose">The argument is the <code>CORE</code> type, and every key is optional.</p>
+<Code title="Type">
+
+```ts
+import type { CORE } from "theui-svelte/type";
+
+type CORE = {
+  rounded?: boolean;
+  animationSpeed?: ANIMATE_SPEED;
+  reset?: boolean;
+  shadow?: SHADOW;
+};
+```
+</Code>
+    <p class="not-prose">See the <a href="/docs/types">Types</a> page for <code>ANIMATE_SPEED</code> and <code>SHADOW</code>.</p>
+  </DocBlock>
+
+  {#snippet sidebar()}
+    <a href={processID("Setting The Defaults")}>Setting the defaults</a>
+    <a href={processID("Where To Call It")}>Where to call it</a>
+    <a href={processID("What You Can Set")}>What you can set</a>
+    <a href={processID("What Wins")}>What wins</a>
+    <a href={processID("Components That Keep Their Shape")}>Components that keep their shape</a>
+    <a href={processID("The Type")}>The type</a>
+  {/snippet}
+
+</DocLayout>

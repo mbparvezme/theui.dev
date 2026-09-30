@@ -26,8 +26,8 @@ tags: [badge, notification, status-label, component, svelte, svelte-5, theui-sve
     <p class="not-prose">To use the Badge component in your project, import the required component first. You can create <b>dot-badges</b> just using the <code>Badge</code> component or add text inside the <code>Badge</code> element to create a text badge. Here are some examples:</p>
     <Example>
       {#snippet example()}
-        <Badge ariaTitle="Demo badge"/>
-        <Badge ariaTitle="Demo badge">New</Badge>
+        <Badge ariaTitle="Demo badge" />
+        <Badge>New</Badge>
       {/snippet}
       {#snippet code()}
 
@@ -36,8 +36,8 @@ tags: [badge, notification, status-label, component, svelte, svelte-5, theui-sve
   import { Badge } from "theui-svelte";
 </script>
 
-<Badge ariaTitle="Demo badge"/>
-<Badge ariaTitle="Demo badge">New</Badge>
+<Badge ariaTitle="Demo badge" />
+<Badge>New</Badge>
 ```
       {/snippet}
     </Example>
@@ -48,19 +48,19 @@ tags: [badge, notification, status-label, component, svelte, svelte-5, theui-sve
     <Example>
       {#snippet example()}
           <div class="w-full">
-            <p class="text-2xl">NOT GROWING <Badge ariaTitle="Demo badge"/></p>
+            <p class="text-2xl">NOT GROWING <Badge ariaTitle="Demo badge" /></p>
             <p class="text-2xl">GROWING <Badge ariaTitle="Demo badge" grow/></p>
           </div>
           <div class="w-full">
-            <p class="text-2xl">NOT GROWING <Badge ariaTitle="Demo badge">New</Badge></p>
-            <p class="text-2xl">GROWING <Badge ariaTitle="Demo badge" grow>New</Badge></p>
+            <p class="text-2xl">NOT GROWING <Badge>New</Badge></p>
+            <p class="text-2xl">GROWING <Badge grow>New</Badge></p>
           </div>
       {/snippet}
       {#snippet code()}
 
 ```html
 <!-- Indicator badge -->
-<Badge />
+<Badge ariaTitle="Demo badge" />
 <!-- Text badge -->
 <Badge grow>...</Badge>
 ```
@@ -74,7 +74,7 @@ tags: [badge, notification, status-label, component, svelte, svelte-5, theui-sve
       {#snippet example()}
         <div class="flex items-center gap-8">
           <p class="relative p-2 bg-secondary">
-            Notifications <Badge fixed class="dark:border-[#0d0d11]" />
+            Notifications <Badge ariaTitle="3 unread" fixed class="dark:border-[#0d0d11]" />
           </p>
           <p class="relative p-2 bg-secondary">
             Notifications <Badge fixed class="dark:border-[#0d0d11]">New</Badge>
@@ -85,7 +85,7 @@ tags: [badge, notification, status-label, component, svelte, svelte-5, theui-sve
 
 ```html
 <p class="relative p-2 bg-secondary">
-  Notifications <Badge fixed />
+  Notifications <Badge ariaTitle="3 unread" fixed />
 </p>
 <p class="relative p-2 bg-secondary">
   Notifications <Badge fixed>New</Badge>
@@ -96,15 +96,15 @@ tags: [badge, notification, status-label, component, svelte, svelte-5, theui-sve
   </DocBlock>
 
   <DocBlock title="Rounded Corner">
-    <p class="not-prose">The <code>rounded</code> prop in the <code>Badge</code> component controls its border radius. Values: <code>none</code>, <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code>, <code>full</code>. Default is <code>md</code>.</p>
+    <p class="not-prose">The <code>rounded</code> prop in the <code>Badge</code> component controls its border radius. Values: <code>none</code>, <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code>, <code>2xl</code>, <code>full</code>. Default is <code>full</code>.</p>
     <Example>
       {#snippet example()}
         <div class="flex items-center gap-8">
-          <Badge ariaTitle="Demo badge" rounded="xl">New</Badge>
-          <Badge ariaTitle="Demo badge" rounded="lg">New</Badge>
-          <Badge ariaTitle="Demo badge" rounded="md">New</Badge>
-          <Badge ariaTitle="Demo badge" rounded="sm">New</Badge>
-          <Badge ariaTitle="Demo badge" rounded="none">New</Badge>
+          <Badge rounded="xl">New</Badge>
+          <Badge rounded="lg">New</Badge>
+          <Badge rounded="md">New</Badge>
+          <Badge rounded="sm">New</Badge>
+          <Badge rounded="none">New</Badge>
         </div>
       {/snippet}
       {#snippet code()}
@@ -125,9 +125,9 @@ tags: [badge, notification, status-label, component, svelte, svelte-5, theui-sve
       <p class="not-prose">Tailor every Badge to your needs with flexible color options that support both branding and semantic meaning. Built-in styles get you started, while custom CSS classes let you take full control. To change the background color, simply add your own CSS classes to the Badge component. Here’s an example:</p>
       {#snippet example()}
         <Badge ariaTitle="Demo badge" class="bg-green-500"/>
-        <Badge ariaTitle="New badge" class="bg-yellow-400 text-black">New</Badge>
+        <Badge class="bg-yellow-400 text-black">New</Badge>
         <p class="relative font-semibold text-white p-2 bg-gradient-to-r from-red-400 to-yellow-500">
-          Notifications <Badge class="border-white dark:border-black" text="New" fixed />
+          Notifications <Badge class="border-white dark:border-black" fixed>New</Badge>
         </p>
       {/snippet}
       {#snippet code()}
@@ -135,18 +135,21 @@ tags: [badge, notification, status-label, component, svelte, svelte-5, theui-sve
 ```html
 <Badge ariaTitle="Demo badge" class="bg-green-500"/>
 
-<Badge ariaTitle="New badge" class="bg-yellow-400 text-black">New</Badge>
+<Badge class="bg-yellow-400 text-black">New</Badge>
 
 <p class="relative font-semibold text-white p-2 bg-gradient-to-r from-red-400 to-yellow-500">
-  Notifications <Badge class="border-white dark:border-black" text="New" fixed />
+  Notifications <Badge class="border-white dark:border-black" fixed>New</Badge>
 </p>
 ```
       {/snippet}
     </Example>
+    <p class="not-prose mb-0">Anything else you pass reaches the element itself, so an <code>id</code>, a <code>title</code>, a <code>data-*</code> attribute or an event handler all work the way they would on a <code>&lt;span&gt;</code>.</p>
   </DocBlock>
 
   <DocBlock title="Accessibility">
-    <p class="not-prose">The component is designed with accessibility in mind, automatically handling ARIA attributes like <code>aria-label</code> through a visually hidden <code>&lt;span&gt;</code> element. This ensures assistive technologies can describe the badge's purpose. You only need to focus on providing meaningful text and maintaining proper color contrast for readability.</p>
+    <p class="not-prose">Every badge carries <code>role="status"</code>, so a screen reader announces it when it appears or its text changes, which is what a count or a "New" marker is for.</p>
+    <p class="not-prose">A badge with text is read as that text, so <b>leave <code>ariaTitle</code> off a badge that says something</b>. A label would replace the content, and <code>&lt;Badge&gt;New&lt;/Badge&gt;</code> with an <code>ariaTitle</code> is read as the label, never as "New".</p>
+    <p class="not-prose mb-0">A dot badge shows no text, so it has nothing to be read as. Give that one an <code>ariaTitle</code> that says what it stands for, such as <code>ariaTitle="3 unread"</code>. The remaining thing to watch is contrast: a custom background needs a text color to match.</p>
   </DocBlock>
 
   <DocBlock title="Configuration">

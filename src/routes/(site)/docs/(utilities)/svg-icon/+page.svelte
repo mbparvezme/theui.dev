@@ -1,9 +1,9 @@
-<SEO title="SVG Component" />
+<SEO title="SVG Component" description={metadata.description} keywords={metadata.tags?.join(", ")} />
 <Page {component} />
 
 <script lang="ts">
   import SEO from "$lib/SEO.svelte"
-  import Page from "$lib/pages/svg-icon.svx"
+  import Page, { metadata } from "$lib/pages/svg-icon.svx"
 
   const component = [
     {
@@ -14,19 +14,19 @@
           "name": "size",
           "type": "number",
           "default": "1",
-          "description": "It is a multiplier to the current font size to determine the icon's dimensions. A value of 1 renders the icon at the same size (1em) as the surrounding text."
+          "description": "Sets the icon's width and height in rem. A value of 1 renders the icon at 1rem."
         },
         {
           "name": "viewBox",
           "type": "string",
-          "default": "0 0 16 16",
+          "default": "\"0 0 16 16\"",
           "description": "Sets the viewBox size of the icon."
         },
         {
           "name": "focusable",
           "type": "boolean",
-          "default": "true",
-          "description": "Indicating whether the icon should be focusable via keyboard navigation. "
+          "default": "false",
+          "description": "Indicating whether the icon should be focusable via keyboard navigation. When false, the icon is also hidden from screen readers."
         }
       ]
     },

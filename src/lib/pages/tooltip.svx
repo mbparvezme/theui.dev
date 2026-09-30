@@ -44,7 +44,7 @@ tags: [tooltip, info, popup, component, svelte, svelte-5, theui-svelte, componen
     </Example>
 
     <Example title="Use with an Element">
-      <p class="not-prose">Once initialized, the Tooltip component enables tooltips in your application. It works in the background, automatically handling hover interactions for elements with tooltip attributes.</p>
+      <p class="not-prose">Once initialized, the Tooltip component enables tooltips in your application. It works in the background, automatically handling hover interactions for elements with tooltip attributes. The <code>data-tooltip</code> text can include simple HTML (like <code>&lt;br&gt;</code>); it is sanitized before rendering.</p>
       {#snippet example()}
         <div>
           <Button data-tooltip="I'm tooltip!">Tooltip</Button>
@@ -60,7 +60,7 @@ tags: [tooltip, info, popup, component, svelte, svelte-5, theui-svelte, componen
   </DocBlock>
 
   <DocBlock title="Position">
-    <p class="not-prose">The <b>Tooltip</b> component lets you control its position using the <code>position</code> prop or the <code>data-position</code> attribute. The <code>position</code> prop applies to all tooltips, while <code>data-position</code> affects only a specific trigger.</p>
+    <p class="not-prose">The <b>Tooltip</b> component lets you control its position using the <code>position</code> prop or the <code>data-tooltip-position</code> attribute. The <code>position</code> prop applies to all tooltips, while <code>data-tooltip-position</code> affects only a specific trigger.</p>
     <p class="not-prose">By default, the tooltip is displayed at the top, but you can change it to <code>bottom</code>, <code>left</code>, or <code>right</code> as needed. For more precise control, you can use variations like <code>top-start</code>, <code>top-end</code>, <code>bottom-start</code>, <code>bottom-end</code>, <code>left-start</code>, <code>left-end</code>, <code>right-start</code>, and <code>right-end</code> to adjust alignment based on your design requirements.</p>
     <Example>
       {#snippet example()}
@@ -104,18 +104,18 @@ tags: [tooltip, info, popup, component, svelte, svelte-5, theui-svelte, componen
 
   <DocBlock title="Animation Speed">
     <Example>
-      <p class="not-prose">You can control the tooltip's animation speed using the <code>animateSpeed</code> prop or the <code>data-tooltip-animateSpeed</code> attribute on the trigger element. Available values are <code>none</code>, <code>slower</code>, <code>slow</code>, <code>normal</code>, <code>fast</code> and <code>faster</code>.</p>
+      <p class="not-prose">You can control the tooltip's animation speed using the <code>animationSpeed</code> prop or the <code>data-tooltip-animation-speed</code> attribute on the trigger element. Available values are <code>none</code>, <code>slower</code>, <code>slow</code>, <code>normal</code>, <code>fast</code> and <code>faster</code>.</p>
       <ul class="my-0">
-        <li>The <span class="not-prose"><code>animateSpeed</code></span> prop applies the same animation speed to all tooltips.</li>
-        <li>The <span class="not-prose"><code>data-tooltip-animateSpeed</code></span> attribute allows setting the animation speed for a specific tooltip without affecting others.</li>
+        <li>The <span class="not-prose"><code>animationSpeed</code></span> prop applies the same animation speed to all tooltips.</li>
+        <li>The <span class="not-prose"><code>data-tooltip-animation-speed</code></span> attribute allows setting the animation speed for a specific tooltip without affecting others.</li>
       </ul>
       {#snippet example()}
-        <Button data-tooltip="I'm tooltip!" data-tooltip-animateSpeed="none">Button</Button>
+        <Button data-tooltip="I'm tooltip!" data-tooltip-animation-speed="none">Button</Button>
       {/snippet}
       {#snippet code()}
 
 ```html
-<Button data-tooltip="I'm tooltip!" data-tooltip-animateSpeed="none">Button</Button>
+<Button data-tooltip="I'm tooltip!" data-tooltip-animation-speed="none">Button</Button>
 ```
       {/snippet}
     </Example>
@@ -123,7 +123,7 @@ tags: [tooltip, info, popup, component, svelte, svelte-5, theui-svelte, componen
 
   <DocBlock title="Rounded Corner">
     <Example>
-      <p class="not-prose">You can customize the tooltip’s border-radius using the <code>rounded</code> prop or the <code>data-tooltip-rounded</code> attribute on the trigger element. Available values are <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code>, <code>full</code> and <code>none</code>.</p>
+      <p class="not-prose">You can customize the tooltip’s border-radius using the <code>rounded</code> prop or the <code>data-tooltip-rounded</code> attribute on the trigger element. Available values are <code>sm</code>, <code>md</code>, <code>lg</code> (default), <code>xl</code>, <code>2xl</code>, <code>full</code> and <code>none</code>.</p>
       <ul class="my-0">
         <li>The <span class="not-prose"><code>rounded</code></span> prop applies the same corner style to all tooltips.</li>
         <li>The <span class="not-prose"><code>data-tooltip-rounded</code></span> attribute allows setting a different border-radius for specific tooltips without affecting others.</li>
@@ -142,7 +142,7 @@ tags: [tooltip, info, popup, component, svelte, svelte-5, theui-svelte, componen
 
   <DocBlock title="Tooltip Gap">
     <Example>
-      <p class="not-prose">You can adjust the spacing between the tooltip and its trigger using the <code>gap</code> prop or the <code>data-tooltip-gap</code> attribute on the trigger element. Default gap is <code>12</code>(px).</p>
+      <p class="not-prose">You can adjust the spacing between the tooltip and its trigger using the <code>gap</code> prop or the <code>data-tooltip-gap</code> attribute on the trigger element. Default gap is <code>12</code>(px), and the minimum is <code>8</code>(px).</p>
       <ul class="my-0">
         <li>The <span class="not-prose"><code>gap</code></span> prop sets the spacing for all tooltips globally.</li>
         <li>The <span class="not-prose"><code>data-tooltip-gap</code></span> attribute allows setting the spacing for a specific tooltip without affecting others.</li>
@@ -176,6 +176,7 @@ tags: [tooltip, info, popup, component, svelte, svelte-5, theui-svelte, componen
 ```
       {/snippet}
     </Example>
+    <p class="not-prose mb-0">Anything else you pass reaches the element itself, so a <code>title</code>, a <code>data-*</code> attribute or an event handler all work the way they would on a <code>&lt;div&gt;</code>. The <code>id</code> is the exception: the component sets its own from the id of the element the tooltip describes.</p>
   </DocBlock>
 
   <DocBlock title="Accessibility">
@@ -185,8 +186,8 @@ tags: [tooltip, info, popup, component, svelte, svelte-5, theui-svelte, componen
         <li>
           <b>Keyboard Navigation</b>
           <ul class="my-0">
-            <li>Users can open and close the tooltip using the <kbd>Space</kbd> or <kbd>Enter</kbd> keys when <span class="not-prose"><code>triggerEvent="click"</code></span>.</li>
-            <li>Pressing <kbd>Escape</kbd> closes the tooltip when it is open when <span class="not-prose"><code>triggerEvent="click"</code></span>.</li>
+            <li>Users can open and close the tooltip using the <kbd>Space</kbd> or <kbd>Enter</kbd> keys on a focused trigger when <span class="not-prose"><code>triggerEvent="click"</code></span>.</li>
+            <li>Pressing <kbd>Escape</kbd> closes any open tooltip, whether it is triggered by hover or click.</li>
             <li>The tooltips triggered by hover are also accessible via focus for keyboard users.</li>
           </ul>
         </li>
@@ -194,15 +195,15 @@ tags: [tooltip, info, popup, component, svelte, svelte-5, theui-svelte, componen
           <b>ARIA Attributes</b>
           <p class="not-prose">To enhance screen reader compatibility, the tooltip automatically includes essential ARIA attributes:</p>
           <ul class="my-0">
-            <li>The <span class="not-prose"><code>aria-controls</code></span> links the trigger element to the tooltip container.</li>
-            <li>The <span class="not-prose"><code>aria-haspopup</code></span> on the trigger element to indicate a tooltip is available.</li>
+            <li>The tooltip container has <span class="not-prose"><code>role="tooltip"</code></span>.</li>
+            <li>If the trigger element has an <span class="not-prose"><code>id</code></span>, the tooltip gets the id <span class="not-prose"><code>&lt;trigger-id&gt;-tooltip</code></span>, and <span class="not-prose"><code>aria-describedby</code></span> is added to the trigger while the tooltip is open. Give your triggers an <span class="not-prose"><code>id</code></span> so screen readers can announce the tooltip text.</li>
           </ul>
         </li>
         <li>
           <b>Focus Management</b>
           <ul class="my-0">
-            <li>When opened, focus remains on the trigger or shifts inside the tooltip for better navigation.</li>
-            <li>When closed, focus returns to the trigger element to maintain a logical navigation flow.</li>
+            <li>Focus always stays on the trigger; the tooltip itself does not receive focus.</li>
+            <li>The tooltip closes when focus moves away from the trigger, when the user clicks outside of it, or (in click mode) when the trigger is clicked again.</li>
           </ul>
         </li>
       </ol>

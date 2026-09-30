@@ -1,0 +1,259 @@
+---
+title: Rating
+category: Components
+description: Collect or display a star rating, with half stars, read-only mode and full keyboard support, using theui-svelte’s Rating component.
+dir: ".lib/pages"
+tags: [rating, stars, review, score, component, svelte, svelte-5, theui-svelte, component-library, ui, tailwindcss]
+---
+
+<script lang="ts">
+  import DocLayout from "$lib/ui/doc/DocLayout.svelte";
+  import DocHead from "$lib/ui/doc/Head.svelte";
+  import DocBlock from "$lib/ui/doc/Block.svelte";
+  import Code from "$lib/ui/doc/CodeBlock.svelte";
+  import Example from "$lib/ui/doc/Example.svelte";
+  import ConfigComponent from "$lib/ui/doc/ConfigComponent.svelte";
+  import { processID, editURL } from "$lib";
+  let { component }: {component: any } = $props();
+
+  import { Rating, Svg } from "theui-svelte";
+
+  let score = $state(3)
+  let halfScore = $state(2.5)
+</script>
+
+<DocLayout>
+  <DocHead title="Rating" text="The Rating component collects a score from the user, or shows one that has already been given. It works with the mouse, with touch and with the keyboard, supports half stars, and submits inside a form like any other input." edit_url={editURL("rating")} />
+
+  <DocBlock title="Example">
+    <p class="not-prose">Import the component and bind a number to it. Clicking a star sets the value, and clicking the same star again clears it.</p>
+    <Example>
+      {#snippet example()}
+        <div class="flex items-center gap-4">
+          <Rating bind:value={score} />
+          <span class="text-sm text-muted">value: {score}</span>
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<script>
+  import { Rating } from "theui-svelte";
+  let score = $state(3)
+</script>
+
+<Rating bind:value={score} />
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Sizes">
+    <p class="not-prose">The <code>size</code> prop accepts <code>sm</code>, <code>md</code>, <code>lg</code> and <code>xl</code>. The default is <code>md</code>.</p>
+    <Example>
+      {#snippet example()}
+        <div class="flex flex-col gap-2">
+          <Rating value={4} size="sm" readonly />
+          <Rating value={4} size="md" readonly />
+          <Rating value={4} size="lg" readonly />
+          <Rating value={4} size="xl" readonly />
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Rating value={4} size="sm" readonly />
+<Rating value={4} size="md" readonly />
+<Rating value={4} size="lg" readonly />
+<Rating value={4} size="xl" readonly />
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Half Stars">
+    <p class="not-prose">Add <code>allowHalf</code> to let the user pick half a star. Each star then has two halves to click, and the arrow keys step by <code>0.5</code>.</p>
+    <Example>
+      {#snippet example()}
+        <div class="flex items-center gap-4">
+          <Rating bind:value={halfScore} allowHalf size="lg" />
+          <span class="text-sm text-muted">value: {halfScore}</span>
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<script>
+  let halfScore = $state(2.5)
+</script>
+
+<Rating bind:value={halfScore} allowHalf size="lg" />
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Read Only">
+    <p class="not-prose">Use <code>readonly</code> to show a score that cannot be changed, such as the average of many reviews. Any fraction is drawn exactly, so <code>3.7</code> fills the fourth star seven tenths of the way. A read-only rating is announced as a single image, such as "Rating: 3.7 of 5".</p>
+    <Example>
+      {#snippet example()}
+        <div class="flex flex-col gap-2">
+          <Rating value={3.7} readonly />
+          <Rating value={5} readonly />
+          <Rating value={0} readonly />
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Rating value={3.7} readonly />
+<Rating value={5} readonly />
+<Rating value={0} readonly />
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Maximum">
+    <p class="not-prose">The <code>max</code> prop sets how many stars there are. The default is <code>5</code>.</p>
+    <Example>
+      {#snippet example()}
+        <div class="flex flex-col gap-2">
+          <Rating value={2} max={3} readonly />
+          <Rating value={7} max={10} readonly />
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Rating value={2} max={3} readonly />
+<Rating value={7} max={10} readonly />
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Disabled and Clearing">
+    <p class="not-prose">A <code>disabled</code> rating is dimmed and cannot be changed. Clicking the star that is already chosen clears the rating back to zero; pass <code>clearable={false}</code> when a score, once given, must stay.</p>
+    <Example>
+      {#snippet example()}
+        <div class="flex flex-col gap-2">
+          <Rating value={2} disabled />
+          <Rating value={3} clearable={false} />
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Rating value={2} disabled />
+<Rating value={3} clearable={false} />
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="In a Form">
+    <p class="not-prose">Give the component a <code>name</code> and the score is submitted with the form, because the stars are real radio inputs underneath. The <code>onchange</code> callback runs with the new value whenever it changes.</p>
+    <Example>
+      {#snippet example()}
+        <form class="flex flex-col items-start gap-3" onsubmit={(e) => e.preventDefault()}>
+          <Rating name="score" value={4} />
+          <button class="rounded-md bg-brand-500 px-4 py-2 font-medium text-on-brand">Send review</button>
+        </form>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<form method="POST">
+  <Rating name="score" value={4} onchange={(v) => console.log(v)} />
+  <button>Send review</button>
+</form>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Custom Icon">
+    <p class="not-prose">The <code>icon</code> snippet replaces the star with any shape you like. It is drawn twice, once empty and once filled, and takes its colour from the classes below, so use <code>fill="currentColor"</code> or an SVG from the library.</p>
+    <Example>
+      {#snippet example()}
+        <div class="flex flex-col gap-2">
+          <Rating value={4} readonly activeClasses="text-error-500">
+            {#snippet icon()}
+              <Svg size={0} class="size-full">
+                <path d="M8 14.25s-6-4-6-8a3.5 3.5 0 0 1 6-2.45A3.5 3.5 0 0 1 14 6.25c0 4-6 8-6 8z"/>
+              </Svg>
+            {/snippet}
+          </Rating>
+          <Rating value={3} max={5} size="lg" activeClasses="text-info-500">
+            {#snippet icon()}
+              <Svg size={0} class="size-full">
+                <path d="M8 1l2.2 4.5 5 .7-3.6 3.5.9 5-4.5-2.4L3.5 14.7l.9-5L.8 6.2l5-.7L8 1z"/>
+              </Svg>
+            {/snippet}
+          </Rating>
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<script>
+  import { Rating, Svg } from "theui-svelte";
+</script>
+
+<Rating value={4} readonly activeClasses="text-error-500">
+  {#snippet icon()}
+    <Svg size={0} class="size-full">
+      <path d="M8 14.25s-6-4-6-8a3.5 3.5 0 0 1 6-2.45A3.5 3.5 0 0 1 14 6.25c0 4-6 8-6 8z"/>
+    </Svg>
+  {/snippet}
+</Rating>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Customization">
+    <p class="not-prose">Use <code>activeClasses</code> for the filled part, <code>inactiveClasses</code> for the empty part and <code>itemClasses</code> for every star, for example to change the gap or add a shadow.</p>
+    <Example>
+      {#snippet example()}
+        <div class="flex flex-col gap-2">
+          <Rating value={4} readonly activeClasses="text-brand-500" />
+          <Rating value={4} readonly activeClasses="text-success-500" inactiveClasses="text-success-500/25" />
+          <Rating value={4} readonly class="gap-3" itemClasses="drop-shadow" />
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Rating value={4} readonly activeClasses="text-brand-500" />
+<Rating value={4} readonly activeClasses="text-success-500" inactiveClasses="text-success-500/25" />
+<Rating value={4} readonly class="gap-3" itemClasses="drop-shadow" />
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Accessibility">
+    <p class="not-prose">An editable rating is a group of radio buttons, the pattern screen reader users already know. Tab moves to the group, the arrow keys move between stars, and Space picks one. Each star carries text such as "3 of 5", which you can reword with the <code>itemLabel</code> prop, and the group is named by <code>ariaLabel</code>. A read-only rating is a single image with its score in the label, so it is read at once instead of star by star. The score is never colour alone: the filled part is a different shape, and the value is in the label.</p>
+  </DocBlock>
+
+  <DocBlock title="Configuration">
+    <ConfigComponent {component} />
+  </DocBlock>
+
+  {#snippet sidebar()}
+    <a href={processID("Example")}>Example</a>
+    <a href={processID("Sizes")}>Sizes</a>
+    <a href={processID("Half Stars")}>Half stars</a>
+    <a href={processID("Read Only")}>Read only</a>
+    <a href={processID("Maximum")}>Maximum</a>
+    <a href={processID("Disabled and Clearing")}>Disabled and clearing</a>
+    <a href={processID("In a Form")}>In a form</a>
+    <a href={processID("Custom Icon")}>Custom icon</a>
+    <a href={processID("Customization")}>Customization</a>
+    <a href={processID("Accessibility")}>Accessibility</a>
+    <a href={processID("Configuration")}>Configuration</a>
+  {/snippet}
+
+</DocLayout>

@@ -1,0 +1,294 @@
+---
+title: Avatar
+category: Components
+description: Show a user with a photo, initials or an icon, add a status dot, and stack a group of avatars with theui-svelte’s Avatar component.
+dir: ".lib/pages"
+tags: [avatar, user, profile, status, component, svelte, svelte-5, theui-svelte, component-library, ui, tailwindcss]
+---
+
+<script lang="ts">
+  import DocLayout from "$lib/ui/doc/DocLayout.svelte";
+  import DocHead from "$lib/ui/doc/Head.svelte";
+  import DocBlock from "$lib/ui/doc/Block.svelte";
+  import Code from "$lib/ui/doc/CodeBlock.svelte";
+  import Example from "$lib/ui/doc/Example.svelte";
+  import ConfigComponent from "$lib/ui/doc/ConfigComponent.svelte";
+  import { processID, editURL } from "$lib";
+  let { component }: {component: any } = $props();
+
+  import { Avatar, AvatarGroup, Svg } from "theui-svelte";
+
+  const img = (t: string) => `https://placehold.co/160x160/e11d48/ffffff/png?text=${t}`
+</script>
+
+<DocLayout>
+  <DocHead title="Avatar" text="The Avatar component shows who someone is. It takes a photo, falls back to their initials when there is no photo, and to a person icon when there is no name either. Add a status dot for presence, or group several avatars into a stack." edit_url={editURL("avatar")} />
+
+  <DocBlock title="Example">
+    <p class="not-prose">Import the component and pass an image with <code>src</code> and <code>alt</code>. Without an image, pass a <code>name</code> and the avatar shows the initials.</p>
+    <Example>
+      {#snippet example()}
+        <Avatar src={img("A")} alt="Ayesha Rahman" />
+        <Avatar name="Jane Cooper" />
+        <Avatar alt="Unknown person" />
+      {/snippet}
+      {#snippet code()}
+
+```html
+<script>
+  import { Avatar } from "theui-svelte";
+</script>
+
+<Avatar src="/avatar.png" alt="Ayesha Rahman" />
+<Avatar name="Jane Cooper" />
+<Avatar alt="Unknown person" />
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Sizes">
+    <p class="not-prose">The <code>size</code> prop accepts <code>xs</code>, <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code> and <code>2xl</code>. The default is <code>md</code>. The text of the initials scales with the avatar.</p>
+    <Example>
+      {#snippet example()}
+        <div class="flex items-center gap-4">
+          <Avatar size="xs" name="Extra Small" />
+          <Avatar size="sm" name="Small Size" />
+          <Avatar size="md" name="Medium Size" />
+          <Avatar size="lg" name="Large Size" />
+          <Avatar size="xl" name="Extra Large" />
+          <Avatar size="2xl" name="Двойной Extra" />
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Avatar size="xs" name="Extra Small" />
+<Avatar size="sm" name="Small Size" />
+<Avatar size="md" name="Medium Size" />
+<Avatar size="lg" name="Large Size" />
+<Avatar size="xl" name="Extra Large" />
+<Avatar size="2xl" name="Double Extra" />
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Rounded Corner">
+    <p class="not-prose">Avatars are circles by default. The <code>rounded</code> prop takes <code>none</code>, <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code>, <code>2xl</code> and <code>full</code>, so a square avatar is one prop away.</p>
+    <Example>
+      {#snippet example()}
+        <div class="flex items-center gap-4">
+          <Avatar rounded="full" src={img("F")} alt="Full" />
+          <Avatar rounded="2xl" src={img("2")} alt="2xl" />
+          <Avatar rounded="lg" src={img("L")} alt="lg" />
+          <Avatar rounded="md" src={img("M")} alt="md" />
+          <Avatar rounded="none" src={img("N")} alt="none" />
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Avatar rounded="full" src="/avatar.png" alt="Full" />
+<Avatar rounded="2xl" src="/avatar.png" alt="2xl" />
+<Avatar rounded="lg" src="/avatar.png" alt="lg" />
+<Avatar rounded="md" src="/avatar.png" alt="md" />
+<Avatar rounded="none" src="/avatar.png" alt="none" />
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Fallback">
+    <p class="not-prose">When the image fails to load, the avatar falls back on its own: first to the <code>name</code> initials, then to a person icon. You can also pass your own content as the child of the component, such as an icon or an emoji.</p>
+    <Example>
+      {#snippet example()}
+        <div class="flex items-center gap-4">
+          <Avatar src="https://example.com/missing.png" name="Broken Image" />
+          <Avatar name="Rafiq Islam" rounded="lg" />
+          <Avatar class="bg-brand-500 text-on-brand">
+            <span class="text-lg">🐧</span>
+          </Avatar>
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<!-- A broken image falls back to the initials -->
+<Avatar src="https://example.com/missing.png" name="Broken Image" />
+
+<!-- No image: the initials are shown -->
+<Avatar name="Rafiq Islam" rounded="lg" />
+
+<!-- Your own content -->
+<Avatar class="bg-brand-500 text-on-brand">
+  <span class="text-lg">🐧</span>
+</Avatar>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Status">
+    <p class="not-prose">The <code>status</code> prop adds a presence dot: <code>online</code>, <code>offline</code>, <code>busy</code> or <code>away</code>. Use <code>statusPosition</code> to move it to the <code>top</code>, the default is <code>bottom</code>. The status is read out by screen readers, so the dot is never colour alone.</p>
+    <Example>
+      {#snippet example()}
+        <div class="flex items-center gap-4">
+          <Avatar src={img("O")} alt="Ayesha" status="online" />
+          <Avatar src={img("A")} alt="Bilal" status="away" />
+          <Avatar src={img("B")} alt="Chandra" status="busy" />
+          <Avatar name="Dina Haque" status="offline" />
+          <Avatar size="xl" src={img("T")} alt="Elias" status="online" statusPosition="top" />
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Avatar src="/a.png" alt="Ayesha" status="online" />
+<Avatar src="/b.png" alt="Bilal" status="away" />
+<Avatar src="/c.png" alt="Chandra" status="busy" />
+<Avatar name="Dina Haque" status="offline" />
+<Avatar size="xl" src="/e.png" alt="Elias" status="online" statusPosition="top" />
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Link Avatar">
+    <p class="not-prose">Give the component an <code>href</code> and the whole avatar becomes a link. Any other attribute, such as <code>target</code> or <code>title</code>, is passed to the element as well.</p>
+    <Example>
+      {#snippet example()}
+        <Avatar href="/docs/avatar" src={img("L")} alt="Ayesha Rahman, view profile" />
+        <Avatar href="/docs/avatar" name="Jane Cooper" />
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Avatar href="/profile/ayesha" src="/avatar.png" alt="Ayesha Rahman, view profile" />
+<Avatar href="/profile/jane" name="Jane Cooper" />
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Avatar Group">
+    <p class="not-prose">Wrap avatars in an <code>AvatarGroup</code> to stack them. The group sets <code>size</code> and <code>rounded</code> for every avatar inside, so you set them once.</p>
+    <Example>
+      {#snippet example()}
+        <AvatarGroup ariaLabel="Project members">
+          <Avatar src={img("A")} alt="Ayesha" />
+          <Avatar src={img("B")} alt="Bilal" />
+          <Avatar name="Chandra Das" />
+        </AvatarGroup>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<script>
+  import { Avatar, AvatarGroup } from "theui-svelte";
+</script>
+
+<AvatarGroup ariaLabel="Project members">
+  <Avatar src="/a.png" alt="Ayesha" />
+  <Avatar src="/b.png" alt="Bilal" />
+  <Avatar name="Chandra Das" />
+</AvatarGroup>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Group Limit">
+    <p class="not-prose">Set <code>max</code> to show only the first few avatars. The rest are counted in a final avatar, such as <b>+3</b>, which screen readers announce as "3 more".</p>
+    <Example>
+      {#snippet example()}
+        <div class="flex flex-col gap-4">
+          <AvatarGroup max={3} ariaLabel="Team">
+            <Avatar src={img("A")} alt="Ayesha" />
+            <Avatar src={img("B")} alt="Bilal" />
+            <Avatar src={img("C")} alt="Chandra" />
+            <Avatar src={img("D")} alt="Dina" />
+            <Avatar src={img("E")} alt="Elias" />
+          </AvatarGroup>
+          <AvatarGroup max={2} size="lg" rounded="lg" ariaLabel="Editors">
+            <Avatar src={img("A")} alt="Ayesha" />
+            <Avatar src={img("B")} alt="Bilal" />
+            <Avatar src={img("C")} alt="Chandra" />
+          </AvatarGroup>
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<AvatarGroup max={3} ariaLabel="Team">
+  <Avatar src="/a.png" alt="Ayesha" />
+  <Avatar src="/b.png" alt="Bilal" />
+  <Avatar src="/c.png" alt="Chandra" />
+  <Avatar src="/d.png" alt="Dina" />
+  <Avatar src="/e.png" alt="Elias" />
+</AvatarGroup>
+
+<AvatarGroup max={2} size="lg" rounded="lg" ariaLabel="Editors">
+  ...
+</AvatarGroup>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Customization">
+    <p class="not-prose">Pass your own classes with <code>class</code> to change the colour of the fallback, and use <code>imgClasses</code> and <code>statusClasses</code> for the image and the status dot. On a group, <code>moreClasses</code> styles the "+N" avatar.</p>
+    <Example>
+      {#snippet example()}
+        <div class="flex items-center gap-4">
+          <Avatar name="Brand Colour" class="bg-brand-500 text-on-brand" />
+          <Avatar name="Soft Look" class="bg-info-100 text-info-900 dark:bg-info-950 dark:text-info-100" />
+          <Avatar src={img("R")} alt="Ring" class="ring-2 ring-brand-500 ring-offset-2" />
+          <Avatar src={img("S")} alt="Big status" status="online" statusClasses="size-1/3 bg-success-400" />
+          <AvatarGroup max={1} moreClasses="bg-brand-500 text-on-brand" ariaLabel="Custom overflow">
+            <Avatar src={img("A")} alt="Ayesha" />
+            <Avatar src={img("B")} alt="Bilal" />
+            <Avatar src={img("C")} alt="Chandra" />
+          </AvatarGroup>
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Avatar name="Brand Colour" class="bg-brand-500 text-on-brand" />
+<Avatar name="Soft Look" class="bg-info-100 text-info-900" />
+<Avatar src="/r.png" alt="Ring" class="ring-2 ring-brand-500 ring-offset-2" />
+<Avatar src="/s.png" alt="Big status" status="online" statusClasses="size-1/3 bg-success-400" />
+
+<AvatarGroup max={1} moreClasses="bg-brand-500 text-on-brand">
+  ...
+</AvatarGroup>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Accessibility">
+    <p class="not-prose">An avatar with an image needs an <code>alt</code>. Use the person's name, or an empty string when the avatar sits next to their name already, so it is not read twice. An avatar showing initials or an icon is marked as an image and named by <code>alt</code> or <code>name</code>, so a screen reader says the full name instead of the two letters. The status dot carries its own text, such as "Online", and the overflow avatar of a group announces how many people are left. Give the group itself an <code>ariaLabel</code> that says what the people have in common.</p>
+  </DocBlock>
+
+  <DocBlock title="Configuration">
+    <ConfigComponent title="Avatar" component={component.avatar} />
+    <ConfigComponent title="AvatarGroup" component={component.avatarGroup} />
+  </DocBlock>
+
+  {#snippet sidebar()}
+    <a href={processID("Example")}>Example</a>
+    <a href={processID("Sizes")}>Sizes</a>
+    <a href={processID("Rounded Corner")}>Rounded corner</a>
+    <a href={processID("Fallback")}>Fallback</a>
+    <a href={processID("Status")}>Status</a>
+    <a href={processID("Link Avatar")}>Link avatar</a>
+    <a href={processID("Avatar Group")}>Avatar group</a>
+    <a href={processID("Group Limit")}>Group limit</a>
+    <a href={processID("Customization")}>Customization</a>
+    <a href={processID("Accessibility")}>Accessibility</a>
+    <a href={processID("Configuration")}>Configuration</a>
+  {/snippet}
+
+</DocLayout>

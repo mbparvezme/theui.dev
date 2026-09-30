@@ -82,31 +82,124 @@ tags: [list-group, list, group, collapsible, component, svelte, svelte-5, theui-
     </Example>
   </DocBlock>
 
-  <DocBlock title="List Element Type">
-    <p class="not-prose">The <code>type</code> prop in the List Group component determines the HTML element used to render the list. This allows you to customize the structure of the list based on your needs. The available options are:</p>
-    <ul class="my-0">
-      <li><b>ul</b> (default): Renders the list as an unordered list <span class="not-prose">(<code>&lt;ul&gt;</code>)</span>, which is ideal for general list items or navigation. <span class="not-prose">Each <code>ListItem</code> will be a <code>&lt;li&gt;</code></span> in that case.</li>
-      <li><b>div</b>: <span class="not-prose">Setting <code>type="div"</code> renders each <code>ListItem</code> as a <code>&lt;div&gt;</code> by default. If the <code>ListItem</code> has an <code>href</code>, it becomes an <code>&lt;a&gt;</code>. Without <code>href</code>, it stays as a <code>&lt;div&gt;</code>. This allows a mix of static and clickable content.</span></li>
-    </ul>
+  <DocBlock title="List Item Link">
+    <p class="not-prose">The List Group always renders as an unordered list <code>&lt;ul&gt;</code>, and each <code>ListItem</code> is a <code>&lt;li&gt;</code>. Add the <code>href</code> prop to a <code>ListItem</code> to render its content as a link <code>&lt;a&gt;</code> inside the <code>&lt;li&gt;</code>. Any other attributes you add to a link item, like <code>target</code>, are passed to the link. Items without <code>href</code> stay as plain list items, so you can mix static and clickable content.</p>
     <Example>
       {#snippet example()}
       <div>
-        <ListGroup type="div">
-          <ListItem content="Non-clickable item" type="div" />
-          <ListItem content="Clickable link item" href="/link" />
+        <ListGroup class="w-96">
+          <ListItem>Non-clickable item</ListItem>
+          <ListItem href="/docs/list-group">Clickable link item</ListItem>
         </ListGroup>
       </div>
       {/snippet}
 
       {#snippet code()}
 ```html
-<ListGroup type="div">
+<ListGroup>
   <ListItem>Non-clickable item</ListItem>
   <ListItem href="/link">Clickable link item</ListItem>
 </ListGroup>
 ```
       {/snippet}
     </Example>
+  </DocBlock>
+
+  <DocBlock title="Sizes">
+    <p class="not-prose">The <code>size</code> prop controls the padding of the list items. Available values are <code>"sm"</code>, <code>"md"</code> (default), <code>"lg"</code> and <code>"xl"</code>. When set on the <code>ListGroup</code>, all the items inherit it. You can also set <code>size</code> on an individual <code>ListItem</code> to override the group's size.</p>
+    <Example>
+      {#snippet example()}
+      <div class="flex flex-col gap-4">
+        <ListGroup class="w-96" size="sm">
+          <ListItem>Small item</ListItem>
+          <ListItem>Small item</ListItem>
+          <ListItem size="xl">Extra large item</ListItem>
+        </ListGroup>
+      </div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<ListGroup size="sm">
+  <ListItem>Small item</ListItem>
+  <ListItem>Small item</ListItem>
+  <ListItem size="xl">Extra large item</ListItem>
+</ListGroup>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Rounded Corner">
+    <p class="not-prose">The <code>rounded</code> prop sets the border radius of the List Group. Available values are <code>"none"</code>, <code>"sm"</code>, <code>"md"</code> (default), <code>"lg"</code>, <code>"xl"</code>, <code>"2xl"</code> and <code>"full"</code>. It applies to the <code>bordered</code> variant only; a <code>flat</code> List Group has no rounded corners.</p>
+    <Example>
+      {#snippet example()}
+      <div>
+        <ListGroup class="w-96" rounded="xl">
+          <ListItem>First Item</ListItem>
+          <ListItem>Second Item</ListItem>
+          <ListItem>Third Item</ListItem>
+        </ListGroup>
+      </div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<ListGroup rounded="xl"> ... </ListGroup>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Animation Speed">
+    <p class="not-prose">The <code>animationSpeed</code> prop controls the transition speed of the item hover effect. Available values are <code>"none"</code>, <code>"slower"</code>, <code>"slow"</code>, <code>"normal"</code> (default), <code>"fast"</code> and <code>"faster"</code>. Set it on the <code>ListGroup</code> to apply it to all items, or on a <code>ListItem</code> to override it for that item.</p>
+    <Example>
+      {#snippet example()}
+      <div>
+        <ListGroup class="w-96" animationSpeed="slower">
+          <ListItem>Slower hover transition</ListItem>
+          <ListItem>Slower hover transition</ListItem>
+          <ListItem animationSpeed="none">No transition</ListItem>
+        </ListGroup>
+      </div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<ListGroup animationSpeed="slower">
+  <ListItem>Slower hover transition</ListItem>
+  <ListItem>Slower hover transition</ListItem>
+  <ListItem animationSpeed="none">No transition</ListItem>
+</ListGroup>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Customization">
+    <p class="not-prose">Use the <code>class</code> attribute on the <code>ListGroup</code> to style the list container. To style every item at once, use the <code>itemClasses</code> prop on the <code>ListGroup</code>. To style a single item, add the <code>class</code> attribute to that <code>ListItem</code>; it overrides <code>itemClasses</code>.</p>
+    <Example>
+      {#snippet example()}
+      <div>
+        <ListGroup class="w-96 border-brand-300" itemClasses="text-brand-600 hover:bg-brand-50">
+          <ListItem>First Item</ListItem>
+          <ListItem class="font-bold">Second Item</ListItem>
+          <ListItem>Third Item</ListItem>
+        </ListGroup>
+      </div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<ListGroup class="border-brand-300" itemClasses="text-brand-600 hover:bg-brand-50">
+  <ListItem>First Item</ListItem>
+  <ListItem class="font-bold">Second Item</ListItem>
+  <ListItem>Third Item</ListItem>
+</ListGroup>
+```
+      {/snippet}
+    </Example>
+    <p class="not-prose mb-0">Anything else you pass reaches the element itself, so an <code>id</code>, a <code>title</code>, a <code>data-*</code> attribute or an event handler all work the way they would on a <code>&lt;ul&gt;</code>.</p>
   </DocBlock>
 
   <DocBlock title="Accessibility">
@@ -127,7 +220,11 @@ tags: [list-group, list, group, collapsible, component, svelte, svelte-5, theui-
   {#snippet sidebar()}
     <a href={processID("Example")}>Example</a>
     <a href={processID("List Style Variant")}>List Style Variant</a>
-    <a href={processID("List Element Type")}>List Element Type</a>
+    <a href={processID("List Item Link")}>List Item Link</a>
+    <a href={processID("Sizes")}>Sizes</a>
+    <a href={processID("Rounded Corner")}>Rounded Corner</a>
+    <a href={processID("Animation Speed")}>Animation Speed</a>
+    <a href={processID("Customization")}>Customization</a>
     <a href={processID("Accessibility")}>Accessibility</a>
     <a href={processID("Configuration")}>Configuration</a>
     <a class="ps-4" href={processID("List Group")}>List Group</a>

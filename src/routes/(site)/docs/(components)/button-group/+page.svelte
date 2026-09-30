@@ -1,9 +1,9 @@
-<SEO title="Button Group" />
+<SEO title="Button Group" description={metadata.description} keywords={metadata.tags?.join(", ")} />
 <Page {component} />
 
 <script lang="ts">
   import SEO from "$lib/SEO.svelte"
-  import Page from "$lib/pages/button-group.svx"
+  import Page, { metadata } from "$lib/pages/button-group.svx"
 
   const component = [
     {
@@ -54,9 +54,21 @@
         },
         {
           "name": "theme",
-          "type": "'default' | 'light' | 'gradient'",
+          "type": "'default' | 'soft' | 'gradient'",
           "description": "Sets the overall theme of the button group, affecting colors and styles.",
           "default": "\"default\""
+        },
+        {
+          "name": "gradientColor",
+          "type": "'brand' | 'error' | 'info' | 'success' | 'warning'",
+          "description": "Defines the base color of the gradient theme for the buttons in the group.",
+          "default": "\"brand\""
+        },
+        {
+          "name": "buttonClasses",
+          "type": "string",
+          "description": "Custom classes applied to every button in the group. A button's own <code>class</code> can override them.",
+          "default": "\"\""
         },
         {
           "name": "animationSpeed",

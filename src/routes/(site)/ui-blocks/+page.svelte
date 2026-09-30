@@ -1,4 +1,4 @@
-<SEO title="UI Blocks" />
+<SEO title="UI Blocks" description="Copy-and-paste UI blocks for Svelte and Tailwind CSS, coming soon from TheUI." />
 <ComingSoon title="Exciting UI blocks" />
 
 <!-- <PageHead h1 = "Supercharge Your UI Workflow <br class='sm:hidden md:block'>with Ready UI Blocks" h2="Build beautiful apps in minutes, not hours." classes="text-start items-start">

@@ -123,10 +123,10 @@ tags: [quick-action-button, qab, fab, fab-button, button, component, svelte, sve
     <p class="not-prose">The <code>color</code> prop customizes the QAB button's appearance by applying predefined color themes. These themes correspond to various statuses or actions, ensuring consistent visual design throughout your application. The available color options are <code>"brand"</code>, <code>"error"</code>, <code>"info"</code>, <code>"success"</code>, and <code>"warning"</code>. The default value is <code>"brand"</code>.</p>
     <Tabs variant="tabs">
       {#snippet tabs()}
-        <Tab>QAB Main Button</Tab>
-        <Tab>QAB Item Color</Tab>
+        <Tab value="main">QAB Main Button</Tab>
+        <Tab value="item">QAB Item Color</Tab>
       {/snippet}
-        <TabPanel>
+        <TabPanel value="main">
           <Example>
             {#snippet example()}
               <iframe src="/example/qab-color" style="width: 100%; height: 210px;" scrolling="no"></iframe>
@@ -142,7 +142,7 @@ tags: [quick-action-button, qab, fab, fab-button, button, component, svelte, sve
             {/snippet}
           </Example>
         </TabPanel>
-        <TabPanel>
+        <TabPanel value="item">
           <Example>
             {#snippet example()}
               <iframe src="/example/qab-color-item" style="width: 100%; height: 260px;" scrolling="no"></iframe>
@@ -170,10 +170,10 @@ tags: [quick-action-button, qab, fab, fab-button, button, component, svelte, sve
       <p class="not-prose">The soft theme is a softer variation of the default button colors, making it suitable for more subtle designs.</p>
       <Tabs variant="tabs">
         {#snippet tabs()}
-          <Tab>QAB Main Button</Tab>
-          <Tab>QAB Item Color</Tab>
+          <Tab value="main">QAB Main Button</Tab>
+          <Tab value="item">QAB Item Color</Tab>
         {/snippet}
-          <TabPanel>
+          <TabPanel value="main">
             <Example>
               {#snippet example()}
                 <iframe src="/example/qab-soft" style="width: 100%; height: 210px;" scrolling="no"></iframe>
@@ -186,7 +186,7 @@ tags: [quick-action-button, qab, fab, fab-button, button, component, svelte, sve
               {/snippet}
             </Example>
           </TabPanel>
-          <TabPanel>
+          <TabPanel value="item">
             <Example>
               {#snippet example()}
                 <iframe src="/example/qab-soft-item" style="width: 100%; height: 260px;" scrolling="no"></iframe>
@@ -210,10 +210,10 @@ tags: [quick-action-button, qab, fab, fab-button, button, component, svelte, sve
       <p class="not-prose">The gradient theme applies vibrant gradient colors to the button background, providing a more modern and eye-catching look.</p>
       <Tabs variant="tabs">
         {#snippet tabs()}
-          <Tab>QAB Main Button</Tab>
-          <Tab>QAB Item Color</Tab>
+          <Tab value="main">QAB Main Button</Tab>
+          <Tab value="item">QAB Item Color</Tab>
         {/snippet}
-          <TabPanel>
+          <TabPanel value="main">
             <Example>
               {#snippet example()}
                 <iframe src="/example/qab-gradient" style="width: 100%; height: 210px;" scrolling="no"></iframe>
@@ -226,7 +226,7 @@ tags: [quick-action-button, qab, fab, fab-button, button, component, svelte, sve
               {/snippet}
             </Example>
           </TabPanel>
-          <TabPanel>
+          <TabPanel value="item">
             <Example>
               {#snippet example()}
                 <iframe src="/example/qab-gradient-item" style="width: 100%; height: 260px;" scrolling="no"></iframe>
@@ -235,9 +235,9 @@ tags: [quick-action-button, qab, fab, fab-button, button, component, svelte, sve
 
 ```html
 <Qab>
-  <QabItem theme="soft" color="success">1</QabItem>
-  <QabItem theme="soft" color="info">2</QabItem>
-  <QabItem theme="soft" color="error">3</QabItem>
+  <QabItem theme="gradient" gradientColor="success">1</QabItem>
+  <QabItem theme="gradient" gradientColor="info">2</QabItem>
+  <QabItem theme="gradient" gradientColor="warning">3</QabItem>
 </Qab>
 ```
               {/snippet}
@@ -262,12 +262,32 @@ tags: [quick-action-button, qab, fab, fab-button, button, component, svelte, sve
 ```
       {/snippet}
     </Example>
+    <p class="not-prose">In <code>"hover"</code> mode, the items stay open while the pointer moves from the main button to the items, and keyboard users open them by focusing the main button. They close when the pointer or focus leaves the QAB.</p>
     <p class="not-prose">This prop helps you decide how users interact with the QAB, making it more flexible to fit different user experiences.</p>
+  </DocBlock>
+
+  <DocBlock title="Disabled QAB">
+    <Example>
+      <p class="not-prose">Add the <code>disabled</code> attribute to the <code>Qab</code> to disable the main button. It is dimmed and its items can't be opened. You can also disable an individual <code>QabItem</code>. A disabled QAB or item gets <code>aria-disabled="true"</code>, and a disabled link item has its link removed.</p>
+      {#snippet code()}
+
+```html
+<!-- Disabled main button -->
+<Qab disabled> ... </Qab>
+
+<!-- Disabled item -->
+<Qab>
+  <QabItem>1</QabItem>
+  <QabItem disabled>2</QabItem>
+</Qab>
+```
+      {/snippet}
+    </Example>
   </DocBlock>
 
   <DocBlock title="Rounded Button">
     <Example>
-      <p class="not-prose">The <code>rounded</code> prop adjusts how rounded the corners of the Quick Action Buttons (QAB) are. You can choose from different levels such as <code>"sm"</code> for slightly rounded corners, <code>"md"</code> for medium rounding (default), <code>"lg"</code> or <code>"xl"</code> for more rounded edges, <code>"full"</code> for fully circular buttons, or <code>"none"</code> to keep the corners sharp.</p>
+      <p class="not-prose">The <code>rounded</code> prop adjusts how rounded the corners of the Quick Action Buttons (QAB) are. You can choose from different levels such as <code>"sm"</code> for slightly rounded corners, <code>"md"</code> for medium rounding, <code>"lg"</code>, <code>"xl"</code> or <code>"2xl"</code> for more rounded edges, <code>"full"</code> for fully circular buttons (default), or <code>"none"</code> to keep the corners sharp.</p>
       {#snippet example()}
         <iframe src="/example/qab-rounded" style="width: 100%; height: 210px;" scrolling="no"></iframe>
       {/snippet}
@@ -275,7 +295,7 @@ tags: [quick-action-button, qab, fab, fab-button, button, component, svelte, sve
 
 ```html
 <Qab rounded="none"> ... </Qab>
-<Qab rounded="md"> ... </Qab> <!-- Default -->
+<Qab rounded="full"> ... </Qab> <!-- Default -->
 ```
       {/snippet}
     </Example>
@@ -291,7 +311,7 @@ tags: [quick-action-button, qab, fab, fab-button, button, component, svelte, sve
 
 ```html
 <Qab animationSpeed="slower"> ... </Qab>
-<Qab animationSpeed="fast"> ... </Qab> <!-- Default -->
+<Qab animationSpeed="normal"> ... </Qab> <!-- Default -->
 ```
       {/snippet}
     </Example>
@@ -308,7 +328,7 @@ tags: [quick-action-button, qab, fab, fab-button, button, component, svelte, sve
       {#snippet code()}
 
 ```html
-<Qab class="border-4 border-brand-primary-200">
+<Qab class="border-4 border-brand-200">
   {#snippet icon()}
   <Svg class="w-6 h-6">
     <path d="M2 1a1 1 0 0 ... 2 0 0 1 2-2z"/>
@@ -320,7 +340,7 @@ tags: [quick-action-button, qab, fab, fab-button, button, component, svelte, sve
     </Example>
     <Example title="Item Customization">
       <p class="not-prose">Use <code>class</code> attribute to apply custom classes to the QAB items. To change the icon write it inside the  <code>QabItem</code> component.</p>
-      <p class="not-prose">Again, if you want to apply some common classes to all the QAB item's icon, you can use <code>iconClasses</code> on the <code>Qab</code> component.</p>
+      <p class="not-prose">Again, if you want to apply some common classes to the default icon of all the QAB items (items without their own content), you can use <code>iconClasses</code> on the <code>Qab</code> component. The items also inherit <code>size</code>, <code>rounded</code>, <code>theme</code>, <code>color</code> and <code>gradientColor</code> from the <code>Qab</code> component.</p>
       {#snippet example()}
         <iframe src="/example/qab-customize-item" style="width: 100%; height: 210px;" scrolling="no"></iframe>
       {/snippet}
@@ -332,12 +352,12 @@ tags: [quick-action-button, qab, fab, fab-button, button, component, svelte, sve
     <Svg>
       <path d="M8 1a5 5 0 0 ... 0 0 1 1-1h1V6a5 5 0 0 0-5-5"/>
     </Svg>
-  <QabItem class="border-4 border-brand-primary-200">
+  <QabItem class="border-4 border-brand-200">
     <Svg>
       <path d="M13.601 2.326A7 0 ... 943-.049-.084-.182-.133-.38-.232"/>
     </Svg>
   </QabItem>
-  <QabItem class="border-4 border-brand-primary-200">
+  <QabItem class="border-4 border-brand-200">
     <Svg>
       <path d="M3.654 1.328a 0 0 ... .362-1.03-.037-2.137.703-2.877z"/>
     </Svg>
@@ -351,23 +371,30 @@ tags: [quick-action-button, qab, fab, fab-button, button, component, svelte, sve
   <DocBlock title="Accessibility">
     <p class="not-prose">The Quick Action Button (QAB) component includes built-in support for accessibility, ensuring a better experience for all users.</p>
     <Example title="ARIA Labels">
-      <p class="not-prose">The <code>ariaLabel</code> prop allows you to provide an accessible name for the QAB button, ensuring screen readers can describe its function clearly.</p>
+      <p class="not-prose">The <code>ariaLabel</code> prop allows you to provide an accessible name for the QAB button, ensuring screen readers can describe its function clearly. The default is <code>"Quick Action Button"</code>.</p>
+      <p class="not-prose">A <code>QabItem</code> uses its content as its accessible name. If the content is only an icon, set <code>ariaLabel</code> on the item to describe the action. An item without content (showing the default icon) is named <code>"Quick Action Item"</code>.</p>
       {#snippet code()}
 
 ```html
-<Qab ariaLabel="Open quick actions"> ... </Qab>
+<Qab ariaLabel="Open quick actions">
+  <QabItem ariaLabel="Call us">
+    <Svg>...</Svg>
+  </QabItem>
+</Qab>
 ```
       {/snippet}
     </Example>
     <Example title="Keyboard Navigation" mt={false}>
-      <p class="not-prose">The Button component supports standard keyboard interactions, allowing users to navigate and activate it using the <code>Tab</code> key to focus and the <code>Enter</code> or <code>Space</code> keys to trigger the action.</p>
-      <p class="not-prose">By following these guidelines and using the provided props, you can ensure that the Button component enhances accessibility, providing a seamless experience for all users.</p>
+      <p class="not-prose">The QAB supports standard keyboard interactions: use the <code>Tab</code> key to move to the main button and the items, and the <code>Enter</code> or <code>Space</code> keys to open the items or trigger an action. Pressing <code>Escape</code> closes the open items; if focus was on an item, it returns to the main button. In <code>"hover"</code> mode, the items open when the main button gets focus.</p>
+      <p class="not-prose">By following these guidelines and using the provided props, you can ensure that the QAB component enhances accessibility, providing a seamless experience for all users.</p>
     </Example>
     <Example title="Automatic ARIA Management" mt={false}>
       <p class="not-prose">The QAB component automatically handles important ARIA attributes:</p>
       <ul class="my-0">
-        <li>The <span class="not-prose"><code>role</code></span> attribute is set to ensure the component is recognized as a button.</li>
-        <li>The <span class="not-prose"><code>aria-expanded</code></span> attribute is automatically managed to indicate the open or closed state if the button controls additional content.</li>
+        <li>The <span class="not-prose"><code>role</code></span> attribute is set to <span class="not-prose"><code>button</code></span>, or <span class="not-prose"><code>link</code></span> when <span class="not-prose"><code>href</code></span> is used.</li>
+        <li>When the QAB has items, the main button gets <span class="not-prose"><code>aria-expanded</code></span> to show whether the items are open, and <span class="not-prose"><code>aria-controls</code></span> pointing to the items while they are open.</li>
+        <li>A disabled QAB or QAB item gets <span class="not-prose"><code>aria-disabled="true"</code></span>.</li>
+        <li>The open items close when the user clicks anywhere outside the QAB.</li>
       </ul>
     </Example>
   </DocBlock>
@@ -389,7 +416,8 @@ tags: [quick-action-button, qab, fab, fab-button, button, component, svelte, sve
     <a href={processID("Soft Theme")} class="ps-4">Soft Theme</a>
     <a href={processID("Gradient Theme")} class="ps-4">Gradient Theme</a>
     <a href={processID("QAB Trigger Event")}>Trigger Event</a>
-    <a href={processID("Rounded Corner Button")}>Rounded Button</a>
+    <a href={processID("Disabled QAB")}>Disabled QAB</a>
+    <a href={processID("Rounded Button")}>Rounded Button</a>
     <a href={processID("Animation Speed")}>Animation Speed</a>
     <a href={processID("Customization")}>Customization</a>
     <a href={processID("Accessibility")}>Accessibility</a>

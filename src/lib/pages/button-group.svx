@@ -95,7 +95,7 @@ tags: [button-group, button, buttons, group, component, svelte, svelte-5, theui-
   </DocBlock>
 
   <DocBlock title="Group Button Sizing">
-    <p class="not-prose">The <code>size</code> prop in the <code>ButtonGroup</code> component sets the size of all buttons in the group, keeping them consistent. You can use predefined values like <code>'xs'</code>, <code>'sm'</code>, <code>'md'</code>, <code>'lg'</code>, or <code>'xl'</code> to control the button dimensions.</p>
+    <p class="not-prose">The <code>size</code> prop in the <code>ButtonGroup</code> component sets the size of all buttons in the group, keeping them consistent. You can use predefined values like <code>'xs'</code>, <code>'sm'</code>, <code>'md'</code> (default), <code>'lg'</code>, <code>'xl'</code>, or <code>'auto'</code> to control the button dimensions.</p>
     <Example>
       {#snippet example()}
         <div class="flex flex-col items-center gap-4 w-full">
@@ -181,7 +181,7 @@ tags: [button-group, button, buttons, group, component, svelte, svelte-5, theui-
 
   <DocBlock title="Rounded Button Control">
     <Example>
-      <p class="not-prose">The <code>rounded</code> prop controls the border-radius of the buttons within the <code>ButtonGroup</code>, allowing you to adjust the roundness of the button corners. You can choose from several options, such as <code>"sm"</code> for small rounded corners, <code>"md"</code> (default) for medium, <code>"lg"</code> for large, <code>"xl"</code> for extra-large, <code>"full"</code> for fully rounded corners, or <code>"none"</code> for no rounding at all.</p>
+      <p class="not-prose">The <code>rounded</code> prop controls the border-radius of the buttons within the <code>ButtonGroup</code>, allowing you to adjust the roundness of the button corners. You can choose from several options, such as <code>"sm"</code> for small rounded corners, <code>"md"</code> (default) for medium, <code>"lg"</code> for large, <code>"xl"</code> for extra-large, <code>"2xl"</code> for double extra-large, <code>"full"</code> for fully rounded corners, or <code>"none"</code> for no rounding at all.</p>
       {#snippet example()}
         <div class="flex flex-col items-center gap-4 w-full">
           <ButtonGroup rounded="none">
@@ -291,33 +291,33 @@ tags: [button-group, button, buttons, group, component, svelte, svelte-5, theui-
   </DocBlock>
 
   <DocBlock title="Button Group Theme">
-    <p class="not-prose">The <code>theme</code> prop controls the overall theme of the buttons within the <code>ButtonGroup</code>. It allows you to choose from three options: <code>"default"</code>, <code>"light"</code>, or <code>"gradient"</code>. Each theme applies a different visual style to the buttons to match your design preferences.</p>
-    <Example title="Light Theme">
-      <p class="not-prose">The <b>light theme</b> gives the buttons a softer and lighter appearance, making them more subtle and minimal. You can also use the color prop with the light theme to further customize the button colors.</p>
+    <p class="not-prose">The <code>theme</code> prop controls the overall theme of the buttons within the <code>ButtonGroup</code>. It allows you to choose from three options: <code>"default"</code>, <code>"soft"</code>, or <code>"gradient"</code>. Each theme applies a different visual style to the buttons to match your design preferences.</p>
+    <Example title="Soft Theme">
+      <p class="not-prose">The <b>soft theme</b> gives the buttons a softer and lighter appearance, making them more subtle and minimal. You can also use the color prop with the soft theme to further customize the button colors.</p>
       {#snippet example()}
         <div class="flex flex-col items-center gap-4 w-full">
-          <ButtonGroup theme="light">
-            <Button>Light Button 1</Button>
-            <Button>Light Button 1</Button>
-            <Button>Light Button 1</Button>
+          <ButtonGroup theme="soft">
+            <Button>Soft Button 1</Button>
+            <Button>Soft Button 1</Button>
+            <Button>Soft Button 1</Button>
           </ButtonGroup>
-          <ButtonGroup theme="light" color="info">
-            <Button>Light Button 1</Button>
-            <Button>Light Button 1</Button>
-            <Button>Light Button 1</Button>
+          <ButtonGroup theme="soft" color="info">
+            <Button>Soft Button 1</Button>
+            <Button>Soft Button 1</Button>
+            <Button>Soft Button 1</Button>
           </ButtonGroup>
         </div>
       {/snippet}
       {#snippet code()}
 
 ```html
-<ButtonGroup theme="light"> ... </ButtonGroup>
-<ButtonGroup theme="light" color="info"> ... </ButtonGroup>
+<ButtonGroup theme="soft"> ... </ButtonGroup>
+<ButtonGroup theme="soft" color="info"> ... </ButtonGroup>
 ```
       {/snippet}
     </Example>
     <Example title="Gradient Theme">
-      <p class="not-prose">The <b>gradient theme</b> applies a gradient background to the buttons, giving them a vibrant and dynamic look. To customize the gradient’s color scheme, use the color prop in combination with the gradient theme.</p>
+      <p class="not-prose">The <b>gradient theme</b> applies a gradient background to the buttons, giving them a vibrant and dynamic look. To customize the gradient’s color scheme, use the <code>gradientColor</code> prop in combination with the gradient theme.</p>
       {#snippet example()}
         <div class="flex flex-col items-center gap-4 w-full">
           <ButtonGroup theme="gradient">
@@ -337,6 +337,52 @@ tags: [button-group, button, buttons, group, component, svelte, svelte-5, theui-
 ```html
 <ButtonGroup theme="gradient"> ... </ButtonGroup>
 <ButtonGroup theme="gradient" gradientColor="success"> ... </ButtonGroup>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Animation Speed">
+    <Example>
+      <p class="not-prose">The <code>animationSpeed</code> prop sets the transition speed (like the hover effect) for all buttons in the group. Available values are <code>"none"</code>, <code>"slower"</code>, <code>"slow"</code>, <code>"normal"</code> (default), <code>"fast"</code> and <code>"faster"</code>. A button can override it with its own <code>animationSpeed</code> prop.</p>
+      {#snippet example()}
+        <ButtonGroup animationSpeed="slower">
+          <Button>Button 1</Button>
+          <Button>Button 2</Button>
+          <Button animationSpeed="none">Button 3</Button>
+        </ButtonGroup>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<ButtonGroup animationSpeed="slower">
+  <Button>Button 1</Button>
+  <Button>Button 2</Button>
+  <Button animationSpeed="none">Button 3</Button>
+</ButtonGroup>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Customization">
+    <Example>
+      <p class="not-prose">Use the <code>class</code> attribute to style the group container. To apply the same classes to every button in the group, use the <code>buttonClasses</code> prop. A button's own <code>class</code> attribute is applied after <code>buttonClasses</code>, so it can override them.</p>
+      {#snippet example()}
+        <ButtonGroup buttonClasses="uppercase tracking-wider">
+          <Button>Save</Button>
+          <Button>Edit</Button>
+          <Button class="normal-case">Delete</Button>
+        </ButtonGroup>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<ButtonGroup buttonClasses="uppercase tracking-wider">
+  <Button>Save</Button>
+  <Button>Edit</Button>
+  <Button class="normal-case">Delete</Button>
+</ButtonGroup>
 ```
       {/snippet}
     </Example>
@@ -374,8 +420,10 @@ tags: [button-group, button, buttons, group, component, svelte, svelte-5, theui-
     <a href={processID("Button Group Variants")}>Button Variants</a>
     <a href={processID("Button Group Color")}>Group Color</a>
     <a href={processID("Button Group Theme")}>Group Theme</a>
-    <a href={processID("Light theme")} class="ps-4">Light theme</a>
+    <a href={processID("Soft Theme")} class="ps-4">Soft theme</a>
     <a href={processID("Gradient theme")} class="ps-4">Gradient theme</a>
+    <a href={processID("Animation Speed")}>Animation Speed</a>
+    <a href={processID("Customization")}>Customization</a>
     <a href={processID("Accessibility")}>Accessibility</a>
     <a href={processID("Configuration")}>Configuration</a>
   {/snippet}

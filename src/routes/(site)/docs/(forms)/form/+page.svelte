@@ -1,9 +1,9 @@
-<SEO title="Form" />
+<SEO title="Form" description={metadata.description} keywords={metadata.tags?.join(", ")} />
 <Page {component} />
 
 <script lang="ts">
   import SEO from "$lib/SEO.svelte"
-  import Page from "$lib/pages/form.svx"
+  import Page, { metadata } from "$lib/pages/form.svx"
 
   const component = [
     {
@@ -17,6 +17,12 @@
           "description": "Defines the form submit method."
         },
         {
+          "name": "enhance",
+          "type": "Action&lt;HTMLFormElement&gt;",
+          "default": "undefined",
+          "description": "A Svelte action applied to the form element, like SvelteKit's <code>enhance</code> from <code>$app/forms</code>."
+        },
+        {
           "name": "variant",
           "type": "<a href=\"/docs/types#input-variant-type\">INPUT_VARIANT</a>",
           "default": "\"bordered\"",
@@ -26,7 +32,7 @@
           "name": "size",
           "type": "<a href=\"/docs/types#input-size-type\">INPUT_SIZE</a>",
           "default": "\"md\"",
-          "description": "Defines the size of the inputs. Options typically include \"sm\", \"md\", and \"lg\"."
+          "description": "Defines the size of the inputs: \"sm\", \"md\", \"lg\" or \"xl\"."
         },
         {
           "name": "floatingLabel",
@@ -49,7 +55,7 @@
         {
           "name": "labelClasses",
           "type": "string",
-          "default": "\"\"",
+          "default": "undefined",
           "description": "Allows custom CSS classes to be applied to input labels for additional styling."
         },
         {

@@ -1,0 +1,368 @@
+---
+title: Combobox
+category: Forms
+description: A searchable select with multi-select chips, option groups, created entries and async search, from theui-svelte.
+dir: ".lib/pages"
+tags: [combobox, autocomplete, select, multiselect, search, form, svelte, svelte-5, theui-svelte, component-library, ui, tailwindcss]
+---
+
+<script lang="ts">
+  import DocLayout from "$lib/ui/doc/DocLayout.svelte";
+  import DocHead from "$lib/ui/doc/Head.svelte";
+  import DocBlock from "$lib/ui/doc/Block.svelte";
+  import Code from "$lib/ui/doc/CodeBlock.svelte";
+  import Example from "$lib/ui/doc/Example.svelte";
+  import ConfigComponent from "$lib/ui/doc/ConfigComponent.svelte";
+  import { processID, editURL } from "$lib";
+  let { component }: {component: any } = $props();
+
+  import { Combobox, Avatar } from "theui-svelte";
+  import type { COMBOBOX_ITEM } from "theui-svelte/type";
+
+  const countries: COMBOBOX_ITEM[] = [
+    "Bangladesh", "Brazil", "Canada", "Denmark", "Egypt", "France", "Germany",
+    "India", "Indonesia", "Japan", "Kenya", "Malaysia", "Nepal", "Nigeria",
+    "Pakistan", "Qatar", "Saudi Arabia", "Singapore", "Turkey", "United Kingdom", "United States",
+  ]
+
+  const roles: COMBOBOX_ITEM[] = [
+    { value: "admin", text: "Administrator", group: "Staff" },
+    { value: "editor", text: "Editor", group: "Staff" },
+    { value: "author", text: "Author", group: "Staff" },
+    { value: "member", text: "Member", group: "Public" },
+    { value: "guest", text: "Guest", group: "Public", disabled: true },
+  ]
+
+  let country = $state<unknown>("Bangladesh")
+  let frameworks = $state<unknown>(["Svelte"])
+  let tags = $state<unknown>([])
+  let remote = $state<unknown>()
+  let remoteItems = $state<COMBOBOX_ITEM[]>([])
+  let searching = $state(false)
+  let timer: ReturnType<typeof setTimeout>
+
+  const search = (q: string) => {
+    clearTimeout(timer)
+    if (!q.trim()) { remoteItems = []; searching = false; return }
+    searching = true
+    timer = setTimeout(() => {
+      remoteItems = countries.filter(c => String(c).toLowerCase().includes(q.toLowerCase()))
+      searching = false
+    }, 500)
+  }
+</script>
+
+<DocLayout>
+  <DocHead title="Combobox" text="The Combobox component is a select box you can type in. It filters as you type, holds one value or many, groups its options, and can fetch them from your server. Use the plain Select when the list is short and needs no search." edit_url={editURL("combobox")} />
+
+  <DocBlock title="Example">
+    <p class="not-prose">Pass the options as <code>items</code> and bind a value. Plain strings are the quickest way to start.</p>
+    <Example>
+      {#snippet example()}
+        <div class="flex w-full max-w-sm flex-col gap-3">
+          <Combobox items={countries} bind:value={country} placeholder="Pick a country">Country</Combobox>
+          <p class="not-prose text-sm text-muted">value: {String(country ?? "")}</p>
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<script>
+  import { Combobox } from "theui-svelte";
+
+  const countries = ["Bangladesh", "Brazil", "Canada", "Denmark"]
+  let country = $state("Bangladesh")
+</script>
+
+<Combobox items={countries} bind:value={country} placeholder="Pick a country">
+  Country
+</Combobox>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Option Objects">
+    <p class="not-prose">An option can also be an object with a <code>value</code>, the text to show, a <code>disabled</code> flag and a <code>group</code> name. The value is what you get back; the text is what the user reads and searches.</p>
+    <Example>
+      {#snippet example()}
+        <div class="w-full max-w-sm">
+          <Combobox items={roles} placeholder="Choose a role" helperText="Guest is disabled">Role</Combobox>
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<script>
+  const roles = [
+    { value: "admin", text: "Administrator", group: "Staff" },
+    { value: "editor", text: "Editor", group: "Staff" },
+    { value: "member", text: "Member", group: "Public" },
+    { value: "guest", text: "Guest", group: "Public", disabled: true },
+  ]
+</script>
+
+<Combobox items={roles} placeholder="Choose a role">Role</Combobox>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Multiple Selection">
+    <p class="not-prose">Add <code>multiple</code> and the value becomes an array. Each choice is shown as a chip with its own remove button, and Backspace in an empty field removes the last one.</p>
+    <Example>
+      {#snippet example()}
+        <div class="flex w-full max-w-sm flex-col gap-3">
+          <Combobox items={["Svelte", "React", "Vue", "Solid", "Qwik", "Angular"]} bind:value={frameworks} multiple placeholder="Pick a few">Frameworks</Combobox>
+          <p class="not-prose text-sm text-muted">value: {JSON.stringify(frameworks)}</p>
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<script>
+  let frameworks = $state(["Svelte"])
+</script>
+
+<Combobox
+  items={["Svelte", "React", "Vue", "Solid"]}
+  bind:value={frameworks}
+  multiple
+  placeholder="Pick a few"
+>Frameworks</Combobox>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Creating Options">
+    <p class="not-prose">With <code>creatable</code>, anything typed that does not match an option can be added as a new one. Use <code>createText</code> to reword the entry that offers it.</p>
+    <Example>
+      {#snippet example()}
+        <div class="flex w-full max-w-sm flex-col gap-3">
+          <Combobox items={["Design", "Engineering", "Marketing"]} bind:value={tags} multiple creatable placeholder="Type something new">Tags</Combobox>
+          <p class="not-prose text-sm text-muted">value: {JSON.stringify(tags)}</p>
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Combobox
+  items={["Design", "Engineering", "Marketing"]}
+  bind:value={tags}
+  multiple
+  creatable
+  createText={(q) => `Add “${q}”`}
+>Tags</Combobox>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Async Search">
+    <p class="not-prose">Pass <code>onsearch</code> and the component stops filtering on its own: it hands you what was typed and shows whatever <code>items</code> you set. Use <code>loading</code> while the request is on its way.</p>
+    <Example>
+      {#snippet example()}
+        <div class="w-full max-w-sm">
+          <Combobox
+            items={remoteItems}
+            bind:value={remote}
+            loading={searching}
+            onsearch={search}
+            placeholder="Type at least one letter"
+            emptyText="Nothing found"
+            helperText="Pretends to call a server, with half a second of delay"
+          >Async search</Combobox>
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<script>
+  let items = $state([])
+  let loading = $state(false)
+
+  const search = async (query) => {
+    if (!query.trim()) { items = []; return }
+    loading = true
+    items = await fetchCountries(query)
+    loading = false
+  }
+</script>
+
+<Combobox {items} {loading} onsearch={search} placeholder="Search…" emptyText="Nothing found">
+  Country
+</Combobox>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Custom Options">
+    <p class="not-prose">The <code>option</code> snippet takes over how each row is drawn, and is handed the option itself, so a row can hold an avatar, a description or a badge.</p>
+    <Example>
+      {#snippet example()}
+        <div class="w-full max-w-sm">
+          <Combobox items={roles} placeholder="Choose a role">
+            Rich options
+            {#snippet option(item)}
+              <Avatar size="xs" name={item.text} />
+              <span class="grow">{item.text}</span>
+              <span class="text-xs text-muted">{item.group}</span>
+            {/snippet}
+          </Combobox>
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Combobox items={roles} placeholder="Choose a role">
+  Rich options
+  {#snippet option(item)}
+    <Avatar size="xs" name={item.text} />
+    <span class="grow">{item.text}</span>
+    <span class="text-xs text-muted">{item.group}</span>
+  {/snippet}
+</Combobox>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Without Search">
+    <p class="not-prose">Set <code>searchable={false}</code> to keep the panel and the keyboard but stop the typing, which turns the component into a styled select. <code>clearable={false}</code> hides the clear button.</p>
+    <Example>
+      {#snippet example()}
+        <div class="flex w-full max-w-sm flex-col gap-4">
+          <Combobox items={countries} value="Canada" searchable={false}>Not searchable</Combobox>
+          <Combobox items={countries} value="Japan" clearable={false}>Cannot be cleared</Combobox>
+          <Combobox items={countries} value="Kenya" disabled>Disabled</Combobox>
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Combobox items={countries} value="Canada" searchable={false}>Not searchable</Combobox>
+<Combobox items={countries} value="Japan" clearable={false}>Cannot be cleared</Combobox>
+<Combobox items={countries} value="Kenya" disabled>Disabled</Combobox>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="In a Form">
+    <p class="not-prose">Give the component a <code>name</code> to submit the value. A multiple combobox submits one field for each choice, the way a multiple select does.</p>
+    <Example>
+      {#snippet example()}
+        <form class="flex w-full max-w-sm flex-col items-start gap-3" onsubmit={(e) => e.preventDefault()}>
+          <Combobox items={countries} name="country" value="Brazil">Country</Combobox>
+          <button class="rounded-md bg-brand-500 px-4 py-2 font-medium text-on-brand">Save</button>
+        </form>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<form method="POST">
+  <Combobox items={countries} name="country" value="Brazil">Country</Combobox>
+  <button>Save</button>
+</form>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Animation Speed">
+    <p class="not-prose">The <code>animationSpeed</code> prop sets how quickly the field and its panel react to focus, hover and opening. It takes <code>"none"</code>, <code>"slower"</code>, <code>"slow"</code>, <code>"normal"</code>, <code>"fast"</code> and <code>"faster"</code>, and the default is <code>"normal"</code>. Inside a <a href="/docs/form">Form</a> or a <a href="/docs/fieldset">Fieldset</a> the value is inherited, so one setting covers every field at once.</p>
+    <Example>
+      {#snippet example()}
+        <div class="flex w-full max-w-sm flex-col gap-4">
+          <Combobox items={countries} animationSpeed="slower" placeholder="Slower" />
+          <Combobox items={countries} animationSpeed="normal" placeholder="Normal" />
+          <Combobox items={countries} animationSpeed="faster" placeholder="Faster" />
+          <Combobox items={countries} animationSpeed="none" placeholder="No animation" />
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Combobox items={countries} animationSpeed="slower" placeholder="Slower" />
+<Combobox items={countries} animationSpeed="normal" placeholder="Normal" />
+<Combobox items={countries} animationSpeed="faster" placeholder="Faster" />
+<Combobox items={countries} animationSpeed="none" placeholder="No animation" />
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Reset Styles">
+    <p class="not-prose">Set <code>reset</code> to <code>true</code> to drop the border, background and focus ring of the field and keep only the classes you pass. The chips and the panel keep their layout, so the component still works the same way. The default is <code>false</code>, and a <a href="/docs/form">Form</a> or a <a href="/docs/fieldset">Fieldset</a> can set it for every field it holds.</p>
+    <Example>
+      {#snippet example()}
+        <div class="w-full max-w-sm">
+          <Combobox items={countries} reset fieldClasses="w-full border-b-2 border-gray-400 px-1 py-2" placeholder="Underline only" />
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Combobox
+  items={countries}
+  reset
+  fieldClasses="w-full border-b-2 border-gray-400 px-1 py-2"
+  placeholder="Underline only" />
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Customization">
+    <p class="not-prose">Sizes and variants come from the <a href="/docs/form">Form</a> or the <a href="/docs/fieldset">Fieldset</a>, or from the props here. Use <code>fieldClasses</code> for the box, <code>panelClass</code> for the list, <code>optionClass</code> for each row and <code>chipClasses</code> for the chips.</p>
+    <Example>
+      {#snippet example()}
+        <div class="flex w-full max-w-sm flex-col gap-4">
+          <Combobox items={countries} size="lg" variant="flat" placeholder="Flat and large" />
+          <Combobox items={countries} rounded="full" placeholder="Fully rounded" />
+          <Combobox items={countries} multiple value={["Brazil", "Canada"]} chipClasses="bg-brand-500 text-on-brand" />
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Combobox items={countries} size="lg" variant="flat" placeholder="Flat and large" />
+<Combobox items={countries} rounded="full" placeholder="Fully rounded" />
+<Combobox items={countries} multiple chipClasses="bg-brand-500 text-on-brand" />
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Keyboard">
+    <p class="not-prose">The down arrow opens the list and moves through it, the up arrow moves back, and both wrap around. Enter takes the highlighted option, Escape closes the list and keeps the focus, Home and End jump to the first and last option, and Tab closes the list and moves on. In a multiple combobox, Backspace on an empty field removes the last chip. Disabled options are skipped.</p>
+  </DocBlock>
+
+  <DocBlock title="Accessibility">
+    <p class="not-prose">The component follows the WAI-ARIA combobox pattern. The field is a text input with <code>role="combobox"</code> that says whether the list is open and which list it controls; the list is a listbox whose options carry their selected state, and in a multiple combobox the listbox is marked as allowing several. Focus never leaves the input: the highlighted option is pointed at with <code>aria-activedescendant</code>, so typing and moving through the list stay in one place. The chips of a multiple combobox each have a remove button named after the option, such as "Remove Svelte", and the clear button has its own name. The list is placed with a fixed strategy, so it flips and shifts to stay on screen instead of being cut off inside a scrolling box.</p>
+  </DocBlock>
+
+  <DocBlock title="Configuration">
+    <ConfigComponent {component} />
+  </DocBlock>
+
+  {#snippet sidebar()}
+    <a href={processID("Example")}>Example</a>
+    <a href={processID("Option Objects")}>Option objects</a>
+    <a href={processID("Multiple Selection")}>Multiple selection</a>
+    <a href={processID("Creating Options")}>Creating options</a>
+    <a href={processID("Async Search")}>Async search</a>
+    <a href={processID("Custom Options")}>Custom options</a>
+    <a href={processID("Without Search")}>Without search</a>
+    <a href={processID("In a Form")}>In a form</a>
+    <a href={processID("Animation Speed")}>Animation speed</a>
+    <a href={processID("Reset Styles")}>Reset styles</a>
+    <a href={processID("Customization")}>Customization</a>
+    <a href={processID("Keyboard")}>Keyboard</a>
+    <a href={processID("Accessibility")}>Accessibility</a>
+    <a href={processID("Configuration")}>Configuration</a>
+  {/snippet}
+
+</DocLayout>

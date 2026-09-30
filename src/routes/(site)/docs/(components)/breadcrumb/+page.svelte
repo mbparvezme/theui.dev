@@ -1,9 +1,9 @@
-<SEO title="Breadcrumb" />
+<SEO title="Breadcrumb" description={metadata.description} keywords={metadata.tags?.join(", ")} />
 <Page {component} />
 
 <script lang="ts">
   import SEO from "$lib/SEO.svelte"
-  import Page from "$lib/pages/breadcrumb.svx"
+  import Page, { metadata } from "$lib/pages/breadcrumb.svx"
 
   const component = [
     {
@@ -14,7 +14,7 @@
           "name": "data",
           "type": "Array&lt;<a href=\"/docs/types#breadcrumb-data-type\">BREADCRUMB_DATA</a>&gt;",
           "default": "[]",
-          "description": "An array of breadcrumb items to display."
+          "description": "An array of breadcrumb items to display. Each item's text must be unique."
         },
         {
           "name": "activeLinkClasses",
@@ -25,8 +25,14 @@
         {
           "name": "linkClasses",
           "type": "string",
-          "default": "\"text-brand-primary-500\"",
+          "default": "\"text-brand-500\"",
           "description": "CSS classes applied to the non-active breadcrumb links."
+        },
+        {
+          "name": "rounded",
+          "type": "<a href=\"/docs/types#rounded-type\">ROUNDED</a>",
+          "default": "\"md\"",
+          "description": "Defines the border radius of the breadcrumb container and its items."
         },
         {
           "name": "separator",

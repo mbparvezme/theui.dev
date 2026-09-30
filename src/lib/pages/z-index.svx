@@ -1,9 +1,9 @@
 ---
 title: Z-index Guide
 category: Guides
-description: Manage stacking order and visibility of components with TheUI-Svelte's z-index guide.
+description: The stacking order theui-svelte uses, how stacking contexts change it, and where to put your own overlays.
 dir: ".lib/pages"
-tags: [z-index, stacking, css, guide, theui-svelte, svelte, component-library]
+tags: [z-index, stacking, stacking context, css, guide, theui-svelte, svelte, component-library]
 ---
 
 <script lang="ts">
@@ -11,20 +11,18 @@ tags: [z-index, stacking, css, guide, theui-svelte, svelte, component-library]
   import DocHead from "$lib/ui/doc/Head.svelte";
   import DocBlock from "$lib/ui/doc/Block.svelte";
   import Code from "$lib/ui/doc/CodeBlock.svelte";
-  import { editURL } from "$lib";
+  import { processID, editURL } from "$lib";
   import { Alert, Table, TBody, TR, TH, TD, THead } from "theui-svelte";
-  let { components }: { components: any } = $props();
 </script>
 
 <DocLayout>
 
-  <DocHead title="Z-index" text="In this library, several components utilize z-index. This document will let you know the order of the z-index in components." edit_url={editURL("z-index")} />
+  <DocHead title="Z-index" text="Several components in this library stack above the page. This guide gives the order they use, explains why a number sometimes loses to a smaller one, and shows where to put overlays of your own." edit_url={editURL("z-index")} />
 
-  <DocBlock>
-    <p class="not-prose">This library leverages z-index for stacking elements. Avoid modifying z-index values to prevent layout disruptions.</p>
-    <p class="not-prose mb-4">The z-index property helps manage the overlay and layout of elements relative to one another, controlling their arrangement along the z-axis. Customizing these values is not recommended, as it may disrupt the intended layout.</p>
+  <DocBlock title="The Layers">
+    <p class="not-prose">Each of these components sits on its own layer, a hundred apart, in the order you would expect them to cover one another: a modal over a drawer, a tooltip over both, a notification over everything.</p>
     <div class="not-prose">
-      <Table class="my-0">
+      <Table class="my-0" ariaLabel="Component layers and their z-index values">
         <THead>
           <TR>
             <TH>Component</TH>
@@ -33,21 +31,6 @@ tags: [z-index, stacking, css, guide, theui-svelte, svelte, component-library]
           </TR>
         </THead>
         <TBody>
-          <!-- <TR>
-            <TD>Dropdown</TD>
-            <TD><span class="not-prose whitespace-nowrap"><code>.dropdown .backdrop</code></span></TD>
-            <TD>10</TD>
-          </TR> 
-          <TR>
-            <TD>Sticky positioned</TD>
-            <TD><span class="not-prose whitespace-nowrap"><code>.sticky, [class$=:sticky]</code></span></TD>
-            <TD>20</TD>
-          </TR>
-          <TR>
-            <TD>Fixed positioned</TD>
-            <TD><span class="not-prose whitespace-nowrap"><code>.fixed, [class$=:fixed]</code></span></TD>
-            <TD>30</TD>
-          </TR> -->
           <TR>
             <TD>Navbar</TD>
             <TD><span class="not-prose whitespace-nowrap"><code>.z-100</code></span></TD>
@@ -86,14 +69,74 @@ tags: [z-index, stacking, css, guide, theui-svelte, svelte, component-library]
         </TBody>
       </Table>
     </div>
-
-    <div>
-      <h4>Important Notes</h4>
-      <ul class="mt-0">
-        <li class="my-0">The predefined z-index values ensure components stack and function correctly.</li>
-        <li class="my-0"><span class="font-semibold">Modifying these values is discouraged</span> to prevent layout and overlay issues</li>
-      </ul>
-    </div>
+    <p class="not-prose mb-0">Leave these alone. They are set so the components work together, and lowering one is the quickest way to lose a modal behind the page it opened from.</p>
   </DocBlock>
+
+  <DocBlock title="Layers Inside a Component">
+    <p class="not-prose">A few parts stack only against their own component, not against the page, so their numbers are small on purpose.</p>
+    <div class="not-prose">
+      <Table class="my-0" ariaLabel="Layers inside a component">
+        <THead>
+          <TR>
+            <TH>Part</TH>
+            <TH>Class</TH>
+            <TH>Value (z-index)</TH>
+          </TR>
+        </THead>
+        <TBody>
+          <TR>
+            <TD>Field panel of <code>Combobox</code>, <code>DatePicker</code> and <code>TimePicker</code></TD>
+            <TD><span class="not-prose whitespace-nowrap"><code>.theui-field-panel</code></span></TD>
+            <TD>50</TD>
+          </TR>
+          <TR>
+            <TD>Dropdown menu</TD>
+            <TD><span class="not-prose whitespace-nowrap"><code>.dropdown-content</code></span></TD>
+            <TD>11</TD>
+          </TR>
+          <TR>
+            <TD>Mobile menu of the navbar</TD>
+            <TD><span class="not-prose whitespace-nowrap"><code>.theui-navbar-collapse</code></span></TD>
+            <TD>1</TD>
+          </TR>
+        </TBody>
+      </Table>
+    </div>
+    <Alert type="warning" theme="soft" class="mt-4"><span>A field panel is above the page but below the <span class="not-prose"><code>Navbar</code></span>. A <span class="not-prose"><code>Combobox</code></span> or <span class="not-prose"><code>DatePicker</code></span> right at the top of a page, under a fixed navbar, opens its list behind that navbar. Leave a little room below the navbar, or open the field lower down the page.</span></Alert>
+  </DocBlock>
+
+  <DocBlock title="How Stacking Works">
+    <p class="not-prose">A <code>z-index</code> only competes with its siblings, inside what CSS calls a stacking context. That is why a dropdown menu at 11 still sits above a page full of elements at 100: it is measured against the dropdown around it, not against the page.</p>
+    <p class="not-prose">It also explains the problem people meet most often. An ancestor with a <code>transform</code>, a <code>filter</code>, a <code>backdrop-filter</code>, an <code>opacity</code> below 1, or <code>will-change</code> starts a stacking context of its own, and everything inside is trapped in it. A modal inside such an element cannot climb out, whatever its number, and will be covered by the next element that sits above its ancestor.</p>
+<Code title="A dropdown that goes behind the next card">
+
+```svelte
+<!-- The scale transform starts a stacking context, so the dropdown -->
+<!-- inside this card cannot rise above anything outside it -->
+<div class="transition hover:scale-105">
+  <Card>
+    <Dropdown label="Actions">…</Dropdown>
+  </Card>
+</div>
+```
+</Code>
+    <p class="not-prose mb-0">If a component of this library ends up behind something it should cover, look up the tree for one of those properties before reaching for a bigger number.</p>
+  </DocBlock>
+
+  <DocBlock title="Your Own Overlays">
+    <p class="not-prose">Three places are free for your own elements, and each keeps you out of the library's way.</p>
+    <ul class="mt-0 mb-0">
+      <li><b>Below 100</b> – anything that belongs to the page itself, such as a sticky table header or a cookie bar that the navbar may cover.</li>
+      <li><b>Between two layers</b> – for example 250 for a panel of your own that should sit over a dropdown but under a drawer.</li>
+      <li><b>Above 700</b> – a splash screen or a full-page loader, the only things that should cover a notification.</li>
+    </ul>
+  </DocBlock>
+
+  {#snippet sidebar()}
+    <a href={processID("The Layers")}>The layers</a>
+    <a href={processID("Layers Inside a Component")}>Layers inside a component</a>
+    <a href={processID("How Stacking Works")}>How stacking works</a>
+    <a href={processID("Your Own Overlays")}>Your own overlays</a>
+  {/snippet}
 
 </DocLayout>

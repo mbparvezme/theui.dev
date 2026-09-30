@@ -48,12 +48,12 @@ tags: [svg-icon, icon, vector, component, svelte, svelte-5, theui-svelte, compon
 ```
       {/snippet}
     </Example>
-    <p class="not-prose">This will render a red circle with a black border and a blue diagonal line within the same SVG canvas.</p>
+    <p class="not-prose">This will render a circle outline icon that uses the current text color.</p>
   </DocBlock>
 
   <DocBlock title="Icon Size">
-    <p class="not-prose">The <code>size</code> prop acts as a multiplier for the current font size, determining the icon's dimensions. For example, a value of 1 renders the icon at the same size as the surrounding text (1em). You can adjust this value to scale the icon larger or smaller relative to the text.</p>
-    <p class="not-prose text-sm"><b>Default</b>: <code>1</code> <small>(1em)</small></p>
+    <p class="not-prose">The <code>size</code> prop sets the icon's width and height in <code>rem</code>, so it is relative to the root font size. For example, a value of 1 renders the icon at 1rem. You can adjust this value to scale the icon larger or smaller.</p>
+    <p class="not-prose text-sm"><b>Default</b>: <code>1</code> <small>(1rem)</small></p>
 
     <Example>
       {#snippet example()}
@@ -130,14 +130,14 @@ tags: [svg-icon, icon, vector, component, svelte, svelte-5, theui-svelte, compon
 
     <Example>
       {#snippet example()}
-        <Svg class="fill-brand-primary-500">
+        <Svg class="fill-brand-500">
           <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
         </Svg>
       {/snippet}
       {#snippet code()}
 
 ```html
-<Svg class="fill-brand-primary-500">
+<Svg class="fill-brand-500">
   <path d="M8 15A7 7 ... 0 0 16"/>
 </Svg>
 ```
@@ -149,7 +149,7 @@ tags: [svg-icon, icon, vector, component, svelte, svelte-5, theui-svelte, compon
   <DocBlock title="Accessibility">
     <p class="not-prose">The <code>SVG</code> component is built for flexible, accessible icons.</p>
     <ul class="my-0">
-      <li><span class="not-prose"><b>Decorative by default</b>: Uses <code>aria-hidden="true"</code> and <code>tabindex="-1"</code> to skip screen readers and keyboard navigation.</span></li>
+      <li><span class="not-prose"><b>Decorative by default</b>: Uses <code>aria-hidden="true"</code> and <code>focusable="false"</code> to skip screen readers and keyboard navigation. Set <code>focusable={"{"}true{"}"}</code> to expose the icon to assistive technologies.</span></li>
       <li><span class="not-prose"><b>Custom size and viewbox</b>: Easily adjust using <code>size</code> and <code>viewBox</code> props.</span></li>
       <li><span class="not-prose"><b>Dynamic styling</b>: Use <code>stroke</code> prop or <code>class</code> for visual customization.</span></li>
     </ul>

@@ -1,4 +1,4 @@
-<SEO title="AI Component Generator" />
+<SEO title="AI Component Generator" description="AI-powered UI blocks for Svelte and Tailwind CSS, coming soon from TheUI." />
 <ComingSoon title="AI-Powered UI Blocks - Design Faster, Build Smarter" />
 
 <script lang="ts">

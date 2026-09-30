@@ -48,7 +48,7 @@ tags: [radio-button, form-input, component, svelte, svelte-5, theui-svelte, comp
   </DocBlock>
 
   <DocBlock title="Name and Value">
-    <p class="not-prose">The <code>name</code> and <code>value</code> props are essential for grouping radio buttons. The <code>name</code> ensures that only one radio button from the group can be selected at a time, while the <code>value</code> represents the selected option.</p>
+    <p class="not-prose">The <code>name</code> and <code>value</code> props are essential for grouping radio buttons. The <code>name</code> ensures that only one radio button from the group can be selected at a time, while the <code>value</code> represents the option this radio button stands for. To read which option is selected, use the <code>group</code> prop.</p>
     <Example>
     {#snippet example()}
 <Radio name="payment" value="credit-card">Credit Card</Radio>
@@ -59,6 +59,31 @@ tags: [radio-button, form-input, component, svelte, svelte-5, theui-svelte, comp
 ```html
 <Radio name="myRadio" value="credit-card">Credit Card</Radio>
 <Radio name="myRadio" value="paypal">Paypal</Radio>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Selected Option">
+    <p class="not-prose">The <code>group</code> prop holds the value of the selected radio button. Give every radio button of the group the same <code>name</code> and bind the same variable with <code>bind:group</code>. The radio button whose <code>value</code> matches the bound variable is selected, so you can also preselect an option by setting that variable.</p>
+    <Example>
+    {#snippet example()}
+<div class="flex flex-col gap-2">
+  <Radio name="plan" value="free" group="free">Free plan (preselected)</Radio>
+  <Radio name="plan" value="pro" group="free">Pro plan</Radio>
+</div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<script>
+  let plan = $state("free");
+</script>
+
+<Radio name="plan" value="free" bind:group={plan}>Free plan</Radio>
+<Radio name="plan" value="pro" bind:group={plan}>Pro plan</Radio>
+
+<p>Selected plan: {plan}</p>
 ```
       {/snippet}
     </Example>
@@ -88,28 +113,28 @@ tags: [radio-button, form-input, component, svelte, svelte-5, theui-svelte, comp
   </DocBlock>
 
   <DocBlock title="Animation">
-    <p class="not-prose">The <code>animateSpeed</code> prop defines the speed of the radio button's selection transition. This improves user interaction by adding smooth effects when selecting options. The available values are <code>"none"</code>, <code>"slower"</code>, <code>"slow"</code> <code>"normal"</code> (default), <code>"fast"</code> and <code>"faster"</code>.</p>
+    <p class="not-prose">The <code>animationSpeed</code> prop defines the speed of the radio button's selection transition. This improves user interaction by adding smooth effects when selecting options. The available values are <code>"none"</code>, <code>"slower"</code>, <code>"slow"</code> <code>"normal"</code> (default), <code>"fast"</code> and <code>"faster"</code>.</p>
     <p class="not-prose">Setting it to <code>"none"</code>disables animations, while other values changes the transition speed.</p>
     <Example>
     {#snippet example()}
 <div class="flex flex-col gap-2">
-  <Radio name="myRadio" animateSpeed="slower">Slower animation</Radio>
-  <Radio name="myRadio" animateSpeed="slow">Slow animation</Radio>
-  <Radio name="myRadio" animateSpeed="normal">Normal animation</Radio>
-  <Radio name="myRadio" animateSpeed="fast">Fast animation</Radio>
-  <Radio name="myRadio" animateSpeed="faster">Faster animation</Radio>
-  <Radio name="myRadio" animateSpeed="none">No animation</Radio>
+  <Radio name="myRadio" animationSpeed="slower">Slower animation</Radio>
+  <Radio name="myRadio" animationSpeed="slow">Slow animation</Radio>
+  <Radio name="myRadio" animationSpeed="normal">Normal animation</Radio>
+  <Radio name="myRadio" animationSpeed="fast">Fast animation</Radio>
+  <Radio name="myRadio" animationSpeed="faster">Faster animation</Radio>
+  <Radio name="myRadio" animationSpeed="none">No animation</Radio>
 </div>
       {/snippet}
 
       {#snippet code()}
 ```html
-<Radio name="myRadio" animateSpeed="slower">Slower animation</Radio>
-<Radio name="myRadio" animateSpeed="slow">Slow animation</Radio>
-<Radio name="myRadio" animateSpeed="normal">Normal animation</Radio>
-<Radio name="myRadio" animateSpeed="fast">Fast animation</Radio>
-<Radio name="myRadio" animateSpeed="faster">Faster animation</Radio>
-<Radio name="myRadio" animateSpeed="none">No animation</Radio>
+<Radio name="myRadio" animationSpeed="slower">Slower animation</Radio>
+<Radio name="myRadio" animationSpeed="slow">Slow animation</Radio>
+<Radio name="myRadio" animationSpeed="normal">Normal animation</Radio>
+<Radio name="myRadio" animationSpeed="fast">Fast animation</Radio>
+<Radio name="myRadio" animationSpeed="faster">Faster animation</Radio>
+<Radio name="myRadio" animationSpeed="none">No animation</Radio>
 ```
       {/snippet}
     </Example>
@@ -132,11 +157,47 @@ tags: [radio-button, form-input, component, svelte, svelte-5, theui-svelte, comp
     </Example>
   </DocBlock>
 
+  <DocBlock title="Disabled Radio Button">
+    <p class="not-prose">Add the native <code>disabled</code> or <code>readonly</code> attribute to prevent changes. The radio button and its label are dimmed and can't be clicked.</p>
+    <Example>
+    {#snippet example()}
+<div class="flex flex-col gap-2">
+  <Radio name="myRadioDisabled" value="1" disabled>Disabled radio button</Radio>
+</div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Radio name="myRadio" value="1" disabled>Disabled radio button</Radio>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Label Position">
+    <p class="not-prose">The <code>labelPosition</code> prop controls where the label sits. It accepts <code>"end"</code> (default), which places the label after the radio button, and <code>"start"</code>, which places it before. The position follows the writing direction, so in a right-to-left layout <code>"start"</code> puts the label on the right.</p>
+    <Example>
+    {#snippet example()}
+<div class="flex flex-col gap-2">
+  <Radio name="myRadioPosition" value="after">Label after the radio button</Radio>
+  <Radio name="myRadioPosition" value="before" labelPosition="start">Label before the radio button</Radio>
+</div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Radio name="myRadio" value="after">Label after the radio button</Radio>
+<Radio name="myRadio" value="before" labelPosition="start">Label before the radio button</Radio>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
   <DocBlock title="Customization">
-    <Example> 
+    <Example>
       <p class="not-prose">The Radio Button component offers multiple ways to customize its appearance:</p>
       <ul class="my-0">
-        <li><span class="not-prose"><code>labelClasses</code></span> – Custom styles for the label. If used within a Form component, it inherits the Form's <span class="not-prose"><code>labelClasses</code></span>.</li>
+        <li><span class="not-prose"><code>labelClasses</code></span> – Custom styles for the label. If used within a Fieldset or Form component, it inherits their <span class="not-prose"><code>labelClasses</code></span>. The <span class="not-prose"><code>size</code></span>, <span class="not-prose"><code>animationSpeed</code></span> and <span class="not-prose"><code>reset</code></span> props are inherited the same way.</li>
         <li><span class="not-prose"><code>wrapperClasses</code></span> – Additional classes for the wrapper &lt;div&gt;, useful for layout adjustments.</li>
         <li><span class="not-prose"><code>class</code></span> – Apply custom styles to the radio button itself.</li>
       </ul>
@@ -180,7 +241,7 @@ tags: [radio-button, form-input, component, svelte, svelte-5, theui-svelte, comp
   </DocBlock>
 
   <DocBlock title="Accessibility">
-    <p class="not-prose">The <code>Radio</code> component uses the native <code>&lt;input type="radio"&gt;</code> with the <code>aria-checked</code> attribute to reflect its selected state. It also supports <code>aria-disabled</code> through <code>props</code> for disabled states. Each radio button is associated with a <code>&lt;Label&gt;</code> for better accessibility. The radio buttons are grouped together, ensuring that only one can be selected at a time, and the layout can be reversed when needed for RTL or right-aligned designs.</p>
+    <p class="not-prose">The <code>Radio</code> component uses the native <code>&lt;input type="radio"&gt;</code>, so screen readers announce whether it is selected. When you bind <code>group</code>, the <code>aria-checked</code> attribute reflects the selection as well. It also supports <code>aria-disabled</code> through <code>props</code> for disabled states. Each radio button is associated with a <code>&lt;Label&gt;</code> for better accessibility. The radio buttons are grouped together, ensuring that only one can be selected at a time, and the label can be placed before the radio button with <code>labelPosition="start"</code> for right-aligned designs.</p>
   </DocBlock>
 
   <DocBlock title="Configuration">
@@ -191,9 +252,12 @@ tags: [radio-button, form-input, component, svelte, svelte-5, theui-svelte, comp
     <a href={processID("About")}>About</a>
     <a href={processID("Example")}>Example</a>
     <a href={processID("Name and Value")}>Name and Value</a>
+    <a href={processID("Selected Option")}>Selected Option</a>
     <a href={processID("Radio Button Sizes")}>Radio Button Sizes</a>
     <a href={processID("Animation")}>Animation</a>
     <a href={processID("Resetting Style")}>Resetting Style</a>
+    <a href={processID("Disabled Radio Button")}>Disabled Radio Button</a>
+    <a href={processID("Label Position")}>Label Position</a>
     <a href={processID("Customization")}>Customization</a>
     <a href={processID("Accessibility")}>Accessibility</a>
     <a href={processID("Configuration")}>Configuration</a>

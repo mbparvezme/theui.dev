@@ -114,16 +114,16 @@ tags: [accordion, collapsible, toggle, component, svelte, svelte-5, theui-svelte
     </Example>
   </DocBlock>
 
-  <DocBlock title="Flash Accordion">
+  <DocBlock title="Flush Accordion">
     <Example>
       <p class="not-prose">The Flush Accordion is a sleek and minimalist variant of the Accordion component, designed for users who prefer a simple, streamlined appearance. By setting the <code>flush</code> attribute on the <code>Accordion</code>, all the contained <code>AccordionItem</code> components will adopt this flush style, providing a consistent and clean look across the entire accordion.</p>
       {#snippet example()}
       <div>
-        <Accordion>
-          <AccordionItem flush title={accordionTitle + ": 1"}>
+        <Accordion flush>
+          <AccordionItem title={accordionTitle + ": 1"}>
             {@html accordionContent}
           </AccordionItem>
-          <AccordionItem flush title={accordionTitle + ": 2"}>
+          <AccordionItem title={accordionTitle + ": 2"}>
             {@html accordionContent}
           </AccordionItem>
         </Accordion>
@@ -261,6 +261,31 @@ tags: [accordion, collapsible, toggle, component, svelte, svelte-5, theui-svelte
     </Example>
   </DocBlock>
 
+  <DocBlock title="Rounded Corner">
+    <Example>
+      <p class="not-prose">The <code>rounded</code> prop controls the border radius of the accordion items. Available values are <code>"none"</code>, <code>"sm"</code>, <code>"md"</code> (default), <code>"lg"</code>, <code>"xl"</code>, <code>"2xl"</code> and <code>"full"</code>. When set on the <code>Accordion</code>, all <code>AccordionItem</code>s inherit it, and in a group only the outer corners of the first and last items are rounded. You can also set it on an individual <code>AccordionItem</code>. The <code>rounded</code> prop has no effect on a flush accordion.</p>
+      {#snippet example()}
+      <div>
+        <Accordion rounded="xl">
+          <AccordionItem title={accordionTitle + ": 1"}>
+            {@html accordionContent}
+          </AccordionItem>
+          <AccordionItem title={accordionTitle + ": 2"}>
+            {@html accordionContent}
+          </AccordionItem>
+        </Accordion>
+      </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Accordion rounded="xl"> ... </Accordion>
+<AccordionItem rounded="none"> ... </AccordionItem>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
   <DocBlock title="Animation Speed">
     <Example>
       <p class="not-prose">The <code>animationSpeed</code> prop controls how fast the accordion opens and closes. Available values are <code>"none"</code>, <code>"slower"</code>, <code>"slow"</code>, <code>"normal"</code>, <code>"fast"</code> (default), and <code>"faster"</code>. It helps you control the overall feel of the Accordion, allowing for subtle or sharp transitions depending on your preference.</p>
@@ -307,7 +332,6 @@ tags: [accordion, collapsible, toggle, component, svelte, svelte-5, theui-svelte
         <li><span class="not-prose"><code>containerClasses</code></span>: Apply custom classes to the accordion's main container.</li>
         <li><span class="not-prose"><code>openContainerClasses</code></span>: Set custom classes for the container when the accordion is active (expanded).</li>
         <li><span class="not-prose"><code>contentClasses</code></span>: Define custom classes for the content section.</li>
-        <li><span class="not-prose"><code>openContentClasses</code></span>: Specify classes for the content when it is active (visible).</li>
         <li><span class="not-prose"><code>titleClasses</code></span>: Customize the classes for the title of each accordion item.</li>
         <li><span class="not-prose"><code>openTitleClasses</code></span>: Apply specific classes to the title when the accordion is active (expanded).</li>
       </ul>
@@ -315,9 +339,9 @@ tags: [accordion, collapsible, toggle, component, svelte, svelte-5, theui-svelte
       <div>
         <AccordionItem
           containerClasses="border-4"
-          openContainerClasses="border-4 border-brand-primary-600"
-          titleClasses="text-brand-primary-500"
-          openTitleClasses="text-brand-primary-700 bg-brand-primary-200"
+          openContainerClasses="border-4 border-brand-600"
+          titleClasses="text-brand-500"
+          openTitleClasses="text-brand-700 bg-brand-200"
           title={accordionTitle + ": 1"}>
           {@html accordionContent}
         </AccordionItem>
@@ -328,14 +352,15 @@ tags: [accordion, collapsible, toggle, component, svelte, svelte-5, theui-svelte
 ```html
 <AccordionItem
   containerClasses="border-4"
-  openContainerClasses="border-4 border-brand-primary-600"
-  titleClasses="text-brand-primary-500"
-  openTitleClasses="text-brand-primary-700 bg-brand-primary-200"
+  openContainerClasses="border-4 border-brand-600"
+  titleClasses="text-brand-500"
+  openTitleClasses="text-brand-700 bg-brand-200"
 >
 </AccordionItem>
 ```
       {/snippet}
     </Example>
+    <p class="not-prose mb-0">Anything else you pass reaches the element itself, so an <code>id</code>, a <code>title</code>, a <code>data-*</code> attribute or an event handler all work the way they would on a <code>&lt;div&gt;</code>. The same is true of an <code>AccordionItem</code>.</p>
   </DocBlock>
 
   <DocBlock title="Accessibility">
@@ -383,13 +408,14 @@ tags: [accordion, collapsible, toggle, component, svelte, svelte-5, theui-svelte
 
   {#snippet sidebar()}
     <a href={processID("Example")}>Example</a>
-    <a href={processID("Accordion By Props")} class="ps-4">Title using prop</a>
-    <a href={processID("Accordion Using Snippet")} class="ps-4">Title using snippet</a>
+    <a href={processID("Title using prop")} class="ps-4">Title using prop</a>
+    <a href={processID("Title using snippet")} class="ps-4">Title using snippet</a>
     <a href={processID("Group Accordion")}>Group accordion</a>
-    <a href={processID("Flash Accordion")}>Flash accordion</a>
-    <a href={processID("Accordion Size")}>Sizes</a>
-    <!-- <a href={processID("Accordion Open State")}>Open state</a> -->
-    <a href={processID("Accordion: Standalone Mode")}>Standalone mode</a>
+    <a href={processID("Flush Accordion")}>Flush accordion</a>
+    <a href={processID("Sizes")}>Sizes</a>
+    <a href={processID("Accordion Open State")}>Open state</a>
+    <a href={processID("Standalone Mode")}>Standalone mode</a>
+    <a href={processID("Rounded Corner")}>Rounded corner</a>
     <a href={processID("Animation Speed")}>Animation Speed</a>
     <a href={processID("Customization")}>Customization</a>
     <a href={processID("Accessibility")}>Accessibility</a>
