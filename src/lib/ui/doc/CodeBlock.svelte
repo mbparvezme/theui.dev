@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount, type Snippet } from "svelte"
-  import {randomString} from "$lib"
+  import {randomString} from "#lib"
   import { Svg } from "theui-svelte"
   import { twMerge } from "tailwind-merge"
 

@@ -7,11 +7,11 @@ tags: [accessibility, a11y, keyboard, screen reader, guide, component-library, t
 ---
 
 <script lang="ts">
-  import DocLayout from "$lib/ui/doc/DocLayout.svelte";
-  import DocHead from "$lib/ui/doc/Head.svelte";
-  import DocBlock from "$lib/ui/doc/Block.svelte";
-  import Code from "$lib/ui/doc/CodeBlock.svelte";
-  import { processID, editURL } from "$lib";
+  import DocLayout from "#lib/ui/doc/DocLayout.svelte";
+  import DocHead from "#lib/ui/doc/Head.svelte";
+  import DocBlock from "#lib/ui/doc/Block.svelte";
+  import Code from "#lib/ui/doc/CodeBlock.svelte";
+  import { processID, editURL } from "#lib";
   import { Table, TBody, TR, TH, TD, THead } from "theui-svelte";
 </script>
 

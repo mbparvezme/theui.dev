@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { Snippet } from "svelte";
   import { page } from '$app/state';
-  import { randomString, processID } from "$lib";
+  import { randomString, processID } from "#lib";
   import { Svg } from "theui-svelte";
 
   interface Props {children?: Snippet, title?: string, id?: string}

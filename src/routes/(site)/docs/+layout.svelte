@@ -3,7 +3,7 @@
   import { page } from "$app/state"
   import { Container, Svg } from "theui-svelte"
   import { twMerge } from 'tailwind-merge'
-  import { components } from "$lib/components"
+  import { components } from "#lib/components"
 
   let { children }: {children: Snippet } = $props()
   let linkClasses = (active: boolean = false) => twMerge("border-s-2 border-gray-500/10 ps-4 py-1 inline-block text-default tracking-wide font-normal", active && "border-brand-500 text-brand-500 dark:border-brand-300 dark:text-brand-300")

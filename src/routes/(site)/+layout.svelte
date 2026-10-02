@@ -4,9 +4,9 @@
 
 	import { page } from "$app/state"
 	import {Tooltip} from "theui-svelte"
-	import Navbar from  "$lib/ui/Navbar.svelte"
-	import Footer from  "$lib/ui/Footer.svelte"
-	import Shade from "$lib/ui/Shade.svelte"
+	import Navbar from  "#lib/ui/Navbar.svelte"
+	import Footer from  "#lib/ui/Footer.svelte"
+	import Shade from "#lib/ui/Shade.svelte"
 
 	let { children }: {children: Snippet} = $props()
 </script>
