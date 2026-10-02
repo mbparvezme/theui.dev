@@ -28,7 +28,7 @@
           <nav class="sidebar-link grow flex flex-col text-sm mb-8 dark:font-light">
             {#each components.intro.links as component (component.link)}
               <div>
-                <!-- eslint-disable-next-line svelte/no-navigation-without-resolve -- internal route, typed as Pathname in $lib/components; no base path configured -->
+                <!-- eslint-disable-next-line svelte/no-navigation-without-resolve -- internal route, typed as Pathname in #lib/components; no base path configured -->
                 <a class={linkClasses(page.url.pathname==component.link)} href={component.link}>{component.text}</a>
               </div>
             {/each}
@@ -45,7 +45,7 @@
           <nav class="sidebar-link grow flex flex-col text-sm mb-8 dark:font-light">
             {#each components.components.links as component (component.link)}
               <div>
-                <!-- eslint-disable-next-line svelte/no-navigation-without-resolve -- internal route, typed as Pathname in $lib/components; no base path configured -->
+                <!-- eslint-disable-next-line svelte/no-navigation-without-resolve -- internal route, typed as Pathname in #lib/components; no base path configured -->
                 <a class={linkClasses(page.url.pathname==component.link)} href={component.link}>{component.text}</a>
               </div>
             {/each}
@@ -62,7 +62,7 @@
           <nav class="sidebar-link grow flex flex-col text-sm mb-8 dark:font-light">
             {#each components.forms.links as component (component.link)}
               <div>
-                <!-- eslint-disable-next-line svelte/no-navigation-without-resolve -- internal route, typed as Pathname in $lib/components; no base path configured -->
+                <!-- eslint-disable-next-line svelte/no-navigation-without-resolve -- internal route, typed as Pathname in #lib/components; no base path configured -->
                 <a class={linkClasses(page.url.pathname==component.link)} href={component.link}>{component.text}</a>
               </div>
             {/each}
@@ -79,7 +79,7 @@
           <nav class="sidebar-link grow flex flex-col text-sm mb-8 dark:font-light">
             {#each components.utilities.links as component (component.link)}
               <div>
-                <!-- eslint-disable-next-line svelte/no-navigation-without-resolve -- internal route, typed as Pathname in $lib/components; no base path configured -->
+                <!-- eslint-disable-next-line svelte/no-navigation-without-resolve -- internal route, typed as Pathname in #lib/components; no base path configured -->
                 <a class={linkClasses(page.url.pathname==component.link)} href={component.link}>{component.text}</a>
               </div>
             {/each}

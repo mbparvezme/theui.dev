@@ -2,7 +2,7 @@
   import type { PageData } from "./$types"
   import type {NAV_SCROLL_BEHAVIOR } from "theui-svelte/type"
   import {Navbar, NavBrand, NavLinkGroup, NavDropdown, NavLink} from "theui-svelte"
-  export let data:PageData
+  let { data }: { data: PageData } = $props()
   const values = ['default', 'fixed', 'shrinkOnScrollDown', 'hideOnScrollDown', 'shrinkAndHide'] as const
 </script>
 
