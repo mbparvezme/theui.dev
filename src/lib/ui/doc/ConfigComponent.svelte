@@ -1,8 +1,8 @@
 <script lang="ts">
   import { resolve } from '$app/paths';
-  import { processID } from '$lib';
+  import { processID } from '#lib';
   import { Table, THead, TBody, TR, TH, TD, Tab, Tabs, TabPanel } from 'theui-svelte';
-  let { component, title, hideText = false }: {component?: any, title?: string, hideText?: boolean} = $props();
+  let { component, title, hideText = false }: {component?: unknown, title?: string, hideText?: boolean} = $props();
   const propsHeader = ['Name', 'Type', 'Default', 'Description'];
   const nonPropsHeader = ['Name', 'Description'];
   const propsKeys = ['name', 'type', 'default', 'description'];
