@@ -1,9 +1,9 @@
-<SEO title="Badge" />
+<SEO title="Badge" description={metadata.description} keywords={metadata.tags?.join(", ")} />
 <Page {component} />
 
 <script lang="ts">
   import SEO from "$lib/SEO.svelte"
-  import Page from "$lib/pages/badge.svx"
+  import Page, { metadata } from "$lib/pages/badge.svx"
 
   const component = [
     {
@@ -14,7 +14,7 @@
           "name": "ariaTitle",
           "type": "string | undefined",
           "default": "undefined",
-          "description": "Provides an accessible title for screen readers."
+          "description": "Names a badge that shows no text, such as a dot badge. Leave it off a badge with text: the label would replace that text for a screen reader."
         },
         {
           "name": "rounded",
@@ -33,8 +33,12 @@
           "description": "Determines if the component should grow to match the parent element's font size."
         },
         {
-          "name": "topFixed",
+          "name": "fixed",
           "description": "Fixes the component to the top of its container."
+        },
+        {
+          "name": "class",
+          "description": "Classes for the badge element, merged with the default classes."
         }
       ]
     },

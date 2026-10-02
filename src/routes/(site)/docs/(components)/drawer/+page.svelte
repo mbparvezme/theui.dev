@@ -1,9 +1,9 @@
-<SEO title="Drawer" />
+<SEO title="Drawer" description={metadata.description} keywords={metadata.tags?.join(", ")} />
 <Page {component} />
 
 <script lang="ts">
   import SEO from "$lib/SEO.svelte"
-  import Page from "$lib/pages/drawer.svx"
+  import Page, { metadata } from "$lib/pages/drawer.svx"
 
   const component = [
     {
@@ -13,26 +13,26 @@
         {
           "name": "label",
           "type": "string | Snippet",
-          "description": "The label or trigger content for the Drawer component.",
-          "default": ""
+          "description": "The label or trigger content for the Drawer component. A string renders as plain text; use a Snippet for markup.",
+          "default": "undefined"
         },
         {
           "name": "position",
           "type": "'top' | 'end' | 'bottom' | 'start'",
           "description": "Drawer position relative to screen.",
-          "default": "start"
+          "default": "\"start\""
         },
         {
           "name": "open",
           "type": "boolean",
-          "description": "Controls the visibility of the Drawer. You can use this prop to programmatically open or close the Drawer.",
+          "description": "Controls the visibility of the Drawer. Bindable: use bind:open to programmatically open or close the Drawer.",
           "default": "false"
         },
         {
           "name": "animationSpeed",
           "type": "<a href=\"/docs/types#animation-speed-type\">ANIMATE_SPEED</a>",
           "description": "Speed of the animation when the component is shown or hidden.",
-          "default": "fast"
+          "default": "\"fast\""
         },
         {
           "name": "backdrop",
@@ -55,8 +55,8 @@
         {
           "name": "ariaLabel",
           "type": "string",
-          "description": "Aria label for accessibility for the Drawer component.",
-          "default": "Drawer"
+          "description": "Accessible name used when the trigger is a snippet (set on the trigger), or when there is no <code>label</code> (set on the Drawer panel). A string <code>label</code> uses its own text as the name.",
+          "default": "\"Drawer\""
         }
       ]
     },

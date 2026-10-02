@@ -1,9 +1,9 @@
 ---
 title: Slider
 category: Components
-description: Navigate content sections easily with theui-svelte's Slider component for smooth UX.
+description: Show images or content one after another with theui-svelte's Slider component, with effects, swipe, thumbnails and parallax.
 dir: ".lib/pages"
-tags: [slider, carousel, navigation, component, svelte, svelte-5, theui-svelte, component-library, ui, tailwindcss]
+tags: [slider, carousel, slideshow, hero, parallax, thumbnails, navigation, component, svelte, svelte-5, theui-svelte, component-library, ui, tailwindcss]
 ---
 
 <script lang="ts">
@@ -17,25 +17,29 @@ tags: [slider, carousel, navigation, component, svelte, svelte-5, theui-svelte, 
   let { component }: {component: any } = $props();
 
   import {Slider, Slide, Svg} from "theui-svelte";
+
+  const img = (color: string, text: string) => `https://placehold.co/1600x700/${color}/white?text=${text}`
+  let active = $state(2)
+  let paused = $state(false)
 </script>
 
 <DocLayout>
-  <DocHead title="Slider" text="A versatile and interactive element for displaying images or content in a dynamic, scrollable format, enhancing user engagement with smooth transitions and customizable options." edit_url={editURL("slider")} />
+  <DocHead title="Slider" text="Show images or any content one slide at a time, or several at once, with smooth effects, swipe, keyboard support and accessible controls." edit_url={editURL("slider")} />
 
   <DocBlock title="About">
-    <p class="not-prose">The Slider component allows you to create visually appealing slideshows for images or content sections. It supports various configurations, including autoplay, navigation controls, and dynamic content loading. Highly customizable, it provides smooth animations and adaptive layouts for different screen sizes.</p>
+    <p class="not-prose">The Slider shows a set of slides one after another. Each slide is a <code>Slide</code> component that holds an image or any content. The Slider can play by itself, loop, follow a swipe or a mouse drag, show several slides at once, and change slides with effects like fade, zoom, flip and cube. It works in right-to-left pages and respects the user's reduced motion setting.</p>
   </DocBlock>
 
   <DocBlock title="Example">
-    <p class="not-prose">The slider component is highly flexible and supports both images and custom content. You can configure its behavior using various props.</p>
+    <p class="not-prose">Put <code>Slide</code> components inside a <code>Slider</code>. By default the Slider plays by itself and shows arrows, dots, a timer bar and a pause button.</p>
     <Example title="Image Slider">
-      <p class="not-prose">The slider can be used to display a series of images. Each <code>Slide</code> component represents an individual image.</p>
+      <p class="not-prose">Give a <code>Slide</code> an image with <code>src</code> and <code>alt</code>.</p>
       {#snippet example()}
       <div class="w-full">
         <Slider>
-          <Slide src="https://placehold.co/1600x700/73C7C7/white?text=Slide 1" alt="Image slide demo image" />
-          <Slide src="https://placehold.co/1600x700/B5828C/white?text=Slide 2" alt="Image slide demo image" />
-          <Slide src="https://placehold.co/1600x700/889E73/white?text=Slide 3" alt="Image slide demo image" />
+          <Slide src={img("73C7C7", "Slide 1")} alt="Image slide demo image" />
+          <Slide src={img("B5828C", "Slide 2")} alt="Image slide demo image" />
+          <Slide src={img("889E73", "Slide 3")} alt="Image slide demo image" />
         </Slider>
       </div>
       {/snippet}
@@ -51,33 +55,21 @@ tags: [slider, carousel, navigation, component, svelte, svelte-5, theui-svelte, 
       {/snippet}
     </Example>
     <Example title="Custom Content Slider">
-      <p class="not-prose">The slider is not limited to images; you can add any custom content inside the <code>Slide</code> component.</p>
+      <p class="not-prose">A <code>Slide</code> can hold any content instead of an image. Use <code>class</code> to style the slide itself.</p>
       {#snippet example()}
       <div class="w-full">
         <Slider>
-          <Slide>
-            <div class="w-1/2 h-96 bg-yellow-200 flex items-center text-right pe-8">
-              <h3 class="text-5xl leading-[1.25] tracking-tighter"><b>THEUI</b><br><small>COMPONENT LIBRARY</small></h3>
-            </div>
-            <div class="w-1/2 h-96 bg-green-200 flex items-center p-8">
-              <p><b>Build Faster with theui-svelte</b><br>The theui-svelte component library is designed to help developers create modern, responsive, and highly customizable UI components with ease. From buttons and forms to advanced components like sliders and tooltips, our library ensures a smooth development experience with a focus on performance and accessibility.</p>
-            </div>
+          <Slide class="h-72 flex-col gap-2 bg-yellow-200 text-black">
+            <h3 class="text-4xl font-bold">Build Faster</h3>
+            <p>Modern, responsive and customizable components.</p>
           </Slide>
-          <Slide>
-            <div class="w-1/2 h-96 bg-rose-200 flex items-center text-right p-8">
-              <p><b>Fully Customizable & Flexible</b><br>Every component in theui-svelte is built with customization in mind. Whether you need to tweak styles, change behavior, or extend functionality, our library provides flexible props and utility classes that integrate seamlessly with Tailwind CSS. No unnecessary dependencies, just clean and efficient code.</p>
-            </div>
-            <div class="w-1/2 h-96 bg-blue-200 flex items-center ps-8">
-              <h3 class="text-5xl leading-[1.25] tracking-tighter"><b>THEUI</b><br><small>COMPONENT LIBRARY</small></h3>
-            </div>
+          <Slide class="h-72 flex-col gap-2 bg-rose-200 text-black">
+            <h3 class="text-4xl font-bold">Fully Customizable</h3>
+            <p>Flexible props that work with Tailwind CSS.</p>
           </Slide>
-          <Slide>
-            <div class="w-1/2 h-96 bg-teal-200 flex items-center text-right pe-8">
-              <h3 class="text-5xl leading-[1.25] tracking-tighter"><b>THEUI</b><br><small>COMPONENT LIBRARY</small></h3>
-            </div>
-            <div class="w-1/2 h-96 bg-orange-200 flex items-center p-8">
-              <p><b>Accessibility at Its Core</b><br>Web accessibility isn’t an afterthought—it’s built into the foundation of theui-svelte. Each component follows best practices for ARIA roles, keyboard navigation, and screen reader support, ensuring an inclusive experience for all users.</p>
-            </div>
+          <Slide class="h-72 flex-col gap-2 bg-teal-200 text-black">
+            <h3 class="text-4xl font-bold">Accessible</h3>
+            <p>Keyboard navigation and screen reader support.</p>
           </Slide>
         </Slider>
       </div>
@@ -86,9 +78,32 @@ tags: [slider, carousel, navigation, component, svelte, svelte-5, theui-svelte, 
       {#snippet code()}
 ```html
 <Slider>
-  <Slide> <!-- Custom content --> </Slide>
-  <Slide> <!-- Custom content --> </Slide>
-  <Slide> <!-- Custom content --> </Slide>
+  <Slide class="h-72 flex-col gap-2 bg-yellow-200">
+    <h3>Build Faster</h3>
+    <p>...</p>
+  </Slide>
+  <Slide class="h-72 flex-col gap-2 bg-rose-200"> ... </Slide>
+  <Slide class="h-72 flex-col gap-2 bg-teal-200"> ... </Slide>
+</Slider>
+```
+      {/snippet}
+    </Example>
+    <Example title="Linked Slides">
+      <p class="not-prose">Add <code>href</code> to make the whole slide a link. The link is named by the image <code>alt</code> or by the slide content, so write an <code>alt</code> that describes where it goes. A drag or swipe never follows the link. Don't put other links or buttons inside a linked slide.</p>
+      {#snippet example()}
+      <div class="w-full">
+        <Slider>
+          <Slide href="#linked-slides" src={img("577BC1", "Summer collection")} alt="Shop the summer collection" />
+          <Slide href="#linked-slides" src={img("8174A0", "New arrivals")} alt="See the new arrivals" />
+        </Slider>
+      </div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Slider>
+  <Slide href="/summer" src="..." alt="Shop the summer collection" />
+  <Slide href="/new" src="..." alt="See the new arrivals" />
 </Slider>
 ```
       {/snippet}
@@ -96,15 +111,14 @@ tags: [slider, carousel, navigation, component, svelte, svelte-5, theui-svelte, 
   </DocBlock>
 
   <DocBlock title="Controls & Indicator">
-    <p class="not-prose">The <code>controls</code> prop enables or disables navigation buttons for manually switching between slides. When set to <code>true</code>, users can navigate using previous and next buttons. The value <code>false</code> will hide the controls. Default is <code>true</code>.</p>
+    <p class="not-prose">The <code>controls</code> prop shows the previous and next buttons, and the <code>indicator</code> prop shows a dot for each slide. Both are <code>true</code> by default; set them to <code>false</code> to hide them. When the slider doesn't loop, the previous button is disabled on the first slide and the next button on the last.</p>
     <Example>
-      <p class="not-prose">The <code>indicator</code> prop allows displaying small indicators (dots) representing each slide. When <code>true</code>, users can click on an indicator to jump to a specific slide. The value <code>false</code> will hide the indicator. Default is <code>true</code>.</p>
       {#snippet example()}
       <div class="w-full">
         <Slider indicator={false} controls={false}>
-          <Slide src="https://placehold.co/1600x700/577BC1/white?text=Slide 1" alt="Image slide demo image" />
-          <Slide src="https://placehold.co/1600x700/578E7E/white?text=Slide 2" alt="Image slide demo image" />
-          <Slide src="https://placehold.co/1600x700/4DA1A9/white?text=Slide 3" alt="Image slide demo image" />
+          <Slide src={img("577BC1", "Slide 1")} alt="Image slide demo image" />
+          <Slide src={img("578E7E", "Slide 2")} alt="Image slide demo image" />
+          <Slide src={img("4DA1A9", "Slide 3")} alt="Image slide demo image" />
         </Slider>
       </div>
       {/snippet}
@@ -115,119 +129,11 @@ tags: [slider, carousel, navigation, component, svelte, svelte-5, theui-svelte, 
 ```
       {/snippet}
     </Example>
-  </DocBlock>
-
-  <DocBlock title="Auto Play & Stop on Hover">
-    <p class="not-prose">The <code>autoPlay</code> prop determines whether the slider should automatically transition between slides. When set to <code>true</code>, the slides will change automatically at a defined interval. Default is <code>true</code>.</p>
-    <Example>
-      <p class="not-prose">The <code>stopOnHover</code> prop controls whether the autoplay should pause when the user hovers over the slider. If enabled <code>true</code>, the slider will stop moving while hove73C7C7 and resume when the mouse leaves. Default is <code>true</code>.</p>
-      {#snippet example()}
-      <div class="w-full">
-        <Slider stopOnHover={false}>
-          <Slide src="https://placehold.co/1600x700/8174A0/white?text=Slide 1" alt="Image slide demo image" />
-          <Slide src="https://placehold.co/1600x700/8EA3A6/white?text=Slide 2" alt="Image slide demo image" />
-          <Slide src="https://placehold.co/1600x700/B59F78/white?text=Slide 3" alt="Image slide demo image" />
-        </Slider>
-      </div>
-      {/snippet}
-
-      {#snippet code()}
-```html
-<Slider stopOnHover={false}> ... </Slider>
-```
-      {/snippet}
-    </Example>
-  </DocBlock>
-
-  <DocBlock title="Timer">
-    <p class="not-prose">The <code>timer</code> prop enables a progress timer that visually represents the time left before transitioning to the next slide. If <code>false</code>, it wil hides the progress bar. Default is <code>true</code>.</p>
-    <Example>
-      {#snippet example()}
-      <div class="w-full">
-        <Slider timer={false}>
-          <Slide src="https://placehold.co/1600x700/7ED4AD/white?text=Slide 1" alt="Image slide demo image" />
-          <Slide src="https://placehold.co/1600x700/608BC1/white?text=Slide 2" alt="Image slide demo image" />
-          <Slide src="https://placehold.co/1600x700/7AB2D3/white?text=Slide 3" alt="Image slide demo image" />
-        </Slider>
-      </div>
-      {/snippet}
-
-      {#snippet code()}
-```html
-<Slider timer={false}> ... </Slider>
-```
-      {/snippet}
-    </Example>
-  </DocBlock>
-
-  <DocBlock title="Slide Duration">
-    <p class="not-prose">The <code>slideDuration</code> prop defines the time (in milliseconds) each slide remains visible before transitioning to the next one. A higher value means slides stay longer. Default is <code>5000</code> (5 seconds).</p>
-    <Example>
-      {#snippet example()}
-      <div class="w-full">
-        <Slider slideDuration={2000}>
-          <Slide src="https://placehold.co/1600x700/A19AD3/white?text=Slide 1" alt="Image slide demo image" />
-          <Slide src="https://placehold.co/1600x700/5DB996/white?text=Slide 2" alt="Image slide demo image" />
-          <Slide src="https://placehold.co/1600x700/81BFDA/white?text=Slide 3" alt="Image slide demo image" />
-        </Slider>
-      </div>
-      {/snippet}
-
-      {#snippet code()}
-```html
-<Slider slideDuration={2000}> ... </Slider>
-```
-      {/snippet}
-    </Example>
-    <p class="not-prose">In the example each slide will stay on the display for 2 second.</p>
-  </DocBlock>
-
-  <DocBlock title="Transition Duration">
-    <p class="not-prose">The <code>transitionDuration</code> prop specifies the time (in milliseconds) taken for the transition effect between slides. It controls the smoothness of the animation. Default is <code>750</code> milliseconds.</p>
-    <Example>
-      {#snippet example()}
-      <div class="w-full">
-        <Slider transitionDuration={2000}>
-          <Slide src="https://placehold.co/1600x700/8174A0/white?text=Slide 1" alt="Image slide demo image" />
-          <Slide src="https://placehold.co/1600x700/8EA3A6/white?text=Slide 2" alt="Image slide demo image" />
-          <Slide src="https://placehold.co/1600x700/B59F78/white?text=Slide 3" alt="Image slide demo image" />
-        </Slider>
-      </div>
-      {/snippet}
-
-      {#snippet code()}
-```html
-<Slider transitionDuration={2000}> ... </Slider>
-```
-      {/snippet}
-    </Example>
-    <p class="not-prose">In the example each transition will take 2 second to complete.</p>
-  </DocBlock>
-
-  <DocBlock title="Active Slide">
-    <p class="not-prose">The <code>activeSlide</code> prop sets the initial slide that appears when the slider loads. The value corresponds to the slide number. Default is <code>1</code>.</p>
-    <Example>
-      {#snippet example()}
-      <div class="w-full">
-        <Slider activeSlide={2}>
-          <Slide src="https://placehold.co/1600x700/8174A0/white?text=Slide 1" alt="Image slide demo image" />
-          <Slide src="https://placehold.co/1600x700/8EA3A6/white?text=Slide 2" alt="Image slide demo image" />
-          <Slide src="https://placehold.co/1600x700/B59F78/white?text=Slide 3" alt="Image slide demo image" />
-        </Slider>
-      </div>
-      {/snippet}
-
-      {#snippet code()}
-```html
-<Slider activeSlide={2}> ... </Slider>
-```
-      {/snippet}
-    </Example>
-    <p class="not-prose">This image slide will set slide 2 as the initial slide.</p>
+    <p class="not-prose">Without controls, users can still change slides by swiping or with the keyboard.</p>
   </DocBlock>
 
   <DocBlock title="Custom Controls Icon">
-    <p class="not-prose">Use change the icon in the previous slide and next slide control button using the <code>prevButton</code> and <code>nextButton</code> snippet like below.</p>
+    <p class="not-prose">Replace the arrow icons of the previous and next buttons with the <code>prevButton</code> and <code>nextButton</code> snippets. The buttons keep their accessible names.</p>
     <Example>
       {#snippet example()}
       <div class="w-full">
@@ -242,9 +148,9 @@ tags: [slider, carousel, navigation, component, svelte, svelte-5, theui-svelte, 
               <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z"/>
             </Svg>
           {/snippet}
-          <Slide src="https://placehold.co/1600x700/A19AD3/white?text=Slide 1" alt="Image slide demo image" />
-          <Slide src="https://placehold.co/1600x700/608BC1/white?text=Slide 2" alt="Image slide demo image" />
-          <Slide src="https://placehold.co/1600x700/889E73/white?text=Slide 3" alt="Image slide demo image" />
+          <Slide src={img("A19AD3", "Slide 1")} alt="Image slide demo image" />
+          <Slide src={img("608BC1", "Slide 2")} alt="Image slide demo image" />
+          <Slide src={img("889E73", "Slide 3")} alt="Image slide demo image" />
         </Slider>
       </div>
       {/snippet}
@@ -258,10 +164,10 @@ tags: [slider, carousel, navigation, component, svelte, svelte-5, theui-svelte, 
       <path fill-rule="evenodd" d="M1 8a7 7 0 1 ... 1 .708.708L5.707 7.5z"/>
     </Svg>
   {/snippet}
-  <!-- Previous button -->
+  <!-- Next button -->
   {#snippet nextButton()}
     <Svg size={2} class="opacity-50">
-      <path fill-rule="evenodd" d="M6.776 1.553a.5.5 0 ... 0 1 .223-.671"/>
+      <path fill-rule="evenodd" d="M1 8a7 7 0 1 ... 1 0-.708.708L10.293 7.5z"/>
     </Svg>
   {/snippet}
 
@@ -272,69 +178,648 @@ tags: [slider, carousel, navigation, component, svelte, svelte-5, theui-svelte, 
 ```
       {/snippet}
     </Example>
-    <p class="not-prose">This image slide will set slide 2 as the initial slide.</p>
+  </DocBlock>
+
+  <DocBlock title="Auto Play & Stop on Hover">
+    <p class="not-prose">The <code>autoPlay</code> prop moves to the next slide by itself. It is <code>true</code> by default. At the last slide of a slider that doesn't loop, it goes back to the first slide.</p>
+    <p class="not-prose">Auto play pauses while the mouse is over the slider and continues from where it stopped when the mouse leaves. Set <code>stopOnHover</code> to <code>false</code> to keep it running. Auto play also pauses while keyboard focus is inside the slider, while the slider is scrolled out of view and while the browser tab is hidden. Moving to another slide restarts the timer.</p>
+    <Example>
+      {#snippet example()}
+      <div class="w-full">
+        <Slider stopOnHover={false}>
+          <Slide src={img("8174A0", "Slide 1")} alt="Image slide demo image" />
+          <Slide src={img("8EA3A6", "Slide 2")} alt="Image slide demo image" />
+          <Slide src={img("B59F78", "Slide 3")} alt="Image slide demo image" />
+        </Slider>
+      </div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Slider stopOnHover={false}> ... </Slider>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Pause Button">
+    <p class="not-prose">When auto play is on, a pause button in the bottom corner stops and restarts it. Content that moves by itself needs a way to stop it, so keep this button unless you give users another one. Hide it with <code>pauseButton=&#123;false&#125;</code>.</p>
+    <Example>
+      <p class="not-prose">Use <code>bind:paused</code> to read the paused state or to pause the slider from your own control.</p>
+      {#snippet example()}
+      <div class="w-full flex flex-col gap-3">
+        <button type="button" class="self-start px-4 py-2 rounded-md bg-gray-200 text-black" onclick={() => paused = !paused}>{paused ? "Play" : "Pause"}</button>
+        <Slider bind:paused pauseButton={false}>
+          <Slide src={img("7ED4AD", "Slide 1")} alt="Image slide demo image" />
+          <Slide src={img("608BC1", "Slide 2")} alt="Image slide demo image" />
+          <Slide src={img("7AB2D3", "Slide 3")} alt="Image slide demo image" />
+        </Slider>
+      </div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<script>
+  let paused = $state(false)
+</script>
+
+<button onclick={() => paused = !paused}>{paused ? "Play" : "Pause"}</button>
+
+<Slider bind:paused pauseButton={false}> ... </Slider>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Timer & Fraction">
+    <p class="not-prose">The <code>timer</code> prop shows a progress bar at the top that fills up until the next slide. It is <code>true</code> by default and only shows while auto play is on. The <code>fraction</code> prop shows a counter like <code>2 / 5</code> in the top corner. It is <code>false</code> by default. Use either one, both, or neither.</p>
+    <Example>
+      {#snippet example()}
+      <div class="w-full">
+        <Slider timer={false} fraction>
+          <Slide src={img("7ED4AD", "Slide 1")} alt="Image slide demo image" />
+          <Slide src={img("608BC1", "Slide 2")} alt="Image slide demo image" />
+          <Slide src={img("7AB2D3", "Slide 3")} alt="Image slide demo image" />
+        </Slider>
+      </div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Slider timer={false} fraction> ... </Slider>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Slide Duration">
+    <p class="not-prose">The <code>slideDuration</code> prop sets how long each slide stays, in milliseconds, before auto play moves to the next one. Default is <code>5000</code> (5 seconds).</p>
+    <Example>
+      {#snippet example()}
+      <div class="w-full">
+        <Slider slideDuration={2000}>
+          <Slide src={img("A19AD3", "Slide 1")} alt="Image slide demo image" />
+          <Slide src={img("5DB996", "Slide 2")} alt="Image slide demo image" />
+          <Slide src={img("81BFDA", "Slide 3")} alt="Image slide demo image" />
+        </Slider>
+      </div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Slider slideDuration={2000}> ... </Slider>
+```
+      {/snippet}
+    </Example>
+    <p class="not-prose">In the example each slide stays for 2 seconds.</p>
+  </DocBlock>
+
+  <DocBlock title="Transition Duration">
+    <p class="not-prose">The <code>transitionDuration</code> prop sets how long the move between two slides takes, in milliseconds. Default is <code>750</code>. Set it to <code>0</code> to change slides instantly.</p>
+    <Example>
+      {#snippet example()}
+      <div class="w-full">
+        <Slider transitionDuration={2000}>
+          <Slide src={img("8174A0", "Slide 1")} alt="Image slide demo image" />
+          <Slide src={img("8EA3A6", "Slide 2")} alt="Image slide demo image" />
+          <Slide src={img("B59F78", "Slide 3")} alt="Image slide demo image" />
+        </Slider>
+      </div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Slider transitionDuration={2000}> ... </Slider>
+```
+      {/snippet}
+    </Example>
+    <p class="not-prose">In the example each move takes 2 seconds.</p>
+  </DocBlock>
+
+  <DocBlock title="Active Slide">
+    <p class="not-prose">The <code>activeSlide</code> prop sets the slide shown first, starting from <code>1</code>. Default is <code>1</code>. A number above the slide count shows the last slide.</p>
+    <Example>
+      <p class="not-prose"><code>activeSlide</code> is bindable: <code>bind:activeSlide</code> follows the current slide, and changing the bound value moves the slider. The <code>onchange</code> callback runs with the new slide number every time the slide changes.</p>
+      {#snippet example()}
+      <div class="w-full flex flex-col gap-3">
+        <div class="flex flex-wrap items-center gap-2">
+          <span>Current slide: <b>{active}</b></span>
+          {#each [1, 2, 3] as n (n)}
+            <button type="button" class="px-3 py-1 rounded-md bg-gray-200 text-black" onclick={() => active = n}>Show {n}</button>
+          {/each}
+        </div>
+        <Slider bind:activeSlide={active} autoPlay={false}>
+          <Slide src={img("8174A0", "Slide 1")} alt="Image slide demo image" />
+          <Slide src={img("8EA3A6", "Slide 2")} alt="Image slide demo image" />
+          <Slide src={img("B59F78", "Slide 3")} alt="Image slide demo image" />
+        </Slider>
+      </div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<script>
+  let active = $state(2)
+</script>
+
+<button onclick={() => active = 1}>Show 1</button>
+
+<Slider bind:activeSlide={active} onchange={(slide) => console.log(slide)}> ... </Slider>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Loop">
+    <p class="not-prose">By default the slider loops: after the last slide comes the first one, without a jump back. Set <code>loop</code> to <code>false</code> to stop at the first and last slides.</p>
+    <Example>
+      {#snippet example()}
+      <div class="w-full">
+        <Slider loop={false} autoPlay={false}>
+          <Slide src={img("577BC1", "Slide 1")} alt="Image slide demo image" />
+          <Slide src={img("578E7E", "Slide 2")} alt="Image slide demo image" />
+          <Slide src={img("4DA1A9", "Slide 3")} alt="Image slide demo image" />
+        </Slider>
+      </div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Slider loop={false}> ... </Slider>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Effects">
+    <p class="not-prose">The <code>effect</code> prop sets how one slide changes to the next: <code>"slide"</code> (default), <code>"fade"</code>, <code>"zoom"</code>, <code>"flip"</code> or <code>"cube"</code>. Every effect follows a swipe or drag step by step. <code>perView</code>, <code>gap</code>, <code>peek</code> and <code>centered</code> only work with <code>"slide"</code>.</p>
+    <Example title="Fade">
+      <p class="not-prose">The slides cross-fade.</p>
+      {#snippet example()}
+      <div class="w-full">
+        <Slider effect="fade">
+          <Slide src={img("73C7C7", "Slide 1")} alt="Image slide demo image" />
+          <Slide src={img("B5828C", "Slide 2")} alt="Image slide demo image" />
+          <Slide src={img("889E73", "Slide 3")} alt="Image slide demo image" />
+        </Slider>
+      </div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Slider effect="fade"> ... </Slider>
+```
+      {/snippet}
+    </Example>
+    <Example title="Zoom">
+      <p class="not-prose">The new slide grows in while the old one grows past its size and fades out.</p>
+      {#snippet example()}
+      <div class="w-full">
+        <Slider effect="zoom">
+          <Slide src={img("577BC1", "Slide 1")} alt="Image slide demo image" />
+          <Slide src={img("8174A0", "Slide 2")} alt="Image slide demo image" />
+          <Slide src={img("B59F78", "Slide 3")} alt="Image slide demo image" />
+        </Slider>
+      </div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Slider effect="zoom"> ... </Slider>
+```
+      {/snippet}
+    </Example>
+    <Example title="Flip">
+      <p class="not-prose">The slide flips like a card, side to side. In a vertical slider it flips top to bottom.</p>
+      {#snippet example()}
+      <div class="w-full">
+        <Slider effect="flip">
+          <Slide src={img("A19AD3", "Slide 1")} alt="Image slide demo image" />
+          <Slide src={img("5DB996", "Slide 2")} alt="Image slide demo image" />
+          <Slide src={img("81BFDA", "Slide 3")} alt="Image slide demo image" />
+        </Slider>
+      </div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Slider effect="flip"> ... </Slider>
+```
+      {/snippet}
+    </Example>
+    <Example title="Cube">
+      <p class="not-prose">The slides are the sides of a turning cube. In a vertical slider the cube turns up and down.</p>
+      {#snippet example()}
+      <div class="w-full">
+        <Slider effect="cube" class="bg-gray-900">
+          <Slide src={img("7ED4AD", "Slide 1")} alt="Image slide demo image" />
+          <Slide src={img("608BC1", "Slide 2")} alt="Image slide demo image" />
+          <Slide src={img("7AB2D3", "Slide 3")} alt="Image slide demo image" />
+        </Slider>
+      </div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Slider effect="cube" class="bg-gray-900"> ... </Slider>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Ken Burns">
+    <p class="not-prose">The <code>kenBurns</code> prop slowly zooms and pans each image while its slide is shown, each slide in a different direction. It works with every effect and only on image slides (a <code>Slide</code> with <code>src</code>).</p>
+    <Example>
+      {#snippet example()}
+      <div class="w-full">
+        <Slider effect="fade" kenBurns transitionDuration={1500}>
+          <Slide src={img("73C7C7", "Slide 1")} alt="Image slide demo image" />
+          <Slide src={img("B5828C", "Slide 2")} alt="Image slide demo image" />
+          <Slide src={img("889E73", "Slide 3")} alt="Image slide demo image" />
+        </Slider>
+      </div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Slider effect="fade" kenBurns transitionDuration={1500}> ... </Slider>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Parallax">
+    <Example title="Image Parallax">
+      <p class="not-prose">The <code>parallax</code> prop moves the image of each slide slower than the slide, so it lags behind. <code>parallax</code> alone uses <code>0.5</code>; set a number from <code>0</code> to <code>1</code> for less or more. At <code>1</code> the image stays still and the slide edge wipes across it. It only works with the <code>"slide"</code> effect and on image slides.</p>
+      {#snippet example()}
+      <div class="w-full">
+        <Slider parallax autoPlay={false} transitionDuration={1200}>
+          <Slide src={img("577BC1", "Slide 1")} alt="Image slide demo image" />
+          <Slide src={img("578E7E", "Slide 2")} alt="Image slide demo image" />
+          <Slide src={img("4DA1A9", "Slide 3")} alt="Image slide demo image" />
+        </Slider>
+      </div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Slider parallax> ... </Slider>
+<Slider parallax={1}> ... </Slider>
+```
+      {/snippet}
+    </Example>
+    <Example title="Layer Parallax">
+      <p class="not-prose">Elements inside any slide can move at their own speed while the slide changes. Add these attributes to an element:</p>
+      <ul class="my-0">
+        <li><span class="not-prose"><code>data-parallax</code></span>: how far the element moves, as a part of the slide size. A higher number moves it more; a negative number moves it ahead of the slide.</li>
+        <li><span class="not-prose"><code>data-parallax-opacity</code></span>: the element's opacity when its slide is out of view, so <code>0</code> fades it in as the slide arrives.</li>
+        <li><span class="not-prose"><code>data-parallax-scale</code></span>: the element's scale when its slide is out of view, so <code>0.5</code> grows it in.</li>
+      </ul>
+      <p class="not-prose">Layers work with every effect.</p>
+      {#snippet example()}
+      <div class="w-full">
+        <Slider autoPlay={false} transitionDuration={1200}>
+          {#each ["bg-yellow-200", "bg-rose-200", "bg-teal-200"] as bg, i (bg)}
+            <Slide class="{bg} h-72 justify-start text-black">
+              <div class="flex flex-col items-start gap-3 p-10">
+                <h3 class="text-4xl font-bold" data-parallax="0.6">Layer slide {i + 1}</h3>
+                <p data-parallax="0.3" data-parallax-opacity="0">Each layer moves at its own speed.</p>
+                <button type="button" class="px-4 py-2 rounded-md bg-black text-white" data-parallax-scale="0.5" data-parallax-opacity="0">Read more</button>
+              </div>
+            </Slide>
+          {/each}
+        </Slider>
+      </div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Slider>
+  <Slide class="h-72 bg-yellow-200">
+    <h3 data-parallax="0.6">Layer slide 1</h3>
+    <p data-parallax="0.3" data-parallax-opacity="0">Each layer moves at its own speed.</p>
+    <button data-parallax-scale="0.5" data-parallax-opacity="0">Read more</button>
+  </Slide>
+  ...
+</Slider>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Vertical Slider">
+    <p class="not-prose">Set <code>direction="vertical"</code> to move the slides up and down. A vertical slider needs a height; it is <code>h-96</code> by default and you can change it with <code>class</code>. The Up and Down arrow keys change slides, the controls sit at the top and bottom, and the dots move to the side.</p>
+    <Example>
+      {#snippet example()}
+      <div class="w-full">
+        <Slider direction="vertical" class="h-80">
+          <Slide src={img("8174A0", "Slide 1")} alt="Image slide demo image" />
+          <Slide src={img("8EA3A6", "Slide 2")} alt="Image slide demo image" />
+          <Slide src={img("B59F78", "Slide 3")} alt="Image slide demo image" />
+        </Slider>
+      </div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Slider direction="vertical" class="h-80"> ... </Slider>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Multiple Slides">
+    <Example title="Slides Per View">
+      <p class="not-prose">The <code>perView</code> prop shows several slides at once, like a carousel, and <code>gap</code> sets the space between them. <code>gap</code> takes a number of pixels or any CSS length like <code>"1rem"</code>. The slider still moves one slide at a time.</p>
+      {#snippet example()}
+      <div class="w-full">
+        <Slider perView={3} gap={16} autoPlay={false}>
+          {#each ["73C7C7", "B5828C", "889E73", "577BC1", "8174A0", "B59F78"] as color, i (color)}
+            <Slide src={img(color, `Card ${i + 1}`)} alt="Card {i + 1}" class="rounded-lg" />
+          {/each}
+        </Slider>
+      </div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Slider perView={3} gap={16}> ... </Slider>
+```
+      {/snippet}
+    </Example>
+    <Example title="Responsive">
+      <p class="not-prose"><code>perView</code>, <code>gap</code> and <code>peek</code> also take a value per screen size, using the Tailwind breakpoints: <code>base</code>, <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code> and <code>2xl</code>. The largest matching screen size is used. Resize the window to see it change.</p>
+      {#snippet example()}
+      <div class="w-full">
+        <Slider perView={{ base: 1, sm: 2, lg: 3 }} gap={{ base: 8, lg: 20 }} autoPlay={false}>
+          {#each ["73C7C7", "B5828C", "889E73", "577BC1", "8174A0", "B59F78"] as color, i (color)}
+            <Slide src={img(color, `Card ${i + 1}`)} alt="Card {i + 1}" class="rounded-lg" />
+          {/each}
+        </Slider>
+      </div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Slider perView={{ base: 1, sm: 2, lg: 3 }} gap={{ base: 8, lg: 20 }}> ... </Slider>
+```
+      {/snippet}
+    </Example>
+    <p class="not-prose">The screen size is known only in the browser, so a page rendered on the server starts with the <code>base</code> value.</p>
+  </DocBlock>
+
+  <DocBlock title="Peek & Centered">
+    <Example title="Peek">
+      <p class="not-prose">The <code>peek</code> prop shows a part of the previous and next slides at the edges, so users can see there is more. It takes a number of pixels or any CSS length. The peeking slides can't be reached with the keyboard until they move into view.</p>
+      {#snippet example()}
+      <div class="w-full">
+        <Slider peek={{ base: 24, md: 80 }} gap={16}>
+          <Slide src={img("577BC1", "Slide 1")} alt="Image slide demo image" class="rounded-xl" />
+          <Slide src={img("578E7E", "Slide 2")} alt="Image slide demo image" class="rounded-xl" />
+          <Slide src={img("4DA1A9", "Slide 3")} alt="Image slide demo image" class="rounded-xl" />
+          <Slide src={img("8174A0", "Slide 4")} alt="Image slide demo image" class="rounded-xl" />
+        </Slider>
+      </div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Slider peek={{ base: 24, md: 80 }} gap={16}> ... </Slider>
+```
+      {/snippet}
+    </Example>
+    <Example title="Centered">
+      <p class="not-prose">The <code>centered</code> prop places the active slide in the middle, with the other slides on both sides. It is useful with <code>perView</code>. Without <code>loop</code>, the first and last slides are centered too, with empty space beside them.</p>
+      {#snippet example()}
+      <div class="w-full">
+        <Slider centered perView={3} gap={12} autoPlay={false}>
+          {#each ["73C7C7", "B5828C", "889E73", "577BC1", "8174A0", "B59F78"] as color, i (color)}
+            <Slide src={img(color, `Card ${i + 1}`)} alt="Card {i + 1}" class="rounded-lg" />
+          {/each}
+        </Slider>
+      </div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Slider centered perView={3} gap={12}> ... </Slider>
+```
+      {/snippet}
+    </Example>
+    <p class="not-prose">To loop, a slider needs more slides than it can show at once: at least <code>perView + 1</code>, or <code>perView + 3</code> with <code>peek</code>. With fewer slides it stops at the ends.</p>
+  </DocBlock>
+
+  <DocBlock title="Thumbnails">
+    <p class="not-prose">The <code>thumbnails</code> prop shows a strip of small images under the slider. Clicking one opens its slide, and the active thumbnail stays in the middle of the strip. A thumbnail uses the slide's <code>src</code>; set the <code>thumbnail</code> prop on a <code>Slide</code> to use another image, or for a content slide. A slide without an image shows its number. You can hide the dots with <code>indicator=&#123;false&#125;</code>.</p>
+    <Example>
+      {#snippet example()}
+      <div class="w-full">
+        <Slider thumbnails indicator={false}>
+          {#each ["73C7C7", "B5828C", "889E73", "577BC1", "8174A0", "B59F78"] as color, i (color)}
+            <Slide src={img(color, `Slide ${i + 1}`)} alt="Image slide demo image {i + 1}" />
+          {/each}
+        </Slider>
+      </div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Slider thumbnails indicator={false}>
+  <Slide src="..." alt="..." />
+  <Slide src="..." alt="..." thumbnail="small-image.jpg" />
+  <Slide thumbnail="preview.jpg"> <!-- Custom content --> </Slide>
+</Slider>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Swipe & Mousewheel">
+    <p class="not-prose">Users can swipe on touch screens and drag with the mouse. The slides follow the finger, and a move of a small part of a slide is enough to change it. A drag never clicks a link or button inside the slide. Turn it off with <code>swipe=&#123;false&#125;</code>.</p>
+    <Example>
+      <p class="not-prose">The <code>mousewheel</code> prop changes slides with the mouse wheel or a trackpad, one slide per gesture. It is <code>false</code> by default because it takes over page scrolling while the pointer is on the slider. Without <code>loop</code>, the page scrolls normally again at the first and last slides.</p>
+      {#snippet example()}
+      <div class="w-full">
+        <Slider direction="vertical" class="h-80" mousewheel loop={false} autoPlay={false}>
+          <Slide src={img("A19AD3", "Slide 1")} alt="Image slide demo image" />
+          <Slide src={img("5DB996", "Slide 2")} alt="Image slide demo image" />
+          <Slide src={img("81BFDA", "Slide 3")} alt="Image slide demo image" />
+        </Slider>
+      </div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Slider direction="vertical" class="h-80" mousewheel loop={false}> ... </Slider>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Hero & Background Slider">
+    <Example title="Hero Slider">
+      <p class="not-prose">The <code>overlay</code> snippet holds content that stays on top while the slides change, like a title and a button over a set of images. Links, buttons and fields in the overlay can be clicked, and dragging on the rest of it still swipes the slides. Set a height with <code>class</code> for a full-height hero.</p>
+      {#snippet example()}
+      <div class="w-full">
+        <Slider class="h-96" effect="fade" kenBurns controls={false} transitionDuration={1500} ariaLabel="Hero images">
+          {#snippet overlay()}
+            <div class="size-full flex flex-col items-center justify-center gap-4 bg-black/30 text-white text-center px-6">
+              <h3 class="text-4xl font-bold">Build faster with theui</h3>
+              <a href="#hero-slider" class="px-5 py-2 rounded-md bg-white text-black">Get started</a>
+            </div>
+          {/snippet}
+          <Slide src={img("73C7C7", " ")} alt="" />
+          <Slide src={img("B5828C", " ")} alt="" />
+          <Slide src={img("889E73", " ")} alt="" />
+        </Slider>
+      </div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Slider class="h-[80vh]" effect="fade" kenBurns controls={false} ariaLabel="Hero images">
+  {#snippet overlay()}
+    <div class="size-full flex flex-col items-center justify-center gap-4 bg-black/30 text-white">
+      <h1>Build faster with theui</h1>
+      <a href="/docs">Get started</a>
+    </div>
+  {/snippet}
+  <Slide src="..." alt="" />
+  <Slide src="..." alt="" />
+</Slider>
+```
+      {/snippet}
+    </Example>
+    <Example title="Page Background">
+      <p class="not-prose">To use the slider as the background of the whole page, fix it behind the content and hide the parts users can't reach. The page content covers the slider's own pause button, so hide it and place your own pause button with <code>bind:paused</code>. Images that are only decoration can have an empty <code>alt</code>.</p>
+      {#snippet code()}
+
+```html
+<script>
+  let paused = $state(false)
+</script>
+
+<Slider
+  class="fixed inset-0 -z-10 h-auto"
+  effect="fade"
+  kenBurns
+  controls={false}
+  indicator={false}
+  timer={false}
+  swipe={false}
+  pauseButton={false}
+  bind:paused
+  ariaLabel="Page background"
+>
+  <Slide src="..." alt="" />
+  <Slide src="..." alt="" />
+</Slider>
+
+<button onclick={() => paused = !paused}>{paused ? "Play" : "Pause"} background</button>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Right to Left">
+    <p class="not-prose">In a right-to-left page (<code>dir="rtl"</code>), the slider moves the other way: the next slide comes from the left, the controls swap sides, dragging follows the finger, and the Left arrow key goes to the next slide. The direction is read when the slider loads.</p>
   </DocBlock>
 
   <DocBlock title="Customization">
     <div>
-      <p class="not-prose">The Image Slider provides several props for customizing its appearance. These props allow you to apply custom styles to different parts of the slider.</p>
+      <p class="not-prose">Use <code>class</code> on the <code>Slider</code> for the whole slider and on a <code>Slide</code> for that slide. Other attributes, like <code>id</code>, go on the same element. These props style the other parts:</p>
       <ul class="my-0">
-        <li><span class="not-prose"><code>slideClasses</code></span>: Applies custom classes to each slide. This allows you to adjust styling such as padding, margins, background, or borders.</li>
-        <li><span class="not-prose"><code>controlButtonClasses</code></span>: Defines custom styles for the navigation buttons (previous and next). You can modify their size, color, or position to match your design.</li>
-        <li><span class="not-prose"><code>indicatorContainerClasses</code></span>: Applies styles to the container that holds the slide indicators. This is useful for adjusting positioning, spacing, or background styles.</li>
-        <li><span class="not-prose"><code>indicatorClasses</code></span>: Customizes the appearance of each slide indicator (dot or other elements). You can modify the shape, size, and color.</li>
-        <li><span class="not-prose"><code>indicatorActiveClasses</code></span>: Defines styles for the active indicator. This allows you to highlight the currently active slide differently from the others.</li>
-        <li><span class="not-prose"><code>indicatorActiveClasses</code></span>: Applies styles to the timer, which indicates slide progress. You can change its size, color, or animation effects.</li>
+        <li><span class="not-prose"><code>slideClasses</code></span>: classes for every slide, like padding, background or rounded corners.</li>
+        <li><span class="not-prose"><code>controlButtonClasses</code></span>: classes for the previous and next buttons, to change their size, color or position.</li>
+        <li><span class="not-prose"><code>indicatorContainerClasses</code></span>: classes for the container of the dots, to change their position or spacing.</li>
+        <li><span class="not-prose"><code>indicatorClasses</code></span>: classes for every dot, to change its shape, size or color.</li>
+        <li><span class="not-prose"><code>indicatorActiveClasses</code></span>: classes added to the dot of the active slide.</li>
+        <li><span class="not-prose"><code>thumbnailContainerClasses</code></span>: classes for the thumbnail strip.</li>
+        <li><span class="not-prose"><code>thumbnailClasses</code></span>: classes for every thumbnail, like its size.</li>
+        <li><span class="not-prose"><code>thumbnailActiveClasses</code></span>: classes added to the thumbnail of the active slide.</li>
+        <li><span class="not-prose"><code>timerClasses</code></span>: classes for the timer bar, like its height or color.</li>
+        <li><span class="not-prose"><code>fractionClasses</code></span>: classes for the fraction counter, like its position or colors.</li>
+        <li><span class="not-prose"><code>pauseButtonClasses</code></span>: classes for the pause button.</li>
+        <li><span class="not-prose"><code>overlayClasses</code></span>: classes for the container of the <code>overlay</code> snippet.</li>
       </ul>
     </div>
-    <p class="not-prose">By using these props, you can fully customize the slider to fit your design needs.</p>
+    <p class="not-prose">Your classes are merged with the default classes, so a class you set replaces the default one it conflicts with.</p>
   </DocBlock>
 
   <DocBlock title="Accessibility">
-    <p class="not-prose">The Slider component is designed to be accessible, ensuring smooth navigation and usability for all users, including those using assistive technologies.</p>
+    <p class="not-prose">The Slider follows the WAI-ARIA carousel pattern, so it works with the keyboard and with screen readers.</p>
     <div>
       <h4 class="my-0">Keyboard Navigation</h4>
-      <p class="not-prose">The slider supports full keyboard interaction:</p>
+      <p class="not-prose">When focus is on a control, a dot, a thumbnail or content inside the slider:</p>
       <ul class="my-0">
-        <li>Left Arrow (⬅) moves to the previous slide.</li>
-        <li>Right Arrow (➡) moves to the next slide.</li>
-        <li>Tab ( <kbd>↹</kbd> ) navigates through focusable elements such as controls and indicators.</li>
-        <li>Enter ( <kbd>⏎</kbd> ) or Space ( <kbd>⎵</kbd> ) activates the selected indicator when applicable.</li>
+        <li><kbd>←</kbd> and <kbd>→</kbd> move to the previous and next slide (<kbd>↑</kbd> and <kbd>↓</kbd> in a vertical slider).</li>
+        <li><kbd>Home</kbd> and <kbd>End</kbd> move to the first and last slide.</li>
+        <li><kbd>Tab</kbd> moves through the pause button, the controls, the dots and the content of the slides in view.</li>
+        <li><kbd>Enter</kbd> or <kbd>Space</kbd> press the focused button.</li>
       </ul>
+      <p class="not-prose">When a key moves away from a slide that had focus, focus moves to the new slide.</p>
     </div>
     <div>
       <h4 class="my-0">Screen Reader Support</h4>
-      <p class="not-prose">To ensure compatibility with screen readers, the following attributes are applied:</p>
       <ul class="my-0">
-        <li>The slider container includes <span class="not-prose"><code>aria-live="polite"</code></span> so screen readers announce slide changes dynamically.</li>
-        <li>Each slide has <span class="not-prose"><code>aria-hidden="true"</code></span> when inactive and <span class="not-prose"><code>aria-hidden="false"</code></span> when active.</li>
+        <li>The slider is announced as a carousel, named by the <code>ariaLabel</code> prop (default <code>"Slider"</code>). Give it a name that describes the slides.</li>
+        <li>Each slide is announced as a slide with its position, like "2 of 5".</li>
+        <li>Slides that are not in view are hidden from screen readers and can't be reached with <kbd>Tab</kbd>.</li>
+        <li>Slide changes are announced when the user changes the slide, but not during auto play, so they don't interrupt.</li>
+        <li>The previous, next, pause, dot and thumbnail buttons have accessible names, and the active dot and thumbnail are marked as current.</li>
       </ul>
     </div>
     <div>
-      <h4 class="my-0">Accessible Controls</h4>
-      <p class="not-prose">Navigation buttons and indicators are labeled to enhance usability:</p>
+      <h4 class="my-0">Motion</h4>
       <ul class="my-0">
-        <li>The Previous and Next buttons should have <span class="not-prose"><code>aria-label="Previous Slide"</code></span> and <span class="not-prose"><code>aria-label="Next Slide"</code></span>, respectively.</li>
-        <li>Indicators should include <span class="not-prose"><code>aria-label="Go to slide X"</code></span> to indicate their function.</li>
+        <li>Auto play stops while keyboard focus is inside the slider, and the pause button stops it for good.</li>
+        <li>For users who turn on reduced motion in their system, slides change instantly and auto play, the timer, the pause button and the Ken Burns zoom are turned off.</li>
       </ul>
     </div>
-    <p class="not-prose">These accessibility features ensure a seamless experience for all users, making the Slider component more inclusive and user-friendly.</p>
   </DocBlock>
 
   <DocBlock title="Configuration">
-    <ConfigComponent component={component} />
+    <ConfigComponent title="Slider" component={component.slider} />
+    <ConfigComponent title="Slide" component={component.slide} />
   </DocBlock>
- 
+
   {#snippet sidebar()}
     <a href={processID("About")}>About</a>
     <a href={processID("Example")}>Example</a>
-    <a href={processID("Image Slider")} class="ps-4">Image slide</a>
-    <a href={processID("Custom Content Slider")} class="ps-4">Content slide</a>
+    <a href={processID("Image Slider")} class="ps-4">Image slider</a>
+    <a href={processID("Custom Content Slider")} class="ps-4">Content slider</a>
+    <a href={processID("Linked Slides")} class="ps-4">Linked slides</a>
     <a href={processID("Controls & Indicator")}>Controls & Indicator</a>
+    <a href={processID("Custom Controls Icon")}>Custom Controls Icon</a>
     <a href={processID("Auto Play & Stop on Hover")}>Auto Play & Stop on Hover</a>
-    <a href={processID("Timer")}>Timer</a>
+    <a href={processID("Pause Button")}>Pause Button</a>
+    <a href={processID("Timer & Fraction")}>Timer & Fraction</a>
     <a href={processID("Slide Duration")}>Slide Duration</a>
     <a href={processID("Transition Duration")}>Transition Duration</a>
+    <a href={processID("Active Slide")}>Active Slide</a>
+    <a href={processID("Loop")}>Loop</a>
+    <a href={processID("Effects")}>Effects</a>
+    <a href={processID("Fade")} class="ps-4">Fade</a>
+    <a href={processID("Zoom")} class="ps-4">Zoom</a>
+    <a href={processID("Flip")} class="ps-4">Flip</a>
+    <a href={processID("Cube")} class="ps-4">Cube</a>
+    <a href={processID("Ken Burns")}>Ken Burns</a>
+    <a href={processID("Parallax")}>Parallax</a>
+    <a href={processID("Image Parallax")} class="ps-4">Image parallax</a>
+    <a href={processID("Layer Parallax")} class="ps-4">Layer parallax</a>
+    <a href={processID("Vertical Slider")}>Vertical Slider</a>
+    <a href={processID("Multiple Slides")}>Multiple Slides</a>
+    <a href={processID("Slides Per View")} class="ps-4">Slides per view</a>
+    <a href={processID("Responsive")} class="ps-4">Responsive</a>
+    <a href={processID("Peek & Centered")}>Peek & Centered</a>
+    <a href={processID("Peek")} class="ps-4">Peek</a>
+    <a href={processID("Centered")} class="ps-4">Centered</a>
+    <a href={processID("Thumbnails")}>Thumbnails</a>
+    <a href={processID("Swipe & Mousewheel")}>Swipe & Mousewheel</a>
+    <a href={processID("Hero & Background Slider")}>Hero & Background</a>
+    <a href={processID("Hero Slider")} class="ps-4">Hero slider</a>
+    <a href={processID("Page Background")} class="ps-4">Page background</a>
+    <a href={processID("Right to Left")}>Right to Left</a>
     <a href={processID("Customization")}>Customization</a>
     <a href={processID("Accessibility")}>Accessibility</a>
     <a href={processID("Configuration")}>Configuration</a>

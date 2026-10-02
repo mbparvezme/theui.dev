@@ -11,34 +11,36 @@ tags: [introduction, getting-started, guide, theui-svelte, svelte, component-lib
   import DocLayout from "$lib/ui/doc/DocLayout.svelte";
   import DocHead from "$lib/ui/doc/Head.svelte";
   import DocBlock from "$lib/ui/doc/Block.svelte";
-  import { editURL } from "$lib";
+  import { processID, editURL } from "$lib";
 </script>
 
 <DocLayout>
 
-  <DocHead title="theui-svelte: Svelte 5 Component Library" text="Kickstart your development with the theui-svelte, a comprehensive component library designed for the Svelte ecosystem. Leveraging the power of Svelte (v5) and Tailwind CSS (v4), the theui-svelte accelerates your development process, helping you build and deliver projects faster." edit_url={editURL("introduction")} />
+  <DocHead title="theui-svelte: Svelte 5 Component Library" text="theui-svelte is a component library for Svelte 5, built on Tailwind CSS v4. It covers the pieces most applications need, with the accessibility and the theming already done." edit_url={editURL("introduction")} />
 
   <DocBlock title="Introduction">
-    <p class="not-prose">Welcome to the <b>theui-svelte</b>, the component library for Svelte by TheUI, built on top of TailwindCSS. Our components are designed to be highly accessible and customizable out of the box. By combining the capabilities of Svelte with the versatile features of TailwindCSS, the <b>theui-svelte</b> offers a powerful tool-set to enhance your development workflow.</p>
+    <p class="not-prose"><b>theui-svelte</b> is TheUI's component library for Svelte, built on Tailwind CSS. The components carry their own ARIA wiring and keyboard behavior, read your brand colors from your CSS, and merge any class you pass with tailwind-merge, so overriding a default does not mean fighting it.</p>
+    <p class="not-prose mb-0">It needs Svelte 5.57.1 or newer, Tailwind CSS v4 and Node.js 22.12 or newer. The <a href="/docs/installation">installation guide</a> takes you from an empty project to your first component.</p>
   </DocBlock>
 
   <DocBlock title="Features">
     <div>
       <p class="not-prose">The main features of the component library are:</p>
       <ul class="list-my-0">
-        <li>Built with ARIA roles and WCAG compliance for better usability.</li>
-        <li>Highly customizable</li>
-        <li>Support LTR/RTL.</li>
-        <li>Easy theming, branding, and dark/light mode control.</li>
-        <li>Optimized for leveraging svelte's reactivity</li>
-        <li>Includes smooth transitions and animations for better user experience.</li>
-        <li>Fully typed for enhanced development</li>
-        <!-- <li>Offers examples, and usage guides tailored for Svelte.</li> -->
+        <li><b>Written for Svelte 5</b> - components are built with runes, and take snippets wherever you need to pass markup rather than text.</li>
+        <li><b>Accessible from the start</b> - roles and names, keyboard support, focus handling and reduced motion are part of each component. The <a href="/docs/accessibility">accessibility guide</a> sets out what is handled and what is left to you.</li>
+        <li><b>Yours to style</b> - every component takes <code>class</code>, merged with <a href="https://github.com/dcastil/tailwind-merge" target="_blank" rel="noopener">tailwind-merge</a>, so your own classes win instead of fighting the defaults.</li>
+        <li><b>Your colors, not ours</b> - components read the <a href="/docs/colors">brand palette</a> from your CSS, in light and dark mode alike.</li>
+        <li><b>Dark mode with nothing to configure</b> - the stylesheet brings its own dark variant, and the <a href="/docs/dark-mode">DarkMode</a> component remembers the choice.</li>
+        <li><b>Right to left</b> - layouts use logical properties, so <a href="/docs/rtl">RTL</a> works without a second stylesheet.</li>
+        <li><b>Typed throughout</b> - every prop has a type, listed on the <a href="/docs/types">types page</a>.</li>
+        <li><b>Safe to render on the server</b> - nothing reaches for the browser while a page is being rendered.</li>
       </ul>
     </div>
   </DocBlock>
 
   <DocBlock title="Components">
+    <p class="not-prose">{components.components.links.length} components, {components.forms.links.length} form controls and {components.utilities.links.length} utilities, each with its own page of examples, a full list of props and an accessibility section.</p>
     <div class="grow">
       <h6 class="mb-1 font-bold text-muted">UI COMPONENTS</h6>
       <ul class="not-prose grid xs:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-y-1 mb-6">
@@ -61,10 +63,21 @@ tags: [introduction, getting-started, guide, theui-svelte, svelte, component-lib
     </div>
   </DocBlock>
 
+  <DocBlock title="Where to Go Next">
+    <ul class="mt-0 mb-0">
+      <li><a href="/docs/installation">Installation</a> - the starter template, or a step by step setup of your own.</li>
+      <li><a href="/docs/colors">Colors and branding</a> - point the components at your palette.</li>
+      <li><a href="/docs/accessibility">Accessibility</a> - what the components handle, the keys they answer to, and what is left to you.</li>
+      <li><a href="/docs/types">Types</a> - every exported type, in alphabetical order.</li>
+      <li><a href="/docs/rtl">Right to left</a> and <a href="/docs/z-index">z-index</a> - two things worth knowing before you build a layout.</li>
+    </ul>
+  </DocBlock>
+
   {#snippet sidebar()}
     <a href="#introduction">Introduction</a>
     <a href="#features">Features</a>
     <a href="#components">Components</a>
+    <a href={processID("Where to Go Next")}>Where to go next</a>
   {/snippet}
 
 </DocLayout>

@@ -1,0 +1,204 @@
+---
+title: Divider
+category: Components
+description: Separate content with a horizontal or vertical line, with an optional label, using theui-svelte's Divider component.
+dir: ".lib/pages"
+tags: [divider, separator, hr, rule, component, svelte, svelte-5, theui-svelte, component-library, ui, tailwindcss]
+---
+
+<script lang="ts">
+  import DocLayout from "$lib/ui/doc/DocLayout.svelte";
+  import DocHead from "$lib/ui/doc/Head.svelte";
+  import DocBlock from "$lib/ui/doc/Block.svelte";
+  import Code from "$lib/ui/doc/CodeBlock.svelte";
+  import Example from "$lib/ui/doc/Example.svelte";
+  import ConfigComponent from "$lib/ui/doc/ConfigComponent.svelte";
+  import { processID, editURL } from "$lib";
+  let { component }: {component: any } = $props();
+
+  import { Divider } from "theui-svelte";
+</script>
+
+<DocLayout>
+  <DocHead title="Divider" text="The Divider component draws a line between two pieces of content. It can run across or down, carry a label such as 'OR', and use a solid, dashed or dotted line." edit_url={editURL("divider")} />
+
+  <DocBlock title="Example">
+    <p class="not-prose">Import the component and drop it between two blocks. On its own it renders a real <code>&lt;hr&gt;</code>, so it means something to a screen reader as well as to the eye.</p>
+    <Example>
+      {#snippet example()}
+        <div class="w-full">
+          <p>Everything above the line.</p>
+          <Divider />
+          <p>Everything below the line.</p>
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<script>
+  import { Divider } from "theui-svelte";
+</script>
+
+<p>Everything above the line.</p>
+<Divider />
+<p>Everything below the line.</p>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Variants">
+    <p class="not-prose">The <code>variant</code> prop sets the line style: <code>solid</code> (default), <code>dashed</code> or <code>dotted</code>.</p>
+    <Example>
+      {#snippet example()}
+        <div class="w-full">
+          <Divider />
+          <Divider variant="dashed" />
+          <Divider variant="dotted" />
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Divider />
+<Divider variant="dashed" />
+<Divider variant="dotted" />
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Label">
+    <p class="not-prose">Put content inside the component and it is placed in the middle of the line. This is the usual way to write an <b>OR</b> between two sign-in options.</p>
+    <Example>
+      {#snippet example()}
+        <div class="w-full">
+          <Divider>OR</Divider>
+          <Divider variant="dashed">Continue below</Divider>
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Divider>OR</Divider>
+<Divider variant="dashed">Continue below</Divider>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Label Alignment">
+    <p class="not-prose">With a label, the <code>align</code> prop decides where it sits: <code>center</code> (default), <code>start</code> or <code>end</code>. The alignment follows the text direction, so it flips on a right to left page.</p>
+    <Example>
+      {#snippet example()}
+        <div class="w-full">
+          <Divider align="start">Start</Divider>
+          <Divider align="center">Center</Divider>
+          <Divider align="end">End</Divider>
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Divider align="start">Start</Divider>
+<Divider align="center">Center</Divider>
+<Divider align="end">End</Divider>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Vertical Divider">
+    <p class="not-prose">Set <code>orientation="vertical"</code> to separate items that sit side by side. The divider takes the height of its parent, so place it in a flex row with a height.</p>
+    <Example>
+      {#snippet example()}
+        <div class="flex h-16 items-center gap-4">
+          <span>Profile</span>
+          <Divider orientation="vertical" />
+          <span>Settings</span>
+          <Divider orientation="vertical" variant="dashed" />
+          <span>Sign out</span>
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<div class="flex h-16 items-center gap-4">
+  <span>Profile</span>
+  <Divider orientation="vertical" />
+  <span>Settings</span>
+  <Divider orientation="vertical" variant="dashed" />
+  <span>Sign out</span>
+</div>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Vertical Label">
+    <p class="not-prose">A vertical divider takes a label too. The line is drawn above and below the text.</p>
+    <Example>
+      {#snippet example()}
+        <div class="flex h-40 items-center gap-4">
+          <span>Sign in</span>
+          <Divider orientation="vertical">OR</Divider>
+          <span>Create account</span>
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<div class="flex h-40 items-center gap-4">
+  <span>Sign in</span>
+  <Divider orientation="vertical">OR</Divider>
+  <span>Create account</span>
+</div>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Customization">
+    <p class="not-prose">Use <code>lineClasses</code> for the line and <code>labelClasses</code> for the text. The <code>class</code> prop goes on the element itself, which is where spacing belongs.</p>
+    <Example>
+      {#snippet example()}
+        <div class="w-full">
+          <Divider lineClasses="border-brand-500" />
+          <Divider lineClasses="border-2 border-info-500" variant="dashed" />
+          <Divider class="my-8" labelClasses="rounded-full bg-brand-500 px-3 py-1 text-xs font-semibold text-on-brand">NEW</Divider>
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Divider lineClasses="border-brand-500" />
+<Divider lineClasses="border-2 border-info-500" variant="dashed" />
+<Divider class="my-8" labelClasses="rounded-full bg-brand-500 px-3 py-1 text-xs font-semibold text-on-brand">
+  NEW
+</Divider>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Accessibility">
+    <p class="not-prose">Without a label the component renders an <code>&lt;hr&gt;</code>, or a vertical separator with <code>aria-orientation="vertical"</code>, both of which assistive technology understands as a break between sections. With a label, the lines are hidden from screen readers and only the text is read, because a separator cannot hold a name of its own. Decoration alone does not need a divider: if the parts are already separate landmarks or headings, the line adds nothing.</p>
+  </DocBlock>
+
+  <DocBlock title="Configuration">
+    <ConfigComponent {component} />
+  </DocBlock>
+
+  {#snippet sidebar()}
+    <a href={processID("Example")}>Example</a>
+    <a href={processID("Variants")}>Variants</a>
+    <a href={processID("Label")}>Label</a>
+    <a href={processID("Label Alignment")}>Label alignment</a>
+    <a href={processID("Vertical Divider")}>Vertical divider</a>
+    <a href={processID("Vertical Label")}>Vertical label</a>
+    <a href={processID("Customization")}>Customization</a>
+    <a href={processID("Accessibility")}>Accessibility</a>
+    <a href={processID("Configuration")}>Configuration</a>
+  {/snippet}
+
+</DocLayout>

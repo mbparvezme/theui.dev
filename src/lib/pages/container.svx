@@ -47,10 +47,56 @@ tags: [container, layout, structure, responsive, component, svelte, svelte-5, th
 </Container>
 ```
     </Code>
+    <p class="not-prose">The Container renders a <code>&lt;section&gt;</code> element. Any other attributes you add, like <code>id</code> or <code>aria-label</code>, are passed to it directly.</p>
+  </DocBlock>
+
+  <DocBlock title="Page Width">
+    <p class="not-prose">A <code>Container</code> grows to the width of its parent and stops at <code>--max-width</code>, which is <code>1280px</code> out of the box. The <a href="/docs/navbar"><code>Navbar</code></a> reads the same variable for its inner row, so the brand and the links line up with the content below them. Change the one variable and both follow.</p>
+    <p class="not-prose">It is a plain CSS custom property on <code>:root</code>, not a Tailwind theme value, so you set it in your own CSS with no <code>@theme</code> block. Your stylesheet comes after <code>theui-svelte/style</code>, so your value is the one that applies.</p>
+    <Code title="./src/app.css">
+
+```css
+@import 'tailwindcss';
+@import 'theui-svelte/style';
+
+:root {
+  --max-width: 1400px;
+}
+```
+    </Code>
+    <p class="not-prose">Because it is inherited, you can also set it on one part of the page. Anything inside picks up the new width, and the rest of the site keeps the old one, which is how you give a single section room to breathe:</p>
+    <Code title="A wider section">
+
+```svelte
+<div style="--max-width: 1600px">
+  <Container>
+    <!-- This one is wider than the rest of the page -->
+  </Container>
+</div>
+```
+    </Code>
+    <p class="not-prose mb-0">For a one-off, a class is simpler than the variable: <code>&lt;Container class="max-w-4xl"&gt;</code> overrides the width for that container alone, since the class comes last.</p>
+  </DocBlock>
+
+  <DocBlock title="Accessibility">
+    <p class="not-prose"><code>Container</code> renders a <code>&lt;section&gt;</code>. Left unnamed, that is treated as an ordinary block and changes nothing for assistive technology, which is what you want for a container that only sets width and spacing.</p>
+    <p class="not-prose">Add <code>aria-label</code> or <code>aria-labelledby</code> and it becomes a region landmark, listed alongside the banner, navigation and main areas of the page. Do that for an area people may want to jump straight to, and leave the rest unnamed: a page where everything is a landmark is as hard to move around as one with none.</p>
+    <Code title="A container worth naming">
+
+```svelte
+<Container aria-labelledby="pricing-heading">
+  <h2 id="pricing-heading">Pricing</h2>
+  <!-- Content -->
+</Container>
+```
+    </Code>
+    <p class="not-prose mb-0">A <code>Container</code> is not a replacement for the landmarks a page needs anyway. Keep your <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code> and <code>&lt;footer&gt;</code>, and put containers inside them.</p>
   </DocBlock>
 
   {#snippet sidebar()}
     <a href="#setup-&-example">Setup & use</a>
     <a href={processID("Customization")}>Customization</a>
+    <a href={processID("Page Width")}>Page width</a>
+    <a href={processID("Accessibility")}>Accessibility</a>
   {/snippet}
 </DocLayout>

@@ -1,0 +1,246 @@
+---
+title: Time Picker
+category: Forms
+description: Pick a time in separate hour, minute and AM/PM parts, with typing, arrow keys and the mouse wheel, using theui-svelte's TimePicker component.
+dir: ".lib/pages"
+tags: [time picker, time input, hour, minute, form, svelte, svelte-5, theui-svelte, component-library, ui, tailwindcss]
+---
+
+<script lang="ts">
+  import DocLayout from "$lib/ui/doc/DocLayout.svelte";
+  import DocHead from "$lib/ui/doc/Head.svelte";
+  import DocBlock from "$lib/ui/doc/Block.svelte";
+  import Code from "$lib/ui/doc/CodeBlock.svelte";
+  import Example from "$lib/ui/doc/Example.svelte";
+  import ConfigComponent from "$lib/ui/doc/ConfigComponent.svelte";
+  import { processID, editURL } from "$lib";
+  let { component }: {component: any } = $props();
+
+  import { TimePicker } from "theui-svelte";
+
+  let start = $state("09:30")
+  let end = $state("")
+</script>
+
+<DocLayout>
+  <DocHead title="Time Picker" text="The TimePicker component holds the hour, the minute and, in twelve hour mode, AM or PM in separate parts. There is no dropdown to scroll: type the digits, step with the arrow keys or the wheel, and move on. The value is a plain HH:mm string in twenty four hour form, whatever the field shows." edit_url={editURL("time-picker")} />
+
+  <DocBlock title="Example">
+    <p class="not-prose">Import the component and bind a string. Click a part and type, or use the up and down arrows.</p>
+    <Example>
+      {#snippet example()}
+        <div class="flex w-full max-w-xs flex-col gap-3">
+          <TimePicker bind:value={start}>Start</TimePicker>
+          <p class="not-prose text-sm text-muted">value: "{start}"</p>
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<script>
+  import { TimePicker } from "theui-svelte";
+  let start = $state("09:30")
+</script>
+
+<TimePicker bind:value={start}>Start</TimePicker>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Twelve Hour">
+    <p class="not-prose">Add <code>hour12</code> for a third part with AM and PM. Press <b>A</b> or <b>P</b> to set it, or Space to flip it. The value stays in twenty four hour form, so <code>2:30 PM</code> is still <code>"14:30"</code>.</p>
+    <Example>
+      {#snippet example()}
+        <div class="flex w-full max-w-xs flex-col gap-3">
+          <TimePicker bind:value={end} hour12>End</TimePicker>
+          <p class="not-prose text-sm text-muted">value: "{end}"</p>
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<TimePicker bind:value={end} hour12>End</TimePicker>
+
+<!-- Rename AM and PM for another language -->
+<TimePicker hour12 amLabel="প্রা" pmLabel="অপ" />
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Limits and Step">
+    <p class="not-prose">Use <code>min</code> and <code>max</code>, both <code>"HH:mm"</code>, to keep the time inside office hours or any other window; a time outside them is pulled back. The <code>step</code> prop is how many minutes the minute part moves at a time.</p>
+    <Example>
+      {#snippet example()}
+        <div class="flex w-full max-w-xs flex-col gap-4">
+          <TimePicker value="09:00" min="09:00" max="17:00" helperText="Between 9 and 5">Office hours</TimePicker>
+          <TimePicker value="10:15" step={15} helperText="Minutes move by 15">Quarter hours</TimePicker>
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<TimePicker value="09:00" min="09:00" max="17:00">Office hours</TimePicker>
+<TimePicker value="10:15" step={15}>Quarter hours</TimePicker>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Stepper Buttons">
+    <p class="not-prose">Small up and down buttons sit at the end of the field and act on whichever part has focus, or on the minutes when none does. Pass <code>stepper={false}</code> to replace them with a clock icon.</p>
+    <Example>
+      {#snippet example()}
+        <div class="flex w-full max-w-xs flex-col gap-4">
+          <TimePicker value="08:00">With buttons</TimePicker>
+          <TimePicker value="08:00" stepper={false}>With a clock icon</TimePicker>
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<TimePicker value="08:00">With buttons</TimePicker>
+<TimePicker value="08:00" stepper={false}>With a clock icon</TimePicker>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Sizes and Variants">
+    <p class="not-prose">The <code>size</code> and <code>variant</code> props work as on every other field, and are inherited from a <a href="/docs/form">Form</a> or a <a href="/docs/fieldset">Fieldset</a>.</p>
+    <Example>
+      {#snippet example()}
+        <div class="flex w-full max-w-xs flex-col gap-4">
+          <TimePicker value="07:05" size="sm" />
+          <TimePicker value="07:05" size="lg" />
+          <TimePicker value="07:05" variant="flat" />
+          <TimePicker value="07:05" rounded="full" />
+          <TimePicker value="07:05" disabled>Disabled</TimePicker>
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<TimePicker value="07:05" size="sm" />
+<TimePicker value="07:05" size="lg" />
+<TimePicker value="07:05" variant="flat" />
+<TimePicker value="07:05" rounded="full" />
+<TimePicker value="07:05" disabled>Disabled</TimePicker>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="In a Form">
+    <p class="not-prose">Give the component a <code>name</code> and the <code>"HH:mm"</code> value is submitted, the same form a native time input sends. The <code>onchange</code> callback runs with every change.</p>
+    <Example>
+      {#snippet example()}
+        <form class="flex w-full max-w-xs flex-col items-start gap-3" onsubmit={(e) => e.preventDefault()}>
+          <TimePicker name="startTime" value="09:30" hour12>Start time</TimePicker>
+          <button class="rounded-md bg-brand-500 px-4 py-2 font-medium text-on-brand">Save</button>
+        </form>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<form method="POST">
+  <TimePicker name="startTime" value="09:30" hour12 onchange={(v) => console.log(v)}>
+    Start time
+  </TimePicker>
+  <button>Save</button>
+</form>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Animation Speed">
+    <p class="not-prose">The <code>animationSpeed</code> prop sets how quickly the field reacts to focus and hover. It takes <code>"none"</code>, <code>"slower"</code>, <code>"slow"</code>, <code>"normal"</code>, <code>"fast"</code> and <code>"faster"</code>, and the default is <code>"normal"</code>. Inside a <a href="/docs/form">Form</a> or a <a href="/docs/fieldset">Fieldset</a> the value is inherited, so one setting covers every field at once.</p>
+    <Example>
+      {#snippet example()}
+        <div class="flex w-full max-w-xs flex-col gap-4">
+          <TimePicker animationSpeed="slower">Slower</TimePicker>
+          <TimePicker animationSpeed="normal">Normal</TimePicker>
+          <TimePicker animationSpeed="faster">Faster</TimePicker>
+          <TimePicker animationSpeed="none">No animation</TimePicker>
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<TimePicker animationSpeed="slower">Slower</TimePicker>
+<TimePicker animationSpeed="normal">Normal</TimePicker>
+<TimePicker animationSpeed="faster">Faster</TimePicker>
+<TimePicker animationSpeed="none">No animation</TimePicker>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Reset Styles">
+    <p class="not-prose">Set <code>reset</code> to <code>true</code> to drop the border, background and focus ring and keep only the classes you pass. The hour, minute and meridiem parts keep their layout, so typing and the arrow keys are unaffected. The default is <code>false</code>, and a <a href="/docs/form">Form</a> or a <a href="/docs/fieldset">Fieldset</a> can set it for every field it holds.</p>
+    <Example>
+      {#snippet example()}
+        <div class="w-full max-w-xs">
+          <TimePicker reset class="w-full border-b-2 border-gray-400 px-1 py-2">Underline only</TimePicker>
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<TimePicker reset class="w-full border-b-2 border-gray-400 px-1 py-2">
+  Underline only
+</TimePicker>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Customization">
+    <p class="not-prose">Use <code>segmentClasses</code> for the hour, minute and AM/PM parts, <code>class</code> for the field itself and <code>wrapperClasses</code> for the whole thing.</p>
+    <Example>
+      {#snippet example()}
+        <div class="flex w-full max-w-xs flex-col gap-4">
+          <TimePicker value="09:30" segmentClasses="text-lg font-semibold" />
+          <TimePicker value="09:30" hour12 segmentClasses="focus:bg-info-500" class="w-48" />
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<TimePicker value="09:30" segmentClasses="text-lg font-semibold" />
+<TimePicker value="09:30" hour12 segmentClasses="focus:bg-info-500" class="w-48" />
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Keyboard and Wheel">
+    <p class="not-prose">Typing digits fills the part you are in and moves on as soon as nothing more can fit, so <code>9</code> in the hour jumps straight to the minutes while <code>1</code> waits in case you mean <code>12</code>. The up and down arrows step the value and wrap around, and stepping the hour past eleven flips AM to PM. The left and right arrows move between parts, and so does the colon key. Home and End go to the lowest and highest value, and Backspace or Delete empties the part. The wheel steps the part that has focus, so the page still scrolls everywhere else. Pasting <code>14:30</code> or <code>2:30 pm</code> anywhere in the field fills it.</p>
+  </DocBlock>
+
+  <DocBlock title="Accessibility">
+    <p class="not-prose">Each part is a spin button with its own name, its value and its lowest and highest value, which is what a native time field does, so a screen reader says "Hour, 9" and reads the new number as it changes. The parts sit in a group named by the label, and an empty part is read as "Empty" rather than as the two dashes on screen. The stepper buttons are named Increase and Decrease and are left out of the tab order, since the arrow keys already do the same thing from the keyboard. The value is always kept in twenty four hour form, so what is sent does not depend on what is shown.</p>
+  </DocBlock>
+
+  <DocBlock title="Configuration">
+    <ConfigComponent {component} />
+  </DocBlock>
+
+  {#snippet sidebar()}
+    <a href={processID("Example")}>Example</a>
+    <a href={processID("Twelve Hour")}>Twelve hour</a>
+    <a href={processID("Limits and Step")}>Limits and step</a>
+    <a href={processID("Stepper Buttons")}>Stepper buttons</a>
+    <a href={processID("Sizes and Variants")}>Sizes and variants</a>
+    <a href={processID("In a Form")}>In a form</a>
+    <a href={processID("Animation Speed")}>Animation speed</a>
+    <a href={processID("Reset Styles")}>Reset styles</a>
+    <a href={processID("Customization")}>Customization</a>
+    <a href={processID("Keyboard and Wheel")}>Keyboard and wheel</a>
+    <a href={processID("Accessibility")}>Accessibility</a>
+    <a href={processID("Configuration")}>Configuration</a>
+  {/snippet}
+
+</DocLayout>

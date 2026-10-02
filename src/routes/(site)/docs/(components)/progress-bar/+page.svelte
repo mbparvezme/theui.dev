@@ -1,9 +1,9 @@
-<SEO title="Progress Bar" />
+<SEO title="Progress Bar" description={metadata.description} keywords={metadata.tags?.join(", ")} />
 <Page {component} />
 
 <script lang="ts">
   import SEO from "$lib/SEO.svelte"
-  import Page from "$lib/pages/progress-bar.svx"
+  import Page, { metadata } from "$lib/pages/progress-bar.svx"
 
   const component = [
     {
@@ -31,8 +31,8 @@
         {
           "name": "labelVariant",
           "type": "'inline' | 'bubble'",
-          "default": "bubble",
-          "description": "Controls the appearance of the label. 'inline' displays the label inline, inside the progress bar, while 'bubble' displays it in a bubble format."
+          "default": "\"bubble\"",
+          "description": "Controls the appearance of the label. 'inline' displays the label inline, inside the progress bar, while 'bubble' displays it in a bubble format. With 'lg' or 'xl' thickness, the label is always inline."
         },
         {
           "name": "bubbleClasses",
@@ -55,7 +55,7 @@
         {
           "name": "rounded",
           "type": "<a href=\"/docs/types#rounded-type\">ROUNDED</a>",
-          "default": "full",
+          "default": "\"full\"",
           "description": "Controls the rounded corners of the progress bar. This helps maintain design consistency."
         },
         {

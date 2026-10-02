@@ -1,7 +1,7 @@
 ---
 title: Pagination
 category: Components
-description: Manage large data sets with seamless navigation using the pagination component.
+description: Page links with previous and next controls, for a list split across pages.
 dir: ".lib/pages"
 tags: [pagination, navigation, data, component, svelte, svelte-5, theui-svelte, component-library, ui, tailwindcss]
 ---
@@ -18,10 +18,10 @@ tags: [pagination, navigation, data, component, svelte, svelte-5, theui-svelte, 
 
   import { Pagination } from "theui-svelte";
   let paginationData = [
-    { url: "/page/1" },
-    { url: "/page/2", active: true },  // Current page
-    { url: "/page/3" },
-    { url: "/page/4" }
+    { url: "?page=1" },
+    { url: "?page=2", active: true },  // Current page
+    { url: "?page=3" },
+    { url: "?page=4" }
   ];
 
   let prevFunction = () => {
@@ -34,14 +34,14 @@ tags: [pagination, navigation, data, component, svelte, svelte-5, theui-svelte, 
 </script>
 
 <DocLayout>
-  <DocHead title="Pagination" text="Provides an easy way to navigate through multiple pages of content. It helps users move between paginated data efficiently while maintaining a clean and structured UI." edit_url={editURL("pagination")} />
+  <DocHead title="Pagination" text="Renders the page links for a list that is split across pages, with previous and next controls." edit_url={editURL("pagination")} />
 
   <DocBlock title="About">
-    <p class="not-prose">This component generates a navigation bar with page numbers, previous and next buttons, and optional first and last page controls. It is designed to be flexible, allowing customization of appearance, behavior, and accessibility features to fit different use cases. Whether handling large datasets, blog posts, or product listings, the Pagination Nav ensures smooth and intuitive navigation.</p>
+    <p class="not-prose">It builds the page numbers from the <code>data</code> array you pass, adds previous and next buttons, and marks the current page. The numbers come from the position in the array, not from the data itself.</p>
   </DocBlock>
 
   <DocBlock title="Example">
-    <p class="not-prose">The <code>Pagination</code> component accepts a <code>data</code> prop, which is an array of objects. Each object represents a page link with a <code>url</code> and an optional <code>active</code> property to indicate the current page.</p>
+    <p class="not-prose">The <code>Pagination</code> component accepts a <code>data</code> prop, which is an array of objects. Each object represents a page link with a <code>url</code> and an optional <code>active</code> property to indicate the current page. Each <code>url</code> must be unique.</p>
     <Example>
       <p class="not-prose">Below is a simple example of how to use the <code>Pagination</code> component with static data:</p>
       {#snippet example()}
@@ -52,10 +52,10 @@ tags: [pagination, navigation, data, component, svelte, svelte-5, theui-svelte, 
 ```html
 <script>
   let data = [
-    { url: "/page/1" },
-    { url: "/page/2", active: true },  // Current page
-    { url: "/page/3" },
-    { url: "/page/4" }
+    { url: "?page=1" },
+    { url: "?page=2", active: true },  // Current page
+    { url: "?page=3" },
+    { url: "?page=4" }
   ];
 </script>
 
@@ -151,21 +151,21 @@ tags: [pagination, navigation, data, component, svelte, svelte-5, theui-svelte, 
     </Example>
 
     <Example title="Custom Previous/Next Button Content">
-      <p class="not-prose">The <code>previousButton</code> and <code>nextButton</code> props allow you to customize the content of the previous and next buttons in the Pagination component. These props accept both plain text and HTML, giving you flexibility in styling and design.</p>
-      <p class="not-prose">By default, <code>previousButton</code> is set to <code>"&larr; Prev"</code>, and <code>nextButton</code> is set to <code>"Next &rarr;"</code>. You can modify these values to fit your needs, such as changing the text or adding icons.</p>
+      <p class="not-prose">The <code>previousButton</code> and <code>nextButton</code> props allow you to customize the content of the previous and next buttons in the Pagination component. These props render as plain text, so you can use any character you like, such as an arrow or an angle quote.</p>
+      <p class="not-prose">By default, <code>previousButton</code> is set to <code>"← Prev"</code>, and <code>nextButton</code> is set to <code>"Next →"</code>. You can modify these values to fit your needs, such as other words, arrows or symbols.</p>
       {#snippet example()}
-        <Pagination previousButton="&lsaquo;" nextButton="&rsaquo;" data={paginationData} />
+        <Pagination previousButton="‹" nextButton="›" data={paginationData} />
       {/snippet}
       {#snippet code()}
 
 ```html
-<Pagination {data} previousButton="&lsaquo;" nextButton="&rsaquo;" />
+<Pagination {data} previousButton="‹" nextButton="›" />
 ```
       {/snippet}
     </Example>
 
     <Example title="Onclick Function">
-      <p class="not-prose">In some cases, you may need custom functionality when clicking the previous or next button. You can achieve this using the <code>onPreviousClick</code> and <code>onNextClick</code> props by passing your custom functions to them.</p>
+      <p class="not-prose">In some cases, you may need custom functionality when clicking the previous or next button. You can achieve this using the <code>onPreviousClick</code> and <code>onNextClick</code> props by passing your custom functions to them. Each function receives the click <code>MouseEvent</code>.</p>
       {#snippet example()}
         <Pagination data={paginationData} onPreviousClick={prevFunction} onNextClick={nextFunction} />
       {/snippet}
@@ -205,7 +205,7 @@ tags: [pagination, navigation, data, component, svelte, svelte-5, theui-svelte, 
 
   <DocBlock title="Rounded Corner">
     <Example>
-      <p class="not-prose">The <code>rounded</code> prop in the Pagination component allows you to easily control the border radius, ensuring consistent design throughout the application. This prop supports several predefined values, providing flexibility while maintaining a uniform look. Available values are: <code>none</code>, <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code>, and <code>full</code>. Default value <code>md</code>.</p>
+      <p class="not-prose">The <code>rounded</code> prop sets the corner radius of the page links. Available values are: <code>none</code>, <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code>, <code>2xl</code>, and <code>full</code>. Default value <code>md</code>.</p>
       {#snippet example()}
         <div class="flex flex-col gap-2 w-full">
           <Pagination rounded="none" data={paginationData} />
@@ -231,42 +231,69 @@ tags: [pagination, navigation, data, component, svelte, svelte-5, theui-svelte, 
   </DocBlock>
 
   <DocBlock title="Animation Speed">
-    <p class="not-prose">The <code>animateSpeed</code> prop controls the animation (hover animation in this case) speed of <code>Pagination</code>. Options include <code>'none'</code> for no animation, <code>'slower'</code> or <code>slow</code> for a gradual effect, <code>normal</code> (default) for standard speed, and <code>fast</code> or <code>faster</code> for quicker animations.</p>
+    <p class="not-prose">The <code>animationSpeed</code> prop controls the animation (hover animation in this case) speed of <code>Pagination</code>. Options include <code>'none'</code> for no animation, <code>'slower'</code> or <code>slow</code> for a gradual effect, <code>normal</code> (default) for standard speed, and <code>fast</code> or <code>faster</code> for quicker animations.</p>
     <Example>
       {#snippet example()}
         <div class="flex flex-col gap-2 w-full">
-          <Pagination data={paginationData} animateSpeed="slower" />
-          <Pagination data={paginationData} animateSpeed="slow" />
-          <Pagination data={paginationData} animateSpeed="normal" />
-          <Pagination data={paginationData} animateSpeed="fast" />
-          <Pagination data={paginationData} animateSpeed="faster" />
-          <Pagination data={paginationData} animateSpeed="none" />
+          <Pagination data={paginationData} animationSpeed="slower" />
+          <Pagination data={paginationData} animationSpeed="slow" />
+          <Pagination data={paginationData} animationSpeed="normal" />
+          <Pagination data={paginationData} animationSpeed="fast" />
+          <Pagination data={paginationData} animationSpeed="faster" />
+          <Pagination data={paginationData} animationSpeed="none" />
         </div>
       {/snippet}
       {#snippet code()}
 
 ```html
-<Pagination {data} animateSpeed="slower" />
-<Pagination {data} animateSpeed="slow" />
-<Pagination {data} animateSpeed="normal" />
-<Pagination {data} animateSpeed="fast" />
-<Pagination {data} animateSpeed="faster" />
-<Pagination {data} animateSpeed="none" />
+<Pagination {data} animationSpeed="slower" />
+<Pagination {data} animationSpeed="slow" />
+<Pagination {data} animationSpeed="normal" />
+<Pagination {data} animationSpeed="fast" />
+<Pagination {data} animationSpeed="faster" />
+<Pagination {data} animationSpeed="none" />
 ```
       {/snippet}
     </Example>
   </DocBlock>
 
+  <DocBlock title="Customization">
+    <p class="not-prose">Use the <code>class</code> attribute to style the pagination container. To style the buttons, use these two props:</p>
+    <ul class="my-0">
+      <li><span class="not-prose"><code>buttonClasses</code></span>: Custom classes for the page number buttons that are not active, and the previous and next buttons.</li>
+      <li><span class="not-prose"><code>activeButtonClasses</code></span>: Custom classes for the active page button.</li>
+    </ul>
+    <Example>
+      {#snippet example()}
+        <Pagination
+          data={paginationData}
+          buttonClasses="text-emerald-700 hover:bg-emerald-100 dark:text-emerald-300 dark:hover:bg-emerald-900"
+          activeButtonClasses="bg-emerald-600 text-white"
+        />
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Pagination
+  {data}
+  buttonClasses="text-emerald-700 hover:bg-emerald-100"
+  activeButtonClasses="bg-emerald-600 text-white"
+/>
+```
+      {/snippet}
+    </Example>
+    <p class="not-prose mb-0">Anything else you pass reaches the element itself, so an <code>id</code>, a <code>title</code>, a <code>data-*</code> attribute or an event handler all work the way they would on a <code>&lt;div&gt;</code>.</p>
+  </DocBlock>
+
   <DocBlock title="Accessibility">
     <div>
-      <p class="not-prose">The Pagination component is designed with accessibility in mind, ensuring easy navigation for all users, including those using screen readers or keyboard navigation.</p>
+      <p class="not-prose">The Pagination component carries the roles and labels a screen reader needs, and every link answers to the keyboard.</p>
       <ul class="my-0">
-        <li><b>Keyboard Navigation</b>: Users can navigate through pagination using the <kbd>tab</kbd> key to move focus and <kbd>Enter</kbd> or <kbd>Space</kbd> to activate a button.</li>
-        <li><b>ARIA Labels</b>: The component includes appropriate <span class="not-prose"><code>aria-label</code></span> attributes for previous, next, and page buttons, improving screen reader support.</li>
+        <li><b>Keyboard Navigation</b>: Users can navigate through pagination using the <kbd>tab</kbd> key or the <kbd>←</kbd> and <kbd>→</kbd> arrow keys to move focus, and <kbd>Enter</kbd> or <kbd>Space</kbd> to activate a button.</li>
+        <li><b>ARIA Labels</b>: The component includes appropriate <span class="not-prose"><code>aria-label</code></span> attributes for previous, next, and page buttons, improving screen reader support. The active page link is marked with <span class="not-prose"><code>aria-current="page"</code></span>.</li>
         <li><b>Focus Indicators</b>: Clear focus styles ensure visibility when navigating with a keyboard.</li>
-        <li><b>Semantic HTML</b>: Uses proper HTML elements <span class="not-prose">(<code>button</code>, <code>a</code>, <code>nav</code>, and <code>ul/li</code>)</span> to enhance usability and compatibility with assistive technologies.</li>
+        <li><b>Semantic HTML</b>: Uses proper HTML elements <span class="not-prose">(<code>button</code> and <code>a</code>)</span> inside a <span class="not-prose"><code>role="group"</code></span> container labeled <span class="not-prose"><code>aria-label="Pagination"</code></span>, so assistive technology reads it as one group of page links.</li>
       </ul>
-      <p class="not-prose">These features help make the Pagination component more accessible and user-friendly.</p>
     </div>
   </DocBlock>
 
@@ -287,6 +314,7 @@ tags: [pagination, navigation, data, component, svelte, svelte-5, theui-svelte, 
     <a href={processID("Hide Page Number Buttons")}>Hide Page Number Buttons</a>
     <a href={processID("Rounded Corner")}>Rounded Corner</a>
     <a href={processID("Animation Speed")}>Animation Speed</a>
+    <a href={processID("Customization")}>Customization</a>
     <a href={processID("Accessibility")}>Accessibility</a>
     <a href={processID("Configuration")}>Configuration</a>
   {/snippet}

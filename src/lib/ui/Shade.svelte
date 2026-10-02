@@ -2,7 +2,7 @@
   let {color = "red", position = "top-right"}: {color: 'red' | 'blue' | 'green', position: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right'} = $props()
 </script>
 
-<div class="tui-shade fixed z-[-1] w-[600px] h-[600px] rounded-full opacity-20 blur-[100px]"
+<div class="tui-shade fixed z-[-1] w-150 h-150 rounded-full opacity-20 blur-[100px]"
   class:shade-red     = {color == 'red'}
   class:shade-blue    = {color == 'blue'}
   class:shade-green   = {color == 'green'}

@@ -21,22 +21,22 @@ tags: [dropdown, menu, select, options, component, svelte, svelte-5, theui-svelt
 </script>
 
 {#snippet dropdownBasic()}
-  <DropdownItem url="/">Link 1</DropdownItem>
-  <DropdownItem url="/">Link 2</DropdownItem>
-  <DropdownItem url="/">Link 3</DropdownItem>
+  <DropdownItem href="/">Link 1</DropdownItem>
+  <DropdownItem href="/">Link 2</DropdownItem>
+  <DropdownItem href="/">Link 3</DropdownItem>
 {/snippet}
 
 <DocLayout>
-  <DocHead title="Dropdown" text="The Dropdown component offers a flexible and customizable way to display a list of links or actions in a compact, toggle-able menu. It's perfect for navigation menus, settings, or any context where you want to provide users with multiple options in a clean, organized format." edit_url={editURL("dropdown")} />
+  <DocHead title="Dropdown" text="The Dropdown component shows a list of links or actions in a menu that opens from a trigger. Use it for account menus, settings, and any place where a row of buttons would take too much room." edit_url={editURL("dropdown")} />
 
   <DocBlock title="About">
-    <p class="not-prose">The Dropdown component allows you to create a menu that can be expanded or collapsed by clicking or hovering over a trigger element. It supports various customization options such as alignment, animation styles, animation speeds, and trigger events. Each item within the Dropdown can be linked to different actions or URLs, making it a versatile tool for enhancing user interaction in your application.</p>
+    <p class="not-prose">The menu opens on click or on hover, depending on <code>triggerEvent</code>. Alignment, animation style and animation speed are all props. Each item can be a link, a button, a header or a divider.</p>
   </DocBlock>
 
   <DocBlock title="Example">
     <p class="not-prose">To use the Dropdown component in your project, you first need to import it along with the DropdownItem component. Here's how you can set up the Dropdown in your Svelte component.</p>
     <Example>
-      <p class="not-prose">Here’s a simple example of how to implement the Dropdown component. It includes a label and multiple DropdownItem components, which represent the individual links or actions within the dropdown.</p>
+      <p class="not-prose">Here's a simple example of how to implement the Dropdown component. It includes a label and multiple DropdownItem components, which represent the individual links or actions within the dropdown.</p>
       {#snippet example()}
       <div>
         <Dropdown label="Dropdown">
@@ -52,9 +52,9 @@ tags: [dropdown, menu, select, options, component, svelte, svelte-5, theui-svelt
 </script>
 
 <Dropdown label="Dropdown">
-  <DropdownItem url="/">Link 1</DropdownItem>
-  <DropdownItem url="/">Link 2</DropdownItem>
-  <DropdownItem url="/">Link 3</DropdownItem>
+  <DropdownItem href="/">Link 1</DropdownItem>
+  <DropdownItem href="/">Link 2</DropdownItem>
+  <DropdownItem href="/">Link 3</DropdownItem>
 </Dropdown>
 ```
       {/snippet}
@@ -71,7 +71,7 @@ tags: [dropdown, menu, select, options, component, svelte, svelte-5, theui-svelt
         <li><b>md</b>: The default medium size for a standard dropdown.</li>
         <li><b>lg</b>: A large size for more prominent dropdowns.</li>
         <li><b>full</b>: The dropdown will take up the full width of its container.</li>
-        <li><b>custom</b>: Use this option when you want to set a custom size for the dropdown through additional styling.</li>
+        <li><b>Any width class</b>: Pass a Tailwind width class, such as <code>width="w-[300px]"</code>, to size the dropdown yourself.</li>
       </ul>
       {#snippet example()}
       <div class="flex flex-col justify-between w-full md:w-1/2 flex-wrap gap-y-2">
@@ -90,7 +90,7 @@ tags: [dropdown, menu, select, options, component, svelte, svelte-5, theui-svelt
         <Dropdown label="Full width" width="full" buttonClasses="w-full">
           {@render dropdownBasic()}
         </Dropdown>
-        <Dropdown label="Custom" width="custom" buttonClasses="w-full" dropdownClasses="w-[300px]">
+        <Dropdown label="Custom" width="w-[300px]" buttonClasses="w-full">
           {@render dropdownBasic()}
         </Dropdown>
       </div>
@@ -99,27 +99,27 @@ tags: [dropdown, menu, select, options, component, svelte, svelte-5, theui-svelt
       {#snippet code()}
 ```html
 <!-- Automatically adjusts the size based on content -->
-<Dropdown size="auto"> ... </Dropdown>
+<Dropdown width="auto"> ... </Dropdown>
 
 <!-- Small dropdown -->
-<Dropdown size="sm"> ... </Dropdown>
+<Dropdown width="sm"> ... </Dropdown>
 
 <!-- Default medium size dropdown -->
-<Dropdown size="md"> ... </Dropdown>
+<Dropdown width="md"> ... </Dropdown>
 
 <!-- Large dropdown -->
-<Dropdown size="lg"> ... </Dropdown>
+<Dropdown width="lg"> ... </Dropdown>
 
 <!-- Full-width dropdown -->
-<Dropdown size="full"> ... </Dropdown>
+<Dropdown width="full"> ... </Dropdown>
 
-<!-- Custom size dropdown - set custom width using TailwindCSS class -->
-<Dropdown size="custom" dropdownClasses="w-[300px]"> ... </Dropdown>
+<!-- Custom width - pass any TailwindCSS width class -->
+<Dropdown width="w-[300px]"> ... </Dropdown>
 
 ```
       {/snippet}
     </Example>
-    <p class="not-prose">In these examples, the <code>size</code> prop allows you to quickly adjust the appearance of the dropdown to fit different design needs.</p>
+    <p class="not-prose">In these examples, the <code>width</code> prop allows you to quickly adjust the appearance of the dropdown to fit different design needs. The default is <code>"md"</code>.</p>
   </DocBlock>
 
   <DocBlock title="Alignment">
@@ -175,11 +175,12 @@ tags: [dropdown, menu, select, options, component, svelte, svelte-5, theui-svelt
 
   <DocBlock title="Custom Dropdown Trigger">
     <Example>
-      <p class="not-prose">The <code>label</code> prop allows you to set a custom label for the dropdown trigger. You can either use a text or HTML string or define a custom trigger element using the <code>snippet</code> block.</p>
+      <p class="not-prose">The <code>label</code> prop allows you to set a custom label for the dropdown trigger. You can either use a plain text string or define a custom trigger element using the <code>snippet</code> block.</p>
       <ul class="my-0">
         <li><b>label as props</b>: Directly set the trigger label as a prop.</li>
         <li><b>label as snippet</b>: Define a custom trigger with any HTML or component structure.</li>
       </ul>
+      <p class="not-prose">The trigger is named by its own content, so a trigger with visible text needs nothing else. If your trigger is only an icon or an image, give the dropdown an <code>ariaLabel</code>, for example <code>ariaLabel="Account menu"</code>, so screen reader users know what it opens.</p>
       {#snippet example()}
       <div>
         <Dropdown label="Dropdown text label">
@@ -188,7 +189,7 @@ tags: [dropdown, menu, select, options, component, svelte, svelte-5, theui-svelt
 
         <Dropdown>
           {#snippet label()}
-          <span class="block border border-brand-primary-500 text-brand-primary-500 py-2 px-4 rounded-full">Dropdown snippet label</span>
+          <span class="block border border-brand-500 text-brand-500 py-2 px-4 rounded-full">Dropdown snippet label</span>
           {/snippet}
           {@render dropdownBasic()}
         </Dropdown>
@@ -214,7 +215,7 @@ tags: [dropdown, menu, select, options, component, svelte, svelte-5, theui-svelt
   <DocBlock title="Animation">
     <p class="not-prose">Based on your design requirements, you can customize the animation type and the speed of the <code>Dropdown</code> using the <code>animation</code> and <code>animationSpeed</code> props.</p>
     <Example title="Animation Type">
-      <p class="not-prose">The <code>animation</code> prop controls how the dropdown appears when opened. It supports multiple animation styles to enhance user experience. By default, the dropdown uses the <code>slide-up</code> animation. Adjust this prop to match your design preferences.</p>
+      <p class="not-prose">The <code>animation</code> prop controls how the menu appears when it opens. The default is <code>slide-up</code>.</p>
       <ul class="my-0">
         <li><b>slide-left</b>: The dropdown slides in from the left.</li>
         <li><b>slide-up</b>: The default animation, sliding in from the bottom.</li>
@@ -262,7 +263,6 @@ tags: [dropdown, menu, select, options, component, svelte, svelte-5, theui-svelt
 ```
       {/snippet}
     </Example>
-    <p class="not-prose">These animation options help create a more engaging and visually appealing dropdown experience.</p>
     <Example title="Animation Speed">
       <p class="not-prose">The <code>animationSpeed</code> prop controls the speed of the dropdown animation, allowing for smooth transitions at different paces. It accepts the following values <code>none</code>, <code>slower</code>, <code>slow</code>, <code>normal</code>, <code>fast</code> and <code>faster</code></p>
       {#snippet example()}
@@ -273,7 +273,7 @@ tags: [dropdown, menu, select, options, component, svelte, svelte-5, theui-svelt
         <Dropdown label="Slow" animationSpeed="slow" buttonClasses="w-full">
           {@render dropdownBasic()}
         </Dropdown>
-        <Dropdown label="Medium" animationSpeed="medium" buttonClasses="w-full">
+        <Dropdown label="Normal" animationSpeed="normal" buttonClasses="w-full">
           {@render dropdownBasic()}
         </Dropdown>
         <Dropdown label="Fast" animationSpeed="fast" buttonClasses="w-full">
@@ -299,9 +299,48 @@ tags: [dropdown, menu, select, options, component, svelte, svelte-5, theui-svelt
 ```
       {/snippet}
     </Example>
-    <p class="not-prose">This allows you to tailor the dropdown's animation speed to fit your design needs and improve user interaction.</p>
   </DocBlock>
 
+  <DocBlock title="Arrow Icon">
+    <p class="not-prose">The trigger shows a chevron that rotates when the dropdown opens. Set <code>arrowIcon={false}</code> to hide it, or pass a snippet to replace it with your own icon. The snippet is rendered in place of the chevron, so any rotation or transition is up to you.</p>
+    <Example>
+      {#snippet example()}
+      <div class="flex gap-4">
+        <Dropdown label="With arrow">
+          {@render dropdownBasic()}
+        </Dropdown>
+        <Dropdown label="No arrow" arrowIcon={false}>
+          {@render dropdownBasic()}
+        </Dropdown>
+        <Dropdown label="Custom arrow">
+          {#snippet arrowIcon()}
+            <span class="ms-1">+</span>
+          {/snippet}
+          {@render dropdownBasic()}
+        </Dropdown>
+      </div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<!-- Default chevron -->
+<Dropdown label="With arrow"> ... </Dropdown>
+
+<!-- No icon -->
+<Dropdown label="No arrow" arrowIcon={false}> ... </Dropdown>
+
+<!-- Your own icon -->
+<Dropdown label="Custom arrow">
+  {#snippet arrowIcon()}
+    <span class="ms-1">+</span>
+  {/snippet}
+  ...
+</Dropdown>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
   <DocBlock title="Dropdown Backdrop">
     <p class="not-prose">The <code>backdrop</code> prop determines whether a backdrop is shown behind the dropdown. When set to <code>true</code>, a backdrop is displayed; by default, it is set to <code>false</code>, meaning no backdrop is shown.</p>
     <Example>
@@ -326,27 +365,8 @@ tags: [dropdown, menu, select, options, component, svelte, svelte-5, theui-svelt
   </DocBlock>
 
   <DocBlock title="Close on Outside Click">
-    <p class="not-prose">The <code>closeOnBlur</code> prop controls whether the dropdown closes when it loses focus. By default, it is set to <code>true</code>, meaning the dropdown will close when you click outside of it. Setting it to <code>false</code> will keep the dropdown open even when it loses focus.</p>
-    <Example>
-      {#snippet example()}
-      <div>
-        <Dropdown label="Control Outside Click" closeOnBlur={false}>
-          {@render dropdownBasic()}
-        </Dropdown>
-      </div>
-      {/snippet}
-
-      {#snippet code()}
-```html
-<!-- Keep the dropdown open on blur -->
-<Dropdown closeOnBlur={false}> ... </Dropdown>
-
-<!-- Default behavior: Close dropdown on blur -->
-<Dropdown closeOnBlur={true}> ... </Dropdown>
-
-```
-      {/snippet}
-    </Example>
+    <p class="not-prose">An open dropdown closes by itself when you click anywhere outside it, when you choose an item, and when you press <code>Escape</code>. There is no prop to turn this off. Clicking a header, a divider or empty space inside the menu keeps it open.</p>
+    <p class="not-prose">In <b>hover</b> mode the dropdown also closes shortly after the pointer leaves it, so a small move off the menu does not close it instantly.</p>
   </DocBlock>
 
   <DocBlock title="Dropdown Item">
@@ -359,14 +379,15 @@ tags: [dropdown, menu, select, options, component, svelte, svelte-5, theui-svelt
         <li><b>divider</b>: Adds a visual divider to separate items.</li>
       </ul>
       <p class="not-prose">You can also add custom items, but these four types are provided natively for a consistent UI experience.</p>
+      <p class="not-prose">A <b>link</b> item needs an <code>href</code>; without one it renders as a button. The item content is what you write inside the component, or you can pass it as the <code>text</code> prop, which renders as plain text. For markup, write the content inside the component.</p>
       {#snippet example()}
       <div>
         <Dropdown label="Dropdown">
           <!-- Header item -->
           <DropdownItem type="header">Section Header</DropdownItem>
           <!-- Link item (default) -->
-          <DropdownItem url="/">Link 1</DropdownItem>
-          <DropdownItem url="/">Link 2</DropdownItem>
+          <DropdownItem href="/">Link 1</DropdownItem>
+          <DropdownItem href="/">Link 2</DropdownItem>
           <!-- Divider item -->
           <DropdownItem type="divider"></DropdownItem>
           <!-- Button item -->
@@ -381,8 +402,8 @@ tags: [dropdown, menu, select, options, component, svelte, svelte-5, theui-svelt
   <!-- Header item -->
   <DropdownItem type="header">Section Header</DropdownItem>
   <!-- Link item (default) -->
-  <DropdownItem url="/">Link 1</DropdownItem>
-  <DropdownItem url="/">Link 2</DropdownItem>
+  <DropdownItem href="/">Link 1</DropdownItem>
+  <DropdownItem href="/">Link 2</DropdownItem>
   <!-- Divider item -->
   <DropdownItem type="divider" />
   <!-- Button item -->
@@ -397,12 +418,12 @@ tags: [dropdown, menu, select, options, component, svelte, svelte-5, theui-svelt
       <p class="not-prose">The <code>DropdownItem</code> component provides two snippet blocks, <code>startItem</code> and <code>endItem</code>, for adding custom content before or after the dropdown text.</p>
       <ul class="my-0">
         <li><b>startItem</b>: Displays content before the dropdown text, ideal for icons, images, or similar elements.</li>
-        <li><b>endItem</b>: Shows content after the dropdown text, perfect for badges, extra messages, or additional icons.</li>
+        <li><b>endItem</b>: shows content after the item text, such as a badge, a shortcut hint or a second icon.</li>
       </ul>
       {#snippet example()}
       <div>
-        <Dropdown label="Dropdown" size="md">
-          <DropdownItem url="/">
+        <Dropdown label="Dropdown" width="md">
+          <DropdownItem href="/">
             {#snippet startItem()}
               <Svg>
                 <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2M8 1.918l-.797.161A4 4 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4 4 0 0 0-3.203-3.92zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5 5 0 0 1 13 6c0 .88.32 4.2 1.22 6"/>
@@ -410,13 +431,13 @@ tags: [dropdown, menu, select, options, component, svelte, svelte-5, theui-svelt
             {/snippet}
             Notification
           </DropdownItem>
-          <DropdownItem url="/">
+          <DropdownItem href="/">
             Notification
             {#snippet endItem()}
               <Badge>New</Badge>
             {/snippet}
           </DropdownItem>
-          <DropdownItem url="/">
+          <DropdownItem href="/">
             {#snippet startItem()}
               <Svg>
                 <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2M8 1.918l-.797.161A4 4 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4 4 0 0 0-3.203-3.92zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5 5 0 0 1 13 6c0 .88.32 4.2 1.22 6"/>
@@ -433,8 +454,8 @@ tags: [dropdown, menu, select, options, component, svelte, svelte-5, theui-svelt
 
       {#snippet code()}
 ```html
-<Dropdown label="Dropdown" size="md">
-  <DropdownItem url="/">
+<Dropdown label="Dropdown" width="md">
+  <DropdownItem href="/">
     {#snippet startItem()}
       <Svg>
         <path d="M8 16a2 2 0 0 ... 13 6c0 .88.32 4.2 1.22 6"/>
@@ -442,13 +463,13 @@ tags: [dropdown, menu, select, options, component, svelte, svelte-5, theui-svelt
     {/snippet}
     Notification
   </DropdownItem>
-  <DropdownItem url="/">
+  <DropdownItem href="/">
     Notification
     {#snippet endItem()}
       <Badge>New</Badge>
     {/snippet}
   </DropdownItem>
-  <DropdownItem url="/">
+  <DropdownItem href="/">
     {#snippet startItem()}
       <Svg>
         <path d="M8 16a2 2 0 0 ... 13 6c0 .88.32 4.2 1.22 6"/>
@@ -463,16 +484,16 @@ tags: [dropdown, menu, select, options, component, svelte, svelte-5, theui-svelt
 ```
       {/snippet}
     </Example>
-    <p class="not-prose">These snippet blocks provide flexibility to enhance the dropdown items with additional content while maintaining a clean and consistent design.</p>
+    <p class="not-prose">The two snippets let you put content on either side of the item text without changing its layout.</p>
     <Example title="Custom Item">
       <p class="not-prose">The <code>DropdownItem</code> component also supports fully custom content, allowing you to create items beyond the predefined types. By using custom markup within <code>DropdownItem</code>, you can design complex or unique dropdown items to fit your specific needs.</p>
       {#snippet example()}
       <div>
-        <Dropdown label="Custom Dropdown" size="md">
-          <DropdownItem url="/" class="hover:bg-brand-primary-500 hover:text-on-brand-primary-500 flex-wrap">
+        <Dropdown label="Custom Dropdown" width="md">
+          <DropdownItem href="/" class="hover:bg-brand-500 hover:text-on-brand-500 flex-wrap">
             <div class="w-full text-start">
               <p class="font-bold">Svelte 5 Component</p>
-              Kickstart your development with the theui-svelte, a comprehensive component library designed for the Svelte ecosystem.
+              A component library for Svelte 5, built on Tailwind CSS v4.
             </div>
           </DropdownItem>
         </Dropdown>
@@ -481,8 +502,8 @@ tags: [dropdown, menu, select, options, component, svelte, svelte-5, theui-svelt
 
       {#snippet code()}
 ```html
-<Dropdown label="Custom Dropdown" size="md">
-  <DropdownItem url="/" class="hover:bg-brand-primary-500 ... flex-wrap">
+<Dropdown label="Custom Dropdown" width="md">
+  <DropdownItem href="/" class="hover:bg-brand-500 ... flex-wrap">
     <div class="w-full text-start">
       <p class="font-bold">Svelte 5 Component</p>
       Kickstart your ... ecosystem.
@@ -492,7 +513,7 @@ tags: [dropdown, menu, select, options, component, svelte, svelte-5, theui-svelt
 ```
       {/snippet}
     </Example>
-    <p class="not-prose">This approach offers full flexibility, enabling you to craft dropdown items with custom content and styling, perfect for tailored user interfaces.</p>
+    <p class="not-prose">This way you write the item markup yourself, so the content and the styling are entirely yours.</p>
   </DocBlock>
 
   <DocBlock title="Active State">
@@ -501,9 +522,9 @@ tags: [dropdown, menu, select, options, component, svelte, svelte-5, theui-svelt
       {#snippet example()}
       <div>
         <Dropdown label="Dropdown">
-          <DropdownItem url="/">Link</DropdownItem>
-          <DropdownItem url="/" active={true}>Active Link</DropdownItem>
-          <DropdownItem url="/">Link</DropdownItem>
+          <DropdownItem href="/">Link</DropdownItem>
+          <DropdownItem href="/" active={true}>Active Link</DropdownItem>
+          <DropdownItem href="/">Link</DropdownItem>
         </Dropdown>
       </div>
       {/snippet}
@@ -511,9 +532,9 @@ tags: [dropdown, menu, select, options, component, svelte, svelte-5, theui-svelt
       {#snippet code()}
 ```html
 <Dropdown label="Dropdown">
-  <DropdownItem url="/">Link</DropdownItem>
-  <DropdownItem url="/" active={true}>Active Link</DropdownItem>
-  <DropdownItem url="/">Link</DropdownItem>
+  <DropdownItem href="/">Link</DropdownItem>
+  <DropdownItem href="/" active={true}>Active Link</DropdownItem>
+  <DropdownItem href="/">Link</DropdownItem>
 </Dropdown>
 ```
       {/snippet}
@@ -527,10 +548,11 @@ tags: [dropdown, menu, select, options, component, svelte, svelte-5, theui-svelt
       <ul class="my-0">
         <li><b>containerClasses</b>: Custom classes for the outer dropdown container.</li>
         <li><b>dropdownClasses</b>: Customizes the dropdown content area.</li>
-        <li><b>linkClasses</b>: Sets custom classes for regular dropdown links.</li>
-        <li><b>activeLinkClasses</b>: Applies custom classes to the active dropdown item.</li>
+        <li><b>itemClasses</b>: Sets custom classes for regular dropdown items.</li>
+        <li><b>activeItemClasses</b>: Applies custom classes to the active dropdown item.</li>
         <li><b>dividerClasses</b>: Customizes the appearance of divider items.</li>
         <li><b>headerClasses</b>: Adds custom styling to header items within the dropdown.</li>
+        <li><b>buttonClasses</b>: Styles the trigger itself, for example <code>buttonClasses="w-full"</code> to make it fill its container.</li>
       </ul>
       {#snippet example()}
       <div>
@@ -538,15 +560,15 @@ tags: [dropdown, menu, select, options, component, svelte, svelte-5, theui-svelt
           label="Customized Dropdown"
           containerClasses="border-4 rounded-xl"
           dropdownClasses="shadow-lg bg-green-50"
-          linkClasses="text-green-500 hover:bg-green-100"
-          activeLinkClasses="text-white bg-green-500"
+          itemClasses="text-green-500 hover:bg-green-100"
+          activeItemClasses="text-white bg-green-500"
           dividerClasses="border-b-2 border-green-200"
           headerClasses="text-green-600 text-xs"
         >
-          <DropdownItem url="/">Link 1</DropdownItem>
+          <DropdownItem href="/">Link 1</DropdownItem>
           <DropdownItem type="header">Section Header</DropdownItem>
           <DropdownItem type="divider" />
-          <DropdownItem url="/" active={true}>Link 2</DropdownItem>
+          <DropdownItem href="/" active={true}>Link 2</DropdownItem>
         </Dropdown>
       </div>
       {/snippet}
@@ -557,36 +579,36 @@ tags: [dropdown, menu, select, options, component, svelte, svelte-5, theui-svelt
   label="Customized Dropdown"
   containerClasses="border-4 rounded-xl"
   dropdownClasses="shadow-lg bg-green-50"
-  linkClasses="text-green-500 hover:bg-green-100"
-  activeLinkClasses="text-white bg-green-500"
+  itemClasses="text-green-500 hover:bg-green-100"
+  activeItemClasses="text-white bg-green-500"
   dividerClasses="border-b-2 border-green-200"
   headerClasses="text-green-600 text-xs"
 >
-  <DropdownItem url="/">Link 1</DropdownItem>
+  <DropdownItem href="/">Link 1</DropdownItem>
   <DropdownItem type="header">Section Header</DropdownItem>
   <DropdownItem type="divider" />
-  <DropdownItem url="/" active={true}>Link 2</DropdownItem>
+  <DropdownItem href="/" active={true}>Link 2</DropdownItem>
 </Dropdown>
 ```
       {/snippet}
     </Example>
-    <p class="not-prose">These props enable you to tailor the dropdown's look and feel, ensuring it aligns with your design preferences and project requirements.</p>
+    <p class="not-prose">These props cover the trigger, the menu and the items, so each part can be styled on its own.</p>
   </DocBlock>
 
   <DocBlock title="Accessibility">
     <div>
       <p class="not-prose">The Dropdown component follows WAI-ARIA best practices.</p>
       <ul class="my-0">
-        <li><span class="not-prose">The trigger button uses <code>aria-haspopup="menu"</code>, <code>aria-expanded</code>, and <code>aria-controls</code> to describe the dropdown behavior.</span></li>
+        <li><span class="not-prose">The trigger button uses <code>aria-haspopup="menu"</code>, <code>aria-expanded</code>, and <code>aria-controls</code> to describe the dropdown behavior. Its name comes from the trigger content; set <code>ariaLabel</code> when the trigger has no visible text.</span></li>
         <li>
           <span class="not-prose">The dropdown list uses <code>role="menu"</code> with each item using appropriate roles:</span>
           <ul class="my-0">
-            <li><span class="not-prose"><code>menuitem</code> for clickable items</span></li>
-            <li><span class="not-prose"><code>heading</code> for group labels</span></li>
-            <li><span class="not-prose"><code>presentation</code> for dividers</span></li>
+            <li><span class="not-prose"><code>menuitem</code> on the link or button of each item</span></li>
+            <li><span class="not-prose">a heading element for group labels</span></li>
+            <li><span class="not-prose"><code>separator</code> for dividers</span></li>
           </ul>
         </li>
-        <li><span class="not-prose">Keyboard navigation is supported via arrow keys, <code>Enter</code> and <code>Escape</code>.</li>
+        <li><span class="not-prose">On the trigger, <code>ArrowDown</code> opens the menu, <code>ArrowUp</code> and <code>Escape</code> close it, and <code>Enter</code> or <code>Space</code> toggles it. Keys pressed on an item are left to that item, so <code>Enter</code> follows a link, and <code>Escape</code> still closes the menu and moves focus back to the trigger.</span></li>
       </ul>
     </div>
   </DocBlock>
@@ -606,6 +628,7 @@ tags: [dropdown, menu, select, options, component, svelte, svelte-5, theui-svelt
     <a href={processID("Animation")}>Animation</a>
     <a href={processID("Animation Type")} class="ps-4">Animation type</a>
     <a href={processID("Animation Speed")} class="ps-4">Animation speed</a>
+    <a href={processID("Arrow Icon")}>Arrow icon</a>
     <a href={processID("Dropdown Backdrop")}>Backdrop</a>
     <a href={processID("Close on Outside Click")}>Close on outside click</a>
 

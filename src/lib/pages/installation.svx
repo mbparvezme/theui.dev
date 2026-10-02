@@ -1,7 +1,7 @@
 ---
 title: Installation Guide
 category: Guides
-description: Step-by-step instructions to install theui-svelte component library for seamless integration.
+description: Step by step instructions for installing the theui-svelte component library.
 dir: ".lib/pages"
 tags: [installation, setup, guide, theui-svelte, svelte, component-library]
 ---
@@ -12,7 +12,6 @@ tags: [installation, setup, guide, theui-svelte, svelte, component-library]
   import DocBlock from "$lib/ui/doc/Block.svelte";
   import Code from "$lib/ui/doc/CodeBlock.svelte";
   import { processID, editURL } from "$lib";
-  let { components }: {components: any } = $props();
 </script>
 
 <DocLayout>
@@ -20,13 +19,15 @@ tags: [installation, setup, guide, theui-svelte, svelte, component-library]
   <DocHead title="Installation" text="Install the <b>theui-svelte</b> component library in your project or start a new project with the boilerplate template. Install it to build fast and deliver faster." edit_url={editURL("installation")} />
 
   <DocBlock title="Installation">
+    <p class="not-prose"><b>Requirements:</b> Svelte 5.57.1 or newer, Tailwind CSS v4 and Node.js 22.12 or newer.</p>
     <div>
       <p class="not-prose">Follow one of the two methods to install the component library:</p>
       <ol class="mb-0 mt-0">
         <li class="my-0">Github boilerplate.</li>
-        <li class="my-0">Manually installation.</li>
+        <li class="my-0">Manual installation.</li>
       </ol>
     </div>
+    <p class="not-prose mb-0">The form styles come with the package, so there is no Tailwind plugin to add by hand. The typography plugin is not included: install <code>@tailwindcss/typography</code> yourself if your own pages use its <code>prose</code> classes.</p>
   </DocBlock>
 
   <DocBlock title="Use Github Boilerplate" id="boilerplate">
@@ -59,12 +60,13 @@ npm run dev
 <Code title="Install SvelteKit" space="bottom">
 
 ```bash
-# Install Sveltekit
-# Skip this step if you have already installed
+# Create a SvelteKit project
+# When prompted "What would you like to add to your project?", select tailwindcss
 npx sv create my-app
 cd my-app
-# Install node modules
-npm install
+
+# Add Tailwind CSS - if you didn't select tailwindcss during the project creation, run:
+# npx sv add tailwindcss
 
 # Install theui-svelte
 npm install theui-svelte
@@ -86,7 +88,7 @@ npm install theui-svelte
 
   <p>That's it! You're ready to start building your awesome project. Now, run your application with:</p>
 
-<Code title="Install SvelteKit">
+<Code title="Run the development server">
 
 ```bash
 # Run SvelteKit project
@@ -96,9 +98,52 @@ npm run dev
 
   </DocBlock>
 
+  <DocBlock title="Your First Component">
+    <p class="not-prose">Components are named exports of <code>theui-svelte</code>, so you import the ones you use and nothing else. Drop this into a page to see that everything is wired up: the button raises a notification, which means the components, the styles and the store are all working.</p>
+<Code title="+page.svelte">
+
+```svelte
+<script>
+  import { Button, Notification, notify } from "theui-svelte"
+</script>
+
+<Notification position="top-end" />
+
+<Button onclick={() => notify("It works", "success")}>Say hello</Button>
+```
+</Code>
+    <p class="not-prose mb-0">Two more entry points come with the package: <code>theui-svelte/type</code> for the <a href="/docs/types">TypeScript types</a>, and <code>theui-svelte/function</code> for helpers such as <code>notify</code> and <code>sanitize</code>.</p>
+  </DocBlock>
+
+  <DocBlock title="Dark Mode">
+    <p class="not-prose">Dark mode is driven by a <code>dark</code> class on the <code>&lt;html&gt;</code> element. The stylesheet you imported brings the variant with it, so there is nothing to add to your Tailwind setup, and every component already carries its dark styles.</p>
+    <p class="not-prose mb-0">Put the <a href="/docs/dark-mode"><code>DarkMode</code></a> component somewhere in your layout and it does the rest: it follows the operating system until someone chooses for themselves, then remembers that choice.</p>
+  </DocBlock>
+
+  <DocBlock title="Upgrading From Version 2">
+    <p class="not-prose">Version 3 is a break with version 2. These are the changes most likely to touch your code:</p>
+    <ul class="mt-0">
+      <li>Svelte 5.57.1 or newer and Node.js 22.12 or newer are required.</li>
+      <li>The brand colors were renamed: <code>brand-primary-50</code> ... <code>brand-primary-950</code> are now <code>brand-50</code> ... <code>brand-950</code>, and <code>text-on-brand-primary</code> is now <code>text-on-brand</code>. Rename them in your markup, and rename <code>--color-brand-primary-*</code> and <code>--text-color-on-brand-primary</code> if you overrode them.</li>
+      <li>The second brand color is gone. <code>brand-secondary-*</code> and <code>text-on-brand-secondary</code> no longer exist; use any Tailwind color, or one of your own, in their place.</li>
+      <li>The raw surface values are prefixed now: <code>--light1</code> ... <code>--dark3</code> are <code>--theui-light1</code> ... <code>--theui-dark3</code>. This only matters if you overrode them; <code>bg-primary</code>, <code>bg-secondary</code> and <code>bg-tertiary</code> are unchanged.</li>
+      <li>String props such as <code>helperText</code>, a <code>title</code> or a <code>label</code> render as plain text now. Pass a snippet, or write the content inside the component, where you used to pass markup.</li>
+      <li><code>Tab</code> and <code>TabPanel</code> each need a <code>value</code>, and a tab opens the panel that carries the same one.</li>
+      <li><code>Toggle</code> uses <code>checked</code> for a checkbox and <code>group</code> for a radio; <code>value</code> is now only the value of the input.</li>
+      <li>The <code>reverse</code> attribute of <code>Checkbox</code>, <code>Radio</code> and <code>Toggle</code> is now <code>labelPosition</code>.</li>
+      <li><code>Button</code>, <code>QabItem</code> and <code>NavBrand</code> no longer invent an <code>aria-label</code>, so give icon-only controls an <code>ariaLabel</code> of your own.</li>
+      <li>The <code>position</code> setting of <code>notify()</code> moved to the <code>position</code> prop of the <code>Notification</code> component.</li>
+      <li><code>style.css</code> no longer loads <code>@tailwindcss/typography</code>.</li>
+    </ul>
+    <p class="not-prose mb-0">The changelog in the <a href="https://github.com/mbparvezme/theui-svelte" target="_blank" rel="noopener">GitHub repository</a> lists every change, including the rewritten <code>Slider</code> and the new components.</p>
+  </DocBlock>
+
   {#snippet sidebar()}
     <a href="#boilerplate">Install from boilerplate</a>
     <a href="#manualInstallation">Install manually</a>
+    <a href={processID("Your First Component")}>Your first component</a>
+    <a href={processID("Dark Mode")}>Dark mode</a>
+    <a href={processID("Upgrading From Version 2")}>Upgrading from v2</a>
   {/snippet}
 
 </DocLayout>

@@ -1,7 +1,7 @@
-<SEO title="License" />
+<SEO title="License" description={metadata.description} keywords={metadata.tags?.join(", ")} />
 <Page />
 
 <script lang="ts">
   import SEO from "$lib/SEO.svelte"
-  import Page from "$lib/pages/license.svx"
+  import Page, { metadata } from "$lib/pages/license.svx"
 </script>

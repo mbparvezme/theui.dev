@@ -1,0 +1,252 @@
+---
+title: Skeleton
+category: Components
+description: Show the shape of content while it loads with theui-svelte's Skeleton component, in text, rectangle and circle variants.
+dir: ".lib/pages"
+tags: [skeleton, placeholder, loading, shimmer, component, svelte, svelte-5, theui-svelte, component-library, ui, tailwindcss]
+---
+
+<script lang="ts">
+  import DocLayout from "$lib/ui/doc/DocLayout.svelte";
+  import DocHead from "$lib/ui/doc/Head.svelte";
+  import DocBlock from "$lib/ui/doc/Block.svelte";
+  import Code from "$lib/ui/doc/CodeBlock.svelte";
+  import Example from "$lib/ui/doc/Example.svelte";
+  import ConfigComponent from "$lib/ui/doc/ConfigComponent.svelte";
+  import { processID, editURL } from "$lib";
+  let { component }: {component: any } = $props();
+
+  import { Skeleton } from "theui-svelte";
+
+  let loading = $state(true)
+</script>
+
+<DocLayout>
+  <DocHead title="Skeleton" text="The Skeleton component stands in for content that has not arrived yet. Instead of an empty area or a spinning circle, the page already shows the shape of what is coming, so nothing jumps when the data lands." edit_url={editURL("skeleton")} />
+
+  <DocBlock title="Example">
+    <p class="not-prose">Import the component and give it the size of the thing it replaces. The default variant is a rectangle.</p>
+    <Example>
+      {#snippet example()}
+        <div class="w-full">
+          <Skeleton />
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<script>
+  import { Skeleton } from "theui-svelte";
+</script>
+
+<Skeleton />
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Variants">
+    <p class="not-prose">The <code>variant</code> prop takes <code>rect</code> (default), <code>circle</code> for avatars, and <code>text</code> for lines of writing.</p>
+    <Example>
+      {#snippet example()}
+        <div class="flex w-full flex-col gap-4">
+          <Skeleton variant="rect" class="h-16" />
+          <Skeleton variant="circle" />
+          <Skeleton variant="text" />
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Skeleton variant="rect" class="h-16" />
+<Skeleton variant="circle" />
+<Skeleton variant="text" />
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Text Lines">
+    <p class="not-prose">With <code>variant="text"</code>, the <code>lines</code> prop draws a paragraph. The last line is shorter, the way a real paragraph ends. Each line takes the line height of its parent, so the placeholder matches the text that will replace it.</p>
+    <Example>
+      {#snippet example()}
+        <div class="flex w-full flex-col gap-6">
+          <Skeleton variant="text" lines={3} />
+          <div class="text-2xl">
+            <Skeleton variant="text" lines={2} />
+          </div>
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Skeleton variant="text" lines={3} />
+
+<!-- The line height comes from the parent -->
+<div class="text-2xl">
+  <Skeleton variant="text" lines={2} />
+</div>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Animation">
+    <p class="not-prose">The <code>animation</code> prop takes <code>pulse</code> (default), <code>wave</code> for a shimmer that travels across, and <code>none</code> for a still placeholder.</p>
+    <Example>
+      {#snippet example()}
+        <div class="flex w-full flex-col gap-4">
+          <Skeleton animation="pulse" class="h-10" />
+          <Skeleton animation="wave" class="h-10" />
+          <Skeleton animation="none" class="h-10" />
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Skeleton animation="pulse" class="h-10" />
+<Skeleton animation="wave" class="h-10" />
+<Skeleton animation="none" class="h-10" />
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Size and Shape">
+    <p class="not-prose">Size comes from your own classes, so any width, height or aspect ratio works. The <code>rounded</code> prop sets the corner radius of the <code>rect</code> and <code>text</code> variants.</p>
+    <Example>
+      {#snippet example()}
+        <div class="flex w-full flex-col gap-4">
+          <Skeleton class="h-8 w-40" rounded="full" />
+          <Skeleton class="aspect-video w-full max-w-sm" rounded="xl" />
+          <div class="flex items-center gap-3">
+            <Skeleton variant="circle" class="size-8" />
+            <Skeleton variant="circle" class="size-12" />
+            <Skeleton variant="circle" class="size-16" />
+          </div>
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Skeleton class="h-8 w-40" rounded="full" />
+<Skeleton class="aspect-video w-full max-w-sm" rounded="xl" />
+
+<Skeleton variant="circle" class="size-8" />
+<Skeleton variant="circle" class="size-12" />
+<Skeleton variant="circle" class="size-16" />
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Card Placeholder">
+    <p class="not-prose">Put a few skeletons together to stand in for a whole card. Match the real layout as closely as you can, so the page does not move when the content arrives.</p>
+    <Example>
+      {#snippet example()}
+        <div class="w-full max-w-sm rounded-xl bg-secondary p-4">
+          <Skeleton animation="wave" class="mb-4 aspect-video w-full" rounded="lg" />
+          <div class="flex items-center gap-3">
+            <Skeleton variant="circle" animation="wave" class="size-10" />
+            <div class="grow">
+              <Skeleton variant="text" animation="wave" lines={2} />
+            </div>
+          </div>
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<div class="w-full max-w-sm rounded-xl bg-secondary p-4">
+  <Skeleton animation="wave" class="mb-4 aspect-video w-full" rounded="lg" />
+  <div class="flex items-center gap-3">
+    <Skeleton variant="circle" animation="wave" class="size-10" />
+    <div class="grow">
+      <Skeleton variant="text" animation="wave" lines={2} />
+    </div>
+  </div>
+</div>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Swapping in Content">
+    <p class="not-prose">Show the skeleton while the data is on its way and the real content once it arrives. Mark the area that is loading with <code>aria-busy</code>, so assistive technology knows the content is not final.</p>
+    <Example>
+      {#snippet example()}
+        <div class="w-full">
+          <button class="mb-4 rounded-md bg-brand-500 px-3 py-1 text-on-brand" onclick={() => loading = !loading}>
+            {loading ? "Show content" : "Show skeleton"}
+          </button>
+          <div aria-busy={loading}>
+            {#if loading}
+              <Skeleton variant="text" lines={3} />
+            {:else}
+              <p class="not-prose">The real content is here now. It takes the same space as the placeholder, so nothing jumps.</p>
+            {/if}
+          </div>
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<script>
+  let loading = $state(true)
+</script>
+
+<div aria-busy={loading}>
+  {#if loading}
+    <Skeleton variant="text" lines={3} />
+  {:else}
+    <p>The real content is here now.</p>
+  {/if}
+</div>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Customization">
+    <p class="not-prose">The <code>class</code> prop sets the size and the colour of the placeholder, and <code>lineClasses</code> styles every line of the <code>text</code> variant.</p>
+    <Example>
+      {#snippet example()}
+        <div class="flex w-full flex-col gap-4">
+          <Skeleton class="h-10 bg-brand-500/20" />
+          <Skeleton class="h-10 bg-info-200 dark:bg-info-900" animation="wave" />
+          <Skeleton variant="text" lines={3} lineClasses="h-3 rounded-full" />
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Skeleton class="h-10 bg-brand-500/20" />
+<Skeleton class="h-10 bg-info-200 dark:bg-info-900" animation="wave" />
+<Skeleton variant="text" lines={3} lineClasses="h-3 rounded-full" />
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Accessibility">
+    <p class="not-prose">A skeleton is decoration, so it is hidden from screen readers with <code>aria-hidden</code>. What matters is the area around it: put <code>aria-busy="true"</code> on the container while it loads, and remove it once the content is there. Announce the result in a live region if the wait is long. For people who prefer reduced motion both animations stop by themselves, leaving a plain placeholder.</p>
+  </DocBlock>
+
+  <DocBlock title="Configuration">
+    <ConfigComponent {component} />
+  </DocBlock>
+
+  {#snippet sidebar()}
+    <a href={processID("Example")}>Example</a>
+    <a href={processID("Variants")}>Variants</a>
+    <a href={processID("Text Lines")}>Text lines</a>
+    <a href={processID("Animation")}>Animation</a>
+    <a href={processID("Size and Shape")}>Size and shape</a>
+    <a href={processID("Card Placeholder")}>Card placeholder</a>
+    <a href={processID("Swapping in Content")}>Swapping in content</a>
+    <a href={processID("Customization")}>Customization</a>
+    <a href={processID("Accessibility")}>Accessibility</a>
+    <a href={processID("Configuration")}>Configuration</a>
+  {/snippet}
+
+</DocLayout>

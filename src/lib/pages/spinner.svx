@@ -1,0 +1,202 @@
+---
+title: Spinner
+category: Components
+description: Show that something is loading with a ring, dots or ping spinner from theui-svelte.
+dir: ".lib/pages"
+tags: [spinner, loader, loading, progress, component, svelte, svelte-5, theui-svelte, component-library, ui, tailwindcss]
+---
+
+<script lang="ts">
+  import DocLayout from "$lib/ui/doc/DocLayout.svelte";
+  import DocHead from "$lib/ui/doc/Head.svelte";
+  import DocBlock from "$lib/ui/doc/Block.svelte";
+  import Code from "$lib/ui/doc/CodeBlock.svelte";
+  import Example from "$lib/ui/doc/Example.svelte";
+  import ConfigComponent from "$lib/ui/doc/ConfigComponent.svelte";
+  import { processID, editURL } from "$lib";
+  let { component }: {component: any } = $props();
+
+  import { Spinner, Button } from "theui-svelte";
+</script>
+
+<DocLayout>
+  <DocHead title="Spinner" text="The Spinner component tells the user that something is on its way. Use it while data loads, while a form is being sent, or inside a button that is busy. Use the Progress bar instead when you know how far along the work is." edit_url={editURL("spinner")} />
+
+  <DocBlock title="Example">
+    <p class="not-prose">Import the component and place it where the content will appear. It carries the text "Loading" for screen readers, so nothing else is needed for it to be announced.</p>
+    <Example>
+      {#snippet example()}
+        <Spinner />
+      {/snippet}
+      {#snippet code()}
+
+```html
+<script>
+  import { Spinner } from "theui-svelte";
+</script>
+
+<Spinner />
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Variants">
+    <p class="not-prose">The <code>variant</code> prop picks the shape: <code>ring</code> (default), <code>dots</code> or <code>ping</code>.</p>
+    <Example>
+      {#snippet example()}
+        <div class="flex items-center gap-8">
+          <Spinner variant="ring" />
+          <Spinner variant="dots" />
+          <Spinner variant="ping" />
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Spinner variant="ring" />
+<Spinner variant="dots" />
+<Spinner variant="ping" />
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Sizes">
+    <p class="not-prose">Sizes run from <code>xs</code> to <code>xl</code>, with <code>md</code> as the default. Every variant takes the same sizes.</p>
+    <Example>
+      {#snippet example()}
+        <div class="flex items-center gap-8">
+          <Spinner size="xs" />
+          <Spinner size="sm" />
+          <Spinner size="md" />
+          <Spinner size="lg" />
+          <Spinner size="xl" />
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Spinner size="xs" />
+<Spinner size="sm" />
+<Spinner size="md" />
+<Spinner size="lg" />
+<Spinner size="xl" />
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Colors">
+    <p class="not-prose">The spinner is drawn in the current text colour, so a text colour class is all it takes to recolour it. The default is your brand colour.</p>
+    <Example>
+      {#snippet example()}
+        <div class="flex items-center gap-8">
+          <Spinner />
+          <Spinner class="text-info-500" />
+          <Spinner class="text-success-500" variant="dots" />
+          <Spinner class="text-error-500" variant="ping" />
+          <Spinner class="text-muted" />
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Spinner />
+<Spinner class="text-info-500" />
+<Spinner class="text-success-500" variant="dots" />
+<Spinner class="text-error-500" variant="ping" />
+<Spinner class="text-muted" />
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="With Text">
+    <p class="not-prose">Put text inside the component to show a visible message next to the spinner. The hidden "Loading" text is dropped in that case, because your own text is read instead.</p>
+    <Example>
+      {#snippet example()}
+        <div class="flex flex-col gap-4">
+          <Spinner>Loading your data...</Spinner>
+          <Spinner variant="dots" class="text-muted">Please wait</Spinner>
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Spinner>Loading your data...</Spinner>
+<Spinner variant="dots" class="text-muted">Please wait</Spinner>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="In a Button">
+    <p class="not-prose">A spinner sits happily inside a button while the form is being sent. Keep the button disabled until the work is done.</p>
+    <Example>
+      {#snippet example()}
+        <div class="flex items-center gap-4">
+          <button class="inline-flex items-center gap-2 rounded-md bg-brand-500 px-4 py-2 font-medium text-on-brand opacity-80" disabled>
+            <Spinner size="xs" class="text-on-brand" label="Saving" />
+            Saving...
+          </button>
+          <button class="inline-flex items-center gap-2 rounded-md border border-gray-300 px-4 py-2 font-medium dark:border-gray-600" disabled>
+            <Spinner size="xs" variant="dots" label="Sending" />
+            Sending
+          </button>
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<button class="inline-flex items-center gap-2 ..." disabled>
+  <Spinner size="xs" class="text-on-brand" label="Saving" />
+  Saving...
+</button>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Customization">
+    <p class="not-prose">The <code>class</code> prop styles the wrapper, which is where the colour and the gap live, and <code>spinnerClasses</code> styles the moving shape itself, such as its border width.</p>
+    <Example>
+      {#snippet example()}
+        <div class="flex items-center gap-8">
+          <Spinner size="lg" spinnerClasses="border-4 border-brand-500 border-e-transparent" />
+          <Spinner size="lg" spinnerClasses="border-dotted" />
+          <Spinner size="lg" class="gap-4 text-info-500 font-semibold">Uploading</Spinner>
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Spinner size="lg" spinnerClasses="border-4 border-brand-500 border-e-transparent" />
+<Spinner size="lg" spinnerClasses="border-dotted" />
+<Spinner size="lg" class="gap-4 text-info-500 font-semibold">Uploading</Spinner>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Accessibility">
+    <p class="not-prose">The spinner is a live status: it carries <code>role="status"</code> and a hidden label, set with the <code>label</code> prop, so a screen reader announces that something is loading without moving focus. Change <code>label</code> to say what is happening, such as "Saving" or "Sending", when several things can load on one page. For people who prefer reduced motion the animation slows down instead of stopping, so the message is still there. If the wait is long, tell the user what to expect in text rather than leaving a spinning shape alone.</p>
+  </DocBlock>
+
+  <DocBlock title="Configuration">
+    <ConfigComponent {component} />
+  </DocBlock>
+
+  {#snippet sidebar()}
+    <a href={processID("Example")}>Example</a>
+    <a href={processID("Variants")}>Variants</a>
+    <a href={processID("Sizes")}>Sizes</a>
+    <a href={processID("Colors")}>Colors</a>
+    <a href={processID("With Text")}>With text</a>
+    <a href={processID("In a Button")}>In a button</a>
+    <a href={processID("Customization")}>Customization</a>
+    <a href={processID("Accessibility")}>Accessibility</a>
+    <a href={processID("Configuration")}>Configuration</a>
+  {/snippet}
+
+</DocLayout>

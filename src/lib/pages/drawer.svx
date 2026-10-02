@@ -1,7 +1,7 @@
 ---
 title: Drawer
 category: Components
-description: A versatile UI element that slides in from the screen edge to show extra content or navigation without blocking the main view.
+description: A panel that slides in from the edge of the screen to hold navigation or extra content.
 dir: ".lib/pages"
 tags: [drawer, sidebar, slide-in, navigation, component, svelte, svelte-5, theui-svelte, component-library, ui, tailwindcss]
 ---
@@ -21,7 +21,7 @@ tags: [drawer, sidebar, slide-in, navigation, component, svelte, svelte-5, theui
 </script>
 
 <DocLayout>
-  <DocHead title="Drawer" text="The Drawer component is a versatile UI element that slides in from the edge of the screen, providing a convenient way to display additional content or navigation without disrupting the main view." edit_url={editURL("drawer")} />
+  <DocHead title="Drawer" text="The Drawer component slides a panel in from the edge of the screen. Use it for navigation, filters, or any content that does not need to take over the page." edit_url={editURL("drawer")} />
 
   <DocBlock title="Example">
     <p class="not-prose">Import the <code>Drawer</code> component first to use it in your application. Here's a basic example demonstrating how to use the Drawer component:</p>
@@ -48,13 +48,13 @@ tags: [drawer, sidebar, slide-in, navigation, component, svelte, svelte-5, theui
 ```
       {/snippet}
     </Example>
-    <p class="not-prose">In this example, the <code>Drawer</code> slides in from the left side of the screen which is the default behavior. The trigger snippet contains a button that toggles the visibility of the Drawer. You can replace the content inside the Drawer with any elements you need.</p>
+    <p class="not-prose">In this example, the <code>Drawer</code> slides in from the left side of the screen which is the default behavior. The <code>label</code> prop creates the button that toggles the visibility of the Drawer. You can replace the content inside the Drawer with any elements you need.</p>
   </DocBlock>
 
   <DocBlock title="Position">
     <Example>
     <p class="not-prose">The <code>position</code> prop allows you to control where the Drawer appears on the screen. You can choose from four positions: <code>top</code>, <code>end</code>, <code>bottom</code>, or <code>start</code>. This flexibility lets you tailor the Drawer's placement to fit the layout and design of your application.</p>
-    <p class="not-prose">Simply set the <code>position</code> prop to your desired value to change where the Drawer opens from, creating a more intuitive user experience based on your app's needs.</p>
+    <p class="not-prose">Set the <code>position</code> prop to change which edge the Drawer opens from.</p>
       {#snippet example()}
         <Drawer label="Start">
           <div class="p-8">
@@ -89,6 +89,45 @@ tags: [drawer, sidebar, slide-in, navigation, component, svelte, svelte-5, theui
     </Example>
   </DocBlock>
 
+  <DocBlock title="Fullscreen Drawer">
+    <Example>
+      <p class="not-prose">Add the <code>fullscreen</code> attribute to make the Drawer cover the entire screen. It still slides in from the side set by the <code>position</code> prop. A fullscreen Drawer has no backdrop; use the close button or <kbd>Escape</kbd> to close it.</p>
+      {#snippet example()}
+        <Drawer label="Fullscreen" fullscreen>
+          <div class="p-8">
+            Fullscreen Drawer
+          </div>
+        </Drawer>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Drawer label="Fullscreen" fullscreen>...</Drawer>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Trigger Customization">
+    <Example>
+      <p class="not-prose">Use the <code>buttonClasses</code> prop to style the trigger created from the <code>label</code> prop. The classes are applied to the trigger button, or to the trigger wrapper when <code>label</code> is a snippet.</p>
+      {#snippet example()}
+        <Drawer label="Custom trigger" buttonClasses="bg-emerald-600 text-white rounded-full">
+          <div class="p-8">
+            Drawer content
+          </div>
+        </Drawer>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Drawer label="Custom trigger" buttonClasses="bg-emerald-600 text-white rounded-full">...</Drawer>
+```
+      {/snippet}
+    </Example>
+    <p class="not-prose mb-0">Anything else you pass reaches the element itself, so a <code>title</code>, a <code>data-*</code> attribute or an event handler all work the way they would on a <code>&lt;div&gt;</code>. The <code>id</code> is the exception: the component sets its own so the trigger button can point at the panel with <code>aria-controls</code>.</p>
+  </DocBlock>
+
   <DocBlock title="Outlying Trigger">
     <p class="not-prose">You can open or close the <code>Drawer</code> from outside by binding a reactive variable to its <code>open</code> prop. This is useful when the trigger button is placed elsewhere in your layout.</p>
     <Example>
@@ -113,8 +152,8 @@ tags: [drawer, sidebar, slide-in, navigation, component, svelte, svelte-5, theui
 <!-- Outlaying button -->
 <Button onclick={()=>openDrawer=!openDrawer}>Trigger drawer</Button>
 
-<Drawer id="myDrawerID">
-  <!-- Drawer content -->  
+<Drawer bind:open={openDrawer}>
+  <!-- Drawer content -->
 </Drawer>
 ```
       {/snippet}
@@ -141,7 +180,7 @@ tags: [drawer, sidebar, slide-in, navigation, component, svelte, svelte-5, theui
     </Example>
     <Example title="Preventing Backdrop Click">
     <p class="not-prose">By default, the Drawer closes when the user clicks on the backdrop. This behavior helps users easily dismiss the Drawer by clicking outside of it, enhancing usability in most scenarios.</p>
-    <p class="not-prose">However, for critical tasks, you can prevent this by setting the <code>staticBackdrop</code> prop to <code>true</code>, ensuring the Drawer stays open until manually closed.</p>
+    <p class="not-prose">Set <code>staticBackdrop</code> to <code>true</code> and a click on the backdrop no longer closes it, which is what you want when the visitor is part way through something.</p>
       {#snippet example()}
         <Drawer label="Backdrop Click Disabled" staticBackdrop={true}>
           <div class="p-8">
@@ -178,7 +217,7 @@ tags: [drawer, sidebar, slide-in, navigation, component, svelte, svelte-5, theui
   <DocBlock title="Animation Speed">
     <Example>
       <p class="not-prose">The animationSpeed prop controls how quickly the Drawer appears or disappears. It supports the following values: <code>"none"</code>, <code>"slower"</code>, <code>"slow"</code>, <code>"normal"</code>, <code>"fast"</code> (default), and <code>"faster"</code>.</p>
-      <p class="not-prose">This gives you flexibility to adjust the opening and closing speed based on your design needs — whether you want a smooth, slow transition or a quick, snappy feel.</p>
+      <p class="not-prose">Use it to set how fast the panel slides in and out.</p>
       {#snippet example()}
         <Drawer animationSpeed="slower" label="Slower">
           <div class="p-8">
@@ -229,11 +268,13 @@ tags: [drawer, sidebar, slide-in, navigation, component, svelte, svelte-5, theui
     <div>
     <p class="not-prose">The <code>Drawer</code> component follows accessibility best practices:</p>
     <ul class="my-0">
-      <li>The trigger element uses <span class="not-prose"><code>aria-controls</code>, <code>aria-expanded</code>, and <code>aria-label</code> to describe its relationship with the <b>Drawer</b></span>.</li>
+      <li>The trigger element uses <span class="not-prose"><code>aria-controls</code> and <code>aria-expanded</code> to describe its relationship with the <b>Drawer</b></span>. A string <code>label</code> is announced by its text; a snippet trigger uses <span class="not-prose"><code>aria-label</code></span> from the <code>ariaLabel</code> prop.</li>
       <li>Supports both text labels and custom elements, with keyboard interactions (<kbd>Enter</kbd>/<kbd>Space</kbd> key) for non-button triggers.</li>
-      <li><span class="not-prose">The Drawer container uses <code>role="complementary"</code> and references the trigger using <code>aria-labelledby</code></span>.</li>
+      <li><span class="not-prose">The Drawer container uses <code>role="complementary"</code> and references the trigger using <code>aria-labelledby</code></span>. Without a <code>label</code>, the Drawer panel gets <span class="not-prose"><code>aria-label</code></span> from the <code>ariaLabel</code> prop instead.</li>
       <li><span class="not-prose"><code>aria-hidden</code></span> is used to hide the Drawer from assistive technologies when it's not active.</li>
-      <li>The backdrop is marked with <span class="not-prose"><code>aria-hidden</code></span> to avoid it being announced by screen readers.</li>
+      <li>When closed, the Drawer is marked <span class="not-prose"><code>inert</code></span>, so its content can't be focused or reached with the keyboard.</li>
+      <li>The backdrop uses <span class="not-prose"><code>role="presentation"</code></span> to avoid it being announced by screen readers.</li>
+      <li>Pressing <kbd>Escape</kbd> closes the open Drawer.</li>
       <li>A visible and accessible Close button is included for easy dismissal.</li>
     </ul>
     </div>
@@ -246,6 +287,8 @@ tags: [drawer, sidebar, slide-in, navigation, component, svelte, svelte-5, theui
   {#snippet sidebar()}
     <a href={processID("Example")}>Example</a>
     <a href={processID("Position")}>Position</a>
+    <a href={processID("Fullscreen Drawer")}>Fullscreen drawer</a>
+    <a href={processID("Trigger Customization")}>Trigger customization</a>
     <a href={processID("Outlying Trigger")}>Outlying trigger</a>
     <a href={processID("Backdrop")}>Backdrop</a>
     <a href={processID("Custom Backdrop Style")} class="ps-4">Custom style</a>

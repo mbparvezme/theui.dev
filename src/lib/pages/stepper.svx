@@ -1,0 +1,243 @@
+---
+title: Stepper
+category: Forms
+description: A number field with minus and plus buttons, limits, decimal steps and press and hold repeat, from theui-svelte.
+dir: ".lib/pages"
+tags: [stepper, number input, quantity, spinner, form, svelte, svelte-5, theui-svelte, component-library, ui, tailwindcss]
+---
+
+<script lang="ts">
+  import DocLayout from "$lib/ui/doc/DocLayout.svelte";
+  import DocHead from "$lib/ui/doc/Head.svelte";
+  import DocBlock from "$lib/ui/doc/Block.svelte";
+  import Code from "$lib/ui/doc/CodeBlock.svelte";
+  import Example from "$lib/ui/doc/Example.svelte";
+  import ConfigComponent from "$lib/ui/doc/ConfigComponent.svelte";
+  import { processID, editURL } from "$lib";
+  let { component }: {component: any } = $props();
+
+  import { Stepper } from "theui-svelte";
+
+  let quantity = $state(1)
+  let weight = $state(0.5)
+</script>
+
+<DocLayout>
+  <DocHead title="Stepper" text="The Stepper component is a number field with a minus and a plus button on either side. Use it for quantities, counts and small amounts, where clicking is faster than typing. For a wide range of values where the exact number matters less, use the Range component instead." edit_url={editURL("stepper")} />
+
+  <DocBlock title="Example">
+    <p class="not-prose">Import the component and bind a number. The buttons step the value, and the field can still be typed into.</p>
+    <Example>
+      {#snippet example()}
+        <div class="flex items-center gap-4">
+          <Stepper bind:value={quantity}>Quantity</Stepper>
+          <span class="text-sm text-muted">value: {quantity}</span>
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<script>
+  import { Stepper } from "theui-svelte";
+  let quantity = $state(1)
+</script>
+
+<Stepper bind:value={quantity}>Quantity</Stepper>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Limits">
+    <p class="not-prose">Set <code>min</code> and <code>max</code> to fence the value in. The matching button turns itself off at each end, and a number typed outside the range is pulled back when the field loses focus.</p>
+    <Example>
+      {#snippet example()}
+        <Stepper value={1} min={1} max={5} helperText="Between 1 and 5">Tickets</Stepper>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Stepper value={1} min={1} max={5} helperText="Between 1 and 5">Tickets</Stepper>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Decimal Steps">
+    <p class="not-prose">The <code>step</code> prop can be a fraction. The component keeps the result clean, so half steps give <code>1.5</code> rather than <code>1.5000000000000002</code>.</p>
+    <Example>
+      {#snippet example()}
+        <div class="flex items-center gap-4">
+          <Stepper bind:value={weight} min={0} max={5} step={0.5}>Weight (kg)</Stepper>
+          <span class="text-sm text-muted">value: {weight}</span>
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<script>
+  let weight = $state(0.5)
+</script>
+
+<Stepper bind:value={weight} min={0} max={5} step={0.5}>Weight (kg)</Stepper>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Sizes and Variants">
+    <p class="not-prose">The <code>size</code> prop takes <code>sm</code>, <code>md</code>, <code>lg</code> and <code>xl</code>, and <code>variant</code> takes <code>bordered</code> or <code>flat</code>. Both are inherited from a <a href="/docs/form">Form</a> or a <a href="/docs/fieldset">Fieldset</a>.</p>
+    <Example>
+      {#snippet example()}
+        <div class="flex flex-col gap-4">
+          <Stepper value={2} size="sm" />
+          <Stepper value={2} size="md" />
+          <Stepper value={2} size="lg" />
+          <Stepper value={2} variant="flat" />
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Stepper value={2} size="sm" />
+<Stepper value={2} size="md" />
+<Stepper value={2} size="lg" />
+<Stepper value={2} variant="flat" />
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Disabled and Read Only">
+    <p class="not-prose">A <code>disabled</code> stepper is switched off completely. A <code>readonly</code> one shows its value but cannot be changed, and still submits with the form.</p>
+    <Example>
+      {#snippet example()}
+        <div class="flex flex-col gap-4">
+          <Stepper value={2} disabled>Disabled</Stepper>
+          <Stepper value={2} readonly>Read only</Stepper>
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Stepper value={2} disabled>Disabled</Stepper>
+<Stepper value={2} readonly>Read only</Stepper>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="In a Form">
+    <p class="not-prose">Give the field a <code>name</code> to submit it, and use <code>onchange</code> to react to every change, such as updating a price.</p>
+    <Example>
+      {#snippet example()}
+        <form class="flex flex-col items-start gap-3" onsubmit={(e) => e.preventDefault()}>
+          <Stepper name="quantity" bind:value={quantity} min={1} max={10}>Quantity</Stepper>
+          <p class="not-prose text-sm text-muted">Total: ${(quantity * 19).toFixed(2)}</p>
+          <button class="rounded-md bg-brand-500 px-4 py-2 font-medium text-on-brand">Add to cart</button>
+        </form>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<form method="POST">
+  <Stepper name="quantity" bind:value={quantity} min={1} max={10} onchange={(v) => console.log(v)}>
+    Quantity
+  </Stepper>
+  <button>Add to cart</button>
+</form>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Animation Speed">
+    <p class="not-prose">The <code>animationSpeed</code> prop sets how quickly the field reacts to focus and hover. It takes <code>"none"</code>, <code>"slower"</code>, <code>"slow"</code>, <code>"normal"</code>, <code>"fast"</code> and <code>"faster"</code>, and the default is <code>"normal"</code>. Inside a <a href="/docs/form">Form</a> or a <a href="/docs/fieldset">Fieldset</a> the value is inherited, so one setting covers every field at once.</p>
+    <Example>
+      {#snippet example()}
+        <div class="flex flex-col gap-4">
+          <Stepper animationSpeed="slower">Slower</Stepper>
+          <Stepper animationSpeed="faster">Faster</Stepper>
+          <Stepper animationSpeed="none">No animation</Stepper>
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Stepper animationSpeed="slower">Slower</Stepper>
+<Stepper animationSpeed="faster">Faster</Stepper>
+<Stepper animationSpeed="none">No animation</Stepper>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Reset Styles">
+    <p class="not-prose">Set <code>reset</code> to <code>true</code> to drop the border, background and focus ring of the number field and keep only the classes you pass. The two buttons keep their own styling, which <code>buttonClasses</code> replaces. The default is <code>false</code>, and a <a href="/docs/form">Form</a> or a <a href="/docs/fieldset">Fieldset</a> can set it for every field it holds.</p>
+    <Example>
+      {#snippet example()}
+        <Stepper reset class="w-20 border-0 border-b-2 border-gray-400 text-center" buttonClasses="border-0 bg-transparent text-xl">Underline only</Stepper>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Stepper
+  reset
+  class="w-20 border-0 border-b-2 border-gray-400 text-center"
+  buttonClasses="border-0 bg-transparent text-xl">
+  Underline only
+</Stepper>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Customization">
+    <p class="not-prose">Use <code>buttonClasses</code> for the minus and plus buttons, <code>class</code> for the field itself and <code>wrapperClasses</code> for everything together. The button labels can be reworded with <code>decreaseLabel</code> and <code>increaseLabel</code>.</p>
+    <Example>
+      {#snippet example()}
+        <div class="flex flex-col gap-4">
+          <Stepper value={2} rounded="full" buttonClasses="rounded-full bg-brand-500 text-on-brand border-transparent hover:bg-brand-600" class="w-24" />
+          <Stepper value={2} buttonClasses="bg-transparent" class="border-dashed" />
+          <Stepper value={2} decreaseLabel="One fewer" increaseLabel="One more" />
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Stepper
+  value={2}
+  rounded="full"
+  buttonClasses="rounded-full bg-brand-500 text-on-brand border-transparent"
+  class="w-24"
+/>
+
+<Stepper value={2} decreaseLabel="One fewer" increaseLabel="One more" />
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Accessibility">
+    <p class="not-prose">The field is a native number input, so screen readers announce it as a spin button with its value and limits, and the arrow keys step it. The two buttons have their own names, set with <code>decreaseLabel</code> and <code>increaseLabel</code>, and point at the field with <code>aria-controls</code>. They are real buttons of type <code>button</code>, so they never submit the form around them. Holding one down keeps stepping after a short pause, which saves many clicks without making a single click hard to aim.</p>
+  </DocBlock>
+
+  <DocBlock title="Configuration">
+    <ConfigComponent {component} />
+  </DocBlock>
+
+  {#snippet sidebar()}
+    <a href={processID("Example")}>Example</a>
+    <a href={processID("Limits")}>Limits</a>
+    <a href={processID("Decimal Steps")}>Decimal steps</a>
+    <a href={processID("Sizes and Variants")}>Sizes and variants</a>
+    <a href={processID("Disabled and Read Only")}>Disabled and read only</a>
+    <a href={processID("In a Form")}>In a form</a>
+    <a href={processID("Animation Speed")}>Animation speed</a>
+    <a href={processID("Reset Styles")}>Reset styles</a>
+    <a href={processID("Customization")}>Customization</a>
+    <a href={processID("Accessibility")}>Accessibility</a>
+    <a href={processID("Configuration")}>Configuration</a>
+  {/snippet}
+
+</DocLayout>

@@ -1,9 +1,9 @@
-<SEO title="Pagination" />
+<SEO title="Pagination" description={metadata.description} keywords={metadata.tags?.join(", ")} />
 <Page {component} />
 
 <script lang="ts">
   import SEO from "$lib/SEO.svelte"
-  import Page from "$lib/pages/pagination.svx"
+  import Page, { metadata } from "$lib/pages/pagination.svx"
 
   const component = [
     {
@@ -14,7 +14,7 @@
           "name": "data",
           "type": "Array<{url: string, active?: boolean}>",
           "default": "[]",
-          "description": "An array of pagination links, where each object contains a URL and an optional active state."
+          "description": "An array of pagination links, where each object contains a URL and an optional active state. Each URL must be unique."
         },
         {
           "name": "align",
@@ -31,14 +31,14 @@
         {
           "name": "previousButton",
           "type": "string",
-          "default": "\"&larr; Prev\"",
-          "description": "Defines the text or HTML content for the previous button."
+          "default": "\"← Prev\"",
+          "description": "Text of the previous button. It renders as plain text."
         },
         {
           "name": "nextButton",
           "type": "string",
-          "default": "\"Next &rarr;\"",
-          "description": "Defines the text or HTML content for the next button."
+          "default": "\"Next →\"",
+          "description": "Text of the next button. It renders as plain text."
         },
         {
           "name": "rounded",
@@ -94,11 +94,11 @@
       "data": [
         {
           "name": "onPreviousClick",
-          "description": "Triggers on click on the previous button."
+          "description": "Triggers on click on the previous button. Type: <code>(e: MouseEvent) => void</code>."
         },
         {
           "name": "onNextClick",
-          "description": "Triggers on click on the next button."
+          "description": "Triggers on click on the next button. Type: <code>(e: MouseEvent) => void</code>."
         }
       ]
     }

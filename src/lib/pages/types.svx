@@ -1,9 +1,9 @@
 ---
 title: Type Definition
 category: Guides
-description: Understand and use the component types in TheUI-Svelte to build robust Svelte apps.
+description: Every TypeScript type theui-svelte exports, in alphabetical order, with what it is for and which components use it.
 dir: ".lib/pages"
-tags: [types, definition, guide, theui-svelte, svelte, component-library]
+tags: [types, typescript, definition, guide, theui-svelte, svelte, component-library]
 ---
 
 <script lang="ts">
@@ -12,41 +12,29 @@ tags: [types, definition, guide, theui-svelte, svelte, component-library]
   import DocBlock from "$lib/ui/doc/Block.svelte"
   import Code from "$lib/ui/doc/CodeBlock.svelte"
   import { processID, editURL } from "$lib"
-  let { components }: {components: any } = $props()
 </script>
 
 <DocLayout>
 
-  <DocHead title="Types" text="This components library utilizing Typescript to define the types of the configurations of the components." edit_url={editURL("types")} />
+  <DocHead title="Types" text="Every type <b>theui-svelte</b> exports, in alphabetical order, with what it is for and which components use it." edit_url={editURL("types")} />
 
-  <DocBlock title="Animation Speed Type">
+  <DocBlock title="Importing Types">
+    <p class="not-prose">The types live in a subpath of their own, so you can pull in the ones you need without touching the components.</p>
 <Code title="Typescript">
 
 ```ts
-type ANIMATE_SPEED = undefined  | false | "slower" | "slow" | "normal" | "fast" | "faster";
+import type { ANIMATE_SPEED, ROUNDED } from "theui-svelte/type"
+
+let speed: ANIMATE_SPEED = "fast"
+let corner: ROUNDED = "lg"
 ```
 </Code>
-  </DocBlock>
-
-  <DocBlock title="Rounded Type">
-<Code title="Typescript">
-
-```ts
-type ROUNDED = "sm" | "md" | "lg" | "xl" | "full" | "none" | undefined;
-```
-</Code>
-  </DocBlock>
-
-  <DocBlock title="Shadow Types">
-<Code title="Typescript">
-
-```ts
-type SHADOW = "sm" | "md" | "lg" | "xl" | "2xl" | "inner" | "none" | undefined;
-```
-</Code>
+    <p class="not-prose">You rarely have to name them: passing a string straight to a prop is checked against these unions anyway. They earn their keep when you keep settings in a variable, take props of your own that you pass on to a component, or write a function that returns one.</p>
+    <p class="not-prose mb-0">Types vanish when your app is built. They are there for your editor and for <code>svelte-check</code>, and cost nothing at runtime.</p>
   </DocBlock>
 
   <DocBlock title="Accordion Size">
+    <p class="not-prose">Padding of an accordion heading and its body. Set on <code>Accordion</code>, where every <code>AccordionItem</code> inside picks it up.</p>
 <Code title="Typescript">
 
 ```ts
@@ -55,203 +43,560 @@ type ACCORDION_SIZE = "compact" | "default" | "large"
 </Code>
   </DocBlock>
 
-  <DocBlock title="Breadcrumb Data Type">
+  <DocBlock title="Animation Speed Type">
+    <p class="not-prose">How long a transition takes. Nearly every component that moves takes it as <code>animationSpeed</code>, and <code>"none"</code> turns the transition off, which is the value to reach for when an element should not animate at all.</p>
 <Code title="Typescript">
 
 ```ts
-type BREADCRUMB_DATA = Array<{ text: string; url?: string }>;
+type ANIMATE_SPEED = "none" | "slower" | "slow" | "normal" | "fast" | "faster"
 ```
 </Code>
   </DocBlock>
 
-  <!-- <DocBlock title="SEO Component">
-<Code title="SEO component data type">
-
-```ts
-type SEO_DATA = {
-    siteName: string; // Available via .env
-    pageTitle: string;
-    description: string;
-    keywords?: string;
-    logoPath?: string; // Available via .env
-    imgPath?: string;
-    siteLang?: string; // Available via .env
-    businessSchema?: string;
-    siteSchema?: string;
-    pageSchema?: string;
-    pageType?: string;
-    video?: string;
-    gtmCode?: string; // Available via .env
-};
-```
-</Code>
-  </DocBlock> -->
-
-  <DocBlock title="Button Size Type">
+  <DocBlock title="Avatar Size Type">
+    <p class="not-prose">Diameter of an <code>Avatar</code>. An <code>AvatarGroup</code> takes it too and hands it to every avatar inside, so the stack stays even.</p>
 <Code title="Typescript">
 
 ```ts
-type BUTTON_SIZE = "xs" | "sm" | "md" | "lg" | "xl" | "0";
+type AVATAR_SIZE = "xs" | "sm" | "md" | "lg" | "xl" | "2xl"
+```
+</Code>
+  </DocBlock>
+
+  <DocBlock title="Avatar Status Type">
+    <p class="not-prose">The dot on an <code>Avatar</code>. Leave <code>status</code> unset for no dot at all.</p>
+<Code title="Typescript">
+
+```ts
+type AVATAR_STATUS = "online" | "offline" | "busy" | "away"
+```
+</Code>
+  </DocBlock>
+
+  <DocBlock title="Breadcrumb Data Type">
+    <p class="not-prose">One entry in the <code>data</code> array of a <code>Breadcrumb</code>. An entry without a <code>url</code> is rendered as plain text, which is what you want for the page you are already on.</p>
+<Code title="Typescript">
+
+```ts
+type BREADCRUMB_DATA = { text: string; url?: string }
+```
+</Code>
+  </DocBlock>
+
+  <DocBlock title="Button Size Type">
+    <p class="not-prose">Padding and text size of a <code>Button</code>, and of a <code>ButtonGroup</code> or <code>Pagination</code> that passes it down. <code>"auto"</code> drops the padding so the button takes the size of what you put inside it.</p>
+<Code title="Typescript">
+
+```ts
+type BUTTON_SIZE = "xs" | "sm" | "md" | "lg" | "xl" | "auto"
 ```
 </Code>
   </DocBlock>
 
   <DocBlock title="Card Image Type">
+    <p class="not-prose">The <code>img</code> prop of a <code>Card</code>. Anything else you add to the object, such as <code>loading</code> or <code>width</code>, is passed to the <code>&lt;img&gt;</code> element.</p>
 <Code title="Typescript">
 
 ```ts
 type CARD_IMAGE_TYPE = {
-    class?: string,
-    src ?: string,
-    alt ?: string,
-    [key: string]: unknown
+  class?: string
+  src?: string
+  alt?: string
+  [key: string]: unknown
 }
 ```
 </Code>
   </DocBlock>
 
-  <DocBlock title="Dropdown Item Types">
+  <DocBlock title="Combobox Item Type">
+    <p class="not-prose">What you put in the <code>items</code> array of a <code>Combobox</code>. A bare string or number is both the value and the text; an object splits the two and can disable an entry or file it under a group heading.</p>
 <Code title="Typescript">
 
 ```ts
-// Dropdown item type
-    type?: "link" | "divider" | "header";
+type COMBOBOX_ITEM = string | number | {
+  value?: unknown
+  text?: string
+  disabled?: boolean
+  // Options with the same group name are shown together under its heading
+  group?: string
+}
+```
+</Code>
+  </DocBlock>
+
+  <DocBlock title="Combobox Option Type">
+    <p class="not-prose">The same option once the component has filled in what you left out. This is the shape handed to the <code>option</code> snippet and to a <code>filter</code> function of your own, so every field is there to read.</p>
+<Code title="Typescript">
+
+```ts
+type COMBOBOX_OPTION = {
+  value: unknown
+  text: string
+  disabled: boolean
+  group?: string
+}
+```
+</Code>
+  </DocBlock>
+
+  <DocBlock title="Core Type">
+    <p class="not-prose">The library wide defaults you pass to <code>setTheuiDefaults</code>. Every key is optional. <code>animationSpeed</code>, <code>shadow</code> and <code>reset</code> are fallbacks, so anything you set on a component, a <a href="/docs/form">Form</a> or a <a href="/docs/fieldset">Fieldset</a> beats them. <code>rounded</code> is an off switch instead: <code>false</code> squares off every component whatever its <code>rounded</code> prop says. See <a href="/docs/global-defaults">Global defaults</a>.</p>
+<Code title="Typescript">
+
+```ts
+type CORE = {
+  rounded?: boolean
+  animationSpeed?: ANIMATE_SPEED
+  reset?: boolean
+  shadow?: SHADOW
+}
+```
+</Code>
+  </DocBlock>
+
+  <DocBlock title="Divider Align Type">
+    <p class="not-prose">Where the label of a <code>Divider</code> sits along the line.</p>
+<Code title="Typescript">
+
+```ts
+type DIVIDER_ALIGN = "start" | "center" | "end"
+```
+</Code>
+  </DocBlock>
+
+  <DocBlock title="Divider Orientation Type">
+    <p class="not-prose">Which way a <code>Divider</code> runs. A vertical one needs a parent with a height, since it stretches to fill it.</p>
+<Code title="Typescript">
+
+```ts
+type DIVIDER_ORIENTATION = "horizontal" | "vertical"
+```
+</Code>
+  </DocBlock>
+
+  <DocBlock title="Divider Variant Type">
+    <p class="not-prose">The line style of a <code>Divider</code>.</p>
+<Code title="Typescript">
+
+```ts
+type DIVIDER_VARIANT = "solid" | "dashed" | "dotted"
 ```
 </Code>
   </DocBlock>
 
   <DocBlock title="Dropdown Preload Type">
+    <p class="not-prose">When SvelteKit should start fetching the page behind a <code>DropdownItem</code> link: as the pointer arrives, as it is pressed, or not at all.</p>
 <Code title="Typescript">
 
 ```ts
-type PRELOAD = false | "off" | "tap" | "hover";
+type PRELOAD = false | "off" | "tap" | "hover"
 ```
 </Code>
   </DocBlock>
 
-  <DocBlock title="Navbar Scroll Behavior Type">
+  <DocBlock title="Dropzone Rejection Type">
+    <p class="not-prose">What <code>FileDropzone</code> hands to <code>onreject</code> for each file it turned away, with the reason it did. Remember that these checks run in the browser, so the server has to make them again.</p>
 <Code title="Typescript">
 
 ```ts
-type NAV_SCROLL_BEHAVIOR = 'default' | 'fixed' | 'shrinkOnScrollDown' | 'hideOnScrollDown' | 'shrinkAndHide'
-```
-</Code>
-  </DocBlock>
-
-  <DocBlock title="Notification Position">
-<Code title="Typescript">
-
-```ts
-type NOTIFICATION_POSITION = "top-end" | "top-center" | "top-start" | "bottom-end" | "bottom-center" | "bottom-start"
-```
-</Code>
-  </DocBlock>
-
-  <DocBlock title="Placement">
-<Code title="Typescript">
-
-```ts
-type Placement = "top" | "right" | "bottom" | "left" | "top-start" | "top-end" | "right-start" | "right-end" | "bottom-start" | "bottom-end" | "left-start" | "left-end"
-```
-</Code>
-  </DocBlock>
-
-  <DocBlock title="Notification Types">
-<Code title="Typescript">
-
-```ts
-// Notification configuration type
-type NOTIFY_CONFIG = {
-  removeAfter?: number;
-  removeOnClick?: boolean;
-  rounded: ROUNDED;
-  variant: "card" | "cardLight" | "borderTop" | "borderBottom" | "borderStart";
-};
-
-// Types of Notification
-type NOTIFICATION_TYPE = "error" | "info" | "success" | "warning";
-```
-</Code>
-  </DocBlock>
-
-  <DocBlock title="Table Data Type">
-<Code title="Type definition">
-
-```ts
-type TABLE_CONFIG = {
-    animationSpeed: ANIMATE_SPEED;
-    border: "x" | "y" | "both" | "none";
-    borderColor: string;
-    hover: boolean | string;
-    space: "compact" | "default" | "comfortable" | string;
-    stripe: boolean | string;
-    trClass: string;
+type DROPZONE_REJECTION = {
+  file: File
+  // Why the file was not accepted
+  reason: "type" | "size" | "count"
 }
 ```
 </Code>
-  </DocBlock>
+    <p class="not-prose mb-0">A rejection is a good moment to tell people what went wrong, rather than letting the file disappear without a word.</p>
+<Code title="Svelte">
 
-  <DocBlock title="Input Variant Type">
-<Code title="Typescript">
-
-```ts
-type INPUT_VARIANT = "bordered" | "filled" | "flat";
-
+```svelte
+<FileDropzone
+  accept="image/*"
+  maxSize={2 * 1024 * 1024}
+  onreject={(files) => files.forEach((f) => notify(`${f.file.name}: ${f.reason}`))}
+/>
 ```
 </Code>
   </DocBlock>
 
   <DocBlock title="Input Size Type">
+    <p class="not-prose">Height and text size of a form control. Set it on one field, or on the <code>Form</code> or <code>Fieldset</code> around a group of them, and every field inside follows.</p>
 <Code title="Typescript">
 
 ```ts
-type INPUT_SIZE = "sm" | "md" | "lg" | "xl";
-
+type INPUT_SIZE = "sm" | "md" | "lg" | "xl"
 ```
 </Code>
   </DocBlock>
 
-  <DocBlock title="Input-Type Type">
+  <DocBlock title="Input Type" id="input-type-type">
+    <p class="not-prose">The <code>type</code> of an <code>Input</code>. <code>"textarea"</code> is in the list because the component renders a <code>&lt;textarea&gt;</code> for it instead of an <code>&lt;input&gt;</code>.</p>
 <Code title="Typescript">
 
 ```ts
-type INPUT_TYPE = 'color' | 'date' | 'datetime-local' | 'email' | 'file' | 'hidden' | 'image' | 'month' | 'number' | 'password' | 'reset' | 'submit' | 'tel' | 'text' | 'time' | 'url' | 'week' | 'search';
+type INPUT_TYPE =
+  | "date" | "datetime-local" | "email" | "month" | "number"
+  | "password" | "tel" | "text" | "time" | "url" | "week"
+  | "search" | "textarea"
+```
+</Code>
+  </DocBlock>
 
+  <DocBlock title="Input Variant Type">
+    <p class="not-prose">How a form control is drawn: with a border around it, or flat with a line under it. A flat field floats its label by default.</p>
+<Code title="Typescript">
+
+```ts
+type INPUT_VARIANT = "bordered" | "flat"
+```
+</Code>
+  </DocBlock>
+
+  <DocBlock title="Navbar Breakpoint Type">
+    <p class="not-prose">The width at which a <code>Navbar</code> swaps its links for the mobile menu, given as the Tailwind screen it starts at. Pass <code>false</code> to <code>navBreakpoint</code> instead, and the links stay expanded at every width.</p>
+<Code title="Typescript">
+
+```ts
+type RESPONSIVE_NAV_ON = { sm: string; md: string; lg: string; xl: string }
+
+type MOBILE_NAV_ON = keyof RESPONSIVE_NAV_ON   // "sm" | "md" | "lg" | "xl"
+```
+</Code>
+  </DocBlock>
+
+  <DocBlock title="Navbar Height Type">
+    <p class="not-prose">One of the four standard heights of a <code>Navbar</code>. The <code>height</code> prop also takes a class of your own, so this union is the shorthand rather than the limit.</p>
+<Code title="Typescript">
+
+```ts
+type NAV_HEIGHT_TYPES = "sm" | "md" | "lg" | "xl"
+```
+</Code>
+  </DocBlock>
+
+  <DocBlock title="Navbar Scroll Behavior Type">
+    <p class="not-prose">What a <code>Navbar</code> does as the page scrolls: nothing, stay pinned, shrink on the way down, hide on the way down, or shrink and then hide.</p>
+<Code title="Typescript">
+
+```ts
+type NAV_SCROLL_BEHAVIOR =
+  | "default"
+  | "fixed"
+  | "shrinkOnScrollDown"
+  | "hideOnScrollDown"
+  | "shrinkAndHide"
+```
+</Code>
+  </DocBlock>
+
+  <DocBlock title="Notification Configuration">
+    <p class="not-prose">The third argument of <code>notify()</code>, which settles how that one notification behaves and looks. <code>removeAfter</code> is a number of milliseconds, or <code>false</code> to leave the notification until it is dismissed.</p>
+<Code title="Typescript">
+
+```ts
+type NOTIFY_CONFIG = {
+  removeAfter?: number | false
+  removeOnClick?: boolean
+  rounded?: ROUNDED
+  theme?: "default" | "soft" | "gradient"
+  variant?: "card" | "borderTop" | "borderBottom" | "borderStart"
+}
+```
+</Code>
+<Code title="Svelte">
+
+```svelte
+notify("Saved", "success", { removeAfter: 6000, variant: "borderStart" })
+```
+</Code>
+    <p class="not-prose mb-0">Where the notifications appear is not set here: that is the <code>position</code> prop of the <code>Notification</code> component, which you place once in your layout.</p>
+  </DocBlock>
+
+  <DocBlock title="Notification Data Type">
+    <p class="not-prose">One notification as the library keeps it while it is on screen. You do not build this yourself, <code>notify()</code> does, but it is the shape you read if you render notifications your own way.</p>
+<Code title="Typescript">
+
+```ts
+type NOTIFICATION_DATA_TYPE = {
+  msg: string
+  type: NOTIFICATION_TYPE
+  CONFIG: NOTIFY_CONFIG & { id: string }
+  removing?: boolean
+}
+```
+</Code>
+  </DocBlock>
+
+  <DocBlock title="Notification Position">
+    <p class="not-prose">Which corner or edge the <code>Notification</code> component stacks its messages in. It is set once, on the component, not per message.</p>
+<Code title="Typescript">
+
+```ts
+type NOTIFICATION_POSITION =
+  | "top-end" | "top-center" | "top-start"
+  | "bottom-end" | "bottom-center" | "bottom-start"
+```
+</Code>
+  </DocBlock>
+
+  <DocBlock title="Notification Types">
+    <p class="not-prose">The second argument of <code>notify()</code>, which picks the colour and the icon of the message.</p>
+<Code title="Typescript">
+
+```ts
+type NOTIFICATION_TYPE = "error" | "info" | "success" | "warning"
+```
+</Code>
+  </DocBlock>
+
+  <DocBlock title="OTP Type">
+    <p class="not-prose">What each box of an <code>OtpInput</code> accepts. <code>"number"</code> brings up the numeric keypad on a phone, and <code>"password"</code> hides the characters as they are typed.</p>
+<Code title="Typescript">
+
+```ts
+type OTP_TYPE = "text" | "number" | "password"
+```
+</Code>
+  </DocBlock>
+
+  <DocBlock title="Placement">
+    <p class="not-prose">Where a <code>Popover</code> or a <code>Tooltip</code> opens in relation to the element it belongs to. This one comes from <a href="https://floating-ui.com" target="_blank" rel="noopener">Floating UI</a>, which does the positioning, so import it from <code>@floating-ui/dom</code> rather than from this library.</p>
+<Code title="Typescript">
+
+```ts
+import type { Placement } from "@floating-ui/dom"
+
+type Placement =
+  | "top" | "top-start" | "top-end"
+  | "right" | "right-start" | "right-end"
+  | "bottom" | "bottom-start" | "bottom-end"
+  | "left" | "left-start" | "left-end"
+```
+</Code>
+    <p class="not-prose mb-0">It is a starting point, not a promise: when there is no room on that side, the element is flipped or shifted to somewhere it fits.</p>
+  </DocBlock>
+
+  <DocBlock title="Range Tick Type">
+    <p class="not-prose">One mark under a <code>Range</code>. A number puts a mark at that value; the object form labels it as well.</p>
+<Code title="Typescript">
+
+```ts
+type RANGE_TICK = number | { value: number; label?: string }
+```
+</Code>
+<Code title="Svelte">
+
+```svelte
+<Range min={0} max={100} ticks={[0, { value: 50, label: "Half" }, 100]} />
+```
+</Code>
+  </DocBlock>
+
+  <DocBlock title="Rating Size Type">
+    <p class="not-prose">Size of the stars in a <code>Rating</code>.</p>
+<Code title="Typescript">
+
+```ts
+type RATING_SIZE = "sm" | "md" | "lg" | "xl"
+```
+</Code>
+  </DocBlock>
+
+  <DocBlock title="Rounded Type">
+    <p class="not-prose">How round the corners of a component are. <code>"none"</code> squares them off and <code>"full"</code> makes a pill, which is why a full-rounded button looks different from a full-rounded card.</p>
+<Code title="Typescript">
+
+```ts
+type ROUNDED = "sm" | "md" | "lg" | "xl" | "2xl" | "full" | "none" | undefined
 ```
 </Code>
   </DocBlock>
 
   <DocBlock title="Select Data Type">
-<Code title="Type definition">
+    <p class="not-prose">One option in the <code>data</code> array of a <code>Select</code>. Leave <code>value</code> out and the <code>text</code> is submitted instead.</p>
+<Code title="Typescript">
 
 ```ts
-type SELECT_DATA = Array<{ disabled?: boolean, selected?: boolean, text: string, value?: any } | string>;
+type SELECT_DATA = { disabled?: boolean; text: string; value?: unknown }
 ```
 </Code>
   </DocBlock>
 
-  {#snippet sidebar()}
-    <a href={processID("Common Types")}>Animation speed type</a>
-    <a href={processID("Rounded Type")}>Rounded type</a>
-    <a href={processID("Shadow Types")}>Shadow types</a>
-    <a href={processID("Accordion Size")}>Accordion size</a>
-    <a href={processID("Breadcrumb Data Type")}>Breadcrumb data type</a>
-    <a href={processID("Button Size Type")}>Button size type</a>
-    <a href={processID("Card Image Type")}>Card image type</a>
-    <a href={processID("Dropdown Item Types")}>Dropdown item types</a>
-    <a href={processID("Dropdown Preload Type")}>Dropdown preload type</a>
-    <a href={processID("Navbar Scroll Behavior Type")}>Navbar scroll behavior type</a>
-    <a href={processID("Notification Position")}>Notification position</a>
-    <a href={processID("Placement")}>Placement</a>
-    <a href={processID("Notification Types")}>Notification types</a>
-    <a href={processID("Table Data Type")}>Table data type</a>
-    <a href={processID("Input Variant Type")}>Input variant type</a>
-    <a href={processID("Input Size Type")}>Input size type</a>
-    <a href={processID("Input-Type Type")}>Input-type type</a>
-    <a href={processID("Select Data Type")}>Select data type</a>
-    <a href={processID("")}></a>
-    <a href={processID("")}></a>
-    <a href={processID("")}></a>
-  {/snippet}
+  <DocBlock title="Shadow Types">
+    <p class="not-prose">Depth of the shadow under a <code>Card</code>, a <code>Button</code> or a <code>Popover</code>. <code>"inner"</code> puts the shadow inside the element rather than under it.</p>
+<Code title="Typescript">
 
+```ts
+type SHADOW = "xs" | "sm" | "md" | "lg" | "xl" | "2xl" | "inner" | "none"
+```
+</Code>
+  </DocBlock>
+
+  <DocBlock title="Skeleton Animation Type">
+    <p class="not-prose">How a <code>Skeleton</code> shows that something is loading. Pick <code>"none"</code> for a still placeholder.</p>
+<Code title="Typescript">
+
+```ts
+type SKELETON_ANIMATION = "pulse" | "wave" | "none"
+```
+</Code>
+  </DocBlock>
+
+  <DocBlock title="Skeleton Variant Type">
+    <p class="not-prose">The shape of a <code>Skeleton</code>: a block, a circle for an avatar, or lines of text.</p>
+<Code title="Typescript">
+
+```ts
+type SKELETON_VARIANT = "rect" | "circle" | "text"
+```
+</Code>
+  </DocBlock>
+
+  <DocBlock title="Slider Direction Type">
+    <p class="not-prose">Which way a <code>Slider</code> moves. A vertical slider needs a height, and its arrow keys become up and down.</p>
+<Code title="Typescript">
+
+```ts
+type SLIDER_DIRECTION = "horizontal" | "vertical"
+```
+</Code>
+  </DocBlock>
+
+  <DocBlock title="Slider Effect Type">
+    <p class="not-prose">How one slide gives way to the next.</p>
+<Code title="Typescript">
+
+```ts
+type SLIDER_EFFECT = "slide" | "fade" | "zoom" | "flip" | "cube"
+```
+</Code>
+  </DocBlock>
+
+  <DocBlock title="Slider Responsive Type">
+    <p class="not-prose">Several <code>Slider</code> props take either one value for every screen, or a value per screen size. <code>perView</code>, <code>gap</code> and <code>peek</code> all work this way.</p>
+<Code title="Typescript">
+
+```ts
+type SLIDER_BREAKPOINT = "base" | "sm" | "md" | "lg" | "xl" | "2xl"
+
+// A single value, or a value per screen size like { base: 1, md: 2, lg: 3 }
+type SLIDER_RESPONSIVE<T> = T | Partial<Record<SLIDER_BREAKPOINT, T>>
+```
+</Code>
+<Code title="Svelte">
+
+```svelte
+<Slider perView={{ base: 1, md: 2, lg: 3 }} gap={16} />
+```
+</Code>
+    <p class="not-prose mb-0">A screen size you leave out keeps the value of the size below it, so <code>base</code> is worth setting.</p>
+  </DocBlock>
+
+  <DocBlock title="Spinner Size Type">
+    <p class="not-prose">Size of a <code>Spinner</code>.</p>
+<Code title="Typescript">
+
+```ts
+type SPINNER_SIZE = "xs" | "sm" | "md" | "lg" | "xl"
+```
+</Code>
+  </DocBlock>
+
+  <DocBlock title="Spinner Variant Type">
+    <p class="not-prose">Which spinner is drawn: a turning ring, three bouncing dots, or a pinging circle.</p>
+<Code title="Typescript">
+
+```ts
+type SPINNER_VARIANT = "ring" | "dots" | "ping"
+```
+</Code>
+  </DocBlock>
+
+  <DocBlock title="Table Data Type">
+    <p class="not-prose">The <code>data</code> prop of a <code>Table</code>: either an array of rows of plain strings, or an array of objects, in which case <code>keys</code> decides which fields are shown and in what order.</p>
+<Code title="Typescript">
+
+```ts
+type TABLE_DATA = string[] | Record<string, unknown>[]
+```
+</Code>
+  </DocBlock>
+
+  <DocBlock title="Wizard Step Info Type">
+    <p class="not-prose">What a <code>FormStep</code> tells the <code>FormWizard</code> around it. A step whose <code>validate</code> returns <code>false</code> holds the wizard where it is, and one marked <code>optional</code> can be skipped.</p>
+<Code title="Typescript">
+
+```ts
+type WIZARD_STEP_INFO = {
+  readonly title?: string
+  readonly description?: string
+  readonly optional?: boolean
+  readonly validate?: () => boolean | Promise<boolean>
+}
+```
+</Code>
+    <p class="not-prose mb-0"><code>validate</code> may return a promise, so a step can wait for a check on your server before it lets the wizard move on.</p>
+  </DocBlock>
+
+  <DocBlock title="Internal Types">
+    <p class="not-prose">These are exported because the components pass them between themselves, through Svelte context. You never set them, and nothing asks you for one, but they are listed here so nothing in the package is a mystery.</p>
+    <ul class="mt-0 mb-0">
+      <li><code>ACCORDION_CONTEXT</code> - settings an <code>Accordion</code> shares with its items.</li>
+      <li><code>AVATAR_GROUP_CTX</code> - how an <code>AvatarGroup</code> counts its avatars and decides which to hide behind the "+N" one.</li>
+      <li><code>BTN_QAB_CTX</code> - settings a <code>Qab</code> shares with its items.</li>
+      <li><code>DROPDOWN_CTX</code> and <code>LIST_GROUP_CTX</code> - classes a <code>Dropdown</code> or a <code>ListGroup</code> passes to its children.</li>
+      <li><code>INPUT_CONFIG</code> - the settings a <code>Form</code> or <code>Fieldset</code> hands down to the fields inside it, such as <code>size</code>, <code>variant</code>, <code>rounded</code> and <code>floatingLabel</code>.</li>
+      <li><code>NAV_CTX</code> - the configuration a <code>Navbar</code> shares with its links, groups and dropdowns.</li>
+      <li><code>SLIDE_INFO</code>, <code>SLIDE_STATE</code> and <code>SLIDER_CTX</code> - how a <code>Slide</code> registers itself with the <code>Slider</code> and reads back where it stands.</li>
+      <li><code>TABLE_CONTEXT</code> and <code>TABS_CONTEXT</code> - what a <code>Table</code> or <code>Tabs</code> shares with its rows, cells, tabs and panels.</li>
+      <li><code>WIZARD_CTX</code> and <code>WIZARD_STEP_STATE</code> - how a <code>FormStep</code> registers with its wizard and learns whether it is the active step.</li>
+      <li><code>ROUNDED_ITEM_TYPES</code> and <code>ROUNDED_SIDES</code> - used by the <code>roundedClass()</code> helper to round the right corners of a cell in a group.</li>
+    </ul>
+  </DocBlock>
+
+  {#snippet sidebar()}
+    <a href={processID("Importing Types")}>Importing types</a>
+    <a href={processID("Accordion Size")}>Accordion size</a>
+    <a href={processID("Animation Speed Type")}>Animation speed</a>
+    <a href={processID("Avatar Size Type")}>Avatar size</a>
+    <a href={processID("Avatar Status Type")}>Avatar status</a>
+    <a href={processID("Breadcrumb Data Type")}>Breadcrumb data</a>
+    <a href={processID("Button Size Type")}>Button size</a>
+    <a href={processID("Card Image Type")}>Card image</a>
+    <a href={processID("Combobox Item Type")}>Combobox item</a>
+    <a href={processID("Combobox Option Type")}>Combobox option</a>
+    <a href={processID("Core Type")}>Core</a>
+    <a href={processID("Divider Align Type")}>Divider align</a>
+    <a href={processID("Divider Orientation Type")}>Divider orientation</a>
+    <a href={processID("Divider Variant Type")}>Divider variant</a>
+    <a href={processID("Dropdown Preload Type")}>Dropdown preload</a>
+    <a href={processID("Dropzone Rejection Type")}>Dropzone rejection</a>
+    <a href={processID("Input Size Type")}>Input size</a>
+    <a href="#input-type-type">Input type</a>
+    <a href={processID("Input Variant Type")}>Input variant</a>
+    <a href={processID("Navbar Breakpoint Type")}>Navbar breakpoint</a>
+    <a href={processID("Navbar Height Type")}>Navbar height</a>
+    <a href={processID("Navbar Scroll Behavior Type")}>Navbar scroll behavior</a>
+    <a href={processID("Notification Configuration")}>Notification configuration</a>
+    <a href={processID("Notification Data Type")}>Notification data</a>
+    <a href={processID("Notification Position")}>Notification position</a>
+    <a href={processID("Notification Types")}>Notification type</a>
+    <a href={processID("OTP Type")}>OTP type</a>
+    <a href={processID("Placement")}>Placement</a>
+    <a href={processID("Range Tick Type")}>Range tick</a>
+    <a href={processID("Rating Size Type")}>Rating size</a>
+    <a href={processID("Rounded Type")}>Rounded</a>
+    <a href={processID("Select Data Type")}>Select data</a>
+    <a href={processID("Shadow Types")}>Shadow</a>
+    <a href={processID("Skeleton Animation Type")}>Skeleton animation</a>
+    <a href={processID("Skeleton Variant Type")}>Skeleton variant</a>
+    <a href={processID("Slider Direction Type")}>Slider direction</a>
+    <a href={processID("Slider Effect Type")}>Slider effect</a>
+    <a href={processID("Slider Responsive Type")}>Slider responsive</a>
+    <a href={processID("Spinner Size Type")}>Spinner size</a>
+    <a href={processID("Spinner Variant Type")}>Spinner variant</a>
+    <a href={processID("Table Data Type")}>Table data</a>
+    <a href={processID("Wizard Step Info Type")}>Wizard step info</a>
+    <a href={processID("Internal Types")}>Internal types</a>
+  {/snippet}
 </DocLayout>

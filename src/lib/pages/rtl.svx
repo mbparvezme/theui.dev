@@ -1,50 +1,53 @@
 ---
 title: RTL Support Guide
 category: Guides
-description: Implement right-to-left text support for seamless bidirectional layouts in your Svelte app.
+description: Right to left support, applied across the whole site or to single components.
 dir: ".lib/pages"
-tags: [rtl, bidirectional, guide, theui-svelte, svelte, component-library]
+tags: [rtl, bidirectional, direction, guide, theui-svelte, svelte, component-library]
 ---
 
 <script lang="ts">
+  import { onDestroy } from "svelte";
   import DocLayout from "$lib/ui/doc/DocLayout.svelte";
   import DocHead from "$lib/ui/doc/Head.svelte";
   import DocBlock from "$lib/ui/doc/Block.svelte";
   import Code from "$lib/ui/doc/CodeBlock.svelte";
-  import { AccordionItem, Button } from "theui-svelte";
+  import { Accordion, AccordionItem, Button } from "theui-svelte";
   import { processID, editURL } from "$lib";
-  let { components }: {components: any } = $props();
 
-  let toggleComponentDirection = () => {
-    const element = document.getElementById("rtl-demo-accordion");
-    element.dir = element.dir === "ltr" ? "rtl" : "ltr";
+  let demoDirection: "ltr" | "rtl" = $state("ltr");
+
+  const toggleComponentDirection = () => demoDirection = demoDirection === "ltr" ? "rtl" : "ltr";
+
+  const toggleWebsiteDirection = () => {
+    const html = document.documentElement;
+    html.dir = html.dir === "rtl" ? "ltr" : "rtl";
   }
 
-  let toggleWebsiteDirection = () => {
-    const element = document.getElementsByTagName("html")[0];
-    element.dir = element.dir === "ltr" ? "rtl" : "ltr";
-  }
+  // The whole site would stay flipped after leaving this page otherwise
+  onDestroy(() => {
+    if (typeof document !== "undefined") document.documentElement.dir = "ltr";
+  });
 </script>
 
 <DocLayout>
 
-  <DocHead title="RTL" text="Enable RTL support and styling globally across your site or to specific components only, ensuring flexibility and control over your layout." edit_url={editURL("rtl")} />
-
+  <DocHead title="RTL" text="Turn on right to left support for the whole site, or for single components only." edit_url={editURL("rtl")} />
 
   <DocBlock>
-    <p class="not-prose">The <b>theui-svelte</b> component library support RTL (Right-to-Left) layout, enabling seamless adaptation for RTL languages such as Arabic and Persian. This feature allows you to toggle between LTR and RTL layouts instantly, applying changes in real time for immediate result!</p>
+    <p class="not-prose">The <b>theui-svelte</b> components follow the direction of the page, so Arabic, Persian, Hebrew and Urdu layouts need no second stylesheet and no extra build. Set the direction and everything turns around with it: spacing, borders, icons that point somewhere, and the arrow keys inside the components that use them.</p>
   </DocBlock>
 
   <DocBlock title="RTL For The Entire Website">
-    <p class="not-prose">To enable RTL across your entire site, simply set <code>dir="rtl"</code> attribute in the <code>&lt;html&gt;</code> tag in your root HTML file. By default, <b>theui-svelte</b> components display in LTR (Left-to-Right) mode, but adding this attribute will switch all components and elements to RTL mode.</p>
+    <p class="not-prose">To enable RTL across your entire site, set the <code>dir</code> attribute on the <code>&lt;html&gt;</code> tag in <code>src/app.html</code>, next to the <code>lang</code> attribute for the language you are writing in. By default, <b>theui-svelte</b> components display in LTR (Left-to-Right) mode, but adding this attribute will switch all components and elements to RTL mode.</p>
     <div class="flex justify-center">
       <Button onclick={toggleWebsiteDirection} rounded="full">Toggle Direction</Button>
     </div>
-<Code>
+<Code title="src/app.html">
 
 ```html
 <!DOCTYPE html>
-<html lang="en" dir="rtl">
+<html lang="ar" dir="rtl">
   <head>
     <!-- your head content -->
   </head>
@@ -54,16 +57,15 @@ tags: [rtl, bidirectional, guide, theui-svelte, svelte, component-library]
 </html>
 ```
 </Code>
-
+    <p class="not-prose mb-0">Keep <code>lang</code> and <code>dir</code> in step. Screen readers pick the voice from the language, so a page marked Arabic that is left as <code>dir="ltr"</code> reads badly even when it looks fine.</p>
   </DocBlock>
 
-
   <DocBlock title="RTL For A Component">
-    <p class="not-prose">If you want to apply RTL only to a specific component, wrap the component's parent element with the <code>dir="rtl"</code> attribute. This will enable RTL for just that component without affecting the rest of the site.</p>
+    <p class="not-prose">If you want to apply RTL only to a part of the page, put <code>dir="rtl"</code> on an element around it. Components read the direction from where they sit, so anything inside that element turns around and the rest of the page is untouched. This is what you want for a quoted message, an address, or a form in another language.</p>
 <Code>
 
-```html
-<!-- Specific component in RTL mode -->
+```svelte
+<!-- Only this part of the page is right to left -->
 <div dir="rtl">
   <AnyComponent />
 </div>
@@ -71,31 +73,75 @@ tags: [rtl, bidirectional, guide, theui-svelte, svelte, component-library]
 </Code>
 
     <h4 class="mt-4 mb-0">Accordion Example</h4>
-    <p class="not-prose">Instead of entire website, you can change direction of any component you want. Just add <code>dir="rtl"</code> attribute to the parent element</p>
+    <p class="not-prose">The accordion below is currently <code>dir="{demoDirection}"</code>. Press the button to turn it around, and watch the heading, the arrow and the padding all follow.</p>
 
     <div class="flex justify-center">
       <Button onclick={toggleComponentDirection} rounded="full">Toggle Direction</Button>
     </div>
-    <div id="rtl-demo-accordion" dir="ltr">
-      <AccordionItem title="Accordion title" content="Accordion"/>
+    <div dir={demoDirection}>
+      <Accordion>
+        <AccordionItem title="مرحبا بكم">
+          <p class="not-prose my-0">تتبع المكونات اتجاه الصفحة، لذلك لا تحتاج إلى ورقة أنماط ثانية.</p>
+        </AccordionItem>
+      </Accordion>
     </div>
 
 <Code>
 
-```html
+```svelte
 <div dir="rtl">
-  <AccordionItem title="Accordion title" content="Accordion"/>
+  <Accordion>
+    <AccordionItem title="مرحبا بكم">
+      <p>تتبع المكونات اتجاه الصفحة.</p>
+    </AccordionItem>
+  </Accordion>
 </div>
 ```
 </Code>
+  </DocBlock>
 
-    <p class="not-prose">This approach gives you flexibility, allowing you to enable RTL at a global or component-specific level as needed.</p>
-    <p class="not-prose">Enjoy building with theui-svelte and its RTL support!</p>
+  <DocBlock title="Writing Classes That Turn Around">
+    <p class="not-prose">The components are built with logical properties, the ones that talk about the start and the end of a line rather than left and right. Write your own classes the same way and they will follow the direction for free.</p>
+    <div class="not-prose">
+      <ul class="mt-0 mb-0">
+        <li>Use <code>ms-*</code> and <code>me-*</code> instead of <code>ml-*</code> and <code>mr-*</code>.</li>
+        <li>Use <code>ps-*</code> and <code>pe-*</code> instead of <code>pl-*</code> and <code>pr-*</code>.</li>
+        <li>Use <code>start-*</code> and <code>end-*</code> instead of <code>left-*</code> and <code>right-*</code>.</li>
+        <li>Use <code>text-start</code> and <code>text-end</code> instead of <code>text-left</code> and <code>text-right</code>.</li>
+        <li>Use <code>border-s-*</code> and <code>border-e-*</code> instead of <code>border-l-*</code> and <code>border-r-*</code>.</li>
+      </ul>
+    </div>
+<Code title="Both directions from one class">
+
+```svelte
+<!-- Turns around on its own -->
+<div class="ms-4 border-s-2 ps-2 text-start">...</div>
+
+<!-- Stays on the left, whatever the direction -->
+<div class="ml-4 border-l-2 pl-2 text-left">...</div>
+```
+</Code>
+    <p class="not-prose mb-0">Left and right still have their uses. A logo, a chart or a video player that should never flip is better off with the physical class, and Tailwind also gives you the <code>rtl:</code> and <code>ltr:</code> prefixes when one case needs a rule of its own.</p>
+  </DocBlock>
+
+  <DocBlock title="What Turns Around By Itself">
+    <p class="not-prose">Layout follows the direction through CSS, but a few components also change how they behave, because reading right to left changes what "next" means.</p>
+    <ul class="mt-0">
+      <li><code>DatePicker</code> and <code>TimePicker</code> swap their left and right arrow keys, so the keyboard moves with the reading order, and the month arrows of the calendar point the other way.</li>
+      <li><code>Slider</code> moves and swipes the other way, and its arrow keys follow.</li>
+      <li><code>Progress</code> fills from the right, and the track of a <code>Range</code> fills with it.</li>
+      <li><code>Drawer</code> slides in from the side you asked for, read as start and end rather than left and right.</li>
+      <li>Smaller touches follow too: the dot on a <code>Badge</code>, and the way avatars overlap in an <code>AvatarGroup</code>.</li>
+    </ul>
+    <p class="not-prose">These components read the direction from the element they are in, so <code>dir</code> anywhere above them is enough. A <code>Slider</code> reads it as it appears on the page, so give the element its direction before the slider renders rather than switching it afterwards.</p>
+    <p class="not-prose mb-0">Text you write yourself is still yours to mind. The default <code>Pagination</code> buttons read <code>"← Prev"</code> and <code>"Next →"</code>, and those arrows are characters rather than layout, so set <code>previousButton</code> and <code>nextButton</code> to the wording and the arrows your language expects.</p>
   </DocBlock>
 
   {#snippet sidebar()}
-    <a href={processID("RTL For The Entire Website")}>RTL For The Entire Website</a>
-    <a href={processID("RTL For A Component")}>RTL For A Component</a>
+    <a href={processID("RTL For The Entire Website")}>RTL for the entire website</a>
+    <a href={processID("RTL For A Component")}>RTL for a component</a>
+    <a href={processID("Writing Classes That Turn Around")}>Writing classes that turn around</a>
+    <a href={processID("What Turns Around By Itself")}>What turns around by itself</a>
   {/snippet}
 
 </DocLayout>

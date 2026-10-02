@@ -17,6 +17,7 @@ tags: [table, data, grid, component, svelte, svelte-5, theui-svelte, component-l
   import THeadConfigComponent from "$lib/ui/doc/ConfigComponent.svelte";
   import TBodyConfigComponent from "$lib/ui/doc/ConfigComponent.svelte";
   import TRConfigComponent from "$lib/ui/doc/ConfigComponent.svelte";
+  import THConfigComponent from "$lib/ui/doc/ConfigComponent.svelte";
 
   import { processID, editURL } from "$lib";
   let { component }: {component: any } = $props();
@@ -33,15 +34,15 @@ tags: [table, data, grid, component, svelte, svelte-5, theui-svelte, component-l
 </script>
 
 <DocLayout>
-  <DocHead title="Table" text="A flexible and customizable way to display data in a structured format. It supports various styling options and interactive features to enhance usability." edit_url={editURL("table")} />
+  <DocHead title="Table" text="A table you can build from data or write out by hand, with stripes, hover rows and border options." edit_url={editURL("table")} />
 
   <DocBlock title="About">
-    <p class="not-prose">The <code>Table</code> component is highly customizable and automatically generates tables from object/JSON data if needed. It supports custom styling, column alignment, and interactive features, making it easy to display structured data efficiently. Whether for simple data presentation or complex tables with sorting and filtering, this component ensures a clean and responsive layout.</p>
+    <p class="not-prose">Pass <code>headers</code> and <code>data</code> and the <code>Table</code> builds the rows for you, or write <code>THead</code>, <code>TBody</code>, <code>TR</code>, <code>TH</code> and <code>TD</code> out by hand. The two styles mix freely, and the output is always wrapped in a horizontally scrollable container.</p>
   </DocBlock>
 
   <DocBlock title="Example">
     <div>
-      <p class="not-prose">The <code>Table</code> is a powerful, versatile component. You can create a table in many ways. For example:</p>
+      <p class="not-prose">There are several ways to build a table. For example:</p>
       <ul class="my-0">
         <li>Using data</li>
         <li>Using snippet</li>
@@ -67,6 +68,7 @@ tags: [table, data, grid, component, svelte, svelte-5, theui-svelte, component-l
         <li><span class="not-prose"><code>data: object[]</code></span> - An array of objects representing table rows.</li>
         <li><span class="not-prose"><code>keys: string[]</code></span> - An array of keys that map data fields to columns.</li>
       </ul>
+      <p class="not-prose">Cell values passed this way are rendered as plain text, so HTML inside them is not rendered. A key that is missing from a row renders an empty cell. To add custom markup, use the components as shown in the next example.</p>
       {#snippet example()}
         <Table {headers} {data} {keys} />
       {/snippet}
@@ -105,10 +107,12 @@ tags: [table, data, grid, component, svelte, svelte-5, theui-svelte, component-l
     </Example>
 
     <Example title="Example: Using Components">
-      <p class="not-prose">Instead of props or dynamically looping through the data, the table content is written manually using the <code>TBody</code>, <code>TR</code>, and <code>Cell</code> components.</p>
+      <p class="not-prose">Instead of props or dynamically looping through the data, the table content is written manually using the <code>THead</code>, <code>TBody</code>, <code>TR</code>, <code>TH</code> and <code>TD</code> components.</p>
       <ul class="my-0">
+        <li><span class="not-prose"><code>&lt;THead&gt;</code></span> - Contains the header row.</li>
         <li><span class="not-prose"><code>&lt;TBody&gt;</code></span> - Contains the table rows.</li>
-        <li><span class="not-prose"><code>&lt;TR&gt;</code></span> - Represents a table row.</li>
+        <li><span class="not-prose"><code>&lt;TR&gt;</code></span> - Represents a table row. Add <span class="not-prose"><code>tableHeader={"{true}"}</code></span> to the header row so it gets the <span class="not-prose"><code>trHeadClasses</code></span> styles. When a <span class="not-prose"><code>TR</code></span> renders its cells from the <span class="not-prose"><code>data</code></span> prop, <span class="not-prose"><code>tableHeader</code></span> also makes it render <span class="not-prose"><code>&lt;th&gt;</code></span> cells instead of <span class="not-prose"><code>&lt;td&gt;</code></span>.</li>
+        <li><span class="not-prose"><code>&lt;TH&gt;</code></span> - Represents a header cell.</li>
         <li><span class="not-prose"><code>&lt;TD&gt;</code></span> - Represents a table data containing the actual data.</li>
       </ul>
       {#snippet example()}
@@ -117,9 +121,9 @@ tags: [table, data, grid, component, svelte, svelte-5, theui-svelte, component-l
 
       {#snippet code()}
 ```html
-<Table {headers}>
+<Table>
   <THead>
-    <TR>
+    <TR tableHeader={true}>
       <TH>Heading 1</TH>
       <TH>Heading 2</TH>
       <TH>Heading 3</TH>
@@ -193,7 +197,7 @@ tags: [table, data, grid, component, svelte, svelte-5, theui-svelte, component-l
 
   <DocBlock title="Table Border">
     <Example>
-      <p class="not-prose">The <code>border</code> prop controls where borders appear in the table. By default, it is set to <code>"both"</code>. Setting it to <code>"x"</code> adds borders only between columns, while <code>"y"</code> applies borders only between rows. The default option, <code>"both"</code>, adds borders between both rows and columns, and <code>"none"</code> removes all borders. This prop allows you to customize the table’s appearance based on your design preferences.</p>
+      <p class="not-prose">The <code>border</code> prop controls where borders appear in the table. By default, it is set to <code>"both"</code>. Setting it to <code>"x"</code> adds borders only between columns, while <code>"y"</code> applies borders only between rows. The default option, <code>"both"</code>, adds borders between both rows and columns, and <code>"none"</code> removes all borders. This prop allows you to customize the table's appearance based on your design preferences.</p>
       {#snippet example()}
         <div class="flex flex-col gap-4 w-full">
           <div id="horizontal-border-x">
@@ -249,7 +253,6 @@ tags: [table, data, grid, component, svelte, svelte-5, theui-svelte, component-l
 ```
       {/snippet}
     </Example>
-    <p class="not-prose">This prop allows you to fine-tune the table’s appearance based on your design needs.</p>
   </DocBlock>
 
   <DocBlock title="Stripe Rows">
@@ -306,6 +309,7 @@ tags: [table, data, grid, component, svelte, svelte-5, theui-svelte, component-l
         <li><span class="not-prose"><code>true</code></span> - When set to <span class="not-prose"><code>true</code></span>, the row background color changes on hover, improving user experience and readability.</li>
         <li><i class="font-semibold">Custom class names</i> - Instead of using the default hover effect, you can pass a custom class to define your own hover styles, allowing for more design flexibility.</li>
       </ul>
+      <p class="not-prose">Use the <code>animationSpeed</code> prop to control how fast the hover color changes. Available values are <code>"none"</code>, <code>"slower"</code>, <code>"slow"</code>, <code>"normal"</code> (default), <code>"fast"</code> and <code>"faster"</code>.</p>
       {#snippet example()}
         <div class="flex flex-col gap-4 w-full">
           <div id="default-hoverable-rows">
@@ -325,21 +329,47 @@ tags: [table, data, grid, component, svelte, svelte-5, theui-svelte, component-l
 <Table {headers} {data} {keys} hover={true} />
 <!-- Hoverable rows with custom classes -->
 <Table {headers} {data} {keys} hover="hover:bg-red-100" />
+<!-- Slower hover transition -->
+<Table {headers} {data} {keys} hover={true} animationSpeed="slower" />
 ```
       {/snippet}
     </Example>
   </DocBlock>
 
   <DocBlock title="Customization">
-    <p class="not-prose">You can use the following props to customize the table’s appearance, allowing you to style the table and its elements as needed.</p>
+    <p class="not-prose">You can use the following props to customize the table's appearance, allowing you to style the table and its elements as needed.</p>
     <ul class="my-0">
-      <li><span class="not-prose"><code>borderColor</code></span> - Defines the border color for the table. By default, it is set to <code>"border-gray-200/80 dark:border-gray-800/80"</code>, ensuring a subtle contrast in both light and dark modes. You can override this with any Tailwind CSS border color class.</li>
+      <li><span class="not-prose"><code>borderColor</code></span> - the border color for the table. The default is <code>"border-gray-200/80 dark:border-gray-800/80"</code>, which reads in both light and dark mode. Override it with any Tailwind border color class.</li>
       <li><span class="not-prose"><code>trHeadClasses</code></span> - Adds custom classes to the table header row ((&lt;tr&gt; inside &lt;thead&gt;)). This allows you to style the header separately, such as applying background colors, text styles, or spacing adjustments.</li>
       <li><span class="not-prose"><code>trClasses</code></span> - Applies custom classes to all table body rows (&lt;tr&gt; inside &lt;tbody&gt;). Use this to control row styling, such as padding, text alignment, or hover effects.</li>
+      <li><span class="not-prose"><code>thClasses</code></span> - Adds custom classes to all table header cells (&lt;th&gt;), enabling control over the header text size, padding, alignment, or other styles.</li>
       <li><span class="not-prose"><code>tdClasses</code></span> - Adds custom classes to all table cells (&lt;td&gt;), enabling precise control over text size, padding, alignment, or other styles.</li>
     </ul>
     <Alert type="warning" theme="soft"><span>you can use <span class="not-prose"><code>class</code></span> attribute with any table related component to add your custom CSS classes.</span></Alert>
-    <p class="not-prose">These props provide flexibility in styling, making it easy to adapt the table to different designs and themes.</p>
+  </DocBlock>
+
+  <DocBlock title="Accessibility">
+    <p class="not-prose">A data table is read cell by cell, so a screen reader has to know which header each cell belongs to. Build the table from <code>headers</code> and <code>data</code> and that is handled: every header cell is written as <code>&lt;th scope="col"&gt;</code>.</p>
+    <p class="not-prose">Writing the rows yourself works the same way, because <code>TH</code> now sets <code>scope="col"</code> on its own. Change it to <code>scope="row"</code> on a header cell that names its row, such as the first cell of each line in a comparison table.</p>
+    <Code title="A header cell that names its row">
+
+```svelte
+<TR>
+  <TH scope="row">Starter</TH>
+  <TD>$9</TD>
+  <TD>3 projects</TD>
+</TR>
+```
+    </Code>
+    <p class="not-prose">Give the table a name with <code>ariaLabel</code>, or write a <code>&lt;caption&gt;</code> as the first thing inside it. Screen readers list the tables on a page, and an unnamed one is listed as nothing but "table".</p>
+    <Code title="Naming the table">
+
+```svelte
+<Table ariaLabel="Pricing plans" {headers} {data} />
+```
+    </Code>
+    <p class="not-prose">A table wider than its container scrolls sideways. That box is a tab stop while it overflows, so people who do not use a mouse can scroll it with the arrow keys, and it is announced as a region using the name from <code>ariaLabel</code>. When the table fits, the tab stop disappears again, so it never adds a stop for nothing.</p>
+    <p class="not-prose mb-0">Two things are still yours to get right: keep the header row in a <code>THead</code> rather than styling the first body row to look like one, and do not use a table for layout, since everything in it is announced as data.</p>
   </DocBlock>
 
   <DocBlock title="Configuration">
@@ -347,6 +377,7 @@ tags: [table, data, grid, component, svelte, svelte-5, theui-svelte, component-l
     <THeadConfigComponent title="Table Head" component={component.thead} />
     <TBodyConfigComponent title="Table Body" component={component.tbody} />
     <TRConfigComponent title="Table Row"component={component.tr} />
+    <THConfigComponent title="Table Header Cell" component={component.th} />
   </DocBlock>
 
   {#snippet sidebar()}
@@ -371,7 +402,6 @@ tags: [table, data, grid, component, svelte, svelte-5, theui-svelte, component-l
     <a href={processID("Hoverable Rows")}>Hoverable Rows</a>
     <a href="#default-hoverable-rows" class="ps-4">Default hoverable rows</a>
     <a href="#custom-hoverable-rows" class="ps-4">Custom hoverable rows</a>
-    <a href={processID("Anatomy of Table")}>Anatomy of Table</a>
     <a href={processID("Customization")}>Customization</a>
     <a href={processID("Accessibility")}>Accessibility</a>
     <a href={processID("Configuration")}>Configuration</a>
@@ -379,5 +409,6 @@ tags: [table, data, grid, component, svelte, svelte-5, theui-svelte, component-l
     <a class="ps-4" href={processID("Table Head")}>Table head</a>
     <a class="ps-4" href={processID("Table body")}>Table body</a>
     <a class="ps-4" href={processID("Table row")}>Table row</a>
+    <a class="ps-4" href={processID("Table Header Cell")}>Table header cell</a>
   {/snippet}
 </DocLayout>

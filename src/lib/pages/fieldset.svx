@@ -15,6 +15,8 @@ tags: [fieldset, form-group, inputs, structure, component, svelte, svelte-5, the
   import ConfigComponent from "$lib/ui/doc/ConfigComponent.svelte";
   import { processID, editURL } from "$lib";
   let { component }: {component: any } = $props();
+
+  import { Form, Fieldset, Input } from "theui-svelte";
 </script>
 
 <DocLayout>
@@ -43,31 +45,47 @@ tags: [fieldset, form-group, inputs, structure, component, svelte, svelte-5, the
     </Example>
   </DocBlock>
 
-  <!-- <DocBlock title="Customization">
+  <DocBlock title="Group Input Settings">
     <Example>
-      <p class="not-prose">You can apply different variants, rounded styles, and animations to customize the Fieldset:</p>
+      <p class="not-prose">A <code>Fieldset</code> passes the <code>variant</code>, <code>size</code>, <code>floatingLabel</code>, <code>rounded</code>, <code>animationSpeed</code>, <code>labelClasses</code> and <code>reset</code> props down to the inputs inside it. When the Fieldset is inside a <code>Form</code>, any of these props you don't set are taken from the Form, so you only override what should differ for this group. Each input can still override the settings with its own props.</p>
+      {#snippet example()}
+        <Form class="w-full max-w-sm">
+          <Input name="name">Your name</Input>
+          <Fieldset title="Address Details" variant="flat" size="sm">
+            <Input name="street">Street</Input>
+            <Input name="city">City</Input>
+          </Fieldset>
+        </Form>
+      {/snippet}
       {#snippet code()}
 
 ```html
-<Fieldset title="Address Details" variant="flat" rounded="lg" animate="fast">
-</Fieldset>
+<Form>
+  <Input name="name">Your name</Input>
+  <Fieldset title="Address Details" variant="flat" size="sm">
+    <Input name="street">Street</Input>
+    <Input name="city">City</Input>
+  </Fieldset>
+</Form>
 ```
       {/snippet}
     </Example>
-  </DocBlock> -->
+    <p class="not-prose">In this example, the name input uses the Form's default style, while the address inputs use the flat variant and small size set on the Fieldset.</p>
+  </DocBlock>
 
   <DocBlock title="Accessibility">
-    <p class="not-prose">Use <code>Fieldset</code> to semantically group related inputs like checkboxes or radios. It includes a visually hidden <code>legend</code> so screen readers can announce the purpose of the group. Clean markup, meaningful structure — accessibility baked in.</p>
+    <p class="not-prose">Use <code>Fieldset</code> to semantically group related inputs like checkboxes or radios. When you set the <code>title</code> prop, it adds a visually hidden <code>legend</code> so screen readers can announce the purpose of the group. The markup stays clean and the group is announced properly.</p>
   </DocBlock>
 
   <DocBlock title="Configuration">
-    <p class="not-prose">The <code>Fieldset</code> component includes a set of props that are not directly applied to the Fieldset itself but are inherited by all its child inputs. This allows for a consistent appearance and behavior across all enclosed form inputs, ensuring a cohesive design without the need for individual configuration.</p>
+    <p class="not-prose">Some of the <code>Fieldset</code> props are not used by the fieldset itself. They are handed down to the inputs inside it, so you can set them once instead of on every field.</p>
     <ConfigComponent {component} />
   </DocBlock>
 
   {#snippet sidebar()}
     <a href={processID("About")}>About</a>
     <a href={processID("Example")}>Example</a>
+    <a href={processID("Group Input Settings")}>Group Input Settings</a>
     <a href={processID("Accessibility")}>Accessibility</a>
     <a href={processID("Configuration")}>Configuration</a>
   {/snippet}

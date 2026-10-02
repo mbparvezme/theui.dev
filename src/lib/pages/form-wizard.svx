@@ -1,0 +1,291 @@
+---
+title: Form Wizard
+category: Forms
+description: Break a long form into numbered steps with validation, progress and Back and Next buttons, using theui-svelte's FormWizard and FormStep components.
+dir: ".lib/pages"
+tags: [form wizard, stepper, multi step form, steps, onboarding, svelte, svelte-5, theui-svelte, component-library, ui, tailwindcss]
+---
+
+<script lang="ts">
+  import DocLayout from "$lib/ui/doc/DocLayout.svelte";
+  import DocHead from "$lib/ui/doc/Head.svelte";
+  import DocBlock from "$lib/ui/doc/Block.svelte";
+  import Code from "$lib/ui/doc/CodeBlock.svelte";
+  import Example from "$lib/ui/doc/Example.svelte";
+  import ConfigComponent from "$lib/ui/doc/ConfigComponent.svelte";
+  import { processID, editURL } from "$lib";
+  let { component }: {component: any } = $props();
+
+  import { FormWizard, FormStep, Form, Input, Checkbox } from "theui-svelte";
+
+  let step = $state(1)
+  let finished = $state(false)
+  let accepted = $state(false)
+</script>
+
+<DocLayout>
+  <DocHead title="Form Wizard" text="The FormWizard component turns one long form into a few short steps. It draws the numbered progress across the top, moves between steps with Back and Next, and checks the fields of a step before it lets the user move on. Every step stays in the page, so nothing typed is ever lost." edit_url={editURL("form-wizard")} />
+
+  <DocBlock title="Example">
+    <p class="not-prose">Import both components and put a <code>FormStep</code> for each step inside the <code>FormWizard</code>. Give every step a <code>title</code>, which is the text under its number.</p>
+    <Example>
+      {#snippet example()}
+        <div class="w-full">
+          <FormWizard>
+            <FormStep title="Account">
+              <p class="not-prose">The first step.</p>
+            </FormStep>
+            <FormStep title="Profile">
+              <p class="not-prose">The second step.</p>
+            </FormStep>
+            <FormStep title="Done">
+              <p class="not-prose">The last step: Next becomes Finish.</p>
+            </FormStep>
+          </FormWizard>
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<script>
+  import { FormWizard, FormStep } from "theui-svelte";
+</script>
+
+<FormWizard>
+  <FormStep title="Account">...</FormStep>
+  <FormStep title="Profile">...</FormStep>
+  <FormStep title="Done">...</FormStep>
+</FormWizard>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="With a Form">
+    <p class="not-prose">Put the wizard inside a <a href="/docs/form">Form</a> and use the fields you already know. Before it moves on, the wizard checks the HTML validation of the fields in the current step, so <code>required</code>, <code>type="email"</code> and the rest are enough for most cases. Try pressing Next with the field empty.</p>
+    <Example>
+      {#snippet example()}
+        <div class="w-full">
+          <Form onsubmit={(e: SubmitEvent) => { e.preventDefault(); finished = true }}>
+            <FormWizard bind:step onfinish={() => finished = true}>
+              <FormStep title="Account" description="How you sign in">
+                <Input name="email" type="email" required helperText="Press Next while this is empty">Email</Input>
+              </FormStep>
+              <FormStep title="Profile" description="About you">
+                <Input name="fullName" required>Full name</Input>
+              </FormStep>
+              <FormStep title="Done">
+                <p class="not-prose">Everything is ready.</p>
+              </FormStep>
+            </FormWizard>
+          </Form>
+          <p class="not-prose mt-3 text-sm text-muted">step: {step}{finished ? " - finished" : ""}</p>
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<script>
+  let step = $state(1)
+</script>
+
+<Form method="POST">
+  <FormWizard bind:step onfinish={() => save()}>
+    <FormStep title="Account" description="How you sign in">
+      <Input name="email" type="email" required>Email</Input>
+    </FormStep>
+    <FormStep title="Profile" description="About you">
+      <Input name="fullName" required>Full name</Input>
+    </FormStep>
+    <FormStep title="Done">Everything is ready.</FormStep>
+  </FormWizard>
+</Form>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Step Validation">
+    <p class="not-prose">A step can also check itself with its own <code>validate</code> function. Return <code>false</code> to keep the user where they are, or <code>true</code> to let them through. The function may be async, so a check on your server works too.</p>
+    <Example>
+      {#snippet example()}
+        <div class="w-full">
+          <FormWizard>
+            <FormStep title="Terms" validate={() => accepted}>
+              <Checkbox bind:checked={accepted}>I accept the terms</Checkbox>
+              <p class="not-prose text-sm text-muted">Next only works once this is ticked.</p>
+            </FormStep>
+            <FormStep title="Welcome">
+              <p class="not-prose">Thank you.</p>
+            </FormStep>
+          </FormWizard>
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<script>
+  let accepted = $state(false)
+</script>
+
+<FormWizard>
+  <FormStep title="Terms" validate={() => accepted}>
+    <Checkbox bind:checked={accepted}>I accept the terms</Checkbox>
+  </FormStep>
+  <FormStep title="Welcome">Thank you.</FormStep>
+</FormWizard>
+
+<!-- An async check works as well -->
+<FormStep title="Username" validate={async () => await isFree(username)}>...</FormStep>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Vertical Steps">
+    <p class="not-prose">Set <code>orientation="vertical"</code> to put the steps down the side. On a narrow screen they stack above the content by themselves.</p>
+    <Example>
+      {#snippet example()}
+        <div class="w-full">
+          <FormWizard orientation="vertical">
+            <FormStep title="Pick a plan" description="Monthly or yearly">
+              <p class="not-prose">Plans go here.</p>
+            </FormStep>
+            <FormStep title="Payment" description="Card details">
+              <Input name="card">Card number</Input>
+            </FormStep>
+            <FormStep title="Review">
+              <p class="not-prose">Check and finish.</p>
+            </FormStep>
+          </FormWizard>
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<FormWizard orientation="vertical">
+  <FormStep title="Pick a plan" description="Monthly or yearly">...</FormStep>
+  <FormStep title="Payment" description="Card details">...</FormStep>
+  <FormStep title="Review">...</FormStep>
+</FormWizard>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Free Movement">
+    <p class="not-prose">By default the wizard is linear: a step opens only once the ones before it are done. Pass <code>linear={false}</code> to let the user jump to any step from the numbers at the top, which suits a form they are coming back to.</p>
+    <Example>
+      {#snippet example()}
+        <div class="w-full">
+          <FormWizard linear={false} step={2}>
+            <FormStep title="One"><p class="not-prose">Any number can be clicked.</p></FormStep>
+            <FormStep title="Two"><p class="not-prose">Even before the earlier steps are done.</p></FormStep>
+            <FormStep title="Three" optional><p class="not-prose">This step is marked optional.</p></FormStep>
+          </FormWizard>
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<FormWizard linear={false} step={2}>
+  <FormStep title="One">...</FormStep>
+  <FormStep title="Two">...</FormStep>
+  <FormStep title="Three" optional>...</FormStep>
+</FormWizard>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Your Own Controls">
+    <p class="not-prose">Turn the built-in buttons off with <code>controls={false}</code>, or the numbers at the top off with <code>header={false}</code>, and drive the wizard through <code>bind:step</code>. The button labels can be reworded with <code>backText</code>, <code>nextText</code> and <code>finishText</code>.</p>
+    <Example>
+      {#snippet example()}
+        <div class="w-full">
+          <FormWizard bind:step={step} controls={false}>
+            <FormStep title="First"><p class="not-prose">Use the buttons below.</p></FormStep>
+            <FormStep title="Second"><p class="not-prose">Step two.</p></FormStep>
+          </FormWizard>
+          <div class="mt-4 flex gap-2">
+            <button class="rounded-md border border-gray-300 px-3 py-1 dark:border-gray-600" onclick={() => step = Math.max(1, step - 1)}>Previous</button>
+            <button class="rounded-md bg-brand-500 px-3 py-1 text-on-brand" onclick={() => step = Math.min(2, step + 1)}>Continue</button>
+          </div>
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<script>
+  let step = $state(1)
+</script>
+
+<FormWizard bind:step controls={false}>
+  <FormStep title="First">...</FormStep>
+  <FormStep title="Second">...</FormStep>
+</FormWizard>
+
+<button onclick={() => step--}>Previous</button>
+<button onclick={() => step++}>Continue</button>
+
+<!-- Or keep the buttons and rename them -->
+<FormWizard backText="Go back" nextText="Continue" finishText="Create account">...</FormWizard>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Customization">
+    <p class="not-prose">Use <code>headerClasses</code> for the row of steps, <code>indicatorClasses</code> for every number, and <code>activeIndicatorClasses</code> and <code>completeIndicatorClasses</code> for the current and the finished ones. <code>stepClasses</code> reaches every step, and <code>controlsClasses</code> and <code>buttonClasses</code> style the buttons.</p>
+    <Example>
+      {#snippet example()}
+        <div class="w-full">
+          <FormWizard
+            indicatorClasses="rounded-lg"
+            activeIndicatorClasses="ring-4 ring-brand-500/20"
+            completeIndicatorClasses="bg-success-500 border-success-500"
+            buttonClasses="rounded-full px-6"
+          >
+            <FormStep title="Styled"><p class="not-prose">Square numbers and pill buttons.</p></FormStep>
+            <FormStep title="Second"><p class="not-prose">Finished steps turn green.</p></FormStep>
+          </FormWizard>
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<FormWizard
+  indicatorClasses="rounded-lg"
+  activeIndicatorClasses="ring-4 ring-brand-500/20"
+  completeIndicatorClasses="bg-success-500 border-success-500"
+  buttonClasses="rounded-full px-6"
+>
+  ...
+</FormWizard>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Accessibility">
+    <p class="not-prose">The steps are an ordered list, so a screen reader hears how many there are and which one is current, marked with <code>aria-current="step"</code>. A finished step says so in its name, and a step that cannot be reached yet is a disabled button rather than a silent one. Each step is a group named by its title, and moving to a step puts focus on it, so the reading position follows the visible one. Steps that are not shown stay in the page but are hidden and made inert, which keeps their values and keeps them out of the tab order. When a field fails its check, the browser's own message is shown on that field and the wizard stays where it is.</p>
+  </DocBlock>
+
+  <DocBlock title="Configuration">
+    <ConfigComponent title="FormWizard" component={component.wizard} />
+    <ConfigComponent title="FormStep" component={component.step} />
+  </DocBlock>
+
+  {#snippet sidebar()}
+    <a href={processID("Example")}>Example</a>
+    <a href={processID("With a Form")}>With a form</a>
+    <a href={processID("Step Validation")}>Step validation</a>
+    <a href={processID("Vertical Steps")}>Vertical steps</a>
+    <a href={processID("Free Movement")}>Free movement</a>
+    <a href={processID("Your Own Controls")}>Your own controls</a>
+    <a href={processID("Customization")}>Customization</a>
+    <a href={processID("Accessibility")}>Accessibility</a>
+    <a href={processID("Configuration")}>Configuration</a>
+  {/snippet}
+
+</DocLayout>

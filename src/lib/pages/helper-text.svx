@@ -15,46 +15,69 @@ tags: [helper-text, hints, guidance, form, component, svelte, svelte-5, theui-sv
   import ConfigComponent from "$lib/ui/doc/ConfigComponent.svelte";
   import { processID, editURL } from "$lib";
   let { component }: {component: any } = $props();
+
+  import { HelperText, Input } from "theui-svelte";
 </script>
 
 <DocLayout>
-  <DocHead title="Helper Text" text="A lightweight component designed to provide additional context or guidance for form inputs, such as descriptions, hints, or error messages. It supports both plain text and dynamic content for flexibility." edit_url={editURL("helper-text")} />
+  <DocHead title="Helper Text" text="The text under a form field: a description, a hint or an error message. It takes plain text or any markup you put inside it." edit_url={editURL("helper-text")} />
 
   <DocBlock title="About">
-    <p class="not-prose">The <code>Helper</code> component is used to display supplementary information related to form inputs, such as instructions, hints, or validation messages. It is highly customizable and works seamlessly alongside inputs, labels, and other form elements. The component supports both static text and dynamic content (via Svelte snippets), making it versatile for various use cases.</p>
+    <p class="not-prose">The <code>HelperText</code> component shows a hint, an instruction or a validation message under a form input. Everything you place inside it becomes the helper text, so it can hold plain text or any elements and components.</p>
+    <p class="not-prose">The <code>Input</code>, <code>Select</code> and <code>FileInput</code> components use it internally through their <code>helperText</code> prop, which also links it to the input with <code>aria-describedby</code>. Use <code>HelperText</code> directly when you build a field yourself.</p>
   </DocBlock>
 
   <DocBlock title="Example">
     <Example>
-      <p class="not-prose">To use the <b>Helper</b> component, pass the content prop with the desired text or snippet. Here's a basic example:</p>
+      <p class="not-prose">To use the <b>HelperText</b> component, place the text inside it. Here's a basic example:</p>
+      {#snippet example()}
+        <HelperText>Please enter your full name.</HelperText>
+      {/snippet}
       {#snippet code()}
 
 ```html
 <script>
-  import { Helper } from "theui-svelte";
+  import { HelperText } from "theui-svelte";
 </script>
 
-<Helper content="Please enter your full name." />
+<HelperText>Please enter your full name.</HelperText>
 ```
       {/snippet}
     </Example>
   </DocBlock>
 
   <DocBlock title="Helper Text Content">
-    <p class="not-prose">The <code>content</code> prop defines the text or snippet to be displayed as helper text.</p>
     <Example>
-      <p class="not-prose">It supports both strings and Snippets for static or dynamic content. Strings render as text or HTML, while Snippets allow custom components or HTML. This makes the Helper component flexible for hints, messages, or interactive content.</p>
+      <p class="not-prose">The content can be plain text or any mix of elements and components, which makes it flexible for hints, messages, or interactive content. A <code>HelperText</code> without content renders nothing.</p>
+      {#snippet example()}
+        <div class="flex flex-col gap-2">
+          <HelperText>Passwords must be at least 8 characters long.</HelperText>
+          <HelperText><strong>Note:</strong>&nbsp;This field is required.</HelperText>
+        </div>
+      {/snippet}
       {#snippet code()}
 
 ```html
-<!-- Helper text as plain string -->
-<Helper content="Passwords must be at least 8 characters long." />
-<!-- Helper text as HTML string -->
-<Helper content="<strong>Note:</strong> This field is required." />
-<!-- Helper text as Snippet -->
-<Helper>
-  <!-- Custom elements for the content snippet-->
-</Helper>
+<!-- Plain text -->
+<HelperText>Passwords must be at least 8 characters long.</HelperText>
+
+<!-- With elements -->
+<HelperText><strong>Note:</strong> This field is required.</HelperText>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Use With an Input">
+    <Example>
+      <p class="not-prose">With <code>Input</code>, <code>Select</code> and <code>FileInput</code>, pass the helper text through the <code>helperText</code> prop instead of using the component directly. Those components render a <code>HelperText</code> for you, give it an <code>id</code> and link it to the input with <code>aria-describedby</code>, so screen readers read it together with the label.</p>
+      {#snippet example()}
+        <Input name="password" type="password" helperText="Must be at least 8 characters long">Password</Input>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Input name="password" type="password" helperText="Must be at least 8 characters long">Password</Input>
 ```
       {/snippet}
     </Example>
@@ -62,18 +85,21 @@ tags: [helper-text, hints, guidance, form, component, svelte, svelte-5, theui-sv
 
   <DocBlock title="Customization">
     <Example>
-      <p class="not-prose">The <code>Helper</code> component can be customized using the <code>class</code> attribute to apply additional styles or override default ones.</p>
+      <p class="not-prose">The <code>HelperText</code> component can be customized using the <code>class</code> attribute to apply additional styles or override default ones. Any other attributes you add, like <code>id</code> or <code>data-*</code>, are passed to the element.</p>
+      {#snippet example()}
+        <HelperText class="text-blue-600 italic">Please enter your full name.</HelperText>
+      {/snippet}
       {#snippet code()}
 
 ```html
-<Helper content="..." class="text-blue-600 italic" />
+<HelperText class="text-blue-600 italic">Please enter your full name.</HelperText>
 ```
       {/snippet}
     </Example>
   </DocBlock>
 
   <DocBlock title="Accessibility">
-    <p class="not-prose"><code>HelperText</code> gives users additional guidance without distraction. It's screen reader-friendly through <code>aria-describedby</code>, and styled to stay secondary in visual hierarchy. It accepts both plain text and render functions for flexibility.</p>
+    <p class="not-prose"><code>HelperText</code> gives users additional guidance without distraction, and is styled to stay secondary in the visual hierarchy. When you use it through the <code>helperText</code> prop of an input, it is connected to that input with <code>aria-describedby</code> automatically. When you use the component directly, give it an <code>id</code> and add <code>aria-describedby</code> with that id to your input, so screen readers announce the two together.</p>
   </DocBlock>
 
   <DocBlock title="Configuration">
@@ -84,6 +110,7 @@ tags: [helper-text, hints, guidance, form, component, svelte, svelte-5, theui-sv
     <a href={processID("About")}>About</a>
     <a href={processID("Example")}>Example</a>
     <a href={processID("Helper Text Content")}>Helper Text Content</a>
+    <a href={processID("Use With an Input")}>Use With an Input</a>
     <a href={processID("Customization")}>Customization</a>
     <a href={processID("Accessibility")}>Accessibility</a>
     <a href={processID("Configuration")}>Configuration</a>

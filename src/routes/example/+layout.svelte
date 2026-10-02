@@ -6,7 +6,7 @@
   import SEO from "$lib/SEO.svelte"
 </script>
 
-<SEO title="TheUI Component Example" />
+<SEO title="TheUI Component Example" noindex />
 
 {@render children()}
 

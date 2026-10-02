@@ -1,4 +1,4 @@
-<SEO title="TheUI Themes" />
+<SEO title="TheUI Themes" description="Ready-made themes for Svelte and Tailwind CSS, coming soon from TheUI." />
 <ComingSoon title="Start Here. Built by Developer, for Developers." />
 
 <script lang="ts">

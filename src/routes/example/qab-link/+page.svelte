@@ -2,4 +2,4 @@
   import { Qab } from "theui-svelte";
 </script>
 
-<Qab href="/about" />
+<Qab href="/docs" />

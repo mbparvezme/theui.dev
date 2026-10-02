@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# The pages behind the iframes in the docs. They are fragments of other pages,
+# not pages to land on.
+Disallow: /example/
+
+Sitemap: https://www.theui.dev/sitemap.xml

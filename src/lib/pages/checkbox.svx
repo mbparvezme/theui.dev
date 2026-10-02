@@ -1,7 +1,7 @@
 ---
 title: Checkbox
 category: Components
-description: A versatile and customizable input for selecting options in forms, with support for sizes, animations, and styles.
+description: A styled checkbox that takes its size, shape and label classes from the Form or Fieldset around it.
 dir: ".lib/pages"
 tags: [checkbox, input, form, selection, component, svelte, svelte-5, theui-svelte, component-library, ui, tailwindcss]
 ---
@@ -20,10 +20,10 @@ tags: [checkbox, input, form, selection, component, svelte, svelte-5, theui-svel
 </script>
 
 <DocLayout>
-  <DocHead title="Checkbox" text="The Checkbox component is a versatile and customizable input element used for selecting one or multiple options in a form. It supports various sizes, animations, and styling options to fit different UI requirements." edit_url={editURL("checkbox")} />
+  <DocHead title="Checkbox" text="The Checkbox component wraps the native checkbox input in the library's styling. It takes sizes, animation speeds and label classes, and inherits them from a Form or Fieldset." edit_url={editURL("checkbox")} />
 
   <DocBlock title="About">
-    <p class="not-prose">This Checkbox component enhances the default checkbox input with additional styling and customization options. It allows for easy integration into forms while providing a clean and modern design. The component supports different sizes, animations, and customization settings, making it adaptable to various use cases.</p>
+    <p class="not-prose">It is still a native <code>&lt;input type="checkbox"&gt;</code> underneath, so it submits with the form and behaves the way a browser checkbox does. What the component adds is the styling, the linked label, and the settings it picks up from its parent.</p>
   </DocBlock>
 
   <DocBlock title="Example">
@@ -46,7 +46,7 @@ tags: [checkbox, input, form, selection, component, svelte, svelte-5, theui-svel
   </DocBlock>
 
   <DocBlock title="Name and Value">
-    <p class="not-prose">The <code>name</code> and <code>value</code> props are crucial for form handling. The <code>name</code> prop groups checkboxes, allowing multiple selections under the same category. The <code>value</code> prop determines the selected state of the checkbox.</p>
+    <p class="not-prose">The <code>name</code> and <code>value</code> props are what the form submission uses. The <code>name</code> prop groups checkboxes, allowing multiple selections under the same category. The <code>value</code> prop is the value sent with the form when the checkbox is checked. To control whether it is checked, use the <code>checked</code> prop.</p>
     <Example>
     {#snippet example()}
 <div>
@@ -59,6 +59,28 @@ tags: [checkbox, input, form, selection, component, svelte, svelte-5, theui-svel
 ```html
 <Checkbox name="myCheckbox" value="dark-mode">Enable Dark Mode</Checkbox>
 <Checkbox name="myCheckbox" value="notifications">Enable Notifications</Checkbox>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Checked State">
+    <p class="not-prose">The <code>checked</code> prop sets whether the checkbox is checked. It is <code>false</code> by default. The prop is bindable, so use <code>bind:checked</code> to read the state when the user toggles the checkbox, or to change it from your code.</p>
+    <Example>
+    {#snippet example()}
+<div>
+  <Checkbox name="newsletter" checked={true}>Subscribe to the newsletter</Checkbox>
+</div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<script>
+  let subscribed = $state(true);
+</script>
+
+<Checkbox name="newsletter" bind:checked={subscribed}>Subscribe to the newsletter</Checkbox>
+<p>Subscribed: {subscribed}</p>
 ```
       {/snippet}
     </Example>
@@ -116,8 +138,8 @@ tags: [checkbox, input, form, selection, component, svelte, svelte-5, theui-svel
   </DocBlock>
 
   <DocBlock title="Rounded Checkbox">
-    <p class="not-prose">The <code>rounded</code> prop defines the border-radius of the checkbox, allowing customization of its shape. The available values are <code>"none"</code>, <code>"sm"</code>, <code>"md"</code> <code>"lg"</code>, <code>"xl"</code> and <code>"full"</code>.</p>
-    <p class="not-prose">Setting it to <code>"none"</code>disables animations, while other values can be used to adjust the transition speed based on preference.</p>
+    <p class="not-prose">The <code>rounded</code> prop defines the border-radius of the checkbox, allowing customization of its shape. The available values are <code>"none"</code>, <code>"sm"</code> (default), <code>"md"</code>, <code>"lg"</code>, <code>"xl"</code>, <code>"2xl"</code> and <code>"full"</code>.</p>
+    <p class="not-prose">Inside a <code>Form</code> or <code>Fieldset</code>, the checkbox uses their <code>rounded</code> value instead, unless you set the prop on the checkbox.</p>
     <Example>
     {#snippet example()}
 <div class="flex flex-col gap-2">
@@ -144,7 +166,7 @@ tags: [checkbox, input, form, selection, component, svelte, svelte-5, theui-svel
   </DocBlock>
 
   <DocBlock title="Resetting Style">
-    <p class="not-prose">The <code>reset</code> prop removes all default styles from the Checkbox component, allowing only custom styles to be applied. This is useful when you want full control over the design. Just set <code>reset</code> to <code>false</code> to apply reset.</p>
+    <p class="not-prose">The <code>reset</code> prop removes all default styles from the Checkbox component, allowing only custom styles to be applied. This is useful when you want full control over the design. Just set <code>reset</code> to <code>true</code> to apply reset.</p>
     <Example>
     {#snippet example()}
 <Checkbox name="myCheckbox" reset={true} class="border border-green-500 bg-green-200 checked:bg-green-500 focus:ring-0">Enable Dark Mode</Checkbox>
@@ -158,13 +180,47 @@ tags: [checkbox, input, form, selection, component, svelte, svelte-5, theui-svel
     </Example>
   </DocBlock>
 
+  <DocBlock title="Label Position">
+    <p class="not-prose">The <code>labelPosition</code> prop controls where the label sits. It accepts <code>"end"</code> (default), which places the label after the checkbox, and <code>"start"</code>, which places it before. The position follows the writing direction, so in a right-to-left layout <code>"start"</code> puts the label on the right.</p>
+    <Example>
+    {#snippet example()}
+<div class="flex flex-col gap-2">
+  <Checkbox name="myCheckbox">Label after the checkbox</Checkbox>
+  <Checkbox name="myCheckbox" labelPosition="start">Label before the checkbox</Checkbox>
+</div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Checkbox name="myCheckbox">Label after the checkbox</Checkbox>
+<Checkbox name="myCheckbox" labelPosition="start">Label before the checkbox</Checkbox>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Disabled Checkbox">
+    <p class="not-prose">Add the native <code>disabled</code> or <code>readonly</code> attribute to prevent changes. The checkbox and its label are dimmed and can't be clicked.</p>
+    <Example>
+    {#snippet example()}
+<Checkbox name="myCheckbox" disabled>Disabled checkbox</Checkbox>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Checkbox name="myCheckbox" disabled>Disabled checkbox</Checkbox>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
   <DocBlock title="Customization">
-    <Example> 
+    <Example>
       <p class="not-prose">The Checkbox component provides multiple ways to customize its appearance:</p>
       <ul class="my-0">
-        <li><span class="not-prose"><code>labelClasses</code></span> – Custom styles for the label. If used within a Form component, it inherits the Form's <span class="not-prose"><code>labelClasses</code></span>.</li>
-        <li><span class="not-prose"><code>wrapperClasses</code></span> – Additional classes for the wrapper &lt;div&gt;, useful for layout adjustments.</li>
-        <li><span class="not-prose"><code>class</code></span> – Apply custom styles to the checkbox itself.</li>
+        <li><span class="not-prose"><code>labelClasses</code></span> - Custom styles for the label. If used within a Fieldset or Form component, it inherits their <span class="not-prose"><code>labelClasses</code></span>. The <span class="not-prose"><code>size</code></span>, <span class="not-prose"><code>animationSpeed</code></span>, <span class="not-prose"><code>rounded</code></span> and <span class="not-prose"><code>reset</code></span> props are inherited the same way.</li>
+        <li><span class="not-prose"><code>wrapperClasses</code></span> - Additional classes for the wrapper &lt;div&gt;, useful for layout adjustments.</li>
+        <li><span class="not-prose"><code>class</code></span> - Apply custom styles to the checkbox itself.</li>
       </ul>
     {#snippet example()}
 <Checkbox name="myCheckbox"
@@ -189,7 +245,7 @@ tags: [checkbox, input, form, selection, component, svelte, svelte-5, theui-svel
   </DocBlock>
 
   <DocBlock title="Accessibility">
-    <p class="not-prose">The <code>Checkbox</code> component uses the native <code>&lt;input type="checkbox"&gt;</code> and automatically adjusts the <code>aria-checked</code> attribute based on whether the checkbox is checked or unchecked. It also supports <code>aria-required</code> and <code>aria-disabled</code> attributes through <code>props</code>, making it more accessible for users with assistive technologies. Each checkbox has an associated <code>&lt;Label&gt;</code> component to provide a clear description, and the layout can be reversed for right-aligned designs.</p>
+    <p class="not-prose">The <code>Checkbox</code> component uses the native <code>&lt;input type="checkbox"&gt;</code>, so screen readers announce whether it is checked without extra attributes. It also supports <code>aria-required</code> and <code>aria-disabled</code> attributes through <code>props</code>, making it more accessible for users with assistive technologies. Each checkbox has an associated <code>&lt;Label&gt;</code> component to provide a clear description, and the label can be placed before the checkbox for right-aligned designs.</p>
   </DocBlock>
 
   <DocBlock title="Configuration">
@@ -200,10 +256,13 @@ tags: [checkbox, input, form, selection, component, svelte, svelte-5, theui-svel
     <a href={processID("About")}>About</a>
     <a href={processID("Example")}>Example</a>
     <a href={processID("Name and Value")}>Name and Value</a>
+    <a href={processID("Checked State")}>Checked State</a>
     <a href={processID("Checkbox Sizes")}>Checkbox Sizes</a>
     <a href={processID("Animation")}>Animation</a>
     <a href={processID("Rounded Checkbox")}>Rounded Checkbox</a>
     <a href={processID("Resetting Style")}>Resetting Style</a>
+    <a href={processID("Label Position")}>Label Position</a>
+    <a href={processID("Disabled Checkbox")}>Disabled Checkbox</a>
     <a href={processID("Customization")}>Customization</a>
     <a href={processID("Accessibility")}>Accessibility</a>
     <a href={processID("Configuration")}>Configuration</a>

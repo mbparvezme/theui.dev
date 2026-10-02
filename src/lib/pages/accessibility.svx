@@ -1,9 +1,9 @@
 ---
 title: Accessibility Guide
 category: Guides
-description: Learn how to make your theui-svelte components accessible and user-friendly for everyone.
+description: What theui-svelte handles for accessibility, what you still have to do, and the keys every component answers to.
 dir: ".lib/pages"
-tags: [accessibility, a11y, guide, component-library, theui-svelte, svelte]
+tags: [accessibility, a11y, keyboard, screen reader, guide, component-library, theui-svelte, svelte]
 ---
 
 <script lang="ts">
@@ -12,59 +12,149 @@ tags: [accessibility, a11y, guide, component-library, theui-svelte, svelte]
   import DocBlock from "$lib/ui/doc/Block.svelte";
   import Code from "$lib/ui/doc/CodeBlock.svelte";
   import { processID, editURL } from "$lib";
-  let { components }: {components: any } = $props();
+  import { Table, TBody, TR, TH, TD, THead } from "theui-svelte";
 </script>
 
 <DocLayout>
-  <DocHead title="Accessibility Guide" text="Get to know the best practices and tips for making your site accessible with specific accessibility features available in <b>theui-svelte</b>." edit_url={editURL("accessibility")} />
+  <DocHead title="Accessibility Guide" text="What <b>theui-svelte</b> handles for you, what is left to you, and the keys every component answers to." edit_url={editURL("accessibility")} />
 
   <DocBlock>
-    <p class="not-prose"><b>theui-svelte</b> is designed with accessibility in mind, ensuring that all users, including those with disabilities, can interact with your components smoothly.</p>
+    <p class="not-prose">Every component ships with its roles, its keyboard behavior and its focus handling already in place, so a modal traps focus and a tab list answers to the arrow keys without any work from you. What the library cannot know is your content: the name of an icon-only button, the text of a label, the colors you pick. That part is yours, and this page marks the line between the two.</p>
   </DocBlock>
+
   <DocBlock title="Why Accessibility Matters">
-    <p class="not-prose mb-0">Accessible design allows users of all abilities to understand, navigate, and interact with web content. By incorporating accessible components, <b>theui-svelte</b> aims to support inclusive design practices and help you create products that are usable by the broadest range of people.</p>
+    <p class="not-prose mb-0">Accessible pages let people understand, navigate and use your site whether they see it, hear it, or drive it from the keyboard alone. Much of it is also plain good practice: a page that works without a mouse works on a broken trackpad too, and a field with a real label is easier for everyone to fill in.</p>
   </DocBlock>
-  <DocBlock title="Key Accessibility Features">
-    <p class="not-prose mb-0">Each component in <b>theui-svelte</b> is built with accessibility features. As we document each component, you'll find specific guidelines and options for implementing accessible versions. Here's a quick overview of some accessibility features you can expect:</p>
+
+  <DocBlock title="What the Components Handle">
+    <p class="not-prose">These behaviors come with the components. You do not have to add them, and you should not need to work around them.</p>
     <ul class="mt-0 mb-0">
-      <li><b>Keyboard Navigation</b>: Components are designed to be navigable by keyboard alone, ensuring full usability without a mouse.</li>
-      <li><b>ARIA Attributes</b>: Essential ARIA (Accessible Rich Internet Applications) attributes are included to provide additional context to assistive technologies.</li>
-      <li><b>Color Contrast</b>: All components follow WCAG color contrast guidelines to ensure readability for users with visual impairments.</li>
-      <li><b>Responsive Text and Font Scaling</b>: Components respond to system font-size changes, making text readable for low-vision users.</li>
-      <li><b>Focus Management</b>: Proper focus handling allows users to know where they are on the page at all times, which is crucial for assistive technology users.</li>
+      <li><b>Roles and structure</b>: <code>Modal</code> is a dialog, <code>Tabs</code> renders a real tab list, <code>Dropdown</code> items carry <code>menuitem</code>, <code>Progress</code> is a progress bar, <code>Rating</code> is a group of radio buttons, and <code>Breadcrumb</code>, <code>Pagination</code> and <code>NavLink</code> mark the current page with <code>aria-current</code>.</li>
+      <li><b>Keyboard</b>: arrow keys, <code>Home</code> and <code>End</code> work inside tabs, sliders, menus, the calendar, the time fields, one-time-code boxes and pagination. The table below lists them all.</li>
+      <li><b>Focus</b>: a <code>Modal</code> moves focus into itself, keeps <code>Tab</code> inside while it is open, and hands focus back to whatever opened it. <code>Escape</code> closes the modal on top, not all of them. Closed modals and drawers are <code>inert</code>, so the keyboard skips what is hidden behind them.</li>
+      <li><b>Descriptions</b>: <code>helperText</code> is tied to its field with <code>aria-describedby</code>, so a screen reader reads the hint along with the label. <code>Tooltip</code> and <code>Popover</code> describe the element they belong to.</li>
+      <li><b>Announcements</b>: a notification announces itself as an alert, the calendar announces the month you move into, and a slider announces slide changes once its autoplay is paused.</li>
+      <li><b>Tables</b>: header cells carry <code>scope</code>, so a screen reader ties every cell to its column, and a table too wide for its container becomes a named region you can scroll with the keyboard.</li>
+      <li><b>Motion</b>: when the system asks for reduced motion, a slider stops playing by itself. Setting <code>animationSpeed="none"</code> turns transitions off wherever the prop exists.</li>
     </ul>
   </DocBlock>
-  <DocBlock title="Implementing Accessibility for Each Component">
-    <p class="not-prose mb-0">For each component in <b>theui-svelte</b>, you will find specific accessibility configurations and options. This may include recommended ARIA attributes, keyboard interactions, focus management techniques, and screen reader optimizations. We encourage you to explore these options and include them as needed in your projects.</p>
+
+  <DocBlock title="Keyboard Reference">
+    <p class="not-prose">Beyond <code>Tab</code> and <code>Shift + Tab</code>, which move between the controls on the page, the components answer to these keys.</p>
+    <div class="not-prose">
+      <Table class="my-0">
+        <THead>
+          <TR>
+            <TH>Component</TH>
+            <TH>Keys</TH>
+          </TR>
+        </THead>
+        <TBody>
+          <TR>
+            <TD>Tabs</TD>
+            <TD><code>←</code> <code>→</code> move between tabs, <code>Home</code> first, <code>End</code> last</TD>
+          </TR>
+          <TR>
+            <TD>Slider</TD>
+            <TD>Arrow keys move one slide, <code>Home</code> first slide, <code>End</code> last slide</TD>
+          </TR>
+          <TR>
+            <TD>Dropdown, NavDropdown</TD>
+            <TD><code>↑</code> <code>↓</code> open the menu, <code>Escape</code> closes it and returns focus to the trigger, <code>Enter</code> follows a link, <code>Space</code> presses a button</TD>
+          </TR>
+          <TR>
+            <TD>Combobox</TD>
+            <TD>Type to filter, <code>↑</code> <code>↓</code> move, <code>Home</code> and <code>End</code> jump, <code>Enter</code> picks, <code>Escape</code> closes, <code>Backspace</code> removes the last chip</TD>
+          </TR>
+          <TR>
+            <TD>DatePicker</TD>
+            <TD><code>↓</code> opens the calendar, arrow keys move by day and week, <code>Home</code> and <code>End</code> jump to the ends of the week, <code>PageUp</code> and <code>PageDown</code> change month (with <code>Shift</code>, year), <code>Escape</code> closes</TD>
+          </TR>
+          <TR>
+            <TD>TimePicker</TD>
+            <TD><code>↑</code> <code>↓</code> change the part you are on, <code>←</code> <code>→</code> move between hour, minute and AM/PM, <code>Home</code> and <code>End</code> jump to the lowest and highest value</TD>
+          </TR>
+          <TR>
+            <TD>OtpInput</TD>
+            <TD><code>←</code> <code>→</code> move between boxes, <code>Backspace</code> and <code>Delete</code> clear, <code>Home</code> and <code>End</code> jump to the first and last box, and a paste fills the boxes</TD>
+          </TR>
+          <TR>
+            <TD>Pagination</TD>
+            <TD><code>←</code> <code>→</code> move between page links</TD>
+          </TR>
+          <TR>
+            <TD>Rating</TD>
+            <TD>Arrow keys pick a value, as in any radio group</TD>
+          </TR>
+          <TR>
+            <TD>Modal, Drawer, Popup</TD>
+            <TD><code>Escape</code> closes the one on top, and <code>Tab</code> stays inside an open modal</TD>
+          </TR>
+          <TR>
+            <TD>Accordion, Collapse</TD>
+            <TD><code>Enter</code> or <code>Space</code> on the heading opens and closes it</TD>
+          </TR>
+        </TBody>
+      </Table>
+    </div>
   </DocBlock>
-  <DocBlock title="General Best Practices for Accessibility">
-    <p class="not-prose mb-0">To make the most of <b>theui-svelte</b>'s accessibility features, consider following these general best practices:</p>
+
+  <DocBlock title="What You Still Have to Do">
+    <p class="not-prose">The library never invents words for your interface. These are the pieces only you can supply.</p>
+    <ul class="mt-0">
+      <li><b>Name icon-only controls.</b> A button with nothing but an icon has no name to read out. Give it <code>ariaLabel</code>. From version 3 the library no longer guesses a name for <code>Button</code>, <code>QabItem</code> or <code>NavBrand</code>, because a guessed name read over the visible text is worse than none.</li>
+      <li><b>Label every field.</b> Write the label as the content of the field, and keep <code>helperText</code> for the hint. Both are tied to the input for you.</li>
+      <li><b>Describe images.</b> A <code>Slide</code> with <code>src</code> and an <code>Avatar</code> with a picture both take <code>alt</code>. Leave it empty only when the image says nothing the text does not already say.</li>
+      <li><b>Mark the current page.</b> Set <code>active</code> on the <code>NavLink</code> of the page you are on, and it gets <code>aria-current="page"</code>.</li>
+      <li><b>Name what has no text of its own.</b> A <code>Table</code> takes <code>ariaLabel</code> or a <code>&lt;caption&gt;</code>, and a <code>Close</code> button takes <code>ariaLabel</code> to say what it closes. Name a <code>Container</code> only when the area is somewhere people would want to jump to, since a named <code>Container</code> becomes a landmark.</li>
+      <li><b>Keep the focus ring.</b> The components draw a visible ring when a control is focused from the keyboard. If your own CSS removes outlines, put a visible replacement back.</li>
+      <li><b>Check your colors.</b> Components take their colors from your theme, so contrast depends on the palette you choose. Aim for 4.5:1 on normal text and 3:1 on large text, icons and borders.</li>
+    </ul>
+<Code title="Name an icon-only button" space="bottom">
+
+```svelte
+<Button ariaLabel="Close the menu">
+  <Svg><path d="M6 18L18 6M6 6l12 12" /></Svg>
+</Button>
+```
+</Code>
+  </DocBlock>
+
+  <DocBlock title="Motion and Animation">
+    <p class="not-prose mb-0">People who ask their system for reduced motion get less of it: a <code>Slider</code> will not play on its own, and its timer bar stays still. The choice is theirs, not a prop, so test it by turning reduced motion on in your operating system. Where you want an element calm for everyone, <code>animationSpeed="none"</code> removes its transition.</p>
+  </DocBlock>
+
+  <DocBlock title="Color and Contrast">
+    <p class="not-prose mb-0">The components inherit your brand colors, so they are exactly as readable as the palette behind them. Check the shades you picked on the <a href="/docs/colors">colors page</a> against the background they sit on, in both light and dark mode, and remember that a color alone should never be the only thing carrying a meaning: pair it with text, an icon or a shape.</p>
+  </DocBlock>
+
+  <DocBlock title="Testing Your Pages">
+    <p class="not-prose">Automatic checks catch perhaps a third of what matters. Do the first item on this list before the others.</p>
     <ul class="mt-0 mb-0">
-      <li><b>Use Semantic HTML</b>: Proper HTML structure helps screen readers and other assistive tools interpret content correctly.</li>
-      <li><b>Provide Descriptive Labels</b>: Include meaningful labels for interactive elements like buttons, form fields, and links.</li>
-      <li><b>Ensure Focus Visibility</b>: When using keyboard navigation, ensure that all interactive elements are visibly focused.</li>
-      <li><b>Include ARIA Attributes Where Needed</b>: Use ARIA attributes thoughtfully to enhance accessibility, especially on complex components.</li>
-      <li><b>Test with Screen Readers</b>: Regularly test your site using popular screen readers (like NVDA, JAWS, or VoiceOver) to ensure a positive experience for screen reader users.</li>
+      <li><b>Put the mouse away</b>: reach every control with <code>Tab</code>, use it, and make sure you can always see where you are and can get out of anything you opened.</li>
+      <li><b>axe DevTools</b> or <b>WAVE</b>: browser extensions that report missing names, bad contrast and broken structure.</li>
+      <li><b>Lighthouse</b>: built into Chrome DevTools, useful as a quick pass over a whole page.</li>
+      <li><b>A screen reader</b>: VoiceOver on macOS and iOS, NVDA or JAWS on Windows, TalkBack on Android. Listening to one page end to end teaches more than any report.</li>
     </ul>
   </DocBlock>
-  <DocBlock title="Accessibility Testing Tools">
-    <p class="not-prose mb-0">Here are some useful tools to test and improve your site's accessibility:</p>
-    <ul class="mt-0 mb-0">
-      <li><b>WAVE</b>: A tool that checks for accessibility issues and provides visual feedback.</li>
-      <li><b>Axe DevTools</b>: An automated accessibility testing tool that integrates with Chrome DevTools.</li>
-      <li><b>VoiceOver, NVDA, JAWS</b>: Popular screen readers that can be used to test the usability of your components.</li>
-    </ul>
+
+  <DocBlock title="Per-Component Notes">
+    <p class="not-prose mb-0">Every component page ends with its own <b>Accessibility</b> section, covering what that component does, the props that affect it and anything it needs from you. See <a href="/docs/modal#accessibility">Modal</a>, <a href="/docs/tabs#accessibility">Tabs</a> or <a href="/docs/combobox#accessibility">Combobox</a> for the shape of it.</p>
   </DocBlock>
+
   <DocBlock title="Further Support and Feedback">
-    <p class="not-prose mb-0">We are committed to improving accessibility in <b>theui-svelte</b>. If you encounter any issues or have suggestions for improvement, please don't hesitate to reach out. We appreciate feedback and are continually working to enhance the accessibility features in our library.</p>
+    <p class="not-prose mb-0">If something here does not hold up in practice, that is a bug worth reporting. Open an issue on <a href="https://github.com/mbparvezme/theui-svelte/issues" target="_blank" rel="noopener">GitHub</a> with the component and how you were using it, and it will be looked at.</p>
   </DocBlock>
 
   {#snippet sidebar()}
     <a href={processID("Why Accessibility Matters")}>Why Accessibility Matters</a>
-    <a href={processID("Key Accessibility Features")}>Key Accessibility Features</a>
-    <a href={processID("Implementing Accessibility for Each Component")}>Implementing Accessibility for Each Component</a>
-    <a href={processID("General Best Practices for Accessibility")}>General Best Practices for Accessibility</a>
-    <a href={processID("Accessibility Testing Tools")}>Accessibility Testing Tools</a>
+    <a href={processID("What the Components Handle")}>What the Components Handle</a>
+    <a href={processID("Keyboard Reference")}>Keyboard Reference</a>
+    <a href={processID("What You Still Have to Do")}>What You Still Have to Do</a>
+    <a href={processID("Motion and Animation")}>Motion and Animation</a>
+    <a href={processID("Color and Contrast")}>Color and Contrast</a>
+    <a href={processID("Testing Your Pages")}>Testing Your Pages</a>
+    <a href={processID("Per-Component Notes")}>Per-Component Notes</a>
     <a href={processID("Further Support and Feedback")}>Further Support and Feedback</a>
   {/snippet}
 </DocLayout>

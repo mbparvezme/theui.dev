@@ -1,0 +1,306 @@
+---
+title: File Dropzone
+category: Forms
+description: Let users drop or pick files, with type and size checks, image previews and a removable list, using theui-svelte's FileDropzone component.
+dir: ".lib/pages"
+tags: [file dropzone, upload, drag and drop, file input, form, svelte, svelte-5, theui-svelte, component-library, ui, tailwindcss]
+---
+
+<script lang="ts">
+  import DocLayout from "$lib/ui/doc/DocLayout.svelte";
+  import DocHead from "$lib/ui/doc/Head.svelte";
+  import DocBlock from "$lib/ui/doc/Block.svelte";
+  import Code from "$lib/ui/doc/CodeBlock.svelte";
+  import Example from "$lib/ui/doc/Example.svelte";
+  import ConfigComponent from "$lib/ui/doc/ConfigComponent.svelte";
+  import { processID, editURL } from "$lib";
+  let { component }: {component: any } = $props();
+
+  import { FileDropzone, Svg } from "theui-svelte";
+
+  let files = $state<FileList>()
+  let rejected = $state("")
+</script>
+
+<DocLayout>
+  <DocHead title="File Dropzone" text="The FileDropzone component takes files by drag and drop or by clicking to browse. It checks the type, the size and the number of files, shows what was chosen with image previews, and lets each file be removed again. Underneath it is a real file input, so it submits with the form and works from the keyboard." edit_url={editURL("file-dropzone")} />
+
+  <DocBlock title="Example">
+    <p class="not-prose">Import the component and bind <code>files</code>. Drop a file on the box, or click it to open the file browser.</p>
+    <Example>
+      {#snippet example()}
+        <div class="w-full">
+          <FileDropzone bind:files>Attachment</FileDropzone>
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<script>
+  import { FileDropzone } from "theui-svelte";
+  let files = $state<FileList>()
+</script>
+
+<FileDropzone bind:files>Attachment</FileDropzone>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Multiple Files">
+    <p class="not-prose">Add <code>multiple</code> to accept more than one file, and <code>maxFiles</code> to set a ceiling. New files are added to the ones already chosen, so a second drop does not throw the first away.</p>
+    <Example>
+      {#snippet example()}
+        <div class="w-full">
+          <FileDropzone multiple maxFiles={4} text="Drop up to four files" />
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<FileDropzone multiple maxFiles={4} text="Drop up to four files" />
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Type and Size">
+    <p class="not-prose">Use <code>accept</code> exactly as on a file input, with extensions such as <code>.pdf</code> or types such as <code>image/*</code>, and <code>maxSize</code> in bytes. Files that do not pass are handed to <code>onreject</code>, each with the reason: <code>type</code>, <code>size</code> or <code>count</code>.</p>
+    <p class="not-prose">These checks run in the browser, where anyone can work around them, and the type comes from the file name and what the browser reports. They are there to spare your visitors a pointless upload, not to keep bad files out. Check the type, the size and the number of files again on your server before you store anything.</p>
+    <Example>
+      {#snippet example()}
+        <div class="flex w-full flex-col gap-3">
+          <FileDropzone
+            accept=".pdf,.doc,.docx"
+            maxSize={2 * 1024 * 1024}
+            hint="PDF or Word, up to 2 MB"
+            onreject={(r) => rejected = r.map(x => `${x.file.name} (${x.reason})`).join(", ")}
+          >Resume</FileDropzone>
+          {#if rejected}<p class="not-prose text-sm text-error-500">Rejected: {rejected}</p>{/if}
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<FileDropzone
+  accept=".pdf,.doc,.docx"
+  maxSize={2 * 1024 * 1024}
+  hint="PDF or Word, up to 2 MB"
+  onreject={(rejections) => {
+    // [{ file, reason: "type" | "size" | "count" }]
+    console.log(rejections)
+  }}
+>Resume</FileDropzone>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Image Previews">
+    <p class="not-prose">Images are shown as thumbnails in the list below the box. Set <code>preview={false}</code> to list the names only, or <code>showList={false}</code> to hide the list and show the files yourself.</p>
+    <Example>
+      {#snippet example()}
+        <div class="w-full">
+          <FileDropzone multiple accept="image/*" text="Drop a few pictures" hint="Images only" />
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<FileDropzone multiple accept="image/*" text="Drop a few pictures" hint="Images only" />
+
+<!-- Names only -->
+<FileDropzone multiple preview={false} />
+
+<!-- No list at all -->
+<FileDropzone multiple showList={false} bind:files />
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Text and Hint">
+    <p class="not-prose">The <code>text</code> prop is the line inside the box and <code>hint</code> is the smaller line under it. Use the hint to say what is allowed, so the rule is known before a file is picked.</p>
+    <Example>
+      {#snippet example()}
+        <div class="w-full">
+          <FileDropzone text="Drag your logo here, or click to browse" hint="SVG or PNG, at most 500 KB" accept=".svg,.png" maxSize={500 * 1024} />
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<FileDropzone
+  text="Drag your logo here, or click to browse"
+  hint="SVG or PNG, at most 500 KB"
+  accept=".svg,.png"
+  maxSize={500 * 1024}
+/>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Custom Content">
+    <p class="not-prose">The <code>content</code> snippet replaces everything inside the box, so you can use your own icon and wording.</p>
+    <Example>
+      {#snippet example()}
+        <div class="w-full">
+          <FileDropzone multiple dropzoneClasses="py-10">
+            {#snippet content()}
+              <Svg size={2} class="text-brand-500">
+                <path d="M4.406 3.342A5.53 5.53 0 0 1 8 2c2.69 0 4.923 2 5.166 4.579C14.758 6.804 16 8.137 16 9.773 16 11.569 14.502 13 12.687 13H3.781C1.708 13 0 11.366 0 9.318c0-1.763 1.266-3.223 2.942-3.593.143-.863.698-1.723 1.464-2.383zm.653 6.505a.5.5 0 0 0 .708.708L7.5 9.207V12.5a.5.5 0 0 0 1 0V9.207l1.733 1.348a.5.5 0 1 0 .708-.708l-2.5-2a.5.5 0 0 0-.646 0l-2.5 2z"/>
+              </Svg>
+              <span class="font-semibold">Drop your files</span>
+              <span class="text-sm text-muted">or click anywhere in this box</span>
+            {/snippet}
+          </FileDropzone>
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<FileDropzone multiple dropzoneClasses="py-10">
+  {#snippet content()}
+    <Svg size={2} class="text-brand-500">
+      <path d="..."/>
+    </Svg>
+    <span class="font-semibold">Drop your files</span>
+    <span class="text-sm text-muted">or click anywhere in this box</span>
+  {/snippet}
+</FileDropzone>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Reacting to Files">
+    <p class="not-prose">The <code>onselect</code> callback runs with the files that were accepted, which is the place to start an upload. Everything that was turned away goes to <code>onreject</code> instead.</p>
+    <Example>
+      {#snippet example()}
+        <div class="w-full">
+          <FileDropzone
+            multiple
+            onselect={(accepted) => console.log("accepted", accepted)}
+            onreject={(r) => console.log("rejected", r)}
+            helperText="Open the console to see the callbacks"
+          >Upload</FileDropzone>
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<FileDropzone
+  multiple
+  onselect={(files) => upload(files)}
+  onreject={(rejections) => showErrors(rejections)}
+>Upload</FileDropzone>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Disabled">
+    <p class="not-prose">A <code>disabled</code> dropzone takes nothing, by drop or by click, and its list loses the remove buttons.</p>
+    <Example>
+      {#snippet example()}
+        <div class="w-full">
+          <FileDropzone disabled text="Uploading is off right now" />
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<FileDropzone disabled text="Uploading is off right now" />
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Sizes">
+    <p class="not-prose">The <code>size</code> prop sets how tall the drop area is and how large the text inside it reads. It takes <code>"sm"</code>, <code>"md"</code>, <code>"lg"</code> and <code>"xl"</code>, and the default is <code>"md"</code>. Inside a <a href="/docs/form">Form</a> or a <a href="/docs/fieldset">Fieldset</a> the value is inherited.</p>
+    <Example>
+      {#snippet example()}
+        <div class="flex w-full flex-col gap-4">
+          <FileDropzone size="sm" text="Small" />
+          <FileDropzone size="md" text="Medium" />
+          <FileDropzone size="lg" text="Large" />
+          <FileDropzone size="xl" text="Extra large" />
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<FileDropzone size="sm" text="Small" />
+<FileDropzone size="md" text="Medium" />
+<FileDropzone size="lg" text="Large" />
+<FileDropzone size="xl" text="Extra large" />
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Reset Styles">
+    <p class="not-prose">Set <code>reset</code> to <code>true</code> to drop the dashed border, the hover and the drag highlight and keep only the classes you pass in <code>dropzoneClasses</code>. The drop area keeps its layout and its size, so dropping, clicking and the file list all still work. The default is <code>false</code>, and a <a href="/docs/form">Form</a> or a <a href="/docs/fieldset">Fieldset</a> can set it for every field it holds.</p>
+    <Example>
+      {#snippet example()}
+        <div class="w-full">
+          <FileDropzone reset dropzoneClasses="rounded-xl bg-secondary shadow-sm" text="Drop a file here" />
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<FileDropzone
+  reset
+  dropzoneClasses="rounded-xl bg-secondary shadow-sm"
+  text="Drop a file here" />
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Customization">
+    <p class="not-prose">Use <code>dropzoneClasses</code> for the box, <code>listClasses</code> for the list of chosen files and <code>wrapperClasses</code> for the whole field.</p>
+    <Example>
+      {#snippet example()}
+        <div class="flex w-full flex-col gap-4">
+          <FileDropzone dropzoneClasses="border-brand-500 bg-brand-500/5" text="Brand coloured" />
+          <FileDropzone dropzoneClasses="border-solid border-2 py-10" rounded="2xl" text="Solid border, larger radius" />
+        </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<FileDropzone dropzoneClasses="border-brand-500 bg-brand-500/5" text="Brand coloured" />
+<FileDropzone dropzoneClasses="border-solid border-2 py-10" rounded="2xl" text="Solid border" />
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Accessibility">
+    <p class="not-prose">Drag and drop is never the only way in: the box is a label tied to a real file input, so Tab reaches it, Enter and Space open the file browser, and the same focus ring appears as on any other field. The list of chosen files is a plain list with a named remove button for each file, such as "Remove report.pdf", and each row shows the file size in readable units. Say what is allowed in the <code>hint</code> or <code>helperText</code>, and report what was turned away in your own text through <code>onreject</code>, so the reason is not carried by colour alone.</p>
+  </DocBlock>
+
+  <DocBlock title="Configuration">
+    <ConfigComponent {component} />
+  </DocBlock>
+
+  {#snippet sidebar()}
+    <a href={processID("Example")}>Example</a>
+    <a href={processID("Multiple Files")}>Multiple files</a>
+    <a href={processID("Type and Size")}>Type and size</a>
+    <a href={processID("Image Previews")}>Image previews</a>
+    <a href={processID("Text and Hint")}>Text and hint</a>
+    <a href={processID("Custom Content")}>Custom content</a>
+    <a href={processID("Reacting to Files")}>Reacting to files</a>
+    <a href={processID("Disabled")}>Disabled</a>
+    <a href={processID("Sizes")}>Sizes</a>
+    <a href={processID("Reset Styles")}>Reset styles</a>
+    <a href={processID("Customization")}>Customization</a>
+    <a href={processID("Accessibility")}>Accessibility</a>
+    <a href={processID("Configuration")}>Configuration</a>
+  {/snippet}
+
+</DocLayout>

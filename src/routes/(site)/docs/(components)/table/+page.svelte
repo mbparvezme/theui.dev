@@ -1,9 +1,9 @@
-<SEO title="Table" />
+<SEO title="Table" description={metadata.description} keywords={metadata.tags?.join(", ")} />
 <Page {component} />
 
 <script lang="ts">
   import SEO from "$lib/SEO.svelte"
-  import Page from "$lib/pages/table.svx"
+  import Page, { metadata } from "$lib/pages/table.svx"
 
   const component =   {
     "table": [
@@ -19,15 +19,15 @@
           },
           {
             "name": "data",
-            "type": "<a href=\"/docs/types#table-data-type\">TABLE_DATA_TYPE</a>",
+            "type": "<a href=\"/docs/types#table-data-type\">TABLE_DATA</a>",
             "default": "undefined",
-            "description": "The table rows data. It can be an array of objects, each representing a row."
+            "description": "The table rows data. It can be an array of objects, each representing a row. Cell values are rendered as plain text."
           },
           {
             "name": "keys",
             "type": "string[]",
             "default": "undefined",
-            "description": "An array of keys used to map data from each row. It corresponds to the values in the row data."
+            "description": "An array of keys used to map data from each row. It corresponds to the values in the row data. A missing key renders an empty cell."
           },
           {
             "name": "border",
@@ -55,26 +55,32 @@
           },
           {
             "name": "hover",
-            "type": "boolean | ClassNameValue",
-            "default": "undefined",
-            "description": "Enables hover effects on table rows. The default is 'false', or you can provide a custom class name for further customization."
+            "type": "true | ClassNameValue",
+            "default": "false",
+            "description": "Enables hover effects on table rows. Set to true for the default hover effect, or provide a custom class name for further customization."
           },
           {
             "name": "trHeadClasses",
             "type": "string",
-            "default": "null",
+            "default": "\"\"",
             "description": "Custom classes for table row headers. Used to style header rows individually."
           },
           {
             "name": "trClasses",
             "type": "string",
-            "default": "null",
+            "default": "\"\"",
             "description": "Custom classes for the table rows. Used to style individual rows."
+          },
+          {
+            "name": "thClasses",
+            "type": "string",
+            "default": "\"\"",
+            "description": "Custom classes for table header cells. Used to style the &lt;th&gt; cells."
           },
           {
             "name": "tdClasses",
             "type": "string",
-            "default": "null",
+            "default": "\"\"",
             "description": "Custom classes for table cells. Used to style individual cells."
           },
           {
@@ -82,6 +88,12 @@
             "type": "<a href=\"/docs/types#animation-speed-type\">ANIMATE_SPEED</a>",
             "default": "\"normal\"",
             "description": "Controls the animation speed for the transitions on hover or other activities."
+          },
+          {
+            "name": "ariaLabel",
+            "type": "string",
+            "default": "undefined",
+            "description": "Names the table for screen readers, and names the scrollable area around it. Use it when the table has no <code>&lt;caption&gt;</code>."
           },
           {
             "name": "id",
@@ -152,8 +164,22 @@
           {
             "name": "tableHeader",
             "type": "boolean",
-            "default": "undefined",
-            "description": "Indicates whether the &lt;tr&gt; is a header row or a body row."
+            "default": "false",
+            "description": "Indicates whether the &lt;tr&gt; is a header row or a body row. Header rows render &lt;th&gt; cells."
+          }
+        ]
+      }
+    ],
+    "th": [
+      {
+        "key": "props",
+        "title": "Props",
+        "data": [
+          {
+            "name": "scope",
+            "type": "\"col\" | \"row\" | \"colgroup\" | \"rowgroup\"",
+            "default": "\"col\"",
+            "description": "Tells screen readers which cells this header covers. Keep the default for a column header, and use <code>\"row\"</code> for a header cell that names its row."
           }
         ]
       }

@@ -1,9 +1,9 @@
-<SEO title="Modal" />
+<SEO title="Modal" description={metadata.description} keywords={metadata.tags?.join(", ")} />
 <Page {component} />
 
 <script lang="ts">
   import SEO from "$lib/SEO.svelte"
-  import Page from "$lib/pages/modal.svx"
+  import Page, { metadata } from "$lib/pages/modal.svx"
 
   const component =   [
     {
@@ -18,8 +18,8 @@
         },
         {
           "name": "header",
-          "type": "Snippet",
-          "description": "Content for the modal header.",
+          "type": "string | Snippet",
+          "description": "Content for the modal header. A string renders as plain text; use a snippet for markup.",
           "default": "undefined"
         },
         {
@@ -66,9 +66,15 @@
         },
         {
           "name": "closeButton",
-          "type": "boolean",
-          "description": "Shows or hides the close button.",
+          "type": "boolean | string",
+          "description": "Shows or hides the close button. Pass a string to add custom classes to the close button.",
           "default": "true"
+        },
+        {
+          "name": "ariaLabel",
+          "type": "string",
+          "description": "Accessible label for the modal dialog when no header is set, and for a custom label snippet trigger.",
+          "default": "\"Modal\""
         },
         {
           "name": "rounded",
@@ -79,7 +85,7 @@
         {
           "name": "open",
           "type": "boolean",
-          "description": "Tracks the visibility status of the modal.",
+          "description": "Tracks the visibility status of the modal. Bindable: use bind:open to open or close the modal from outside.",
           "default": "false"
         },
         {

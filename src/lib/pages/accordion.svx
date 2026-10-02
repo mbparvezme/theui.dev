@@ -114,16 +114,16 @@ tags: [accordion, collapsible, toggle, component, svelte, svelte-5, theui-svelte
     </Example>
   </DocBlock>
 
-  <DocBlock title="Flash Accordion">
+  <DocBlock title="Flush Accordion">
     <Example>
-      <p class="not-prose">The Flush Accordion is a sleek and minimalist variant of the Accordion component, designed for users who prefer a simple, streamlined appearance. By setting the <code>flush</code> attribute on the <code>Accordion</code>, all the contained <code>AccordionItem</code> components will adopt this flush style, providing a consistent and clean look across the entire accordion.</p>
+      <p class="not-prose">The flush variant drops the outer border and the rounding, leaving only the dividers between the items. Set the <code>flush</code> attribute on the <code>Accordion</code> and every <code>AccordionItem</code> inside it picks it up.</p>
       {#snippet example()}
       <div>
-        <Accordion>
-          <AccordionItem flush title={accordionTitle + ": 1"}>
+        <Accordion flush>
+          <AccordionItem title={accordionTitle + ": 1"}>
             {@html accordionContent}
           </AccordionItem>
-          <AccordionItem flush title={accordionTitle + ": 2"}>
+          <AccordionItem title={accordionTitle + ": 2"}>
             {@html accordionContent}
           </AccordionItem>
         </Accordion>
@@ -141,7 +141,7 @@ tags: [accordion, collapsible, toggle, component, svelte, svelte-5, theui-svelte
   <DocBlock title="Sizes">
     <Example>
       <p class="not-prose mb-4">The <code>Accordion</code> and <code>AccordionItem</code> component provides a <code>size</code> prop to control the size of the accordion items. The <code>size</code> prop can take one of the following values: <code>'compact'</code>, <code>'default'</code>, or <code>'large'</code>.</p>
-      <p class="not-prose">When the <code>size</code> prop is set on the <code>Accordion</code> component, all <code>AccordionItem</code> components within it will inherit this size. This ensures a consistent appearance for all items in the accordion.</p>
+      <p class="not-prose">Set <code>size</code> on the <code>Accordion</code> and every <code>AccordionItem</code> inside it inherits the value, so you do not have to set it on each one.</p>
     
       {#snippet example()}
       <div>
@@ -163,7 +163,7 @@ tags: [accordion, collapsible, toggle, component, svelte, svelte-5, theui-svelte
       {/snippet}
     </Example>
 
-    <p class="not-prose">In the example above, all the <code>AccordionItem</code>s components will have the <code>compact</code> size. Setting it on <code>Accordion</code> ensures all items match for a consistent look.</p>
+    <p class="not-prose">In the example above every <code>AccordionItem</code> uses the <code>compact</code> size, because the value is set once on the <code>Accordion</code>.</p>
     <Example>
       <p class="not-prose">You can also set the <code>size</code> prop individually on each <code>AccordionItem</code> component which will override the size specified on the <code>Accordion</code>.</p>
       {#snippet example()}
@@ -261,9 +261,34 @@ tags: [accordion, collapsible, toggle, component, svelte, svelte-5, theui-svelte
     </Example>
   </DocBlock>
 
+  <DocBlock title="Rounded Corner">
+    <Example>
+      <p class="not-prose">The <code>rounded</code> prop controls the border radius of the accordion items. Available values are <code>"none"</code>, <code>"sm"</code>, <code>"md"</code> (default), <code>"lg"</code>, <code>"xl"</code>, <code>"2xl"</code> and <code>"full"</code>. When set on the <code>Accordion</code>, all <code>AccordionItem</code>s inherit it, and in a group only the outer corners of the first and last items are rounded. You can also set it on an individual <code>AccordionItem</code>. The <code>rounded</code> prop has no effect on a flush accordion.</p>
+      {#snippet example()}
+      <div>
+        <Accordion rounded="xl">
+          <AccordionItem title={accordionTitle + ": 1"}>
+            {@html accordionContent}
+          </AccordionItem>
+          <AccordionItem title={accordionTitle + ": 2"}>
+            {@html accordionContent}
+          </AccordionItem>
+        </Accordion>
+      </div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Accordion rounded="xl"> ... </Accordion>
+<AccordionItem rounded="none"> ... </AccordionItem>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
   <DocBlock title="Animation Speed">
     <Example>
-      <p class="not-prose">The <code>animationSpeed</code> prop controls how fast the accordion opens and closes. Available values are <code>"none"</code>, <code>"slower"</code>, <code>"slow"</code>, <code>"normal"</code>, <code>"fast"</code> (default), and <code>"faster"</code>. It helps you control the overall feel of the Accordion, allowing for subtle or sharp transitions depending on your preference.</p>
+      <p class="not-prose">The <code>animationSpeed</code> prop controls how fast the accordion opens and closes. Available values are <code>"none"</code>, <code>"slower"</code>, <code>"slow"</code>, <code>"normal"</code>, <code>"fast"</code> (default), and <code>"faster"</code>.</p>
       {#snippet example()}
       <div class="flex flex-col gap-4">
           <AccordionItem title="Animation speed: Slower" animationSpeed="slower">
@@ -301,13 +326,12 @@ tags: [accordion, collapsible, toggle, component, svelte, svelte-5, theui-svelte
   </DocBlock>
 
   <DocBlock title="Customization">
-    <p class="not-prose">The accordion component in <b>theui-svelte</b> offers a wide range of style customization options through several props. These props let you apply custom classes to different parts of the accordion, ensuring it matches your design perfectly.</p>
+    <p class="not-prose">Several props take classes for the different parts of the accordion, so the header, the body and the wrapper can be restyled separately.</p>
     <Example title="Available Props for Customization">
       <ul>
         <li><span class="not-prose"><code>containerClasses</code></span>: Apply custom classes to the accordion's main container.</li>
         <li><span class="not-prose"><code>openContainerClasses</code></span>: Set custom classes for the container when the accordion is active (expanded).</li>
         <li><span class="not-prose"><code>contentClasses</code></span>: Define custom classes for the content section.</li>
-        <li><span class="not-prose"><code>openContentClasses</code></span>: Specify classes for the content when it is active (visible).</li>
         <li><span class="not-prose"><code>titleClasses</code></span>: Customize the classes for the title of each accordion item.</li>
         <li><span class="not-prose"><code>openTitleClasses</code></span>: Apply specific classes to the title when the accordion is active (expanded).</li>
       </ul>
@@ -315,9 +339,9 @@ tags: [accordion, collapsible, toggle, component, svelte, svelte-5, theui-svelte
       <div>
         <AccordionItem
           containerClasses="border-4"
-          openContainerClasses="border-4 border-brand-primary-600"
-          titleClasses="text-brand-primary-500"
-          openTitleClasses="text-brand-primary-700 bg-brand-primary-200"
+          openContainerClasses="border-4 border-brand-600"
+          titleClasses="text-brand-500"
+          openTitleClasses="text-brand-700 bg-brand-200"
           title={accordionTitle + ": 1"}>
           {@html accordionContent}
         </AccordionItem>
@@ -328,19 +352,20 @@ tags: [accordion, collapsible, toggle, component, svelte, svelte-5, theui-svelte
 ```html
 <AccordionItem
   containerClasses="border-4"
-  openContainerClasses="border-4 border-brand-primary-600"
-  titleClasses="text-brand-primary-500"
-  openTitleClasses="text-brand-primary-700 bg-brand-primary-200"
+  openContainerClasses="border-4 border-brand-600"
+  titleClasses="text-brand-500"
+  openTitleClasses="text-brand-700 bg-brand-200"
 >
 </AccordionItem>
 ```
       {/snippet}
     </Example>
+    <p class="not-prose mb-0">Anything else you pass reaches the element itself, so an <code>id</code>, a <code>title</code>, a <code>data-*</code> attribute or an event handler all work the way they would on a <code>&lt;div&gt;</code>. The same is true of an <code>AccordionItem</code>.</p>
   </DocBlock>
 
   <DocBlock title="Accessibility">
     <div>
-      <p class="not-prose">Our Accordion component is built with accessibility in mind, ensuring a seamless experience for all users, including those relying on assistive technologies. Below are the accessibility features implemented:</p>
+      <p class="not-prose">The Accordion ships with the ARIA wiring and the keyboard support it needs. Here is what is handled:</p>
       <ol class="my-0">
         <li>
           <b>Keyboard Navigation</b>
@@ -383,13 +408,14 @@ tags: [accordion, collapsible, toggle, component, svelte, svelte-5, theui-svelte
 
   {#snippet sidebar()}
     <a href={processID("Example")}>Example</a>
-    <a href={processID("Accordion By Props")} class="ps-4">Title using prop</a>
-    <a href={processID("Accordion Using Snippet")} class="ps-4">Title using snippet</a>
+    <a href={processID("Title using prop")} class="ps-4">Title using prop</a>
+    <a href={processID("Title using snippet")} class="ps-4">Title using snippet</a>
     <a href={processID("Group Accordion")}>Group accordion</a>
-    <a href={processID("Flash Accordion")}>Flash accordion</a>
-    <a href={processID("Accordion Size")}>Sizes</a>
-    <!-- <a href={processID("Accordion Open State")}>Open state</a> -->
-    <a href={processID("Accordion: Standalone Mode")}>Standalone mode</a>
+    <a href={processID("Flush Accordion")}>Flush accordion</a>
+    <a href={processID("Sizes")}>Sizes</a>
+    <a href={processID("Accordion Open State")}>Open state</a>
+    <a href={processID("Standalone Mode")}>Standalone mode</a>
+    <a href={processID("Rounded Corner")}>Rounded corner</a>
     <a href={processID("Animation Speed")}>Animation Speed</a>
     <a href={processID("Customization")}>Customization</a>
     <a href={processID("Accessibility")}>Accessibility</a>

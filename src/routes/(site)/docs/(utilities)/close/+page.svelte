@@ -1,9 +1,9 @@
-<SEO title="Close Button" />
+<SEO title="Close Button" description={metadata.description} keywords={metadata.tags?.join(", ")} />
 <Page {component} />
 
 <script lang="ts">
   import SEO from "$lib/SEO.svelte"
-  import Page from "$lib/pages/close.svx"
+  import Page, { metadata } from "$lib/pages/close.svx"
 
   const component = [
     {
@@ -19,18 +19,14 @@
         {
           "name": "ariaLabel",
           "type": "string",
-          "default": "Close button",
+          "default": "\"Close\"",
           "description": "Provides an accessible label for the close button, improving accessibility for screen readers."
-        }
-      ]
-    },
-    {
-      "key": "dynamicProps", 
-      "title": "Dynamic props",
-      "data": [
+        },
         {
-          "name": "disabled",
-          "description": "Disables the close button."
+          "name": "rounded",
+          "type": "<a href=\"/docs/types#rounded-type\">ROUNDED</a>",
+          "default": "\"md\"",
+          "description": "Defines the border radius of the close button."
         }
       ]
     },
@@ -40,7 +36,7 @@
       "data": [
         {
           "name": "onclick",
-          "description": "Triggers when the close button clicked."
+          "description": "Optional. Triggers when the close button is clicked. Type: <code>(e: MouseEvent) => void</code>."
         }
       ]
     }

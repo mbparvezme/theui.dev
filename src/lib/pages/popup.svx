@@ -1,7 +1,7 @@
 ---
 title: Popup
 category: Components
-description: Engaging entrance and exit popups to enhance user interaction in your Svelte app.
+description: Entry and exit intent popups, with control over how often they show.
 dir: ".lib/pages"
 tags: [popup, modal, alert, entrance, exit, component, svelte, svelte-5, theui-svelte, component-library, ui, tailwindcss]
 ---
@@ -64,7 +64,7 @@ tags: [popup, modal, alert, entrance, exit, component, svelte, svelte-5, theui-s
       {/snippet}
     </Example>
     <Example title="Exit Popup">
-      <p class="not-prose">With <code>trigger</code> set to <code>'onExit'</code>, the popup will appear when the user moves their cursor toward the browser’s close button or attempts to leave the page.</p>
+      <p class="not-prose">With <code>trigger</code> set to <code>'onExit'</code>, the popup will appear when the user moves their cursor toward the browser's close button or attempts to leave the page.</p>
       {#snippet example()}
         <Button newTabIcon target="_blank" href="/example/popup-exit">Open example</Button>
       {/snippet}
@@ -118,18 +118,18 @@ tags: [popup, modal, alert, entrance, exit, component, svelte, svelte-5, theui-s
       <p class="not-prose">The <code>repeat</code> prop controls how often the Popup appears. It accepts three values: <code>true</code>, <code>false</code>, and <code>'page'</code>. The default value is <code>true</code>.</p>
       <ul class="my-0">
         <li><span class="not-prose"><code>true</code></span> - The popup will appear every time the page loads, even if the user reloads the same page. This is the default behavior.</li>
-        <li><span class="not-prose"><code>false</code></span> - The popup will appear only once, and it won’t show again, even if the user navigates to a different page.</li>
-        <li><span class="not-prose"><code>'page'</code></span> - The popup will appear once per page. If the user moves to another page, it will show again, but it won’t repeat on the same page.</li>
+        <li><span class="not-prose"><code>false</code></span> - The popup will appear only once, and it won't show again, even if the user navigates to a different page.</li>
+        <li><span class="not-prose"><code>'page'</code></span> - The popup will appear once per page. If the user moves to another page, it will show again, but it won't repeat on the same page.</li>
       </ul>
     </div>
-    <p class="not-prose">This feature allows precise control over popup behavior across pages. For example, to display the popup only once per visitor, set <code>repeat={"{"+false+"}"}</code>. To show the popup once per page the visitor visits, set <code>repeat="page"</code>.</p>
+    <p class="not-prose">This feature allows precise control over popup behavior across pages. For example, to display the popup only once per visitor, set <code>repeat={"{"+false+"}"}</code>. To show the popup once per page the visitor visits, set <code>repeat="page"</code>. The visit history is saved in <code>localStorage</code> under the <code>entryPopUp</code> and <code>exitPopUp</code> keys.</p>
   </DocBlock>
 
   <DocBlock title="Popup Backdrop">
     <Example title="Static Backdrop">
-      <p class="not-prose">The <code>staticBackdrop</code> prop controls whether the Popup closes when clicking on the backdrop. By default, the backdrop is clickable, and clicking it will close the Popup. Setting <code>staticBackdrop</code> to <code>true</code> makes the backdrop static, meaning the Modal will remain open even when the backdrop is clicked.</p>
+      <p class="not-prose">The <code>staticBackdrop</code> prop controls whether the Popup closes when clicking on the backdrop. By default, the backdrop is clickable, and clicking it will close the Popup. Setting <code>staticBackdrop</code> to <code>true</code> makes the backdrop static, meaning the Popup will remain open even when the backdrop is clicked.</p>
       {#snippet example()}
-        <Button newTabIcon target="_blank" href="/example/popup-static-backdrop">Open example</Button>
+        <Button newTabIcon target="_blank" href="/example/popup-backdrop-static">Open example</Button>
       {/snippet}
 
       {#snippet code()}
@@ -156,7 +156,7 @@ tags: [popup, modal, alert, entrance, exit, component, svelte, svelte-5, theui-s
 </Popup>
 
 <!-- Custom backdrop -->
-<Popup backdrop="bg-brand-primary-500/80">
+<Popup backdrop="bg-brand-500/80">
   This popup has a custom backdrop!
 </Popup>
 ```
@@ -165,7 +165,7 @@ tags: [popup, modal, alert, entrance, exit, component, svelte, svelte-5, theui-s
   </DocBlock>
 
   <DocBlock title="Rounded Corners">
-    <p class="not-prose">TThe <code>rounded</code> prop controls the corner radius of the Popup, ensuring design consistency. While custom CSS classes can be used for styling, this prop provides a standardized way to apply consistent rounding across the component. Available values are: <code>none</code>, <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code>, and <code>full</code>. Default value <code>md</code>.</p>
+    <p class="not-prose">The <code>rounded</code> prop sets the corner radius of the Popup. Available values are: <code>none</code>, <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code>, <code>2xl</code>, and <code>full</code>. Default value <code>xl</code>.</p>
     <Example>
       {#snippet example()}
         <Button newTabIcon target="_blank" href="/example/popup-rounded-no">Open example</Button>
@@ -190,7 +190,7 @@ tags: [popup, modal, alert, entrance, exit, component, svelte, svelte-5, theui-s
 
       {#snippet code()}
 ```html
-<Popup class="border-4 border-brand-primary-200 bg-brand-primary-500 text-on-brand-primary-500">
+<Popup class="border-4 border-brand-200 bg-brand-500 text-on-brand-500">
   This is a custom popup with some extra classes!
 </Popup>
 ```
@@ -200,13 +200,12 @@ tags: [popup, modal, alert, entrance, exit, component, svelte, svelte-5, theui-s
 
   <DocBlock title="Accessibility">
     <div>
-      <p class="not-prose">The Alert <code>Popup</code> component is designed to be accessible for all users, including those with disabilities. Here's how it works:</p>
+      <p class="not-prose">Here is what the Popup handles for you:</p>
       <ul class="my-0">
-        <li><b>Focus Management</b>: When the popup opens, focus will automatically go to the first clickable element inside it, such as the close button, allowing keyboard users to interact with it right away.</li>
         <li><b>Keyboard Navigation</b>: You can use the <kbd>Tab</kbd> key to move through the popup and the <kbd>Esc</kbd> key to close it, making it easy to navigate with a keyboard.</li>
-        <li><b>Aria Roles</b>: The popup has <b>aria-labelledby</b> for screen readers to announce the title and <span class="not-prose"><code>role="dialog"</code></span> to let users know it's a modal window.</li>
-        <li><b>Backdrop Handling</b>: When the popup is open, the backdrop is hidden from screen readers, so users can focus on the popup content.</li>
-        <li><b>Custom Content</b>: The <span class="not-prose"><code>entryContent</code></span> and <span class="not-prose"><code>exitContent</code></span> props allow you to add any content you need, ensuring it's clear for screen readers.</li>
+        <li><b>Aria Roles</b>: The popup has <span class="not-prose"><code>role="dialog"</code></span> and <span class="not-prose"><code>aria-modal="true"</code></span> to let users know it's a modal window. Add your own <span class="not-prose"><code>aria-labelledby</code></span> or <span class="not-prose"><code>aria-label</code></span> attribute to the <code>Popup</code> so screen readers can announce its title.</li>
+        <li><b>Backdrop Handling</b>: The backdrop uses <span class="not-prose"><code>role="presentation"</code></span>, so it is not announced by screen readers.</li>
+        <li><b>Custom Content</b>: The <span class="not-prose"><code>entryContent</code></span> and <span class="not-prose"><code>exitContent</code></span> props take any content, so write it so it reads clearly on its own.</li>
       </ul>
     </div>
     <p class="not-prose">The <b>Popup</b> is built to work well with screen readers and keyboard navigation, making sure everyone can use it comfortably.</p>

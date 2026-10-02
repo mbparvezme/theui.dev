@@ -1,7 +1,7 @@
 ---
 title: Alert
 category: Components
-description: Display important messages in your Svelte app with theui-svelte’s customizable Alert component.
+description: Display important messages in your Svelte app with theui-svelte's customizable Alert component.
 dir: ".lib/pages"
 tags: [alert, notification, message, component, svelte, svelte-5, theui-svelte, component-library, ui, tailwindcss]
 ---
@@ -143,7 +143,7 @@ tags: [alert, notification, message, component, svelte, svelte-5, theui-svelte, 
 
   <DocBlock title="Rounded Corners">
     <Example>
-      <p class="not-prose">You can adjust the alert's corners using the <code>rounded</code> prop to tweak the border radius. Choose from preset sizes like <code>"sm"</code>, <code>"md"</code> (default), <code>"lg"</code>, <code>"xl"</code>, <code>"full"</code>, or <code>"none"</code> for a polished look.</p>
+      <p class="not-prose">You can adjust the alert's corners using the <code>rounded</code> prop to tweak the border radius. Choose from preset sizes like <code>"sm"</code>, <code>"md"</code> (default), <code>"lg"</code>, <code>"xl"</code>, <code>"2xl"</code>, <code>"full"</code>, or <code>"none"</code> for a polished look.</p>
       {#snippet example()}
       <div class="w-full">
         <Alert rounded="none">This Alert has no rounded corners (sharp edges).</Alert>
@@ -170,7 +170,7 @@ tags: [alert, notification, message, component, svelte, svelte-5, theui-svelte, 
 
   <DocBlock title="Customization">
     <Example>
-      <p class="not-prose">The <code>Alert</code> component provides full styling control through its class attribute, letting you customize every detail to match your app’s design. Whether tweaking colors or overhauling layouts, this flexibility ensures alerts blend seamlessly with your UI while maintaining brand consistency.</p>
+      <p class="not-prose">The <code>class</code> attribute goes straight onto the alert and is merged with tailwind-merge, so your own colors, spacing and layout classes win over the defaults.</p>
       {#snippet example()}
       <div class="w-full">
         <Alert class="bg-gradient-to-r from-red-200 dark:from-red-800 to-yellow-400 dark:to-yellow-500 text-default">I'm custom styled alert message!</Alert>
@@ -185,10 +185,11 @@ tags: [alert, notification, message, component, svelte, svelte-5, theui-svelte, 
 ```
       {/snippet}
     </Example>
+    <p class="not-prose mb-0">Anything else you pass reaches the element itself, so an <code>id</code>, a <code>title</code>, a <code>data-*</code> attribute or an event handler all work the way they would on a <code>&lt;div&gt;</code>.</p>
   </DocBlock>
 
   <DocBlock title="Accessibility">
-    <p class="not-prose">Designed for screen readers from the ground up, the component is built with accessibility in mind, handling all necessary ARIA attributes, including <code>role="alert"</code> and <code>aria-label="Close alert"</code>, to ensure compatibility with assistive technologies. These attributes are automatically applied, so you don't need to configure them manually.</p>
+    <p class="not-prose">The Alert sets its own ARIA attributes, including <code>role="alert"</code> and <code>aria-label="Close alert"</code> on the dismiss button, so there is nothing to configure. For non-critical messages, you can change the role using the <code>role</code> prop, e.g. <code>role="status"</code>.</p>
     <p class="not-prose font-bold">The only consideration required is maintaining proper color contrast for the alert's text and background to ensure readability and compliance with accessibility standards.</p>
   </DocBlock>
 

@@ -20,22 +20,26 @@ tags: [tabs, navigation, pills, component, svelte, svelte-5, theui-svelte, compo
 </script>
 
 {#snippet T()}
-  <Tab>Tab 1</Tab>
-  <Tab>Tab 2</Tab>
-  <Tab>Tab 3</Tab>
+  <Tab value="tab1">Tab 1</Tab>
+  <Tab value="tab2">Tab 2</Tab>
+  <Tab value="tab3">Tab 3</Tab>
 {/snippet}
 
 {#snippet P()}
-  <TabPanel>TabPanel 1</TabPanel>
-  <TabPanel>TabPanel 2</TabPanel>
-  <TabPanel>TabPanel 3</TabPanel>
+  <TabPanel value="tab1">TabPanel 1</TabPanel>
+  <TabPanel value="tab2">TabPanel 2</TabPanel>
+  <TabPanel value="tab3">TabPanel 3</TabPanel>
 {/snippet}
 
 <DocLayout>
   <DocHead title="Tabs" text="A simple and flexible way to organize content into multiple panels. It helps in structuring related information efficiently within a compact space." edit_url={editURL("tabs")} />
 
   <DocBlock title="About">
-    <p class="not-prose">The Tab component allows you to create navigable tabbed interfaces effortlessly. It dynamically manages tab switching while keeping the content structured and accessible. Highly customizable, it supports different layouts, active states, and styling options, making it ideal for presenting information in a clean and user-friendly manner.</p>
+    <p class="not-prose">The Tabs component takes the tab buttons in a <code>tabs</code> snippet and the panels as its children. A <code>Tab</code> and a <code>TabPanel</code> are paired by a matching <code>value</code>, not by the order they appear in.</p>
+  </DocBlock>
+
+  <DocBlock title="Tab Values">
+    <p class="not-prose">Every <code>Tab</code> and every <code>TabPanel</code> takes a required <code>value</code>. A tab opens the panel that carries the same value, so the pairs are what link the two lists together. Use any string you like, as long as each pair is unique within one <code>Tabs</code>.</p>
   </DocBlock>
 
   <DocBlock title="Example">
@@ -60,26 +64,27 @@ tags: [tabs, navigation, pills, component, svelte, svelte-5, theui-svelte, compo
 
 <Tabs>
   {#snippet tabs()}
-    <Tab>Tab 1</Tab>
-    <Tab>Tab 2</Tab>
-    <Tab>Tab 3</Tab>
+    <Tab value="tab1">Tab 1</Tab>
+    <Tab value="tab2">Tab 2</Tab>
+    <Tab value="tab3">Tab 3</Tab>
   {/snippet}
-  <TabPanel>TabPanel 1</TabPanel>
-  <TabPanel>TabPanel 2</TabPanel>
-  <TabPanel>TabPanel 3</TabPanel>
+  <TabPanel value="tab1">TabPanel 1</TabPanel>
+  <TabPanel value="tab2">TabPanel 2</TabPanel>
+  <TabPanel value="tab3">TabPanel 3</TabPanel>
 </Tabs>
 ```
       {/snippet}
     </Example>
     <ul class="my-0">
       <li>The <span class="not-prose"><code>Tabs</code></span> component wraps both the <span class="not-prose"><code>Tab</code></span> and <span class="not-prose"><code>TabPanel</code></span> components.</li>
-      <li>Each <span class="not-prose"><code>Tab</code></span> corresponds to a specific <span class="not-prose"><code>TabPanel</code></span>, and clicking on a tab will show the associated content.</li>
+      <li>Each <span class="not-prose"><code>Tab</code></span> and <span class="not-prose"><code>TabPanel</code></span> requires a <span class="not-prose"><code>value</code></span> prop. A tab is linked to the panel with the same <span class="not-prose"><code>value</code></span>, and clicking on a tab will show the associated content.</li>
+      <li>The first tab is selected by default.</li>
     </ul>
   </DocBlock>
 
   <DocBlock title="Variant">
     <Example>
-      <p class="not-prose">The <code>variant</code> prop allows you to customize the style of the tabs. It accepts two values: <code>"tabs"</code> and <code>"pills"<code>.</p>
+      <p class="not-prose">The <code>variant</code> prop allows you to customize the style of the tabs. It accepts two values: <code>"tabs"</code> and <code>"pills"</code>.</p>
       <ul class="my-0">
         <li><span class="not-prose"><code>"tabs"</code></span>: Displays the tabs in a traditional horizontal layout with square or rectangular edges.</li>
         <li><span class="not-prose"><code>"pills"</code></span>: Displays the tabs with rounded edges, giving them a pill-like appearance.</li>
@@ -104,6 +109,28 @@ tags: [tabs, navigation, pills, component, svelte, svelte-5, theui-svelte, compo
     </Example>
   </DocBlock>
 
+  <DocBlock title="Animation Speed">
+    <Example>
+      <p class="not-prose">The <code>animationSpeed</code> prop controls the transition speed of the tabs when their style changes, like on hover or when a tab becomes active. Available values are <code>"none"</code>, <code>"slower"</code>, <code>"slow"</code>, <code>"normal"</code> (default), <code>"fast"</code> and <code>"faster"</code>. A panel fades in when it is shown; set <code>animationSpeed</code> to <code>"none"</code> to switch panels without the fade.</p>
+      {#snippet example()}
+      <div class="w-full">
+        <Tabs animationSpeed="none">
+          {#snippet tabs()}
+            {@render T()}
+          {/snippet}
+          {@render P()}
+        </Tabs>
+      </div>
+      {/snippet}
+
+      {#snippet code()}
+```html
+<Tabs animationSpeed="none"> ... </Tabs>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
   <DocBlock title="Customization">
     <p class="not-prose">The <code>Tabs</code> component is highly customizable, allowing you to tailor its appearance and behavior to fit your design needs. You can adjust various parts of the component using the following props:</p>
     <div>
@@ -116,7 +143,7 @@ tags: [tabs, navigation, pills, component, svelte, svelte-5, theui-svelte, compo
         </ul>
         {#snippet example()}
           <div class="w-full">
-            <Tabs border="border-b-4 border-brand-primary-300">
+            <Tabs border="border-b-4 border-brand-300">
               {#snippet tabs()}
                 {@render T()}
               {/snippet}
@@ -128,7 +155,7 @@ tags: [tabs, navigation, pills, component, svelte, svelte-5, theui-svelte, compo
         {#snippet code()}
 ```html
 <!-- Custom border classes -->
-<Tabs border="border-b-4 border-brand-primary-300"> ... </Tabs>
+<Tabs border="border-b-4 border-brand-300"> ... </Tabs>
 ```
         {/snippet}
       </Example>
@@ -181,7 +208,7 @@ tags: [tabs, navigation, pills, component, svelte, svelte-5, theui-svelte, compo
         <p class="not-prose">You can use the <code>"tabPanelClasses"</code> prop to customize the style of the tab panels. You can pass custom classes for margin, padding, background color, or any other styling.</p>
         {#snippet example()}
           <div class="w-full">
-            <Tabs tabPanelClasses="p-4 bg-brand-primary-100">
+            <Tabs tabPanelClasses="p-4 bg-brand-100">
               {#snippet tabs()}
                 {@render T()}
               {/snippet}
@@ -203,13 +230,13 @@ tags: [tabs, navigation, pills, component, svelte, svelte-5, theui-svelte, compo
           <div class="w-full">
             <Tabs class="border-2 border-yellow-500 py-2 px-4 rounded-lg">
               {#snippet tabs()}
-                <Tab>Tab 1</Tab>
-                <Tab class="font-bold text-2xl">Tab 2</Tab>
-                <Tab>Tab 3</Tab>
+                <Tab value="tab1">Tab 1</Tab>
+                <Tab value="tab2" class="font-bold text-2xl">Tab 2</Tab>
+                <Tab value="tab3">Tab 3</Tab>
               {/snippet}
-              <TabPanel>TabPanel 1</TabPanel>
-              <TabPanel class="bg-yellow-100 p-4">TabPanel 2</TabPanel>
-              <TabPanel>TabPanel 3</TabPanel>
+              <TabPanel value="tab1">TabPanel 1</TabPanel>
+              <TabPanel value="tab2" class="bg-yellow-100 p-4">TabPanel 2</TabPanel>
+              <TabPanel value="tab3">TabPanel 3</TabPanel>
             </Tabs>
           </div>
         {/snippet}
@@ -218,13 +245,13 @@ tags: [tabs, navigation, pills, component, svelte, svelte-5, theui-svelte, compo
 ```html
 <Tabs class="border-2 border-yellow-500 py-2 px-4 rounded-lg">
   {#snippet tabs()}
-    <Tab>Tab 1</Tab>
-    <Tab class="font-bold text-2xl">Tab 2</Tab>
-    <Tab>Tab 3</Tab>
+    <Tab value="tab1">Tab 1</Tab>
+    <Tab value="tab2" class="font-bold text-2xl">Tab 2</Tab>
+    <Tab value="tab3">Tab 3</Tab>
   {/snippet}
-  <TabPanel>TabPanel 1</TabPanel>
-  <TabPanel class="bg-yellow-100 p-4">TabPanel 2</TabPanel>
-  <TabPanel>TabPanel 3</TabPanel>
+  <TabPanel value="tab1">TabPanel 1</TabPanel>
+  <TabPanel value="tab2" class="bg-yellow-100 p-4">TabPanel 2</TabPanel>
+  <TabPanel value="tab3">TabPanel 3</TabPanel>
 </Tabs>
 ```
         {/snippet}
@@ -234,17 +261,17 @@ tags: [tabs, navigation, pills, component, svelte, svelte-5, theui-svelte, compo
   </DocBlock>
 
   <DocBlock title="Accessibility">
-    <p class="not-prose">The <code>Tabs</code> component follows the <a href="https://www.w3.org/WAI/ARIA/apg/patterns/tabs/" target="blank">WAI-ARIA Tabs Pattern</a> to ensure a seamless experience for all users, including those using assistive technologies.</p>
+    <p class="not-prose">The <code>Tabs</code> component follows the <a href="https://www.w3.org/WAI/ARIA/apg/patterns/tabs/" target="blank">WAI-ARIA Tabs Pattern</a>.</p>
     <ol class="my-0">
       <li><b class="font-semi-bold">Built-in Accessibility Features</b>: The component includes essential ARIA attributes and roles:
         <ul>
           <li><span class="not-prose"><code>role="tablist"</code></span> for the container that holds all tabs.</li>
-          <li><span class="not-prose"><code>role="tab"</code></span> for each tab with <span class="not-prose"><code>aria-selected="true"</code></span> on the active one.</li>
+          <li><span class="not-prose"><code>role="tab"</code></span> for each tab with <span class="not-prose"><code>aria-selected="true"</code></span> on the active one, and <span class="not-prose"><code>aria-controls</code></span> pointing to its panel.</li>
           <li><span class="not-prose"><code>role="tabpanel"</code></span> for each content section with <span class="not-prose"><code>aria-labelledby</code></span> linking it to its respective tab.</li>
         </ul>
-        These attributes allow screen readers to interpret and navigate the component correctly.
+        These attributes are what a screen reader reads to move through the tabs.
       </li>
-      <li><b class="font-semi-bold">Keyboard Navigation</b>: Users can navigate between tabs using <kbd>Tab</kbd> key, and activate a tab with <kbd>Enter</kbd> or <kbd>Space</kbd>. The active tab remains focusable, ensuring smooth interaction without extra actions.</li>
+      <li><b class="font-semi-bold">Keyboard Navigation</b>: Users can move to the tabs using <kbd>Tab</kbd> key, and activate a tab with <kbd>Enter</kbd> or <kbd>Space</kbd>. Inside the tab list, <kbd>Arrow Right</kbd> and <kbd>Arrow Left</kbd> move to the next or previous tab (wrapping around at the ends), and <kbd>Home</kbd> and <kbd>End</kbd> move to the first or last tab. The focused tab is activated right away.</li>
       <li><b class="font-semi-bold">Customization Considerations</b>: When applying custom styles, ensure <b>focus indicators</b> remain visible, <b>contrast is sufficient</b>, and <b>animations do not disrupt usability</b>, particularly for users with motion sensitivity.</li>
     </ol>
     <p class="not-prose">By following these best practices, the Tabs component provides an inclusive and accessible experience.</p>
@@ -258,6 +285,7 @@ tags: [tabs, navigation, pills, component, svelte, svelte-5, theui-svelte, compo
     <a href={processID("About")}>About</a>
     <a href={processID("Example")}>Example</a>
     <a href={processID("Variant")}>Variant</a>
+    <a href={processID("Animation Speed")}>Animation Speed</a>
     <a href={processID("Customization")}>Customization</a>
     <a href={processID("Border Customization")} class="ps-4">Border Customization</a>
     <a href={processID("Customize the Tab Container")} class="ps-4">Tab Container</a>

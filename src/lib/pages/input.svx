@@ -20,10 +20,10 @@ tags: [input, form, text-input, customizable, component, svelte, svelte-5, theui
 </script>
 
 <DocLayout>
-  <DocHead title="Input" text="The Input component is a flexible and customizable form element that supports various input types. It ensures a consistent and seamless experience across different use cases." edit_url={editURL("input")} />
+  <DocHead title="Input" text="The Input component covers the standard HTML input types, plus textarea. It takes its size, variant and shape from the Form or Fieldset around it." edit_url={editURL("input")} />
 
   <DocBlock title="About">
-    <p class="not-prose">Designed for versatility, the <code>Input</code> component adapts to different form requirements, from basic text fields to advanced data inputs. With built-in styling, validation, and accessibility features, it enhances usability while maintaining a uniform look. It seamlessly integrates with the Form and Fieldset components, inheriting styles and behaviors for effortless form management.</p>
+    <p class="not-prose">There is no separate textarea component: pass <code>type="textarea"</code> and the <code>Input</code> renders one. The label, the helper text and the <code>aria-describedby</code> link between them are wired up for you, and the styling comes from the Form or Fieldset around the field.</p>
   </DocBlock>
 
   <DocBlock title="Example">
@@ -94,7 +94,7 @@ tags: [input, form, text-input, customizable, component, svelte, svelte-5, theui
   <DocBlock title="Default Value">
     <Example>
       <p class="not-prose">The <code>value</code> prop allows you to set a default value for the input field or textarea. This is useful when you want the input to start with a predefined value, such as prefilled user data, placeholders for editing forms, or default selections.</p>
-      <p class="not-prose">The <code>value</code> prop work for all the input types including <b>textarea</b>.</p>
+      <p class="not-prose">The <code>value</code> prop work for all the input types including <b>textarea</b>. It is bindable, so use <code>bind:value</code> to read what the user types.</p>
       {#snippet example()}
 <div class="inline-flex flex-col gap-4">
   <Input name="username" value="john_doe">Username</Input>
@@ -106,6 +106,12 @@ tags: [input, form, text-input, customizable, component, svelte, svelte-5, theui
 ```html
 <Input ... type="text" value="john_doe">Username</Input>
 <Input ... type="textarea" value="A passionate developer who loves coding.">About you</Input>
+
+<!-- Two-way binding -->
+<script>
+  let username = $state("john_doe");
+</script>
+<Input ... bind:value={username}>Username</Input>
 ```
       {/snippet}
     </Example>
@@ -116,7 +122,7 @@ tags: [input, form, text-input, customizable, component, svelte, svelte-5, theui
       <p class="not-prose">The <code>variant</code> prop allows you to control the visual style of the input field. There are two available variants:</p>
       <ul class="mt-0">
         <li><span class="not-prose"><code>bordered</code></span>(default): Displays the input with a visible border, making it distinct and clearly separated from the background.</li>
-        <li><span class="not-prose"><code>flat</code></span>: Removes the border for a more minimalistic and seamless appearance, blending with the surrounding design.</li>
+        <li><span class="not-prose"><code>flat</code></span>: drops the border and keeps only the bottom rule.</li>
       </ul>
       <p class="not-prose">This prop helps you match the input style with your overall UI theme.</p>
       {#snippet example()}
@@ -164,9 +170,33 @@ tags: [input, form, text-input, customizable, component, svelte, svelte-5, theui
       {/snippet}
     </Example>
 
+    <Example title="Helper Text">
+      <p class="not-prose">Use the <code>helperText</code> prop to show extra information below the input, like a hint or a format requirement. It accepts a string or a snippet. The helper text is linked to the input with <code>aria-describedby</code>, so screen readers read it along with the label. A string renders as plain text, so use the snippet for markup.</p>
+      {#snippet example()}
+<div class="inline-flex flex-col gap-4">
+  <Input name="password" type="password" helperText="Password must be 10 characters long">Password</Input>
+</div>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<!-- String -->
+<Input name="password" type="password" helperText="Password must be 10 characters long">Password</Input>
+
+<!-- Snippet -->
+<Input name="password" type="password">
+  Password
+  {#snippet helperText()}
+    Must be <b>10 characters</b> long
+  {/snippet}
+</Input>
+```
+      {/snippet}
+    </Example>
+
     <Example title="Floating Labels" classes="gap-8">
-      <p class="not-prose mb-2">The <code>floatingLabel</code> prop allows the label to float inside the input field, giving a sleek, modern design. When enabled, the label starts inside the input and moves to the top when the user types.</p>
-      <p class="not-prose">The floating label works with both the <code>"bordered"</code> and <code>"flat"</code> input variants. However, it is enabled by default when the variant is set to "flat", unless explicitly disabled. For the "bordered" variant, you must enable it manually by adding the <code>floatingLabel</code> prop.</p>
+      <p class="not-prose mb-2">With <code>floatingLabel</code> the label starts inside the field and moves up to the top edge once the field has focus or content.</p>
+      <p class="not-prose">The floating label works with both the <code>"bordered"</code> and <code>"flat"</code> input variants. However, it is enabled by default when the variant is set to "flat", unless explicitly disabled (this also applies to a flat Input inside a bordered Form or Fieldset). For the "bordered" variant, you must enable it manually by adding the <code>floatingLabel</code> prop.</p>
       {#snippet example()}
 <Input name="myInput" variant="bordered" floatingLabel labelClasses="dark:bg-[#0d0d11]">Name</Input>
 <Input name="myInput" variant="flat" floatingLabel>Name</Input>
@@ -218,7 +248,7 @@ tags: [input, form, text-input, customizable, component, svelte, svelte-5, theui
 
   <DocBlock title="Rounded Input">
     <Example>
-      <p class="not-prose">The <code>rounded</code> prop controls the roundness of the input's corners, allowing for different visual styles. Available values are <code>"none"</code>, <code>"sm"</code>, <code>"md"</code>, <code>"lg"</code>, <code>"xl"</code>, and <code>"full"</code>, with <code>"md"</code> as the default. Use this prop to adjust the input's appearance, from sharp edges to fully rounded corners, depending on your design needs.</p>
+      <p class="not-prose">The <code>rounded</code> prop controls the roundness of the input's corners, allowing for different visual styles. Available values are <code>"none"</code>, <code>"sm"</code>, <code>"md"</code>, <code>"lg"</code>, <code>"xl"</code>, <code>"2xl"</code>, and <code>"full"</code>, with <code>"md"</code> as the default. The <code>"flat"</code> variant has no rounded corners. Use this prop to adjust the input's appearance, from sharp edges to fully rounded corners, depending on your design needs.</p>
       {#snippet example()}
 <div class="inline-flex flex-col gap-4">
   <Input name="myInput" rounded="none">Rounded none</Input>
@@ -247,7 +277,7 @@ tags: [input, form, text-input, customizable, component, svelte, svelte-5, theui
 
   <DocBlock title="Animation Speed">
     <Example classes="gap-8">
-      <p class="not-prose">The <code>animationSpeed</code> prop controls the speed of input animations, allowing for smooth transitions and interactions. Available values are <code>"none"</code>, <code>"slower"</code>, <code>"slow"</code>, <code>"normal"</code>, <code>"fast"</code>, and <code>"faster"</code>, with <code>"normal"</code> as the default. Adjusting this prop helps create a more dynamic or subtle user experience based on your design preferences.</p>
+      <p class="not-prose">The <code>animationSpeed</code> prop controls the speed of input animations, allowing for smooth transitions and interactions. Available values are <code>"none"</code>, <code>"slower"</code>, <code>"slow"</code>, <code>"normal"</code>, <code>"fast"</code>, and <code>"faster"</code>, with <code>"normal"</code> as the default.</p>
       {#snippet example()}
 <div class="inline-flex flex-col gap-4">
   <Input name="myInput" variant="flat" animationSpeed="slower">Animation slower</Input>
@@ -276,7 +306,7 @@ tags: [input, form, text-input, customizable, component, svelte, svelte-5, theui
 
   <DocBlock title="Customization">
     <Example>
-      <p class="not-prose">The <code>Input</code> component provides several ways to customize its appearance, allowing you to match it with your design needs.</p>
+      <p class="not-prose">These props cover the different parts of the field:</p>
       <ul class="mt-0">
         <li><span class="not-prose"><code>wrapperClasses</code>: Applied to the outermost wrapper <b>&lt;div&gt;</b>, allowing full control over the container's styling.</span></li>
         <li><span class="not-prose"><code>labelClasses</code>: Applied directly to the <code>label</code>, making it easy to adjust typography, spacing, or colors.</span></li>
@@ -307,8 +337,29 @@ tags: [input, form, text-input, customizable, component, svelte, svelte-5, theui
     </Example>
   </DocBlock>
 
+  <DocBlock title="Reset Styles">
+    <Example>
+      <p class="not-prose">Set the <code>reset</code> prop to <code>true</code> to remove the default styles of the input and its label, so only your own classes apply. This is useful when the input must follow a completely different design. The default is <code>false</code>.</p>
+      {#snippet example()}
+<Input name="myInput" reset={true} class="w-full border-2 border-dashed border-gray-400 p-2" wrapperClasses="flex flex-col gap-1">Custom input</Input>
+      {/snippet}
+      {#snippet code()}
+
+```html
+<Input name="myInput" reset={true} class="w-full border-2 border-dashed border-gray-400 p-2" wrapperClasses="flex flex-col gap-1">
+  Custom input
+</Input>
+```
+      {/snippet}
+    </Example>
+  </DocBlock>
+
+  <DocBlock title="Inherited Settings">
+    <p class="not-prose">When an <code>Input</code> is placed inside a <code>Form</code> or <code>Fieldset</code>, it takes <code>variant</code>, <code>floatingLabel</code>, <code>size</code>, <code>rounded</code>, <code>animationSpeed</code>, <code>labelClasses</code> and <code>reset</code> from the closest one (the Fieldset first, then the Form). Any of these props set on the Input itself override the inherited value.</p>
+  </DocBlock>
+
   <DocBlock title="Accessibility">
-    <p class="not-prose">Our Input component is built for both clarity and accessibility. It smartly connects the <code>&lt;label&gt;</code> to the input using the <code>for</code> and <code>id</code> attributes, making sure screen readers announce labels without confusion. When helper text is present, <code>aria-describedby</code> links it perfectly to the input so assistive tech users get the full context. Whether you're typing in a textbox or writing paragraphs in a textarea, everything flows beautifully and accessibly.</p>
+    <p class="not-prose">The <code>&lt;label&gt;</code> is tied to the field with <code>for</code> and <code>id</code>, so a screen reader reads the label together with the field. When there is helper text, <code>aria-describedby</code> links it as well, so it is read out too. The same wiring applies whether the field is a text input or a textarea.</p>
   </DocBlock>
 
   <DocBlock title="Configuration">
@@ -324,11 +375,14 @@ tags: [input, form, text-input, customizable, component, svelte, svelte-5, theui
     <a href={processID("Input Variant")}>Input Variant</a>
     <a href={processID("Label")}>Label</a>
     <a href={processID("Adding a Label")} class="ps-4">Adding a Label</a>
+    <a href={processID("Helper Text")} class="ps-4">Helper Text</a>
     <a href={processID("Floating Labels")} class="ps-4">Floating Labels</a>
     <a href={processID("Sizing")}>Sizing</a>
     <a href={processID("Rounded Input")}>Rounded Input</a>
     <a href={processID("Animation Speed")}>Animation Speed</a>
     <a href={processID("Customization")}>Customization</a>
+    <a href={processID("Reset Styles")}>Reset Styles</a>
+    <a href={processID("Inherited Settings")}>Inherited Settings</a>
     <a href={processID("Accessibility")}>Accessibility</a>
     <a href={processID("Configuration")}>Configuration</a>
   {/snippet}

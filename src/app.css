@@ -3,11 +3,16 @@
 @plugin '@tailwindcss/typography';
 
 @import 'theui-svelte/style';
-@source "../node_modules/theui-svelte";
+@source "../../theui-svelte/dist";
 
 @theme {
-  --max-width: 1400px;
   --font-sans: "IBM Plex Sans", "sans-serif";
+}
+
+/* --max-width is a plain variable, not a theme token. Inside @theme it would sit in the
+   theme layer and lose to the library's own unlayered :root, so it goes here. */
+:root {
+  --max-width: 1400px;
 }
 
 @layer base {
