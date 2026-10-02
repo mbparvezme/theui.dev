@@ -2,8 +2,8 @@
 <Page {component} />
 
 <script lang="ts">
-  import SEO from "$lib/SEO.svelte"
-  import Page, { metadata } from "$lib/pages/time-picker.svx"
+  import SEO from "#lib/SEO.svelte"
+  import Page, { metadata } from "#lib/pages/time-picker.svx"
 
   const component = [
     {

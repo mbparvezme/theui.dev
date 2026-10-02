@@ -2,6 +2,6 @@
 <Page />
 
 <script lang="ts">
-  import SEO from "$lib/SEO.svelte"
-  import Page, { metadata } from "$lib/pages/rtl.svx"
+  import SEO from "#lib/SEO.svelte"
+  import Page, { metadata } from "#lib/pages/rtl.svx"
 </script>

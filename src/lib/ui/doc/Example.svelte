@@ -2,7 +2,7 @@
   import type { Snippet } from "svelte";
   import Code from "./CodeBlock.svelte";
   import { twMerge } from "tailwind-merge";
-  import { processID } from "$lib";
+  import { processID } from "#lib";
 
   interface Props {
     children?: Snippet,

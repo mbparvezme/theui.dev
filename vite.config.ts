@@ -15,8 +15,7 @@ export default defineConfig({
 	plugins: [tailwindcss(), sveltekit({
 		preprocess: [mdsvex(), vitePreprocess()],
 		adapter: adapter(),
-		extensions: ['.svelte', '.svx'],
-		alias: { '$lib': 'src/lib' }
+		extensions: ['.svelte', '.svx']
 	}
 	)],
 	resolve: {

@@ -7,13 +7,13 @@ tags: [button, buttons, clickable, interactive, component, svelte, svelte-5, the
 ---
 
 <script lang="ts">
-  import DocLayout from "$lib/ui/doc/DocLayout.svelte";
-  import DocHead from "$lib/ui/doc/Head.svelte";
-  import DocBlock from "$lib/ui/doc/Block.svelte";
-  import Code from "$lib/ui/doc/CodeBlock.svelte";
-  import Example from "$lib/ui/doc/Example.svelte";
-  import ConfigComponent from "$lib/ui/doc/ConfigComponent.svelte";
-  import { processID, editURL } from "$lib";
+  import DocLayout from "#lib/ui/doc/DocLayout.svelte";
+  import DocHead from "#lib/ui/doc/Head.svelte";
+  import DocBlock from "#lib/ui/doc/Block.svelte";
+  import Code from "#lib/ui/doc/CodeBlock.svelte";
+  import Example from "#lib/ui/doc/Example.svelte";
+  import ConfigComponent from "#lib/ui/doc/ConfigComponent.svelte";
+  import { processID, editURL } from "#lib";
   let { component }: {component: any } = $props();
 
   import { Button, Svg, Alert } from "theui-svelte";

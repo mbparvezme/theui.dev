@@ -2,8 +2,8 @@
 <Page {component} />
 
 <script lang="ts">
-  import SEO from "$lib/SEO.svelte"
-  import Page, { metadata } from "$lib/pages/avatar.svx"
+  import SEO from "#lib/SEO.svelte"
+  import Page, { metadata } from "#lib/pages/avatar.svx"
 
   const component = {
     "avatar": [

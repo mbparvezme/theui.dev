@@ -7,14 +7,14 @@ tags: [dropdown, menu, select, options, component, svelte, svelte-5, theui-svelt
 ---
 
 <script lang="ts">
-  import DocLayout from "$lib/ui/doc/DocLayout.svelte";
-  import DocHead from "$lib/ui/doc/Head.svelte";
-  import DocBlock from "$lib/ui/doc/Block.svelte";
-  import Code from "$lib/ui/doc/CodeBlock.svelte";
-  import Example from "$lib/ui/doc/Example.svelte";
-  import DropdownConfig from "$lib/ui/doc/ConfigComponent.svelte";
-  import ItemConfig from "$lib/ui/doc/ConfigComponent.svelte";
-  import { processID, editURL } from "$lib";
+  import DocLayout from "#lib/ui/doc/DocLayout.svelte";
+  import DocHead from "#lib/ui/doc/Head.svelte";
+  import DocBlock from "#lib/ui/doc/Block.svelte";
+  import Code from "#lib/ui/doc/CodeBlock.svelte";
+  import Example from "#lib/ui/doc/Example.svelte";
+  import DropdownConfig from "#lib/ui/doc/ConfigComponent.svelte";
+  import ItemConfig from "#lib/ui/doc/ConfigComponent.svelte";
+  import { processID, editURL } from "#lib";
   let { component }: {component: any } = $props();
 
   import { Dropdown, DropdownItem, Svg, Badge } from "theui-svelte";
@@ -301,46 +301,86 @@ tags: [dropdown, menu, select, options, component, svelte, svelte-5, theui-svelt
     </Example>
   </DocBlock>
 
-  <DocBlock title="Arrow Icon">
-    <p class="not-prose">The trigger shows a chevron that rotates when the dropdown opens. Set <code>arrowIcon={false}</code> to hide it, or pass a snippet to replace it with your own icon. The snippet is rendered in place of the chevron, so any rotation or transition is up to you.</p>
-    <Example>
-      {#snippet example()}
-      <div class="flex gap-4">
-        <Dropdown label="With arrow">
-          {@render dropdownBasic()}
-        </Dropdown>
-        <Dropdown label="No arrow" arrowIcon={false}>
-          {@render dropdownBasic()}
-        </Dropdown>
-        <Dropdown label="Custom arrow">
-          {#snippet arrowIcon()}
-            <span class="ms-1">+</span>
-          {/snippet}
-          {@render dropdownBasic()}
-        </Dropdown>
-      </div>
-      {/snippet}
-
-      {#snippet code()}
-```html
-<!-- Default chevron -->
-<Dropdown label="With arrow"> ... </Dropdown>
-
-<!-- No icon -->
-<Dropdown label="No arrow" arrowIcon={false}> ... </Dropdown>
-
-<!-- Your own icon -->
-<Dropdown label="Custom arrow">
-  {#snippet arrowIcon()}
-    <span class="ms-1">+</span>
-  {/snippet}
-  ...
-</Dropdown>
-```
-      {/snippet}
-    </Example>
-  </DocBlock>
-
+  <DocBlock title="Arrow Icon">
+
+    <p class="not-prose">The trigger shows a chevron that rotates when the dropdown opens. Set <code>arrowIcon={false}</code> to hide it, or pass a snippet to replace it with your own icon. The snippet is rendered in place of the chevron, so any rotation or transition is up to you.</p>
+
+    <Example>
+
+      {#snippet example()}
+
+      <div class="flex gap-4">
+
+        <Dropdown label="With arrow">
+
+          {@render dropdownBasic()}
+
+        </Dropdown>
+
+        <Dropdown label="No arrow" arrowIcon={false}>
+
+          {@render dropdownBasic()}
+
+        </Dropdown>
+
+        <Dropdown label="Custom arrow">
+
+          {#snippet arrowIcon()}
+
+            <span class="ms-1">+</span>
+
+          {/snippet}
+
+          {@render dropdownBasic()}
+
+        </Dropdown>
+
+      </div>
+
+      {/snippet}
+
+
+
+      {#snippet code()}
+
+```html
+
+<!-- Default chevron -->
+
+<Dropdown label="With arrow"> ... </Dropdown>
+
+
+
+<!-- No icon -->
+
+<Dropdown label="No arrow" arrowIcon={false}> ... </Dropdown>
+
+
+
+<!-- Your own icon -->
+
+<Dropdown label="Custom arrow">
+
+  {#snippet arrowIcon()}
+
+    <span class="ms-1">+</span>
+
+  {/snippet}
+
+  ...
+
+</Dropdown>
+
+```
+
+      {/snippet}
+
+    </Example>
+
+  </DocBlock>
+
+
+
   <DocBlock title="Dropdown Backdrop">
     <p class="not-prose">The <code>backdrop</code> prop determines whether a backdrop is shown behind the dropdown. When set to <code>true</code>, a backdrop is displayed; by default, it is set to <code>false</code>, meaning no backdrop is shown.</p>
     <Example>

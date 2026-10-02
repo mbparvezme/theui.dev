@@ -2,8 +2,8 @@
 <Page {colors} />
 
 <script lang="ts">
-  import SEO from "$lib/SEO.svelte"
-  import Page, { metadata } from "$lib/pages/colors.svx"
+  import SEO from "#lib/SEO.svelte"
+  import Page, { metadata } from "#lib/pages/colors.svx"
 
   const colors = {
     "shadedColors" : [

@@ -8,12 +8,12 @@ tags: [rtl, bidirectional, direction, guide, theui-svelte, svelte, component-lib
 
 <script lang="ts">
   import { onDestroy } from "svelte";
-  import DocLayout from "$lib/ui/doc/DocLayout.svelte";
-  import DocHead from "$lib/ui/doc/Head.svelte";
-  import DocBlock from "$lib/ui/doc/Block.svelte";
-  import Code from "$lib/ui/doc/CodeBlock.svelte";
+  import DocLayout from "#lib/ui/doc/DocLayout.svelte";
+  import DocHead from "#lib/ui/doc/Head.svelte";
+  import DocBlock from "#lib/ui/doc/Block.svelte";
+  import Code from "#lib/ui/doc/CodeBlock.svelte";
   import { Accordion, AccordionItem, Button } from "theui-svelte";
-  import { processID, editURL } from "$lib";
+  import { processID, editURL } from "#lib";
 
   let demoDirection: "ltr" | "rtl" = $state("ltr");
 
