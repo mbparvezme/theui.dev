@@ -1,7 +1,7 @@
 ---
 title: Divider
 category: Components
-description: Separate content with a horizontal or vertical line, with an optional label, using theui-svelte’s Divider component.
+description: Separate content with a horizontal or vertical line, with an optional label, using theui-svelte's Divider component.
 dir: ".lib/pages"
 tags: [divider, separator, hr, rule, component, svelte, svelte-5, theui-svelte, component-library, ui, tailwindcss]
 ---
@@ -20,7 +20,7 @@ tags: [divider, separator, hr, rule, component, svelte, svelte-5, theui-svelte, 
 </script>
 
 <DocLayout>
-  <DocHead title="Divider" text="The Divider component draws a line between two pieces of content. It can run across or down, carry a label such as “OR”, and use a solid, dashed or dotted line." edit_url={editURL("divider")} />
+  <DocHead title="Divider" text="The Divider component draws a line between two pieces of content. It can run across or down, carry a label such as 'OR', and use a solid, dashed or dotted line." edit_url={editURL("divider")} />
 
   <DocBlock title="Example">
     <p class="not-prose">Import the component and drop it between two blocks. On its own it renders a real <code>&lt;hr&gt;</code>, so it means something to a screen reader as well as to the eye.</p>

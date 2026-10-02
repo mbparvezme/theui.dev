@@ -28,7 +28,7 @@ tags: [close-button, button, interaction, component, svelte, svelte-5, theui-sve
 
   <DocBlock title="Example">
     <Example>
-      <p class="not-prose">Start by importing the Close button from the component library. This versatile and accessible component makes it easy to add close functionality to modals, popups, or any dismissible elements in the Svelte app.</p>
+      <p class="not-prose">Start by importing the Close button from the component library. It is the same dismiss button used inside <code>Alert</code>, <code>Chips</code>, <code>Modal</code> and <code>Drawer</code>, and you can use it anywhere you need that control.</p>
       {#snippet example()}
         <Close />
       {/snippet}
@@ -47,7 +47,7 @@ tags: [close-button, button, interaction, component, svelte, svelte-5, theui-sve
   </DocBlock>
 
   <DocBlock title="Close Icon">
-    <p class="not-prose">You can easily customize the close button by adding your own icon. Simply place the custom icon code inside the Close component, and it will replace the default icon with your new design. This allows for seamless integration of your preferred style or branding.</p>
+    <p class="not-prose">To use your own icon, put it inside the Close component and it replaces the default one.</p>
     <p class="not-prose">You can use <code>svg</code> icon or <b>theui-svelte's</b> <code>Svg</code> component.</p>
 
     <Example>

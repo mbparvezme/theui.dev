@@ -20,11 +20,11 @@ tags: [colors, branding, style, guide, theme, customization, theui-svelte, svelt
   <DocHead title="Colors and Branding" text="One of the main features of theui-svelte components library is its customizable color options, allowing you to maintain brand identity and ensure consistent theming efficiently." edit_url={editURL("colors")} />
 
   <DocBlock>
-    <p class="not-prose">The color system in TailwindCSS is a powerful tool for developers, and we've taken it a step further in our component library! By leveraging TailwindCSS, we've introduced additional custom color classes tailored for consistent branding. These new classes work just like Tailwind's native color classes but are specifically designed for branding and come with full support for shades. Using the built-in color system you can generate both shaded and non-shaded color classes.</p>
+    <p class="not-prose">On top of Tailwind's own palette, the library defines a set of brand and status colors in a <code>@theme</code> block. They behave exactly like Tailwind's native color classes, shades included, and every component reads from them, so changing one variable restyles the whole library.</p>
   </DocBlock>
 
   <DocBlock title="Available Color Classes">
-    <p class="not-prose">Our component library provides a set of custom classes to make integrating these colors into your designs seamless and flexible. Below is the full list of available classes:</p>
+    <p class="not-prose">The library exposes these colors as utility classes you can use in your own markup. Here is the full list:</p>
 
     <h4 id={processID("Shaded Colors", false)} class="text-xl">Shaded Colors</h4>
     <div class="not-prose grid grid-cols-[auto_minmax(0,_1fr)] items-center gap-2">
@@ -105,8 +105,6 @@ tags: [colors, branding, style, guide, theme, customization, theui-svelte, svelt
 
   </DocBlock>
 
-    <!-- <p class="not-prose">The ui-svelte color system extends Tailwind CSS's approach with enhanced branding support, offering both shaded color palettes and standalone color variables. All colors can be modified, added, or removed using the same intuitive syntax as Tailwind—ensuring a seamless workflow.</p> -->
-
   <DocBlock title="What Each Color Controls">
     <p class="not-prose">Before changing anything, it helps to know which token does what. Most of the library runs on a handful of them.</p>
     <div class="not-prose">
@@ -181,7 +179,7 @@ tags: [colors, branding, style, guide, theme, customization, theui-svelte, svelt
 ```
 </Code>
     <p class="not-prose"><b>Where you put this matters.</b> The override has to come after <code>@import 'theui-svelte/style'</code>. Both declarations land in the same layer, so the later one wins; put it above the import and nothing changes.</p>
-    <p class="not-prose mb-0"><b>Check the contrast while you are here.</b> <code>--text-color-on-brand</code> is white, which suits a mid or dark brand color. Pick a light one, such as amber or lime, and every primary button becomes white on light — unreadable. Set the foreground with the brand, aiming for at least 4.5:1 against shade <code>500</code>; the <a href="/docs/accessibility">accessibility guide</a> covers the targets.</p>
+    <p class="not-prose mb-0"><b>Check the contrast while you are here.</b> <code>--text-color-on-brand</code> is white, which suits a mid or dark brand color. Pick a light one, such as amber or lime, and every primary button becomes white on light, which nobody can read. Set the foreground with the brand, aiming for at least 4.5:1 against shade <code>500</code>; the <a href="/docs/accessibility">accessibility guide</a> covers the targets.</p>
 
 <Code title="./src/app.css">
 
@@ -376,10 +374,10 @@ tags: [colors, branding, style, guide, theme, customization, theui-svelte, svelt
   --text-color-on-brand: #FFFFFF;
 
   /* Status colors, each aliased the same way across all 11 shades */
-  --color-error-50 … --color-error-950:   var(--color-red-*);
-  --color-info-50 … --color-info-950:     var(--color-sky-*);
-  --color-success-50 … --color-success-950: var(--color-green-*);
-  --color-warning-50 … --color-warning-950: var(--color-yellow-*);
+  --color-error-50 ... --color-error-950:   var(--color-red-*);
+  --color-info-50 ... --color-info-950:     var(--color-sky-*);
+  --color-success-50 ... --color-success-950: var(--color-green-*);
+  --color-warning-50 ... --color-warning-950: var(--color-yellow-*);
 
   /* Text */
   --text-color-default: var(--theui-dark1);

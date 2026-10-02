@@ -1,9 +1,9 @@
 <SEO title="UI Blocks" description="Copy-and-paste UI blocks for Svelte and Tailwind CSS, coming soon from TheUI." />
 <ComingSoon title="Exciting UI blocks" />
 
-<!-- <PageHead h1 = "Supercharge Your UI Workflow <br class='sm:hidden md:block'>with Ready UI Blocks" h2="Build beautiful apps in minutes, not hours." classes="text-start items-start">
+<!-- <PageHead h1 = "Ready made UI blocks <br class='sm:hidden md:block'>for Svelte and Tailwind" h2="Copy a block, paste it in, ship the page." classes="text-start items-start">
   {#snippet afterCTA()}
-    <p class="w-1/2">Drop-in UI blocks built specifically for Svelte and Tailwind — fast to implement, cleanly designed, and fully reusable. Skip the hassle of designing from scratch. Simply copy the block you need, paste it into your project, and focus on building great functionality instead of wasting time on layouts.</p>
+    <p class="w-1/2">Blocks built for Svelte and Tailwind, ready to drop into a project. Copy the one you need, paste it into your page, and change it to fit. Nothing to install and nothing to configure.</p>
     <div>
       <Button href="#" rounded="full" size="lg" class="me-4">Get Free Blocks</Button>
       <Button href="#" rounded="full" size="lg" outline>Explore Pricing</Button>

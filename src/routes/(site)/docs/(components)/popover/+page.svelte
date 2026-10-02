@@ -32,7 +32,7 @@
           "name": "triggerEvent",
           "type": "\"click\" | \"hover\"",
           "default": "\"click\"",
-          "description": "Defines how the popover is triggered—by click or hover."
+          "description": "Defines how the popover is triggered: by click or hover."
         },
         {
           "name": "gap",

@@ -35,7 +35,7 @@ tags: [tabs, navigation, pills, component, svelte, svelte-5, theui-svelte, compo
   <DocHead title="Tabs" text="A simple and flexible way to organize content into multiple panels. It helps in structuring related information efficiently within a compact space." edit_url={editURL("tabs")} />
 
   <DocBlock title="About">
-    <p class="not-prose">The Tab component allows you to create navigable tabbed interfaces effortlessly. It dynamically manages tab switching while keeping the content structured and accessible. Highly customizable, it supports different layouts, active states, and styling options, making it ideal for presenting information in a clean and user-friendly manner.</p>
+    <p class="not-prose">The Tabs component takes the tab buttons in a <code>tabs</code> snippet and the panels as its children. A <code>Tab</code> and a <code>TabPanel</code> are paired by a matching <code>value</code>, not by the order they appear in.</p>
   </DocBlock>
 
   <DocBlock title="Tab Values">
@@ -261,7 +261,7 @@ tags: [tabs, navigation, pills, component, svelte, svelte-5, theui-svelte, compo
   </DocBlock>
 
   <DocBlock title="Accessibility">
-    <p class="not-prose">The <code>Tabs</code> component follows the <a href="https://www.w3.org/WAI/ARIA/apg/patterns/tabs/" target="blank">WAI-ARIA Tabs Pattern</a> to ensure a seamless experience for all users, including those using assistive technologies.</p>
+    <p class="not-prose">The <code>Tabs</code> component follows the <a href="https://www.w3.org/WAI/ARIA/apg/patterns/tabs/" target="blank">WAI-ARIA Tabs Pattern</a>.</p>
     <ol class="my-0">
       <li><b class="font-semi-bold">Built-in Accessibility Features</b>: The component includes essential ARIA attributes and roles:
         <ul>
@@ -269,7 +269,7 @@ tags: [tabs, navigation, pills, component, svelte, svelte-5, theui-svelte, compo
           <li><span class="not-prose"><code>role="tab"</code></span> for each tab with <span class="not-prose"><code>aria-selected="true"</code></span> on the active one, and <span class="not-prose"><code>aria-controls</code></span> pointing to its panel.</li>
           <li><span class="not-prose"><code>role="tabpanel"</code></span> for each content section with <span class="not-prose"><code>aria-labelledby</code></span> linking it to its respective tab.</li>
         </ul>
-        These attributes allow screen readers to interpret and navigate the component correctly.
+        These attributes are what a screen reader reads to move through the tabs.
       </li>
       <li><b class="font-semi-bold">Keyboard Navigation</b>: Users can move to the tabs using <kbd>Tab</kbd> key, and activate a tab with <kbd>Enter</kbd> or <kbd>Space</kbd>. Inside the tab list, <kbd>Arrow Right</kbd> and <kbd>Arrow Left</kbd> move to the next or previous tab (wrapping around at the ends), and <kbd>Home</kbd> and <kbd>End</kbd> move to the first or last tab. The focused tab is activated right away.</li>
       <li><b class="font-semi-bold">Customization Considerations</b>: When applying custom styles, ensure <b>focus indicators</b> remain visible, <b>contrast is sufficient</b>, and <b>animations do not disrupt usability</b>, particularly for users with motion sensitivity.</li>

@@ -15,7 +15,7 @@
 <Container class="pt-28">
 
   <div class="relative flex md:gap-8 min-h-screen">
-    <aside class="doc-sidebar fixed md:sticky top-0 md:top-28 start-0 md:start-auto bottom-0 md:bottom-auto block w-full md:h-[calc(100vh-112px)] shrink-0 md:bg-transparent md:translate-x-0 md:w-48 lg:w-64 transition-transform z-110 md:z-auto bg-primary" class:-translate-x-[calc(100%_+_32px)]={!showSidebar}>
+    <aside class="doc-sidebar fixed md:sticky top-0 md:top-28 inset-s-0 md:inset-s-auto bottom-0 md:bottom-auto block w-full md:h-[calc(100vh-112px)] shrink-0 md:bg-transparent md:translate-x-0 md:w-48 lg:w-64 transition-transform z-110 md:z-auto bg-primary" class:-translate-x-[calc(100%_+_32px)]={!showSidebar}>
       <div class="flex flex-col h-full overflow-y-auto pt-16 md:pt-0 ps-8 md:ps-0">
 
         <section>
@@ -94,7 +94,7 @@
     </div>
   </div>
 
-  <button onclick={()=>toggleSidebar()} aria-label="Quick Action Button" class="flex lg:hidden items-center justify-center cursor-pointer bg-brand-500 hover:bg-brand-600 text-on-brand focus:ring-brand-500/50 shadow-2xl w-14 h-14 rounded-full ease-in-out duration-300 transition-all fixed end-6 bottom-6 z-120">
+  <button onclick={()=>toggleSidebar()} aria-label="Quick Action Button" class="flex lg:hidden items-center justify-center cursor-pointer bg-brand-500 hover:bg-brand-600 text-on-brand focus:ring-brand-500/50 shadow-2xl w-14 h-14 rounded-full ease-in-out duration-300 transition-all fixed inset-e-6 bottom-6 z-120">
     <svg width="1rem" height="1rem" viewBox="0 0 16 16" focusable="false" aria-hidden="true" class="theui-svg-icon shrink-0 fill-current w-[60%] h-[60%]" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"></path></svg>
   </button>
 </Container>

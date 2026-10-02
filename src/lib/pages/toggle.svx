@@ -23,7 +23,7 @@ tags: [toggle, switch, form-input, component, svelte, svelte-5, theui-svelte, co
   <DocHead title="Toggle" text="Fully customizable switch that can replace traditional checkboxes and radio buttons." edit_url={editURL("toggle")} />
 
   <DocBlock title="About">
-    <p class="not-prose">The <code>Toggle</code> component provides a modern and user-friendly way to handle Boolean inputs in forms. It supports labels, customizable styling, and works seamlessly with checkboxes and radio button types. The component is fully accessible and integrates well with different UI requirements.</p>
+    <p class="not-prose">The <code>Toggle</code> component is a switch for a boolean value. It renders a checkbox by default, or a radio when you set <code>type="radio"</code>, and carries <code>role="switch"</code> either way.</p>
   </DocBlock>
 
   <DocBlock title="Example">
@@ -43,7 +43,7 @@ tags: [toggle, switch, form-input, component, svelte, svelte-5, theui-svelte, co
 ```
       {/snippet}
     </Example>
-    <p class="not-prose">You can use it in forms, settings panels, or anywhere a simple on/off switch is required. The component adapts well to different themes and sizes, making it versatile for various UI designs.</p>
+    <p class="not-prose">Use it in forms and settings panels, anywhere an on and off switch reads better than a checkbox.</p>
   </DocBlock>
 
   <DocBlock title="Toggle Type">
@@ -78,7 +78,7 @@ tags: [toggle, switch, form-input, component, svelte, svelte-5, theui-svelte, co
 
   <DocBlock title="Name and Value">
     <Example>
-      <p class="not-prose">The <code>name</code> and <code>value</code> props are crucial for form handling, especially when using the Toggle component as a <b>checkbox</b> or <b>radio button</b>.</p>
+      <p class="not-prose">The <code>name</code> and <code>value</code> props are what the form submission uses, whether the Toggle is a <b>checkbox</b> or a <b>radio button</b>.</p>
       <ul>
         <li>The <span class="not-prose"><code>name</code> prop is required for radio buttons to group multiple toggles under the same name, allowing only one to be selected at a time.</li>
         <li>The <span class="not-prose"><code>value</code></span> prop sets the value of the input. It can be anything: text, number or boolean. When used as a radio button, the value represents the option.</li>
@@ -139,7 +139,7 @@ tags: [toggle, switch, form-input, component, svelte, svelte-5, theui-svelte, co
 
   <DocBlock title="Animation">
     <Example>
-      <p class="not-prose">The <code>animationSpeed</code> prop controls the transition effect when toggling between states. Smooth animations enhance the user experience by making interactions feel more natural. Available values are: <code>slower</code>, <code>slow</code>, <code>normal</code> (default), <code>fast</code>, <code>faster</code> and <code>none</code>.</p>
+      <p class="not-prose">The <code>animationSpeed</code> prop sets how long the knob takes to slide across. Available values are: <code>slower</code>, <code>slow</code>, <code>normal</code> (default), <code>fast</code>, <code>faster</code> and <code>none</code>.</p>
       {#snippet example()}
 <div class="flex flex-col">
   <Toggle name="toggle" animationSpeed="slower">Slower animation</Toggle>
@@ -166,7 +166,7 @@ tags: [toggle, switch, form-input, component, svelte, svelte-5, theui-svelte, co
 
   <DocBlock title="Rounded Toggle">
     <Example>
-      <p class="not-prose">The <code>rounded</code> prop defines the shape of the toggle’s switch and background. By adjusting this property, you can make the toggle appear more circular or squared. Available values are: <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code>, <code>2xl</code>, <code>full</code> (default) and <code>none</code>.</p>
+      <p class="not-prose">The <code>rounded</code> prop defines the shape of the toggle's switch and background. By adjusting this property, you can make the toggle appear more circular or squared. Available values are: <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code>, <code>2xl</code>, <code>full</code> (default) and <code>none</code>.</p>
       {#snippet example()}
 <div class="flex flex-col gap-2">
   <Toggle name="toggle" size="xl" rounded="sm">Small rounded</Toggle>
@@ -189,7 +189,7 @@ tags: [toggle, switch, form-input, component, svelte, svelte-5, theui-svelte, co
 ```
       {/snippet}
     </Example>
-    <Alert type="info" theme="soft">Note: The "xl" size is used for better visibility, making the toggle more prominent and easier to interact with.</Alert>
+    <Alert type="info" theme="soft">Note: the "xl" size is used here so the switch is easy to see in the demo.</Alert>
   </DocBlock>
 
   <DocBlock title="Label Position">
@@ -246,10 +246,10 @@ tags: [toggle, switch, form-input, component, svelte, svelte-5, theui-svelte, co
   </DocBlock>
 
   <DocBlock title="Customization">
-    <p class="not-prose">The <code>Toggle</code> component offers flexibility in styling through the <code>labelClasses</code>, <code>wrapperClasses</code>, and <code>class</code> props, allowing you to adjust the appearance of both the label and the toggle’s outer container.</p>
+    <p class="not-prose">The <code>Toggle</code> component offers flexibility in styling through the <code>labelClasses</code>, <code>wrapperClasses</code>, and <code>class</code> props, allowing you to adjust the appearance of both the label and the toggle's outer container.</p>
     <p class="not-prose"><code>class</code><br>The <code>class</code> attribute can be used to apply custom styles directly to the toggle input. This gives you full control over its appearance, making it easy to align with your design system.</p>
     <p class="not-prose"><code>wrapperClasses</code><br>The <code>wrapperClasses</code> prop lets you apply custom styles to the main wrapper &lt;div&gt;. By default, it is an empty string, meaning no additional styles are applied unless specified.</p>
-    <p class="not-prose"><code>labelClasses</code><br>The <code>labelClasses</code> prop is primarily inherited from the parent <b>Fieldset</b> or <b>Form</b> component (if available), ensuring consistent styling across form elements. The <code>size</code>, <code>animationSpeed</code> and <code>reset</code> props are inherited the same way. However, you can override it to apply custom styles to the label as needed.</p>
+    <p class="not-prose"><code>labelClasses</code><br>The <code>labelClasses</code> prop is inherited from the parent <b>Fieldset</b> or <b>Form</b> when there is one. The <code>size</code>, <code>animationSpeed</code> and <code>reset</code> props are inherited the same way. However, you can override it to apply custom styles to the label as needed.</p>
     <Example>
       {#snippet example()}
       <Toggle
@@ -276,7 +276,7 @@ tags: [toggle, switch, form-input, component, svelte, svelte-5, theui-svelte, co
   </DocBlock>
 
   <DocBlock title="Accessibility">
-    <p class="not-prose">The Toggle component is more than just good looks — it's smart, too. With built-in <code>role="switch"</code> and dynamic <code>aria-checked</code>, screen readers instantly know whether it's on or off. Whether you're using it as a checkbox (<code>aria-checked</code> follows <code>checked</code>) or a radio button (<code>aria-checked</code> is true when <code>group</code> equals its <code>value</code>), it adapts and communicates its state clearly. The linked label and responsive design ensure a smooth, accessible toggle every time.</p>
+    <p class="not-prose">The Toggle carries <code>role="switch"</code> and keeps <code>aria-checked</code> in step with its state, so a screen reader reads out whether it is on or off. As a checkbox, <code>aria-checked</code> follows <code>checked</code>. As a radio, it is true when <code>group</code> matches the toggle's <code>value</code>. The label is tied to the input with <code>for</code>, so clicking the text flips the switch as well.</p>
   </DocBlock>
 
   <DocBlock title="Configuration">

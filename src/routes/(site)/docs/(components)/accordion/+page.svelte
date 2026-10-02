@@ -73,7 +73,7 @@
         "data": [
           {
             "name": "flush",
-            "description": "If added, applies the flush style to all Accordion items, giving the accordion a minimalist, sleek appearance by removing the borders for a seamless look."
+            "description": "If added, applies the flush style to all Accordion items: no outer border or rounding, only the dividers between items."
           }
         ]
       },
@@ -155,7 +155,7 @@
         "data": [
           {
             "name": "flush",
-            "description": "A minimalist variant of the Accordion component, designed for a sleek and simple appearance"
+            "description": "A variant of the Accordion with no outer border or rounding, only the dividers between items"
           },
           {
             "name": "open",

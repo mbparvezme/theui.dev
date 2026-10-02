@@ -24,7 +24,7 @@ tags: [popover, tooltip, context-menu, component, svelte, svelte-5, theui-svelte
 
   <DocBlock title="About">
     <p class="not-prose">The <b>Popover</b> component allows developers to display a small floating panel next to a specified trigger element. It supports various customization options, including positioning, animation speed, rounded corners, shadow effects, and trigger events (click or hover). The popover can contain a title and body content, both of which can be styled individually using provided class props.</p>
-    <p class="not-prose">By default, the popover appears above (<code>top</code>) the trigger element with a configurable gap. It can be dismissed automatically when clicking outside or manually by interacting with the trigger. The component is designed to be lightweight, accessible, and easy to integrate with different UI designs.</p>
+    <p class="not-prose">By default, the popover appears above (<code>top</code>) the trigger element with a configurable gap. It can be dismissed automatically when clicking outside or manually by interacting with the trigger.</p>
   </DocBlock>
 
   <DocBlock title="Example">
@@ -98,7 +98,7 @@ tags: [popover, tooltip, context-menu, component, svelte, svelte-5, theui-svelte
   </DocBlock>
 
   <DocBlock title="Position">
-    <p class="not-prose">The <b>Popover</b> component allows you to control where it appears relative to the trigger element using the position prop. By default, the popover appears at the top of the trigger, but you can set it to different positions like <code>top</code>, <code>bottom</code>, <code>left</code>, or <code>right</code>. Additionally, you can use more specific placements such as <code>top-start</code>, <code>top-end</code>, <code>bottom-start</code>, <code>bottom-end</code>, <code>left-start</code>, <code>left-end</code>, <code>right-start</code>, and <code>right-end</code> to fine-tune alignment.</p>
+    <p class="not-prose">The <b>Popover</b> component allows you to control where it appears relative to the trigger element using the position prop. By default, the popover appears at the top of the trigger, but you can set it to different positions like <code>top</code>, <code>bottom</code>, <code>left</code>, or <code>right</code>. You can also use more specific placements such as <code>top-start</code>, <code>top-end</code>, <code>bottom-start</code>, <code>bottom-end</code>, <code>left-start</code>, <code>left-end</code>, <code>right-start</code>, and <code>right-end</code> to fine-tune alignment.</p>
     <Example>
       {#snippet example()}
         <Popover trigger="my-popover4" position="right">
@@ -121,8 +121,8 @@ tags: [popover, tooltip, context-menu, component, svelte, svelte-5, theui-svelte
     <p class="not-prose">The <b>Popover</b> component supports different interaction types through the <code>triggerEvent</code> prop, allowing you to control how the popover is activated. By default, the popover opens when the trigger element is <b>clicked</b>, but you can also set it to open on <b>hover</b>.</p>
     <Example title="Available Options">
       <ul>
-        <li><span class="not-prose"><code>click</code></span> (Default) – The popover appears when the user clicks the trigger element and closes when clicking outside.</li>
-        <li><span class="not-prose"><code>hover</code></span> – The popover appears when the user hovers over the trigger element and disappears when moving away.</li>
+        <li><span class="not-prose"><code>click</code></span> (Default) - The popover appears when the user clicks the trigger element and closes when clicking outside.</li>
+        <li><span class="not-prose"><code>hover</code></span> - The popover appears when the user hovers over the trigger element and disappears when moving away.</li>
       </ul>
       {#snippet example()}
         <Popover trigger="my-popover5" triggerEvent="hover">
@@ -142,7 +142,7 @@ tags: [popover, tooltip, context-menu, component, svelte, svelte-5, theui-svelte
   </DocBlock>
 
   <DocBlock title="Popover Gap">
-    <p class="not-prose">The <code>gap</code> prop controls the spacing between the Popover and its trigger element. It accepts a number value, representing the offset in pixels. By default, the gap is set to <code>8</code>, ensuring a small but noticeable space between the popover and the trigger.</p>
+    <p class="not-prose">The <code>gap</code> prop controls the spacing between the Popover and its trigger element. It accepts a number value, representing the offset in pixels. The default is <code>8</code>.</p>
     <Example>
       {#snippet example()}
         <Popover trigger="my-popover6" gap={16}>
@@ -287,7 +287,7 @@ tags: [popover, tooltip, context-menu, component, svelte, svelte-5, theui-svelte
 
   <DocBlock title="Accessibility">
     <div>
-      <p class="not-prose">The Popover component is designed with accessibility in mind, ensuring it is usable for keyboard and screen reader users. It follows best practices for focus management, keyboard navigation, and ARIA attributes.</p>
+      <p class="not-prose">The Popover handles focus, keyboard navigation, and the ARIA attributes that tie it to its trigger.</p>
       <ol class="my-0">
         <li>
           <b>Keyboard Navigation</b>
@@ -299,7 +299,7 @@ tags: [popover, tooltip, context-menu, component, svelte, svelte-5, theui-svelte
         </li>
         <li>
           <b>ARIA Attributes</b>
-          <p class="not-prose">To enhance screen reader compatibility, the popover automatically includes essential ARIA attributes:</p>
+          <p class="not-prose">The popover sets these ARIA attributes itself:</p>
           <ul class="my-0">
             <li>The <span class="not-prose"><code>aria-controls</code></span> links the trigger element to the popover container.</li>
             <li>The <span class="not-prose"><code>aria-haspopup</code></span> on the trigger element to indicate a popover is available.</li>

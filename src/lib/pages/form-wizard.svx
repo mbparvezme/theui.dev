@@ -1,7 +1,7 @@
 ---
 title: Form Wizard
 category: Forms
-description: Break a long form into numbered steps with validation, progress and Back and Next buttons, using theui-svelte’s FormWizard and FormStep components.
+description: Break a long form into numbered steps with validation, progress and Back and Next buttons, using theui-svelte's FormWizard and FormStep components.
 dir: ".lib/pages"
 tags: [form wizard, stepper, multi step form, steps, onboarding, svelte, svelte-5, theui-svelte, component-library, ui, tailwindcss]
 ---
@@ -52,9 +52,9 @@ tags: [form wizard, stepper, multi step form, steps, onboarding, svelte, svelte-
 </script>
 
 <FormWizard>
-  <FormStep title="Account">…</FormStep>
-  <FormStep title="Profile">…</FormStep>
-  <FormStep title="Done">…</FormStep>
+  <FormStep title="Account">...</FormStep>
+  <FormStep title="Profile">...</FormStep>
+  <FormStep title="Done">...</FormStep>
 </FormWizard>
 ```
       {/snippet}
@@ -79,7 +79,7 @@ tags: [form wizard, stepper, multi step form, steps, onboarding, svelte, svelte-
               </FormStep>
             </FormWizard>
           </Form>
-          <p class="not-prose mt-3 text-sm text-muted">step: {step}{finished ? " — finished" : ""}</p>
+          <p class="not-prose mt-3 text-sm text-muted">step: {step}{finished ? " - finished" : ""}</p>
         </div>
       {/snippet}
       {#snippet code()}
@@ -136,7 +136,7 @@ tags: [form wizard, stepper, multi step form, steps, onboarding, svelte, svelte-
 </FormWizard>
 
 <!-- An async check works as well -->
-<FormStep title="Username" validate={async () => await isFree(username)}>…</FormStep>
+<FormStep title="Username" validate={async () => await isFree(username)}>...</FormStep>
 ```
       {/snippet}
     </Example>
@@ -164,9 +164,9 @@ tags: [form wizard, stepper, multi step form, steps, onboarding, svelte, svelte-
 
 ```html
 <FormWizard orientation="vertical">
-  <FormStep title="Pick a plan" description="Monthly or yearly">…</FormStep>
-  <FormStep title="Payment" description="Card details">…</FormStep>
-  <FormStep title="Review">…</FormStep>
+  <FormStep title="Pick a plan" description="Monthly or yearly">...</FormStep>
+  <FormStep title="Payment" description="Card details">...</FormStep>
+  <FormStep title="Review">...</FormStep>
 </FormWizard>
 ```
       {/snippet}
@@ -189,9 +189,9 @@ tags: [form wizard, stepper, multi step form, steps, onboarding, svelte, svelte-
 
 ```html
 <FormWizard linear={false} step={2}>
-  <FormStep title="One">…</FormStep>
-  <FormStep title="Two">…</FormStep>
-  <FormStep title="Three" optional>…</FormStep>
+  <FormStep title="One">...</FormStep>
+  <FormStep title="Two">...</FormStep>
+  <FormStep title="Three" optional>...</FormStep>
 </FormWizard>
 ```
       {/snippet}
@@ -221,15 +221,15 @@ tags: [form wizard, stepper, multi step form, steps, onboarding, svelte, svelte-
 </script>
 
 <FormWizard bind:step controls={false}>
-  <FormStep title="First">…</FormStep>
-  <FormStep title="Second">…</FormStep>
+  <FormStep title="First">...</FormStep>
+  <FormStep title="Second">...</FormStep>
 </FormWizard>
 
 <button onclick={() => step--}>Previous</button>
 <button onclick={() => step++}>Continue</button>
 
 <!-- Or keep the buttons and rename them -->
-<FormWizard backText="Go back" nextText="Continue" finishText="Create account">…</FormWizard>
+<FormWizard backText="Go back" nextText="Continue" finishText="Create account">...</FormWizard>
 ```
       {/snippet}
     </Example>
@@ -260,7 +260,7 @@ tags: [form wizard, stepper, multi step form, steps, onboarding, svelte, svelte-
   completeIndicatorClasses="bg-success-500 border-success-500"
   buttonClasses="rounded-full px-6"
 >
-  …
+  ...
 </FormWizard>
 ```
       {/snippet}

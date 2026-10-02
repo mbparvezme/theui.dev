@@ -1,7 +1,7 @@
 ---
 title: Pagination
 category: Components
-description: Manage large data sets with seamless navigation using the pagination component.
+description: Page links with previous and next controls, for a list split across pages.
 dir: ".lib/pages"
 tags: [pagination, navigation, data, component, svelte, svelte-5, theui-svelte, component-library, ui, tailwindcss]
 ---
@@ -34,10 +34,10 @@ tags: [pagination, navigation, data, component, svelte, svelte-5, theui-svelte, 
 </script>
 
 <DocLayout>
-  <DocHead title="Pagination" text="Provides an easy way to navigate through multiple pages of content. It helps users move between paginated data efficiently while maintaining a clean and structured UI." edit_url={editURL("pagination")} />
+  <DocHead title="Pagination" text="Renders the page links for a list that is split across pages, with previous and next controls." edit_url={editURL("pagination")} />
 
   <DocBlock title="About">
-    <p class="not-prose">This component generates a navigation bar with page numbers, previous and next buttons, and optional first and last page controls. It is designed to be flexible, allowing customization of appearance, behavior, and accessibility features to fit different use cases. Whether handling large datasets, blog posts, or product listings, the Pagination Nav ensures smooth and intuitive navigation.</p>
+    <p class="not-prose">It builds the page numbers from the <code>data</code> array you pass, adds previous and next buttons, and marks the current page. The numbers come from the position in the array, not from the data itself.</p>
   </DocBlock>
 
   <DocBlock title="Example">
@@ -205,7 +205,7 @@ tags: [pagination, navigation, data, component, svelte, svelte-5, theui-svelte, 
 
   <DocBlock title="Rounded Corner">
     <Example>
-      <p class="not-prose">The <code>rounded</code> prop in the Pagination component allows you to easily control the border radius, ensuring consistent design throughout the application. This prop supports several predefined values, providing flexibility while maintaining a uniform look. Available values are: <code>none</code>, <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code>, <code>2xl</code>, and <code>full</code>. Default value <code>md</code>.</p>
+      <p class="not-prose">The <code>rounded</code> prop sets the corner radius of the page links. Available values are: <code>none</code>, <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code>, <code>2xl</code>, and <code>full</code>. Default value <code>md</code>.</p>
       {#snippet example()}
         <div class="flex flex-col gap-2 w-full">
           <Pagination rounded="none" data={paginationData} />
@@ -287,14 +287,13 @@ tags: [pagination, navigation, data, component, svelte, svelte-5, theui-svelte, 
 
   <DocBlock title="Accessibility">
     <div>
-      <p class="not-prose">The Pagination component is designed with accessibility in mind, ensuring easy navigation for all users, including those using screen readers or keyboard navigation.</p>
+      <p class="not-prose">The Pagination component carries the roles and labels a screen reader needs, and every link answers to the keyboard.</p>
       <ul class="my-0">
         <li><b>Keyboard Navigation</b>: Users can navigate through pagination using the <kbd>tab</kbd> key or the <kbd>←</kbd> and <kbd>→</kbd> arrow keys to move focus, and <kbd>Enter</kbd> or <kbd>Space</kbd> to activate a button.</li>
         <li><b>ARIA Labels</b>: The component includes appropriate <span class="not-prose"><code>aria-label</code></span> attributes for previous, next, and page buttons, improving screen reader support. The active page link is marked with <span class="not-prose"><code>aria-current="page"</code></span>.</li>
         <li><b>Focus Indicators</b>: Clear focus styles ensure visibility when navigating with a keyboard.</li>
-        <li><b>Semantic HTML</b>: Uses proper HTML elements <span class="not-prose">(<code>button</code> and <code>a</code>)</span> inside a <span class="not-prose"><code>role="group"</code></span> container labeled <span class="not-prose"><code>aria-label="Pagination"</code></span> to enhance usability and compatibility with assistive technologies.</li>
+        <li><b>Semantic HTML</b>: Uses proper HTML elements <span class="not-prose">(<code>button</code> and <code>a</code>)</span> inside a <span class="not-prose"><code>role="group"</code></span> container labeled <span class="not-prose"><code>aria-label="Pagination"</code></span>, so assistive technology reads it as one group of page links.</li>
       </ul>
-      <p class="not-prose">These features help make the Pagination component more accessible and user-friendly.</p>
     </div>
   </DocBlock>
 

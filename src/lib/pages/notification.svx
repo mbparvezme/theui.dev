@@ -111,11 +111,11 @@ notify("Hello world!", "success") // You can replace "success" with any message 
   </DocBlock>
 
   <DocBlock title="Notification Theme">
-    <p class="not-prose">You can control the background color of the notifications with the <code>theme</code> prop. It supports three options: <code>'default'</code>, <code>'soft'</code>, and <code>'gradient'</code>. The <code>'default'</code> theme follows the standard notification styling, the <code>'soft'</code> theme provides a softer color palette for a more subtle look, and the <code>'gradient'</code> theme introduces a bold, eye-catching background with smooth color transitions.</p>
+    <p class="not-prose">You can control the background color of the notifications with the <code>theme</code> prop. It supports three options: <code>'default'</code>, <code>'soft'</code>, and <code>'gradient'</code>. The <code>'default'</code> theme follows the standard notification styling, the <code>'soft'</code> theme provides a softer color palette for a more subtle look, and the <code>'gradient'</code> theme uses a two color gradient.</p>
 
     <div>
       <Example title="Soft Theme">
-        <p class="not-prose">With the <code>'soft'</code> theme, notifications adopt a gentle color scheme, making them blend seamlessly into minimalistic interfaces.</p>
+        <p class="not-prose">The <code>'soft'</code> theme uses a tinted background instead of a solid one.</p>
         {#snippet example()}
           <iframe src="/example/notification-theme-soft" style="width: 100%; height: 260px;" scrolling="no"></iframe>
         {/snippet}
@@ -127,7 +127,7 @@ notify( "Hello world!", "success", {theme: "soft"} )
         {/snippet}
       </Example>
       <Example title="Gradient Theme">
-        <p class="not-prose">The <code>'gradient'</code> theme applies a lively blend of colors, giving notifications a more modern and attention-grabbing style.</p>
+        <p class="not-prose">The <code>'gradient'</code> theme fills the background with a two color gradient.</p>
         {#snippet example()}
           <iframe src="/example/notification-theme-gradient" style="width: 100%; height: 260px;" scrolling="no"></iframe>
         {/snippet}
@@ -143,7 +143,7 @@ notify( "Hello world!", "success", {theme: "gradient"} )
 
   <DocBlock title="Notification Variant">
     <p class="not-prose">The <code>'variant'</code> property allows you to change the visual style of the notification while keeping it minimal. There are four available variants: <code>'card'</code>, <code>'borderTop'</code>, <code>'borderBottom'</code>, and <code>'borderStart'</code>.</p>
-    <p class="not-prose">The default variant, <code>'card'</code>, follows a standard notification style without extra elements. The other three variants — <code>'borderTop'</code>, <code>'borderBottom'</code>, and <code>'borderStart'</code> — add a thin line to the respective side of the notification. This subtle design change helps visually distinguish notifications without making them too complex.</p>
+    <p class="not-prose">The default variant, <code>'card'</code>, follows a standard notification style without extra elements. The other three variants, <code>'borderTop'</code>, <code>'borderBottom'</code> and <code>'borderStart'</code>, add a thin line to that side of the notification. It is a small change, but it tells one notification from another at a glance.</p>
     <p class="not-prose">For example, using <code>borderTop</code> will place a small line at the top of the notification, while <code>borderBottom</code> and <code>borderStart</code> will do the same for the bottom and start (left in LTR layouts, right in RTL layouts).</p>
     <Example>
       {#snippet example()}
@@ -195,19 +195,19 @@ notify("Hello world!", "error", {removeOnClick: false})
   <DocBlock id={processID("notify-function", false)} title="notify() Function">
     <p class="not-prose">The <code>notify</code> function displays notifications with customizable options. It accepts three parameters:</p>
     <ul class="my-0">
-      <li><strong>msg</strong> (type string) – The message displayed in the notification. HTML in the message is sanitized before rendering.</li>
-      <li><span class="not-prose"><strong>type</strong> (type <a href="/docs/types#notification-types"><u class="decoration-wavy decoration-1 underline-offset-1">NOTIFICATION_TYPE</u></a>) – Defines the notification style. Options: <code>'error'</code>, <code>'info'</code>, <code>'success'</code>, and <code>'warning'</code>.<br>- Default is <code>'error'</code>.</span></li>
-      <li><span class="not-prose"><strong>config</strong> (type <a href="/docs/types#notification-configuration"><u class="decoration-wavy decoration-1 underline-offset-1">NOTIFY_CONFIG</u></a>) – An optional object to configure the notification’s behavior and appearance.</span></li>
+      <li><strong>msg</strong> (type string) - The message displayed in the notification. HTML in the message is sanitized before rendering.</li>
+      <li><span class="not-prose"><strong>type</strong> (type <a href="/docs/types#notification-types"><u class="decoration-wavy decoration-1 underline-offset-1">NOTIFICATION_TYPE</u></a>) - Defines the notification style. Options: <code>'error'</code>, <code>'info'</code>, <code>'success'</code>, and <code>'warning'</code>.<br>- Default is <code>'error'</code>.</span></li>
+      <li><span class="not-prose"><strong>config</strong> (type <a href="/docs/types#notification-configuration"><u class="decoration-wavy decoration-1 underline-offset-1">NOTIFY_CONFIG</u></a>) - An optional object to configure the notification's behavior and appearance.</span></li>
     </ul>
     <p class="not-prose">Call <code>notify</code> in the browser, such as from an event handler, <code>$effect</code> or <code>onMount</code>. A call during server rendering does nothing, so one visitor's message never reaches another.</p>
     <div>
       <h4 class="my-0">Configuration Options</h4>
       <ul class="my-0">
-        <li><span class="not-prose"><strong>removeAfter</strong> (type number | false) – Duration in milliseconds before the notification disappears. Set to <code>false</code> for persistent notifications.<br>- Default is <code>4000</code>.</span></li>
-        <li><span class="not-prose"><strong>removeOnClick</strong> (type boolean) – Determines if the notification should close when clicked.<br>- Default is <code>true</code>.</span></li>
-        <li><span class="not-prose"><strong>rounded</strong> (type <a href="/docs/types#rounded-type"><u class="decoration-wavy decoration-1 underline-offset-1">ROUNDED</u></a>) – Controls the border radius.<br>- Default is <code>'md'</code>.</span></li>
-        <li><span class="not-prose"><strong>theme</strong> (type string) – Sets the notification theme. Options: <code>'default'</code>, <code>'soft'</code>, <code>'gradient'</code>.<br>- Default is <code>'default'</code>.</span></li>
-        <li><span class="not-prose"><strong>variant</strong> (type string) – Defines the notification style. Options: <code>'card'</code>, <code>'borderTop'</code>, <code>'borderBottom'</code>, <code>'borderStart'</code>.<br>- Default is <code>'card'</code>.</span></li>
+        <li><span class="not-prose"><strong>removeAfter</strong> (type number | false) - Duration in milliseconds before the notification disappears. Set to <code>false</code> for persistent notifications.<br>- Default is <code>4000</code>.</span></li>
+        <li><span class="not-prose"><strong>removeOnClick</strong> (type boolean) - Determines if the notification should close when clicked.<br>- Default is <code>true</code>.</span></li>
+        <li><span class="not-prose"><strong>rounded</strong> (type <a href="/docs/types#rounded-type"><u class="decoration-wavy decoration-1 underline-offset-1">ROUNDED</u></a>) - Controls the border radius.<br>- Default is <code>'md'</code>.</span></li>
+        <li><span class="not-prose"><strong>theme</strong> (type string) - Sets the notification theme. Options: <code>'default'</code>, <code>'soft'</code>, <code>'gradient'</code>.<br>- Default is <code>'default'</code>.</span></li>
+        <li><span class="not-prose"><strong>variant</strong> (type string) - Defines the notification style. Options: <code>'card'</code>, <code>'borderTop'</code>, <code>'borderBottom'</code>, <code>'borderStart'</code>.<br>- Default is <code>'card'</code>.</span></li>
       </ul>
     </div>
   </DocBlock>

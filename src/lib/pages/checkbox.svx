@@ -1,7 +1,7 @@
 ---
 title: Checkbox
 category: Components
-description: A versatile and customizable input for selecting options in forms, with support for sizes, animations, and styles.
+description: A styled checkbox that takes its size, shape and label classes from the Form or Fieldset around it.
 dir: ".lib/pages"
 tags: [checkbox, input, form, selection, component, svelte, svelte-5, theui-svelte, component-library, ui, tailwindcss]
 ---
@@ -20,10 +20,10 @@ tags: [checkbox, input, form, selection, component, svelte, svelte-5, theui-svel
 </script>
 
 <DocLayout>
-  <DocHead title="Checkbox" text="The Checkbox component is a versatile and customizable input element used for selecting one or multiple options in a form. It supports various sizes, animations, and styling options to fit different UI requirements." edit_url={editURL("checkbox")} />
+  <DocHead title="Checkbox" text="The Checkbox component wraps the native checkbox input in the library's styling. It takes sizes, animation speeds and label classes, and inherits them from a Form or Fieldset." edit_url={editURL("checkbox")} />
 
   <DocBlock title="About">
-    <p class="not-prose">This Checkbox component enhances the default checkbox input with additional styling and customization options. It allows for easy integration into forms while providing a clean and modern design. The component supports different sizes, animations, and customization settings, making it adaptable to various use cases.</p>
+    <p class="not-prose">It is still a native <code>&lt;input type="checkbox"&gt;</code> underneath, so it submits with the form and behaves the way a browser checkbox does. What the component adds is the styling, the linked label, and the settings it picks up from its parent.</p>
   </DocBlock>
 
   <DocBlock title="Example">
@@ -46,7 +46,7 @@ tags: [checkbox, input, form, selection, component, svelte, svelte-5, theui-svel
   </DocBlock>
 
   <DocBlock title="Name and Value">
-    <p class="not-prose">The <code>name</code> and <code>value</code> props are crucial for form handling. The <code>name</code> prop groups checkboxes, allowing multiple selections under the same category. The <code>value</code> prop is the value sent with the form when the checkbox is checked. To control whether it is checked, use the <code>checked</code> prop.</p>
+    <p class="not-prose">The <code>name</code> and <code>value</code> props are what the form submission uses. The <code>name</code> prop groups checkboxes, allowing multiple selections under the same category. The <code>value</code> prop is the value sent with the form when the checkbox is checked. To control whether it is checked, use the <code>checked</code> prop.</p>
     <Example>
     {#snippet example()}
 <div>
@@ -218,9 +218,9 @@ tags: [checkbox, input, form, selection, component, svelte, svelte-5, theui-svel
     <Example>
       <p class="not-prose">The Checkbox component provides multiple ways to customize its appearance:</p>
       <ul class="my-0">
-        <li><span class="not-prose"><code>labelClasses</code></span> – Custom styles for the label. If used within a Fieldset or Form component, it inherits their <span class="not-prose"><code>labelClasses</code></span>. The <span class="not-prose"><code>size</code></span>, <span class="not-prose"><code>animationSpeed</code></span>, <span class="not-prose"><code>rounded</code></span> and <span class="not-prose"><code>reset</code></span> props are inherited the same way.</li>
-        <li><span class="not-prose"><code>wrapperClasses</code></span> – Additional classes for the wrapper &lt;div&gt;, useful for layout adjustments.</li>
-        <li><span class="not-prose"><code>class</code></span> – Apply custom styles to the checkbox itself.</li>
+        <li><span class="not-prose"><code>labelClasses</code></span> - Custom styles for the label. If used within a Fieldset or Form component, it inherits their <span class="not-prose"><code>labelClasses</code></span>. The <span class="not-prose"><code>size</code></span>, <span class="not-prose"><code>animationSpeed</code></span>, <span class="not-prose"><code>rounded</code></span> and <span class="not-prose"><code>reset</code></span> props are inherited the same way.</li>
+        <li><span class="not-prose"><code>wrapperClasses</code></span> - Additional classes for the wrapper &lt;div&gt;, useful for layout adjustments.</li>
+        <li><span class="not-prose"><code>class</code></span> - Apply custom styles to the checkbox itself.</li>
       </ul>
     {#snippet example()}
 <Checkbox name="myCheckbox"

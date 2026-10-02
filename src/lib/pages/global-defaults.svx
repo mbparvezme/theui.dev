@@ -44,9 +44,9 @@ tags: [defaults, global, configuration, rounded, animation, theui-svelte, svelte
   </DocBlock>
 
   <DocBlock title="Where To Call It">
-    <p class="not-prose">Call it <b>once, at module scope</b> — a <code>&lt;script module&gt;</code> block, or a plain module your app imports. The value is a single setting shared by everything the process renders.</p>
+    <p class="not-prose">Call it <b>once, at module scope</b>: a <code>&lt;script module&gt;</code> block, or a plain module your app imports. The value is a single setting shared by everything the process renders.</p>
     <Alert type="warning" class="not-prose">
-      Do not call it while a page renders — inside a <code>load</code> function, an <code>$effect</code>, or a component's instance script. On the server one process answers many visitors at once, so a value set during one visitor's render would reach another visitor's page.
+      Do not call it while a page renders, so not inside a <code>load</code> function, an <code>$effect</code>, or a component's instance script. On the server one process answers many visitors at once, so a value set during one visitor's render would reach another visitor's page.
     </Alert>
     <p class="not-prose">Pass plain, fixed values for the same reason. A default that depends on the request, such as a per-tenant theme, does not belong here; use the <code>rounded</code> prop on a <a href="/docs/form">Form</a>, a <a href="/docs/fieldset">Fieldset</a> or the components themselves.</p>
   </DocBlock>
@@ -86,8 +86,8 @@ tags: [defaults, global, configuration, rounded, animation, theui-svelte, svelte
       </Table>
     </div>
     <p class="not-prose"><code>rounded</code> is an off switch, and the one key that is not a fallback. <code>false</code> squares off every component whatever its <code>rounded</code> prop says, so <code>&lt;Badge rounded="full"&gt;</code> and a <code>Form</code> with <code>rounded="lg"</code> both come out square. After that only a class of your own can round a corner. <code>true</code>, or leaving the key out, keeps every <code>rounded</code> prop working as usual.</p>
-    <p class="not-prose">There is no global radius <i>size</i>, because the right value differs per component — a Badge is a pill, a Card is not. To give a group of fields one radius, set <code>rounded</code> on the <a href="/docs/form">Form</a> or <a href="/docs/fieldset">Fieldset</a> around them.</p>
-    <p class="not-prose"><code>size</code> and <code>variant</code> are deliberately not here. They mean different things on different components — <code>size</code> is <code>"default"</code> on an Accordion, <code>"xs"</code> to <code>"xl"</code> on a Button and a number on an Svg, and <code>variant</code> is <code>"card"</code> on an Alert, <code>"rect"</code> on a Skeleton and <code>"pills"</code> on Tabs — so one value could not mean the same thing everywhere. Set those on a <a href="/docs/form">Form</a> or a <a href="/docs/fieldset">Fieldset</a>, which cover a whole group of fields at once.</p>
+    <p class="not-prose">There is no global radius <i>size</i>, because the right value differs per component: a Badge is a pill, a Card is not. To give a group of fields one radius, set <code>rounded</code> on the <a href="/docs/form">Form</a> or <a href="/docs/fieldset">Fieldset</a> around them.</p>
+    <p class="not-prose"><code>size</code> and <code>variant</code> are deliberately not here. They mean different things on different components. <code>size</code> is <code>"default"</code> on an Accordion, <code>"xs"</code> to <code>"xl"</code> on a Button and a number on an Svg, while <code>variant</code> is <code>"card"</code> on an Alert, <code>"rect"</code> on a Skeleton and <code>"pills"</code> on Tabs. One value could not mean the same thing everywhere. Set those on a <a href="/docs/form">Form</a> or a <a href="/docs/fieldset">Fieldset</a>, which cover a whole group of fields at once.</p>
   </DocBlock>
 
   <DocBlock title="What Wins">
@@ -123,7 +123,7 @@ tags: [defaults, global, configuration, rounded, animation, theui-svelte, svelte
 <!-- setTheuiDefaults({ rounded: false }) -->
 
 <Button>Square</Button>
-<Button rounded="full">Square too — the switch beats the prop</Button>
+<Button rounded="full">Square too, the switch beats the prop</Button>
 <Badge rounded="2xl">Square too</Badge>
 
 <Form rounded="lg">
@@ -171,7 +171,7 @@ tags: [defaults, global, configuration, rounded, animation, theui-svelte, svelte
       </Table>
     </div>
     <p class="not-prose">So <code>setTheuiDefaults(&#123; rounded: false &#125;)</code> does square off a Badge and a Toggle, because you asked for it everywhere. Leaving <code>rounded</code> out keeps each of these as it is.</p>
-    <p class="not-prose">The switch only covers the <code>rounded</code> prop. A shape a component needs in order to read correctly — the ring of a <a href="/docs/spinner">Spinner</a>, the dot on an <a href="/docs/avatar">Avatar</a>, the handle of a <a href="/docs/range">Range</a>, the step markers of a <a href="/docs/form-wizard">FormWizard</a> and the panels of the date and time pickers — stays as it is. Restyle those with a class where you need to.</p>
+    <p class="not-prose">The switch only covers the <code>rounded</code> prop. A shape a component needs in order to read correctly stays as it is: the ring of a <a href="/docs/spinner">Spinner</a>, the dot on an <a href="/docs/avatar">Avatar</a>, the handle of a <a href="/docs/range">Range</a>, the step markers of a <a href="/docs/form-wizard">FormWizard</a> and the panels of the date and time pickers. Restyle those with a class where you need to.</p>
   </DocBlock>
 
   <DocBlock title="The Type">

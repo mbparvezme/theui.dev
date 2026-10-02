@@ -1,7 +1,7 @@
 ---
 title: Installation Guide
 category: Guides
-description: Step-by-step instructions to install theui-svelte component library for seamless integration.
+description: Step by step instructions for installing the theui-svelte component library.
 dir: ".lib/pages"
 tags: [installation, setup, guide, theui-svelte, svelte, component-library]
 ---
@@ -124,9 +124,9 @@ npm run dev
     <p class="not-prose">Version 3 is a break with version 2. These are the changes most likely to touch your code:</p>
     <ul class="mt-0">
       <li>Svelte 5.57.1 or newer and Node.js 22.12 or newer are required.</li>
-      <li>The brand colors were renamed: <code>brand-primary-50</code> … <code>brand-primary-950</code> are now <code>brand-50</code> … <code>brand-950</code>, and <code>text-on-brand-primary</code> is now <code>text-on-brand</code>. Rename them in your markup, and rename <code>--color-brand-primary-*</code> and <code>--text-color-on-brand-primary</code> if you overrode them.</li>
+      <li>The brand colors were renamed: <code>brand-primary-50</code> ... <code>brand-primary-950</code> are now <code>brand-50</code> ... <code>brand-950</code>, and <code>text-on-brand-primary</code> is now <code>text-on-brand</code>. Rename them in your markup, and rename <code>--color-brand-primary-*</code> and <code>--text-color-on-brand-primary</code> if you overrode them.</li>
       <li>The second brand color is gone. <code>brand-secondary-*</code> and <code>text-on-brand-secondary</code> no longer exist; use any Tailwind color, or one of your own, in their place.</li>
-      <li>The raw surface values are prefixed now: <code>--light1</code> … <code>--dark3</code> are <code>--theui-light1</code> … <code>--theui-dark3</code>. This only matters if you overrode them; <code>bg-primary</code>, <code>bg-secondary</code> and <code>bg-tertiary</code> are unchanged.</li>
+      <li>The raw surface values are prefixed now: <code>--light1</code> ... <code>--dark3</code> are <code>--theui-light1</code> ... <code>--theui-dark3</code>. This only matters if you overrode them; <code>bg-primary</code>, <code>bg-secondary</code> and <code>bg-tertiary</code> are unchanged.</li>
       <li>String props such as <code>helperText</code>, a <code>title</code> or a <code>label</code> render as plain text now. Pass a snippet, or write the content inside the component, where you used to pass markup.</li>
       <li><code>Tab</code> and <code>TabPanel</code> each need a <code>value</code>, and a tab opens the panel that carries the same one.</li>
       <li><code>Toggle</code> uses <code>checked</code> for a checkbox and <code>group</code> for a radio; <code>value</code> is now only the value of the input.</li>

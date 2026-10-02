@@ -1,7 +1,7 @@
 ---
 title: Quick Action Button - QAB
 category: Components
-description: A button designed for quick user actions, customizable and responsive.
+description: A floating action button fixed to a corner of the viewport, with a menu of actions.
 dir: ".lib/pages"
 tags: [quick-action-button, qab, fab, fab-button, button, component, svelte, svelte-5, theui-svelte, component-library, ui, tailwindcss]
 ---
@@ -21,10 +21,10 @@ tags: [quick-action-button, qab, fab, fab-button, button, component, svelte, sve
 </script>
 
 <DocLayout>
-  <DocHead title="Quick Action Button (QAB)" text="The Quick Action Button (QAB) is a small but important button designed to provide fast and easy access to key actions. It helps users quickly perform important tasks without navigating through multiple menus." edit_url={editURL("qab")} />
+  <DocHead title="Quick Action Button (QAB)" text="A floating action button fixed to a corner of the viewport. It opens a short menu of actions, so the common ones are one tap away instead of buried in a menu." edit_url={editURL("qab")} />
 
   <DocBlock title="About">
-    <p class="not-prose">The Quick Action Button (QAB) is designed to offer users quick and easy access to important actions or features. Positioned prominently, it enhances user engagement and streamlines workflows. The QAB supports various styles and configurations, making it a versatile and essential component for improving efficiency and user experience.</p>
+    <p class="not-prose">The Quick Action Button (QAB) is a floating button fixed to a corner of the viewport. Tapping or hovering it opens the actions you put inside. Because it is fixed, render it once per page and keep it outside any scrolling container.</p>
   </DocBlock>
 
   <DocBlock title="Example">
@@ -120,7 +120,7 @@ tags: [quick-action-button, qab, fab, fab-button, button, component, svelte, sve
   </DocBlock>
 
   <DocBlock title="QAB Color">
-    <p class="not-prose">The <code>color</code> prop customizes the QAB button's appearance by applying predefined color themes. These themes correspond to various statuses or actions, ensuring consistent visual design throughout your application. The available color options are <code>"brand"</code>, <code>"error"</code>, <code>"info"</code>, <code>"success"</code>, and <code>"warning"</code>. The default value is <code>"brand"</code>.</p>
+    <p class="not-prose">The <code>color</code> prop customizes the QAB button's appearance by applying predefined color themes. They are the same colors the Button uses. The available color options are <code>"brand"</code>, <code>"error"</code>, <code>"info"</code>, <code>"success"</code>, and <code>"warning"</code>. The default value is <code>"brand"</code>.</p>
     <Tabs variant="tabs">
       {#snippet tabs()}
         <Tab value="main">QAB Main Button</Tab>
@@ -160,7 +160,7 @@ tags: [quick-action-button, qab, fab, fab-button, button, component, svelte, sve
           </Example>
         </TabPanel>
     </Tabs>
-    <p class="not-prose">Each color serves a purpose, making design intuitive and user-friendly. While you can customize colors with the class attribute, the <code>color</code> prop offers a quick and consistent solution.</p>
+    <p class="not-prose">Each color carries a meaning, so a reader can tell a destructive action from a safe one. You can still pass your own classes, but the <code>color</code> prop keeps the whole app on one palette.</p>
   </DocBlock>
 
   <DocBlock title="Theme">
@@ -207,7 +207,7 @@ tags: [quick-action-button, qab, fab, fab-button, button, component, svelte, sve
     </Example>
 
     <Example title="Gradient Theme">
-      <p class="not-prose">The gradient theme applies vibrant gradient colors to the button background, providing a more modern and eye-catching look.</p>
+      <p class="not-prose">The gradient theme fills the button background with a two color gradient.</p>
       <Tabs variant="tabs">
         {#snippet tabs()}
           <Tab value="main">QAB Main Button</Tab>
@@ -263,7 +263,6 @@ tags: [quick-action-button, qab, fab, fab-button, button, component, svelte, sve
       {/snippet}
     </Example>
     <p class="not-prose">In <code>"hover"</code> mode, the items stay open while the pointer moves from the main button to the items, and keyboard users open them by focusing the main button. They close when the pointer or focus leaves the QAB.</p>
-    <p class="not-prose">This prop helps you decide how users interact with the QAB, making it more flexible to fit different user experiences.</p>
   </DocBlock>
 
   <DocBlock title="Disabled QAB">
@@ -315,7 +314,6 @@ tags: [quick-action-button, qab, fab, fab-button, button, component, svelte, sve
 ```
       {/snippet}
     </Example>
-    <p class="not-prose">These props allow you to customize the button's animation speed and corner style to better match your design needs.</p>
   </DocBlock>
 
   <DocBlock title="Customization">
@@ -369,9 +367,9 @@ tags: [quick-action-button, qab, fab, fab-button, button, component, svelte, sve
   </DocBlock>
 
   <DocBlock title="Accessibility">
-    <p class="not-prose">The Quick Action Button (QAB) component includes built-in support for accessibility, ensuring a better experience for all users.</p>
+    <p class="not-prose">The QAB sets <code>aria-expanded</code> and <code>aria-controls</code> on the trigger, and Escape closes the open items.</p>
     <Example title="ARIA Labels">
-      <p class="not-prose">The <code>ariaLabel</code> prop allows you to provide an accessible name for the QAB button, ensuring screen readers can describe its function clearly. The default is <code>"Quick Action Button"</code>.</p>
+      <p class="not-prose">The <code>ariaLabel</code> prop sets the accessible name of the trigger. The default is <code>"Quick Action Button"</code>, which is worth changing to say what the button actually does.</p>
       <p class="not-prose">A <code>QabItem</code> uses its content as its accessible name. If the content is only an icon, set <code>ariaLabel</code> on the item to describe the action. An item without content (showing the default icon) is named <code>"Quick Action Item"</code>.</p>
       {#snippet code()}
 
@@ -386,7 +384,6 @@ tags: [quick-action-button, qab, fab, fab-button, button, component, svelte, sve
     </Example>
     <Example title="Keyboard Navigation" mt={false}>
       <p class="not-prose">The QAB supports standard keyboard interactions: use the <code>Tab</code> key to move to the main button and the items, and the <code>Enter</code> or <code>Space</code> keys to open the items or trigger an action. Pressing <code>Escape</code> closes the open items; if focus was on an item, it returns to the main button. In <code>"hover"</code> mode, the items open when the main button gets focus.</p>
-      <p class="not-prose">By following these guidelines and using the provided props, you can ensure that the QAB component enhances accessibility, providing a seamless experience for all users.</p>
     </Example>
     <Example title="Automatic ARIA Management" mt={false}>
       <p class="not-prose">The QAB component automatically handles important ARIA attributes:</p>

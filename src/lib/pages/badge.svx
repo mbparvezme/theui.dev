@@ -1,7 +1,7 @@
 ---
 title: Badge
 category: Components
-description: Add dynamic visual indicators like notifications and status labels with theui-svelte’s Badge component.
+description: Add dynamic visual indicators like notifications and status labels with theui-svelte's Badge component.
 dir: ".lib/pages"
 tags: [badge, notification, status-label, component, svelte, svelte-5, theui-svelte, component-library, ui, tailwindcss]
 ---
@@ -20,7 +20,7 @@ tags: [badge, notification, status-label, component, svelte, svelte-5, theui-sve
 </script>
 
 <DocLayout>
-  <DocHead title="Badge" text="The Badge component is a versatile UI element used for displaying small counts, labeling, or providing important indications to users. Badges are commonly used to highlight new content, show notifications, or denote status updates." edit_url={editURL("badge")} />
+  <DocHead title="Badge" text="The Badge component shows a small count or a short label next to something else. It suits unread counts, status labels and new item markers." edit_url={editURL("badge")} />
 
   <DocBlock title="Example">
     <p class="not-prose">To use the Badge component in your project, import the required component first. You can create <b>dot-badges</b> just using the <code>Badge</code> component or add text inside the <code>Badge</code> element to create a text badge. Here are some examples:</p>
@@ -122,7 +122,7 @@ tags: [badge, notification, status-label, component, svelte, svelte-5, theui-sve
 
   <DocBlock title="Customization">
     <Example>
-      <p class="not-prose">Tailor every Badge to your needs with flexible color options that support both branding and semantic meaning. Built-in styles get you started, while custom CSS classes let you take full control. To change the background color, simply add your own CSS classes to the Badge component. Here’s an example:</p>
+      <p class="not-prose">To change the background color, add your own classes to the Badge. They are merged with the defaults, so a background class of yours replaces the built in one. Here's an example:</p>
       {#snippet example()}
         <Badge ariaTitle="Demo badge" class="bg-green-500"/>
         <Badge class="bg-yellow-400 text-black">New</Badge>

@@ -24,13 +24,13 @@ tags: [tooltip, info, popup, component, svelte, svelte-5, theui-svelte, componen
   <DocHead title="Tooltip" text="The Tooltip component provides a way to display informative text when users hover over or click on an element." edit_url={editURL("tooltip")} />
 
   <DocBlock title="About">
-    <p class="not-prose">The Tooltip component is a lightweight and customizable element that displays additional information when users interact with a target element. It enhances user experience by providing context or details without cluttering the interface.</p>
+    <p class="not-prose">The Tooltip component shows a short piece of text when the visitor hovers or focuses an element. Render it once per page, then opt individual elements in with a <code>data-tooltip</code> attribute.</p>
     <p class="not-prose">This component is highly flexible and supports various animations, colors, and positions. You can easily configure its behavior to appear on hover or click, making it suitable for a wide range of use cases. The Tooltip is designed to be accessible and visually appealing, with customizable animations and styles.</p>
   </DocBlock>
 
   <DocBlock title="Example">
     <Example title="Import & Initialize Tooltip" codeTitle="+layout.svelte">
-      <p class="not-prose">To use the <code>Tooltip</code> component, first import it from theui-svelte. It’s recommended to initialize <code>Tooltip</code> globally, such as in <code>+layout.svelte</code>, to make tooltips available throughout your app. Alternatively, you can include it on specific pages where needed.</p>
+      <p class="not-prose">To use the <code>Tooltip</code> component, first import it from theui-svelte. It's recommended to initialize <code>Tooltip</code> globally, such as in <code>+layout.svelte</code>, to make tooltips available throughout your app. Alternatively, you can include it on specific pages where needed.</p>
       {#snippet code()}
 
 ```html
@@ -123,7 +123,7 @@ tags: [tooltip, info, popup, component, svelte, svelte-5, theui-svelte, componen
 
   <DocBlock title="Rounded Corner">
     <Example>
-      <p class="not-prose">You can customize the tooltip’s border-radius using the <code>rounded</code> prop or the <code>data-tooltip-rounded</code> attribute on the trigger element. Available values are <code>sm</code>, <code>md</code>, <code>lg</code> (default), <code>xl</code>, <code>2xl</code>, <code>full</code> and <code>none</code>.</p>
+      <p class="not-prose">You can customize the tooltip's border-radius using the <code>rounded</code> prop or the <code>data-tooltip-rounded</code> attribute on the trigger element. Available values are <code>sm</code>, <code>md</code>, <code>lg</code> (default), <code>xl</code>, <code>2xl</code>, <code>full</code> and <code>none</code>.</p>
       <ul class="my-0">
         <li>The <span class="not-prose"><code>rounded</code></span> prop applies the same corner style to all tooltips.</li>
         <li>The <span class="not-prose"><code>data-tooltip-rounded</code></span> attribute allows setting a different border-radius for specific tooltips without affecting others.</li>
@@ -181,7 +181,7 @@ tags: [tooltip, info, popup, component, svelte, svelte-5, theui-svelte, componen
 
   <DocBlock title="Accessibility">
     <div>
-      <p class="not-prose">Ensuring tooltips are accessible improves usability for all users, including those using keyboards and screen readers. Below are key accessibility considerations for the Tooltip component:</p>
+      <p class="not-prose">A tooltip is only useful if it can be reached without a mouse. Here is what the component handles, and what is left to you:</p>
       <ol class="my-0">
         <li>
           <b>Keyboard Navigation</b>
@@ -193,7 +193,7 @@ tags: [tooltip, info, popup, component, svelte, svelte-5, theui-svelte, componen
         </li>
         <li>
           <b>ARIA Attributes</b>
-          <p class="not-prose">To enhance screen reader compatibility, the tooltip automatically includes essential ARIA attributes:</p>
+          <p class="not-prose">The tooltip sets these ARIA attributes itself:</p>
           <ul class="my-0">
             <li>The tooltip container has <span class="not-prose"><code>role="tooltip"</code></span>.</li>
             <li>If the trigger element has an <span class="not-prose"><code>id</code></span>, the tooltip gets the id <span class="not-prose"><code>&lt;trigger-id&gt;-tooltip</code></span>, and <span class="not-prose"><code>aria-describedby</code></span> is added to the trigger while the tooltip is open. Give your triggers an <span class="not-prose"><code>id</code></span> so screen readers can announce the tooltip text.</li>

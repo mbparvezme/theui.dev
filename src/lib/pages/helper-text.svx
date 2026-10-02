@@ -20,10 +20,10 @@ tags: [helper-text, hints, guidance, form, component, svelte, svelte-5, theui-sv
 </script>
 
 <DocLayout>
-  <DocHead title="Helper Text" text="A lightweight component designed to provide additional context or guidance for form inputs, such as descriptions, hints, or error messages. It supports both plain text and dynamic content for flexibility." edit_url={editURL("helper-text")} />
+  <DocHead title="Helper Text" text="The text under a form field: a description, a hint or an error message. It takes plain text or any markup you put inside it." edit_url={editURL("helper-text")} />
 
   <DocBlock title="About">
-    <p class="not-prose">The <code>HelperText</code> component is used to display supplementary information related to form inputs, such as instructions, hints, or validation messages. It is highly customizable and works seamlessly alongside inputs, labels, and other form elements. Everything you place inside it becomes the helper text, so it can hold plain text or any elements and components.</p>
+    <p class="not-prose">The <code>HelperText</code> component shows a hint, an instruction or a validation message under a form input. Everything you place inside it becomes the helper text, so it can hold plain text or any elements and components.</p>
     <p class="not-prose">The <code>Input</code>, <code>Select</code> and <code>FileInput</code> components use it internally through their <code>helperText</code> prop, which also links it to the input with <code>aria-describedby</code>. Use <code>HelperText</code> directly when you build a field yourself.</p>
   </DocBlock>
 

@@ -1,7 +1,7 @@
 ---
 title: List Group
 category: Components
-description: Group list items with interactive and collapsible functionality for organized content display.
+description: A list of links or plain rows, in a bordered or a flat variant.
 dir: ".lib/pages"
 tags: [list-group, list, group, collapsible, component, svelte, svelte-5, theui-svelte, component-library, ui, tailwindcss]
 ---
@@ -21,7 +21,7 @@ tags: [list-group, list, group, collapsible, component, svelte, svelte-5, theui-
 </script>
 
 <DocLayout>
-  <DocHead title="List Group" text="The List Group component offers a flexible, customizable way to display items like links or text in a list format. It supports various styles and types, making it ideal for structured content." edit_url={editURL("list-group")} />
+  <DocHead title="List Group" text="A <code>&lt;ul&gt;</code> of rows, where each row is either a link or plain content. Bordered and flat variants are available." edit_url={editURL("list-group")} />
 
   <DocBlock title="Example">
     <p class="not-prose">To use the List Group component, import it from the <code>theui-svelte</code> library. Below is a simple example demonstrating how to use the List Group:</p>
@@ -204,7 +204,7 @@ tags: [list-group, list, group, collapsible, component, svelte, svelte-5, theui-
 
   <DocBlock title="Accessibility">
     <div>
-      <p class="not-prose">The List Group component ensures accessibility by using semantic HTML and ARIA roles:</p>
+      <p class="not-prose">The List Group component uses semantic HTML and ARIA roles:</p>
       <ol class="my-0">
         <li>The parent container <span class="not-prose"><code>&lt;ul&gt;</code></span> includes <span class="not-prose"><code>role="list"</code></span></li>
         <li>Each <span class="not-prose"><code>&lt;li&gt;</code></span> element has <span class="not-prose"><code>role="listitem"</code></span> to provide proper structure for assistive technologies.</li>

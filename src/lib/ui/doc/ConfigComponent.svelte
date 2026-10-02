@@ -40,7 +40,7 @@
           </p>
         {/if}
 
-        <!-- Cells are rendered as HTML (type links, <code>) — content is authored in the route files, not user input -->
+        <!-- Cells are rendered as HTML (type links, <code>). The content is authored in the route files, not user input -->
         <Table class="my-0">
           <THead>
             <TR tableHeader={true}>

@@ -152,7 +152,7 @@ tags: [combobox, autocomplete, select, multiselect, search, form, svelte, svelte
   bind:value={tags}
   multiple
   creatable
-  createText={(q) => `Add “${q}”`}
+  createText={(q) => `Add "${q}"`}
 >Tags</Combobox>
 ```
       {/snippet}
@@ -190,7 +190,7 @@ tags: [combobox, autocomplete, select, multiselect, search, form, svelte, svelte
   }
 </script>
 
-<Combobox {items} {loading} onsearch={search} placeholder="Search…" emptyText="Nothing found">
+<Combobox {items} {loading} onsearch={search} placeholder="Search..." emptyText="Nothing found">
   Country
 </Combobox>
 ```

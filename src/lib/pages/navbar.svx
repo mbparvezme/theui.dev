@@ -60,7 +60,7 @@ tags: [navbar, navigation, responsive, menu, component, svelte, svelte-5, theui-
   <DocHead title="Navbar" text="A responsive navigation bar with support for dropdown menus, keyboard navigation, and customizable styling. It's ideal for building primary site navigation or complex menu systems." edit_url={editURL("navbar")} />
 
   <DocBlock title="About">
-    <p class="not-prose">The <code>Navbar</code> component provides a fully responsive and accessible navigation bar for your application. It supports branding, grouped links, and dropdown menus, making it suitable for both simple and complex navigation structures. With built-in keyboard navigation and customizable styling options, the Navbar ensures a seamless user experience across all devices.</p>
+    <p class="not-prose">The <code>Navbar</code> component is the navigation bar: a brand, one or more link groups, and dropdown menus. It collapses into a toggle menu below the breakpoint you set, and every link answers to the keyboard.</p>
   </DocBlock>
 
   <DocBlock title="Example">
@@ -138,7 +138,7 @@ tags: [navbar, navigation, responsive, menu, component, svelte, svelte-5, theui-
 
     <Example title="Hide/Shrink Scroll Amount" classes="p-4 w-full flex flex-col gap-2">
       <p class="not-prose">The <code>scrollAmountToShrink</code> and <code>scrollAmountToHide</code> props allow fine-tuned control over how the Navbar reacts to scrolling. These values determine the scroll distance (in pixels) required to trigger shrinking or hiding effects, making the Navbar more adaptive to different layouts.</p>  
-      <p class="not-prose">By default, <code>scrollAmountToShrink</code> is set to <b>32px</b>, meaning the Navbar will shrink after scrolling this distance when <code>shrinkOnScrollDown</code> or <code>shrinkAndHide</code> is enabled. Similarly, <code>scrollAmountToHide</code> is <b>128px</b>, which controls when the Navbar fully disappears when <code>hideOnScrollDown</code> or <code>shrinkAndHide</code> is used. Adjusting these values ensures a smooth and customized scroll behavior.</p>  
+      <p class="not-prose">By default, <code>scrollAmountToShrink</code> is set to <b>32px</b>, meaning the Navbar will shrink after scrolling this distance when <code>shrinkOnScrollDown</code> or <code>shrinkAndHide</code> is enabled. Similarly, <code>scrollAmountToHide</code> is <b>128px</b>, which controls when the Navbar fully disappears when <code>hideOnScrollDown</code> or <code>shrinkAndHide</code> is used. Change them to suit how tall your navbar is.</p>  
     </Example>
 
 
@@ -221,7 +221,7 @@ tags: [navbar, navigation, responsive, menu, component, svelte, svelte-5, theui-
   </DocBlock>
 
   <DocBlock title="Responsive Navbar">
-    <p class="not-prose">The <b>Navbar</b> is fully responsive and adapts to different screen sizes with the help of the <code>NavCollapse</code> component. Any navigation elements placed inside <code>NavCollapse</code> will automatically collapse into a toggleable menu on smaller screens, ensuring a clean and accessible navigation experience. This is particularly useful for mobile and tablet views where space is limited.</p>
+    <p class="not-prose">Anything you put inside <code>NavCollapse</code> moves into a toggle menu below the navbar's breakpoint. <code>NavCollapse</code> owns the hamburger button and the open and close behavior, so a link group placed outside it stays visible at every width.</p>
     <Example title="NavCollapse">
       <p class="not-prose">The <code>NavCollapse</code> component acts as a wrapper for collapsible navigation items. When used inside the <b>Navbar</b>, it ensures that the contained elements are hidden on smaller screens and can be revealed through a toggle button. Without <code>NavCollapse</code>, all navigation items will remain visible, even on small screens, potentially affecting layout and usability.</p>
     </Example>
@@ -462,7 +462,7 @@ tags: [navbar, navigation, responsive, menu, component, svelte, svelte-5, theui-
     </Example>
 
     <Example title="Dropdown Animation" classes="p-4 w-full flex flex-col">
-      <p class="not-prose">The dropdown supports animations to enhance its appearance. You can choose from three animation styles: <code>"fade"</code>, <code>"slide"</code>, and <code>"zoom"</code>. By default, the dropdown uses the <code>"fade"</code> effect for a smooth transition. These animations make the dropdown feel more interactive and visually appealing. To control animation speed, <a class="prose" href="#animation-speed">follow this</a>.</p>
+      <p class="not-prose">The dropdown takes one of three animation styles: <code>"fade"</code>, <code>"slide"</code> and <code>"zoom"</code>. The default is <code>"fade"</code>. To control the speed, <a class="prose" href="#animation-speed">follow this</a>.</p>
       {#snippet example()}
         <Navbar>
           <NavBrand href="#">BRAND</NavBrand>
@@ -534,7 +534,6 @@ tags: [navbar, navigation, responsive, menu, component, svelte, svelte-5, theui-
   </DocBlock>
 
   <DocBlock title="Mega Menu">
-    <p class="not-prose">The Navbar is designed to be highly versatile, making it suitable for both simple navigation and complex menu structures. Whether you need a minimal navigation bar or a feature-rich menu system, it adapts to your design needs effortlessly.</p>
     <Example classes="p-4 w-full flex flex-col">
       <p class="not-prose">For more advanced layouts, the Navbar includes a Mega Menu option. When the <code>width</code> prop of a <code>NavDropdown</code> is set to <code>"full"</code>, the dropdown expands to take the full width of the Navbar, creating a spacious layout for organizing multiple links, sections, or even embedded content. This makes the Mega Menu ideal for websites that require a detailed navigation structure, such as e-commerce platforms, dashboards, and content-heavy websites.</p>
       {#snippet example()}
@@ -612,13 +611,13 @@ tags: [navbar, navigation, responsive, menu, component, svelte, svelte-5, theui-
   <DocBlock title="Customization">
     <p class="not-prose">The Navbar is styled from the <b>Navbar</b> component, so one set of props styles every part of it:</p>
     <ul class="my-0">
-      <li><span class="not-prose"><code>class</code></span> – classes for the <code>&lt;nav&gt;</code> element, merged with the defaults.</li>
-      <li><span class="not-prose"><code>navInnerClasses</code></span> – classes for the inner container that holds the brand and the links.</li>
-      <li><span class="not-prose"><code>navCollapseClasses</code></span> – classes for the mobile menu created by <code>NavCollapse</code>.</li>
-      <li><span class="not-prose"><code>scrollShrinkClasses</code></span> – classes added while the Navbar is shrunk by the <code>shrinkOnScrollDown</code> or <code>shrinkAndHide</code> behavior.</li>
-      <li><span class="not-prose"><code>linkClasses</code></span> – classes for every <code>NavLink</code> and dropdown trigger.</li>
-      <li><span class="not-prose"><code>activeLinkClasses</code></span> – classes added to an <code>active</code> NavLink.</li>
-      <li><span class="not-prose"><code>dropdownLinkClasses</code></span> – classes for the NavLinks inside a <code>NavDropdown</code>.</li>
+      <li><span class="not-prose"><code>class</code></span> - classes for the <code>&lt;nav&gt;</code> element, merged with the defaults.</li>
+      <li><span class="not-prose"><code>navInnerClasses</code></span> - classes for the inner container that holds the brand and the links.</li>
+      <li><span class="not-prose"><code>navCollapseClasses</code></span> - classes for the mobile menu created by <code>NavCollapse</code>.</li>
+      <li><span class="not-prose"><code>scrollShrinkClasses</code></span> - classes added while the Navbar is shrunk by the <code>shrinkOnScrollDown</code> or <code>shrinkAndHide</code> behavior.</li>
+      <li><span class="not-prose"><code>linkClasses</code></span> - classes for every <code>NavLink</code> and dropdown trigger.</li>
+      <li><span class="not-prose"><code>activeLinkClasses</code></span> - classes added to an <code>active</code> NavLink.</li>
+      <li><span class="not-prose"><code>dropdownLinkClasses</code></span> - classes for the NavLinks inside a <code>NavDropdown</code>.</li>
     </ul>
     <p class="not-prose">Each part also takes a <code>class</code> of its own. On a <code>NavDropdown</code>, <code>class</code> styles the menu panel, and <code>linkClasses</code> styles its trigger.</p>
     <p class="not-prose">The inner row stops at the same width as a <a href="/docs/container"><code>Container</code></a>, so the brand and the links line up with the content below them. Both read the <a href="/docs/container#page-width"><code>--max-width</code></a> variable, and changing it moves them together.</p>
@@ -651,11 +650,10 @@ tags: [navbar, navigation, responsive, menu, component, svelte, svelte-5, theui-
   </DocBlock>
 
   <DocBlock title="Accessibility">
-    <p class="not-prose">The Navbar is designed with accessibility in mind, ensuring smooth navigation for all users, including those using screen readers and keyboard navigation.</p>
-    <p class="not-prose">To enhance accessibility, use the <code>ariaLabel</code> prop in the <code>Navbar</code> component to define an appropriate <code>aria-label</code> value. This helps screen readers identify the purpose of the navigation.</p>
+    <p class="not-prose">The Navbar ships with the roles and the keyboard behavior a navigation region needs.</p>
+    <p class="not-prose">Use the <code>ariaLabel</code> prop on the <code>Navbar</code> to set an <code>aria-label</code>. It tells a screen reader which navigation region this is, which matters as soon as a page has more than one.</p>
     <p class="not-prose">All interactive elements, including links and dropdowns, are fully keyboard-accessible. Users can open dropdowns with <code>Enter</code> or <code>Space</code>, navigate through links and move between dropdown items using the <code>Tab</code> key. The <code>Escape</code> key closes open dropdowns and moves focus back to the dropdown button. The mobile toggle button and each dropdown button point to the content they open with <code>aria-controls</code>.</p>
     <p class="not-prose">For better accessibility, ensure that all links have clear, descriptive text. If using a <code>NavDropdown</code>, the <code>aria-expanded</code> attribute updates dynamically to reflect its open or closed state, improving the experience for screen reader users.</p>
-    <p class="not-prose">By following these guidelines and utilizing the provided accessibility features, you can create a navigation system that is inclusive and user-friendly.</p>
   </DocBlock>
 
   <DocBlock title="Configuration">

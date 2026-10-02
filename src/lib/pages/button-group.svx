@@ -23,7 +23,7 @@ tags: [button-group, button, buttons, group, component, svelte, svelte-5, theui-
   <DocHead title="Button Group" text="Helps you group multiple buttons together for a cohesive and organized layout. Ideal for presenting related actions or options side by side or vertically" edit_url={editURL("button-group")} />
 
   <DocBlock title="About">
-    <p class="not-prose">The <code>ButtonGroup</code> component lets you group multiple <code>Button</code> components together in a unified block. It supports different styles, sizes, and layouts, making it easy to build toolbars, navigation links, or action button sets. It keeps buttons well-aligned with consistent spacing and styling, helping you create a clean and structured user interface.</p>
+    <p class="not-prose">The <code>ButtonGroup</code> component joins several <code>Button</code> components into one block. It takes care of the alignment, the spacing and the rounding of the outer edges, which is what you want for a toolbar, a set of view switches or a row of related actions.</p>
   </DocBlock>
 
   <DocBlock title="Example">
@@ -71,11 +71,11 @@ tags: [button-group, button, buttons, group, component, svelte, svelte-5, theui-
 ```
       {/snippet}
     </Example>
-    <p class="not-prose">In this example, the buttons are displayed one below the other, creating a clean and space-efficient vertical layout.</p>
+    <p class="not-prose">In this example the buttons stack one below the other.</p>
   </DocBlock>
 
   <DocBlock title="Outlined Button">
-    <p class="not-prose">The <code>outline</code> prop in the <code>ButtonGroup</code> component gives all buttons a bordered look with a transparent background. It’s useful when you want a lighter, less prominent style while keeping a consistent design.</p>
+    <p class="not-prose">The <code>outline</code> prop in the <code>ButtonGroup</code> component gives all buttons a bordered look with a transparent background. It's useful when you want a lighter, less prominent style while keeping a consistent design.</p>
     <Example>
       {#snippet example()}
         <ButtonGroup outline={true}>
@@ -143,7 +143,7 @@ tags: [button-group, button, buttons, group, component, svelte, svelte-5, theui-
 ```
       {/snippet}
     </Example>
-    <p class="not-prose">In this example, the buttons are rendered with an outline, providing a lighter, more elegant visual style.</p>
+    <p class="not-prose">In this example the buttons are outlined, which is a lighter look than the filled default.</p>
   </DocBlock>
 
   <DocBlock title="Square Group Button">
@@ -176,7 +176,7 @@ tags: [button-group, button, buttons, group, component, svelte, svelte-5, theui-
 ```
       {/snippet}
     </Example>
-    <p class="not-prose">In this example, the buttons are displayed one below the other, creating a clean and space-efficient vertical layout.</p>
+    <p class="not-prose">In this example the buttons stack one below the other.</p>
   </DocBlock>
 
   <DocBlock title="Rounded Button Control">
@@ -235,7 +235,7 @@ tags: [button-group, button, buttons, group, component, svelte, svelte-5, theui-
     <Example>
       <p class="not-prose">The <code>variant</code> prop in the <code>ButtonGroup</code> component allows you to choose between two button styles: <code>bordered</code> and <code>flat</code>. This prop customizes the visual separation between buttons in the group.</p>
       <ul class="my-0">
-        <li><span class="not-prose"><code>flat</code></span> (default): Creating a seamless, flat appearance with no visual separation between buttons.</li>
+        <li><span class="not-prose"><code>flat</code></span> (default): the buttons sit flush against each other with no gap between them.</li>
         <li><span class="not-prose"><code>bordered</code></span>: Adds borders between the buttons, giving each button a distinct outline.</li>
       </ul>
       {#snippet example()}
@@ -264,7 +264,7 @@ tags: [button-group, button, buttons, group, component, svelte, svelte-5, theui-
 
   <DocBlock title="Button Group Color">
     <Example>
-      <p class="not-prose">The <code>color</code> prop for the <code>ButtonGroup</code> component sets a unified color theme for all buttons within the group. This ensures a consistent and cohesive design. However, individual buttons can override this by using their own <code>color</code> prop, allowing for greater customization within the button group.</p>
+      <p class="not-prose">The <code>color</code> prop on the <code>ButtonGroup</code> sets the color for every button in the group. A single button can still override it with its own <code>color</code> prop.</p>
       {#snippet example()}
         <ButtonGroup color="warning">
           <Button>Button 1</Button>
@@ -287,7 +287,7 @@ tags: [button-group, button, buttons, group, component, svelte, svelte-5, theui-
 ```
       {/snippet}
     </Example>
-    <p class="not-prose">In this example, the <code>size="lg"</code> prop applies a large size to all buttons in the group, ensuring they appear uniformly larger for better emphasis or usability.</p>
+    <p class="not-prose">In this example <code>size="lg"</code> applies to every button in the group.</p>
   </DocBlock>
 
   <DocBlock title="Button Group Theme">
@@ -317,7 +317,7 @@ tags: [button-group, button, buttons, group, component, svelte, svelte-5, theui-
       {/snippet}
     </Example>
     <Example title="Gradient Theme">
-      <p class="not-prose">The <b>gradient theme</b> applies a gradient background to the buttons, giving them a vibrant and dynamic look. To customize the gradient’s color scheme, use the <code>gradientColor</code> prop in combination with the gradient theme.</p>
+      <p class="not-prose">The <b>gradient theme</b> applies a gradient background to the buttons, giving them a vibrant and dynamic look. To customize the gradient's color scheme, use the <code>gradientColor</code> prop in combination with the gradient theme.</p>
       {#snippet example()}
         <div class="flex flex-col items-center gap-4 w-full">
           <ButtonGroup theme="gradient">
@@ -389,7 +389,7 @@ tags: [button-group, button, buttons, group, component, svelte, svelte-5, theui-
   </DocBlock>
 
   <DocBlock title="Accessibility">
-    <p class="not-prose">The <code>ButtonGroup</code> component is designed with accessibility in mind, ensuring it can be easily used by all users, including those relying on assistive technologies.</p>
+    <p class="not-prose">The <code>ButtonGroup</code> carries the roles and labels a screen reader needs, and every button inside it stays reachable by keyboard.</p>
     <Example title="ARIA Label">
       <p class="not-prose">The <code>ariaLabel</code> prop allows you to provide a custom label for the button group, enhancing its accessibility. The default value is "Button group". You can specify a more descriptive label depending on the context or functionality of the button group.</p>
       {#snippet code()}

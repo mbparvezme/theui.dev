@@ -1,7 +1,7 @@
 ---
 title: Date Picker
 category: Forms
-description: Pick a date from a calendar with limits, disabled days, any locale and full keyboard support, using theui-svelte’s DatePicker component.
+description: Pick a date from a calendar with limits, disabled days, any locale and full keyboard support, using theui-svelte's DatePicker component.
 dir: ".lib/pages"
 tags: [date picker, calendar, date input, form, svelte, svelte-5, theui-svelte, component-library, ui, tailwindcss]
 ---
@@ -24,7 +24,7 @@ tags: [date picker, calendar, date input, form, svelte, svelte-5, theui-svelte, 
 </script>
 
 <DocLayout>
-  <DocHead title="Date Picker" text="The DatePicker component opens a calendar under the field and gives back the chosen day. The value is a plain “YYYY-MM-DD” string, so it submits with a form and travels to a server without any date library. The calendar follows the Material style: circular days, a month and year list, and a today and clear action." edit_url={editURL("date-picker")} />
+  <DocHead title="Date Picker" text="The DatePicker component opens a calendar under the field and gives back the chosen day. The value is a plain YYYY-MM-DD string, so it submits with a form and travels to a server without any date library. The calendar follows the Material style: circular days, a month and year list, and a today and clear action." edit_url={editURL("date-picker")} />
 
   <DocBlock title="Example">
     <p class="not-prose">Import the component and bind a string. Click the field to open the calendar.</p>

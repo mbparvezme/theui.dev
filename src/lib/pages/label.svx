@@ -20,7 +20,7 @@ tags: [label, form-label, form, component, svelte, svelte-5, theui-svelte, compo
 </script>
 
 <DocLayout>
-  <DocHead title="Label" text="A reusable component for rendering form labels, ensuring consistent styling and behavior across all inputs. It accepts any content and integrates seamlessly with the Form and Fieldset components." edit_url={editURL("label")} />
+  <DocHead title="Label" text="A form label that matches the other form components and takes its classes from the Form or Fieldset around it. It accepts any content." edit_url={editURL("label")} />
 
   <DocBlock title="About">
     <p class="not-prose">The <code>Label</code> component is designed to simplify the creation of form labels while maintaining consistency in styling and functionality. It renders a native <code>&lt;label&gt;</code> element with the library's label styles. The form inputs, like <code>Input</code>, <code>Checkbox</code> and <code>Toggle</code>, use it internally, and you can use it directly when you build a custom field.</p>

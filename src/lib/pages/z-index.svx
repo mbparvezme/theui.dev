@@ -115,7 +115,7 @@ tags: [z-index, stacking, stacking context, css, guide, theui-svelte, svelte, co
 <!-- inside this card cannot rise above anything outside it -->
 <div class="transition hover:scale-105">
   <Card>
-    <Dropdown label="Actions">…</Dropdown>
+    <Dropdown label="Actions">...</Dropdown>
   </Card>
 </div>
 ```
@@ -126,9 +126,9 @@ tags: [z-index, stacking, stacking context, css, guide, theui-svelte, svelte, co
   <DocBlock title="Your Own Overlays">
     <p class="not-prose">Three places are free for your own elements, and each keeps you out of the library's way.</p>
     <ul class="mt-0 mb-0">
-      <li><b>Below 100</b> – anything that belongs to the page itself, such as a sticky table header or a cookie bar that the navbar may cover.</li>
-      <li><b>Between two layers</b> – for example 250 for a panel of your own that should sit over a dropdown but under a drawer.</li>
-      <li><b>Above 700</b> – a splash screen or a full-page loader, the only things that should cover a notification.</li>
+      <li><b>Below 100</b> - anything that belongs to the page itself, such as a sticky table header or a cookie bar that the navbar may cover.</li>
+      <li><b>Between two layers</b> - for example 250 for a panel of your own that should sit over a dropdown but under a drawer.</li>
+      <li><b>Above 700</b> - a splash screen or a full-page loader, the only things that should cover a notification.</li>
     </ul>
   </DocBlock>
 

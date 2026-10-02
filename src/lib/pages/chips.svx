@@ -1,7 +1,7 @@
 ---
 title: Chips
 category: Components
-description: Add interactive and stylish chips for tags and filters with theui-svelte’s Chips component.
+description: Compact pills for tags, filters and selected people, with an optional image and close button.
 dir: ".lib/pages"
 tags: [chips, tags, filters, interactive, component, svelte, svelte-5, theui-svelte, component-library, ui, tailwindcss]
 ---
@@ -20,7 +20,7 @@ tags: [chips, tags, filters, interactive, component, svelte, svelte-5, theui-sve
 </script>
 
 <DocLayout>
-  <DocHead title="Chips" text="The <code>Chips</code> component is a versatile UI element used to display small blocks of information, such as tags, categories, or interactive items. It supports images, text, and an optional close button for dismissing the chips." edit_url={editURL("chips")} />
+  <DocHead title="Chips" text="The <code>Chips</code> component shows a short piece of information as a pill, such as a tag, a category or a selected person. It takes text, an optional image and an optional close button." edit_url={editURL("chips")} />
 
   <DocBlock title="Example">
     <p class="not-prose">First, import the <code>Chips</code> component from the library. Below is a simple example demonstrating how to use the Chips component. This example shows how to create a chip with a basic text label:</p>
@@ -45,7 +45,7 @@ tags: [chips, tags, filters, interactive, component, svelte, svelte-5, theui-sve
   </DocBlock>
 
   <DocBlock title="Chips With Image">
-    <p class="not-prose">You can enhance the <code>Chips</code> component by including an image alongside the text. Below is a basic example demonstrating how to use the Chips component with an image:</p>
+    <p class="not-prose">You can put an image next to the text. Below is a basic example demonstrating how to use the Chips component with an image:</p>
     <Example>
       {#snippet example()}
       <div>
@@ -81,8 +81,8 @@ tags: [chips, tags, filters, interactive, component, svelte, svelte-5, theui-sve
   </DocBlock>
 
   <DocBlock title="Sizes">
-    <p class="not-prose">The <code>Chips</code> component allows you to adjust its size using the <code>size</code> prop. This prop controls the dimensions of the chip's image. The available size options are:<br>- <b>sm</b> (small)<br>- <b>md</b> (medium) – <i>default</i><br>- <b>lg</b> (large)</p>
-    <p class="not-prose">By choosing the appropriate size, you can ensure that the chips fit seamlessly into your design. This flexibility helps you customize the appearance of chips to suit various layout needs.</p>
+    <p class="not-prose">The <code>Chips</code> component allows you to adjust its size using the <code>size</code> prop. This prop controls the dimensions of the chip's image. The available size options are:<br>- <b>sm</b> (small)<br>- <b>md</b> (medium) - <i>default</i><br>- <b>lg</b> (large)</p>
+    <p class="not-prose">Pick the size that matches the text around the chip.</p>
     <Example>
       {#snippet example()}
         <div class="flex flex-col items-center gap-4">

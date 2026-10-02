@@ -1,7 +1,7 @@
 ---
 title: RTL Support Guide
 category: Guides
-description: Implement right-to-left text support for seamless bidirectional layouts in your Svelte app.
+description: Right to left support, applied across the whole site or to single components.
 dir: ".lib/pages"
 tags: [rtl, bidirectional, direction, guide, theui-svelte, svelte, component-library]
 ---
@@ -32,7 +32,7 @@ tags: [rtl, bidirectional, direction, guide, theui-svelte, svelte, component-lib
 
 <DocLayout>
 
-  <DocHead title="RTL" text="Enable RTL support and styling globally across your site or to specific components only, ensuring flexibility and control over your layout." edit_url={editURL("rtl")} />
+  <DocHead title="RTL" text="Turn on right to left support for the whole site, or for single components only." edit_url={editURL("rtl")} />
 
   <DocBlock>
     <p class="not-prose">The <b>theui-svelte</b> components follow the direction of the page, so Arabic, Persian, Hebrew and Urdu layouts need no second stylesheet and no extra build. Set the direction and everything turns around with it: spacing, borders, icons that point somewhere, and the arrow keys inside the components that use them.</p>
@@ -115,10 +115,10 @@ tags: [rtl, bidirectional, direction, guide, theui-svelte, svelte, component-lib
 
 ```svelte
 <!-- Turns around on its own -->
-<div class="ms-4 border-s-2 ps-2 text-start">…</div>
+<div class="ms-4 border-s-2 ps-2 text-start">...</div>
 
 <!-- Stays on the left, whatever the direction -->
-<div class="ml-4 border-l-2 pl-2 text-left">…</div>
+<div class="ml-4 border-l-2 pl-2 text-left">...</div>
 ```
 </Code>
     <p class="not-prose mb-0">Left and right still have their uses. A logo, a chart or a video player that should never flip is better off with the physical class, and Tailwind also gives you the <code>rtl:</code> and <code>ltr:</code> prefixes when one case needs a rule of its own.</p>

@@ -1,7 +1,7 @@
 ---
 title: Drawer
 category: Components
-description: A versatile UI element that slides in from the screen edge to show extra content or navigation without blocking the main view.
+description: A panel that slides in from the edge of the screen to hold navigation or extra content.
 dir: ".lib/pages"
 tags: [drawer, sidebar, slide-in, navigation, component, svelte, svelte-5, theui-svelte, component-library, ui, tailwindcss]
 ---
@@ -21,7 +21,7 @@ tags: [drawer, sidebar, slide-in, navigation, component, svelte, svelte-5, theui
 </script>
 
 <DocLayout>
-  <DocHead title="Drawer" text="The Drawer component is a versatile UI element that slides in from the edge of the screen, providing a convenient way to display additional content or navigation without disrupting the main view." edit_url={editURL("drawer")} />
+  <DocHead title="Drawer" text="The Drawer component slides a panel in from the edge of the screen. Use it for navigation, filters, or any content that does not need to take over the page." edit_url={editURL("drawer")} />
 
   <DocBlock title="Example">
     <p class="not-prose">Import the <code>Drawer</code> component first to use it in your application. Here's a basic example demonstrating how to use the Drawer component:</p>
@@ -54,7 +54,7 @@ tags: [drawer, sidebar, slide-in, navigation, component, svelte, svelte-5, theui
   <DocBlock title="Position">
     <Example>
     <p class="not-prose">The <code>position</code> prop allows you to control where the Drawer appears on the screen. You can choose from four positions: <code>top</code>, <code>end</code>, <code>bottom</code>, or <code>start</code>. This flexibility lets you tailor the Drawer's placement to fit the layout and design of your application.</p>
-    <p class="not-prose">Simply set the <code>position</code> prop to your desired value to change where the Drawer opens from, creating a more intuitive user experience based on your app's needs.</p>
+    <p class="not-prose">Set the <code>position</code> prop to change which edge the Drawer opens from.</p>
       {#snippet example()}
         <Drawer label="Start">
           <div class="p-8">
@@ -180,7 +180,7 @@ tags: [drawer, sidebar, slide-in, navigation, component, svelte, svelte-5, theui
     </Example>
     <Example title="Preventing Backdrop Click">
     <p class="not-prose">By default, the Drawer closes when the user clicks on the backdrop. This behavior helps users easily dismiss the Drawer by clicking outside of it, enhancing usability in most scenarios.</p>
-    <p class="not-prose">However, for critical tasks, you can prevent this by setting the <code>staticBackdrop</code> prop to <code>true</code>, ensuring the Drawer stays open until manually closed.</p>
+    <p class="not-prose">Set <code>staticBackdrop</code> to <code>true</code> and a click on the backdrop no longer closes it, which is what you want when the visitor is part way through something.</p>
       {#snippet example()}
         <Drawer label="Backdrop Click Disabled" staticBackdrop={true}>
           <div class="p-8">
@@ -217,7 +217,7 @@ tags: [drawer, sidebar, slide-in, navigation, component, svelte, svelte-5, theui
   <DocBlock title="Animation Speed">
     <Example>
       <p class="not-prose">The animationSpeed prop controls how quickly the Drawer appears or disappears. It supports the following values: <code>"none"</code>, <code>"slower"</code>, <code>"slow"</code>, <code>"normal"</code>, <code>"fast"</code> (default), and <code>"faster"</code>.</p>
-      <p class="not-prose">This gives you flexibility to adjust the opening and closing speed based on your design needs — whether you want a smooth, slow transition or a quick, snappy feel.</p>
+      <p class="not-prose">Use it to set how fast the panel slides in and out.</p>
       {#snippet example()}
         <Drawer animationSpeed="slower" label="Slower">
           <div class="p-8">

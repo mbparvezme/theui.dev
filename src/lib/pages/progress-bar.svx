@@ -220,11 +220,11 @@ tags: [progress-bar, progress, indicator, component, svelte, svelte-5, theui-sve
   </DocBlock>
 
   <DocBlock title="Accessibility">
-    <p class="not-prose">The Progress component is designed to be accessible, providing clear indicators of progress for all users. To ensure the component is fully accessible:</p>
+    <p class="not-prose">The Progress component sets the ARIA value attributes itself. Two things are left to you:</p>
     <ul class="my-0">
       <li><b>ARIA attributes</b>: <span class="not-prose">The component automatically uses <code>role="progressbar"</code>, <code>aria-valuenow</code>, <code>aria-valuemin</code>, and <code>aria-valuemax</code> to communicate the current progress and its range to screen readers.</span></li>
       <li><b>Color contrast</b>: <span class="not-prose">Ensure sufficient color contrast to make the progress bar readable for users with visual impairments.</span></li>
-      <li><b>Label visibility</b>: <span class="not-prose">When using the <code>"bubble"</code> label variant, ensure the label is positioned properly and does not obstruct key content, ensuring a smooth user experience.</span></li>
+      <li><b>Label visibility</b>: <span class="not-prose">The <code>"bubble"</code> label sits above the bar, so leave room for it or it will cover whatever is directly above.</span></li>
     </ul>
   </DocBlock>
 

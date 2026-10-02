@@ -74,11 +74,11 @@ tags: [fieldset, form-group, inputs, structure, component, svelte, svelte-5, the
   </DocBlock>
 
   <DocBlock title="Accessibility">
-    <p class="not-prose">Use <code>Fieldset</code> to semantically group related inputs like checkboxes or radios. When you set the <code>title</code> prop, it adds a visually hidden <code>legend</code> so screen readers can announce the purpose of the group. Clean markup, meaningful structure — accessibility baked in.</p>
+    <p class="not-prose">Use <code>Fieldset</code> to semantically group related inputs like checkboxes or radios. When you set the <code>title</code> prop, it adds a visually hidden <code>legend</code> so screen readers can announce the purpose of the group. The markup stays clean and the group is announced properly.</p>
   </DocBlock>
 
   <DocBlock title="Configuration">
-    <p class="not-prose">The <code>Fieldset</code> component includes a set of props that are not directly applied to the Fieldset itself but are inherited by all its child inputs. This allows for a consistent appearance and behavior across all enclosed form inputs, ensuring a cohesive design without the need for individual configuration.</p>
+    <p class="not-prose">Some of the <code>Fieldset</code> props are not used by the fieldset itself. They are handed down to the inputs inside it, so you can set them once instead of on every field.</p>
     <ConfigComponent {component} />
   </DocBlock>
 

@@ -1,7 +1,7 @@
 ---
 title: Range
 category: Forms
-description: Let users pick a number by dragging, with a value bubble, ticks and full form support, using theui-svelte’s Range component.
+description: Let users pick a number by dragging, with a value bubble, ticks and full form support, using theui-svelte's Range component.
 dir: ".lib/pages"
 tags: [range, slider, input, form, component, svelte, svelte-5, theui-svelte, component-library, ui, tailwindcss]
 ---

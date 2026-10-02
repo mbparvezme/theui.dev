@@ -23,7 +23,7 @@ tags: [svg-icon, icon, vector, component, svelte, svelte-5, theui-svelte, compon
   <DocHead title="SVG Icon" text="The Svg component allows you to easily add SVG icons to your project. It acts as a wrapper for SVG elements and can replace the standard svg tag. You can include any path or other SVG elements within it." edit_url={editURL("svg-icon")} />
 
   <DocBlock title="About">
-    <p class="not-prose">The <code>Svg</code> component is a versatile wrapper for incorporating SVG icons into your project. It simplifies the process of adding custom SVG elements, offering a convenient alternative to the standard <code>&lt;svg&gt;</code> tag.</p>
+    <p class="not-prose">The <code>Svg</code> component wraps an icon's <code>&lt;path&gt;</code> elements in an <code>&lt;svg&gt;</code> with the size, the fill and the viewBox already set. Put the paths inside it and give the size in rem.</p>
   </DocBlock>
 
   <DocBlock title="Example">

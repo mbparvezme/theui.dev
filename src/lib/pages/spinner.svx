@@ -117,14 +117,14 @@ tags: [spinner, loader, loading, progress, component, svelte, svelte-5, theui-sv
     <Example>
       {#snippet example()}
         <div class="flex flex-col gap-4">
-          <Spinner>Loading your data…</Spinner>
+          <Spinner>Loading your data...</Spinner>
           <Spinner variant="dots" class="text-muted">Please wait</Spinner>
         </div>
       {/snippet}
       {#snippet code()}
 
 ```html
-<Spinner>Loading your data…</Spinner>
+<Spinner>Loading your data...</Spinner>
 <Spinner variant="dots" class="text-muted">Please wait</Spinner>
 ```
       {/snippet}
@@ -138,7 +138,7 @@ tags: [spinner, loader, loading, progress, component, svelte, svelte-5, theui-sv
         <div class="flex items-center gap-4">
           <button class="inline-flex items-center gap-2 rounded-md bg-brand-500 px-4 py-2 font-medium text-on-brand opacity-80" disabled>
             <Spinner size="xs" class="text-on-brand" label="Saving" />
-            Saving…
+            Saving...
           </button>
           <button class="inline-flex items-center gap-2 rounded-md border border-gray-300 px-4 py-2 font-medium dark:border-gray-600" disabled>
             <Spinner size="xs" variant="dots" label="Sending" />
@@ -151,7 +151,7 @@ tags: [spinner, loader, loading, progress, component, svelte, svelte-5, theui-sv
 ```html
 <button class="inline-flex items-center gap-2 ..." disabled>
   <Spinner size="xs" class="text-on-brand" label="Saving" />
-  Saving…
+  Saving...
 </button>
 ```
       {/snippet}

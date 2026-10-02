@@ -34,15 +34,15 @@ tags: [table, data, grid, component, svelte, svelte-5, theui-svelte, component-l
 </script>
 
 <DocLayout>
-  <DocHead title="Table" text="A flexible and customizable way to display data in a structured format. It supports various styling options and interactive features to enhance usability." edit_url={editURL("table")} />
+  <DocHead title="Table" text="A table you can build from data or write out by hand, with stripes, hover rows and border options." edit_url={editURL("table")} />
 
   <DocBlock title="About">
-    <p class="not-prose">The <code>Table</code> component is highly customizable and automatically generates tables from object/JSON data if needed. It supports custom styling, column alignment, and interactive features, making it easy to display structured data efficiently. Whether for simple data presentation or complex tables with sorting and filtering, this component ensures a clean and responsive layout.</p>
+    <p class="not-prose">Pass <code>headers</code> and <code>data</code> and the <code>Table</code> builds the rows for you, or write <code>THead</code>, <code>TBody</code>, <code>TR</code>, <code>TH</code> and <code>TD</code> out by hand. The two styles mix freely, and the output is always wrapped in a horizontally scrollable container.</p>
   </DocBlock>
 
   <DocBlock title="Example">
     <div>
-      <p class="not-prose">The <code>Table</code> is a powerful, versatile component. You can create a table in many ways. For example:</p>
+      <p class="not-prose">There are several ways to build a table. For example:</p>
       <ul class="my-0">
         <li>Using data</li>
         <li>Using snippet</li>
@@ -197,7 +197,7 @@ tags: [table, data, grid, component, svelte, svelte-5, theui-svelte, component-l
 
   <DocBlock title="Table Border">
     <Example>
-      <p class="not-prose">The <code>border</code> prop controls where borders appear in the table. By default, it is set to <code>"both"</code>. Setting it to <code>"x"</code> adds borders only between columns, while <code>"y"</code> applies borders only between rows. The default option, <code>"both"</code>, adds borders between both rows and columns, and <code>"none"</code> removes all borders. This prop allows you to customize the table’s appearance based on your design preferences.</p>
+      <p class="not-prose">The <code>border</code> prop controls where borders appear in the table. By default, it is set to <code>"both"</code>. Setting it to <code>"x"</code> adds borders only between columns, while <code>"y"</code> applies borders only between rows. The default option, <code>"both"</code>, adds borders between both rows and columns, and <code>"none"</code> removes all borders. This prop allows you to customize the table's appearance based on your design preferences.</p>
       {#snippet example()}
         <div class="flex flex-col gap-4 w-full">
           <div id="horizontal-border-x">
@@ -253,7 +253,6 @@ tags: [table, data, grid, component, svelte, svelte-5, theui-svelte, component-l
 ```
       {/snippet}
     </Example>
-    <p class="not-prose">This prop allows you to fine-tune the table’s appearance based on your design needs.</p>
   </DocBlock>
 
   <DocBlock title="Stripe Rows">
@@ -338,16 +337,15 @@ tags: [table, data, grid, component, svelte, svelte-5, theui-svelte, component-l
   </DocBlock>
 
   <DocBlock title="Customization">
-    <p class="not-prose">You can use the following props to customize the table’s appearance, allowing you to style the table and its elements as needed.</p>
+    <p class="not-prose">You can use the following props to customize the table's appearance, allowing you to style the table and its elements as needed.</p>
     <ul class="my-0">
-      <li><span class="not-prose"><code>borderColor</code></span> - Defines the border color for the table. By default, it is set to <code>"border-gray-200/80 dark:border-gray-800/80"</code>, ensuring a subtle contrast in both light and dark modes. You can override this with any Tailwind CSS border color class.</li>
+      <li><span class="not-prose"><code>borderColor</code></span> - the border color for the table. The default is <code>"border-gray-200/80 dark:border-gray-800/80"</code>, which reads in both light and dark mode. Override it with any Tailwind border color class.</li>
       <li><span class="not-prose"><code>trHeadClasses</code></span> - Adds custom classes to the table header row ((&lt;tr&gt; inside &lt;thead&gt;)). This allows you to style the header separately, such as applying background colors, text styles, or spacing adjustments.</li>
       <li><span class="not-prose"><code>trClasses</code></span> - Applies custom classes to all table body rows (&lt;tr&gt; inside &lt;tbody&gt;). Use this to control row styling, such as padding, text alignment, or hover effects.</li>
       <li><span class="not-prose"><code>thClasses</code></span> - Adds custom classes to all table header cells (&lt;th&gt;), enabling control over the header text size, padding, alignment, or other styles.</li>
       <li><span class="not-prose"><code>tdClasses</code></span> - Adds custom classes to all table cells (&lt;td&gt;), enabling precise control over text size, padding, alignment, or other styles.</li>
     </ul>
     <Alert type="warning" theme="soft"><span>you can use <span class="not-prose"><code>class</code></span> attribute with any table related component to add your custom CSS classes.</span></Alert>
-    <p class="not-prose">These props provide flexibility in styling, making it easy to adapt the table to different designs and themes.</p>
   </DocBlock>
 
   <DocBlock title="Accessibility">

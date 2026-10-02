@@ -1,7 +1,7 @@
 ---
 title: Skeleton
 category: Components
-description: Show the shape of content while it loads with theui-svelte’s Skeleton component, in text, rectangle and circle variants.
+description: Show the shape of content while it loads with theui-svelte's Skeleton component, in text, rectangle and circle variants.
 dir: ".lib/pages"
 tags: [skeleton, placeholder, loading, shimmer, component, svelte, svelte-5, theui-svelte, component-library, ui, tailwindcss]
 ---

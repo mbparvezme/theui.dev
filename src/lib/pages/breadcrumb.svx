@@ -1,7 +1,7 @@
 ---
 title: Breadcrumb
 category: Components
-description: Enhance navigation with theui-svelte’s Breadcrumb component, guiding users through content hierarchy easily.
+description: Show the path to the current page with theui-svelte's Breadcrumb component.
 dir: ".lib/pages"
 tags: [breadcrumb, navigation, component, svelte, svelte-5, theui-svelte, component-library, ui, tailwindcss]
 ---

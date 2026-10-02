@@ -31,7 +31,7 @@ tags: [select, dropdown, form-input, component, svelte, svelte-5, theui-svelte, 
   <DocHead title="Select" text="The Select component provides a customizable dropdown for selecting options. It supports static and dynamic options, floating labels, and various styling options for flexibility." edit_url={editURL("select")} />
 
   <DocBlock title="About">
-    <p class="not-prose">Designed for versatility, the <code>Select</code> component offers complete control over styling, behavior, and data handling. Whether you use static options or generate them dynamically, it ensures a seamless and consistent user experience. With built-in support for floating labels, animations, and custom styling, this component adapts to any design system effortlessly.</p>
+    <p class="not-prose">Options can be written out in the markup or passed as an array through the <code>options</code> prop. Floating labels, animation speed and the rest of the form settings come from the Form or Fieldset around the field.</p>
   </DocBlock>
 
   <DocBlock title="Example">
@@ -141,7 +141,7 @@ tags: [select, dropdown, form-input, component, svelte, svelte-5, theui-svelte, 
       <p class="not-prose">The <code>variant</code> prop controls the appearance of the <code>Select</code> component. It has two options:</p>
       <ul class="mt-0">
         <li><span class="not-prose"><code>bordered</code></span>(default): Displays the select input with a visible border, making it distinct and well-defined.</li>
-        <li><span class="not-prose"><code>flat</code></span>: Removes the border for a more minimalistic and seamless look.</li>
+        <li><span class="not-prose"><code>flat</code></span>: drops the border and keeps only the bottom rule.</li>
       </ul>
       <p class="not-prose">If the <code>Select</code> is inside a <b>Fieldset</b> or <b>Form</b>, it inherits their <code>variant</code> unless you set it here. Choosing <code>flat</code> also turns on the floating label, unless you set <code>floatingLabel</code> yourself.</p>
       {#snippet example()}
@@ -295,7 +295,7 @@ tags: [select, dropdown, form-input, component, svelte, svelte-5, theui-svelte, 
 
   <DocBlock title="Helper Text">
     <Example>
-      <p class="not-prose">The <code>helperText</code> prop allows you to add additional guidance or information below the Select component. It can be a simple string or a Snippet for more complex content. This is useful for providing instructions or any other contextual information to enhance user experience. The helper text is linked to the select with <code>aria-describedby</code>, and a string renders as plain text, so use the snippet for markup.</p>
+      <p class="not-prose">The <code>helperText</code> prop allows you to add additional guidance or information below the Select component. It can be a simple string or a Snippet for more complex content. The helper text is linked to the select with <code>aria-describedby</code>, and a string renders as plain text, so use the snippet for markup.</p>
       {#snippet example()}
 <Select label="Select an option" options={data} helperText="This is helper text for the select input!" />
 <Select label="Select an option" options={data}>
@@ -333,19 +333,18 @@ tags: [select, dropdown, form-input, component, svelte, svelte-5, theui-svelte, 
 ```
       {/snippet}
     </Example>
-    <p class="not-prose">In this example, even though <code>size="sm"</code> and <code>rounded="full"</code> are set, they won’t take effect because the <code>reset</code> prop removes all default styles, including size and rounded settings. Only the styles you manually apply will be used.</p>
+    <p class="not-prose">In this example, even though <code>size="sm"</code> and <code>rounded="full"</code> are set, they won't take effect because the <code>reset</code> prop removes all default styles, including size and rounded settings. Only the styles you manually apply will be used.</p>
   </DocBlock>
 
   <DocBlock title="Customization">
     <Example classes="gap-8">
-      <p class="not-prose">The Select component provides several options to customize its appearance, ensuring it blends seamlessly with different UI designs. The <code>size</code>, <code>variant</code>, <code>rounded</code>, <code>animationSpeed</code>, <code>labelClasses</code> and <code>reset</code> props are inherited from the nearest <b>Fieldset</b> or <b>Form</b>, so set them there to style a whole group at once.</p>
+      <p class="not-prose">The <code>size</code>, <code>variant</code>, <code>rounded</code>, <code>animationSpeed</code>, <code>labelClasses</code> and <code>reset</code> props are inherited from the nearest <b>Fieldset</b> or <b>Form</b>, so set them there to style a whole group at once.</p>
       <ul class="mt-0">
         <li><span class="not-prose"><code>wrapperClasses</code>: Style the outer container of the Select component to adjust margins, padding, or additional styling needs.</span></li>
         <li><span class="not-prose"><code>labelClasses</code>: Customize the label's style by applying custom classes, allowing better control over typography, spacing, and alignment.</span></li>
         <li><span class="not-prose"><code>class</code></span> attribute: Directly modify the Select element itself, giving you control over borders, background, and overall appearance.</li>
       </ul>
-      <p class="not-prose">By using these customization options, you can easily align the Select component with your design system while maintaining consistency across forms.</p>
-
+  
       {#snippet example()}
 <div class="flex flex-col gap-8">
   <Select label="Select an option" options={data}

@@ -27,10 +27,10 @@ tags: [button, buttons, clickable, interactive, component, svelte, svelte-5, the
 {/snippet}
 
 <DocLayout>
-  <DocHead title="Button" text="The Button component provides a versatile and customizable button for various use cases. It supports different sizes, styles, and types, and can be used as a regular button or a link." edit_url={editURL("button")} />
+  <DocHead title="Button" text="The Button component covers the sizes, colors and themes the library uses. Give it an href and it renders an anchor instead of a button." edit_url={editURL("button")} />
 
   <DocBlock title="About">
-    <p class="not-prose">The <code>Button</code> component is a flexible and customizable element designed to meet various needs. It supports multiple sizes, styles, and types, making it suitable for diverse use cases. You can use it as a standard button or as a link, depending on your requirements. The component allows for additional customization through props, enabling you to style and animate it to match your application's theme.</p>
+    <p class="not-prose">Give it an <code>href</code> and it renders an <code>&lt;a&gt;</code>; leave it out and you get a <code>&lt;button&gt;</code>. The look comes from two axes, <code>theme</code> and <code>color</code>, with <code>outline</code> as a third option that overrides <code>theme</code>. Anything you pass in <code>class</code> is merged last, so your own styling wins.</p>
   </DocBlock>
 
   <DocBlock title="Example">
@@ -82,7 +82,7 @@ tags: [button, buttons, clickable, interactive, component, svelte, svelte-5, the
   </DocBlock>
 
   <DocBlock title="Button Content">
-    <p class="not-prose">The <code>Button</code> component offers <code>beforeLabel</code> and <code>afterLabel</code> snippet blocks that let you add custom content before or after the button’s label. This is useful for icons, badges, or other elements, giving you more control over the button’s look and behavior. Although you can add elements manually with HTML and CSS, using these snippets keeps the structure cleaner and easier to maintain. It also simplifies layout and styling.</p>
+    <p class="not-prose">The <code>Button</code> component offers <code>beforeLabel</code> and <code>afterLabel</code> snippet blocks that let you add custom content before or after the button's label. This is useful for icons, badges, or other elements, giving you more control over the button's look and behavior. Although you can add elements manually with HTML and CSS, using these snippets keeps the structure cleaner and easier to maintain. It also simplifies layout and styling.</p>
     <p class="not-prose">For better structure, flexibility, and consistency, <code>beforeLabel</code> and <code>afterLabel</code> are great options.</p>
     <Example title="Example Using Snippets">
       {#snippet example()}
@@ -154,7 +154,7 @@ tags: [button, buttons, clickable, interactive, component, svelte, svelte-5, the
 
   <DocBlock title="Button Color">
     <Example>
-      <p class="not-prose">The <code>color</code> prop lets you style the button using predefined themes like <code>"brand"</code>, <code>"error"</code>, <code>"info"</code>, <code>"success"</code>, and <code>"warning"</code>. These match common statuses or actions to keep your app’s design consistent. The default is <code>"brand"</code>.</p>
+      <p class="not-prose">The <code>color</code> prop lets you style the button using predefined themes like <code>"brand"</code>, <code>"error"</code>, <code>"info"</code>, <code>"success"</code>, and <code>"warning"</code>. These match common statuses or actions to keep your app's design consistent. The default is <code>"brand"</code>.</p>
       {#snippet example()}
         <Button color="brand">Brand</Button>
         <Button color="error">Error</Button>
@@ -173,11 +173,11 @@ tags: [button, buttons, clickable, interactive, component, svelte, svelte-5, the
 ```
       {/snippet}
     </Example>
-    <p class="not-prose">Each color serves a purpose, making design intuitive and user-friendly. While you can customize colors with the class attribute, the <code>color</code> prop offers a quick and consistent solution.</p>
+    <p class="not-prose">Each color carries a meaning, so a reader can tell a destructive action from a safe one. You can still pass your own classes, but the <code>color</code> prop keeps the whole app on one palette.</p>
   </DocBlock>
 
   <DocBlock title="Theme">
-    <p class="not-prose">The <code>theme</code> prop controls the button’s overall style and background. It supports three values: <code>'default'</code>, <code>'soft'</code>, and <code>'gradient'</code>. The default theme gives the standard button look, the soft theme uses softer colors, and the gradient theme adds a vibrant background with gradient styling.</p>
+    <p class="not-prose">The <code>theme</code> prop controls the button's overall style and background. It supports three values: <code>'default'</code>, <code>'soft'</code>, and <code>'gradient'</code>. The default theme gives the standard button look, the soft theme uses softer colors, and the gradient theme adds a vibrant background with gradient styling.</p>
     <div>
     <Example title="Soft Theme">
       <p class="not-prose">The soft theme is a softer variation of the default button colors, making it suitable for more subtle designs.</p>
@@ -202,7 +202,7 @@ tags: [button, buttons, clickable, interactive, component, svelte, svelte-5, the
       {/snippet}
     </Example>
     <Example title="Gradient Theme">
-      <p class="not-prose">The gradient theme applies vibrant gradient colors to the button background, providing a more modern and eye-catching look.</p>
+      <p class="not-prose">The gradient theme fills the button background with a two color gradient.</p>
       {#snippet example()}
         <div class="w-full flex justify-center gap-4">
           <Button theme="gradient" gradientColor="brand">Brand</Button>
@@ -252,7 +252,7 @@ tags: [button, buttons, clickable, interactive, component, svelte, svelte-5, the
   </DocBlock>
 
   <DocBlock title="Size">
-    <p class="not-prose">The <code>size</code> prop allows you to adjust the button's size to fit various design needs. This prop supports a range of predefined sizes, ensuring consistency and flexibility across your UI components.</p>
+    <p class="not-prose">The <code>size</code> prop sets the padding and the font size of the button. It takes one of the preset values below.</p>
     <Example>
       <p class="not-prose">Available values are <code>"xs"</code>, <code>"sm"</code>, <code>"md"</code> (default), <code>"lg"</code>, <code>"xl"</code>, and <code>"auto"</code>, allowing flexibility while maintaining consistency.</p>
       {#snippet example()}
@@ -280,7 +280,7 @@ tags: [button, buttons, clickable, interactive, component, svelte, svelte-5, the
 
   <DocBlock title="Square Button">
     <Example>
-      <p class="not-prose">The <code>square</code> prop allows you to create perfectly square buttons, ideal for icons or small content. By setting <code>square</code> to <code>true</code>, the button's height and width are equal, ensuring a neat, compact appearance. This prop is particularly useful for minimalist designs or icon buttons.</p>
+      <p class="not-prose">The <code>square</code> prop makes the button's height and width equal, which is what you want for an icon button.</p>
       {#snippet example()}
         <Button square={true}>{@render profileIcon(2)}</Button>
       {/snippet}
@@ -312,12 +312,12 @@ tags: [button, buttons, clickable, interactive, component, svelte, svelte-5, the
 ```
       {/snippet}
     </Example>
-      <p class="not-prose">This feature ensures that your square buttons can fit seamlessly into different parts of your design, from small icons to larger clickable elements.</p>
+      <p class="not-prose">Square buttons follow the same size scale, so an icon button lines up with the text buttons beside it.</p>
   </DocBlock>
 
   <DocBlock title="Rounded Corner Button">
     <Example>
-      <p class="not-prose">The <code>rounded</code> prop in the Button component allows you to easily control the border radius, ensuring consistent design throughout your application. This prop supports several predefined values, providing flexibility while maintaining a uniform look. Available values are: <code>none</code>, <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code>, <code>2xl</code>, and <code>full</code>. Default value <code>md</code>.</p>
+      <p class="not-prose">The <code>rounded</code> prop sets the corner radius of the button. Available values are: <code>none</code>, <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code>, <code>2xl</code>, and <code>full</code>. Default value <code>md</code>.</p>
       {#snippet example()}
         <Button rounded="none">None</Button>
         <Button rounded="sm">Small</Button>
@@ -338,7 +338,6 @@ tags: [button, buttons, clickable, interactive, component, svelte, svelte-5, the
 ```
       {/snippet}
     </Example>
-    <p class="not-prose">Using the <code>rounded</code> prop ensures your buttons adhere to a consistent design pattern, enhancing the visual coherence of your UI.</p>
   </DocBlock>
 
   <DocBlock title="Button Shadow">
@@ -387,7 +386,7 @@ tags: [button, buttons, clickable, interactive, component, svelte, svelte-5, the
 ```
       {/snippet}
     </Example>
-    <p class="not-prose">Each value adjusts the animation timing to fit your design needs, ensuring a seamless user experience.</p>
+    <p class="not-prose">Each value sets a different transition duration.</p>
   </DocBlock>
 
   <DocBlock title="Loading State">
@@ -470,7 +469,7 @@ tags: [button, buttons, clickable, interactive, component, svelte, svelte-5, the
 
   <DocBlock title="Accessibility">
     <div>
-      <p class="not-prose">The Button component is designed with accessibility in mind, ensuring it can be used by everyone, including users relying on assistive technologies. By default, it includes the necessary ARIA attributes and supports keyboard navigation.</p>
+      <p class="not-prose">The Button carries the ARIA attributes it needs and answers to the keyboard out of the box.</p>
       <ol class="my-0">
         <li>
           <b>Keyboard Navigation</b>: Use <kbd>tab</kbd> to navigate between buttons, and <kbd>Enter</kbd> or <kbd>Space</kbd> to activate a button.</li>
@@ -487,7 +486,7 @@ tags: [button, buttons, clickable, interactive, component, svelte, svelte-5, the
           A disabled button gets <span class="not-prose"><code>aria-disabled="true"</code></span>, and an active button (<span class="not-prose"><code>isActive</code></span>) gets <span class="not-prose"><code>aria-pressed="true"</code></span>.
         </li>
         <li>
-          <b>Focus Management</b>: Focus styles are provided using focus-visible or focus-within to ensure a clear visual indicator when the button is focused.
+          <b>Focus Management</b>: focus styles use <code>focus-visible</code> or <code>focus-within</code>, so the ring shows for keyboard users without appearing on every mouse click.
         </li>
         <li>
           <b>State Indications</b>: Visual cues (hover, focus, active, and disabled states) are provided to communicate the button's interactive state clearly.

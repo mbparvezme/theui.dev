@@ -1,7 +1,7 @@
 ---
 title: OTP Input
 category: Forms
-description: Collect a one time code in separate boxes, with paste, backspace and SMS autofill support, using theui-svelte’s OtpInput component.
+description: Collect a one time code in separate boxes, with paste, backspace and SMS autofill support, using theui-svelte's OtpInput component.
 dir: ".lib/pages"
 tags: [otp, one time code, pin, verification, two factor, form, svelte, svelte-5, theui-svelte, component-library, ui, tailwindcss]
 ---
@@ -109,7 +109,7 @@ tags: [otp, one time code, pin, verification, two factor, form, svelte, svelte-5
       {#snippet example()}
         <div class="flex flex-col gap-3">
           <OtpInput length={4} oncomplete={(v) => done = v}>Enter any four digits</OtpInput>
-          <p class="not-prose text-sm text-muted">{done ? `Completed with "${done}"` : "Waiting for four digits…"}</p>
+          <p class="not-prose text-sm text-muted">{done ? `Completed with "${done}"` : "Waiting for four digits..."}</p>
         </div>
       {/snippet}
       {#snippet code()}

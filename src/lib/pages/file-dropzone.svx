@@ -1,7 +1,7 @@
 ---
 title: File Dropzone
 category: Forms
-description: Let users drop or pick files, with type and size checks, image previews and a removable list, using theui-svelte’s FileDropzone component.
+description: Let users drop or pick files, with type and size checks, image previews and a removable list, using theui-svelte's FileDropzone component.
 dir: ".lib/pages"
 tags: [file dropzone, upload, drag and drop, file input, form, svelte, svelte-5, theui-svelte, component-library, ui, tailwindcss]
 ---

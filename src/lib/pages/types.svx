@@ -541,16 +541,16 @@ type WIZARD_STEP_INFO = {
   <DocBlock title="Internal Types">
     <p class="not-prose">These are exported because the components pass them between themselves, through Svelte context. You never set them, and nothing asks you for one, but they are listed here so nothing in the package is a mystery.</p>
     <ul class="mt-0 mb-0">
-      <li><code>ACCORDION_CONTEXT</code> – settings an <code>Accordion</code> shares with its items.</li>
-      <li><code>AVATAR_GROUP_CTX</code> – how an <code>AvatarGroup</code> counts its avatars and decides which to hide behind the "+N" one.</li>
-      <li><code>BTN_QAB_CTX</code> – settings a <code>Qab</code> shares with its items.</li>
-      <li><code>DROPDOWN_CTX</code> and <code>LIST_GROUP_CTX</code> – classes a <code>Dropdown</code> or a <code>ListGroup</code> passes to its children.</li>
-      <li><code>INPUT_CONFIG</code> – the settings a <code>Form</code> or <code>Fieldset</code> hands down to the fields inside it, such as <code>size</code>, <code>variant</code>, <code>rounded</code> and <code>floatingLabel</code>.</li>
-      <li><code>NAV_CTX</code> – the configuration a <code>Navbar</code> shares with its links, groups and dropdowns.</li>
-      <li><code>SLIDE_INFO</code>, <code>SLIDE_STATE</code> and <code>SLIDER_CTX</code> – how a <code>Slide</code> registers itself with the <code>Slider</code> and reads back where it stands.</li>
-      <li><code>TABLE_CONTEXT</code> and <code>TABS_CONTEXT</code> – what a <code>Table</code> or <code>Tabs</code> shares with its rows, cells, tabs and panels.</li>
-      <li><code>WIZARD_CTX</code> and <code>WIZARD_STEP_STATE</code> – how a <code>FormStep</code> registers with its wizard and learns whether it is the active step.</li>
-      <li><code>ROUNDED_ITEM_TYPES</code> and <code>ROUNDED_SIDES</code> – used by the <code>roundedClass()</code> helper to round the right corners of a cell in a group.</li>
+      <li><code>ACCORDION_CONTEXT</code> - settings an <code>Accordion</code> shares with its items.</li>
+      <li><code>AVATAR_GROUP_CTX</code> - how an <code>AvatarGroup</code> counts its avatars and decides which to hide behind the "+N" one.</li>
+      <li><code>BTN_QAB_CTX</code> - settings a <code>Qab</code> shares with its items.</li>
+      <li><code>DROPDOWN_CTX</code> and <code>LIST_GROUP_CTX</code> - classes a <code>Dropdown</code> or a <code>ListGroup</code> passes to its children.</li>
+      <li><code>INPUT_CONFIG</code> - the settings a <code>Form</code> or <code>Fieldset</code> hands down to the fields inside it, such as <code>size</code>, <code>variant</code>, <code>rounded</code> and <code>floatingLabel</code>.</li>
+      <li><code>NAV_CTX</code> - the configuration a <code>Navbar</code> shares with its links, groups and dropdowns.</li>
+      <li><code>SLIDE_INFO</code>, <code>SLIDE_STATE</code> and <code>SLIDER_CTX</code> - how a <code>Slide</code> registers itself with the <code>Slider</code> and reads back where it stands.</li>
+      <li><code>TABLE_CONTEXT</code> and <code>TABS_CONTEXT</code> - what a <code>Table</code> or <code>Tabs</code> shares with its rows, cells, tabs and panels.</li>
+      <li><code>WIZARD_CTX</code> and <code>WIZARD_STEP_STATE</code> - how a <code>FormStep</code> registers with its wizard and learns whether it is the active step.</li>
+      <li><code>ROUNDED_ITEM_TYPES</code> and <code>ROUNDED_SIDES</code> - used by the <code>roundedClass()</code> helper to round the right corners of a cell in a group.</li>
     </ul>
   </DocBlock>
 

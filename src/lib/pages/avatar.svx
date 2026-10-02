@@ -1,7 +1,7 @@
 ---
 title: Avatar
 category: Components
-description: Show a user with a photo, initials or an icon, add a status dot, and stack a group of avatars with theui-svelte’s Avatar component.
+description: Show a user with a photo, initials or an icon, add a status dot, and stack a group of avatars with theui-svelte's Avatar component.
 dir: ".lib/pages"
 tags: [avatar, user, profile, status, component, svelte, svelte-5, theui-svelte, component-library, ui, tailwindcss]
 ---

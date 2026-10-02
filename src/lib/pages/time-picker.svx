@@ -1,7 +1,7 @@
 ---
 title: Time Picker
 category: Forms
-description: Pick a time in separate hour, minute and AM/PM parts, with typing, arrow keys and the mouse wheel, using theui-svelte’s TimePicker component.
+description: Pick a time in separate hour, minute and AM/PM parts, with typing, arrow keys and the mouse wheel, using theui-svelte's TimePicker component.
 dir: ".lib/pages"
 tags: [time picker, time input, hour, minute, form, svelte, svelte-5, theui-svelte, component-library, ui, tailwindcss]
 ---
@@ -23,7 +23,7 @@ tags: [time picker, time input, hour, minute, form, svelte, svelte-5, theui-svel
 </script>
 
 <DocLayout>
-  <DocHead title="Time Picker" text="The TimePicker component holds the hour, the minute and, in twelve hour mode, AM or PM in separate parts. There is no dropdown to scroll: type the digits, step with the arrow keys or the wheel, and move on. The value is a plain “HH:mm” string in twenty four hour form, whatever the field shows." edit_url={editURL("time-picker")} />
+  <DocHead title="Time Picker" text="The TimePicker component holds the hour, the minute and, in twelve hour mode, AM or PM in separate parts. There is no dropdown to scroll: type the digits, step with the arrow keys or the wheel, and move on. The value is a plain HH:mm string in twenty four hour form, whatever the field shows." edit_url={editURL("time-picker")} />
 
   <DocBlock title="Example">
     <p class="not-prose">Import the component and bind a string. Click a part and type, or use the up and down arrows.</p>

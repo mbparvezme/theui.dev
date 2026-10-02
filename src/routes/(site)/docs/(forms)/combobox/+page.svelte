@@ -67,7 +67,7 @@
         {
           "name": "createText",
           "type": "(query: string) => string",
-          "default": "(q) => `Create “${q}”`",
+          "default": '(q) => `Create "${q}"`',
           "description": "Text of the entry that adds a new option."
         },
         {
